@@ -1,219 +1,182 @@
-# Apple Silicon experimental backend
+# Experimental Apple Silicon GAT v2
 
-This branch adds a **real native inference path** for the GAT v2 neuron and
-neuronal-subtype workflows. It targets the common macOS arm64 architecture used
-by M-series Macs. It is an experimental test build, **not a claim of validated
-M1–M5 compatibility**. The hardware and scientific-validation results must be
-recorded below before this becomes a supported release.
+This fork targets **native arm64 Fiji on macOS 14 Sonoma or newer, Java 11+**
+(Fiji's bundled Java 21 recommended). It is a test build. The current native
+TensorFlow JNI requires macOS 14; the chip name alone is insufficient.
 
-**Requirements: macOS 14 Sonoma or newer, native arm64 Fiji, Java 11+ (Fiji's
-bundled Java 21 recommended).** The shipped TensorFlow JNI library's Mach-O
-deployment target is macOS 14.0; an M1 running macOS 11–13 cannot use this build.
+Use **Plugins → GutAnalysisToolbox → GATV2**. Legacy `.ijm` menus and QuPath are
+separate workflows and are not redirected by this plugin.
 
-## What changes
+## What has actually run
 
-On an Apple Silicon Mac, GAT sends one local image channel to a separate Java
-process with TensorFlow Java 1.2.0. That process reads the existing GAT SavedModel
-ZIP, performs network inference, and returns probability and radial-distance
-arrays. Fiji then runs the **existing StarDist 2D NMS command**, including the
-same probability threshold, overlap threshold and two-pixel boundary exclusion.
-GAT's existing filtering, rescaling, ROI review and output workflow follows.
+On one hosted **Apple M1 (Virtual)** runner, macOS 14.8.9 and native Java
+21.0.12.1, the unchanged upstream `gat_v2` source
+`1870d9e16e16fd6daeac0bd05122e851029ddedc` and fork
+`69feedb86f4c4fd54d6ef91f8ba497d966d5c845` were built and exercised with the same
+inputs, plugin versions and host. The actual fork StarDist call returned 39
+neurons on the public 175×175 Hu image; its Template Matching call returned
+exactly the expected translated pixels. The original calls failed to return
+those results. [Paired run and preserved diagnostics](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37357196889).
 
-The worker has its own classpath, outside Fiji's `jars` and `plugins` folders.
-Modern TensorFlow is never added to the Fiji classpath alongside CSBDeep's old
-TensorFlow classes. A worker failure is reported as an analysis error rather
-than loading the incompatible TF1 native library inside Fiji. The startup
-version check no longer calls `TensorFlow.version()` in the Fiji process.
+The original StarDist failure was first a Java 21 classloader cast in the old
+ImageJ TensorFlow loader, **before JNI loading**. Original Template Matching
+left the shifted input unchanged. The installed old native binaries were
+independently identified as x86-64, but these particular command failures are
+not proof that architecture was their only cause. The original source remained
+unchanged and no modern TensorFlow classes entered either Fiji parent JVM.
 
-Intel and other non-Apple-Silicon installations retain the existing Fiji
-StarDist/CSBDeep backend by default. The preview plugin is built for Java 11+;
-the old Java-8 Fiji distribution is not the target of this preview package.
+Native Mac tests also ran the real ganglia DeepImageJ command, morphology,
+SIFT single/batch saved-output checks, StackReg/TurboReg helpers and multiplex
+SIFT landmarks. These are individually bounded command/component tests, not
+an installation or full interactive GAT dashboard certification. **The paired
+job is not an overall pass:** its calcium dialog control is being corrected
+and repeated. OpenCL kernels cannot run on the hosted virtual Mac because no
+OpenCL device is exposed. See the [workflow matrix](apple-silicon-workflow-matrix.md)
+for every remaining limit.
 
-The ganglia model remains the separate **DeepImageJ/PyTorch** workflow. CLIJ2
-still uses OpenCL. This change does not replace, validate or accelerate those
-engines. It uses TensorFlow CPU inference, not `tensorflow-metal` or Python.
+## Changes and scientific implications
 
-The Template Matching alignment plugin currently distributes Intel-only macOS
-OpenCV. This preview blocks that option on Apple Silicon before opening or
-modifying the input. You can explicitly choose the separate SIFT option if it
-fits your analysis, but no algorithm is substituted automatically. See the
-workflow matrix for this and other unimplemented or unverified paths.
+### Neuron and subtype inference
 
-## Try the M1 test package
+A separate local JVM uses **TensorFlow Java 1.2.0 / TensorFlow 2.21 CPU** with
+GAT's existing SavedModel ZIPs. It preserves CSBDeep 0.6.0 normalization and
+tiling, then returns probability/distance arrays to Fiji's unchanged StarDist
+2D NMS. GAT's original thresholds, boundary exclusion, ROI filtering and
+rescaling remain in use. There is no Python, pip, `tensorflow-metal`, or Metal
+backend in this implementation.
 
-1. On **macOS 14 or newer**, keep your current Fiji installation unchanged and make a separate test
-   installation of **native macOS arm64 Fiji Latest**, with its bundled Java 21,
-   from [Fiji's official downloads](https://imagej.net/software/fiji/downloads).
-   Intel Fiji running through Rosetta is deliberately rejected for this path.
-2. In that test Fiji, install GAT's usual update sites and models as described
-   in the repository README: StarDist, CSBDeep, DeepImageJ, clij, clij2,
-   IJPB-plugins, PTBIOP, 3D ImageJ Suite, BIG-EPFL and Gut Analysis Toolbox.
-   Complete the DeepImageJ engine initialization. The native neuron worker
-   does not require choosing TF1 under Edit > Options > TensorFlow.
-3. Quit Fiji. From the test installation's `plugins` folder, move the existing
-   `GutAnalysisToolbox_-2.0.0.jar` to a backup folder outside Fiji. Do not leave
-   both plugin versions installed. Extract the preview archive into the Fiji
-   root directory containing `jars`, `plugins` and `models`.
-4. Confirm this layout:
+The worker stays outside Fiji's `jars` and `plugins` classpath. Intel and other
+non-Apple-Silicon installations keep their legacy StarDist path by default.
+A child-process failure is reported without loading old TF1 JNI into native
+Fiji. Startup preflight does not call `TensorFlow.version()`.
+
+[All 371 paired Linux regression cases and evidence](../native-inference/validation/corpus/REGRESSION_REPORT.md)
+have the same counts (28,958 detections), but masks are not universally exact:
+359 raw label rasters match, three more differ only in IDs, eight differ at one
+boundary pixel, and one near-tied cell changes center/outline (affected-cell
+IoU 0.8979). Tiny probability changes can change NMS ordering. Subpixel outlines
+also differ slightly in many otherwise identical raster cases. Thresholds and
+production numerical settings were not adjusted to hide these differences.
+This is runtime consistency evidence, not biological ground-truth validation.
+Native Mac compact fixtures pass; the complete 371-case corpus ran on Linux.
+
+### Template Matching
+
+A second isolated worker ports the author's original matching code to
+JavaCV/JavaCPP 1.5.12 and native OpenCV 4.11.0. It preserves method 5, the 70%
+reference ROI, whole-image search, integer peak selection and ImageJ translation.
+It does not substitute SIFT. Source, GPL license and build POM accompany the
+worker. Keep this module outside Fiji's normal classpath.
+
+The adapter supports 8/16-bit stacks, up to 67,108,864 total pixels and 10,000
+frames, with explicit validation before modifying the source. Linux tests
+include 300 output frames across synthetic references 1/2/3 and the public
+142-frame calcium movie with references 1/71. The actual native Mac GAT adapter
+passed the paired synthetic control; interactive single/batch review remains.
+
+### Existing result-handling corrections
+
+- SIFT returns a new aligned stack. GAT now saves that returned result and
+  preserves timing/calibration instead of silently saving its original input
+- Motion CSVs contain only verified algorithm-owned Template Matching shifts
+  with real frame IDs. Unavailable SIFT transforms are not fabricated as zeros.
+  A combined SIFT-plus-Template-Matching CSV describes the refinement only
+- Ganglia RGB input retains byte-range float values so the shipped RDF applies
+  its `1/255` normalization once. This fixes reached double normalization and
+  **intentionally changes scientific outputs** compared with the old GAT path.
+  The model weights, RDF, channel order and threshold are unchanged
+- Ganglia output selection requires the newly produced, correctly shaped image;
+  an unrelated current image is not accepted as a successful result
+- Calcium projection/division consume ImageJ's returned objects directly.
+  Numeric controls pass; the full native ROI/measurement dialog test remains
+  pending a reliable accepted-dialog rerun, so no blanket calcium pass is claimed
+
+## Install an experimental overlay
+
+For a computer with no Fiji or development tools, use the separate
+[M1 computer-test handoff](M1-CHATGPT-HANDOFF.md). It covers official Fiji,
+update sites, models, engine initialization, paired installations and reporting.
+Do not substitute preview 1 for a newer workflow-fix package: **preview 1 is
+immutable and contains only the earlier neuron backend**, not these later fixes.
+Use an asset only when its `BUILD_INFO.json`, source commit and checksum match
+the handoff being followed.
+
+1. Install a separate native arm64 Fiji with bundled Java on macOS 14+.
+   Preserve any working installation and use copies of images
+2. Install the required update sites/models from the repository README and
+   finish DeepImageJ engine initialization. Record all exact versions
+3. Quit Fiji. Identify its **ImageJ data root** containing `jars`, `plugins`
+   and `models`. Current Fiji Latest places these in outer `Fiji/`, beside
+   inner `Fiji.app/`; older bundles may put them in `Fiji.app/`. Confirm with
+   `IJ.getDirectory("imagej")` rather than assuming the app is the data root
+4. Move the existing GAT JAR to a backup outside Fiji. Leave only one GAT JAR.
+   Extract the verified overlay into that data root:
 
    ```text
-   Fiji.app/
-     plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.1.jar
+   <ImageJ data root>/
+     plugins/GutAnalysisToolbox_-<preview-version>.jar
      gat-native-inference/gat-native-inference.jar
      gat-native-inference/lib/...
+     gat-native-alignment/gat-native-alignment.jar
+     gat-native-alignment/lib/...
+     gat-native-alignment/source/...
      models/2D_enteric_neuron_v4_1.zip
      models/2D_enteric_neuron_subtype_v4.zip
      models/2D_Ganglia_RGB_v3.bioimage.io.model/...
    ```
 
-   Do not move worker dependencies into Fiji's `jars` folder. The preview does
-   not automatically download or install software. Normal Fiji updates can
-   replace the preview plugin; check/reapply the preview after an update.
-5. Start Fiji and open Plugins > GutAnalysisToolbox > GATV2. The log should say
-   `StarDist backend: isolated native TensorFlow worker (experimental)`.
-   Use this GATV2 entry point. Old `.ijm` macros under the legacy GAT menu are
-   not patched by this preview and still call the legacy TensorFlow backend.
-6. First run the neuron workflow on a small, correctly calibrated sample crop
-   (up to about 1024 × 1024 pixels after GAT rescaling),
-   with ganglia and spatial analysis disabled. Verify the detected outlines and
-   count against a trusted Intel/legacy result. Then try subtype detection,
-   followed separately by optional ganglia and spatial workflows.
+5. Never move worker libraries into Fiji's `jars` or `plugins`. Nothing is
+   auto-downloaded or executed at installation. Normal updater operations can
+   replace the preview GAT JAR; verify versions after updates
+6. Start GATV2 and first test a small, calibrated neuron crop with optional
+   ganglia/spatial features off. Then test each additional workflow separately
 
-Use copies of research images for initial testing. Input pixels and intermediate
-files stay on the same computer and are removed after inference; no image data
-is uploaded. A crash or interrupted process can leave temporary files in the
-operating system's temporary directory.
+No image upload is performed by the workers. Their local request directories
+are cleaned on normal completion and handled child failure/timeout. An abrupt
+parent JVM/OS crash can leave temporary files; inspect before removing them.
 
-## Build from source
+## Memory, performance and backend controls
 
-Use JDK 17 or newer and Maven 3.9+. Build the Fiji plugin and the independent
-worker separately:
+Both workers use CPU. No paired GPU implementation has been benchmarked, so
+there is no justified CPU-to-GPU speed multiplier. Hosted virtual-Mac cold
+process timings are not predictions of physical M1 performance.
 
-```sh
-mvn clean package
-mvn -f native-inference/pom.xml clean package -Dtensorflow.platform=macosx-arm64
-```
+The neuron protocol caps full output at 268,435,456 floats. The supplied models
+have 97 output channels, so the padded merged image must fit about 2.77 million
+spatial pixels. Start with ≤1024×1024 crops; roughly 1600×1600 is a conservative
+square bound after padding. A 2048×2048 result is too large. Increasing tiles
+does not remove this full-output cap. Use disclosed crops/rescaling, not silent
+loss of the original image area.
 
-See `native-inference/README.md` for worker packaging and its versioned binary
-protocol. For Linux validation, build the worker with
-`-Dtensorflow.platform=linux-x86_64`. A Mac-classifier bundle can be assembled on
-Linux, but that does not constitute running it on macOS.
+Optional Java properties: `gat.stardist.backend=auto|native|legacy`,
+`gat.inference.directory`, `gat.inference.timeoutSeconds`,
+`gat.alignment.backend=auto|native|legacy`, `gat.alignment.directory`,
+`gat.alignment.timeoutSeconds`. Both children use Fiji's current Java executable. Consult the actual client
+source for defaults. Native arm64 refuses forced legacy native-library paths;
+Intel remains legacy by default. Do not use overrides to mix Java architectures.
 
-The root GUI tests normally need a display. On Linux CI use `xvfb-run -a mvn
-test`. The protocol/backend unit tests can be run without a display:
+## Build and package
+
+Requires a JDK and Maven; installation of a prebuilt overlay does not.
 
 ```sh
-mvn -Dgat.tests.headless=true -Dtest=InferenceBackendTest,NativeInferenceClientTest test
+mvn -B -ntp -Dgat.tests.headless=true clean package
+mvn -B -ntp -f native-inference/pom.xml clean package
+mvn -B -ntp -f native-alignment/pom.xml clean package
+python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
+python3 scripts/package-apple-silicon-preview.py --output ../preview-artifacts
 ```
 
-## Configuration and diagnostics
+Both worker POMs default to macOS arm64 packaging. Linux execution tests use
+`-Dtensorflow.platform=linux-x86_64` and `-Dopencv.platform=linux-x86_64`
+respectively; such bundles cannot be packaged as the Mac release. The packager
+rejects mixed classifiers, incomplete corresponding source, unsafe archives and
+unclean source checkouts by default. A successful build is not a runtime test.
 
-Defaults should work with the package above. Advanced Java system properties:
+## Long-term architecture
 
-| Property | Default | Purpose |
-| --- | --- | --- |
-| `gat.stardist.backend` | `auto` | `native` explicitly selects the worker for cross-platform validation; `legacy` is refused on Apple Silicon |
-| `gat.inference.directory` | `<Fiji>/gat-native-inference` | Location of the worker JAR and its sibling `lib` folder |
-| `gat.inference.timeoutSeconds` | `900` | Worker timeout, 1–86400 seconds |
-
-Do not install pip/conda TensorFlow to repair this workflow: that is a different
-runtime. The worker launches the same Java installation that runs Fiji, so a
-native arm64 Java 11+ is essential on Apple Silicon.
-
-On a failure, retain the Fiji Log/Console message and report:
-
-- Mac chip and macOS version
-- Fiji's Java version and `os.arch` (expected `aarch64` or `arm64`)
-- Preview version and backend log line
-- Model filename, image dimensions, pixel calibration and chosen thresholds
-- Whether a small neuron-only test succeeds before ganglia/spatial options
-- Worker exit code and diagnostic text, if shown
-
-## Scientific equivalence and limits
-
-The worker reproduces the legacy CSBDeep global 1st/99.8th-percentile
-normalization, nonnegative normalized values, symmetric mirrored padding and
-its 64-pixel tiling rules. It retains legacy edge behavior rather than silently
-"correcting" it. Probability and distance channels are returned at input
-resolution and processed with the original Fiji StarDist NMS.
-
-Only a single 2D grayscale channel and the supported one-input/one-output
-float32 NHWC SavedModel signature are accepted. Unsupported signatures/shapes,
-nonfinite data, incomplete output and worker failure stop analysis. Custom
-models are not presumed compatible merely because they are ZIP files.
-
-This preview bounds each tensor to 268,435,456 float values (about 1 GiB).
-Both supplied GAT models have 97 output channels, so the full prediction is
-limited to roughly 2.77 million spatial pixels, **including padded dimensions**.
-A conservative square limit is about 1600 × 1600 pixels after rescaling;
-2048 × 2048 inputs do not fit this preview limit. Start with 1024-pixel crops
-on an M1. Increasing the tile count reduces per-tile inference memory but does
-not lift the full-output limit. Use calibrated crops and validate edge effects;
-do not silently resize images or compare cropped counts with whole-image counts.
-Available RAM may impose a lower limit because Fiji, TensorFlow and temporary
-arrays also consume memory.
-
-TensorFlow versions and CPU kernels can still produce small numerical
-differences. Near a probability or overlap threshold, these can change an
-individual detection. Network-array agreement and label/count agreement on
-representative images must be recorded separately. No silent tolerance or
-automatic threshold change is applied to make results agree.
-
-### Validation status
-
-- Linux x86-64/JDK 17: root plugin compiles and packages; all 30 plugin tests
-  passed. All dependency-enforcer rules passed.
-- Isolated worker: 16 unit tests passed, including normalization/tiling boundary
-  cases and comparison of each tile pixel with ImgLib2's actual mirror views.
-- Both original GAT model ZIPs load and infer using TensorFlow 2.21 through
-  TensorFlow Java 1.2.0, without conversion or retraining.
-- Independent TF1.15 versus TF2.21 comparison on the public 175 × 175 Hu crop:
-  neuron model with one tile produced 39 labels; subtype model with four tiles
-  produced 2 labels. Both final label rasters were pixel-identical (0 of 30,625
-  pixels differed), using unchanged StarDist 0.3.0 NMS at probability 0.5,
-  overlap 0.3 and boundary 2. Maximum raw probability differences were
-  1.37e-6/1.52e-6; distance differences 2.38e-5/2.67e-5, respectively.
-  The subtype model used the same Hu crop, so this is technical compatibility
-  evidence, not representative validation on a subtype-stained sample.
-- Real ImageJ batch-mode registration and actual subprocess timeout/noisy-output
-  cleanup were independently checked. Full Fiji GUI integration was not run.
-- The actual Java client launched the Linux worker with the public crop and
-  received all 97 channel planes, identical to direct worker invocation. This
-  tests the process boundary and protocol, separately from GUI command routing.
-- The Mac package contains three ARM64 dylibs. The JNI dylib requires macOS
-  14.0; the TensorFlow framework/core dylibs declare macOS 12.0. Packaging and
-  inspection were performed on Linux, not a Mac.
-- **Native macOS execution passed in CI:** macOS 14.8.9 ARM64 GitHub runner,
-  native aarch64 Java 17.0.20.1, 16 worker tests, TensorFlow 2.21 JNI loading,
-  and inference through both real model ZIPs on a synthetic 129 × 97 image.
-  [Verified CI job](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37338503480/job/111859285053).
-  This validates the backend on native macOS, not the full Fiji GUI or
-  scientific equivalence across hardware. Real-image cross-architecture
-  reference checks are being added separately.
-- Full Fiji execution on the user's M1, M2–M5 hardware, full-size images and optional
-  ganglia/OpenCL/calcium/registration workflows remain unverified unless
-  separately recorded in the workflow matrix or CI results.
-
-Passing unit tests or cross-packaging arm64 libraries is not an end-to-end
-M1 validation. See [the full workflow matrix](apple-silicon-workflow-matrix.md)
-for the scope of the preview and remaining hardware checks.
-
-A broader comparison across the author's public held-out data is in progress.
-The initial crop results above do not yet establish consistency across donors,
-labs, stains or image sizes. Check the validation results for the tested corpus
-before drawing conclusions about a new dataset.
-
-## Future upstream integration
-
-The independent worker accepts a versioned image/model protocol and has no GAT
-UI or Fiji dependencies. The Fiji adapter owns platform selection and calls
-StarDist's existing NMS command. These boundaries allow a later reusable
-StarDist/CSBDeep backend integration without maintaining a second segmentation
-algorithm. This preview does not fork or replace StarDist itself.
-
-## References
-
-- [Legacy GAT v2 baseline](https://github.com/pr4deepr/GutAnalysisToolbox/tree/1870d9e16e16fd6daeac0bd05122e851029ddedc)
-- [TensorFlow Java support and version matrix](https://github.com/tensorflow/java)
-- [CSBDeep Fiji normalization and tiling](https://github.com/CSBDeep/CSBDeep_fiji)
-- [Fiji StarDist NMS implementation](https://github.com/stardist/stardist-imagej)
+This GAT adapter is a focused compatibility path. A reusable inference backend
+in CSBDeep/StarDist, with their normal public API and model/tiling parity tests,
+would be a cleaner shared long-term solution. The isolated process boundary
+could remain useful. This fork does not claim upstream acceptance, and no
+upstream pull request has been submitted.

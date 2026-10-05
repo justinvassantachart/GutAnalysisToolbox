@@ -306,6 +306,7 @@ public final class RegistrationMorphologySmoke {
             commands.put("Extract MOPS Correspondences", "MOPS_ExtractPointRoi");
             commands.put("StackReg", "StackReg_");
             commands.put("TurboReg", "TurboReg_");
+            commands.put("Collect Garbage", "CollectGarbage_"); // Actual official Fiji/VIB plugin used by unchanged GAT.
         } catch (Throwable t) { guiBlocker = describe(t); }
     }
 

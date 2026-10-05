@@ -207,6 +207,14 @@
       "groups": [
         "deepimagej"
       ]
+    },
+    {
+      "filename": "VIB_-4.0.0.jar",
+      "url": "https://sites.imagej.net/Fiji/plugins/VIB_-4.0.0.jar-20250122172943",
+      "sha256": "af9344c42d41fb233a88bc33af0bd952e5fbb5e8e97f61172571c3750f8b79f6",
+      "groups": [
+        "registration"
+      ]
     }
   ]
 }

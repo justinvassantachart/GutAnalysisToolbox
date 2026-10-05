@@ -128,3 +128,64 @@ Local preparation verified the actual command registrations and TensorFlow
 service in a real headless ImageJ context, both probe compilation, original
 source/classpath isolation, and unavailable-GUI reporting. It does not claim
 that the original native calls ran on this headless host.
+
+## Additional bootstrap and direct-component controls
+
+The first paired macOS run is retained as first-run evidence. Its original
+StarDist path stopped in imagej-tensorflow 1.1.6 because that plugin casts
+`ClassLoader.getSystemClassLoader()` to `URLClassLoader`; Java 21's default
+application loader does not have that type. A child URL loader alone cannot
+resolve this particular cast. The separate `--bootstrap url-system` control uses
+the JVM-supported `java.system.class.loader` hook and `BaselineUrlClassLoader`,
+with the platform loader as parent. `BaselineBootstrap` then calls the official
+`LegacyInjector.preinit(loader)` before resolving any ImageJ classes. No original
+GAT/StarDist/CSBDeep/TensorFlow plugin source or algorithm is rewritten.
+
+This URL-loader embedding is explicitly a validation environment control; it is
+not claimed to reproduce every Fiji distribution's launcher. `--bootstrap app`
+remains the default and reproduces the first run's Java-agent initialization.
+The system/probe/context loader classes are recorded in each report. An optional
+`--full-legacy-context` additionally constructs the real ImageJ2 legacy context
+for alignment, instead of the first run's standalone ImageJ1 initialization.
+
+The first alignment report's unchanged pixels and empty normal log do **not**
+establish whether JNI ran. ImageJ `Executer` catches plugin Throwables and, when
+an ImageJ instance exists, places their stack traces into an `Exception`
+TextWindow rather than calling `IJ.handleException` or writing stderr/`IJ.log`.
+The updated probe captures real non-image TextWindow contents immediately after
+the GAT call and in its final report. It also records unchanged command-listener
+observations, macro options, input lock state, original plugin/filter classloader
+identity, and actual ImageJ hook type. An independent setup call on a separate
+published plugin instance is labeled as a setup control, not proof of dispatch.
+
+`--component-probes` runs three additional, separate JVM observations:
+
+1. `tensorflow-jni`: original `TensorFlow.version()` and native graph allocation
+2. `opencv-jni`: original JavaCPP/OpenCV native load and build-information call
+3. `template-plugin-direct`: published original `Align_slices.setup/run` on the
+   same seeded stack and exact GAT alignment parameters, including `show=true`;
+   the official legacy patcher supports the results window in headless Linux
+
+These controls do not invoke GAT and are never reported as actual GAT workflow
+evidence. They isolate native loading from macro command dispatch. Both original
+and fork parent JVMs deliberately retain these old plugin dependencies, so old
+JNI controls can fail on both while the fork's isolated worker-backed API passes.
+Such completed component failures are recorded separately and do not negate the
+fork's actual API success gate. Setup failures/timeouts in a control remain
+incomplete component evidence. `native-summary.json` separates `observations`
+from `component_observations` and records both completeness fields.
+
+Example additional original control, using a fresh diagnostic output directory:
+
+```sh
+python3 native-inference/validation/baseline/run_native.py \
+  --project-root /path/to/unchanged-checkout \
+  --root-classpath /path/to/unchanged-classpath.txt \
+  --cache /path/to/shared-pinned-downloads \
+  --output /path/to/new-url-loader-control \
+  --bootstrap url-system --component-probes
+```
+
+For the closest alignment A/B rerun, omit `--bootstrap url-system` and retain the
+first-run bootstrap; the new exception-window capture still applies. None of
+these runs overwrites an earlier nonempty output directory.

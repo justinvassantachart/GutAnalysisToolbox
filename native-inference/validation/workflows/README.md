@@ -121,12 +121,15 @@ input-scaling bug. These fixes are not claims of biological validation:
   translations. The two-channel batch fixture compares calibration to its reopened
   input TIFF: the TIFF rational representation of `0.75` is
   `0.7500001875000468` in both files, rather than a lost calibration value.
-- **Calcium:** the native command control returned the raw three-plane source as
-  `maxProj` (first pixel 100), although direct ImageJ MAX over the selected planes
-  returned 200. GAT now obtains the actual `ZProjector` and `ImageCalculator` return
-  objects, using the same MAX/AVG and Divide/create/32-bit/stack operations. Tests
-  check selected ranges, `[1, 1, 2]` F/F0, temporal metadata, source immutability,
-  and unchanged ImageJ `0/0 -> NaN` behavior. Native command rerun is required.
+- **Calcium:** GAT now obtains the actual `ZProjector` and `ImageCalculator`
+  return objects, using the same MAX/AVG and Divide/create/32-bit/stack operations.
+  Unit tests check selected ranges, `[1, 1, 2]` F/F0, temporal metadata, source
+  immutability and unchanged ImageJ `0/0 -> NaN` behavior. The first native
+  command control sometimes returned the unchanged source while its dialog
+  automation could cancel frame selection. Therefore that observation alone
+  does **not** establish an old production projection bug. The revised controller
+  clicks the actual OK button and records acceptance before judging the result;
+  both original and fork need that accepted-dialog rerun.
 - **Ganglia input:** `ganglia-contract` invokes the real GAT RGB preparation,
   DeepImageJ `ImageJGui.convertToInputTensors`, and the supplied RDF's JDLL
   `Processing.preprocess`. GAT used to divide its float RGB pixels by 255 before

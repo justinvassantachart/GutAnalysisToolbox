@@ -1,0 +1,64 @@
+{
+  "files": [
+    {
+      "path": "LICENSES/GPL-2.0.txt",
+      "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6",
+      "source_url": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt",
+      "note": "Verbatim original bytes"
+    },
+    {
+      "path": "LICENSES/SWIG-3-LICENSE",
+      "sha256": "f53abaeed775018d519a1b9615f0ca17894772bd9ca21c2a156bf340ac41c13e",
+      "source_url": "https://raw.githubusercontent.com/swig/swig/d9875c6579efc8a56132313704c69e627c990dac/LICENSE",
+      "note": "Verbatim original bytes"
+    },
+    {
+      "path": "LICENSES/SWIG-3-COPYRIGHT",
+      "sha256": "89ac0dd78b92082c6cbc4c7075d12aa105cdca721b794b9a8b58ba6b71c9c372",
+      "source_url": "https://raw.githubusercontent.com/swig/swig/d9875c6579efc8a56132313704c69e627c990dac/COPYRIGHT",
+      "note": "Verbatim original bytes"
+    },
+    {
+      "path": "LICENSES/SWIG-3-LICENSE-UNIVERSITIES",
+      "sha256": "7f50d942373a871211c5efee03f3db2f9efd1cff1002b0ef8e3748baa611a5c2",
+      "source_url": "https://raw.githubusercontent.com/swig/swig/d9875c6579efc8a56132313704c69e627c990dac/LICENSE-UNIVERSITIES",
+      "note": "Verbatim original bytes"
+    },
+    {
+      "path": "LICENSES/SWIG-4.5.0-LICENSE",
+      "sha256": "f53abaeed775018d519a1b9615f0ca17894772bd9ca21c2a156bf340ac41c13e",
+      "source_url": "https://raw.githubusercontent.com/swig/swig/v4.5.0/LICENSE",
+      "note": "Verbatim original bytes"
+    },
+    {
+      "path": "LICENSES/SWIG-4.5.0-COPYRIGHT",
+      "sha256": "0ecb0b7b8363a337f1dc42d4b735983c08b1b65a462e778419d8b4fa5e541961",
+      "source_url": "https://raw.githubusercontent.com/swig/swig/v4.5.0/COPYRIGHT",
+      "note": "Verbatim original bytes"
+    },
+    {
+      "path": "LICENSES/SWIG-4.5.0-LICENSE-UNIVERSITIES",
+      "sha256": "7f50d942373a871211c5efee03f3db2f9efd1cff1002b0ef8e3748baa611a5c2",
+      "source_url": "https://raw.githubusercontent.com/swig/swig/v4.5.0/LICENSE-UNIVERSITIES",
+      "note": "Verbatim original bytes"
+    },
+    {
+      "path": "LICENSES/SWIG-GPL-3.0.txt",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "source_url": "https://raw.githubusercontent.com/swig/swig/d9875c6579efc8a56132313704c69e627c990dac/LICENSE-GPL",
+      "note": "Verbatim original bytes"
+    },
+    {
+      "path": "LICENSES/GLENCOE-WRAPPER-HEADER.txt",
+      "sha256": "4c620a08fcca81effb000863c12777b460c9bb379aeb8f02d165907eaaf7f4b3",
+      "source_url": "https://raw.githubusercontent.com/glencoesoftware/jxrlib/a8e7f81b8f13ef620049caddeb537b5ea5ecffda/cpp/lib/DecodeContext.cpp",
+      "note": "Complete GPL-2.0-or-later header; source file retained byte-for-byte in source ZIP"
+    },
+    {
+      "path": "LICENSES/MICROSOFT-CODEC-HEADER.txt",
+      "sha256": "11267eb84a7a30c8ef7f75982e6c6729003db16fdd2ce7d4883174bf6f74ec0c",
+      "source_url": "https://raw.githubusercontent.com/glencoesoftware/jxrlib/a8e7f81b8f13ef620049caddeb537b5ea5ecffda/jxrencoderdecoder/JxrDecApp.c",
+      "note": "Complete source header transcoded from Windows-1252 to UTF-8 for readability; original codec source bytes unchanged"
+    }
+  ]
+}

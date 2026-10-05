@@ -30,6 +30,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-
 
+      - name: Check preview packaging safety
+        run: python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
+
       # Retry the build a few times to ride out brief scijava 503s; the
       # retryHandler flags also retry individual transient artifact transfers.
       #

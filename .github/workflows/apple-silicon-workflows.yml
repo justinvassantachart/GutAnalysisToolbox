@@ -35,6 +35,24 @@ jobs:
         run: >-
           python3 native-inference/validation/jpeg-xr/check.py
           --mode native --expect-platform osx_arm64 --output target/jpeg-xr-mac
+      - name: Check source and license packaging gates
+        run: python3 -m unittest discover -s native-inference/validation/jpeg-xr -p 'test_*.py' -v
+      - name: Revalidate and package the optional resource-only codec overlay
+        run: >-
+          python3 native-inference/validation/jpeg-xr/package-overlay.py
+          --check-output target/jpeg-xr-mac --output target/jpeg-xr-overlay
+      - name: Preserve only successfully revalidated codec and corresponding source
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-jpeg-xr-test-overlay
+          path: |
+            target/jpeg-xr-overlay/*.zip
+            target/jpeg-xr-overlay/*.sha256
+            target/jpeg-xr-overlay/package-report.json
+            target/jpeg-xr-overlay/final-overlay-*.log
+            target/jpeg-xr-overlay/final-overlay-actual.tsv
+            target/jpeg-xr-overlay/source-regeneration.log
+          if-no-files-found: error
       - name: Preserve diagnostics only
         if: always()
         uses: actions/upload-artifact@v4
@@ -62,6 +80,16 @@ jobs:
         run: >-
           python3 native-inference/validation/template-matching/check.py
           --platform macosx-arm64 --output target/template-matching-mac
+      - name: Build the actual GAT adapter and native alignment worker
+        run: |
+          mvn -B -ntp -DskipTests clean compile dependency:build-classpath -Dmdep.outputFile=target/workflow-classpath.txt
+          mvn -B -ntp -f native-alignment/pom.xml clean package
+      - name: Compare actual subprocess adapter and motion CSV across all reference frames
+        run: >-
+          python3 native-inference/validation/template-matching/check_adapter.py
+          --root-classpath target/workflow-classpath.txt
+          --worker-directory native-alignment/target
+          --output target/alignment-adapter-mac
       - name: Preserve exact shifts, hashes and comparison report
         if: always()
         uses: actions/upload-artifact@v4
@@ -70,6 +98,9 @@ jobs:
           path: |
             target/template-matching-mac/actual.json
             target/template-matching-mac/comparison.json
+            target/alignment-adapter-mac/*.json
+            target/alignment-adapter-mac/*.log
+            target/alignment-adapter-mac/**/*.csv
           if-no-files-found: warn
   native-workflows:
     name: Native Mac GAT workflow and engine tests

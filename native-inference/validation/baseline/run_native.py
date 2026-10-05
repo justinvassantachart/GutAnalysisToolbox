@@ -54,6 +54,9 @@ def main():
     parser.add_argument('--java', default='java')
     parser.add_argument('--javac', default='javac')
     parser.add_argument('--timeout', type=int, default=600)
+    parser.add_argument('--bootstrap', choices=['app', 'url-system'], default='app', help='Additional URL-system-loader control; app reproduces the first-run launch')
+    parser.add_argument('--full-legacy-context', action='store_true', help='Initialize actual ImageJ2 legacy context for alignment too')
+    parser.add_argument('--component-probes', action='store_true', help='Also collect separate original TF1/OpenCV JNI and direct-plugin component evidence')
     args = parser.parse_args()
     if args.timeout <= 0:
         parser.error('--timeout must be a positive number of seconds')
@@ -97,14 +100,15 @@ def main():
         raise ValueError('Forbidden modern TensorFlow/native worker classpath entries: ' + ', '.join(forbidden))
     cp = os.pathsep.join(entries)
     classes = out / 'probe-classes'; classes.mkdir(exist_ok=True)
-    compilation = run([args.javac, '-encoding', 'UTF-8', '-cp', cp, '-d', classes,
-                       HERE / 'BaselineNativeProbe.java'], out / 'compile.log', 180)
+    sources = ['BaselineNativeProbe.java', 'BaselineUrlClassLoader.java', 'BaselineBootstrap.java', 'LegacyJniProbe.java', 'LegacyPluginProbe.java']
+    compilation = run([args.javac, '-encoding', 'UTF-8', '-cp', cp, '-d', classes]
+                      + [HERE / name for name in sources], out / 'compile.log', 180)
     if compilation['exit_code'] != 0:
         raise RuntimeError('Actual native probe compilation failed; see compile.log')
     patchers = [p for p in entries if Path(p).name == 'ij1-patcher-2.0.0.jar']
     if len(patchers) != 1:
         raise ValueError('Expected exactly one pinned ImageJ legacy patcher')
-    prefix = [args.java, '--add-opens=java.base/java.lang=ALL-UNNAMED', '-javaagent:' + patchers[0] + '=init', '-Xmx3g', '-Djava.awt.headless=' + ('true' if platform.system() == 'Linux' and not os.environ.get('DISPLAY') else 'false'),
+    prefix = [args.java, '--add-opens=java.base/java.lang=ALL-UNNAMED', '-Xmx3g', '-Djava.awt.headless=' + ('true' if platform.system() == 'Linux' and not os.environ.get('DISPLAY') else 'false'),
               '-Dimagej.dir=' + str(out / 'imagej-home')]
     (out / 'imagej-home').mkdir(exist_ok=True)
     if args.allow_fork:
@@ -113,13 +117,34 @@ def main():
             prefix += ['-Dgat.stardist.backend=native', '-Dgat.inference.directory=' + str(args.inference_directory.resolve())]
         if args.alignment_directory:
             prefix += ['-Dgat.alignment.backend=native', '-Dgat.alignment.directory=' + str(args.alignment_directory.resolve())]
-    prefix += ['-cp', str(classes) + os.pathsep + cp, 'BaselineNativeProbe']
+    if args.full_legacy_context:
+        prefix += ['-Dgat.probe.fullLegacyContext=true']
+    if args.component_probes:
+        prefix += ['-Dgat.probe.debug=true']
+    if args.bootstrap == 'url-system':
+        prefix += ['-Djava.system.class.loader=BaselineUrlClassLoader']
+    prefix += ['-cp', str(classes) + os.pathsep + cp]
+    def launch(main, parameters, imagej=False):
+        command = list(prefix)
+        if args.bootstrap == 'url-system':
+            command += ['BaselineBootstrap', main]
+        else:
+            # Only actual ImageJ API probes need the original app-loader agent.
+            if imagej:
+                command.insert(1, '-javaagent:' + patchers[0] + '=init')
+            command += [main]
+        return command + parameters
     observations = []
-    for name, parameters in [('stardist', [input_file, model]), ('alignment', [])]:
+    component_observations = []
+    probes = [('stardist', 'BaselineNativeProbe', ['stardist', input_file, model], True),
+              ('alignment', 'BaselineNativeProbe', ['alignment'], True)]
+    if args.component_probes:
+        probes += [('tensorflow-jni', 'LegacyJniProbe', ['tensorflow'], False),
+                   ('opencv-jni', 'LegacyJniProbe', ['opencv'], False),
+                   ('template-plugin-direct', 'LegacyPluginProbe', [], False)]
+    for name, main_class, parameters, actual_api in probes:
         report = out / (name + '.json')
-        if report.exists():
-            report.unlink()
-        execution = run(prefix + [name] + parameters + [report], out / (name + '.log'), args.timeout)
+        execution = run(launch(main_class, parameters + [report], actual_api or main_class == 'LegacyPluginProbe'), out / (name + '.log'), args.timeout)
         if report.exists():
             observation = json.loads(report.read_text())
         else:
@@ -131,21 +156,23 @@ def main():
         elif observation.get('status') == 'running':
             observation['status'] = 'process_failure_before_completion'
         observation['execution'] = execution
-        observations.append(observation)
+        (observations if actual_api else component_observations).append(observation)
     if not args.allow_fork:
         provenance['after_run'] = validate_baseline(project, args.root_classpath)
     evidence_complete = all(x.get('actual_gat_method_invoked') is True and x['status'] in ('success', 'workflow_failure') for x in observations)
-    summary = {'evidence_complete': evidence_complete, 'provenance': provenance, 'platform': platform.platform(), 'old_opencv_native_classifier': old_platform,
+    component_evidence_complete = all(x['status'] in ('success', 'native_component_failure', 'plugin_component_failure') for x in component_observations)
+    summary = {'evidence_complete': evidence_complete, 'component_evidence_complete': component_evidence_complete,
+               'bootstrap': args.bootstrap, 'full_legacy_context': args.full_legacy_context, 'provenance': provenance, 'platform': platform.platform(), 'old_opencv_native_classifier': old_platform,
                'input_sha256': sha(input_file), 'model_sha256': sha(model),
                'plugin_artifacts': manifest,
                'dependency_artifacts': [{'filename': Path(p).name, 'sha256': sha(Path(p))} for p in entries if Path(p).is_file()],
-               'observations': observations,
+               'observations': observations, 'component_observations': component_observations,
                'interpretation': 'Observed API outcomes only. Setup failures/unavailable GUI are not native incompatibility; baseline success remains success. No fork classes or modern TensorFlow enter the original JVM.'}
     (out / 'native-summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False) + '\n')
     print(json.dumps({'evidence_complete': evidence_complete, 'observations': [{'probe': x['probe'], 'status': x['status'], 'execution': x['execution']} for x in observations]}, indent=2))
     # Preserve negative and positive observed outcomes. Setup/build/isolation errors
     # still raise; plugin failures are evidence rather than an expected-failure test.
-    return int(not evidence_complete or (args.allow_fork and any(x['status'] != 'success' for x in observations)))
+    return int(not evidence_complete or not component_evidence_complete or (args.allow_fork and any(x['status'] != 'success' for x in observations)))
 
 
 if __name__ == '__main__':

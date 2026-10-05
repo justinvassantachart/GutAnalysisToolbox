@@ -76,6 +76,24 @@ jobs:
           --worker native-inference/target/gat-native-inference.jar
           --models target/model-fixtures
           --output target/cross-platform-${{ matrix.platform }}
+      - name: Test moved-center diagnostic integrity checks
+        run: python3 -m unittest discover -s native-inference/validation/moved-center -p 'test_*.py' -v
+      - name: Measure the fixed moved-center outlier against both archived runtimes
+        run: >-
+          python3 native-inference/validation/moved-center/check.py
+          --worker native-inference/target/gat-native-inference.jar
+          --models target/model-fixtures
+          --output target/moved-center-${{ matrix.platform }}
+      - name: Save moved-center diagnostics (completion is not equivalence)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-moved-center-${{ matrix.platform }}-jdk${{ matrix.java }}
+          path: |
+            target/moved-center-${{ matrix.platform }}/report.json
+            target/moved-center-${{ matrix.platform }}/actual.nms.json
+            target/moved-center-${{ matrix.platform }}/actual.polygons.gz
+          if-no-files-found: warn
       - name: Save cross-platform scientific regression diagnostics
         if: always()
         uses: actions/upload-artifact@v4

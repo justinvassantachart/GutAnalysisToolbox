@@ -37,6 +37,7 @@ public final class BaselineNativeProbe {
     private static Path reportFile;
     private static boolean invoked;
     private static net.imagej.ImageJ imagej;
+    private static final List<Map<String, Object>> commands = Collections.synchronizedList(new ArrayList<>());
 
     private static String hex(byte[] bytes) {
         StringBuilder s = new StringBuilder();
@@ -75,6 +76,7 @@ public final class BaselineNativeProbe {
             synchronized (result) {
                 result.put("actual_gat_method_invoked", invoked);
                 result.put("errors", new ArrayList<>(errors));
+                result.put("imagej_command_dispatch", new ArrayList<>(commands));
                 if (reportFile.toAbsolutePath().getParent() != null) Files.createDirectories(reportFile.toAbsolutePath().getParent());
                 String json = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().create().toJson(result);
                 Files.writeString(reportFile, json + "\n");
@@ -133,11 +135,29 @@ public final class BaselineNativeProbe {
         if (fork && !Boolean.getBoolean("gat.probe.allowFork"))
             throw new IllegalStateException("Fork inference classes are forbidden in unchanged-baseline mode");
     }
+    private static void captureTextWindows() {
+        List<Map<String, Object>> windows = new ArrayList<>();
+        for (java.awt.Frame frame : WindowManager.getNonImageWindows()) {
+            if (!(frame instanceof ij.text.TextWindow)) continue;
+            String title = frame.getTitle();
+            String text = ((ij.text.TextWindow) frame).getTextPanel().getText();
+            Map<String, Object> window = new LinkedHashMap<>();
+            window.put("title", title); window.put("text", text); windows.add(window);
+            // Executer displays caught plugin Throwables here instead of calling
+            // IJ.handleException. Collect the real exception; do not infer JNI.
+            if ("Exception".equals(title)) {
+                String error = "IMAGEJ EXCEPTION WINDOW:\n" + text;
+                if (!errors.contains(error)) { errors.add(error); System.err.println(error); }
+            }
+        }
+        result.put("imagej_text_windows", windows); saveSnapshot();
+    }
     private static void initialize(boolean stardist) throws Exception {
         IJ.setExceptionHandler(BaselineNativeProbe::record);
         Thread.setDefaultUncaughtExceptionHandler((thread, error) -> record(error));
         IJ.redirectErrorMessages(true);
-        if (stardist) {
+        IJ.debugMode = Boolean.getBoolean("gat.probe.debug");
+        if (stardist || Boolean.getBoolean("gat.probe.fullLegacyContext")) {
             imagej = new net.imagej.ImageJ();
             imagej.log().addLogListener(message -> {
                 if (message.level() <= LogService.ERROR) {
@@ -146,19 +166,35 @@ public final class BaselineNativeProbe {
                 }
             });
             imagej.ui().showUI("legacy");
-            // The published plugin supplies this command and SciJava metadata.
-            if (imagej.command().getCommand("de.csbdresden.CommandFromMacro") == null
-                    || imagej.command().getCommand("de.csbdresden.stardist.StarDist2D") == null)
-                throw new IllegalStateException("Real StarDist/SciJava command registration unavailable");
-            result.put("command_from_macro_menu", String.valueOf(Menus.getCommands().get("Command From Macro")));
-            if (!Menus.getCommands().containsKey("Command From Macro"))
-                throw new IllegalStateException("Real Command From Macro was not registered with ImageJ1");
+            if (stardist) {
+                // Published plugin supplies both command code and SciJava metadata.
+                if (imagej.command().getCommand("de.csbdresden.CommandFromMacro") == null
+                        || imagej.command().getCommand("de.csbdresden.stardist.StarDist2D") == null)
+                    throw new IllegalStateException("Real StarDist/SciJava command registration unavailable");
+                result.put("command_from_macro_menu", String.valueOf(Menus.getCommands().get("Command From Macro")));
+                if (!Menus.getCommands().containsKey("Command From Macro"))
+                    throw new IllegalStateException("Real Command From Macro was not registered with ImageJ1");
+            }
         } else {
             new ij.ImageJ(ij.ImageJ.NO_SHOW);
-            // Install the published plugin class, not a wrapper or a fake implementation.
+        }
+        if (!stardist) {
             Menus.getCommands().put("Align slices in stack...", "TemplateMatching.Align_slices");
             result.put("alignment_menu", String.valueOf(Menus.getCommands().get("Align slices in stack...")));
         }
+        result.put("imagej_plugin_classloader", IJ.getClassLoader().getClass().getName());
+        Object hooks = IJ.class.getField("_hooks").get(null);
+        result.put("legacy_hooks_class", hooks == null ? null : hooks.getClass().getName());
+        ij.Executer.addCommandListener(command -> {
+            Map<String, Object> dispatch = new LinkedHashMap<>();
+            dispatch.put("command", command); dispatch.put("thread", Thread.currentThread().getName());
+            dispatch.put("macro_options", ij.Macro.getOptions());
+            ImagePlus current = WindowManager.getCurrentImage();
+            dispatch.put("current_image", current == null ? null : current.getTitle());
+            dispatch.put("current_image_locked", current == null ? null : current.isLocked());
+            commands.add(dispatch); saveSnapshot();
+            return command;
+        });
         IJ.setExceptionHandler(BaselineNativeProbe::record);
     }
     private static void stardist(Path inputFile, Path model) throws Exception {
@@ -172,6 +208,7 @@ public final class BaselineNativeProbe {
         input.setTitle("baseline_public_Hu");
         invoked = true; result.put("stage", "calling_actual_GAT_StarDist"); saveSnapshot();
         ImagePlus labels = PluginCalls.runStarDist2DLabel(input, model.toString(), 0.5, 0.3);
+        captureTextWindows();
         result.put("returned_input_fallback", labels == input);
         result.put("output_bit_depth", labels == null ? null : labels.getBitDepth());
         if (labels == null || labels == input || labels.getBitDepth() != 16
@@ -202,8 +239,16 @@ public final class BaselineNativeProbe {
         result.put("fixture", "seed8291-128x96-byte-shifts_0_0_3_-2_-4_5_0_0");
         result.put("input_pixel_sha256", before); result.put("frames", input.getStackSize());
         input.show(); input.setSlice(1);
+        result.put("input_locked_before_dispatch", input.isLocked());
+        result.put("input_locked_by_other_thread", input.isLockedByAnotherThread());
+        Object filter = Class.forName("TemplateMatching.Align_slices", true, IJ.getClassLoader()).getDeclaredConstructor().newInstance();
+        result.put("separate_setup_control_filter_classloader", filter.getClass().getClassLoader().getClass().getName());
+        result.put("separate_setup_control_is_plugin_filter", filter instanceof ij.plugin.filter.PlugInFilter);
+        if (!(filter instanceof ij.plugin.filter.PlugInFilter)) throw new IllegalStateException("Published filter has incompatible ImageJ class identity");
+        result.put("separate_setup_control_flags", ((ij.plugin.filter.PlugInFilter) filter).setup("", input));
         invoked = true; result.put("stage", "calling_actual_GAT_alignment"); saveSnapshot();
         AlignStack.alignTemplateMatching(input, 1);
+        captureTextWindows();
         String after = pixels(input); result.put("aligned_pixel_sha256", after);
         result.put("unchanged_input", before.equals(after));
         String expected = "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c";
@@ -216,6 +261,10 @@ public final class BaselineNativeProbe {
             throw new IllegalArgumentException("stardist Hu.tif model.zip report.json | alignment report.json");
         String mode = args[0]; Path report = Path.of(args[args.length - 1]); reportFile = report;
         result.put("probe", mode); result.put("java_version", System.getProperty("java.version"));
+        result.put("system_classloader", ClassLoader.getSystemClassLoader().getClass().getName());
+        result.put("probe_classloader", BaselineNativeProbe.class.getClassLoader().getClass().getName());
+        result.put("thread_context_classloader", Thread.currentThread().getContextClassLoader().getClass().getName());
+        result.put("full_legacy_context", Boolean.getBoolean("gat.probe.fullLegacyContext"));
         result.put("os", System.getProperty("os.name")); result.put("os_version", System.getProperty("os.version"));
         result.put("java_arch", System.getProperty("os.arch")); result.put("allow_fork", Boolean.getBoolean("gat.probe.allowFork"));
         long start = System.nanoTime();
@@ -233,10 +282,12 @@ public final class BaselineNativeProbe {
         } catch (Throwable error) {
             record(error); result.put("status", invoked ? "workflow_failure" : "setup_failure");
         } finally {
+            captureTextWindows();
             result.put("actual_gat_method_invoked", invoked);
             result.put("elapsed_milliseconds", (System.nanoTime() - start) / 1000000);
             String ijError = IJ.getErrorMessage(); if (ijError != null && !ijError.isEmpty()) errors.add("IMAGEJ: " + ijError);
             result.put("imagej_log", IJ.getLog()); result.put("errors", new ArrayList<>(errors));
+            result.put("imagej_command_dispatch", new ArrayList<>(commands));
             if (!errors.isEmpty() && "success".equals(result.get("status"))) result.put("status", "workflow_failure");
             String json = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().create().toJson(result);
             if (report.toAbsolutePath().getParent() != null) Files.createDirectories(report.toAbsolutePath().getParent());
