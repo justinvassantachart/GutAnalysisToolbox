@@ -4,7 +4,6 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.WindowManager;
 import ij.gui.NewImage;
-import ij.gui.Roi;
 import ij.plugin.frame.RoiManager;
 import services.multiplex.config.MultiplexConfig;
 import services.multiplex.util.NamingUtils;
@@ -162,9 +161,13 @@ public class MultiplexRegistrationService {
         ref.show(); // IJ.run target by title (Copy/Paste, etc.)
 
         final String refTitle = ref.getTitle();
+        final int width = ref.getWidth();
+        final int height = ref.getHeight();
+        final int bitDepth = ref.getBitDepth();
 
         // ---- 6) Build <common>_stack and compute landmarks vs. reference ----
-        ImagePlus commonStack = createOutputStack(cfg.commonMarker() + "_stack", ref);
+        ImagePlus commonStack = NewImage.createImage(
+                cfg.commonMarker() + "_stack", width, height, 1, bitDepth, NewImage.FILL_BLACK);
         commonStack.show();
 
         // Seed first slice with the reference image.
@@ -213,7 +216,8 @@ public class MultiplexRegistrationService {
         commonStack.close();
 
         // ---- 7) Prepare the final stack (destination for all aligned channels) ----
-        ImagePlus finalStack = createOutputStack("STACK", ref);
+        ImagePlus finalStack = NewImage.createImage(
+                "STACK", width, height, 1, bitDepth, NewImage.FILL_BLACK);
         finalStack.show();
 
         // ---- 8) Iterate rounds; stack R1 as-is, align R2..N with stored landmarks ----
@@ -272,24 +276,27 @@ public class MultiplexRegistrationService {
                     // Select the landmark pair for this round:
                     //   roiPairOffset     -> reference landmarks
                     //   roiPairOffset + 1 -> target landmarks
-                    restoreLandmarks(ref, imp, rm, roiPairOffset);
+                    rm.select(roiPairOffset);
+                    IJ.selectWindow(refTitle);
+                    rm.select(roiPairOffset + 1);
+                    IJ.selectWindow(imp.getTitle());
 
-                    // Transform_Roi creates a separate output. Record existing
-                    // images so a plugin failure cannot silently copy an input
-                    // or reuse a stale transformed image as the aligned result.
-                    List<ImagePlus> beforeWarp = openImages();
+                    // Apply warp using Landmark Correspondences; plugin usually opens an aligned copy.
                     String args = String.format(
                             "source_image=[%s] template_image=[%s] transformation_method=[Least Squares] alpha=1 " +
                                     "mesh_resolution=32 transformation_class=Affine interpolate",
                             imp.getTitle(), refTitle);
                     IJ.run("Landmark Correspondences", args);
 
-                    ImagePlus aligned = selectWarpedResult(imp, ref, beforeWarp, openImages());
+                    ImagePlus aligned = WindowManager.getCurrentImage();
+                    if (aligned == null) aligned = imp; // Fallback: if plugin didn't create a new window.
+
+                    aligned.show();
 
                     // Append aligned slice.
                     IJ.selectWindow(finalStack.getTitle());
                     IJ.run("Add Slice", "");
-                    IJ.selectWindow(aligned.getID());
+                    IJ.selectWindow(aligned.getTitle());
                     IJ.run("Select All", "");
                     IJ.run("Copy", "");
                     IJ.selectWindow(finalStack.getTitle());
@@ -373,63 +380,5 @@ public class MultiplexRegistrationService {
             Interpreter.batchMode = prevBatch;
         }
 
-    }
-
-    /** Start export stacks in the reference coordinate system, including time metadata. */
-    static ImagePlus createOutputStack(String title, ImagePlus reference) {
-        ImagePlus stack = NewImage.createImage(title, reference.getWidth(), reference.getHeight(),
-                1, reference.getBitDepth(), NewImage.FILL_BLACK);
-        stack.setCalibration(reference.getCalibration().copy());
-        return stack;
-    }
-
-    /** Restore to explicit images without moving or modifying the stored ROI pair. */
-    static void restoreLandmarks(ImagePlus reference, ImagePlus target, RoiManager manager, int offset) {
-        Roi referencePoints = manager.getRoi(offset);
-        Roi targetPoints = manager.getRoi(offset + 1);
-        if (referencePoints == null || targetPoints == null) {
-            throw new IllegalStateException("Missing landmark ROI pair at offset " + offset);
-        }
-        reference.setRoi((Roi) referencePoints.clone());
-        target.setRoi((Roi) targetPoints.clone());
-    }
-
-    /** WindowManager includes images registered with ImageJ's batch interpreter. */
-    static List<ImagePlus> openImages() {
-        List<ImagePlus> images = new ArrayList<>();
-        int[] ids = WindowManager.getIDList();
-        if (ids != null) {
-            for (int id : ids) {
-                ImagePlus image = WindowManager.getImage(id);
-                if (image != null) images.add(image);
-            }
-        }
-        return images;
-    }
-
-    /**
-     * mpicbg Transform_Roi (Landmark Correspondences) shows one new image named
-     * "Transformed" + source title, with template dimensions and source pixel type.
-     * Do not infer success from the active window: IJ.run can restore it to an input.
-     */
-    static ImagePlus selectWarpedResult(ImagePlus source, ImagePlus template,
-                                        List<ImagePlus> before, List<ImagePlus> after) {
-        Set<Integer> previousIds = before.stream().map(ImagePlus::getID).collect(Collectors.toSet());
-        List<ImagePlus> results = after.stream()
-                .filter(image -> image != source && image != template)
-                .filter(image -> !previousIds.contains(image.getID()))
-                .filter(image -> ("Transformed" + source.getTitle()).equals(image.getTitle()))
-                .collect(Collectors.toList());
-        if (results.size() != 1) {
-            throw new IllegalStateException("Landmark Correspondences did not produce exactly one new "
-                    + "transformed image for " + source.getTitle() + " (found " + results.size() + ")");
-        }
-        ImagePlus result = results.get(0);
-        if (result.getWidth() != template.getWidth() || result.getHeight() != template.getHeight()
-                || result.getStackSize() != 1 || result.getBitDepth() != source.getBitDepth()) {
-            throw new IllegalStateException("Unexpected transformed image dimensions or pixel type for "
-                    + source.getTitle());
-        }
-        return result;
     }
 }

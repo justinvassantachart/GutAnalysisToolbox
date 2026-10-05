@@ -1,0 +1,98 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx768m -XX:ActiveProcessorCount=1
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Extract MOPS Correspondences
+REAL_COMMAND Remove Overlay
+REAL_COMMAND Select None
+REAL_COMMAND Select None
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Extract MOPS Correspondences
+REAL_COMMAND Remove Overlay
+REAL_COMMAND Select None
+REAL_COMMAND Select None
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Stack to Hyperstack...
+DIALOG_CLICK title=Open results? button=Cancel path=<RUN_OUTPUT>/full-mops/output/Results
+DIALOG_VALUE title=Open results? value=2
+DIALOG_CLICK title=Multiplex Registration button_label=[  OK  ] path=<RUN_OUTPUT>/full-mops/output/Results
+service_return: PASS
+saved_dimensions_and_labels: PASS
+CHANNEL_METRIC {"source_file":"Layer1_Hu.tif","before_mse":0.0,"after_mse":0.0}
+CHANNEL_METRIC {"source_file":"Layer1_MarkerA.tif","before_mse":0.0,"after_mse":0.0}
+CHANNEL_METRIC {"source_file":"Layer1_MarkerB.tif","before_mse":0.0,"after_mse":0.0}
+CHANNEL_METRIC {"source_file":"Layer2_MarkerA.tif","before_mse":3030.62287352071,"after_mse":3030.62287352071}
+java.lang.AssertionError: Wrong/missing transform for Layer2_MarkerA.tif: before=3030.62287352071, after=3030.62287352071
+	at WorkflowReport.check(WorkflowReport.java:33)
+	at MultiplexFullProbe.lambda$validateOutput$9(MultiplexFullProbe.java:223)
+	at WorkflowReport.test(WorkflowReport.java:16)
+	at MultiplexFullProbe.checkpointedTest(MultiplexFullProbe.java:371)
+	at MultiplexFullProbe.validateOutput(MultiplexFullProbe.java:210)
+	at MultiplexFullProbe.main(MultiplexFullProbe.java:92)
+every_round_and_channel_transform: FAIL
+CALIBRATION_INPUT {pixel_width=0.5, pixel_height=0.7500001875000468, pixel_depth=1.0, frame_interval=1.25, unit=µm}
+CALIBRATION_ALIGNED {pixel_width=1.0, pixel_height=1.0, pixel_depth=1.0, frame_interval=0.0, unit=pixel}
+CALIBRATION_COMMON {pixel_width=1.0, pixel_height=1.0, pixel_depth=1.0, frame_interval=0.0, unit=pixel}
+java.lang.AssertionError: Calibration lost on Aligned_Stack.tif: expected={pixel_width=0.5, pixel_height=0.7500001875000468, pixel_depth=1.0, frame_interval=1.25, unit=µm}, actual={pixel_width=1.0, pixel_height=1.0, pixel_depth=1.0, frame_interval=0.0, unit=pixel}
+	at WorkflowReport.check(WorkflowReport.java:33)
+	at MultiplexFullProbe.requireCalibration(MultiplexFullProbe.java:364)
+	at MultiplexFullProbe.lambda$validateOutput$10(MultiplexFullProbe.java:233)
+	at WorkflowReport.test(WorkflowReport.java:16)
+	at MultiplexFullProbe.checkpointedTest(MultiplexFullProbe.java:371)
+	at MultiplexFullProbe.validateOutput(MultiplexFullProbe.java:227)
+	at MultiplexFullProbe.main(MultiplexFullProbe.java:92)
+saved_calibration: FAIL
+common_marker_qc: PASS
+java.lang.AssertionError: Wrong landmark direction/order for pair 1: error=8.602325267042698
+	at WorkflowReport.check(WorkflowReport.java:33)
+	at MultiplexFullProbe.lambda$validateOutput$12(MultiplexFullProbe.java:258)
+	at WorkflowReport.test(WorkflowReport.java:16)
+	at MultiplexFullProbe.checkpointedTest(MultiplexFullProbe.java:371)
+	at MultiplexFullProbe.validateOutput(MultiplexFullProbe.java:246)
+	at MultiplexFullProbe.main(MultiplexFullProbe.java:92)
+landmark_zip_roundtrip: FAIL
+source_files_preserved: PASS
+real_command_route: PASS
+final_dialog_cancel_preserves_results: PASS
+REPORT=<RUN_OUTPUT>/full-mops/report.json

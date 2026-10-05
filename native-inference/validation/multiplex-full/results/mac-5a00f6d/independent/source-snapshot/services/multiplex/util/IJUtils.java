@@ -68,12 +68,9 @@ public final class IJUtils {
      *              If null or no window matches, nothing happens.
      */
     public static void selectWindow(String title) {
-        if (title == null) return;
         ImagePlus imp = WindowManager.getImage(title);
         if (imp != null) {
-            // Batch images have no ImageWindow. ImageJ's selection API also
-            // activates those images in the macro interpreter/current thread.
-            IJ.selectWindow(imp.getID());
+            WindowManager.setCurrentWindow(imp.getWindow());
         }
     }
 

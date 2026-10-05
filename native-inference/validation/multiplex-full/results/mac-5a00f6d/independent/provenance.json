@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only Linux audits of the archived native Mac outputs plus an isolated helper-selection reproduction. These are not a second native Mac workflow run and do not validate a fix.",
+  "system": "Linux",
+  "machine": "x86_64",
+  "java": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "headless": true,
+  "imagej": {
+    "filename": "ij-1.54p.jar",
+    "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20",
+    "matches_native_runtime_jar": true
+  },
+  "production_source": "source-snapshot/services/multiplex/util/IJUtils.java",
+  "production_source_revision": "5a00f6d6a414f5bd59e0b5dc461eb469afda907c",
+  "input_archive_sha256": "5fb5df261efbb1666b1427c53b62fc7fc4b8e534456273a3c0109e8ad3a63985",
+  "input_members_verified": 77,
+  "output_and_selection_logs_match_original_independent_review_byte_for_byte": true,
+  "commands": [
+    {
+      "log": "independent/compile.log",
+      "command": "javac -encoding UTF-8 -cp \"$IJ_JAR\" -d \"$WORK/classes\" independent/ReviewMultiplexOutput.java independent/ReviewMultiplexBatchSelection.java independent/ReviewSavedCalibration.java independent/source-snapshot/services/multiplex/util/IJUtils.java",
+      "exit_code": 0,
+      "wall_seconds": 0.7101671339987661,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "log": "independent/independent-output-review.log",
+      "command": "java -Djava.awt.headless=true -cp \"$WORK/classes:$IJ_JAR\" ReviewMultiplexOutput \"$WORK/artifact/full-sift\" \"$WORK/artifact/full-mops\"",
+      "exit_code": 0,
+      "wall_seconds": 0.19011823599794297,
+      "sha256": "da4887ac8705da2936f4ce1767891eb28afb4d23ec5de8aaf11cd5dacf9ea94e"
+    },
+    {
+      "log": "independent/batch-selection-control.log",
+      "command": "java -Djava.awt.headless=true -cp \"$WORK/classes:$IJ_JAR\" ReviewMultiplexBatchSelection",
+      "exit_code": 0,
+      "wall_seconds": 0.11508117400080664,
+      "sha256": "7d8be298dae40832661dd6a68f336e8bcba7c369de66cc4d2049915b7102b87d"
+    },
+    {
+      "log": "independent/saved-calibration-review.log",
+      "command": "java -Djava.awt.headless=true -cp \"$WORK/classes:$IJ_JAR\" ReviewSavedCalibration \"$WORK/artifact/full-sift\" \"$WORK/artifact/full-mops\"",
+      "exit_code": 0,
+      "wall_seconds": 0.20050405800066073,
+      "sha256": "c61562bcf553b6cada3f34905f35f84efa9158a063ee48fb69947d1f20b70d5a"
+    }
+  ],
+  "runtime_source": "Existing official Temurin toolchain and existing ImageJ 1.54p dependency; no installation or model inference for these controls."
+}

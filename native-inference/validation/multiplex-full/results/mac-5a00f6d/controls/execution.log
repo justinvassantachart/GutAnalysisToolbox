@@ -1,0 +1,6 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx768m -XX:ActiveProcessorCount=1
+fixture_roundtrip: PASS
+alignment_detector_negative_controls: PASS
+existing_results_refused: PASS
+dialog_controller_contract: PASS
+REPORT=<RUN_OUTPUT>/controls/report.json

@@ -2,6 +2,14 @@
 
 ## Experimental Apple Silicon preview
 
+**Preview2 full multiplex export is a confirmed known issue:** later-round
+channels were left unaligned and physical calibration was lost. Do not use
+that output for quantitative work. This branch contains a narrowly reviewed
+correction with 61 local tests passing; native full-service acceptance is pending.
+The existing release remains unchanged until the correction is verified.
+See [measured failures and correction scope](docs/multiplex-result-handling.md).
+
+
 [Test preview 2 and the unchanged original comparison package](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2)
 are available for native arm64 Fiji on macOS 14+. Start with the
 [complete clean-Mac instructions](docs/M1-CHATGPT-HANDOFF.md), including the

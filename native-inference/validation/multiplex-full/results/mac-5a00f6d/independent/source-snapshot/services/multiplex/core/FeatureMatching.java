@@ -2,7 +2,6 @@ package services.multiplex.core;
 
 import ij.IJ;
 import ij.ImagePlus;
-import ij.gui.Roi;
 import ij.plugin.frame.RoiManager;
 
 import static services.multiplex.util.IJUtils.selectWindow;
@@ -132,34 +131,26 @@ public final class FeatureMatching {
 
         if (!found) return false;
 
-        // Capture both selections before touching the global ROI Manager. A
-        // manager selection can restore its ROI onto the current image, which
-        // may still be the target in batch mode.
-        Roi[] landmarks = snapshotLandmarks(ref, target);
-
         // ---- Store ROI landmarks with stable names in the ROI Manager ----
         RoiManager rm = RoiManager.getInstance2();
         if (rm == null) rm = new RoiManager();
 
         // Add landmarks on the reference image
         selectWindow(ref.getTitle());
-        rm.addRoi(landmarks[0]);
+        rm.addRoi(ref.getRoi());
+        rm.select(rm.getCount() - 1);
         rm.rename(rm.getCount() - 1, commonMarker + "_" + pairIndex + "_ref");
         IJ.run(ref, "Remove Overlay", "");
         IJ.run(ref, "Select None", "");
 
         // Add landmarks on the target image
         selectWindow(target.getTitle());
-        rm.addRoi(landmarks[1]);
+        rm.addRoi(target.getRoi());
+        rm.select(rm.getCount() - 1);
         rm.rename(rm.getCount() - 1, commonMarker + "_" + pairIndex + "_target");
         IJ.run(target, "Select None", "");
 
         return true;
-    }
-
-    /** Independent copies, in reference/target order; never alias live selections. */
-    static Roi[] snapshotLandmarks(ImagePlus ref, ImagePlus target) {
-        return new Roi[]{(Roi) ref.getRoi().clone(), (Roi) target.getRoi().clone()};
     }
 
     /**

@@ -1,0 +1,2 @@
+import ij.IJ;import ij.ImagePlus;import ij.process.ByteProcessor;import ij.io.FileSaver;
+public class ReviewTiffCalibration {public static void main(String[] x){ImagePlus im=new ImagePlus("calibration_control",new ByteProcessor(2,2));im.getCalibration().pixelWidth=.378;im.getCalibration().pixelHeight=.378;im.getCalibration().setUnit("um");if(!new FileSaver(im).saveAsTiff(x[0]))throw new AssertionError();ImagePlus r=IJ.openImage(x[0]);System.out.println(r.getCalibration().pixelWidth+" "+r.getCalibration().pixelHeight+" "+r.getCalibration().getUnit());}}
