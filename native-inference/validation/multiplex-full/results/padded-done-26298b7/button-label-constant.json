@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "source": "Direct constant-pool read from unchanged pinned ImageJ jar, corroborating MessageDialog constructor bytecode",
+  "jar_filename": "ij-1.54p.jar",
+  "jar_sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20",
+  "class": "ij/gui/MessageDialog.class",
+  "class_sha256": "37ff1a3756e7f42bbedf6849be8000ddf22c718e6ed0a14627d2995a83d65767",
+  "constructor_ldc_offset": 191,
+  "string_constant_index": 31,
+  "utf8_constant_index": 133,
+  "label": "  OK  ",
+  "label_ascii_bytes": [
+    32,
+    32,
+    79,
+    75,
+    32,
+    32
+  ],
+  "label_length": 6
+}

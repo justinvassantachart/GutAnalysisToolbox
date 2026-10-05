@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "scope": "Portable copies of padded Done-label control evidence; no native GUI/service result inferred",
+  "source_revision": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+  "placeholders": {
+    "<CLOUD_WORKSPACE>": "Cloud shared workspace root prefix",
+    "<RUNNER_HOME>": "Runner account home-directory prefix",
+    "<RUNNER_USER>": "Runner account name"
+  },
+  "originals": "Untouched originals retained outside the published repository. Input TIFFs and overwrite-guard sentinel are omitted here; their hashes and fixture recipe are retained.",
+  "preserved": "All test measurements, outcomes, source/class/dependency/input hashes and runtime architecture/version values remain unchanged",
+  "imagej_jar_sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20",
+  "files": [
+    {
+      "path": "summary.json",
+      "original_sha256": "6696883dd69e075f1a2175055814462737fd5aa6ef463799bc415593ab9a4ba8",
+      "published_sha256": "af8aa9f85c7c36368844eb1a040b2108591f4946869406dd4996e00bcfbd3890",
+      "redacted": true
+    },
+    {
+      "path": "compile.log",
+      "original_sha256": "b77c77f821bb2ba9cdff4101d5e1db7a55607520b853bf4f44d3cb90938a0f6a",
+      "published_sha256": "b77c77f821bb2ba9cdff4101d5e1db7a55607520b853bf4f44d3cb90938a0f6a",
+      "redacted": false
+    },
+    {
+      "path": "controls/report.json",
+      "original_sha256": "1ab56f1c97f7b3cc33fc1afcce5d14f6ded256e16ae701c819ee1ae85b9b4015",
+      "published_sha256": "56f00eb135feaeb03d20df6c9d6fdd609e6980e66cde94a4ec173a224d2cb36f",
+      "redacted": true
+    },
+    {
+      "path": "controls/execution.log",
+      "original_sha256": "e20567f106e1e307a37cda529f8df00b809bc7854f2d9ee48a1b5929a71dbd9c",
+      "published_sha256": "1603c07ffdf15aa2a69991503915f458980922bf0adeb8558668c4decbae50ef",
+      "redacted": true
+    },
+    {
+      "path": "controls/fixture-manifest.json",
+      "original_sha256": "4816a9d3abe3699968128caf88a2f83d619d695c63cbe3551ef8817191bbf130",
+      "published_sha256": "4816a9d3abe3699968128caf88a2f83d619d695c63cbe3551ef8817191bbf130",
+      "redacted": false
+    },
+    {
+      "path": "controls/commands.json",
+      "original_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "published_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "redacted": false
+    },
+    {
+      "path": "controls/phase.json",
+      "original_sha256": "cdaee510b4aeaab967e38ffe7bbe723f909b9694c04771045ac5780180c185ac",
+      "published_sha256": "cdaee510b4aeaab967e38ffe7bbe723f909b9694c04771045ac5780180c185ac",
+      "redacted": false
+    },
+    {
+      "path": "message-dialog-bytecode.log",
+      "original_sha256": "4e36768983d3339e26b853d17bc100ef4ee547ee6fc5fb570642cffbd707810b",
+      "published_sha256": "4e36768983d3339e26b853d17bc100ef4ee547ee6fc5fb570642cffbd707810b",
+      "redacted": false
+    }
+  ]
+}

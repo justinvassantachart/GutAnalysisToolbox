@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "suite": "multiplex-full",
+  "environment": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "java": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)"
+    },
+    "java_properties": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Property settings:\n    file.encoding = UTF-8\n    file.separator = /\n    java.class.path = \n    java.class.version = 61.0\n    java.home = <CLOUD_WORKSPACE>/gat-toolchain/jdk-17.0.20.1+1\n    java.io.tmpdir = /tmp\n    java.library.path = /usr/java/packages/lib\n        /usr/lib64\n        /lib64\n        /lib\n        /usr/lib\n    java.runtime.name = OpenJDK Runtime Environment\n    java.runtime.version = 17.0.20.1+1\n    java.specification.maintenance.version = 1\n    java.specification.name = Java Platform API Specification\n    java.specification.vendor = Oracle Corporation\n    java.specification.version = 17\n    java.vendor = Eclipse Adoptium\n    java.vendor.url = https://adoptium.net/\n    java.vendor.url.bug = https://github.com/adoptium/adoptium-support/issues\n    java.vendor.version = Temurin-17.0.20.1+1\n    java.version = 17.0.20.1\n    java.version.date = 2026-08-18\n    java.vm.compressedOopsMode = Zero based\n    java.vm.info = mixed mode, sharing\n    java.vm.name = OpenJDK 64-Bit Server VM\n    java.vm.specification.name = Java Virtual Machine Specification\n    java.vm.specification.vendor = Oracle Corporation\n    java.vm.specification.version = 17\n    java.vm.vendor = Eclipse Adoptium\n    java.vm.version = 17.0.20.1+1\n    jdk.debug = release\n    line.separator = \\n \n    native.encoding = UTF-8\n    os.arch = amd64\n    os.name = Linux\n    os.version = 6.18.44\n    path.separator = :\n    sun.arch.data.model = 64\n    sun.boot.library.path = <CLOUD_WORKSPACE>/gat-toolchain/jdk-17.0.20.1+1/lib\n    sun.cpu.endian = little\n    sun.io.unicode.encoding = UnicodeLittle\n    sun.java.launcher = SUN_STANDARD\n    sun.jnu.encoding = UTF-8\n    sun.management.compiler = HotSpot 64-Bit Tiered Compilers\n    user.dir = <CLOUD_WORKSPACE>/gat-publishing-main\n    user.home = <RUNNER_HOME>\n    user.language = en\n    user.name = <RUNNER_USER>\n\nopenjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)"
+    },
+    "git_revision": {
+      "exit_code": 0,
+      "stdout": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+      "stderr": ""
+    },
+    "git_dirty": {
+      "exit_code": 0,
+      "stdout": "M native-inference/validation/multiplex-full/MultiplexFullProbe.java",
+      "stderr": ""
+    },
+    "github_actions": false,
+    "github_run_url": null,
+    "hardware_scope": "Actual recorded runner, never inferred to be the user's physical M1",
+    "root_classpath": [
+      {
+        "path": "<CLOUD_WORKSPACE>/gat-toolchain/m2/net/imagej/ij/1.54p/ij-1.54p.jar",
+        "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+      }
+    ],
+    "production_classes": {
+      "services/multiplex/config/MultiplexConfig$Builder.class": "792a872a4331060158a27a314dcc362457ce4c61ea2562631e70abe635c94df9",
+      "services/multiplex/config/MultiplexConfig.class": "a10b5acbe8a7c970afcca2e4dee3c7a207031aa5218457b952171665a6c59eae",
+      "services/multiplex/core/FeatureMatching.class": "11fb133a140ad8c6d37f91704910e7e6f6775a04b7bb4bd9b6d09ee569d1d5c9",
+      "services/multiplex/core/MultiplexRegistrationService.class": "3161f88b2c1b2638b3bf6d9a4ac007184ed66225b876586e236f3dca3ed5bba6",
+      "services/multiplex/util/IJUtils.class": "4c208c381613c1a9a69b17b5350be93e27fa7e602da714858a3254a55354d8ab",
+      "services/multiplex/util/NamingUtils.class": "b3171b6ef291e389cbf26ab40401c01003243181bbaea72482ead187f906469f"
+    },
+    "production_sources": {
+      "src/main/java/services/multiplex/config/MultiplexConfig.java": "a6369b51615b1ffb3198c04f4f7bf8a335152d592739a4fa1a475114ff55d489",
+      "src/main/java/services/multiplex/core/FeatureMatching.java": "2a6528ed10014995c94343a5b959c347d1f3de469863e9e59eaef9ee7f2d3ee9",
+      "src/main/java/services/multiplex/core/MultiplexRegistrationService.java": "3a781474bf729b7d82f96d68b996ee942e37f20f7d722623f5ac2603a61a5297",
+      "src/main/java/services/multiplex/util/IJUtils.java": "1f77cd1efb35735c2123b57296e9f79ceaa8911bebdb606c44a42ab77baece9d",
+      "src/main/java/services/multiplex/util/NamingUtils.java": "76a34b1b3e2f195c5a6a6bf0666f573863e22240c375f5f4fab03be6aab5ff1c"
+    },
+    "harness_sources": {
+      "native-inference/validation/multiplex-full/MultiplexFullProbe.java": "d943d6b34e1db1aafeb4f0d33ee71c5bd31d8b7a9b3118ad92c1f5c27482696b",
+      "native-inference/validation/multiplex-full/dependencies.json": "cbec4df65c59bab889a85b1edd42423ad658847e008feed4560b436282b058e3",
+      "native-inference/validation/multiplex-full/provenance.json": "84c2e3e3fa11a3b10ed5be7632a3a679b3345c0547cfc951fede4fa5ae69ca7c",
+      "native-inference/validation/multiplex-full/run.py": "e23097b894e292f663bb0cdb9976d30ea66ab91c7249aa9410f7e37138d08725",
+      "native-inference/validation/multiplex-full/test_runner.py": "eb4d97a8c0dd77865ad4b2e6eb5f40f59fe923bd435702c46aecc82da380e0c5"
+    }
+  },
+  "cases": [
+    {
+      "case": "controls",
+      "status": "PASS",
+      "check_counts": {
+        "PASS": 4,
+        "NOT_RUN": 1
+      },
+      "execution": {
+        "exit_code": 0,
+        "cold_process_wall_seconds": 1.787880526000663,
+        "observed_peak_process_tree_rss_kib": 97652,
+        "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+        "rss_ceiling_kib": 3145728,
+        "timeout_seconds": 60,
+        "resource_stop_reason": null,
+        "log": "execution.log"
+      },
+      "phase": "complete",
+      "report": "controls/report.json"
+    }
+  ],
+  "scope": "Existing full service on deterministic synthetic 3-round 3-marker TIFFs; no GUI-pane/biological/batch-cancellation blanket claim",
+  "coverage_limits": [
+    "No computation cancellation API in current service",
+    "Block Matching command absent in pinned mpicbg manifest",
+    "MOPS uses allowed steps=31 boundary, not a naturally occurring SIFT failure"
+  ],
+  "requested_cases": [
+    "controls"
+  ],
+  "unrequested_cases": [
+    "full-sift",
+    "full-mops",
+    "no-files",
+    "missing-marker",
+    "missing-round"
+  ],
+  "dependencies": [
+    {
+      "filename": "mpicbg-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/jars/mpicbg-1.6.6.jar-20260716221137",
+      "sha256": "43605b945958c6e675f3b0ec2090fd3f4e328ba6fffef9aacfc96fc1ebfee3d8",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "mpicbg_-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/plugins/mpicbg_-1.6.6.jar-20260716221137",
+      "sha256": "a18fc250b1fd464f6b79855c425e1b23d765974e0b0d2e9fdb03ce2f137406bb",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "jama-1.0.3.jar",
+      "url": "https://repo1.maven.org/maven2/gov/nist/math/jama/1.0.3/jama-1.0.3.jar",
+      "sha256": "c7325ee29be1aac1287ddac690f73671f1cd911ca9eca7c619990e86310556fd",
+      "groups": [
+        "registration"
+      ]
+    }
+  ],
+  "official_command_audit": {
+    "required": {
+      "Extract SIFT Correspondences": "SIFT_ExtractPointRoi",
+      "Extract MOPS Correspondences": "MOPS_ExtractPointRoi",
+      "Landmark Correspondences": "Transform_Roi"
+    },
+    "plugin_manifest_sha256": "6c131158744a326b895ec287a53cb1ae8968f7ea53fa010834308a75c83f59fb",
+    "block_matching_command_present": false
+  },
+  "compile": {
+    "exit_code": 0,
+    "cold_process_wall_seconds": 1.810877015999722,
+    "observed_peak_process_tree_rss_kib": 109712,
+    "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+    "rss_ceiling_kib": 3145728,
+    "timeout_seconds": 90,
+    "resource_stop_reason": null,
+    "log": "compile.log"
+  },
+  "status": "PASS_REQUESTED_SCOPES",
+  "full_service_acceptance_passed": false
+}

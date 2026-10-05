@@ -394,6 +394,10 @@ public final class MultiplexFullProbe {
         JOptionPane pane = new JOptionPane(panel, type, options);
         List<Component> all = new ArrayList<>(); visit(pane, all); return all;
     }
+    private static boolean isDoneAcknowledgementLabel(String label) {
+        // ImageJ 1.54p MessageDialog uses exactly two ASCII spaces on either side.
+        return "OK".equals(label) || "  OK  ".equals(label);
+    }
     private static void dialogMatchingControls() throws Exception {
         checkpointedTest("dialog_controller_contract", "Lightweight Swing prompt matcher only; no dialog click or service success inferred", "Exact upstream success text / pane type / option contract", () -> {
             String message = expectedOpenResultsMessage();
@@ -405,7 +409,12 @@ public final class MultiplexFullProbe {
             List<Component> multiple = promptComponents(message, JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
             multiple.add(new JOptionPane("unrelated", JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION));
             WorkflowReport.check(matchingOpenResultsPane(multiple) == null, "Competing second pane accepted");
-            return WorkflowReport.values("exact_message_positive_control", true, "negative_controls", 5, "dialog_action_executed", false);
+            WorkflowReport.check(isDoneAcknowledgementLabel("OK"), "Unpadded Done label rejected");
+            WorkflowReport.check(isDoneAcknowledgementLabel("  OK  "), "Pinned ImageJ padded Done label rejected");
+            for (String wrong : new String[]{null, "Cancel", "Not OK", "OK!", " OK "})
+                WorkflowReport.check(!isDoneAcknowledgementLabel(wrong), "Unrecognized Done label accepted: " + wrong);
+            return WorkflowReport.values("exact_message_positive_control", true, "negative_controls", 5,
+                    "done_button_positive_controls", 2, "done_button_negative_controls", 5, "dialog_action_executed", false);
         });
     }
     private static void installSuccessDialogController() {
@@ -442,9 +451,8 @@ public final class MultiplexFullProbe {
                     cancel.doClick(); cancelledOpenResults = Integer.valueOf(JOptionPane.CANCEL_OPTION).equals(pane.getValue());
                     System.out.println("DIALOG_VALUE title=Open results? value=" + pane.getValue());
                 } else {
-                    Button ok = null; boolean exactMessage = false;
+                    boolean exactMessage = false;
                     for (Component c : all) {
-                        if (c instanceof Button && c.isShowing() && c.isEnabled() && "OK".equals(((Button) c).getLabel())) ok = (Button) c;
                         // This AWT Canvas has no text getter. Read only its pinned ImageJ label;
                         // never mutate private fields or dispatch to an unverified dialog.
                         if (c instanceof ij.gui.MultiLineLabel) {
@@ -458,8 +466,13 @@ public final class MultiplexFullProbe {
                             }
                         }
                     }
-                    if (ok == null || !exactMessage) continue;
-                    answered.add(window); System.out.println("DIALOG_CLICK title=Multiplex Registration button=OK path=" + results);
+                    if (!exactMessage) continue;
+                    // Only inspect the label after the exact class/title/body checks above.
+                    Button ok = null;
+                    for (Component c : all) if (c instanceof Button && c.isShowing() && c.isEnabled()
+                            && isDoneAcknowledgementLabel(((Button) c).getLabel())) ok = (Button) c;
+                    if (ok == null) continue;
+                    answered.add(window); System.out.println("DIALOG_CLICK title=Multiplex Registration button_label=[" + ok.getLabel() + "] path=" + results);
                     ok.dispatchEvent(new ActionEvent(ok, ActionEvent.ACTION_PERFORMED, ok.getActionCommand())); acknowledgedDone = !window.isShowing();
                 }
             }
