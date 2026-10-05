@@ -1,6 +1,6 @@
 # Clean Mac Fiji and GAT TEST release handoff
 
-Prepared 5 October 2026. Instruction revision 4, updated 21:30 UTC. Core TEST release 2 is unchanged. This is a self-contained instruction document for the computer assistant the owner chooses to use on their physical M1 Mac. No Fiji, Java, Homebrew, Git, Maven, Python, command-line developer tools, plugins, or models are assumed to be installed.
+Prepared 5 October 2026. Instruction revision 5, updated 22:38 UTC. Corrective core TEST release 3 contains the multiplex repair. This is a self-contained instruction document for the computer assistant the owner chooses to use on their physical M1 Mac. No Fiji, Java, Homebrew, Git, Maven, Python, command-line developer tools, plugins, or models are assumed to be installed.
 
 **This is an experimental TEST release, not an all-workflow compatibility
 certificate.** Native hosted-Mac checks pass the fork's actual neuron/registration
@@ -12,8 +12,10 @@ An audited optional JPEG-XR overlay is available separately; it is not part of
 the core ZIP. These limits do not prevent testing the supplied core
 package safely in the two separate Fiji copies below.
 
-Do not substitute the earlier `apple-silicon-preview-1` package: it lacks the
-newer workflow changes. If a download or checksum is unavailable, stop that
+**Do not use preview 2 multiplex exports for quantitative work:** its saved
+later-round channels can remain unaligned and physical calibration is lost.
+The corrective preview 3 below fixes this reached result-handling defect.
+Preview 1 also lacks the newer workflow changes. If a download or checksum is unavailable, stop that
 specific step, retain evidence and report it rather than fabricating success.
 
 ## Paste this prompt into the computer assistant
@@ -36,29 +38,30 @@ Verify every downloaded archive against the hashes below. These packages were bu
 | --- | --- |
 | Original source | `1870d9e16e16fd6daeac0bd05122e851029ddedc` in `pr4deepr/GutAnalysisToolbox` |
 | Original source link | https://github.com/pr4deepr/GutAnalysisToolbox/tree/1870d9e16e16fd6daeac0bd05122e851029ddedc |
-| Unchanged baseline install bundle | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/GAT-2.0.0-unchanged-1870d9e-baseline.zip |
-| Baseline ZIP SHA-256 and contained GAT JAR SHA-256 | `d2224b968368abd5a198f190db51022d8fa41cd72d6cfb7c845a224f94420ad8` / `b54076cc642f9e0795e38fa778c05241648e76ee4388d69206ff2ebdd557c0d9` |
-| Corrected fork source commit | `fe5fd7b0a5a9b6e79074ef24d79c27fd2c5c2372` |
-| Corrected fork release page and install ZIP | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2 / https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/GAT-2.0.1-apple-silicon.2-macos-arm64-preview.zip |
-| Fork ZIP and GAT JAR SHA-256 | `9c5a542b82eb146b9c1d6c78ca20d1a0ffb8d10af7d35d6cd8ead8b927ac1f9f` / `3d7a112228aba6b4748d604912ed1dd4336e6fb8f68e83fc4cd69385e00af7e9` |
+| Unchanged baseline install bundle | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-2.0.0-unchanged-1870d9e-baseline.zip |
+| Baseline ZIP SHA-256 and contained GAT JAR SHA-256 | `3c7f3289f714f3789b9dad47dd4f9e7032812b8886c43705a97853888d50ce86` / `df6df75b143e50f279e3a27b2bf502515b9e6e534c160f04067893d597494949` |
+| Corrected fork source commit | `bb897c237732cf8569a1515eb8d7ed69feb2ab31` |
+| Corrected fork release page and install ZIP | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-3 / https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip |
+| Fork ZIP and GAT JAR SHA-256 | `5c746a31c65727779566ed9b9a1bfdd4966167504bce7ee95bd4878ed2159d03` / `0bb1c33b452fcd607f13291532e103199223d947eeec605a91dcac03dc047792` |
 | Companion worker/alignment bundle inventory | Both `gat-native-inference/` and `gat-native-alignment/`, already in the core ZIP; preserve complete directories and BUILD_INFO.json |
-| Public fixtures, validation scripts, references and dependency manifest | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/GAT-M1-test-kit-preview-2.1.zip / `979d818165e677215824808834391ad80b70866c86ead5da2ae8830e022a2d55` |
+| Public fixtures, validation scripts, references and dependency manifest | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-M1-test-kit-preview-2.1.zip / `979d818165e677215824808834391ad80b70866c86ead5da2ae8830e022a2d55` |
+| Corrected multiplex manual inputs and native saved references | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-multiplex-manual-fixtures.zip / SHA-256 `31e15feb164b38c5ab42f9ff6cdceee5507c4563cea648a2b85ae9f38524a04c`, 231,740 bytes |
 | Optional pinned ganglia engine/model data pack | No separate engine pack is required; use the supported official installation instructions in section 5 (the exact native clean-install/model/command checks now pass) |
-| Native paired baseline/fork CI run and report archive | [Qualified Sequoia paired report](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/ee2907e371b12b1951a507141f797afedb460aef/native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md); copies of the relevant evidence are in the test kit |
+| Native paired baseline/fork CI run and report archive | [Exact final source build and paired controls](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593); [earlier same-code corrective build evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/bb897c237732cf8569a1515eb8d7ed69feb2ab31/native-inference/validation/baseline/results/mac-ab046cb/REPORT.md). Historical Sonoma/Sequoia reports remain in the general test kit |
 | Final package's recorded Fiji/dependency inventory | `native-inference/validation/workflows/dependencies.json` at the pinned source; record actual updater-resolved versions and hashes as well |
 
 Fork repository: https://github.com/justinvassantachart/GutAnalysisToolbox
 
-Verified public repository default branch: `main`. Do not substitute its moving HEAD for `fe5fd7b0a5a9b6e79074ef24d79c27fd2c5c2372`. The public repository/default branch was independently verified through GitHub's API.
+Verified public repository default branch: `main`. Do not substitute its moving HEAD for `bb897c237732cf8569a1515eb8d7ed69feb2ab31`. The public repository/default branch was independently verified through GitHub's API.
 
-The baseline ZIP includes the unchanged original JAR; there is no need to build it or install developer tools. The fork ZIP is 203,283,161 bytes; the baseline ZIP is 1,664,353 bytes. Dependencies and models are installed separately as described below. A missing optional test or unavailable GitHub check does not become an all-workflow pass.
+The baseline ZIP includes the unchanged original JAR; there is no need to build it or install developer tools. The fork ZIP is 203,286,850 bytes; the baseline ZIP is 1,664,352 bytes. Dependencies and models are installed separately as described below. A missing optional test or unavailable GitHub check does not become an all-workflow pass.
 
 ## Current before and after evidence
 
 The unchanged original source is `1870d9e16e16fd6daeac0bd05122e851029ddedc`.
 Native paired controls have now run on hosted **Apple M1 Virtual** machines with
 Sonoma 14.8.9 and Sequoia 15.7.9. The final TEST package comes from fork commit
-`fe5fd7b0a5a9b6e79074ef24d79c27fd2c5c2372`; original production source remained
+`bb897c237732cf8569a1515eb8d7ed69feb2ab31`; original production source remained
 unchanged and isolated from the fork's modern runtimes. Hosted virtual hardware
 is not the owner's physical M1 and does not expose a usable OpenCL device here.
 
@@ -70,7 +73,8 @@ is not the owner's physical M1 and does not expose a usable OpenCL device here.
 | Ganglia | Command/model/cleanup executes; the pre-RDF input is incorrectly divided by 255 again | PASS command and corrected input contract | Biological review and interactive painting; real fresh-installed-Fiji engine/command checks now pass |
 | Calcium | **PASS** on Sonoma and Sequoia: MAX control, F/F0 `[1,1,2]`, ROI measurement/export | **PASS** on both systems with the same numerical/export control | User-specific movies, cancellation/edge cases and complete GUI navigation |
 | Morphology, counts, merge/export and TIFF helpers | Covered Java/helper checks pass | Covered Java/helper/command checks pass | Broader schemas, formats and full workflows |
-| StackReg/TurboReg and multiplex | Original library/control coverage is partial | Direct StackReg and multiplex landmark controls pass | StackReg batch remains unimplemented; full multiplex export/fallbacks untested |
+| StackReg/TurboReg | Original library/control coverage is partial | Direct helper controls pass | GAT batch StackReg remains unimplemented |
+| Multiplex full service | Pre-fork-identical service code, retained through preview 2, leaves later-round marker exports unaligned and resets calibration | Corrected native SIFT and forced-MOPS full service/command route passes; actual saved TIFFs and landmark ROIs independently verified | Physical interactive UI, biological images, natural fallback, unavailable Block Matching and computation cancellation |
 | Fresh official Fiji with bundled Java | Startup, engine/model, dashboard and ganglia commands pass; original neuron/alignment fail | Startup, engine/model, dashboard, neuron/alignment and ganglia commands pass | Complete interactive navigation, representative data and physical-machine checks |
 | OpenCL/CLIJ, spatial/EDF/GPU overlap | Virtual runner cannot establish physical-device support | Same limitation | Physical M1 device enumeration and real kernels/workflows |
 | JPEG-XR and other reader paths | Old macOS JPEG-XR JNI binary is Intel-only | Final optional resource-JAR passes all 13 golden fixtures, 59 JNI signatures and exact source/license gates | Full installed-Fiji importer/container metadata and GUI checks; separate add-on, not bundled in core |
@@ -114,6 +118,72 @@ contains explicitly scoped passes plus blocked/unrun checks; it is not a whole
 application PASS. Failed-original and successful-fork elapsed times cannot be
 compared as a speedup. No physical-M1 or CPU-versus-GPU speed multiplier is claimed.
 
+## Native test-image corpus consistency
+
+[Native Mac run 37381573321](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37381573321)
+completed all 40 cases. Counts and winning centers match in every case, totaling
+4,472 detections. Thirty-nine canonical rasters/pixel-measurement hashes and 37
+raw ID-sensitive label rasters match; two differences are label-order-only.
+All 15 subtype raw rasters match. Quantized subpixel outlines are fully identical
+in only 8 of 40 images: 162 objects have 164 changed vertices, with maximum
+coordinate difference 0.0100098 px. Equal filled masks do not establish exact
+contours.
+
+Independent reconstruction confirms the one Hu geometry outlier: at winning
+center (606.5,510.5), one x coordinate changes 617.38→617.37 and polygon-mask
+pixel (617,515) changes foreground→background. That polygon's area changes
+691→690 px², local IoU is 0.998552822, and its four-neighbor perimeter and bounding
+box stay equal. This describes independently rasterized polygon/union geometry;
+the original overlap-resolved label pixel-count difference remains unavailable.
+Thresholds and numerical settings were not changed to erase this difference.
+
+The hosted native M1 Virtual reported 3 cores and 7 GiB RAM with ARM Java 21.
+Cold CPU worker time, including process start, model loading, normalization,
+tiling, inference and full 97-channel output serialization,
+had median 5.520 seconds and range 2.411–20.122 seconds, totaling 248.837 seconds.
+NMS/geometry took 193.370 seconds; the whole measured runner took 456.501 seconds,
+excluding preparation/download. Hu median is 8.068 seconds across 25 cases;
+subtype median is 2.843 seconds across 15. There is one cold sample per image, varying
+sizes and no paired GPU implementation. These are validation observations,
+not a physical-M1 benchmark or a CPU/GPU speed multiplier.
+
+[Frozen all-case report, CSV and independent audits](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/6668c75f06f85ffe02a9f7808db3b6b98abdac69/native-inference/validation/mac-corpus/results/mac-9b599df/REPORT.md)
+are retained in the fork, including the original diagnostic archive.
+
+[Exact native diagnostic artifact](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37381573321/artifacts/11375896651),
+SHA-256 `678f2f005f2975e8269cdb16d8eb853de05efc401f0d3aada8472f500808d95d`.
+The [frozen corpus inputs/settings](https://github.com/justinvassantachart/GutAnalysisToolbox/tree/9b599df1b8c67977228bc50104f44280047c4154/native-inference/validation/mac-corpus)
+identify every source, duplicate and reference. GitHub artifact downloads may
+require signing into the authorized repository account.
+
+The new native Mac run covers all 40 source-labeled test files from the public
+Zenodo archives: 25 Hu and 15 subtype cases, 26,030,351 pixels. These represent
+39 unique inputs and include one known training-folder overlap; they are not
+40 independent held-out specimens. Supplied image resolution, model choices,
+normalization/tiling and original probability/NMS settings are frozen.
+
+Its reference is the archived legacy-TensorFlow Linux output. A complete green
+coverage job records successful execution, not biological ground-truth accuracy
+or automatic scientific equivalence. Most original full probability/distance
+tensors were not retained, so this run does not claim a full raw-tensor
+numerical comparison. Original paint order is unavailable for most polygon
+archives; exclusive-label differing-pixel counts stay unavailable in those
+cases rather than being reconstructed with invented ordering.
+
+## Corrected native multiplex evidence
+
+[Full saved-output comparison](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/multiplex-full/results/mac-ab046cb/README.md)
+preserves both the genuine failed preview-2-era run and the corrected native M1
+run. The same 18 input files, five harness sources and 97 runtime JAR identities
+were used. All nine full-service checks pass for both SIFT and forced MOPS;
+independent reopening of actual TIFFs and ROI archives reproduces the reported
+pixel, landmark and calibration measurements. No registration parameters or
+acceptance assertions were relaxed.
+
+This is bounded synthetic service/command coverage, not complete biological,
+interactive, fallback or cancellation certification. A physical M1 test remains
+valuable, especially for GPU/OpenCL and the ordinary dashboard path.
+
 ## Latest verified clean-install evidence
 
 [Corrected real-Fiji run 37374804775](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37374804775)
@@ -127,7 +197,9 @@ The original neuron/alignment failures remain recorded rather than converted
 to successes. The original production source is unchanged.
 
 The native validation source is `26298b73ea3fcb4c1410ad4bcd268233040c5ace`;
-production sources match the core release snapshot. Its 85-member diagnostic
+the neuron/alignment/ganglia production paths match the release snapshot.
+Preview 3 additionally corrects the separately verified multiplex service; the
+fresh-install run does not retrospectively test that later change. Its 85-member diagnostic
 artifact 11372260331 has SHA-256
 `86d82644e2bf03cf35b7174010e5a634b27bfe038b294fb00cdaf81a6c6763d3`.
 The preceding attempt stopped before ganglia invocation because the harness
@@ -386,7 +458,7 @@ The fork's neuron module requires this arrangement:
 ```text
 Fork/Fiji/
   Fiji.app/
-  plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar
+  plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.3.jar
   gat-native-inference/gat-native-inference.jar
   gat-native-inference/lib/<complete pinned worker dependencies>
   models/<verified model files>
@@ -395,7 +467,7 @@ Fork/Fiji/
   gat-native-alignment/lib/<complete pinned alignment dependencies>
 ```
 
-Keep worker JAR and `lib` together. Never place worker TensorFlow dependencies in Fiji's `jars` or `plugins`. This release includes `gat-native-alignment/`: keep its worker JAR, full `lib` directory, GPL-3.0 license and original source/notices together, outside Fiji's global classpath. The archive BUILD_INFO records inference-bundle SHA `e59c0c55aa36baf73cc97b6f87993fee211bd1828de2a673b39c3d6f00bf4bf6` and alignment-bundle SHA `510c20e2f9d0d04c5d23161153f5abc485cb3f30555df16532dd89424992e669`. Those identify the constituent build archives, not a hash of an extracted directory.
+Keep worker JAR and `lib` together. Never place worker TensorFlow dependencies in Fiji's `jars` or `plugins`. This release includes `gat-native-alignment/`: keep its worker JAR, full `lib` directory, GPL-3.0 license and original source/notices together, outside Fiji's global classpath. The archive BUILD_INFO records inference-bundle SHA `0fab4ea2529b083b762686073628d0980f66e70dda1d2e906f70e4ec125b6e79` and alignment-bundle SHA `b12d42b9e00ab1c9c17bd572521a40c8cfef2ff355b9010cc1e3e412459d94a1`. Those identify the constituent build archives, not a hash of an extracted directory.
 
 The unchanged original copy must not contain the fork's adapter/plugin or silently gain its worker as a substitute. A failure in the original is valid evidence when the dependency/input environment is otherwise matched. Preserve logs before closing a failed baseline process.
 
@@ -421,7 +493,12 @@ The corrected ZIP is 4,726,604 bytes, with the SHA-256 in the package table.
 It extracts to `GAT-M1-test-kit/`. Read its README, `manifest.json`,
 `SHA256SUMS` and `fixtures/image-inventory.tsv` before running anything. Its
 fixtures open directly in Fiji; the optional `developer-validation/` sources are
-not prerequisites for the manual tests.
+not prerequisites for the manual tests. The kit retains its historical preview-2
+title and evidence. Its input/reference bytes also serve these unchanged core
+controls in preview 3. Follow **this v5 handoff** for current installation/status,
+not the kit's older first-install status; use the pinned preview-3 repository
+source for new developer builds. The separate multiplex add-on supplies the
+newly corrected workflow's exact native inputs and references.
 
 | Test | Files under `GAT-M1-test-kit/fixtures/` | Settings and expected result |
 | --- | --- | --- |
@@ -505,9 +582,18 @@ Run the original and fork on identical fresh fixture copies and separately named
 
 ### Multiplex
 
-- Use two known-shift rounds with a shared reference marker and an independent second channel. Match SIFT landmarks, verify geometric transform direction and calibrated overlay, and ensure the same transform reaches every channel of each round.
-- Verify round/channel naming, C/Z/T, source preservation, ROI transfer and saved/reopened aligned images. Run the complete multiplex analysis/measurement/export route, not just correspondence detection.
-- Test no usable landmarks and mismatched dimensions as explicit failures/cancellations without output corruption. If block/MOPS fallback is not actually run, mark it NOT_RUN.
+Use the separate checksum-verified **GAT-multiplex-manual-fixtures** add-on listed
+in the package table. Read its README first. It supplies the exact synthetic
+native-test input images, saved references and ROI/measurement evidence; no
+build tools are needed to open the TIFFs in Fiji. Keep inputs and references in
+separate folders, and make a new output folder per original/fork run.
+
+- Put all nine `Layer1_`, `Layer2_` and `Layer3_` TIFFs together in one **flat input folder**, not layer subfolders. Select common marker `Hu`, three rounds and layer prefix `Layer`, following the kit's exact GUI instructions. Record actual settings/dialogs.
+- Compare all seven output channels and their labels/order, C/Z/T, unchanged source images, and both saved/reopened aligned and common-marker QC stacks. Compare calibration with the **reopened input TIFF**, including non-square pixels, unit and frame interval.
+- The corrected native SIFT fixture gives pixel-exact later-round marker interiors. Forced-MOPS service controls give residual MSE 0.180–0.360, versus 2,751–4,313 before the fix, and landmark errors at most about 0.0392 px. Inspect the kit's exact per-channel references and paired ROI coordinates, not just a visual overlay or global correlation.
+- The ordinary GUI does not expose the harness's forced-MOPS setting. `Finetune_parameters` is stored but unused by the inspected service. Do not claim a normal GUI SIFT run exercised MOPS or natural fallback; that boundary needs the documented optional developer harness or a genuine captured fallback.
+- Test no usable landmarks, missing markers/rounds and mismatched dimensions as explicit errors/cancellations without stale output. Computation-time cancellation and the unavailable Block Matching command remain separately unverified.
+- The confirmed saved-output defect existed in the unchanged pre-fork Java service and in preview 2. It is a result/ROI ownership correction, not proof that ARM SIFT/MOPS numerical libraries were incompatible.
 
 ### Physical OpenCL and CLIJ workflows
 

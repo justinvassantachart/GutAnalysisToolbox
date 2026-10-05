@@ -1,6 +1,14 @@
 # Native Apple Silicon official-test corpus regression
 
-Status: harness prepared and locally checked on Linux; the native Mac **40-case run has not been launched by this change**. The separate `mac-ci-job.yml.example` is owner-ready, not an active workflow. Enable it only after the currently running native multiplex validation has closed. This directory changes no production algorithms, thresholds, workflows or shared CI.
+Status: the complete native run is **finished and independently audited**.
+[Run 37381573321](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37381573321)
+executed all 40 cases on reported Apple M1 Virtual hardware. The
+[frozen report, per-case CSV, original artifact and independent audits](results/mac-9b599df/REPORT.md)
+retain counts/centers matching in all cases, 39 canonical-raster/measurement
+matches, 37 raw-label matches and the qualified one-pixel polygon/union outlier.
+A green job establishes complete execution coverage, not scientific equivalence.
+The active workflow is `.github/workflows/native-mac-test-corpus.yml`; the
+adjacent example remains a recipe, not a second independent test.
 
 ## Exact scope and scientific limits
 
@@ -42,7 +50,7 @@ Exact-center contour maxima do not bound moved-center objects. Inspect `unmatche
 
 ## Run on a standard native Mac runner
 
-The owner-ready workflow uses only the standard free `macos-15` ARM runner, JDK 21 and Python 3.12; no paid/large runner label. It verifies actual `uname`, native ARM Java and Rosetta status, and records reported CPU brand/hardware model, memory, macOS, architecture and Java. A runner label alone is not evidence of an M1 chip: the report identifies the actual hardware and does not call another Apple Silicon generation M1.
+The active workflow uses only the standard free `macos-15` ARM runner, JDK 21 and Python 3.12; no paid/large runner label. It verifies actual `uname`, native ARM Java and Rosetta status, and records reported CPU brand/hardware model, memory, macOS, architecture and Java. A runner label alone is not evidence of an M1 chip: the report identifies the actual hardware and does not call another Apple Silicon generation M1.
 
 From the repository root:
 

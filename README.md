@@ -1,34 +1,37 @@
 # Gut Analysis Toolbox
 
-## Experimental Apple Silicon preview
+## Corrective Apple Silicon test preview 3
 
-**Preview2 full multiplex export is a confirmed known issue:** later-round
-channels were left unaligned and physical calibration was lost. Do not use
-that output for quantitative work. This branch contains a narrowly reviewed
-correction with 61 local tests passing; native full-service acceptance is pending.
-The existing release remains unchanged until the correction is verified.
-See [measured failures and correction scope](docs/multiplex-result-handling.md).
-
-
-[Test preview 2 and the unchanged original comparison package](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2)
+[Preview 3 and the unchanged original comparison package](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-3)
 are available for native arm64 Fiji on macOS 14+. Start with the
-[complete clean-Mac instructions](docs/M1-CHATGPT-HANDOFF.md), including the
-corrected manual test kit 2.1, even if no Fiji or developer tools are installed.
+[complete bare-Mac instructions](docs/M1-CHATGPT-HANDOFF.md), including the
+bundled-Java Fiji setup, model/engine installation, general kit 2.1 and new
+multiplex manual fixtures. No developer tools are needed to use the packages.
+
+**Do not use preview 2 multiplex exports for quantitative work.** Its
+pre-existing result/landmark-handling defect left later-round channels
+unaligned and reset calibration. Preview 3 fixes that path, with independently
+verified saved TIFFs/ROIs from unchanged native SIFT and forced-MOPS acceptance
+tests. [Before/after multiplex evidence](native-inference/validation/multiplex-full/results/mac-ab046cb/README.md).
+Older release bytes remain unchanged.
 
 This branch supplies isolated native neuron/subtype inference and Template
-Matching, plus verified result-handling fixes. See the
-[paired original/fork evidence and remaining limitations](docs/APPLE-SILICON-TEST-PREVIEW-2.md).
-Physical GPU access and complete interactive workflows remain to be tested;
+Matching, plus verified result-handling fixes. The
+[40-image native-Mac report](native-inference/validation/mac-corpus/results/mac-9b599df/REPORT.md)
+preserves equal counts/centers and the small mask/outline differences; these
+are runtime-consistency checks rather than biological ground truth.
+See the [workflow matrix and remaining limitations](docs/apple-silicon-workflow-matrix.md).
+Physical GPU/OpenCL access and complete interactive workflows remain to be tested;
 this is not an all-workflow or all-M-series support claim. Existing Intel
 installations keep their legacy inference backend. Clone this feature branch
-explicitly; the repository's unchanged default `main` does not contain the fork:
+explicitly; the unchanged default `main` does not contain these changes:
 
 ```sh
 git clone --branch feat/apple-silicon-stardist https://github.com/justinvassantachart/GutAnalysisToolbox.git
 ```
 
-For the immutable tested package source, use tag `apple-silicon-preview-2`.
-No upstream pull request has been opened.
+For the immutable tested package source, use tag `apple-silicon-preview-3`
+(`bb897c237732cf8569a1515eb8d7ed69feb2ab31`). No upstream pull request has been opened.
 
 [![DOI:10.1101/2024.01.17.576140](http://img.shields.io/badge/DOI-10.1101/2024.01.17.576140-B31B1B.svg)](https://doi.org/10.1242/jcs.261950)
 
