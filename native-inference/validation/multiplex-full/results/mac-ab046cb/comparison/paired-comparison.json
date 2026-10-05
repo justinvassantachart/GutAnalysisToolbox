@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "scope": "Paired real native runs with the same retained inputs, unchanged harness and dependency hashes; production corrections applied together, not isolated per-change experiments.",
+  "before": {
+    "revision": "5a00f6d6a414f5bd59e0b5dc461eb469afda907c",
+    "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37375259755",
+    "job_id": 111995832061,
+    "artifact_id": 11372532765,
+    "archive_path": "../mac-5a00f6d/original/gat-multiplex-native-5a00f6d.zip",
+    "archive_sha256": "5fb5df261efbb1666b1427c53b62fc7fc4b8e534456273a3c0109e8ad3a63985",
+    "suite_status": "FAIL",
+    "full_service_acceptance_passed": false
+  },
+  "after": {
+    "revision": "ab046cb604dc04e75cf935b7a9f3c17b52843188",
+    "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37380708003",
+    "job_id": 112001650098,
+    "artifact_id": 11373712129,
+    "archive_path": "original/gat-multiplex-native-ab046cb.zip",
+    "archive_sha256": "fac1354084a4e06ff86359c92dfb23ec4979e70b28806905d3b03947b0da441c",
+    "suite_status": "PASS_REQUESTED_SCOPES",
+    "full_service_acceptance_passed": true,
+    "core_version": "2.0.1-apple-silicon.3",
+    "core_pom_sha256": "4bfaabf372d8cc52d159a5dac318d6d01900372ffbe46c5336e1494b5a151ad7"
+  },
+  "retained_inputs": [
+    {
+      "path": "full-sift/inputs/Layer1_Hu.tif",
+      "size_bytes": 65776,
+      "before_sha256": "4802490a19465486f94d1b936800f5c3661e741a0d7484a3ca644e23e210af1b",
+      "after_sha256": "4802490a19465486f94d1b936800f5c3661e741a0d7484a3ca644e23e210af1b",
+      "byte_identical": true
+    },
+    {
+      "path": "full-sift/inputs/Layer1_MarkerA.tif",
+      "size_bytes": 65776,
+      "before_sha256": "e1b2ec0315dfd1638c0304f1cdcd698da4b0465494040b6af2017bf0d466e1d5",
+      "after_sha256": "e1b2ec0315dfd1638c0304f1cdcd698da4b0465494040b6af2017bf0d466e1d5",
+      "byte_identical": true
+    },
+    {
+      "path": "full-sift/inputs/Layer1_MarkerB.tif",
+      "size_bytes": 65776,
+      "before_sha256": "2b06027f030cf36e1d5e40b51a26b64510376a97ce683a4070d51a3548a93e0e",
+      "after_sha256": "2b06027f030cf36e1d5e40b51a26b64510376a97ce683a4070d51a3548a93e0e",
+      "byte_identical": true
+    },
+    {
+      "path": "full-sift/inputs/Layer2_Hu.tif",
+      "size_bytes": 65776,
+      "before_sha256": "d533ef9a258c582c57e731e6ad8a470ddaf0d616a69e54a9359fdd66de541fb9",
+      "after_sha256": "d533ef9a258c582c57e731e6ad8a470ddaf0d616a69e54a9359fdd66de541fb9",
+      "byte_identical": true
+    },
+    {
+      "path": "full-sift/inputs/Layer2_MarkerA.tif",
+      "size_bytes": 65776,
+      "before_sha256": "d5f11cefdb0b4bec70036dac45cd99948aab3aea6cade69d8bbb55586e5bf3e5",
+      "after_sha256": "d5f11cefdb0b4bec70036dac45cd99948aab3aea6cade69d8bbb55586e5bf3e5",
+      "byte_identical": true
+    },
+    {
+      "path": "full-sift/inputs/Layer2_MarkerB.tif",
+      "size_bytes": 65776,
+      "before_sha256": "8f710d96c3dcaa64db3c18c7688d877840398eba6724b4787d3f5affb359469b",
+      "after_sha256": "8f710d96c3dcaa64db3c18c7688d877840398eba6724b4787d3f5affb359469b",
+      "byte_identical": true
+    },
+    {
+      "path": "full-sift/inputs/Layer3_Hu.tif",
+      "size_bytes": 65776,
+      "before_sha256": "c64a618236df60bee1cd503619735213dd217f2c84e8ea4d918ada755ba4d3c7",
+      "after_sha256": "c64a618236df60bee1cd503619735213dd217f2c84e8ea4d918ada755ba4d3c7",
+      "byte_identical": true
+    },
+    {
+      "path": "full-sift/inputs/Layer3_MarkerA.tif",
+      "size_bytes": 65776,
+      "before_sha256": "fbcb7a19959fcff174c4c0ef569f2b346fe8516e47576064949b92fa032ad6ff",
+      "after_sha256": "fbcb7a19959fcff174c4c0ef569f2b346fe8516e47576064949b92fa032ad6ff",
+      "byte_identical": true
+    },
+    {
+      "path": "full-sift/inputs/Layer3_MarkerB.tif",
+      "size_bytes": 65776,
+      "before_sha256": "eb32256eeb312718c95c4b7d2579fd186ba7deafe97c3d96dbbcc34470dc2670",
+      "after_sha256": "eb32256eeb312718c95c4b7d2579fd186ba7deafe97c3d96dbbcc34470dc2670",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer1_Hu.tif",
+      "size_bytes": 65776,
+      "before_sha256": "4802490a19465486f94d1b936800f5c3661e741a0d7484a3ca644e23e210af1b",
+      "after_sha256": "4802490a19465486f94d1b936800f5c3661e741a0d7484a3ca644e23e210af1b",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer1_MarkerA.tif",
+      "size_bytes": 65776,
+      "before_sha256": "e1b2ec0315dfd1638c0304f1cdcd698da4b0465494040b6af2017bf0d466e1d5",
+      "after_sha256": "e1b2ec0315dfd1638c0304f1cdcd698da4b0465494040b6af2017bf0d466e1d5",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer1_MarkerB.tif",
+      "size_bytes": 65776,
+      "before_sha256": "2b06027f030cf36e1d5e40b51a26b64510376a97ce683a4070d51a3548a93e0e",
+      "after_sha256": "2b06027f030cf36e1d5e40b51a26b64510376a97ce683a4070d51a3548a93e0e",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer2_Hu.tif",
+      "size_bytes": 65776,
+      "before_sha256": "d533ef9a258c582c57e731e6ad8a470ddaf0d616a69e54a9359fdd66de541fb9",
+      "after_sha256": "d533ef9a258c582c57e731e6ad8a470ddaf0d616a69e54a9359fdd66de541fb9",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer2_MarkerA.tif",
+      "size_bytes": 65776,
+      "before_sha256": "d5f11cefdb0b4bec70036dac45cd99948aab3aea6cade69d8bbb55586e5bf3e5",
+      "after_sha256": "d5f11cefdb0b4bec70036dac45cd99948aab3aea6cade69d8bbb55586e5bf3e5",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer2_MarkerB.tif",
+      "size_bytes": 65776,
+      "before_sha256": "8f710d96c3dcaa64db3c18c7688d877840398eba6724b4787d3f5affb359469b",
+      "after_sha256": "8f710d96c3dcaa64db3c18c7688d877840398eba6724b4787d3f5affb359469b",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer3_Hu.tif",
+      "size_bytes": 65776,
+      "before_sha256": "c64a618236df60bee1cd503619735213dd217f2c84e8ea4d918ada755ba4d3c7",
+      "after_sha256": "c64a618236df60bee1cd503619735213dd217f2c84e8ea4d918ada755ba4d3c7",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer3_MarkerA.tif",
+      "size_bytes": 65776,
+      "before_sha256": "fbcb7a19959fcff174c4c0ef569f2b346fe8516e47576064949b92fa032ad6ff",
+      "after_sha256": "fbcb7a19959fcff174c4c0ef569f2b346fe8516e47576064949b92fa032ad6ff",
+      "byte_identical": true
+    },
+    {
+      "path": "full-mops/inputs/Layer3_MarkerB.tif",
+      "size_bytes": 65776,
+      "before_sha256": "eb32256eeb312718c95c4b7d2579fd186ba7deafe97c3d96dbbcc34470dc2670",
+      "after_sha256": "eb32256eeb312718c95c4b7d2579fd186ba7deafe97c3d96dbbcc34470dc2670",
+      "byte_identical": true
+    }
+  ],
+  "harness_sources": [
+    {
+      "path": "native-inference/validation/multiplex-full/MultiplexFullProbe.java",
+      "before_sha256": "d943d6b34e1db1aafeb4f0d33ee71c5bd31d8b7a9b3118ad92c1f5c27482696b",
+      "after_sha256": "d943d6b34e1db1aafeb4f0d33ee71c5bd31d8b7a9b3118ad92c1f5c27482696b",
+      "git_blobs_byte_identical": true
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/dependencies.json",
+      "before_sha256": "cbec4df65c59bab889a85b1edd42423ad658847e008feed4560b436282b058e3",
+      "after_sha256": "cbec4df65c59bab889a85b1edd42423ad658847e008feed4560b436282b058e3",
+      "git_blobs_byte_identical": true
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/provenance.json",
+      "before_sha256": "84c2e3e3fa11a3b10ed5be7632a3a679b3345c0547cfc951fede4fa5ae69ca7c",
+      "after_sha256": "84c2e3e3fa11a3b10ed5be7632a3a679b3345c0547cfc951fede4fa5ae69ca7c",
+      "git_blobs_byte_identical": true
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/run.py",
+      "before_sha256": "e23097b894e292f663bb0cdb9976d30ea66ab91c7249aa9410f7e37138d08725",
+      "after_sha256": "e23097b894e292f663bb0cdb9976d30ea66ab91c7249aa9410f7e37138d08725",
+      "git_blobs_byte_identical": true
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/test_runner.py",
+      "before_sha256": "eb4d97a8c0dd77865ad4b2e6eb5f40f59fe923bd435702c46aecc82da380e0c5",
+      "after_sha256": "eb4d97a8c0dd77865ad4b2e6eb5f40f59fe923bd435702c46aecc82da380e0c5",
+      "git_blobs_byte_identical": true
+    }
+  ],
+  "unchanged_dependencies": [
+    {
+      "filename": "mpicbg-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/jars/mpicbg-1.6.6.jar-20260716221137",
+      "sha256": "43605b945958c6e675f3b0ec2090fd3f4e328ba6fffef9aacfc96fc1ebfee3d8",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "mpicbg_-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/plugins/mpicbg_-1.6.6.jar-20260716221137",
+      "sha256": "a18fc250b1fd464f6b79855c425e1b23d765974e0b0d2e9fdb03ce2f137406bb",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "jama-1.0.3.jar",
+      "url": "https://repo1.maven.org/maven2/gov/nist/math/jama/1.0.3/jama-1.0.3.jar",
+      "sha256": "c7325ee29be1aac1287ddac690f73671f1cd911ca9eca7c619990e86310556fd",
+      "groups": [
+        "registration"
+      ]
+    }
+  ],
+  "all_root_classpath_filename_sha256_pairs_identical": true,
+  "root_classpath_jar_count": 97,
+  "official_command_audit_identical": true,
+  "production_source_changes": [
+    {
+      "path": "src/main/java/services/multiplex/core/FeatureMatching.java",
+      "before_sha256": "2a6528ed10014995c94343a5b959c347d1f3de469863e9e59eaef9ee7f2d3ee9",
+      "after_sha256": "bdde3345138818b0056cfca1363dd0d3be162d96576aeedab0dc6513b640244d"
+    },
+    {
+      "path": "src/main/java/services/multiplex/core/MultiplexRegistrationService.java",
+      "before_sha256": "3a781474bf729b7d82f96d68b996ee942e37f20f7d722623f5ac2603a61a5297",
+      "after_sha256": "5f5f399961d8d7dc5db39978bfc4f2ae990eccebeee1e1e961040e5faf014e04"
+    },
+    {
+      "path": "src/main/java/services/multiplex/util/IJUtils.java",
+      "before_sha256": "1f77cd1efb35735c2123b57296e9f79ceaa8911bebdb606c44a42ab77baece9d",
+      "after_sha256": "f870e7b91d2a1f20f62d32a017e282ea35e5109d98180d1419507250462232b5"
+    }
+  ],
+  "added_regression_test_sources": [
+    {
+      "path": "src/test/java/services/multiplex/core/FeatureMatchingLandmarksTest.java",
+      "sha256": "d93b35053c31823e47400df26faf542a6df1fd8c1710003ca7771ce7fa8c15c0",
+      "size_bytes": 4595
+    },
+    {
+      "path": "src/test/java/services/multiplex/core/MultiplexResultHandlingTest.java",
+      "sha256": "6b3510c1b373099b1d74eb28e898eec91e8b8414b9c2c4278d52e4ceb8d67b62",
+      "size_bytes": 7245
+    },
+    {
+      "path": "src/test/java/services/multiplex/util/IJUtilsBatchSelectionTest.java",
+      "sha256": "8ad8b71234097b3c4a329ee6b6aa96d80ade248dbd45f8b0637df050bb24c77b",
+      "size_bytes": 1517
+    }
+  ],
+  "test_source_note": "Source identities only; this packet does not independently execute the Maven regression suite.",
+  "frozen_failure_packet_matches_external_staging_manifest": true
+}

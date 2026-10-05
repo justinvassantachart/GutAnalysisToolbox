@@ -1,0 +1,3 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx768m -XX:ActiveProcessorCount=1
+expected_input_failure: PASS
+REPORT=<RUN_OUTPUT>/no-files/report.json

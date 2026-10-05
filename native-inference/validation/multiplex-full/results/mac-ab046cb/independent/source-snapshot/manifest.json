@@ -1,0 +1,24 @@
+{
+  "revision": "ab046cb604dc04e75cf935b7a9f3c17b52843188",
+  "purpose": "Historical copies of the three corrected production sources, read from the tested commit and verified against native hashes.",
+  "files": [
+    {
+      "source_path": "src/main/java/services/multiplex/core/FeatureMatching.java",
+      "packet_path": "independent/source-snapshot/services/multiplex/core/FeatureMatching.java",
+      "sha256": "bdde3345138818b0056cfca1363dd0d3be162d96576aeedab0dc6513b640244d",
+      "size_bytes": 8342
+    },
+    {
+      "source_path": "src/main/java/services/multiplex/core/MultiplexRegistrationService.java",
+      "packet_path": "independent/source-snapshot/services/multiplex/core/MultiplexRegistrationService.java",
+      "sha256": "5f5f399961d8d7dc5db39978bfc4f2ae990eccebeee1e1e961040e5faf014e04",
+      "size_bytes": 20681
+    },
+    {
+      "source_path": "src/main/java/services/multiplex/util/IJUtils.java",
+      "packet_path": "independent/source-snapshot/services/multiplex/util/IJUtils.java",
+      "sha256": "f870e7b91d2a1f20f62d32a017e282ea35e5109d98180d1419507250462232b5",
+      "size_bytes": 2983
+    }
+  ]
+}

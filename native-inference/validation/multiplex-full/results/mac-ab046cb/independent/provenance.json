@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only Linux audits of archived native Mac TIFF/ROI outputs, plus an isolated corrected helper-selection control. Not a second native service run.",
+  "system": "Linux",
+  "machine": "x86_64",
+  "java": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "headless": true,
+  "imagej": {
+    "filename": "ij-1.54p.jar",
+    "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20",
+    "matches_native_runtime_jar": true
+  },
+  "input_archive_sha256": "fac1354084a4e06ff86359c92dfb23ec4979e70b28806905d3b03947b0da441c",
+  "input_members_verified": 77,
+  "original_saved_output_audit_log_reproduced_byte_for_byte": true,
+  "expected_pixel_derivation": "For x,y in [24,232), read the same retained source TIFF at x+dx,y+dy for known synthetic round shifts; no harness pattern generator, plugin service, model inference or re-registration used.",
+  "commands": [
+    {
+      "log": "independent/compile.log",
+      "command": "javac -encoding UTF-8 -cp \"$IJ_JAR\" -d \"$WORK/classes\" independent/ReviewCorrectedMultiplex.java independent/ReviewCorrectedBatchSelection.java independent/ReviewSavedCalibration.java independent/source-snapshot/services/multiplex/util/IJUtils.java",
+      "exit_code": 0,
+      "wall_seconds": 0.8108650030007993,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "log": "independent/independent-output-review.log",
+      "command": "java -Djava.awt.headless=true -cp \"$WORK/classes:$IJ_JAR\" ReviewCorrectedMultiplex \"$WORK/artifact/full-sift\" \"$WORK/artifact/full-mops\"",
+      "exit_code": 0,
+      "wall_seconds": 0.2329956140019931,
+      "sha256": "ee407da982ec1e7e513abe627c02cfafb26e37a9ac764bb95b84a49ecca76782"
+    },
+    {
+      "log": "independent/batch-selection-control.log",
+      "command": "java -Djava.awt.headless=true -cp \"$WORK/classes:$IJ_JAR\" ReviewCorrectedBatchSelection",
+      "exit_code": 0,
+      "wall_seconds": 0.12316016499971738,
+      "sha256": "46410d5265c7265e0d0db56e4d086f20b37a1520953c710ac5e37b7884abb8ec"
+    },
+    {
+      "log": "independent/saved-calibration-review.log",
+      "command": "java -Djava.awt.headless=true -cp \"$WORK/classes:$IJ_JAR\" ReviewSavedCalibration \"$WORK/artifact/full-sift\" \"$WORK/artifact/full-mops\"",
+      "exit_code": 0,
+      "wall_seconds": 0.16309637399899657,
+      "sha256": "4a22b581a10d93851cd97050121c23966d204e52936ea96346eb3e6d83ad452c"
+    }
+  ],
+  "native_metric_comparisons": [
+    {
+      "case": "full-sift",
+      "channel": "Layer2_MarkerA.tif",
+      "before_mse": 3030.62287352071,
+      "after_mse": 0.0,
+      "reduction": 1.0,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-sift",
+      "channel": "Layer2_MarkerB.tif",
+      "before_mse": 2751.3859791050295,
+      "after_mse": 0.0,
+      "reduction": 1.0,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-sift",
+      "channel": "Layer3_MarkerA.tif",
+      "before_mse": 4031.473372781065,
+      "after_mse": 0.0,
+      "reduction": 1.0,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-sift",
+      "channel": "Layer3_MarkerB.tif",
+      "before_mse": 4313.435465976331,
+      "after_mse": 0.0,
+      "reduction": 1.0,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-sift",
+      "pair": 1,
+      "point_count": 62,
+      "mean_dx": 7.0,
+      "mean_dy": -5.000000215345813,
+      "mean_error_px": 5.229826896421371e-07,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-sift",
+      "pair": 2,
+      "point_count": 80,
+      "mean_dx": -6.000000047683716,
+      "mean_dy": 7.999999952316284,
+      "mean_error_px": 1.9073486328125e-07,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-mops",
+      "channel": "Layer2_MarkerA.tif",
+      "before_mse": 3030.62287352071,
+      "after_mse": 0.1910364275147929,
+      "reduction": 0.9999369646321936,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-mops",
+      "channel": "Layer2_MarkerB.tif",
+      "before_mse": 2751.3859791050295,
+      "after_mse": 0.17954881656804733,
+      "reduction": 0.9999347424105772,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-mops",
+      "channel": "Layer3_MarkerA.tif",
+      "before_mse": 4031.473372781065,
+      "after_mse": 0.324426775147929,
+      "reduction": 0.9999195264993344,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-mops",
+      "channel": "Layer3_MarkerB.tif",
+      "before_mse": 4313.435465976331,
+      "after_mse": 0.35972170857988167,
+      "reduction": 0.9999166043606269,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-mops",
+      "pair": 1,
+      "point_count": 1040,
+      "mean_dx": 7.027450935657208,
+      "mean_dy": -5.019607762190012,
+      "mean_error_px": 0.03373452549289706,
+      "exact_native_metric_match": true
+    },
+    {
+      "case": "full-mops",
+      "pair": 2,
+      "point_count": 1483,
+      "mean_dx": -6.023529237295756,
+      "mean_dy": 8.031372408567854,
+      "mean_error_px": 0.0392154692758565,
+      "exact_native_metric_match": true
+    }
+  ]
+}

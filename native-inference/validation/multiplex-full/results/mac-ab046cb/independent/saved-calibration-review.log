@@ -1,0 +1,6 @@
+full-sift inputs/Layer1_Hu.tif pixel_width=0.5 pixel_height=0.7500001875000468 pixel_depth=1.0 frame_interval=1.25 unit=µm time_unit=sec
+full-sift output/Results/Aligned_Stack.tif pixel_width=0.5 pixel_height=0.7500001875000468 pixel_depth=1.0 frame_interval=1.25 unit=µm time_unit=sec
+full-sift output/Results/hu_stack.tif pixel_width=0.5 pixel_height=0.7500001875000468 pixel_depth=1.0 frame_interval=1.25 unit=µm time_unit=sec
+full-mops inputs/Layer1_Hu.tif pixel_width=0.5 pixel_height=0.7500001875000468 pixel_depth=1.0 frame_interval=1.25 unit=µm time_unit=sec
+full-mops output/Results/Aligned_Stack.tif pixel_width=0.5 pixel_height=0.7500001875000468 pixel_depth=1.0 frame_interval=1.25 unit=µm time_unit=sec
+full-mops output/Results/hu_stack.tif pixel_width=0.5 pixel_height=0.7500001875000468 pixel_depth=1.0 frame_interval=1.25 unit=µm time_unit=sec
