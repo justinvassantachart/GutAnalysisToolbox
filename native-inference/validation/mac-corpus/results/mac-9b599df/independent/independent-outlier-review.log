@@ -1,0 +1,6 @@
+scope=single independent polygon, center606.5,510.5; not original exclusive label map
+legacy area=691 centroid_x=608.2018813314038 centroid_y=506.52170767004344 perimeter4=130 bbox=597,487,618,526
+modern area=690 centroid_x=608.1884057971015 centroid_y=506.5086956521739 perimeter4=130 bbox=597,487,618,526
+changed_pixel x=617 y=515 legacy=255 modern=0
+different_pixels=1 intersection=690 union=691 IoU=0.9985528219971056
+vertex=7 legacy=617.38,515.86 modern=617.37,515.86

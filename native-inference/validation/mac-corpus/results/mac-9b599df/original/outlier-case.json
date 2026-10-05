@@ -1,0 +1,142 @@
+{
+  "case_id": "neuron_test_widefield_9",
+  "status": "compared",
+  "metadata": {
+    "case_id": "neuron_test_widefield_9",
+    "model": "neuron",
+    "split": "test",
+    "stain": "Hu",
+    "source": {
+      "source_path": "test/images/widefield_9.tif",
+      "source_archive": "neuron.zip",
+      "source_sha256": "f61513c2aeb3570168bfb8b68122b12f5427f9372425153c85497393471003d7",
+      "dtype": ">u2",
+      "minimum": "193.0",
+      "maximum": "16383.0",
+      "mean": "1340.3843403421974"
+    },
+    "input_sha256": "dae128cdb84d81950cbaede82aad3e39736e1ce870d79710eb7510dad6a591dc",
+    "input_bytes": 3880816,
+    "width": 1100,
+    "height": 882,
+    "channels": 97,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 1100,
+      "height": 882,
+      "source_width": 1100,
+      "source_height": 882,
+      "policy": "entire supplied 2D image; no crop or resize"
+    },
+    "tiles": {
+      "requested_tiles": 4,
+      "tiles_x": 2,
+      "tiles_y": 2,
+      "actual_tiles": 4,
+      "core_width": 576,
+      "core_height": 448,
+      "overlap_x": 64,
+      "overlap_y": 64,
+      "input_tile_width": 704,
+      "input_tile_height": 576,
+      "expanded_width": 1152,
+      "expanded_height": 896,
+      "block_size": 64,
+      "edge_extension": "unchanged CSBDeep nested MirrorDouble"
+    },
+    "probability_threshold": 0.5,
+    "nms_threshold": 0.3,
+    "excluded_boundary": 2,
+    "legacy_expected": {
+      "legacy_tensor_sha256": "917301e1c57dd92a4728bb47524d2dd45eaec000caf8e64c09136eaea9f688c8",
+      "legacy_candidates": 10495,
+      "legacy_count": 180,
+      "legacy_visible_labels": 180,
+      "legacy_label_sha256": "c87ba68fbb2404181ebab15e1d113376b1e37eaf8aab3632dba3c74f7fb1568f",
+      "legacy_canonical_sha256": "078357fc37138289ceff8a02a7041798467e185a6fc259431b6bdc29b85eadd1",
+      "legacy_measurements_sha256": "019998fe57249f8d289228235fd38d0b89df3e6522a44398889665c215022cb6"
+    },
+    "legacy_outline": {
+      "archive": "outline-payloads-001.zip",
+      "member": "core/outlines/neuron_test_widefield_9-legacy.polygons.gz",
+      "sha256": "1c58057f4c8e5c8fe8f7f2ab790e449849d0496f7fb0f5ab55072f654fef35eb"
+    },
+    "legacy_order_available": false,
+    "archived_legacy_raw_tensor_retained_at_original_run": false,
+    "same_test_input_case_ids": [],
+    "same_train_input_case_ids": []
+  },
+  "cold_worker_process_end_to_end_seconds": 8.186946625000019,
+  "modern_tensor_sha256": "f9698597b66ac2ac200db652e309a157cb720c8f8b1af24ea3df401df34fd80f",
+  "modern_tensor_bytes": 376437620,
+  "geometry_process_end_to_end_seconds": 7.584943833000011,
+  "comparison": {
+    "archived_legacy": {
+      "legacy_tensor_sha256": "917301e1c57dd92a4728bb47524d2dd45eaec000caf8e64c09136eaea9f688c8",
+      "legacy_candidates": 10495,
+      "legacy_count": 180,
+      "legacy_visible_labels": 180,
+      "legacy_label_sha256": "c87ba68fbb2404181ebab15e1d113376b1e37eaf8aab3632dba3c74f7fb1568f",
+      "legacy_canonical_sha256": "078357fc37138289ceff8a02a7041798467e185a6fc259431b6bdc29b85eadd1",
+      "legacy_measurements_sha256": "019998fe57249f8d289228235fd38d0b89df3e6522a44398889665c215022cb6"
+    },
+    "actual_modern": {
+      "modern_count": 180,
+      "modern_visible_labels": 180,
+      "modern_label_sha256": "121d96e720dc91e56a64e920c957d648222a37f1d3b1ee745ba7ddf6ee0efb3f",
+      "modern_canonical_sha256": "659db250f41908422fc6eab31b3e161f66fc60259af554def61fd36abf1f8845",
+      "modern_measurements_sha256": "4b82e1fc79e7a7d96ce911495be71163c53eacf05a5e99333f17985084125921",
+      "modern_candidates": 10495
+    },
+    "exact_count_equal": true,
+    "exact_candidate_count_equal": true,
+    "exact_raw_label_ids_and_pixels_equal": false,
+    "exact_identity_insensitive_raster_equal": false,
+    "exact_canonical_measurements_equal": false,
+    "exact_raster_and_measurements_equal": false,
+    "legacy_composite_available": false,
+    "original_exclusive_label_difference_count_available": false,
+    "original_exclusive_label_difference_count": null,
+    "tensor_numerical_comparison_performed": false,
+    "tensor_comparison_note": "Full legacy probability/distance tensors are unavailable for38/40; this harness does not perform tensor tolerance comparisons.",
+    "legacy_paint_order_limitation": "Archived polygons are lexical-center ordered, not winner ordered. No original legacy exclusive label-map reconstruction or mismatch pixel count is claimed."
+  },
+  "geometry_summary": {
+    "winner_centers_equal": true,
+    "strict_quantized_outlines_equal": false,
+    "matched_outline_objects": 180,
+    "unmatched_modern_outline_centers": 0,
+    "unmatched_legacy_outline_centers": 0,
+    "outline_ray_count_mismatches": 0,
+    "outlines_with_changed_vertices": 5,
+    "changed_outline_vertices": 5,
+    "max_abs_vertex_coordinate_delta_px": 0.010009765625,
+    "max_euclidean_vertex_delta_px": 0.014155946303051,
+    "max_abs_polygon_area_delta_px2": 0.017116766422986984,
+    "max_abs_polygon_perimeter_delta_px": 0.008212088840764409,
+    "matched_center_min_independent_polygon_iou": 0.9985528219971056,
+    "foreground_iou": 0.9999912471881592,
+    "different_foreground_pixels": 1,
+    "independent_polygon_masks_equal_ignoring_ids_and_centers": false
+  },
+  "geometry_artifact": "neuron_test_widefield_9/actual.geometry.json",
+  "case_wall_seconds": 16.090321124999946,
+  "worker_scratch_before_cleanup": {
+    "files": 1,
+    "bytes": 376437620,
+    "partial_prediction_sha256": {}
+  },
+  "raw_modern_tensor_retained_in_report": false,
+  "artifacts_sha256": {
+    "geometry.log": "129782f37b6f7eb6c026c0845484fdc700745ace8f3334b7389db157f31d1554",
+    "actual.modern.polygons.gz": "7ce7a04c3b80db34e5861bee71de40bb24bcd9c1c6f5f74caba55e3eb74453bb",
+    "actual.modern.foreground.u8.gz": "20b61345ce4895bff84d9ebde6bcfaf377e90edfb47ffb3d55f914020e5c602f",
+    "worker.log": "437b53a61724210e590c8aa0c8fc072b9339e602374e87d3f7f33ad99b443c7d",
+    "actual.legacy.foreground.u8.gz": "3d7da4710f053377d01edae1ed6fd73e2d27f9a4d5a185adfab95f43d928e78c",
+    "actual.geometry.json": "ef337c37958dc8ad838c55903847ae9d84b234aeabfc48cc455b30110597f3bd",
+    "actual.modern.canonical.u16be.gz": "a07ef19d0e9c9eeccf13644f69bb942409d5f876f1da8bac8d6b1d205bd17ce7",
+    "outliers.json": "867184991cfa4ed86c76608615f218d891edd4d95011a0072d23ef82d007a5c1",
+    "actual.modern.labels.u16be.gz": "b79ea047e1d47ef0eb20bfd9227f2dc38bcf0d95f2d93e02e0fdc240a970db58"
+  }
+}
