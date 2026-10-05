@@ -1,0 +1,157 @@
+{
+  "format_version": 1,
+  "case_id": "repo_Tilescan_GAT_ms_distal_colon_MP_hu_c1_t1_x4096_y0",
+  "production_source_commit": "366c8339e18563105ba41f82ea9d0ac6b6650077",
+  "width": 760,
+  "height": 1024,
+  "channels": 97,
+  "tiles": 4,
+  "probability_threshold": 0.5,
+  "nms_threshold": 0.3,
+  "exclude_boundary": 2,
+  "input_sha256": "ffdcd531daefe2dc07723236b6dfc6d5f12629ff902454f36898857813a4c6a1",
+  "model": "2D_enteric_neuron_v4_1.zip",
+  "model_sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276",
+  "model_source_url": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Models/2D_enteric_neuron_v4_1.zip",
+  "source": {
+    "url": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/Tilescan_GAT_ms_distal_colon_MP_hu.tif",
+    "repository_commit": "61d57c4e4bcfe82aa0369100c0a3b0739b70affa",
+    "path": "Sample Images/2D_enteric_neuron_IF/Tilescan_GAT_ms_distal_colon_MP_hu.tif",
+    "sha256": "94ef3478891e4859c35baa487298aef4e366c3de4d9f7a3a638891b6ea75e08d",
+    "original_shape": [
+      4856,
+      3672
+    ],
+    "crop_xywh": [
+      4096,
+      0,
+      760,
+      1024
+    ],
+    "one_based_channel": 1,
+    "one_based_frame": 1,
+    "dtype": "uint16",
+    "preprocessing": "Unrescaled original crop pixels converted to big-endian float32 GATI; shared frozen CSBDeep normalization and 4-tile inference"
+  },
+  "reference_tensors": {
+    "legacy": {
+      "sha256": "690c36695eda47a929834960bd7b822adb93f25769439b8075c007fd835302d9",
+      "runtime": "TensorFlow Java 1.15.0 / TensorFlow 1.15.0",
+      "platform": "Linux x86-64 CPU",
+      "threads_environment": {
+        "TF_NUM_INTRAOP_THREADS": "2",
+        "TF_NUM_INTEROP_THREADS": "1",
+        "OMP_NUM_THREADS": "2"
+      },
+      "count": 148,
+      "affected_label": 104,
+      "affected_center": [
+        396.5,
+        166.5
+      ]
+    },
+    "modern": {
+      "sha256": "48ea1f39aecedc0a7f506e6bd8bdacde87c8a793e9afa06c3160fd8fbd64da66",
+      "runtime": "TensorFlow Java 1.2.0 / TensorFlow 2.21.0",
+      "platform": "Linux x86-64 CPU",
+      "threads_environment": {
+        "TF_NUM_INTRAOP_THREADS": "2",
+        "TF_NUM_INTEROP_THREADS": "1",
+        "OMP_NUM_THREADS": "2"
+      },
+      "count": 148,
+      "affected_label": 104,
+      "affected_center": [
+        394.5,
+        168.5
+      ]
+    }
+  },
+  "score_probe_pixels": [
+    [
+      394,
+      168
+    ],
+    [
+      396,
+      166
+    ]
+  ],
+  "nms_source_commit": "aff59dbd3cdf88dfa567d4dd562eab943bf4f99b",
+  "nms_dependencies_manifest_sha256": "d3bf00e2449fa8013735aa7a5eb84cc89930f1dfe51a2be59b7c19be6d8b092a",
+  "files": {
+    "input.gati.gz": {
+      "sha256": "9cf8f6aeabd99e206999ffd044f7b444a5deefdba074ab13e8315ca7494e98bc",
+      "bytes": 1965626,
+      "encoding": "gzip",
+      "extracted_name": "input.gati",
+      "extracted_bytes": 3112976,
+      "extracted_sha256": "ffdcd531daefe2dc07723236b6dfc6d5f12629ff902454f36898857813a4c6a1"
+    },
+    "legacy.summary.json.gz": {
+      "sha256": "955943a1ba6ae3439e4dca2997e1407de2031272a5b05c4621db1ba4b66bd529",
+      "bytes": 10047,
+      "encoding": "gzip",
+      "extracted_name": "legacy.summary.json",
+      "extracted_bytes": 57964,
+      "extracted_sha256": "6394c288aed13c478dfa822003c31ba05b4061989b45905cc1e6dff756445bc7"
+    },
+    "legacy.labels.u16be.gz": {
+      "sha256": "9b398abd2a4e0e41fb88ab785806108f82286b05da3a244a865603f54f5dab98",
+      "bytes": 12572,
+      "encoding": "gzip",
+      "extracted_name": "legacy.labels.u16be",
+      "extracted_bytes": 1556480,
+      "extracted_sha256": "2ec2a85e86db52535c0f87c2213f4c89e3adc03de23d798e9d1d62245f735837"
+    },
+    "legacy.probability.f32be.gz": {
+      "sha256": "761fb8e2b40311120319257bfa4b110d2e3f1f7293e9e9cfeb1766133dc3872b",
+      "bytes": 520323,
+      "encoding": "gzip",
+      "extracted_name": "legacy.probability.f32be",
+      "extracted_bytes": 3112960,
+      "extracted_sha256": "ab68c8bf32e9bf5ac0bbd674e29d3cfd0dfadbf9002c9142d26ccbc9ce35955d"
+    },
+    "legacy.polygons.gz": {
+      "sha256": "5a6ff56022491a28dd524e4b44d46ec804ae11acaa5d543d3220acd448eca35b",
+      "bytes": 86603,
+      "encoding": "identity",
+      "extracted_name": "legacy.polygons.gz",
+      "extracted_bytes": 86603,
+      "extracted_sha256": "5a6ff56022491a28dd524e4b44d46ec804ae11acaa5d543d3220acd448eca35b"
+    },
+    "modern.summary.json.gz": {
+      "sha256": "d197069f9296f1a7abba559241cac86dd7b928d5961aa67927205780100d33ee",
+      "bytes": 10050,
+      "encoding": "gzip",
+      "extracted_name": "modern.summary.json",
+      "extracted_bytes": 57963,
+      "extracted_sha256": "cb23f4600b477a0497ceb9a5dab909ceaa043cd7b67c383f3097882ae7661120"
+    },
+    "modern.labels.u16be.gz": {
+      "sha256": "3d64e4a403f971152c9c85f2d996318102adb869fbb9400697f176193915e60d",
+      "bytes": 12568,
+      "encoding": "gzip",
+      "extracted_name": "modern.labels.u16be",
+      "extracted_bytes": 1556480,
+      "extracted_sha256": "f0663c1614c78b92413730b2e4a5ff2cb2518218ca5d55789b1c6bfb25e0e0ac"
+    },
+    "modern.probability.f32be.gz": {
+      "sha256": "9954e14499cdb2c7bec5431f2d31ce5081879d09202962a69a8b57e7ccccb169",
+      "bytes": 888457,
+      "encoding": "gzip",
+      "extracted_name": "modern.probability.f32be",
+      "extracted_bytes": 3112960,
+      "extracted_sha256": "ad47954cec2f8678a87e446ab3c398fe242c41258d8a1d6248a0420398243a80"
+    },
+    "modern.polygons.gz": {
+      "sha256": "27e12a45459ae40998df0d8aae5d45a84210a7738a3178af6b328ae85fcceda9",
+      "bytes": 86598,
+      "encoding": "identity",
+      "extracted_name": "modern.polygons.gz",
+      "extracted_bytes": 86598,
+      "extracted_sha256": "27e12a45459ae40998df0d8aae5d45a84210a7738a3178af6b328ae85fcceda9"
+    }
+  },
+  "interpretation": "Diagnostic references to both observed Linux baseline outputs. Neither reference is regenerated or privileged as a new acceptance target. Count agreement does not guarantee cell geometry or measurement equality."
+}
