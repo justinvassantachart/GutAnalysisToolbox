@@ -255,6 +255,12 @@ public final class PluginCalls {
         if (modelZip == null || !new File(modelZip).isFile())
             throw new IllegalArgumentException("StarDist ZIP not found: " + modelZip);
 
+        // The native worker has its own modern TensorFlow classpath. Never let
+        // an Apple Silicon process enter CSBDeep's legacy TF1 JNI loader.
+        if (Features.Inference.InferenceBackend.useNativeWorker()) {
+            return Features.Inference.NativeStarDist.run(input, modelZip, prob, nms);
+        }
+
         // Stable, safe title for binding
         String uniq = input.getTitle();
         if (uniq == null || uniq.isEmpty() || uniq.contains(".")) {

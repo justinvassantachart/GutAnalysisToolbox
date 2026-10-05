@@ -21,6 +21,8 @@ public class AlignStackBatch {
      * @throws Exception if input validation fails
      */
     public static void runBatch(Params p) throws Exception {
+        // Fail before opening/splitting images or applying another alignment.
+        if (p.useTemplateMatching) AlignStack.requireTemplateMatchingSupported();
         // Validate input directory
         if (p.inputDir == null || p.inputDir.trim().isEmpty())
             throw new IllegalArgumentException("Input directory not specified");

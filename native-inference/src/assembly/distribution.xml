@@ -1,0 +1,14 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 https://maven.apache.org/xsd/assembly-2.2.0.xsd">
+  <id>${tensorflow.platform}</id>
+  <formats><format>zip</format></formats>
+  <includeBaseDirectory>true</includeBaseDirectory>
+  <baseDirectory>gat-native-inference</baseDirectory>
+  <files>
+    <file><source>../LICENSE</source><outputDirectory>/</outputDirectory></file>
+    <file><source>validation/RESULTS.md</source><outputDirectory>validation</outputDirectory></file>
+    <file><source>${project.build.directory}/gat-native-inference.jar</source><outputDirectory>/</outputDirectory></file>
+    <file><source>README.md</source><outputDirectory>/</outputDirectory></file>
+    <file><source>THIRD_PARTY_NOTICES.md</source><outputDirectory>/</outputDirectory></file>
+  </files>
+  <fileSets><fileSet><directory>${project.build.directory}/lib</directory><outputDirectory>lib</outputDirectory></fileSet></fileSets>
+</assembly>

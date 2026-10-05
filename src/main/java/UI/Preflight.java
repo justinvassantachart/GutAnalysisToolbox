@@ -81,6 +81,20 @@ public final class Preflight {
         boolean logWasOpen = isLogOpen();
         logHeader();
 
+        // This check must not load native TensorFlow. A native abort cannot be
+        // caught by Java, including a supposedly informational version probe.
+        try {
+            if (Features.Inference.InferenceBackend.useNativeWorker()) {
+                Features.Inference.NativeInferenceClient.checkInstallation(IJ.getDirectory("imagej"));
+                IJ.log("StarDist backend: isolated native TensorFlow worker (experimental).");
+            } else {
+                IJ.log("StarDist backend: existing Fiji/CSBDeep TensorFlow runtime.");
+            }
+        } catch (RuntimeException e) {
+            warnStop(e.getMessage());
+            return false;
+        }
+
 
         // First-run sentinel + DeepImageJ engines check
         if (!firstRunAndDeepImageJ()) return false;
@@ -98,9 +112,8 @@ public final class Preflight {
         // and warn (never abort) if one has drifted outside the validated range.
         checkPluginVersions();
 
-        // Non-blocking: GAT's models are TensorFlow 1.x graphs; warn if the
-        // active TensorFlow library is not 1.15 (StarDist crashes otherwise).
-        checkTensorFlow();
+        // The worker owns its runtime; legacy jars do not affect it.
+        if (!Features.Inference.InferenceBackend.useNativeWorker()) checkTensorFlow();
 
         IJ.log("****** DONE – environment looks good. ******");
 
@@ -366,7 +379,10 @@ public final class Preflight {
         // command name -> guidance if missing
         LinkedHashMap<String,String> required = new LinkedHashMap<>();
         required.put("DeepImageJ Run", "Add the DeepImageJ update site: https://sites.imagej.net/DeepImageJ/");
-        required.put("Command From Macro", "Enable StarDist + CSBDeep update sites.");
+        required.put("Command From Macro", "Enable the StarDist update site and its dependencies.");
+        if (Features.Inference.InferenceBackend.useNativeWorker()) {
+            required.put("StarDist 2D NMS", "Enable the StarDist update site; the native worker uses its unchanged NMS postprocessing.");
+        }
         // MorpholibJ: some installs expose 'Area Opening' or 'Size Opening 2D/3D'
         required.put("Area Opening", "Enable the IJPB-plugins update site (MorphoLibJ).");
         required.put("Size Opening 2D/3D", "Enable the IJPB-plugins update site (MorphoLibJ).");
@@ -623,17 +639,16 @@ public final class Preflight {
         return "any version";
     }
 
-    /** The TensorFlow version GAT's bundled StarDist/DeepImageJ models need. */
+    /** Recommended version of the legacy CSBDeep TensorFlow runtime. */
     private static final String REQUIRED_TF_VERSION_PREFIX = "1.15";
 
     /**
-     * Non-blocking check that the active TensorFlow library is 1.15.
+     * Non-blocking metadata check for the legacy Fiji/CSBDeep backend.
      *
      * <p>
-     * GAT's bundled StarDist and DeepImageJ models are TensorFlow 1.x graphs.
-     * Fiji ships TensorFlow 2.x by default, under which StarDist crashes. The
-     * user must enable the <b>TensorFlow</b> update site and then select
-     * <b>TensorFlow 1.15.0 CPU</b> (Edit &rsaquo; Options &rsaquo; TensorFlow…).
+     * The existing CSBDeep backend uses the TensorFlow 1.x Java API. Its
+     * recommended selection remains TensorFlow 1.15.0 CPU. This is separate
+     * from the isolated worker and the PyTorch ganglia model.
      * </p>
      *
      * <p>
@@ -649,16 +664,17 @@ public final class Preflight {
         if (ver == null) {
             IJ.log("TensorFlow: version not detected.");
         } else {
-            IJ.log("TensorFlow: detected version " + ver);
+            IJ.log("TensorFlow: installed JAR candidate " + ver + " (native runtime not loaded).");
         }
 
         boolean ok = ver != null && ver.startsWith(REQUIRED_TF_VERSION_PREFIX);
         if (!ok) {
             String detected = (ver == null) ? "could not be determined" : ("is " + ver);
             String msg =
-                    "GAT's StarDist / DeepImageJ models are TensorFlow 1.x graphs and\n"
-                    + "require TensorFlow " + REQUIRED_TF_VERSION_PREFIX + ". The active TensorFlow " + detected + ".\n"
-                    + "StarDist may crash under TensorFlow 2.x.\n\n"
+                    "The legacy Fiji/CSBDeep neuron backend is configured for TensorFlow " + REQUIRED_TF_VERSION_PREFIX + ".\n"
+                    + "The installed TensorFlow JAR version " + detected + ".\n"
+                    + "This metadata check does not load or validate the native runtime.\n"
+                    + "The ganglia PyTorch model uses a separate DeepImageJ engine.\n\n"
                     + "To fix:\n"
                     + "1. Help › Update… › Manage update sites → tick 'TensorFlow', then restart.\n"
                     + "2. Edit › Options › TensorFlow… → select 'TensorFlow 1.15.0 CPU', then restart.";
@@ -666,35 +682,23 @@ public final class Preflight {
             JOptionPane.showMessageDialog(null, msg,
                     "GAT – TensorFlow version notice", JOptionPane.WARNING_MESSAGE);
         } else {
-            IJ.log("TensorFlow " + ver + " ... OK!");
+            IJ.log("TensorFlow " + ver + " JAR found; runtime compatibility is not established by this check.");
         }
         IJ.log("***********************************************");
     }
 
     /**
-     * Best-effort detection of the active TensorFlow version.
+     * Best-effort inspection of installed TensorFlow JAR metadata.
      *
      * <p>
-     * First tries the running native library via reflection
-     * ({@code org.tensorflow.TensorFlow.version()}), which reflects what the
-     * user actually selected in the TensorFlow options. If that is not loadable,
-     * falls back to scanning the installed {@code libtensorflow} / {@code tensorflow}
-     * jars.
+     * Never call TensorFlow.version() here: class initialization can abort the
+     * entire JVM on incompatible hardware. A filename is only an installed
+     * candidate and is not proof of which runtime Fiji would load.
      * </p>
      *
      * @return a version string (e.g. {@code "1.15.0"}), or {@code null} if unknown.
      */
     private static String detectTensorFlowVersion() {
-        // 1) Active native runtime — the authoritative "what is loaded now".
-        try {
-            Class<?> tf = Class.forName("org.tensorflow.TensorFlow");
-            Object v = tf.getMethod("version").invoke(null);
-            if (v != null && !v.toString().trim().isEmpty()) return v.toString().trim();
-        } catch (Throwable ignore) {
-            // Not loadable (not selected / TF2 API / native missing) — fall back.
-        }
-
-        // 2) Fall back to the installed jar name.
         String fijiDir = IJ.getDirectory("imagej");
         if (fijiDir == null) return null;
         File base = new File(fijiDir);

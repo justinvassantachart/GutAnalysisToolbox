@@ -1,4 +1,13 @@
 # Gut Analysis Toolbox
+
+## Experimental Apple Silicon preview
+
+This branch adds isolated native TensorFlow inference for GAT v2 neuron and
+subtype segmentation on native arm64 Fiji. See the
+[Apple Silicon installation and validation guide](docs/apple-silicon.md).
+It is a test build, not yet a blanket claim of support for every M-series Mac
+or every GAT workflow. Existing Intel installations keep the legacy backend.
+
 [![DOI:10.1101/2024.01.17.576140](http://img.shields.io/badge/DOI-10.1101/2024.01.17.576140-B31B1B.svg)](https://doi.org/10.1242/jcs.261950)
 
 
