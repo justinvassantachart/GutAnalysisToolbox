@@ -399,7 +399,7 @@ public final class Preflight {
         LinkedHashMap<String,String> optional = new LinkedHashMap<>();
         // Template Matching (calcium imaging alignment). Not in Fiji's list of
         // update sites, so it must be added manually as an unlisted site.
-        optional.put("Align slices in stack...",
+        if (!Features.Inference.InferenceBackend.isAppleSiliconMac()) optional.put("Align slices in stack...",
                 "Calcium imaging alignment needs the Template Matching plugin. In "
                         + "Manage update sites, add the unlisted site: https://sites.imagej.net/Template_Matching/");
 

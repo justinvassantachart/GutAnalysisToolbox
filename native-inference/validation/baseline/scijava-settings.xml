@@ -1,0 +1,6 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0">
+  <profiles><profile><id>baseline-scijava-repository</id><repositories>
+    <repository><id>scijava.public</id><url>https://maven.scijava.org/content/groups/public</url></repository>
+  </repositories></profile></profiles>
+  <activeProfiles><activeProfile>baseline-scijava-repository</activeProfile></activeProfiles>
+</settings>

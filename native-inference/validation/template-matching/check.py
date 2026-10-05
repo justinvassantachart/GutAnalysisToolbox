@@ -45,12 +45,15 @@ def replace_once(text, before, after):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--engine", choices=["modern", "legacy"], default="modern")
     parser.add_argument("--platform", choices=["macosx-arm64", "linux-x86_64"], required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--maven", default="mvn")
     parser.add_argument("--java", default="java")
     parser.add_argument("--input", type=Path, help="Optional already-downloaded public TIFF, still hash-verified")
     args = parser.parse_args()
+    if args.engine == "legacy" and args.platform != "linux-x86_64":
+        parser.error("Archived legacy baseline is Linux x86-64 only; native Mac original-plugin failure is tested separately")
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=True)
     original = out / "author-source"
@@ -61,15 +64,16 @@ def main():
         fetch(AUTHOR_BASE + relative, original / name, digest)
     shutil.copyfile(original / "Align_slices.java", source / "Align_slices.java")
     text = (original / "cvMatch_Template.java").read_text()
-    text = replace_once(text, "import static org.bytedeco.javacpp.opencv_core.*;",
-                        "import org.bytedeco.opencv.opencv_core.*;\nimport org.bytedeco.opencv.global.opencv_core;\nimport static org.bytedeco.opencv.global.opencv_core.*;")
-    text = replace_once(text, "import static org.bytedeco.javacpp.opencv_imgproc.*;", "import static org.bytedeco.opencv.global.opencv_imgproc.*;")
-    text = replace_once(text, "res.getFloatBuffer()", "(FloatBuffer) res.createBuffer()")
+    if args.engine == "modern":
+        text = replace_once(text, "import static org.bytedeco.javacpp.opencv_core.*;",
+                            "import org.bytedeco.opencv.opencv_core.*;\nimport org.bytedeco.opencv.global.opencv_core;\nimport static org.bytedeco.opencv.global.opencv_core.*;")
+        text = replace_once(text, "import static org.bytedeco.javacpp.opencv_imgproc.*;", "import static org.bytedeco.opencv.global.opencv_imgproc.*;")
+        text = replace_once(text, "res.getFloatBuffer()", "(FloatBuffer) res.createBuffer()")
     (source / "cvMatch_Template.java").write_text(text)
     shutil.copyfile(HERE / "TemplateMatchProbe.java", source / "TemplateMatchProbe.java")
     shutil.copyfile(original / "LICENSE", out / "module/LICENSE")
     dependencies = ""
-    for group, artifact, version, classifier in [
+    artifacts = [
         ("net.imagej", "ij", "1.54p", None),
         ("org.bytedeco", "javacv", "1.5.12", None),
         ("org.bytedeco", "javacpp", "1.5.12", None),
@@ -77,7 +81,13 @@ def main():
         ("org.bytedeco", "opencv", "4.11.0-1.5.12", None),
         ("org.bytedeco", "opencv", "4.11.0-1.5.12", args.platform),
         ("org.bytedeco", "openblas", "0.3.30-1.5.12", args.platform),
-    ]:
+    ]
+    if args.engine == "legacy":
+        artifacts = [("net.imagej", "ij", "1.54p", None), ("org.bytedeco", "javacv", "1.4.4", None),
+                     ("org.bytedeco", "javacpp", "1.4.4", None),
+                     ("org.bytedeco.javacpp-presets", "opencv", "4.0.1-1.4.4", None),
+                     ("org.bytedeco.javacpp-presets", "opencv", "4.0.1-1.4.4", "linux-x86_64")]
+    for group, artifact, version, classifier in artifacts:
         dependencies += ("<dependency><groupId>" + group + "</groupId><artifactId>" + artifact + "</artifactId><version>" + version + "</version>"
                          + ("<classifier>" + classifier + "</classifier>" if classifier else "")
                          + ("<exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>" if artifact == "javacv" else "") + "</dependency>")
@@ -104,7 +114,7 @@ def main():
         checks.append({"case": reference["case"], "status": "FAIL" if errors else "PASS",
                        "mismatched_fields": errors, "frames": reference["frames"],
                        "aligned_pixel_sha256": candidate["aligned_pixel_sha256"], "milliseconds": candidate["milliseconds"]})
-    report = {"checks": checks, "requested_platform": args.platform, "java": actual["java"], "arch": actual["arch"],
+    report = {"checks": checks, "requested_platform": args.platform, "engine": args.engine, "java": actual["java"], "arch": actual["arch"],
               "cold_process_wall_seconds": elapsed, "author_commit": COMMIT,
               "input_sha256": CALCIUM_SHA, "legacy_reference_sha256": sha(HERE / "legacy-reference.json"),
               "port_source_sha256": sha(source / "cvMatch_Template.java"),

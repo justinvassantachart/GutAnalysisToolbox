@@ -1,0 +1,81 @@
+{
+  "scope": "Linux build and harness control only; native Mac baseline still pending",
+  "baseline_commit": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+  "tracked_sources_clean_before_and_after": true,
+  "system": "Linux x86-64",
+  "java": "Temurin 17.0.20.1",
+  "build": "PASS with external SciJava repository setting; original source and POM unchanged",
+  "checks": [
+    {
+      "id": "hu_marker_overlap",
+      "scope": "GAT helper",
+      "status": "PASS",
+      "suite": "helpers"
+    },
+    {
+      "id": "ganglia_count_area",
+      "scope": "GAT helper",
+      "status": "PASS",
+      "suite": "helpers"
+    },
+    {
+      "id": "temporal_color_8bit",
+      "scope": "GAT helper",
+      "status": "PASS",
+      "suite": "helpers"
+    },
+    {
+      "id": "csv_merge_and_overwrite",
+      "scope": "GAT helper",
+      "status": "PASS",
+      "suite": "helpers"
+    },
+    {
+      "id": "counts_csv",
+      "scope": "GAT helper",
+      "status": "PASS",
+      "suite": "helpers"
+    },
+    {
+      "id": "label_tiff_roundtrip",
+      "scope": "GAT helper",
+      "status": "PASS",
+      "suite": "helpers"
+    },
+    {
+      "id": "multiplex_naming",
+      "scope": "GAT helper only",
+      "status": "PASS",
+      "suite": "helpers"
+    },
+    {
+      "id": "neuron_subtype_full_gui",
+      "scope": "Full GAT Fiji workflow",
+      "status": "NOT_RUN",
+      "reason": "Covered separately by inference fixtures; this helper run does not automate complete segmentation/review GUI",
+      "suite": "helpers"
+    },
+    {
+      "id": "calcium_auto_stardist",
+      "scope": "Full GAT Fiji workflow",
+      "status": "NOT_RUN",
+      "reason": "Existing production method is a disabled stub; not counted as a compatibility pass",
+      "suite": "helpers"
+    },
+    {
+      "id": "actual_gat_deepimagej_rdf_input",
+      "scope": "Reached preprocessing contract; no model execution",
+      "status": "FAIL",
+      "error": "java.lang.AssertionError: GAT/DeepImageJ changed raw intensity channel 0: 1.0",
+      "suite": "ganglia-contract"
+    },
+    {
+      "id": "full_gat_ganglia_command",
+      "scope": "DeepImageJ command and morphological cleanup",
+      "status": "NOT_RUN",
+      "reason": "This suite proves the reached input contract only; use a separate native AWT command test",
+      "suite": "ganglia-contract"
+    }
+  ],
+  "interpretation": "Seven unchanged helper checks pass. Ganglia input-contract observes raw 1.0 where the supplied RDF path expects 255; this is a cross-platform source behavior, not evidence of a native Mac loader failure. GUI-dependent native checks have not run on this cloud Linux host."
+}

@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.gatanalysis</groupId><artifactId>gat-native-alignment</artifactId><version>0.1.0-preview</version>
+  <name>Isolated GAT Template Matching worker</name>
+  <description>GPL-3.0 Template Matching API port in a separate JVM; not linked into Fiji's plugin classpath.</description>
+  <licenses><license><name>GNU General Public License v3.0</name><url>https://www.gnu.org/licenses/gpl-3.0.html</url><distribution>repo</distribution></license></licenses>
+  <properties><maven.compiler.release>11</maven.compiler.release><project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><opencv.platform>macosx-arm64</opencv.platform></properties>
+  <dependencies>
+    <dependency><groupId>net.imagej</groupId><artifactId>ij</artifactId><version>1.54p</version></dependency>
+    <dependency><groupId>org.bytedeco</groupId><artifactId>javacv</artifactId><version>1.5.12</version><exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions></dependency>
+    <dependency><groupId>org.bytedeco</groupId><artifactId>javacpp</artifactId><version>1.5.12</version></dependency>
+    <dependency><groupId>org.bytedeco</groupId><artifactId>javacpp</artifactId><version>1.5.12</version><classifier>${opencv.platform}</classifier></dependency>
+    <dependency><groupId>org.bytedeco</groupId><artifactId>opencv</artifactId><version>4.11.0-1.5.12</version></dependency>
+    <dependency><groupId>org.bytedeco</groupId><artifactId>opencv</artifactId><version>4.11.0-1.5.12</version><classifier>${opencv.platform}</classifier></dependency>
+    <dependency><groupId>org.bytedeco</groupId><artifactId>openblas</artifactId><version>0.3.30-1.5.12</version><classifier>${opencv.platform}</classifier></dependency>
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><version>5.13.4</version><scope>test</scope></dependency>
+  </dependencies>
+  <build><finalName>gat-native-alignment</finalName><plugins>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.1</version></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.5.4</version><configuration><argLine>-Djava.awt.headless=true</argLine></configuration></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-jar-plugin</artifactId><version>3.4.2</version><configuration><archive><manifest><mainClass>TemplateMatching.NativeAlignmentMain</mainClass><addClasspath>true</addClasspath><classpathPrefix>lib/</classpathPrefix></manifest></archive></configuration></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId><version>3.8.1</version><executions><execution><id>runtime</id><phase>package</phase><goals><goal>copy-dependencies</goal></goals><configuration><includeScope>runtime</includeScope><outputDirectory>${project.build.directory}/lib</outputDirectory></configuration></execution></executions></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-assembly-plugin</artifactId><version>3.7.1</version><configuration><descriptors><descriptor>src/assembly/distribution.xml</descriptor></descriptors><finalName>gat-native-alignment-${opencv.platform}</finalName><appendAssemblyId>false</appendAssemblyId></configuration><executions><execution><id>bundle</id><phase>package</phase><goals><goal>single</goal></goals></execution></executions></plugin>
+  </plugins></build>
+</project>

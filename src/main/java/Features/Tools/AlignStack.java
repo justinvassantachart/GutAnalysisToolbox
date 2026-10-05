@@ -15,6 +15,9 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
+import java.util.Map;
+import java.util.WeakHashMap;
+import java.util.Collections;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,6 +29,12 @@ import java.io.PrintWriter;
  * Converts macro logic to Java, using parameters from the Params object.
  */
 public class AlignStack implements PlugIn {
+    private static final Map<ImagePlus, TemplateMotion> TEMPLATE_MOTION = Collections.synchronizedMap(new WeakHashMap<>());
+    private static final class TemplateMotion {
+        final int reference;
+        final double[][] shifts;
+        TemplateMotion(int reference, double[][] shifts) { this.reference = reference; this.shifts = shifts; }
+    }
 
     /** Container for alignment output: aligned stack and CSV file */
     public static class AlignResult {
@@ -106,26 +115,9 @@ public class AlignStack implements PlugIn {
             IJ.log("Saved aligned stack to: " + outFile);
         }
 
-        // Export CSV with X/Y shifts per slice if available
-        File resultCSV = new File(p.outputDir, imp.getTitle() + "_alignment.csv");
-        ResultsTable rt = ResultsTable.getResultsTable();
-        if (rt != null && rt.getCounter() > 0) {
-            int lastCol = rt.getLastColumn();
-            int secondLastCol = lastCol - 1;
-
-            try (PrintWriter pw = new PrintWriter(new FileWriter(resultCSV))) {
-                pw.println("Slice,Dx,Dy");
-                for (int i = 0; i < rt.getCounter(); i++) {
-                    double valDx = rt.getValueAsDouble(secondLastCol, i);
-                    double valDy = rt.getValueAsDouble(lastCol, i);
-                    pw.printf("%d,%.3f,%.3f%n", i + 1, valDx, valDy);
-                }
-            } catch (IOException ex) {
-                IJ.log("Failed to save alignment CSV: " + ex.getMessage());
-            }
-        } else {
-            IJ.log("Warning: ResultsTable is empty. No motion data found.");
-        }
+        // Never reinterpret unrelated global measurements or invent zero shifts.
+        File resultCSV = writeVerifiedAlignmentResultsCSV(imp, p.outputDir);
+        if (p.useSIFT && resultCSV != null) IJ.log("Motion CSV describes the Template Matching refinement stage only, not the preceding SIFT affine transform.");
 
         // Clean memory
         System.gc();
@@ -275,6 +267,24 @@ public class AlignStack implements PlugIn {
      */
     public static void alignTemplateMatching(ImagePlus imp, int refFrame) {
         requireTemplateMatchingSupported();
+        TEMPLATE_MOTION.remove(imp);
+        if (nativeTemplateMatchingSelected()) {
+            try {
+                double[][] shifts = Features.Inference.NativeAlignmentClient.predict(IJ.getDirectory("imagej"), imp, refFrame);
+                ImagePlus result = Features.Inference.NativeAlignmentClient.translatedCopy(imp, shifts);
+                imp.setStack(imp.getTitle(), result.getStack());
+                copyAlignmentMetadata(result, imp);
+                imp.updateAndDraw();
+                recordTemplateMotion(imp, refFrame, shifts);
+                IJ.log("Template Matching backend: isolated native OpenCV worker; original method5/integer shifts");
+                return;
+            } catch (InterruptedException error) {
+                Thread.currentThread().interrupt();
+                throw new IllegalStateException("Native Template Matching interrupted; input was not changed", error);
+            } catch (IOException error) {
+                throw new IllegalStateException(error.getMessage(), error);
+            }
+        }
         int xSize = (int) Math.floor(imp.getWidth() * 0.7);
         int ySize = (int) Math.floor(imp.getHeight() * 0.7);
         int x0 = (int) Math.floor(imp.getWidth() / 6.0);
@@ -285,18 +295,29 @@ public class AlignStack implements PlugIn {
                 xSize, ySize, x0, y0, refFrame
         );
 
+        ResultsTable before = ResultsTable.getResultsTable();
         IJ.run(imp, "Align slices in stack...", args);
         IJ.wait(10);
+        ResultsTable after = ResultsTable.getResultsTable();
+        if (after != before) {
+            double[][] shifts = verifiedLegacyTemplateShifts(after, imp.getStackSize(), refFrame);
+            if (shifts != null) recordTemplateMotion(imp, refFrame, shifts);
+        }
     }
 
-    /** The update site's Template Matching OpenCV binary is Intel-only on macOS. */
+    static boolean nativeTemplateMatchingSelected() {
+        String selection = System.getProperty("gat.alignment.backend", "auto").trim().toLowerCase(Locale.ROOT);
+        boolean apple = Features.Inference.InferenceBackend.isAppleSiliconMac();
+        if ("native".equals(selection)) return true;
+        if ("auto".equals(selection)) return apple;
+        if ("legacy".equals(selection) && !apple) return false;
+        if ("legacy".equals(selection)) throw new IllegalStateException("Legacy Template Matching has no supplied Apple Silicon OpenCV library; use the isolated native worker.");
+        throw new IllegalArgumentException("gat.alignment.backend must be auto, native or legacy");
+    }
+
+    /** Reject a missing isolated worker before opening or modifying an image. */
     public static void requireTemplateMatchingSupported() {
-        if (Features.Inference.InferenceBackend.isAppleSiliconMac()) {
-            throw new IllegalStateException("Template Matching alignment is unavailable in this Apple Silicon preview: "
-                    + "the plugin's published macOS OpenCV binary is Intel-only. "
-                    + "Turn off Template Matching and explicitly choose SIFT alignment if appropriate. "
-                    + "GAT will not silently substitute a different alignment algorithm.");
-        }
+        if (nativeTemplateMatchingSelected()) Features.Inference.NativeAlignmentClient.checkInstallation(IJ.getDirectory("imagej"));
     }
 
     /**
@@ -308,23 +329,59 @@ public class AlignStack implements PlugIn {
         IJ.run(imp, "StackReg", "transformation=[Rigid Body]");
     }
 
-    /**
-     * Save simple alignment shifts as CSV (placeholder if ResultsTable is empty)
-     */
+    /** Save only verified algorithm-owned data. Unavailable transforms produce no file. */
     public static void saveAlignmentResultsCSV(ImagePlus imp, String outputDir) {
-        if (imp == null || outputDir == null) return;
+        writeVerifiedAlignmentResultsCSV(imp, outputDir);
+    }
 
-        File csvFile = new File(outputDir, imp.getTitle() + "_alignment.csv");
-        try (PrintWriter pw = new PrintWriter(csvFile)) {
-            pw.println("Frame,X_shift,Y_shift");
-            int nFrames = imp.getNFrames();
-            for (int t = 1; t <= nFrames; t++) {
-                double xShift = 0; // Placeholder
-                double yShift = 0; // Placeholder
-                pw.printf("%d,%.2f,%.2f%n", t, xShift, yShift);
-            }
-        } catch (Exception e) {
-            IJ.log("Failed to save CSV: " + e.getMessage());
+    static File writeVerifiedAlignmentResultsCSV(ImagePlus imp, String outputDir) {
+        if (imp == null || outputDir == null) return null;
+        TemplateMotion motion = TEMPLATE_MOTION.get(imp);
+        if (motion == null) {
+            IJ.log("No verified per-slice translation data are available; no placeholder motion CSV was written. SIFT affine transforms are not exported by this plugin interface.");
+            return null;
         }
+        File file = new File(outputDir, imp.getTitle() + "_template_matching_alignment.csv");
+        try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
+            writer.println("Algorithm,ReferenceSlice,Slice,Dx,Dy");
+            for (int slice = 0; slice < motion.shifts.length; slice++)
+                writer.printf(Locale.ROOT, "TemplateMatching,%d,%d,%.6f,%.6f%n", motion.reference, slice + 1,
+                        motion.shifts[slice][0], motion.shifts[slice][1]);
+            if (writer.checkError()) throw new IOException("Error writing motion CSV");
+            return file;
+        } catch (IOException error) {
+            throw new IllegalStateException("Failed to save verified alignment shifts: " + error.getMessage(), error);
+        }
+    }
+
+    static void recordTemplateMotion(ImagePlus image, int reference, double[][] shifts) {
+        if (shifts == null || shifts.length != image.getStackSize() || reference < 1 || reference > shifts.length)
+            throw new IllegalArgumentException("Invalid Template Matching motion dimensions/reference");
+        double[][] copy = new double[shifts.length][2];
+        for (int frame = 0; frame < shifts.length; frame++) {
+            if (shifts[frame] == null || shifts[frame].length != 2) throw new IllegalArgumentException("Invalid motion pair");
+            for (int axis = 0; axis < 2; axis++) {
+                double value = shifts[frame][axis];
+                if (!Double.isFinite(value) || Math.abs(value) > (axis == 0 ? image.getWidth() : image.getHeight())
+                        || frame == reference - 1 && value != 0) throw new IllegalArgumentException("Invalid motion value");
+                copy[frame][axis] = value;
+            }
+        }
+        TEMPLATE_MOTION.put(image, new TemplateMotion(reference, copy));
+    }
+
+    static double[][] verifiedLegacyTemplateShifts(ResultsTable table, int frames, int reference) {
+        if (table == null || table.size() != frames - 1 || reference < 1 || reference > frames
+                || !table.columnExists("Slice") || !table.columnExists("dX") || !table.columnExists("dY")) return null;
+        double[][] shifts = new double[frames][2];
+        boolean[] seen = new boolean[frames];seen[reference - 1] = true;
+        for (int row = 0; row < table.size(); row++) {
+            double slice = table.getValue("Slice", row), dx = table.getValue("dX", row), dy = table.getValue("dY", row);
+            if (!Double.isFinite(slice) || slice != Math.rint(slice) || slice < 1 || slice > frames
+                    || seen[(int) slice - 1] || !Double.isFinite(dx) || !Double.isFinite(dy)) return null;
+            seen[(int) slice - 1] = true;
+            shifts[(int) slice - 1][0] = dx;shifts[(int) slice - 1][1] = dy;
+        }
+        return shifts;
     }
 }

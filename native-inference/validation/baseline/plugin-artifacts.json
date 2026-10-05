@@ -1,0 +1,32 @@
+[
+  {
+    "file": "StarDist_-0.3.0.jar",
+    "url": "https://sites.imagej.net/StarDist/plugins/StarDist_-0.3.0.jar-20200421142655",
+    "sha256": "fff483154961e60cb6305e4ef73ef9e662298e1e65a077858e018717eb30d2bd",
+    "bytes": 16180976
+  },
+  {
+    "file": "csbdeep-0.6.0.jar",
+    "url": "https://sites.imagej.net/CSBDeep/jars/csbdeep-0.6.0.jar-20200808215936",
+    "sha256": "13bfb85d179bedf1d5e6542b0e200cb250ab8e030e88d5e645e6e6b486b22894",
+    "bytes": 142482
+  },
+  {
+    "file": "imagej-tensorflow-1.1.6.jar",
+    "url": "https://sites.imagej.net/CSBDeep/jars/imagej-tensorflow-1.1.6.jar-20200706021812",
+    "sha256": "e6ae932922325818278c87999f2fb57b5426f383e27455a978ae849f1f1cb0a4",
+    "bytes": 54120
+  },
+  {
+    "file": "Template_Matching.jar",
+    "url": "https://sites.imagej.net/Template_Matching/plugins/Template_Matching.jar-20200515134627",
+    "sha256": "cdc4ac16d70486c7420b9704e56c26b90084b54a1b558405451fd22cc8aa823c",
+    "bytes": 10695
+  },
+  {
+    "file": "Clipper-6.4.2.jar",
+    "url": "https://sites.imagej.net/StarDist/jars/Clipper-6.4.2.jar-20200108164851",
+    "sha256": "df1020524cc2cad78d57a6928cf94d00e8558397ccf8d227d2c8f4af1023b970",
+    "bytes": 70822
+  }
+]

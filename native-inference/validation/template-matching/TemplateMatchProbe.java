@@ -20,17 +20,21 @@ public class TemplateMatchProbe {
   ImageStack stack=new ImageStack(w,h);for(int[] shift:new int[][]{{0,0},{3,-2},{-4,5},{0,0}}){ImageProcessor copy=base.duplicate();copy.translate(shift[0],shift[1]);stack.addSlice(copy);}
   return new ImagePlus("synthetic-"+bits,stack);
  }
- static String run(ImagePlus image,String name)throws Exception {
+ static String run(ImagePlus image,String name,int referenceSlice)throws Exception {
   long started=System.nanoTime();Align_slices a=new Align_slices();a.imp=image;a.stack=image.getStack();a.width=image.getWidth();a.height=image.getHeight();a.method=5;a.subPixel=false;a.sArea=0;a.itpMethod=0;
-  a.refSlice=1;a.rect=new Rectangle((int)Math.floor(a.width/6.0),(int)Math.floor(a.height/6.0),(int)Math.floor(a.width*0.7),(int)Math.floor(a.height*0.7));
-  ImageProcessor reference=a.stack.getProcessor(1);reference.setRoi(a.rect);a.ref=reference.crop();reference.resetRoi();
+  a.refSlice=referenceSlice;a.rect=new Rectangle((int)Math.floor(a.width/6.0),(int)Math.floor(a.height/6.0),(int)Math.floor(a.width*0.7),(int)Math.floor(a.height*0.7));
+  String macro=String.format(java.util.Locale.ROOT,"method=5 windowsizex=%d windowsizey=%d x0=%d y0=%d swindow=0 subpixel=false itpmethod=0 ref.slice=%d show=true",a.rect.width,a.rect.height,a.rect.x,a.rect.y,referenceSlice);
+  Method parse=Align_slices.class.getDeclaredMethod("getMacroParameters",String.class);parse.setAccessible(true);parse.invoke(a,macro);
+  if(a.method!=5||a.subPixel||a.sArea!=0||a.itpMethod!=0||a.refSlice!=referenceSlice||a.windowSizeX!=a.rect.width||a.iniX!=a.rect.x)throw new AssertionError("GAT macro options parsed differently from worker parameters");
+  ImageProcessor reference=a.stack.getProcessor(referenceSlice);reference.setRoi(a.rect);a.ref=reference.crop();reference.resetRoi();
   Method method=Align_slices.class.getDeclaredMethod("alignSlices",int.class);method.setAccessible(true);
-  StringBuilder shifts=new StringBuilder("[[0,0]");for(int z=2;z<=image.getStackSize();z++){method.invoke(a,z);shifts.append(",[").append(a.disX).append(',').append(a.disY).append(']');}shifts.append(']');
+  double[][] values=new double[image.getStackSize()][2];for(int z=referenceSlice-1;z>0;z--){method.invoke(a,z);values[z-1][0]=a.disX;values[z-1][1]=a.disY;}for(int z=referenceSlice+1;z<=image.getStackSize();z++){method.invoke(a,z);values[z-1][0]=a.disX;values[z-1][1]=a.disY;}String shifts=Arrays.deepToString(values);
   return "{\"case\":\""+name+"\",\"width\":"+a.width+",\"height\":"+a.height+",\"frames\":"+image.getStackSize()+",\"bits\":"+image.getBitDepth()+",\"shifts\":"+shifts+",\"aligned_pixel_sha256\":\""+digest(image)+"\",\"milliseconds\":"+(System.nanoTime()-started)/1000000+"}";
  }
  public static void main(String[]args)throws Exception {
-  List<String>results=new ArrayList<>();results.add(run(synthetic(8),"synthetic8"));results.add(run(synthetic(16),"synthetic16"));
-  if(args.length>1){ImagePlus real=IJ.openImage(args[1]);if(real==null)throw new IllegalArgumentException("Cannot read public TIFF");results.add(run(real,"public-calcium"));}
+  List<String>results=new ArrayList<>();results.add(run(synthetic(8),"synthetic8",1));results.add(run(synthetic(16),"synthetic16",1));
+  results.add(run(synthetic(8),"synthetic8-ref3",3));results.add(run(synthetic(16),"synthetic16-ref2",2));
+  if(args.length>1){ImagePlus real=IJ.openImage(args[1]);if(real==null)throw new IllegalArgumentException("Cannot read public TIFF");results.add(run(real,"public-calcium",1));ImagePlus second=IJ.openImage(args[1]);results.add(run(second,"public-calcium-ref71",71));}
   Files.writeString(Paths.get(args[0]),"{\"java\":\""+System.getProperty("java.version")+"\",\"arch\":\""+System.getProperty("os.arch")+"\",\"cases\":["+String.join(",",results)+"]}\n");
  }
 }
