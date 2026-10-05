@@ -50,6 +50,8 @@ public class AlignStack implements PlugIn {
      * @throws Exception if input is invalid or stack is too short
      */
     public AlignResult run(Params p) throws Exception {
+        // Reject unsupported native code before opening or modifying an image.
+        if (p.useTemplateMatching) requireTemplateMatchingSupported();
         if (p.imagePath == null || p.imagePath.isEmpty()) {
             throw new IllegalArgumentException("No input image specified");
         }
@@ -164,6 +166,7 @@ public class AlignStack implements PlugIn {
      * @param refFrame Reference frame number
      */
     public static void alignTemplateMatching(ImagePlus imp, int refFrame) {
+        requireTemplateMatchingSupported();
         int xSize = (int) Math.floor(imp.getWidth() * 0.7);
         int ySize = (int) Math.floor(imp.getHeight() * 0.7);
         int x0 = (int) Math.floor(imp.getWidth() / 6.0);
@@ -176,6 +179,16 @@ public class AlignStack implements PlugIn {
 
         IJ.run(imp, "Align slices in stack...", args);
         IJ.wait(10);
+    }
+
+    /** The update site's Template Matching OpenCV binary is Intel-only on macOS. */
+    public static void requireTemplateMatchingSupported() {
+        if (Features.Inference.InferenceBackend.isAppleSiliconMac()) {
+            throw new IllegalStateException("Template Matching alignment is unavailable in this Apple Silicon preview: "
+                    + "the plugin's published macOS OpenCV binary is Intel-only. "
+                    + "Turn off Template Matching and explicitly choose SIFT alignment if appropriate. "
+                    + "GAT will not silently substitute a different alignment algorithm.");
+        }
     }
 
     /**

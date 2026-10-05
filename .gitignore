@@ -2,6 +2,9 @@ gat.txt
 
 # Maven build output
 target/
+dist/
+.attach_pid*
+__pycache__/
 Sample Images/Analysis/
 Models/*
 in_progress/*
