@@ -271,7 +271,7 @@ def main():
         jars = sorted((root / 'jars').rglob('*.jar')) + sorted((root / 'plugins').rglob('*.jar'))
         cp = os.pathsep.join(str(p) for p in jars)
         command([root / MANIFEST['fiji']['java_home'] / 'bin/javac', '--release', '11', '-cp', cp,
-                 '-d', classes, HERE / 'Fresh_Ganglia_Probe.java', HERE / 'Fresh_Ganglia_Params.java'], 'ganglia-probe-compile.log')
+                 '-d', classes, HERE / 'Fresh_Ganglia_Probe.java', HERE / 'Fresh_Ganglia_Params.java', HERE / 'Fresh_Ganglia_Evidence.java'], 'ganglia-probe-compile.log')
         with zipfile.ZipFile(root / 'plugins' / 'Fresh_Fiji_Probe.jar', 'a') as z:
             for path in classes.glob('*.class'):
                 z.write(path, path.name)

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "prepared_utc": "2026-10-05T19:16:00Z",
-  "status": "BOXED_PARAMS_SETUP_FIX_READY_FOR_NATIVE_RERUN",
+  "status": "MASK_RETENTION_FOLLOWUP_READY_FOR_NATIVE_RUN",
   "local_validation_host": "Linux-6.18.44-x86_64-with-glibc2.41",
   "official_archive": {
     "url": "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip",
@@ -39,7 +39,7 @@
       "status": "PASS"
     }
   ],
-  "native_fiji_installation_execution": "Initial native run observed missing engine; added real installer/model verification requires a fresh native rerun",
+  "native_fiji_installation_execution": "PASS bounded real-install acceptance in run37374804775 at26298b7; named-mask retention follow-up is separate",
   "frozen_files": [
     {
       "path": "validation/fiji-install/Fresh_Fiji_Probe.java",
@@ -47,11 +47,11 @@
     },
     {
       "path": "validation/fiji-install/Fresh_Ganglia_Probe.java",
-      "sha256": "941595f16879f0b97525fd8821be885caeeb5f4cabd839220873c9474fa1afc0"
+      "sha256": "249fe47eb8157144a7e2f1aafdb3ead3f4c545e28247c6b779abe3352a267eed"
     },
     {
       "path": "validation/fiji-install/README.md",
-      "sha256": "51f8b0ec065215ce772d9f8287e862b2f5366aa1624017acf3918f83729ea328"
+      "sha256": "05e348a5fb0c5c49e76a171c88a3044be546bd2a0afcf51c51b64fa41081c181"
     },
     {
       "path": "validation/fiji-install/manifest.json",
@@ -63,11 +63,11 @@
     },
     {
       "path": "validation/fiji-install/run_fresh_fiji.py",
-      "sha256": "8ee3486ff2dceff775000465e544d11ae69cd83f63c4c3369f40272bcbaca397"
+      "sha256": "1ad64ed382f327c6ffbdc313f105a856081c94768dc025343c4a093ccbde7884"
     },
     {
       "path": "validation/fiji-install/test_fresh_fiji.py",
-      "sha256": "250049a9404f8518abc5f16cb211d3f62dfb6b8709bf5c515164911752c76369"
+      "sha256": "2768d63b998a673e20fe4bea4da17fdbef3a58b3082861df93be04e0b181f50c"
     },
     {
       "path": "validation/fiji-install/Fresh_Ganglia_Params.java",
@@ -75,7 +75,11 @@
     },
     {
       "path": "validation/fiji-install/GangliaParamsContractTest.java",
-      "sha256": "f4aff3b9e27adb25c9a56cef0f9d717058b1f0978cd01af9ba003d0f07cec413"
+      "sha256": "70e70da24db6379f8182a620989192b233f9486dcf4fa4cd4d89dcfb96e24226"
+    },
+    {
+      "path": "validation/fiji-install/Fresh_Ganglia_Evidence.java",
+      "sha256": "8a1e0f104fb194de19c1a2772f2920d6ca5460748626c45a06fc270a4508430a"
     }
   ],
   "review_correction": {
@@ -111,7 +115,8 @@
     "java_probe_compilation": "PASS: --release 11 against exact Fiji ImageJ1 jar and existing pinned JDLL/ImgLib2 dependencies",
     "native_engine_installer_and_inference": "PENDING_NEW_NATIVE_RUN",
     "production_or_workflow_files_changed": false,
-    "four_tile_neuron_reference": "PRESERVED"
+    "four_tile_neuron_reference": "PRESERVED",
+    "recorded_phase": "Historical initial extension preparation; subsequent accepted native run is recorded separately"
   },
   "workflow_integration": {
     "active_workflow": ".github/workflows/native-mac-fresh-fiji.yml",
@@ -138,6 +143,19 @@
       ],
       "ganglia_status": "Harness setup exception before either GAT command; no application result inferred"
     },
-    "next_native_ganglia_result": "PENDING"
+    "next_native_ganglia_result": "PASS in run37374804775 at26298b7"
+  },
+  "accepted_native_run": {
+    "run_id": 37374804775,
+    "job_id": 111980603286,
+    "source_commit": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+    "status": "PASS: bounded installed-Fiji acceptance",
+    "artifact_sha256": "86d82644e2bf03cf35b7174010e5a634b27bfe038b294fb00cdaf81a6c6763d3",
+    "mask_retention_limit": "TIFF saves/metrics recorded but masks absent from that immutable diagnostics ZIP"
+  },
+  "mask_retention_followup": {
+    "python_tests": 18,
+    "status": "PASS local tests and complete probe compilation; new native retention result pending",
+    "scope": "Raw uint8 row-major and TIFF SHA256; only two named public-fixture TIFFs added to upload paths; no production/model change"
   }
 }

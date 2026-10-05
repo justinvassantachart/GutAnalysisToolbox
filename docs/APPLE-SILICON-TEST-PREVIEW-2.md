@@ -9,7 +9,7 @@ Experimental test release for native Apple Silicon Macs running **macOS 14 or la
 - `GAT-2.0.1-apple-silicon.2-macos-arm64-preview.zip`: fork plugin and isolated ARM64 inference/alignment workers
 - `GAT-2.0.0-unchanged-1870d9e-baseline.zip`: unchanged original plugin for a separate comparison installation
 - Matching `.sha256` files and `FORK_BUILD_INFO.json` / `ORIGINAL_BUILD_INFO.json`
-- `M1-CHATGPT-HANDOFF.md`: complete zero-prerequisite clean-Mac instructions (added with this release)
+- `M1-CHATGPT-HANDOFF-v4.md`: latest complete zero-prerequisite clean-Mac instructions, updated after the verified clean-install run and optional codec package; the earlier unversioned document is retained as history
 - `GAT-M1-test-kit-preview-2.1.zip`: corrected manual fixtures, references, manifests and paired Mac evidence. **Use kit 2.1; the earlier kit 2 has four-frame Template Matching helper fixtures that the dashboard rejects because it requires at least ten frames.** The corrected twelve-frame kit has been checked through the real worker
 
 Follow the complete instructions before installing; the core ZIPs do not include Fiji, its update sites, models or DeepImageJ engines.
@@ -25,7 +25,7 @@ The two installation packages were built together on an **Apple M1 (Virtual), na
 - 371 paired Linux neural-runtime cases preserve all object counts, but some boundaries and one cell's selected center differ. Detailed numerical and outline evidence is in the repository
 
 ## Remaining tests and limitations
-- A real official-Fiji clean-install run already passes fork neuron/alignment and reproduces original failures, but both dashboards stop until DeepImageJ engines are initialized. The extended automatic engine-initialization/dashboard test is still pending; GitHub reported a hosted-runner assignment incident during this validation
+- The [full bounded official-Fiji clean-install test now passes](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37374804775): official archive/updater, real engine installation/full-model execution, both dashboards, fork neuron/alignment, and both ganglia commands. All 854 shared dependency/model/engine paths are byte-identical between original/fork copies. Full desktop navigation and representative physical-Mac data remain to be checked
 - Physical-M1 OpenCL/GPU, full interactive workflows and representative biological acceptance remain to be tested. The virtual runner exposes no usable OpenCL device
 - Automatic calcium ROI segmentation and batch StackReg were incomplete upstream and are not supplied by this release
 - Optional JPEG-XR native repair is now available as the separate `gat-jpeg-xr-0.2.4-macos-arm64-test-overlay.zip`, with complete matching source and `OPTIONAL-JPEG-XR-README.md`. Its final native packaged-JAR decode passed 13 golden fixtures and 59 JNI signatures. Full Fiji importer, microscopy-container metadata and GUI checks remain pending; it is not bundled into the core ZIP

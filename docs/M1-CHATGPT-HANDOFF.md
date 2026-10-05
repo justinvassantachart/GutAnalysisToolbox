@@ -1,14 +1,15 @@
 # Clean Mac Fiji and GAT TEST release handoff
 
-Prepared 5 October 2026. TEST release 2. This is a self-contained instruction document for the computer assistant the owner chooses to use on their physical M1 Mac. No Fiji, Java, Homebrew, Git, Maven, Python, command-line developer tools, plugins, or models are assumed to be installed.
+Prepared 5 October 2026. Instruction revision 4, updated 21:30 UTC. Core TEST release 2 is unchanged. This is a self-contained instruction document for the computer assistant the owner chooses to use on their physical M1 Mac. No Fiji, Java, Homebrew, Git, Maven, Python, command-line developer tools, plugins, or models are assumed to be installed.
 
 **This is an experimental TEST release, not an all-workflow compatibility
 certificate.** Native hosted-Mac checks pass the fork's actual neuron/registration
-controls and the covered Java/ganglia/calcium workflows. The newly prepared
-fresh-install engine-initialization extension still awaits its native run;
-physical OpenCL/GPU access, complete desktop navigation and format-specific IO
-remain local checks. Optional JPEG-XR overlay packaging is pending and is not
-part of this core install. These limits do not prevent testing the supplied core
+controls and the covered Java/ganglia/calcium workflows. The complete bounded
+fresh-install test now passes real engine installation, model execution, both
+dashboards, fork neuron/alignment and both ganglia commands. Physical OpenCL/GPU
+access, complete desktop navigation and format-specific IO remain local checks.
+An audited optional JPEG-XR overlay is available separately; it is not part of
+the core ZIP. These limits do not prevent testing the supplied core
 package safely in the two separate Fiji copies below.
 
 Do not substitute the earlier `apple-silicon-preview-1` package: it lacks the
@@ -42,7 +43,7 @@ Verify every downloaded archive against the hashes below. These packages were bu
 | Fork ZIP and GAT JAR SHA-256 | `9c5a542b82eb146b9c1d6c78ca20d1a0ffb8d10af7d35d6cd8ead8b927ac1f9f` / `3d7a112228aba6b4748d604912ed1dd4336e6fb8f68e83fc4cd69385e00af7e9` |
 | Companion worker/alignment bundle inventory | Both `gat-native-inference/` and `gat-native-alignment/`, already in the core ZIP; preserve complete directories and BUILD_INFO.json |
 | Public fixtures, validation scripts, references and dependency manifest | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/GAT-M1-test-kit-preview-2.1.zip / `979d818165e677215824808834391ad80b70866c86ead5da2ae8830e022a2d55` |
-| Optional pinned ganglia engine/model data pack | No separate engine pack is required; use the supported official installation instructions in section 5 (fresh-install extension verification remains pending) |
+| Optional pinned ganglia engine/model data pack | No separate engine pack is required; use the supported official installation instructions in section 5 (the exact native clean-install/model/command checks now pass) |
 | Native paired baseline/fork CI run and report archive | [Qualified Sequoia paired report](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/ee2907e371b12b1951a507141f797afedb460aef/native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md); copies of the relevant evidence are in the test kit |
 | Final package's recorded Fiji/dependency inventory | `native-inference/validation/workflows/dependencies.json` at the pinned source; record actual updater-resolved versions and hashes as well |
 
@@ -66,13 +67,13 @@ is not the owner's physical M1 and does not expose a usable OpenCL device here.
 | Actual GAT Hu StarDist call | FAIL or timeout depending on the loader control; separate old TensorFlow JNI control fails | PASS: 39 cells and exact reference label raster | Full dashboard image transforms/filters and the user's physical setup |
 | Template Matching actual GAT call | FAIL: shifted image unchanged; installed-Fiji run captures missing `jniopencv_core` | PASS: aligned pixels exactly match seeded legacy reference | Broader real movies, GUI settings, physical Mac performance |
 | SIFT | Original result/metadata controls expose dropped or unpreserved output | PASS covered helper, single save/reopen and two-channel batch controls | Wider datasets and complete interactive navigation |
-| Ganglia | Command/model/cleanup executes; the pre-RDF input is incorrectly divided by 255 again | PASS command and corrected input contract | Biological review; complete fresh-installed-Fiji engine/command extension still pending |
+| Ganglia | Command/model/cleanup executes; the pre-RDF input is incorrectly divided by 255 again | PASS command and corrected input contract | Biological review and interactive painting; real fresh-installed-Fiji engine/command checks now pass |
 | Calcium | **PASS** on Sonoma and Sequoia: MAX control, F/F0 `[1,1,2]`, ROI measurement/export | **PASS** on both systems with the same numerical/export control | User-specific movies, cancellation/edge cases and complete GUI navigation |
 | Morphology, counts, merge/export and TIFF helpers | Covered Java/helper checks pass | Covered Java/helper/command checks pass | Broader schemas, formats and full workflows |
 | StackReg/TurboReg and multiplex | Original library/control coverage is partial | Direct StackReg and multiplex landmark controls pass | StackReg batch remains unimplemented; full multiplex export/fallbacks untested |
-| Fresh official Fiji with bundled Java | Native Fiji startup works; original neuron/alignment controls fail | Native Fiji startup plus actual neuron/alignment controls pass | GAT dashboards hit real missing-engine preflight; engine-initialization extension prepared but not native-verified |
+| Fresh official Fiji with bundled Java | Startup, engine/model, dashboard and ganglia commands pass; original neuron/alignment fail | Startup, engine/model, dashboard, neuron/alignment and ganglia commands pass | Complete interactive navigation, representative data and physical-machine checks |
 | OpenCL/CLIJ, spatial/EDF/GPU overlap | Virtual runner cannot establish physical-device support | Same limitation | Physical M1 device enumeration and real kernels/workflows |
-| JPEG-XR and other reader paths | Old macOS JPEG-XR JNI binary is Intel-only | Separate native codec prototype passes golden tests | Final optional overlay packaging and full importer/container testing are pending; not bundled in core |
+| JPEG-XR and other reader paths | Old macOS JPEG-XR JNI binary is Intel-only | Final optional resource-JAR passes all 13 golden fixtures, 59 JNI signatures and exact source/license gates | Full installed-Fiji importer/container metadata and GUI checks; separate add-on, not bundled in core |
 
 The calcium direct-return changes are **hardening**, not proof that the original
 calcium calculation was broken. Earlier calcium failures were confounded by the
@@ -112,6 +113,60 @@ validation kit supersede the earlier dialog-controller failures. A PARTIAL suite
 contains explicitly scoped passes plus blocked/unrun checks; it is not a whole
 application PASS. Failed-original and successful-fork elapsed times cannot be
 compared as a speedup. No physical-M1 or CPU-versus-GPU speed multiplier is claimed.
+
+## Latest verified clean-install evidence
+
+[Corrected real-Fiji run 37374804775](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37374804775)
+completed green on a native hosted M1. It uses the official pinned Fiji archive,
+its bundled ARM Java, official updater-resolved dependencies and actual supported
+JDLL engine installation. The full model consumes `[1,3,1024,1024]` and returns
+`[1,1,1024,1024]` with all 1,048,576 output values finite. Both dashboards open;
+fork neurons/alignment match the exact references; original/fork ganglia both
+execute, with 167,430/72,236 foreground pixels and preserved input/calibration.
+The original neuron/alignment failures remain recorded rather than converted
+to successes. The original production source is unchanged.
+
+The native validation source is `26298b73ea3fcb4c1410ad4bcd268233040c5ace`;
+production sources match the core release snapshot. Its 85-member diagnostic
+artifact 11372260331 has SHA-256
+`86d82644e2bf03cf35b7174010e5a634b27bfe038b294fb00cdaf81a6c6763d3`.
+The preceding attempt stopped before ganglia invocation because the harness
+used primitive reflection setters on boxed Double fields. That test-only issue
+was reproduced and corrected against the actual original/fork Params classes;
+no model, threshold or production algorithm was changed to obtain this pass.
+
+[Completed same-host before/after run 37369827141](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37369827141)
+also finishes green. Its narrowly verified observer records the original's
+unanswered TensorFlow error dialog before ending that isolated process. Green
+means complete original-failure observations plus passing repaired gates; it
+does not mean old native TensorFlow became compatible.
+
+## Optional JPEG-XR add-on
+
+For a genuinely JPEG-XR-compressed input, an optional tested codec package is
+now available. It does not change the core release ZIP, models or algorithms:
+
+- [Overlay ZIP](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/gat-jpeg-xr-0.2.4-macos-arm64-test-overlay.zip), 645,514 bytes
+- SHA-256 `d3208ee74c26edbb44846e56de76004a9962257f63b2050cd8beaffae0f8a1b5`
+- [Complete installation/rollback instructions](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/OPTIONAL-JPEG-XR-README.md)
+
+Read that README before use. Require native ARM Fiji/Java plus the tested
+jxrlib-all 0.2.4, native-lib-loader 2.5.0 and Bio-Formats 8.5.0 versions. Quit the
+fork test Fiji, then copy only `gat-jxrlib-0.2.4-osx-arm64-test-overlay.jar` into
+its actual `jars` directory. This one resource-only JAR is intentionally a Fiji
+add-on; the separate TensorFlow/OpenCV worker libraries still must stay out of
+global `jars`/`plugins`. Preserve the baseline copy without this overlay, and
+retain the complete included source/license archive outside Fiji. No build tools
+are needed to use it, and no existing Java JAR should be blindly replaced.
+
+The final packaged overlay passed all 13 official golden tile decodes, 59 matching JNI
+signatures, vector API controls, exact matching-source regeneration and license
+checks. It contains zero Java classes and only one ARM64 native resource. Full
+Fiji classloader/updater behavior, CZI/LIF container series/metadata and normal
+importer GUI still require local tests. A normal TIFF or uncompressed CZI is
+not a JPEG-XR test. Handle normal macOS security decisions with the owner; do
+not strip quarantine or disable Gatekeeper. Rollback moves only this named
+add-on into an external backup folder while Fiji is closed.
 
 ## 1 Confirm local hardware and make a workspace
 
@@ -252,8 +307,10 @@ https://sites.imagej.net/GutAnalysisToolbox/models/2D_Ganglia_RGB_v3.bioimage.io
 Use the supported setup instructions below and save the selected engine,
 installed JAR versions/paths and initialization log. No separate prebuilt engine
 pack is required. Do not create an empty `engines` directory merely to pass GAT's
-startup check. The new fresh-install engine-initialization extension remains
-pending; the instructions below are not presented as a completed install test.
+startup check. The supported API installer, full model run and resulting
+installed-Fiji GAT ganglia command have now passed native Mac validation. The
+menu-driven setup flow and every security/interaction prompt still need to be
+observed on this physical Mac.
 
 ### Supported initialization when the fresh GAT dashboard asks for engines
 
@@ -311,9 +368,10 @@ Restart Fiji after dependency setup. Run the supplied public ganglia model input
 through DeepImageJ and then the GAT ganglia path, and save the output/log before
 claiming readiness. If any required JAR, model, class or native load fails,
 report that exact error. Merely seeing an engines folder or an installer return
-is insufficient. The extended clean-install/native test of this exact setup is
-**still pending for this TEST handoff**; these instructions are not labelled as
-an already completed full-installer verification.
+is insufficient. The bounded clean-install/native test of this exact pinned
+setup now passes, including the actual GAT ganglia command on original and fork.
+That evidence does not replace checking this physical Mac or certify every
+interactive option, format or biological measurement.
 
 The audited JDLL 0.6.2-SNAPSHOT resolves the model's declared `PyTorch 2.4.1+cpu` to its available `PyTorch 2.0.0` CPU engine using DJL 0.22.1. Real native ARM model tests have run through that engine; do not “repair” the descriptor to say 2.0 or upgrade it blindly. The native worker for neuron/subtype inference is separate and does not require loading legacy TensorFlow 1.15 in Fiji. Keep the copied model and engine files identical across original and fork for a fair comparison.
 
@@ -466,7 +524,7 @@ Run the original and fork on identical fresh fixture copies and separately named
 - MorphoLibJ: known-size labels, threshold boundary inclusion, border-label removal, connectivity and preserved calibration. Java-only code is still subject to workflow/result-handling bugs.
 - Counts/areas: known label IDs and pixel counts, zero objects, ganglion minimum-count filtering and calibrated area. Use unequal pixel widths/heights to reveal incorrect area conversion; report rather than hiding a pre-existing calculation bug.
 - Image IO: 8/16/32-bit TIFF, RGB, C/Z/T hyperstack, calibration and frame interval save/reopen. For CZI/LIF/other formats, use a public vendor/Bio-Formats sample with exact compression/series metadata and record selected series/channels.
-- JPEG-XR: use a genuinely JPEG-XR-compressed public microscopy sample or a validated codec fixture. The shipped old macOS decoder was Intel-only; a plain TIFF or non-JPEG-XR CZI does not exercise it. If the final fork supplies a replacement/adapter, verify that precise path and sample separately.
+- JPEG-XR: use a genuinely JPEG-XR-compressed public microscopy sample or a validated codec fixture. The shipped old macOS decoder was Intel-only; a plain TIFF or non-JPEG-XR CZI does not exercise it. Use the optional overlay above only after verifying its dependencies and hash, then test that precise path and sample separately.
 - HDF5 and other native formats: only claim support after a real public sample decode/write control. The presence of an arm64 library alone is insufficient.
 - Merge/export: two known CSVs with distinct row IDs, headers, units, Unicode/spaces in names, missing/empty inputs, and a deliberately existing destination. Check row counts/content and explicit overwrite behavior; never test by deleting a real result.
 - Reopen all saved ROI ZIPs, masks, overlays and CSVs. Check titles, column definitions, identifiers, units, output paths and whether the original images remain unchanged.
@@ -554,4 +612,3 @@ if (save.getFileName() != null) {
 ```
 
 Record its SHA-256 after saving. Select the top-left 2×2 ROI at x=0,y=0 for the `[1,1,2]` calcium control. TIFF byte hashes can vary with metadata/version even when pixels are identical, so compare reopened dimensions, calibration and pixel values as well as recording the file hash.
-

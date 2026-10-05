@@ -28,10 +28,13 @@ The earlier ambiguous calcium control was resolved; no old numerical defect is
 claimed. Both ganglia commands run, with intentional output changes from the
 RDF input-scaling correction described below. [Qualified paired evidence](../native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md).
 
-Real official-Fiji startup and fork neuron/alignment pass; both dashboards
-initially block until DeepImageJ engines are initialized. The extended automated
-engine-setup test remains pending. Physical OpenCL/GPU and complete interactive
-workflows remain open. See the [workflow matrix](apple-silicon-workflow-matrix.md).
+The [complete bounded official-Fiji install](../validation/fiji-install/results/mac-accepted-26298b7/REPORT.md)
+now passes real engine installation/model inference, both dashboards, fork
+neuron/alignment and both ganglia commands. All 854 shared model/dependency/engine
+paths match exactly between the two copies. The earlier missing-engine and
+boxed-parameter setup failures remain preserved in their historical packets.
+Physical OpenCL/GPU and complete interactive workflows remain open. See the
+[workflow matrix](apple-silicon-workflow-matrix.md).
 
 The [completed same-host comparison](../native-inference/validation/baseline/results/mac-live-dialog-ee2907e/REPORT.md)
 is green: a strictly verified observer records the unchanged original's visible,

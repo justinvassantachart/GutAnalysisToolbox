@@ -37,6 +37,7 @@ class ArchiveSafetyTests(unittest.TestCase):
         self.assertTrue(source.is_file())
         subprocess.run([javac, '--release', '11', '-d', str(classes), str(source),
                         str(here / 'Fresh_Ganglia_Params.java'),
+                        str(here / 'Fresh_Ganglia_Evidence.java'),
                         str(here / 'GangliaParamsContractTest.java')],
                        check=True, capture_output=True, text=True, timeout=30)
         result = subprocess.run([java, '-Djava.awt.headless=true', '-cp', str(classes),
@@ -47,6 +48,17 @@ class ArchiveSafetyTests(unittest.TestCase):
         self.assertIn('Fresh_Ganglia_Params.configure(params)',
                       (here / 'Fresh_Ganglia_Probe.java').read_text())
         self.assertIn("HERE / 'Fresh_Ganglia_Params.java'", (here / 'run_fresh_fiji.py').read_text())
+
+    def test_only_named_public_mask_tiffs_are_retained(self):
+        here = Path(__file__).resolve().parent
+        workflow = (here.parents[1] / '.github/workflows/native-mac-fresh-fiji.yml').read_text()
+        self.assertIn('fresh-fiji-results/original_ganglia-mask.tif', workflow)
+        self.assertIn('fresh-fiji-results/fork_ganglia-mask.tif', workflow)
+        self.assertNotIn('fresh-fiji-results/**/*.tif', workflow)
+        probe = (here / 'Fresh_Ganglia_Probe.java').read_text()
+        self.assertIn('"mask_pixels_uint8_row_major_sha256"', probe)
+        self.assertIn('"mask_tiff_sha256"', probe)
+        self.assertIn("HERE / 'Fresh_Ganglia_Evidence.java'", (here / 'run_fresh_fiji.py').read_text())
 
     def test_actual_gat_reference_uses_four_tiles(self):
         reference = fresh.MANIFEST['neuron_reference']

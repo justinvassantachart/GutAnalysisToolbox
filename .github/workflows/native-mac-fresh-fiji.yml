@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/native-mac-fresh-fiji.yml'
       - 'validation/fiji-install/**'
+      - '!validation/fiji-install/results/**'
   workflow_dispatch:
 
 permissions:
@@ -93,4 +94,6 @@ jobs:
             fresh-fiji-results/**/*.json
             fresh-fiji-results/**/*.log
             fresh-fiji-results/**/*.xml.gz
+            fresh-fiji-results/original_ganglia-mask.tif
+            fresh-fiji-results/fork_ganglia-mask.tif
           if-no-files-found: error

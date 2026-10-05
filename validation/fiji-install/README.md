@@ -162,5 +162,17 @@ The corrected probe uses Fresh_Ganglia_Params for the two boxed assignments.
 A regression compiles the repository's actual Params.java, demonstrates both
 old setters fail, and checks all four configured values. The same check passes
 against unchanged 1870d9e Params. Production code, models, thresholds and engine
-selection are unchanged; the final installed-Fiji ganglia gate still requires
-the new native run. Historical artifacts retain their original failure status.
+selection are unchanged. The corrected installed-Fiji ganglia gate subsequently
+passed in [run 37374804775](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37374804775)
+at 26298b7; see the accepted result packet. Historical artifacts retain their
+original failure status.
+
+## Public mask retention
+
+The accepted 26298b7 run recorded successful saves and command metrics but did
+not retain its ganglia TIFFs in the diagnostic archive. That historical gap is
+not relabelled as raster evidence. Subsequent runs record both the raw row-major
+uint8 pixel SHA-256 and the TIFF-file SHA-256, and upload only the two specifically
+named public-fixture mask TIFFs. They do not upload a full Fiji install, model
+weights, arbitrary user images or native caches. The raw-pixel convention has
+a known-byte regression test.

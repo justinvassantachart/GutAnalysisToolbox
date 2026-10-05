@@ -19,6 +19,8 @@ public final class GangliaParamsContractTest {
                 || !Double.valueOf(1.0).equals(params.gangliaMinAreaUm2)
                 || params.gangliaOpenIterations != 1 || params.gangliaInteractiveReview)
             throw new AssertionError("Probe configuration did not reach actual Params");
+        if (!"7a7bf454c5f3cb1b9d9a20f81417f98d976fe3b3dd52c1b9968f02e89e7e8a2f".equals(Fresh_Ganglia_Evidence.sha256(new byte[]{0, -1, 0, -1})))
+            throw new AssertionError("Unsigned-byte mask hash convention changed");
         System.out.println("PASS actual Params boxed Double and primitive int/boolean setup");
     }
 }

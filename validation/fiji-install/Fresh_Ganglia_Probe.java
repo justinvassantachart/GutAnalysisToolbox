@@ -84,6 +84,8 @@ public final class Fresh_Ganglia_Probe {
         check(new ij.io.FileSaver(mask).saveAsTiff(saved.toString()),"Cannot persist mask");
         return map("width",w,"height",h,"foreground_pixels",foreground,"seconds",(System.nanoTime()-start)/1e9,
                 "source_unchanged",true,"calibration_preserved",true,"mask_file",saved.getFileName().toString(),
+                "mask_pixels_uint8_row_major_sha256",Fresh_Ganglia_Evidence.sha256((byte[])mask.getProcessor().getPixels()),
+                "mask_tiff_sha256",Fresh_Ganglia_Evidence.sha256(Files.readAllBytes(saved)),
                 "input_contract","Supplied test-input.npy channel 0=Hu/channel 1=ganglia; actual GAT builds R=Hu,G=ganglia,B=Hu",
                 "rdf_threshold",.6,"gat_threshold",.6,"open_iterations",1,"minimum_area_um2",1.0,
                 "scope","Actual GAT->registered DeepImageJ Run->model->MorphoLibJ cleanup; biological and manual-paint review excluded");

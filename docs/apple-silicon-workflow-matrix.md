@@ -17,6 +17,8 @@ Use [TEST preview 2](APPLE-SILICON-TEST-PREVIEW-2.md) and the
 
 Primary evidence:
 
+- [Complete bounded official-Fiji install](../validation/fiji-install/results/mac-accepted-26298b7/REPORT.md): real updater/engine/model, both dashboards and ganglia, fork neuron/alignment; shared 854-file inventory identical
+
 - [Completed same-host evidence job](../native-inference/validation/baseline/results/mac-live-dialog-ee2907e/REPORT.md), original failures and repaired passes, with all live controls
 - [Final optional JPEG-XR package audit](../native-inference/validation/jpeg-xr/results/mac-6996dd5/REPORT.md), golden tile/ABI/source gates passed; full importer still open
 
@@ -56,7 +58,7 @@ Primary evidence:
 | CSV merging | Native helper checks for small files and overwrite refusal pass | Quoted/mixed schemas, non-ASCII paths, larger trees and UI. Default merger does not enforce identical headers |
 | Summary CSV / label TIFF export | Native basic counts and lossless label round-trip helpers pass; SIFT/ganglia saved outputs checked | Every workflow's overlays, ROI ZIPs, multichannel summaries and calibration |
 | Ordinary TIFF and microscopy IO | TIFF controls pass; actual readers depend on format/compression | Representative LIF/CZI/HDF5/user formats and metadata; a filename extension does not identify its codec |
-| JPEG-XR codec | Rebuilt native arm64 JNI passes 13 official golden fixtures, 59 JNI signatures and vector API checks through Bio-Formats 8.5.0 service/codec | Optional distributable overlay packaging/loader integration under review; complete JPEG-XR CZI reader sample still needed |
+| JPEG-XR codec | Rebuilt native arm64 JNI passes 13 official golden fixtures, 59 JNI signatures and vector API checks through Bio-Formats 8.5.0 service/codec | Final packaged resource-JAR/source/license gates passed; optional release add-on available. Full installed-Fiji loader/updater and JPEG-XR CZI reader sample still needed |
 | Legacy `.ijm` macros / QuPath | Outside the GATV2 adapter | Test separately; do not infer arbitrary direct StarDist calls were repaired |
 
 ## Before/after interpretation

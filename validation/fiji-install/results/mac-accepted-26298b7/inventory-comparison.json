@@ -1,0 +1,5011 @@
+{
+  "schema_version": 1,
+  "method": "Exact path, byte-count and SHA-256 comparisons of recorded inventories. No distribution binaries are present in this packet; claims are scoped to the files the harness inventoried.",
+  "counts": {
+    "installed": 847,
+    "engine-ready": 855,
+    "original-final": 855,
+    "fork-final": 887
+  },
+  "comparisons": {
+    "installed_to_engine-ready": {
+      "before": "installed-inventory.json",
+      "after": "engine-ready-inventory.json",
+      "before_count": 847,
+      "after_count": 855,
+      "common_paths": 847,
+      "byte_identical_common_files": 846,
+      "added": [
+        {
+          "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/api-0.22.1.jar",
+          "bytes": 831237,
+          "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+        },
+        {
+          "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/commons-compress-1.22.jar",
+          "bytes": 1039712,
+          "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+        },
+        {
+          "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/dl-modelrunner-pytorch-0.4.4.jar",
+          "bytes": 31502,
+          "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+        },
+        {
+          "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/jna-5.13.0.jar",
+          "bytes": 1879325,
+          "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+        },
+        {
+          "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-engine-0.22.1.jar",
+          "bytes": 89668,
+          "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+        },
+        {
+          "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-jni-2.0.0-0.22.1.jar",
+          "bytes": 5134206,
+          "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+        },
+        {
+          "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+          "bytes": 34791618,
+          "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995"
+        },
+        {
+          "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/slf4j-api-2.0.6.jar",
+          "bytes": 62531,
+          "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+        }
+      ],
+      "removed": [],
+      "changed": [
+        {
+          "before": {
+            "path": "plugins/Fresh_Fiji_Probe.jar",
+            "bytes": 20940,
+            "sha256": "6fb7d72e2bf530ee72c1ebfad2f7a7d62e61e369d23bc47217922af765767f88"
+          },
+          "after": {
+            "path": "plugins/Fresh_Fiji_Probe.jar",
+            "bytes": 34724,
+            "sha256": "9c71b9cf321bec6231d4d29f20ad5e3603272dd77fe28eb74f407f97179f60e2"
+          }
+        }
+      ]
+    },
+    "engine-ready_to_original-final": {
+      "before": "engine-ready-inventory.json",
+      "after": "original-final-inventory.json",
+      "before_count": 855,
+      "after_count": 855,
+      "common_paths": 855,
+      "byte_identical_common_files": 854,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "before": {
+            "path": "plugins/GutAnalysisToolbox_-2.0.0.jar",
+            "bytes": 1721034,
+            "sha256": "d684812ed735e4ed3ac66ed6e9d791978ae7ebccdefd6575e7ba72d1fd235752"
+          },
+          "after": {
+            "path": "plugins/GutAnalysisToolbox_-2.0.0.jar",
+            "bytes": 1725068,
+            "sha256": "f60cc71f2990c66062a133924c6ad0c0f7c76f60dc405158265bca4f1b7ec145"
+          }
+        }
+      ]
+    },
+    "engine-ready_to_fork-final": {
+      "before": "engine-ready-inventory.json",
+      "after": "fork-final-inventory.json",
+      "before_count": 855,
+      "after_count": 887,
+      "common_paths": 854,
+      "byte_identical_common_files": 854,
+      "added": [
+        {
+          "path": "gat-native-alignment/LICENSE",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "gat-native-alignment/README.md",
+          "bytes": 1413,
+          "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432"
+        },
+        {
+          "path": "gat-native-alignment/THIRD_PARTY_NOTICES.md",
+          "bytes": 1056,
+          "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97"
+        },
+        {
+          "path": "gat-native-alignment/gat-native-alignment.jar",
+          "bytes": 18876,
+          "sha256": "8309bb3ef320f8d26b3617be8470df9043d7d4670b30d15924821f3258848a02"
+        },
+        {
+          "path": "gat-native-alignment/lib/ij-1.54p.jar",
+          "bytes": 2586953,
+          "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+        },
+        {
+          "path": "gat-native-alignment/lib/javacpp-1.5.12-macosx-arm64.jar",
+          "bytes": 38562,
+          "sha256": "7fad9210bdbd88ca3666a6d0991d202849587985273b648ffe6bc59be1869fe5"
+        },
+        {
+          "path": "gat-native-alignment/lib/javacpp-1.5.12.jar",
+          "bytes": 515488,
+          "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe"
+        },
+        {
+          "path": "gat-native-alignment/lib/javacv-1.5.12.jar",
+          "bytes": 434277,
+          "sha256": "79ddd361c82f9f6d3e05424470639ba7faf0a66764a0b18a139c881e046a905b"
+        },
+        {
+          "path": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+          "bytes": 12718897,
+          "sha256": "5fbd3dcaf764b242c1088a3cf896337ed30ad14b6f84b9ceb87f7c08144c4aa7"
+        },
+        {
+          "path": "gat-native-alignment/lib/openblas-0.3.30-1.5.12.jar",
+          "bytes": 338356,
+          "sha256": "802ca4bb29b76b11dff644174352a34efc8eb76bca3325cbd38b3a1f2ef69ea6"
+        },
+        {
+          "path": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+          "bytes": 24727449,
+          "sha256": "41bbadd0187788ad5789188cbba476b9bb1ed36ab9b8edac518cd2641655f36c"
+        },
+        {
+          "path": "gat-native-alignment/lib/opencv-4.11.0-1.5.12.jar",
+          "bytes": 1885153,
+          "sha256": "c50b3ee9780c4a0fbb1335317e7bb99ca32c40162a55680828e01bc98e1e2382"
+        },
+        {
+          "path": "gat-native-alignment/source/LICENSE",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "gat-native-alignment/source/README.md",
+          "bytes": 1413,
+          "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432"
+        },
+        {
+          "path": "gat-native-alignment/source/THIRD_PARTY_NOTICES.md",
+          "bytes": 1056,
+          "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97"
+        },
+        {
+          "path": "gat-native-alignment/source/pom.xml",
+          "bytes": 3782,
+          "sha256": "66a2beee51d0ce1562d20335f47fd4f468d3a0248a8d20d7ad8e84a2d8960542"
+        },
+        {
+          "path": "gat-native-alignment/source/src/assembly/distribution.xml",
+          "bytes": 929,
+          "sha256": "f67e0610e8a81557a58c1a604b1ed37790082210586aca7d7428a5c85e3b727e"
+        },
+        {
+          "path": "gat-native-alignment/source/src/main/java/TemplateMatching/Align_slices.java",
+          "bytes": 9629,
+          "sha256": "cd715d900075f6d373dc180c92324bc10943b3492e87a41768c371dbeed48fcf"
+        },
+        {
+          "path": "gat-native-alignment/source/src/main/java/TemplateMatching/NativeAlignmentMain.java",
+          "bytes": 6601,
+          "sha256": "a510c77e9ef8239fe0e8fffab59a891164d49a73861a9f04bbd89112d2536756"
+        },
+        {
+          "path": "gat-native-alignment/source/src/main/java/TemplateMatching/cvMatch_Template.java",
+          "bytes": 13992,
+          "sha256": "2698cfdcbd00dc2852e7d100aa1da1ad9ed9c0fa324a5ba52fc3c2f99d29549d"
+        },
+        {
+          "path": "gat-native-alignment/source/src/test/java/TemplateMatching/AlignmentProtocolTest.java",
+          "bytes": 2640,
+          "sha256": "2aa9129697a4a392505e90dd59f7cc0367406e06f264c0c0fb72cf8ec3ed3e7a"
+        },
+        {
+          "path": "gat-native-inference/LICENSE",
+          "bytes": 1526,
+          "sha256": "a02de9e10cb9bd94a2971d7f01d6fe2f3d3c8cffb11a0dfa973ab322baeb6a23"
+        },
+        {
+          "path": "gat-native-inference/README.md",
+          "bytes": 5552,
+          "sha256": "cf0ad23b47a95174ce2b915e32c2b457ac9fa4bb860121c5a95c56be5fcd114a"
+        },
+        {
+          "path": "gat-native-inference/THIRD_PARTY_NOTICES.md",
+          "bytes": 1889,
+          "sha256": "c40b692b44ab1ba750d81191c6ade80bb008741daf2c033591ed5f811a2ae9bc"
+        },
+        {
+          "path": "gat-native-inference/gat-native-inference.jar",
+          "bytes": 20847,
+          "sha256": "0b323ff7d0c82b00627ddd84d4e483d4ce1995d5fbc6287661944254c43c0dae"
+        },
+        {
+          "path": "gat-native-inference/lib/javacpp-1.5.12.jar",
+          "bytes": 515488,
+          "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe"
+        },
+        {
+          "path": "gat-native-inference/lib/protobuf-java-4.31.1.jar",
+          "bytes": 1873183,
+          "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae"
+        },
+        {
+          "path": "gat-native-inference/lib/tensorflow-core-api-1.2.0.jar",
+          "bytes": 4150141,
+          "sha256": "9d87d75ebb7eb10bdddbbd3b6bf9a91c327d719bc2e402538c475fb3abd19e60"
+        },
+        {
+          "path": "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+          "bytes": 151381240,
+          "sha256": "570d8b845e4832cc06a59ae0a05d1bb8c7a11197f48de9664b4f86123dbcafd3"
+        },
+        {
+          "path": "gat-native-inference/lib/tensorflow-core-native-1.2.0.jar",
+          "bytes": 4027609,
+          "sha256": "85ee6d600f5b1ceb81c6a1bdcc13081cfa9656442abd8aa45732a94271a26f17"
+        },
+        {
+          "path": "gat-native-inference/lib/tensorflow-ndarray-1.2.0.jar",
+          "bytes": 304345,
+          "sha256": "abbc2c528a2200059cfb1b54e4fa6b338394e7ca2d608a9d52989e7ccb43850a"
+        },
+        {
+          "path": "gat-native-inference/validation/RESULTS.md",
+          "bytes": 4780,
+          "sha256": "47c09eeabaf5401001d388270dee23542367d04d66fb4d74d7c2191106e57a89"
+        },
+        {
+          "path": "plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar",
+          "bytes": 1755735,
+          "sha256": "9880583ec53479edfe20e8368b32e83c9d3d07569384162ad6b8595f65948210"
+        }
+      ],
+      "removed": [
+        {
+          "path": "plugins/GutAnalysisToolbox_-2.0.0.jar",
+          "bytes": 1721034,
+          "sha256": "d684812ed735e4ed3ac66ed6e9d791978ae7ebccdefd6575e7ba72d1fd235752"
+        }
+      ],
+      "changed": []
+    },
+    "original-final_to_fork-final": {
+      "before": "original-final-inventory.json",
+      "after": "fork-final-inventory.json",
+      "before_count": 855,
+      "after_count": 887,
+      "common_paths": 854,
+      "byte_identical_common_files": 854,
+      "added": [
+        {
+          "path": "gat-native-alignment/LICENSE",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "gat-native-alignment/README.md",
+          "bytes": 1413,
+          "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432"
+        },
+        {
+          "path": "gat-native-alignment/THIRD_PARTY_NOTICES.md",
+          "bytes": 1056,
+          "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97"
+        },
+        {
+          "path": "gat-native-alignment/gat-native-alignment.jar",
+          "bytes": 18876,
+          "sha256": "8309bb3ef320f8d26b3617be8470df9043d7d4670b30d15924821f3258848a02"
+        },
+        {
+          "path": "gat-native-alignment/lib/ij-1.54p.jar",
+          "bytes": 2586953,
+          "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+        },
+        {
+          "path": "gat-native-alignment/lib/javacpp-1.5.12-macosx-arm64.jar",
+          "bytes": 38562,
+          "sha256": "7fad9210bdbd88ca3666a6d0991d202849587985273b648ffe6bc59be1869fe5"
+        },
+        {
+          "path": "gat-native-alignment/lib/javacpp-1.5.12.jar",
+          "bytes": 515488,
+          "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe"
+        },
+        {
+          "path": "gat-native-alignment/lib/javacv-1.5.12.jar",
+          "bytes": 434277,
+          "sha256": "79ddd361c82f9f6d3e05424470639ba7faf0a66764a0b18a139c881e046a905b"
+        },
+        {
+          "path": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+          "bytes": 12718897,
+          "sha256": "5fbd3dcaf764b242c1088a3cf896337ed30ad14b6f84b9ceb87f7c08144c4aa7"
+        },
+        {
+          "path": "gat-native-alignment/lib/openblas-0.3.30-1.5.12.jar",
+          "bytes": 338356,
+          "sha256": "802ca4bb29b76b11dff644174352a34efc8eb76bca3325cbd38b3a1f2ef69ea6"
+        },
+        {
+          "path": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+          "bytes": 24727449,
+          "sha256": "41bbadd0187788ad5789188cbba476b9bb1ed36ab9b8edac518cd2641655f36c"
+        },
+        {
+          "path": "gat-native-alignment/lib/opencv-4.11.0-1.5.12.jar",
+          "bytes": 1885153,
+          "sha256": "c50b3ee9780c4a0fbb1335317e7bb99ca32c40162a55680828e01bc98e1e2382"
+        },
+        {
+          "path": "gat-native-alignment/source/LICENSE",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "gat-native-alignment/source/README.md",
+          "bytes": 1413,
+          "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432"
+        },
+        {
+          "path": "gat-native-alignment/source/THIRD_PARTY_NOTICES.md",
+          "bytes": 1056,
+          "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97"
+        },
+        {
+          "path": "gat-native-alignment/source/pom.xml",
+          "bytes": 3782,
+          "sha256": "66a2beee51d0ce1562d20335f47fd4f468d3a0248a8d20d7ad8e84a2d8960542"
+        },
+        {
+          "path": "gat-native-alignment/source/src/assembly/distribution.xml",
+          "bytes": 929,
+          "sha256": "f67e0610e8a81557a58c1a604b1ed37790082210586aca7d7428a5c85e3b727e"
+        },
+        {
+          "path": "gat-native-alignment/source/src/main/java/TemplateMatching/Align_slices.java",
+          "bytes": 9629,
+          "sha256": "cd715d900075f6d373dc180c92324bc10943b3492e87a41768c371dbeed48fcf"
+        },
+        {
+          "path": "gat-native-alignment/source/src/main/java/TemplateMatching/NativeAlignmentMain.java",
+          "bytes": 6601,
+          "sha256": "a510c77e9ef8239fe0e8fffab59a891164d49a73861a9f04bbd89112d2536756"
+        },
+        {
+          "path": "gat-native-alignment/source/src/main/java/TemplateMatching/cvMatch_Template.java",
+          "bytes": 13992,
+          "sha256": "2698cfdcbd00dc2852e7d100aa1da1ad9ed9c0fa324a5ba52fc3c2f99d29549d"
+        },
+        {
+          "path": "gat-native-alignment/source/src/test/java/TemplateMatching/AlignmentProtocolTest.java",
+          "bytes": 2640,
+          "sha256": "2aa9129697a4a392505e90dd59f7cc0367406e06f264c0c0fb72cf8ec3ed3e7a"
+        },
+        {
+          "path": "gat-native-inference/LICENSE",
+          "bytes": 1526,
+          "sha256": "a02de9e10cb9bd94a2971d7f01d6fe2f3d3c8cffb11a0dfa973ab322baeb6a23"
+        },
+        {
+          "path": "gat-native-inference/README.md",
+          "bytes": 5552,
+          "sha256": "cf0ad23b47a95174ce2b915e32c2b457ac9fa4bb860121c5a95c56be5fcd114a"
+        },
+        {
+          "path": "gat-native-inference/THIRD_PARTY_NOTICES.md",
+          "bytes": 1889,
+          "sha256": "c40b692b44ab1ba750d81191c6ade80bb008741daf2c033591ed5f811a2ae9bc"
+        },
+        {
+          "path": "gat-native-inference/gat-native-inference.jar",
+          "bytes": 20847,
+          "sha256": "0b323ff7d0c82b00627ddd84d4e483d4ce1995d5fbc6287661944254c43c0dae"
+        },
+        {
+          "path": "gat-native-inference/lib/javacpp-1.5.12.jar",
+          "bytes": 515488,
+          "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe"
+        },
+        {
+          "path": "gat-native-inference/lib/protobuf-java-4.31.1.jar",
+          "bytes": 1873183,
+          "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae"
+        },
+        {
+          "path": "gat-native-inference/lib/tensorflow-core-api-1.2.0.jar",
+          "bytes": 4150141,
+          "sha256": "9d87d75ebb7eb10bdddbbd3b6bf9a91c327d719bc2e402538c475fb3abd19e60"
+        },
+        {
+          "path": "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+          "bytes": 151381240,
+          "sha256": "570d8b845e4832cc06a59ae0a05d1bb8c7a11197f48de9664b4f86123dbcafd3"
+        },
+        {
+          "path": "gat-native-inference/lib/tensorflow-core-native-1.2.0.jar",
+          "bytes": 4027609,
+          "sha256": "85ee6d600f5b1ceb81c6a1bdcc13081cfa9656442abd8aa45732a94271a26f17"
+        },
+        {
+          "path": "gat-native-inference/lib/tensorflow-ndarray-1.2.0.jar",
+          "bytes": 304345,
+          "sha256": "abbc2c528a2200059cfb1b54e4fa6b338394e7ca2d608a9d52989e7ccb43850a"
+        },
+        {
+          "path": "gat-native-inference/validation/RESULTS.md",
+          "bytes": 4780,
+          "sha256": "47c09eeabaf5401001d388270dee23542367d04d66fb4d74d7c2191106e57a89"
+        },
+        {
+          "path": "plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar",
+          "bytes": 1755735,
+          "sha256": "9880583ec53479edfe20e8368b32e83c9d3d07569384162ad6b8595f65948210"
+        }
+      ],
+      "removed": [
+        {
+          "path": "plugins/GutAnalysisToolbox_-2.0.0.jar",
+          "bytes": 1725068,
+          "sha256": "f60cc71f2990c66062a133924c6ad0c0f7c76f60dc405158265bca4f1b7ec145"
+        }
+      ],
+      "changed": []
+    }
+  },
+  "shared_original_and_fork_files": [
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/api-0.22.1.jar",
+      "bytes": 831237,
+      "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/commons-compress-1.22.jar",
+      "bytes": 1039712,
+      "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/dl-modelrunner-pytorch-0.4.4.jar",
+      "bytes": 31502,
+      "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/jna-5.13.0.jar",
+      "bytes": 1879325,
+      "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-engine-0.22.1.jar",
+      "bytes": 89668,
+      "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-jni-2.0.0-0.22.1.jar",
+      "bytes": 5134206,
+      "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+      "bytes": 34791618,
+      "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/slf4j-api-2.0.6.jar",
+      "bytes": 62531,
+      "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+    },
+    {
+      "path": "jars/BigStitcher-3.0.8.jar",
+      "bytes": 640763,
+      "sha256": "c901ab0a16b217fdaadbedc025f2fdebb42ffbbf6da3d0c6f81d3d7e81ba2e6c"
+    },
+    {
+      "path": "jars/Clipper-6.4.2.jar",
+      "bytes": 70822,
+      "sha256": "df1020524cc2cad78d57a6928cf94d00e8558397ccf8d227d2c8f4af1023b970"
+    },
+    {
+      "path": "jars/Correct_3D_Drift-1.0.7.jar",
+      "bytes": 19551,
+      "sha256": "ea86a4a75deda05fb2f704e78182fc40c33875cb206d58a63104ddd043752c6d"
+    },
+    {
+      "path": "jars/DEVILS_-1.0.4.jar",
+      "bytes": 50111,
+      "sha256": "9b90ca4bb5da214efad8cd3ecd560664c5db4eb92306bd268f9cc8c448937468"
+    },
+    {
+      "path": "jars/EasyXT-0.3.6.jar",
+      "bytes": 111530,
+      "sha256": "cf16edd6616d4b93bf7cce2d4956db5438617a37d8bd6f1e72cc945713eddd01"
+    },
+    {
+      "path": "jars/FilamentDetector-3.0.0.jar",
+      "bytes": 1582917,
+      "sha256": "ddd69573461ff327f906d81db6308c4440dbd385a49bae54bb0c0d0419acb908"
+    },
+    {
+      "path": "jars/ImageToAtlasRegister-0.11.1.jar",
+      "bytes": 1691138,
+      "sha256": "0882155ee929e7a3d092beef13cbbf3f3552b14eb469b9cc4fa8f1aa0a37a261"
+    },
+    {
+      "path": "jars/JWlz-1.4.0.jar",
+      "bytes": 117846,
+      "sha256": "0662cfe9600c24cbef591e17f0bfbbbebbae8b0e8d83098735454a999166410f"
+    },
+    {
+      "path": "jars/Kappa-2.0.0.jar",
+      "bytes": 273210,
+      "sha256": "735492fc23f35b1db30b40bfc8c895b9002eec780824d5d35ab872f74265f644"
+    },
+    {
+      "path": "jars/KymographBuilder-3.0.2.jar",
+      "bytes": 17658,
+      "sha256": "e91df9605fadd5d0dead96aeb193001533de7b0966f76f98feac99e4d1e71219"
+    },
+    {
+      "path": "jars/OMEVisual-3.0.0.jar",
+      "bytes": 21852,
+      "sha256": "5c36b9b6f8c357ee4a8d9a481326e6d8e1234c6a56a59bfa8816e8eb2c93e727"
+    },
+    {
+      "path": "jars/Operetta_Importer-0.7.1.jar",
+      "bytes": 123722,
+      "sha256": "1d7750592a23cede3198aad908f67c60066f888ac36fc2aff1b7936994ac03d9"
+    },
+    {
+      "path": "jars/ST4-4.3.4.jar",
+      "bytes": 251081,
+      "sha256": "f927ac384c46d749f8b5ec68972a53aed21e00313509299616edb73bfa15ff33"
+    },
+    {
+      "path": "jars/T2-NIT-1.1.4.jar",
+      "bytes": 1351980,
+      "sha256": "80efd205a614aa49950b370dbac2b6156f10acf9e22ff32e94c626cc515e6da8"
+    },
+    {
+      "path": "jars/T2-TreelineGraph-1.1.4.jar",
+      "bytes": 7078,
+      "sha256": "02a7a24712cf1709ad7fcae4eb3988012d37f2968909294fd9c9cfddf96c120e"
+    },
+    {
+      "path": "jars/TrackMate-8.1.6.jar",
+      "bytes": 3772301,
+      "sha256": "4adca5067cac8f8f93a27e530946dd62b3585449a70fc2d02c1a660c2166bac9"
+    },
+    {
+      "path": "jars/VIB-lib-2.2.0.jar",
+      "bytes": 636833,
+      "sha256": "5c1a9f55c910b764b328c0468feda27b51f2ef4feca559154f741f698afd26d5"
+    },
+    {
+      "path": "jars/VectorGraphics2D-0.13.jar",
+      "bytes": 94027,
+      "sha256": "1b1c6248f1e70c52b8e9c09873350185aad081e70f83649ef85571ff269a71a2"
+    },
+    {
+      "path": "jars/VectorString-3.0.0.jar",
+      "bytes": 46907,
+      "sha256": "becb962111235db3710dd30fdd7db14f6f0f8ee8e551f07f729360c3633a0271"
+    },
+    {
+      "path": "jars/ahocorasick-0.2.4.jar",
+      "bytes": 21967,
+      "sha256": "6f65b0c103a9e460297cc775c7b89d9c44a5ecb61565ec9d3d9f9d2cbd949944"
+    },
+    {
+      "path": "jars/aircompressor-2.0.3.jar",
+      "bytes": 255256,
+      "sha256": "b86bb66f610079e0bf790d62e2ff68853eb0dc4748a6d68ae28bce92b68094aa"
+    },
+    {
+      "path": "jars/alphanumeric-comparator-1.4.1.jar",
+      "bytes": 4933,
+      "sha256": "57c958c16d15a9d9b874eff4b1ef9dafd57cae4b1b305c01057fa20018040087"
+    },
+    {
+      "path": "jars/animal-sniffer-annotations-1.27.jar",
+      "bytes": 3194,
+      "sha256": "cfd7e51a828fe6b98bc0dbb99e34900c9e9012322cb9ddd57fd8dd0b02da5e27"
+    },
+    {
+      "path": "jars/annotations-13.0.jar",
+      "bytes": 17536,
+      "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478"
+    },
+    {
+      "path": "jars/ant-1.10.15.jar",
+      "bytes": 2304360,
+      "sha256": "763acda4a69588c9ea8817a952851ff0c2fc4bffa1d081c2565dc407f29d5794"
+    },
+    {
+      "path": "jars/ant-launcher-1.10.15.jar",
+      "bytes": 18870,
+      "sha256": "5c8551990307a032336d98ddaed549a39a689f07d4d4c6b950601bf22b3d6a1b"
+    },
+    {
+      "path": "jars/antlr-3.5.3.jar",
+      "bytes": 1185428,
+      "sha256": "d0a819afddbd837b278649eb7ff17b15259d5acc49c58af614f03468a291bd7c"
+    },
+    {
+      "path": "jars/antlr-runtime-3.5.3.jar",
+      "bytes": 173220,
+      "sha256": "68bf9f5a33dfcb34033495c587e6236bef4e37aa6612919f5b1e843b90669fb9"
+    },
+    {
+      "path": "jars/antlr.antlr-2.7.7.jar",
+      "bytes": 445288,
+      "sha256": "88fbda4b912596b9f56e8e12e580cc954bacfb51776ecfddd3e18fc1cf56dc4c"
+    },
+    {
+      "path": "jars/apache5-client-2.46.15.jar",
+      "bytes": 81587,
+      "sha256": "fb090097378eab7c8c708ed8003c1c470bd384f5db05f66265710c433c094a94"
+    },
+    {
+      "path": "jars/apfloat-1.10.1.jar",
+      "bytes": 556428,
+      "sha256": "a1480f560f37355f6c0458c523bda46658da4cd3e23cc64e309fedcd7b0782ba"
+    },
+    {
+      "path": "jars/api-all-2.1.2.jar",
+      "bytes": 3202815,
+      "sha256": "8bc0b74899098c861cfe329446aeb0f3a42cae2ff11f4908b936cb3de6bde33b"
+    },
+    {
+      "path": "jars/api-common-2.53.1.jar",
+      "bytes": 50439,
+      "sha256": "3f5e6185f3e83806ac260d19ada0f7cf26f44c7b9e3bfd2e4cd112b7fe9f9029"
+    },
+    {
+      "path": "jars/app-launcher-2.3.1.jar",
+      "bytes": 39715,
+      "sha256": "9bab5a5275da2070804ea72b8f5b965e1533b9a14b31c607683f8fb8d0ef0c68"
+    },
+    {
+      "path": "jars/appose-0.12.0.jar",
+      "bytes": 160297,
+      "sha256": "d8f68f0523a6da936d7ee9f500334d1771d35d8ef3f40dceb24d82c67b90d736"
+    },
+    {
+      "path": "jars/args4j-2.33.jar",
+      "bytes": 155379,
+      "sha256": "91ddeaba0b24adce72291c618c00bbdce1c884755f6c4dba9c5c46e871c69ed6"
+    },
+    {
+      "path": "jars/arns-2.46.15.jar",
+      "bytes": 16407,
+      "sha256": "aced16f4b1d598c33c7c693cb0555cdd93ca80527aa2d4e60eb1aa447595a519"
+    },
+    {
+      "path": "jars/asm-9.8.jar",
+      "bytes": 126113,
+      "sha256": "876eab6a83daecad5ca67eb9fcabb063c97b5aeb8cf1fca7a989ecde17522051"
+    },
+    {
+      "path": "jars/asm-analysis-9.8.jar",
+      "bytes": 35151,
+      "sha256": "e640732fbcd3c6271925a504f125e38384688f4dfbbf92c8622dfcee0d09edb9"
+    },
+    {
+      "path": "jars/asm-commons-9.8.jar",
+      "bytes": 73498,
+      "sha256": "3301a1c1cb4c59fcc5292648dac1d7c5aed4c0f067dfbe88873b8cdfe77404f4"
+    },
+    {
+      "path": "jars/asm-tree-9.8.jar",
+      "bytes": 51934,
+      "sha256": "14b7880cb7c85eed101e2710432fc3ffb83275532a6a894dc4c4095d49ad59f1"
+    },
+    {
+      "path": "jars/asm-util-9.8.jar",
+      "bytes": 94559,
+      "sha256": "8ba0460ecb28fd0e2980e5f3ef3433a513a457bc077f81a53bdc75b587a08d15"
+    },
+    {
+      "path": "jars/atlas-0.3.2.jar",
+      "bytes": 107248,
+      "sha256": "24028797f281de362dbd023381ca4ef99d134bddc85d6d1be24eada5a894469a"
+    },
+    {
+      "path": "jars/auth-2.46.15.jar",
+      "bytes": 241090,
+      "sha256": "cdbf3d383f97e2653246758982e46f0f26051b1cd8b12aeadf5c79a20ad7857a"
+    },
+    {
+      "path": "jars/auto-value-annotations-1.11.0.jar",
+      "bytes": 7491,
+      "sha256": "5a055ce4255333b3346e1a8703da5bf8ff049532286fdcd31712d624abe111dd"
+    },
+    {
+      "path": "jars/autocomplete-3.3.2.jar",
+      "bytes": 155600,
+      "sha256": "6e7fb86d3f55f69f13a200a4daa6a04e1b753f8fd369da057b4d792adc694350"
+    },
+    {
+      "path": "jars/aws-core-2.46.15.jar",
+      "bytes": 195464,
+      "sha256": "f029bd9212e9371980dded01f47d9f51a65b3169ab2ace4e030dd0afaaf5bfde"
+    },
+    {
+      "path": "jars/aws-query-protocol-2.46.15.jar",
+      "bytes": 69864,
+      "sha256": "e897410eeb713c26090e3b8616ba9a631f81bcccdcb3911d03fa42115ab1d710"
+    },
+    {
+      "path": "jars/aws-xml-protocol-2.46.15.jar",
+      "bytes": 103031,
+      "sha256": "a3e9e22f2ae4caf98a05511618db483e2d91434ba3115579051cbb90f9aed5e2"
+    },
+    {
+      "path": "jars/base-18.09.0.jar",
+      "bytes": 212796,
+      "sha256": "c73d01ffb427e5b7008003b4eaf9303c1febd883100bf81752ba71f41c701148"
+    },
+    {
+      "path": "jars/base64-2.3.8.jar",
+      "bytes": 17008,
+      "sha256": "bbf41fda22877a538f6bc2d5ad0aa372a7ddf4a756af3386aa09d3d4eea84f7f"
+    },
+    {
+      "path": "jars/batch-processor-0.4.2.jar",
+      "bytes": 22262,
+      "sha256": "5865ffb7b7760cacd24f01377cadb5cc4dabaf14e46ed3f3feecbc88c3b2364e"
+    },
+    {
+      "path": "jars/batik-anim-1.19.jar",
+      "bytes": 486122,
+      "sha256": "9b3f6f8c84c0efd88174012a8fbac4427697e5854aef194d57c5f0910c15280a"
+    },
+    {
+      "path": "jars/batik-awt-util-1.19.jar",
+      "bytes": 424545,
+      "sha256": "c9ac9ed24e0b20984e7c65ce2fbe4915003c67f9ae96177bc32bef901b557a9a"
+    },
+    {
+      "path": "jars/batik-bridge-1.19.jar",
+      "bytes": 705148,
+      "sha256": "9ae79c592efbab0804923de85363d524a2cb36ebdc1f27faeec10c1907427e26"
+    },
+    {
+      "path": "jars/batik-constants-1.19.jar",
+      "bytes": 8553,
+      "sha256": "e1d42c4da56dd8b7a3a794285fe3ed05f932d0a2b5ce3face198f02cc501331f"
+    },
+    {
+      "path": "jars/batik-css-1.19.jar",
+      "bytes": 330795,
+      "sha256": "c66afd6ac61d630e62e859db03670fa7a4f7241daaee29b531614e6900b9c6a9"
+    },
+    {
+      "path": "jars/batik-dom-1.19.jar",
+      "bytes": 184144,
+      "sha256": "1dabf83687b2ec5a4ccd4a55e3520f7cd8863a4c23ba7f5e54ef3f882819997a"
+    },
+    {
+      "path": "jars/batik-ext-1.19.jar",
+      "bytes": 10357,
+      "sha256": "e6264faa65d00d187eed932dff96e40da80e17fea66a1d92af4776ddb7811256"
+    },
+    {
+      "path": "jars/batik-gvt-1.19.jar",
+      "bytes": 192194,
+      "sha256": "c8b1ea700d1c26dffe3a08a543efcaadc5fb77d5949e6a9a300c5e35c289c915"
+    },
+    {
+      "path": "jars/batik-i18n-1.19.jar",
+      "bytes": 11541,
+      "sha256": "eb95e07c29feb276cf91aca9cf5362b43fe17601395aab5d8a6147a6d0859716"
+    },
+    {
+      "path": "jars/batik-parser-1.19.jar",
+      "bytes": 76925,
+      "sha256": "602e331c1c79de4a04525d75266dadbaf969524841155105d31ad54a7731de20"
+    },
+    {
+      "path": "jars/batik-script-1.19.jar",
+      "bytes": 24758,
+      "sha256": "1aacf6445f85d1e029c5691d55505ca1ba140414cba2c9620d7f82fc6aee55f3"
+    },
+    {
+      "path": "jars/batik-shared-resources-1.19.jar",
+      "bytes": 6685,
+      "sha256": "e2dad47cfeff5c7d686e97787996accf85a5b19f602acb30b83fce9c247deecd"
+    },
+    {
+      "path": "jars/batik-svg-dom-1.19.jar",
+      "bytes": 230611,
+      "sha256": "f5cc6730ce1b6c552e9ccc0c41b4e4c233cc6260b6c3a10038ad41ea21364c2a"
+    },
+    {
+      "path": "jars/batik-svggen-1.19.jar",
+      "bytes": 227569,
+      "sha256": "6bf89ede81483da574b25d8645e512e030965e8fbe5605e2938bccaa87ebb6a6"
+    },
+    {
+      "path": "jars/batik-util-1.19.jar",
+      "bytes": 127350,
+      "sha256": "3f1389bbdbed3c4659a58a50ce12166fd31e3d066994dd63b5144d9245fd3db6"
+    },
+    {
+      "path": "jars/batik-xml-1.19.jar",
+      "bytes": 33966,
+      "sha256": "9b9364f7dec75c41c4a611596bd4dcbf08b51b753b6726573b542998addec6a5"
+    },
+    {
+      "path": "jars/bcpkix-jdk15on-1.62.jar",
+      "bytes": 870638,
+      "sha256": "a3f033b5d761974e865ead3473656bb2e1a4049e3ef4eb0742225b1e1f4032db"
+    },
+    {
+      "path": "jars/bcpkix-jdk18on-1.78.1.jar",
+      "bytes": 1125173,
+      "sha256": "4b48ea084e5232b9d79ebca1887b9de037b124931807cd60710748c2aee08cc9"
+    },
+    {
+      "path": "jars/bcprov-jdk15on-1.62.jar",
+      "bytes": 4558151,
+      "sha256": "2fa0ab71b154da29ac134097bc6bbacd90987dd4c4005516159e6494d1d52ea2"
+    },
+    {
+      "path": "jars/bcprov-jdk18on-1.78.1.jar",
+      "bytes": 8324412,
+      "sha256": "add5915e6acfc6ab5836e1fd8a5e21c6488536a8c1f21f386eeb3bf280b702d7"
+    },
+    {
+      "path": "jars/bcutil-jdk18on-1.78.1.jar",
+      "bytes": 705135,
+      "sha256": "d9fa56f97b0f761ce3bc8d9d74c5d7137a987bf5bd3abfe1003f9bafa45a1d2f"
+    },
+    {
+      "path": "jars/bigdataviewer-biop-tools-0.16.0.jar",
+      "bytes": 722583,
+      "sha256": "96cdb4ec3234ebc0090be1ac795721954b0ffd7ad256a42543b1755b74056df6"
+    },
+    {
+      "path": "jars/bigdataviewer-core-10.6.11.jar",
+      "bytes": 1097169,
+      "sha256": "198dcaae943a6bd04282a522a77ad0b8ae3858f29e1163362d4268cc49013896"
+    },
+    {
+      "path": "jars/bigdataviewer-image-loaders-0.12.2.jar",
+      "bytes": 340568,
+      "sha256": "abddad0f896de3b6c645a5d9d143d15de9662233445e3b3e2e9ba1dcc2769895"
+    },
+    {
+      "path": "jars/bigdataviewer-n5-1.0.2.jar",
+      "bytes": 6879,
+      "sha256": "cbfdb2d24a080aaa6ccf2b3dec80cbfb82e2b5b238671d4e69486ede06e692a3"
+    },
+    {
+      "path": "jars/bigdataviewer-playground-0.15.2.jar",
+      "bytes": 534081,
+      "sha256": "b8b5f081a9842828b45aa7b93a628f3fe885af7040bfa3a82f1f4414b1f35274"
+    },
+    {
+      "path": "jars/bigdataviewer-playground-display-0.5.0.jar",
+      "bytes": 23343,
+      "sha256": "1084f42b1d0f9295b2f0d84dc7c4e7ef1b7d990b41b407cbf807e6b66afa3b83"
+    },
+    {
+      "path": "jars/bigdataviewer-selector-0.2.8.jar",
+      "bytes": 28870,
+      "sha256": "780ea874fe15f657b48b0df9aa39fe019e2feff7edacfc5b677ade90617b805d"
+    },
+    {
+      "path": "jars/bigdataviewer-spimdata-extras-0.5.0.jar",
+      "bytes": 9601,
+      "sha256": "bddc34ba36adcc0c9b4805d32a7db2f5ca557e9bb1d9364b925d39d2eaca3b00"
+    },
+    {
+      "path": "jars/bigdataviewer_fiji-6.4.1.jar",
+      "bytes": 186164,
+      "sha256": "368f2adb2a14944c9f26d1e9710630ec6e29809e5f2736c6259fa3f9bc8411db"
+    },
+    {
+      "path": "jars/bigvolumeviewer-0.3.4.jar",
+      "bytes": 278057,
+      "sha256": "f39f7210ac936c5e4a3110605bbb5cdb44e659690f2f7b77e4d5b62dd5e63e24"
+    },
+    {
+      "path": "jars/bij-1.0.0.jar",
+      "bytes": 368632,
+      "sha256": "126a5533275ee16d17236e7e8c5804814166987089bb74323161d7b1f3ee508b"
+    },
+    {
+      "path": "jars/bio-formats/bio-formats-tools-8.0.1.jar",
+      "bytes": 59707,
+      "sha256": "9baee55c6889fc21c72a98d42001cb9d8f54a6066fad9ec57917e585ada6973a"
+    },
+    {
+      "path": "jars/blas-0.8.jar",
+      "bytes": 60250,
+      "sha256": "df923f1dd4edcea75c394e5f984fe87767de781b5aabc77fbc4eb0186dd31be3"
+    },
+    {
+      "path": "jars/bounce-0.18.jar",
+      "bytes": 208593,
+      "sha256": "bffff1505335c02256b7ab2ccffbe4aa4d3ac9fe14c17557809b7c9d99d666ca"
+    },
+    {
+      "path": "jars/bridj-0.7.0.jar",
+      "bytes": 935929,
+      "sha256": "101bcd9b6637e6bc16e56deb3daefba62b1f5e8e9e37e1b3e56e3b5860d659cf"
+    },
+    {
+      "path": "jars/bsh-2.1.1.jar",
+      "bytes": 438676,
+      "sha256": "71192cbbe49e7a269cfcba05dc5cb959c33b9b26dafcd6266ca3288b461f86a3"
+    },
+    {
+      "path": "jars/bytelist-1.0.15.jar",
+      "bytes": 11032,
+      "sha256": "0269ba1bfa8243e420332183028428b992626cbb1bfb9de0de0bfff546116b3a"
+    },
+    {
+      "path": "jars/caffeine-2.9.3.jar",
+      "bytes": 912143,
+      "sha256": "1e0a7bbef1dd791653143f3f05d0e489934bf5481e58a87c9e619cd46b68729b"
+    },
+    {
+      "path": "jars/cdm-core-5.6.0.jar",
+      "bytes": 4289635,
+      "sha256": "4bb5af83727fe54ebe864cfec73bbeee3306debb158c7747d5750df88518c273"
+    },
+    {
+      "path": "jars/checker-qual-3.50.0.jar",
+      "bytes": 241487,
+      "sha256": "e268d1d5cb6029f06cfdff8fb638383ff22556039da25386a00c287da6a52dbe"
+    },
+    {
+      "path": "jars/checksums-2.46.15.jar",
+      "bytes": 72463,
+      "sha256": "1d5e2685ff52876e6cc4c2398ed7073b5728992e0db648055cebeb7433eecf76"
+    },
+    {
+      "path": "jars/checksums-spi-2.46.15.jar",
+      "bytes": 8045,
+      "sha256": "b9bab26d0bdfa8129a865e4c4a5c896f7be577102c64c7ce6ffc7f96620fbad5"
+    },
+    {
+      "path": "jars/classgraph-4.8.181.jar",
+      "bytes": 572869,
+      "sha256": "62a6436d69710ef5fab6ec243781ce4c5b299047ed1841b5f92746ae852ce545"
+    },
+    {
+      "path": "jars/clij-bigviewer_-0.1.0.jar",
+      "bytes": 55729,
+      "sha256": "6ceed56bcc61a2dad9de840c180a8ce0dbebd05f4617a50c80fa75fc3460fb76"
+    },
+    {
+      "path": "jars/clij-clearcl-2.5.0.1.jar",
+      "bytes": 140188,
+      "sha256": "ddd38510d0a51b4522549f7dbfc31bec727e3dfb0994672152d319ae9e7e527b"
+    },
+    {
+      "path": "jars/clij-core-1.8.1.1.jar",
+      "bytes": 125373,
+      "sha256": "488cdf19bb5b0f94388335a8be9c8e5118af9a1b9c432d6291d3685432043e93"
+    },
+    {
+      "path": "jars/clij-coremem-2.3.0.4.jar",
+      "bytes": 84116,
+      "sha256": "307975b65c2ff68ba0d5b8d3be45b16998616d0bf352384d78432c63ba46c5d2"
+    },
+    {
+      "path": "jars/clojure-1.12.0.jar",
+      "bytes": 4227052,
+      "sha256": "c45333006441a059ea9fdb1341fc6c1f40b921a10dccd82665311e48a0384763"
+    },
+    {
+      "path": "jars/codemodel-2.6.jar",
+      "bytes": 152436,
+      "sha256": "2735816d68f85adca141179951889653ce355ae7e7ab4eb92a322ea0ef671767"
+    },
+    {
+      "path": "jars/collections-generic-4.01.jar",
+      "bytes": 531557,
+      "sha256": "cf3d652dd439b3d70cab12c325764b1e5edd648acfb22889f6f2184881bec1f0"
+    },
+    {
+      "path": "jars/com.google.android.annotations-4.1.1.4.jar",
+      "bytes": 3120,
+      "sha256": "ba734e1e84c09d615af6a09d33034b4f0442f8772dec120efb376d86a565ae15"
+    },
+    {
+      "path": "jars/commons-beanutils-1.11.0.jar",
+      "bytes": 246806,
+      "sha256": "9e44ba68ec9a3f21286fa2a8bbb003b735c0f69101bb43144b79f4f8aaa74709"
+    },
+    {
+      "path": "jars/commons-codec-1.19.0.jar",
+      "bytes": 374716,
+      "sha256": "5c3881e4f556855e9c532927ee0c9dfde94cc66760d5805c031a59887070af5f"
+    },
+    {
+      "path": "jars/commons-collections-3.2.2.jar",
+      "bytes": 588337,
+      "sha256": "eeeae917917144a68a741d4c0dff66aa5c5c5fd85593ff217bced3fc8ca783b8"
+    },
+    {
+      "path": "jars/commons-collections4-4.5.0.jar",
+      "bytes": 898652,
+      "sha256": "00f93263c267be201b8ae521b44a7137271b16688435340bf629db1bac0a5845"
+    },
+    {
+      "path": "jars/commons-compress-1.28.0.jar",
+      "bytes": 1117221,
+      "sha256": "e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca"
+    },
+    {
+      "path": "jars/commons-io-2.20.0.jar",
+      "bytes": 563971,
+      "sha256": "df90bba0fe3cb586b7f164e78fe8f8f4da3f2dd5c27fa645f888100ccc25dd72"
+    },
+    {
+      "path": "jars/commons-lang-2.6.jar",
+      "bytes": 284220,
+      "sha256": "50f11b09f877c294d56f24463f47d28f929cf5044f648661c0f0cfbae9a2f49c"
+    },
+    {
+      "path": "jars/commons-lang3-3.18.0.jar",
+      "bytes": 702952,
+      "sha256": "4eeeae8d20c078abb64b015ec158add383ac581571cddc45c68f0c9ae0230720"
+    },
+    {
+      "path": "jars/commons-logging-1.3.5.jar",
+      "bytes": 73737,
+      "sha256": "6d7a744e4027649fbb50895df9497d109f98c766a637062fe8d2eabbb3140ba4"
+    },
+    {
+      "path": "jars/commons-math-2.2.jar",
+      "bytes": 988514,
+      "sha256": "15993bb2a3cf50f3291b40fc980a3166a0984e7b5f1abbe5232151fd94954584"
+    },
+    {
+      "path": "jars/commons-math3-3.6.1.jar",
+      "bytes": 2213560,
+      "sha256": "1e56d7b058d28b65abd256b8458e3885b674c1d588fa43cd7d1cbb9c7ef2b308"
+    },
+    {
+      "path": "jars/commons-pool2-2.12.1.jar",
+      "bytes": 152289,
+      "sha256": "5273c8bc8c0dca2211175c0d27efbd7228efae99689aac001a8e1ef8e872e9ef"
+    },
+    {
+      "path": "jars/commons-text-1.14.0.jar",
+      "bytes": 259876,
+      "sha256": "121fce2282910c8f0c3ba793a5436b31beb710423cbe2d574a3fb7a73c508e92"
+    },
+    {
+      "path": "jars/commons-vfs2-2.0.jar",
+      "bytes": 415578,
+      "sha256": "5af37bc47f6bcce94e740b9793115ff135dda54f9ccf98e057938c2c98765f4d"
+    },
+    {
+      "path": "jars/compiler-interface-1.3.5.jar",
+      "bytes": 92468,
+      "sha256": "df5d1931595b670769e98285cbdac71c849f37a1573d4c1acdac4d2bd64cd689"
+    },
+    {
+      "path": "jars/conscrypt-openjdk-uber-2.5.2.jar",
+      "bytes": 4534256,
+      "sha256": "eaf537d98e033d0f0451cd1b8cc74e02d7b55ec882da63c88060d806ba89c348"
+    },
+    {
+      "path": "jars/core.specs.alpha-0.4.74.jar",
+      "bytes": 4306,
+      "sha256": "eb73ac08cf49ba840c88ba67beef11336ca554333d9408808d78946e0feb9ddb"
+    },
+    {
+      "path": "jars/crt-core-2.46.15.jar",
+      "bytes": 18234,
+      "sha256": "40221f834e4b67aabf389dadf8d43d9919cf414126d07b723f077d7186d40431"
+    },
+    {
+      "path": "jars/csbdeep-0.6.0.jar",
+      "bytes": 142482,
+      "sha256": "13bfb85d179bedf1d5e6542b0e200cb250ab8e030e88d5e645e6e6b486b22894"
+    },
+    {
+      "path": "jars/datasets-0.8.1906.jar",
+      "bytes": 167028,
+      "sha256": "dac48a22e7c466d34a571595932a28310e14b190875e9a36d4ac733bb6c97b83"
+    },
+    {
+      "path": "jars/denoiseg-0.6.4.jar",
+      "bytes": 310698,
+      "sha256": "bddcd044d32a10187ce88f31120ae91319647f765e9b3ed5b736784602700dd5"
+    },
+    {
+      "path": "jars/detector-resources-support-0.33.0.jar",
+      "bytes": 18021,
+      "sha256": "94b0def27754083ceaa67b56a4d483d294e9f17066493df3ef7e81ec5c3bb2c0"
+    },
+    {
+      "path": "jars/directories-26.jar",
+      "bytes": 14239,
+      "sha256": "6d18fe25aa30b7e08b908cd21151d8f96e22965c640acd7751add9bbfe6137d4"
+    },
+    {
+      "path": "jars/dirgra-0.3.jar",
+      "bytes": 16400,
+      "sha256": "9ee2b48dcdfe0f6261200b81852a3f8c02af702269457c82f485d36d6e078360"
+    },
+    {
+      "path": "jars/dl-modelrunner-0.6.2-SNAPSHOT.jar",
+      "bytes": 1036189,
+      "sha256": "b8d4821fa5fd8d7f9135e3e673b92b8aeb3317f69dd8d8e05bc60aa981e3f757"
+    },
+    {
+      "path": "jars/ejml-all-0.41.jar",
+      "bytes": 749,
+      "sha256": "75172c94331a214677d12dd6fbd1ff8bf24120f383da8eea4926e7739b62e50a"
+    },
+    {
+      "path": "jars/ejml-cdense-0.41.jar",
+      "bytes": 75427,
+      "sha256": "ad06ef87a0e1b4b8152ebcbf8fa204a17a394b7cb0625c9b36f78181590ff907"
+    },
+    {
+      "path": "jars/ejml-core-0.41.jar",
+      "bytes": 259045,
+      "sha256": "8d36469e8414d79c875defc0af3b980525d384761c9471d15a4f365b936dd1d5"
+    },
+    {
+      "path": "jars/ejml-ddense-0.41.jar",
+      "bytes": 408061,
+      "sha256": "355347e9cac7e96d5d724d331a9b04bb14a8a02e1d111f1ac51c79f25d937123"
+    },
+    {
+      "path": "jars/ejml-dsparse-0.41.jar",
+      "bytes": 94475,
+      "sha256": "278dbe323a3218697d687243da1a2ff0c88800825ebba02388274542519641ed"
+    },
+    {
+      "path": "jars/ejml-fdense-0.41.jar",
+      "bytes": 406624,
+      "sha256": "0ec25b3bcd950c2ce1c7d5389f958e5507ebf9f4c7a209a2b4236a73740aa98e"
+    },
+    {
+      "path": "jars/ejml-fsparse-0.41.jar",
+      "bytes": 93732,
+      "sha256": "8ddb3bfa0de174c16e57b7b08b60d0f324a4f99e574033c4fc77508e2516ce41"
+    },
+    {
+      "path": "jars/ejml-simple-0.41.jar",
+      "bytes": 183555,
+      "sha256": "f8989a6df897b32789d2bc590c7ddc020c8e269180150322c1e812522fce96a7"
+    },
+    {
+      "path": "jars/ejml-zdense-0.41.jar",
+      "bytes": 75780,
+      "sha256": "5d44c52c24e2d6e702c2f5f775707f62a71055fdbc655da21389beca4427c3f9"
+    },
+    {
+      "path": "jars/elastix_registration_server-0.0.0-STUB.jar",
+      "bytes": 511,
+      "sha256": "a8073dd940402a07090acff4e5ef84ccf6208c9ca9bfd3471f34b717021cbb57"
+    },
+    {
+      "path": "jars/endpoints-spi-2.46.15.jar",
+      "bytes": 13211,
+      "sha256": "4ef1f9c60b2a53ce0eb65e9c18c6eb5f4b79e794b7e05abfc24a0aaeba7d2794"
+    },
+    {
+      "path": "jars/error_prone_annotations-2.41.0.jar",
+      "bytes": 20389,
+      "sha256": "a56e782b5b50811ac204073a355a21d915a2107fce13ec711331ad036f660fcc"
+    },
+    {
+      "path": "jars/eventstream-1.0.1.jar",
+      "bytes": 30193,
+      "sha256": "0c37d8e696117f02c302191b8110b0d0eb20fa412fce34c3a269ec73c16ce822"
+    },
+    {
+      "path": "jars/exporter-metrics-0.33.0.jar",
+      "bytes": 39863,
+      "sha256": "7a9ab87683a97357a95389ff3cec9684785648076f9b158d44da3becb93bb036"
+    },
+    {
+      "path": "jars/f2jutil-0.8.jar",
+      "bytes": 69111,
+      "sha256": "4c274946ea96150cc927e5cdd92533ab02de0760f82286b6aac3a01600835572"
+    },
+    {
+      "path": "jars/failureaccess-1.0.3.jar",
+      "bytes": 10763,
+      "sha256": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb"
+    },
+    {
+      "path": "jars/ffmpeg-6.1.1-1.5.10.jar",
+      "bytes": 278103,
+      "sha256": "d73f0c2c0ac2f54c6963b125e06ad83c3ecc6c1083f98641296cd2c648bad27e"
+    },
+    {
+      "path": "jars/fiji-2.18.1-SNAPSHOT.jar",
+      "bytes": 48739,
+      "sha256": "2a0a53ce32f38ea9cf0c9bc02dd2dc4638a5ad796282c2dd42c161d6785d823c"
+    },
+    {
+      "path": "jars/fiji-lib-2.1.3.jar",
+      "bytes": 91774,
+      "sha256": "35eeb0174b29db972b826c82e93482a88ea13f0a931597ab1ddc7222b36707c3"
+    },
+    {
+      "path": "jars/fiji-links-1.0.0.jar",
+      "bytes": 7448,
+      "sha256": "a92325f27558eca27371ca6fc0da6f1f173668e6a6e17bbdc192ac3ebc789956"
+    },
+    {
+      "path": "jars/filters-2.0.235.jar",
+      "bytes": 340318,
+      "sha256": "be6a1d54ebb043495e31e25e72b440f69156a5624cdd7e1c55c47e30d4fae308"
+    },
+    {
+      "path": "jars/flatlaf-3.6.1.jar",
+      "bytes": 927031,
+      "sha256": "687be33e1e3eface1681fd194732d16e008126a47b6116b4301e7070c918c4c9"
+    },
+    {
+      "path": "jars/flimlib-2.1.1.jar",
+      "bytes": 23474,
+      "sha256": "9d550b20acbb76aed76a186833e9c3bd9544b3cd4e2729f808f65261dd76d5f4"
+    },
+    {
+      "path": "jars/fontchooser-2.5.2.jar",
+      "bytes": 37014,
+      "sha256": "eddae45b8203846083d0cd996ccdf2c25c48c2ea8d585baa8e970e8333e966b3"
+    },
+    {
+      "path": "jars/formats-api-8.5.0.jar",
+      "bytes": 148391,
+      "sha256": "5a8b0844fcad85f026f5b9bc9aaff15692d61c2dd9c9c222adc4982db70e0d8f"
+    },
+    {
+      "path": "jars/formats-bsd-8.5.0.jar",
+      "bytes": 934868,
+      "sha256": "d5587499fda886771ceccdf63d7ce0b2f5f89d1815db35e57c31d0fcb95212a2"
+    },
+    {
+      "path": "jars/formats-gpl-8.5.0.jar",
+      "bytes": 1570437,
+      "sha256": "5f1fca2cb236123a03cfdefd3495afd8385894470c225c5bca350698daa83b47"
+    },
+    {
+      "path": "jars/gapic-google-cloud-storage-v2-2.70.0.jar",
+      "bytes": 57419,
+      "sha256": "74e5140c1f0d35932c52c3f880607f20d3a2c1542c7f98f2c57ead63a45a2e97"
+    },
+    {
+      "path": "jars/gax-2.70.1.jar",
+      "bytes": 437699,
+      "sha256": "f1ba0314100ab7b351894d7383d88ae9004cf73c3205df1e3fe910a19f890bf9"
+    },
+    {
+      "path": "jars/gax-grpc-2.70.1.jar",
+      "bytes": 158556,
+      "sha256": "ccd2fd2a36e097d4cc8c357a4cd6a78c94419ecfe492359c7e33fde541c20d56"
+    },
+    {
+      "path": "jars/gax-httpjson-2.70.1.jar",
+      "bytes": 166244,
+      "sha256": "95d29fe909326d8ae95dea488b97b68b8b38d64bf83b03785743aacf63d4ed31"
+    },
+    {
+      "path": "jars/gcc-runtime-0.8.1906.jar",
+      "bytes": 21029,
+      "sha256": "0f096d253d814d2485a51468a7a6dd6cbeb289ede45fa22550d1d8faa851c4bd"
+    },
+    {
+      "path": "jars/gluegen-rt-2.6.0.jar",
+      "bytes": 411363,
+      "sha256": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f"
+    },
+    {
+      "path": "jars/google-api-client-2.8.1.jar",
+      "bytes": 302981,
+      "sha256": "f19a438e0ccec1d2f05f3a1d9272dac0cd7fca30ba6d4259bbe81559bd44f170"
+    },
+    {
+      "path": "jars/google-api-services-cloudresourcemanager-v1-rev20250606-2.0.0.jar",
+      "bytes": 156456,
+      "sha256": "145f42cb10d29af334228081029419bdf0660894715fed4a17e4bee185c8e0fd"
+    },
+    {
+      "path": "jars/google-api-services-storage-v1-rev20260524-2.0.0.jar",
+      "bytes": 267181,
+      "sha256": "a00a1466c80f21318d134d77382082f2ffbad3fef537d1cb22ff9a913c9d95d9"
+    },
+    {
+      "path": "jars/google-auth-library-credentials-1.39.0.jar",
+      "bytes": 8411,
+      "sha256": "b1c352654c15440afe6d72cc53a2e96737a877c586e81db3eb24035a882a45b1"
+    },
+    {
+      "path": "jars/google-auth-library-oauth2-http-1.39.0.jar",
+      "bytes": 324410,
+      "sha256": "649a4802e83d710f874660b555b328af23bf5ea72a8e95fd433025ea3af8d707"
+    },
+    {
+      "path": "jars/google-cloud-core-2.72.0.jar",
+      "bytes": 141171,
+      "sha256": "34d9f37eb5aafa5839fc66530199c6e342d0e1d8b20141ca444448183400a513"
+    },
+    {
+      "path": "jars/google-cloud-core-grpc-2.72.0.jar",
+      "bytes": 16946,
+      "sha256": "ca89b63b4b91883c2504dbe1d4e1a875afe99c84cb648338a8c6d3e2134ec6af"
+    },
+    {
+      "path": "jars/google-cloud-core-http-2.72.0.jar",
+      "bytes": 15936,
+      "sha256": "c591162b093ec5f4502afcedd23e5465907b84c6b06bf7192f737203e01df04f"
+    },
+    {
+      "path": "jars/google-cloud-monitoring-3.52.0.jar",
+      "bytes": 255303,
+      "sha256": "9727aa7d94d8dd036bffccf9abc5d18970b1e5e9827896f9907f7450ed10f5e6"
+    },
+    {
+      "path": "jars/google-cloud-resourcemanager-1.96.0.jar",
+      "bytes": 417500,
+      "sha256": "41910f7bf75878c8bbb6b0f5e1afe9f245cd7cce8895c861a7ed0e28dadebf76"
+    },
+    {
+      "path": "jars/google-cloud-storage-2.70.0.jar",
+      "bytes": 1520974,
+      "sha256": "8b43636591c53c5acf1e87682cd9c2a555789b0ddacb557b8bc0fbda9d547152"
+    },
+    {
+      "path": "jars/google-http-client-1.47.1.jar",
+      "bytes": 295922,
+      "sha256": "22447fde9f2e33e27a23a25953b1c622ead6c055c761fde6ca50573c9473457a"
+    },
+    {
+      "path": "jars/google-http-client-apache-v2-1.47.1.jar",
+      "bytes": 11678,
+      "sha256": "e6a8be28ce3b8dd4296ac05770d9e532727272f2666a4a3d25639cc8e11157d5"
+    },
+    {
+      "path": "jars/google-http-client-appengine-1.47.1.jar",
+      "bytes": 19647,
+      "sha256": "33300e8ca0c8ce1d36bd775e414a3dc883aa2aa6de604ad2c3d85e18a3e805ac"
+    },
+    {
+      "path": "jars/google-http-client-gson-1.47.1.jar",
+      "bytes": 12834,
+      "sha256": "64ac2b1313dca6b6fc9bd14128ab186528fe992b094f5371fa7f828eed8903bd"
+    },
+    {
+      "path": "jars/google-http-client-jackson2-1.47.1.jar",
+      "bytes": 9665,
+      "sha256": "4e7ea8229221369b3a777e9ec1a7e1595e02fa1490f09772d1f9e29333c6d2ac"
+    },
+    {
+      "path": "jars/google-http-client-xml-1.47.1.jar",
+      "bytes": 31524,
+      "sha256": "072c44d54e57c4285b797dc4a0f0c4fb273a0912b95d896adece4f7525636627"
+    },
+    {
+      "path": "jars/google-oauth-client-1.39.0.jar",
+      "bytes": 81752,
+      "sha256": "27fc61ee2d526e33d31350b5ea383091c0879345e261f9b2e6fcc97a20c86f88"
+    },
+    {
+      "path": "jars/gpars-1.2.1.jar",
+      "bytes": 1384400,
+      "sha256": "f9e08bf964f34d129344404c01666276ec43c6704dd74e8d4ca32dcd1d2fb4a8"
+    },
+    {
+      "path": "jars/grDevices-0.8.1906.jar",
+      "bytes": 94199,
+      "sha256": "9b6c359a5e5938655c015f929c0284162c39e90780c2c6985fedc04d1e86c931"
+    },
+    {
+      "path": "jars/graphics-0.8.1906.jar",
+      "bytes": 131797,
+      "sha256": "d978df89317959d2cb855aea6355416776c73387ff20fa92cff73dddc78cd0f3"
+    },
+    {
+      "path": "jars/groovy-4.0.28.jar",
+      "bytes": 7712577,
+      "sha256": "d77164a44ab994837e61eecead64721bdb1794fa2bc6704ac6fe70cd32ef9dd3"
+    },
+    {
+      "path": "jars/groovy-dateutil-4.0.28.jar",
+      "bytes": 7982,
+      "sha256": "ed61455aabbc702c742507b8efda187c2f875bf11030cf6521f00ac4ab40d3e1"
+    },
+    {
+      "path": "jars/groovy-json-4.0.28.jar",
+      "bytes": 131788,
+      "sha256": "edec45c85ff811f9a9baacdf5b020e34593a0055ac63c92fbf1233c3b2cc9cc6"
+    },
+    {
+      "path": "jars/groovy-jsr223-4.0.28.jar",
+      "bytes": 16834,
+      "sha256": "21a825951142f938e4159cdafc8c56cb5ea2c95f64a0ef362e32311bb3692c7d"
+    },
+    {
+      "path": "jars/groovy-swing-4.0.28.jar",
+      "bytes": 341768,
+      "sha256": "f42a02dc8e163e935f09dad09c5177ff809473f8d82f0059b3b178d390755098"
+    },
+    {
+      "path": "jars/groovy-templates-4.0.28.jar",
+      "bytes": 93718,
+      "sha256": "5a6a1ce206405255e4275ebb3af5fcbe724c4d13b0de98f3823a444412c90d97"
+    },
+    {
+      "path": "jars/groovy-xml-4.0.28.jar",
+      "bytes": 216161,
+      "sha256": "68d230a8a1f7a171eb60ce1e5fb005a41940f27b8b421bf55fdbe3a5c2888ea0"
+    },
+    {
+      "path": "jars/grpc-alts-1.75.0.jar",
+      "bytes": 323695,
+      "sha256": "61a0536d9cc1fda8b98a9bbeab2bb3c33438f1184337666fd8940e9bb3e13abe"
+    },
+    {
+      "path": "jars/grpc-api-1.75.0.jar",
+      "bytes": 323413,
+      "sha256": "7f309616691fa655d02512762049ed18bf4ab2b52ced424cab2f527d0bb8e3fc"
+    },
+    {
+      "path": "jars/grpc-auth-1.75.0.jar",
+      "bytes": 14758,
+      "sha256": "216e551be78b4c080edd6ed43aef63af21019a2bd92a81f3c31d4cadb4185520"
+    },
+    {
+      "path": "jars/grpc-context-1.75.0.jar",
+      "bytes": 293,
+      "sha256": "7e1de7847ea621a9ec7cb988a8baa947748d0eaef94bfe457d04d9b57105079f"
+    },
+    {
+      "path": "jars/grpc-core-1.75.0.jar",
+      "bytes": 655917,
+      "sha256": "f10cdbe558378494e4ffc6b1bb328b8a137f3201d46c8b24f0154eb9e51191a1"
+    },
+    {
+      "path": "jars/grpc-google-cloud-storage-v2-2.70.0.jar",
+      "bytes": 31521,
+      "sha256": "3ae2d8a5efcd3a255018ae903304f56f88d0d4ad30f77d302f8b907c1a64e11d"
+    },
+    {
+      "path": "jars/grpc-googleapis-1.75.0.jar",
+      "bytes": 15093,
+      "sha256": "e5c5237ad23f989c61c410db7a717b69c3adb5d78961c814e5b1d328d8e2ef80"
+    },
+    {
+      "path": "jars/grpc-grpclb-1.75.0.jar",
+      "bytes": 178972,
+      "sha256": "f6bed322a9512ad5c3802213744fc31e3c3839ad6f206925a4f10850b34cbe98"
+    },
+    {
+      "path": "jars/grpc-inprocess-1.75.0.jar",
+      "bytes": 39404,
+      "sha256": "d2953165a5bf6d236bbd84c5f9c6abd344cc722ad0cf13de24c82883477e983e"
+    },
+    {
+      "path": "jars/grpc-netty-shaded-1.75.0.jar",
+      "bytes": 10573999,
+      "sha256": "d33d47a9720a392512c4e4ceaa17a458a0e3ed6188d17e98d6c4faf0679374d7"
+    },
+    {
+      "path": "jars/grpc-opentelemetry-1.81.0.jar",
+      "bytes": 74706,
+      "sha256": "6e0f541346c86906f7f5cc74f98eb621aaba112a3e58ceacc0006be2128a6a77"
+    },
+    {
+      "path": "jars/grpc-protobuf-1.75.0.jar",
+      "bytes": 5204,
+      "sha256": "f52b53c349b0776815e437636dff3d3844e9b10cbb25be419a786bf3d6f20269"
+    },
+    {
+      "path": "jars/grpc-protobuf-lite-1.81.0.jar",
+      "bytes": 7814,
+      "sha256": "1bf6294b09925cc6aa82b1fd8750650010e45e0c88972670bdc3135c74aaab4c"
+    },
+    {
+      "path": "jars/grpc-rls-1.81.0.jar",
+      "bytes": 255741,
+      "sha256": "a48f263303e2655a542b096fa77783b69b16d31da65e250464ab2ad781e829d6"
+    },
+    {
+      "path": "jars/grpc-services-1.75.0.jar",
+      "bytes": 950148,
+      "sha256": "b6b3db6fecf14220db17d085eb2143f7c68879f6072f2159692c24c607e9391f"
+    },
+    {
+      "path": "jars/grpc-stub-1.75.0.jar",
+      "bytes": 61041,
+      "sha256": "dc98fe18654206948666e6657e13fe301ad0754751f28c6c10961e1e6c457997"
+    },
+    {
+      "path": "jars/grpc-util-1.81.0.jar",
+      "bytes": 108747,
+      "sha256": "5ef3f554329ebc18b7ca65de15289acf723a26b8c0bd4e502f41e41abe5a347f"
+    },
+    {
+      "path": "jars/grpc-xds-1.75.0.jar",
+      "bytes": 10100214,
+      "sha256": "8b4b01d75e7f52c3c78180b14e45002142bfc7156b8d906950ef4ba3b4fda0e6"
+    },
+    {
+      "path": "jars/gson-2.14.0.jar",
+      "bytes": 313604,
+      "sha256": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
+    },
+    {
+      "path": "jars/guava-33.4.8-jre.jar",
+      "bytes": 3023797,
+      "sha256": "f3d7f57f67fd622f4d468dfdd692b3a5e3909246c28017ac3263405f0fe617ed"
+    },
+    {
+      "path": "jars/http-auth-2.46.15.jar",
+      "bytes": 17564,
+      "sha256": "207d2151c20122bc7c61a124231951faef2cd82f07936d68791557db2d043892"
+    },
+    {
+      "path": "jars/http-auth-aws-2.46.15.jar",
+      "bytes": 179727,
+      "sha256": "0e6da7b42ef6815bd533b4e8adfbe1d68527edb92a3e45d6c5a51f7f5a514055"
+    },
+    {
+      "path": "jars/http-auth-aws-eventstream-2.46.15.jar",
+      "bytes": 8710,
+      "sha256": "2a4b8960e3103710dfdc263aa23c53af26dd4ca6a879abe589d733bfead65e7d"
+    },
+    {
+      "path": "jars/http-auth-spi-2.46.15.jar",
+      "bytes": 48397,
+      "sha256": "0347c6edf602c33aca67028b4661ff9ef1d88c9e9ac694295464e5f59536e28f"
+    },
+    {
+      "path": "jars/http-client-spi-2.46.15.jar",
+      "bytes": 92488,
+      "sha256": "76fe1deceb6e501f2a7b02b36bb4a6d65d459e4c40a40392a19e071603fb46ef"
+    },
+    {
+      "path": "jars/httpasyncclient-4.1.5.jar",
+      "bytes": 181512,
+      "sha256": "0c1877489a9d1ba4fa50f6cfcab11d1123618858cb31d56afaab5afdd5064d99"
+    },
+    {
+      "path": "jars/httpclient-4.5.14.jar",
+      "bytes": 785639,
+      "sha256": "c8bc7e1c51a6d4ce72f40d2ebbabf1c4b68bfe76e732104b04381b493478e9d6"
+    },
+    {
+      "path": "jars/httpclient5-5.6.1.jar",
+      "bytes": 1054142,
+      "sha256": "1e3d8444c3c27772e4b9d42a790f06b3345a8ece4fd16d00981f2f2460e1e772"
+    },
+    {
+      "path": "jars/httpcore-4.4.16.jar",
+      "bytes": 327891,
+      "sha256": "6c9b3dd142a09dc468e23ad39aad6f75a0f2b85125104469f026e52a474e464f"
+    },
+    {
+      "path": "jars/httpcore-nio-4.4.13.jar",
+      "bytes": 369320,
+      "sha256": "71fcfbe869002c48563cc5979fc734571c8d0d167ccce42970c932f337981f19"
+    },
+    {
+      "path": "jars/httpcore5-5.4.2.jar",
+      "bytes": 954859,
+      "sha256": "7c34a25506e7207b6748cef9e91163ed03081bee805cef930d82e1d8761d62f1"
+    },
+    {
+      "path": "jars/httpcore5-h2-5.4.jar",
+      "bytes": 263347,
+      "sha256": "2e0f4ace15db2d1609c2b06eca6012e7582afe4a99ad8d15073f62dd8edb3460"
+    },
+    {
+      "path": "jars/httpmime-4.5.14.jar",
+      "bytes": 41727,
+      "sha256": "d401243d5c6eae928a37121b6e819158c8c32ea0584793e7285bb489ab2a3d17"
+    },
+    {
+      "path": "jars/httpservices-5.6.0.jar",
+      "bytes": 80375,
+      "sha256": "2a8130e5b261adcfea052f02f84dd737b7d53dc3f497982535c8dbfbe801ea07"
+    },
+    {
+      "path": "jars/icu4j-77.1.jar",
+      "bytes": 14663227,
+      "sha256": "b3640b9f416a4411fd33c59abbeea8fd57d024c23e1819bf9673220a97499fe3"
+    },
+    {
+      "path": "jars/identity-spi-2.46.15.jar",
+      "bytes": 31180,
+      "sha256": "caa4ec4f0c17d34f2a48949b7c3acec6d5c9a94d7fde74cada17c2877f4c5456"
+    },
+    {
+      "path": "jars/ij-1.54p.jar",
+      "bytes": 2586953,
+      "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+    },
+    {
+      "path": "jars/ij1-patcher-2.0.0.jar",
+      "bytes": 103622,
+      "sha256": "b68810263f9521ddb34bac272816613ebb71607775c1fc337079a0476c2b581a"
+    },
+    {
+      "path": "jars/ijl-utilities-wrappers-0.12.1.jar",
+      "bytes": 161742,
+      "sha256": "eb0b10d8686ae32f7364dddacb01c3dae2491eb330a97fbc9bcef37cce9fa842"
+    },
+    {
+      "path": "jars/ijp-kheops-0.6.7.jar",
+      "bytes": 100407,
+      "sha256": "23fae782536843bdb5af05cf95bc0d0b55f88d7d702fc65933491af4cc9d7bd9"
+    },
+    {
+      "path": "jars/image-transform-converters-0.2.0.jar",
+      "bytes": 76007,
+      "sha256": "9d168d84344bbb9213b5910355876aab469f66d075a4dcb563b8349c6947e90f"
+    },
+    {
+      "path": "jars/image4j-0.7.jar",
+      "bytes": 31881,
+      "sha256": "017c1dcd7b0bafbe5f6d3204f43454e1e53421fff3c06b078b4216177ffc369b"
+    },
+    {
+      "path": "jars/imagej-2.18.0.jar",
+      "bytes": 11257,
+      "sha256": "8264976157162eba0f961c8da86bd027944777c5e1fbf833ab5c39bf4a90addd"
+    },
+    {
+      "path": "jars/imagej-common-2.1.1.jar",
+      "bytes": 513434,
+      "sha256": "aa0292e424d960378525837f7c4f30ed8adc6528655eafb87c6f2a8a995cc426"
+    },
+    {
+      "path": "jars/imagej-deprecated-0.2.0.jar",
+      "bytes": 700377,
+      "sha256": "629cda90503c0367348c6ee425c7d0128618de32ed15570f7fe9676784909768"
+    },
+    {
+      "path": "jars/imagej-legacy-3.0.0.jar",
+      "bytes": 470079,
+      "sha256": "043c29282782f490f0197b7ece4e59241751aefee6db1f6b85faa955fd680639"
+    },
+    {
+      "path": "jars/imagej-mesh-0.8.2.jar",
+      "bytes": 57032,
+      "sha256": "e13327c7c64310ce01fee612ffe1ae144e10729adcce570614aff67b124f2f8e"
+    },
+    {
+      "path": "jars/imagej-mesh-io-0.1.2.jar",
+      "bytes": 15348,
+      "sha256": "76155f15394127a4ccf0043552de1176d5bac217b5ff606adcee93abab944ae7"
+    },
+    {
+      "path": "jars/imagej-modelzoo-0.9.10.jar",
+      "bytes": 214376,
+      "sha256": "f5f9d301c2c0ccd577d7b49ca630631c194b76f5cabcc0d0ad08c13be549bad4"
+    },
+    {
+      "path": "jars/imagej-notebook-0.7.1.jar",
+      "bytes": 36445,
+      "sha256": "7757011a794146f55cea5e6ea601d54018252dd0f22dee590af103a0c0c36bd4"
+    },
+    {
+      "path": "jars/imagej-opencv-0.1.4.jar",
+      "bytes": 12594,
+      "sha256": "afde7783f8fd9ea07b56b08ba08f72df88621f1a87c42095f2407e4b15e4e969"
+    },
+    {
+      "path": "jars/imagej-ops-2.2.0.jar",
+      "bytes": 1925590,
+      "sha256": "3f98a7a7defc127715829936bcf3fc898ddc68530795588cfe360546991e5b13"
+    },
+    {
+      "path": "jars/imagej-plugins-batch-0.1.1.jar",
+      "bytes": 5771,
+      "sha256": "09e2426828b20e752db29057f1748f97aa6059b05020be336e973fda78a1a649"
+    },
+    {
+      "path": "jars/imagej-plugins-commands-1.0.0.jar",
+      "bytes": 349087,
+      "sha256": "6434c82054800cd529be1c12b145910fdf7044ff48ebfa0a89f96e3b59b02fe0"
+    },
+    {
+      "path": "jars/imagej-plugins-tools-0.3.1.jar",
+      "bytes": 51513,
+      "sha256": "249569e354b19393301d00b1386f0dc2235bdf30f841ff00b85ca4f3dd195487"
+    },
+    {
+      "path": "jars/imagej-plugins-uploader-ssh-0.3.2.jar",
+      "bytes": 22393,
+      "sha256": "10e1c503d8b535dae1694a006ddfd40a50800684a87cd075e34416a14462d213"
+    },
+    {
+      "path": "jars/imagej-plugins-uploader-webdav-0.3.3.jar",
+      "bytes": 20987,
+      "sha256": "a3df9811689794eaccf6f2c8015691b33b27f0363b2c194733d3143c93e1d61c"
+    },
+    {
+      "path": "jars/imagej-scripting-1.0.0.jar",
+      "bytes": 36054,
+      "sha256": "310bdc535d2c5d114dc5dd30068fb28462f92acffdae6539482430364dc8245a"
+    },
+    {
+      "path": "jars/imagej-tensorflow-1.1.6.jar",
+      "bytes": 54120,
+      "sha256": "e6ae932922325818278c87999f2fb57b5426f383e27455a978ae849f1f1cb0a4"
+    },
+    {
+      "path": "jars/imagej-ui-awt-0.3.1.jar",
+      "bytes": 10992,
+      "sha256": "0bbce867265e91d59a9a0bac6dcb41f40c96b09e9e8e8eb6c6f27454eb1cf682"
+    },
+    {
+      "path": "jars/imagej-ui-swing-1.2.2.jar",
+      "bytes": 276011,
+      "sha256": "5833e4e2f831c451538fa321c3ea058b4153eae1b8645ddd518c575d515c9225"
+    },
+    {
+      "path": "jars/imagej-updater-2.0.3.jar",
+      "bytes": 255124,
+      "sha256": "21bb17cfd4d45a941cec294d3739000a0ee12bc6859486367817fa23bd38ceb6"
+    },
+    {
+      "path": "jars/imageware-2.0.0.jar",
+      "bytes": 202577,
+      "sha256": "5f682b630a707151aebb76850a865132a98b862e9d193286f535caaf84de83e9"
+    },
+    {
+      "path": "jars/imaris-lib-10.0.0.jar",
+      "bytes": 2539023,
+      "sha256": "c455d8c818e9152318ef2ab818bd5e86558ff5b2d17283d00f18404734581cab"
+    },
+    {
+      "path": "jars/imglib2-8.0.0.jar",
+      "bytes": 1134914,
+      "sha256": "e48e487a307f4ca798d33ef6f413bafd2fb2357147e88d39c9ad4cda79e84f80"
+    },
+    {
+      "path": "jars/imglib2-algorithm-0.18.3.jar",
+      "bytes": 1223663,
+      "sha256": "ecfcd3fed8ba8783995378491c2bebb58288e86c87d8c91e3c1ed8956a0351fa"
+    },
+    {
+      "path": "jars/imglib2-algorithm-fft-0.2.1.jar",
+      "bytes": 20656,
+      "sha256": "42aa56c680d9f579b781dbba4a9175118ca255cf7abf558acf74c6366f22d672"
+    },
+    {
+      "path": "jars/imglib2-algorithm-gpl-0.3.1.jar",
+      "bytes": 154868,
+      "sha256": "ceefc9c31fb41d71e121261703867106215175580c3a45190d7d3258de96a27a"
+    },
+    {
+      "path": "jars/imglib2-appose-0.5.0-ctr.jar",
+      "bytes": 11060,
+      "sha256": "b6c5f91bd271214dfe7e9ce8993bf95c7559dfd8d8b6c4daa445c78276c530fa"
+    },
+    {
+      "path": "jars/imglib2-bdv-demos-0.1.0-SNAPSHOT.jar",
+      "bytes": 1414170,
+      "sha256": "f9db2fd5774c71c1e66b1ae9335a812846dc1eddf83816d89b9d5aa5a1ba1f94"
+    },
+    {
+      "path": "jars/imglib2-cache-1.0.0-beta-20.jar",
+      "bytes": 193981,
+      "sha256": "81e27d849b77690bf7a0394c70c38f1aa0cea02ff8b89672d1cafc4dfa1c6487"
+    },
+    {
+      "path": "jars/imglib2-ij-2.0.3.jar",
+      "bytes": 101529,
+      "sha256": "80ba903bbc58ce6a428fc96f0146276483266be465fe33d4550fc093b4db684f"
+    },
+    {
+      "path": "jars/imglib2-label-multisets-0.15.2.jar",
+      "bytes": 62858,
+      "sha256": "c781cb2af47475ad1ba4e4cbe73c87b51305e121ae98f4ccc74390b0f5ef6c95"
+    },
+    {
+      "path": "jars/imglib2-mesh-1.1.0.jar",
+      "bytes": 157170,
+      "sha256": "142670924959a088ae7455ef4d4c1d7d0902d4474bcc23452a66b3e7f131f015"
+    },
+    {
+      "path": "jars/imglib2-realtransform-4.0.5.jar",
+      "bytes": 131244,
+      "sha256": "c0395feade4e05f69f4dfca97b4671a48cff8993bd657680dca8cd71cf6fc1ad"
+    },
+    {
+      "path": "jars/imglib2-roi-0.15.2.jar",
+      "bytes": 303961,
+      "sha256": "3cccfa047c049eeb7170ef621926b320b1f57208a586cb3f9867d30ac05ef81f"
+    },
+    {
+      "path": "jars/invokebinder-1.10.jar",
+      "bytes": 44520,
+      "sha256": "f64f3f2727e64dbbbee20a1bd949e81aa517a8e342d0e77b3267351dda20fa8a"
+    },
+    {
+      "path": "jars/ion-java-1.0.2.jar",
+      "bytes": 565410,
+      "sha256": "0d127b205a1fce0abc2a3757a041748651bc66c15cf4c059bac5833b27d471a5"
+    },
+    {
+      "path": "jars/istack-commons-runtime-3.0.12.jar",
+      "bytes": 29807,
+      "sha256": "27d85fc134c9271d5c79d3300fc4669668f017e72409727c428f54f2417f04cd"
+    },
+    {
+      "path": "jars/itextpdf-5.5.13.4.jar",
+      "bytes": 2334415,
+      "sha256": "6504ed81b34d1b4913d6cf16964b131cd8b10f54fc6c18390bb6dc5f64ea5079"
+    },
+    {
+      "path": "jars/ivy-2.5.2.jar",
+      "bytes": 1405631,
+      "sha256": "98428d545ea63cd9a0aaf255caf42cb8cb64fe430dbb5e709aed536d4daeed04"
+    },
+    {
+      "path": "jars/j2objc-annotations-3.1.jar",
+      "bytes": 16762,
+      "sha256": "84d3a150518485f8140ea99b8a985656749629f6433c92b80c75b36aba3b099b"
+    },
+    {
+      "path": "jars/j3dcore-1.6.0-scijava-2.jar",
+      "bytes": 1944932,
+      "sha256": "53055934810716391f87fe5c0c9c73b9d5633baf3304a44a138d449a58908262"
+    },
+    {
+      "path": "jars/j3dutils-1.6.0-scijava-2.jar",
+      "bytes": 1047514,
+      "sha256": "95ccfcea340debcbd0e519dd65d556e36aba2e97cf8474c83fd2b1d03324a8f1"
+    },
+    {
+      "path": "jars/jackrabbit-webdav-2.21.22.jar",
+      "bytes": 339144,
+      "sha256": "6fb689223f230f387574a5939c3b9a471b606f23053d2745a632b3c169b3a727"
+    },
+    {
+      "path": "jars/jackson-annotations-2.19.2.jar",
+      "bytes": 79309,
+      "sha256": "e516743a316dcf83c572ffc9cb6e8c5e8c134880c8c5155b02f7b34e9c5dc3cf"
+    },
+    {
+      "path": "jars/jackson-core-2.19.2.jar",
+      "bytes": 591418,
+      "sha256": "aa77eaf29293a868c47372194f7c5287d77d9370b04ea25d3fffc1e4904b5880"
+    },
+    {
+      "path": "jars/jackson-databind-2.19.2.jar",
+      "bytes": 1679351,
+      "sha256": "0a1bd4e9b0d670e632d40ee8c625ad376233502f03c2f5889baea95d025b47a7"
+    },
+    {
+      "path": "jars/jackson-dataformat-cbor-2.18.0.jar",
+      "bytes": 70527,
+      "sha256": "f015cdf06d22fa6c06bbcb2f79047bc260f586d6ade01dae1c619f4bb76fad21"
+    },
+    {
+      "path": "jars/jackson-dataformat-toml-2.19.2.jar",
+      "bytes": 56196,
+      "sha256": "74ec2f9c4404a7b8fc1e236d94be8e4ed8aaba93623153a57595cc081c1a9ec1"
+    },
+    {
+      "path": "jars/jackson-dataformat-xml-2.18.3.jar",
+      "bytes": 129991,
+      "sha256": "0181c2e9f3d3ce8e03fd1ce240d202d129b2e53a3fed1aed2b69be4f29b1fb51"
+    },
+    {
+      "path": "jars/jackson-dataformat-yaml-2.19.2.jar",
+      "bytes": 60230,
+      "sha256": "80a213e7d998244922ab7bcf0938ea03eb7868e88e2d05a8407c6228c885a37e"
+    },
+    {
+      "path": "jars/jackson-datatype-jsr310-2.18.3.jar",
+      "bytes": 133035,
+      "sha256": "2e1df2feb93683d379969ceaf78b76a0ac115c67d04671958fddf4eed6e6401d"
+    },
+    {
+      "path": "jars/jackson-jq-1.0.0-preview.20191208.jar",
+      "bytes": 309312,
+      "sha256": "e436726a7dfc5cded20fb6a4dcfdffc7274f2816489a200fa33323727a7be3b6"
+    },
+    {
+      "path": "jars/jai-codec-1.1.3.jar",
+      "bytes": 258160,
+      "sha256": "6d7824d972c0b6e10daa95f430f917d2256954535e62def9d287e79bf7824200"
+    },
+    {
+      "path": "jars/jai-core-1.1.3.jar",
+      "bytes": 1900631,
+      "sha256": "8b696cf067533545f44c2f68339e24ab1a2669153ed2081aa5be8749f4d592bf"
+    },
+    {
+      "path": "jars/jakarta.activation-2.0.1.jar",
+      "bytes": 62154,
+      "sha256": "b9e24b7dd6e07495562ea96531be3130c96dba4d78e1dfd88adbbdebf4332871"
+    },
+    {
+      "path": "jars/jakarta.activation-api-1.2.2.jar",
+      "bytes": 46613,
+      "sha256": "a187a939103aef5849a7af84bd7e27be2d120c410af291437375ffe061f4f09d"
+    },
+    {
+      "path": "jars/jakarta.xml.bind-api-2.3.3.jar",
+      "bytes": 115638,
+      "sha256": "c04539f472e9a6dd0c7685ea82d677282269ab8e7baca2e14500e381e0c6cec5"
+    },
+    {
+      "path": "jars/jama-1.0.3.jar",
+      "bytes": 37424,
+      "sha256": "c7325ee29be1aac1287ddac690f73671f1cd911ca9eca7c619990e86310556fd"
+    },
+    {
+      "path": "jars/java-bioimage-io-0.3.9.jar",
+      "bytes": 53968,
+      "sha256": "d57b5caa08c3107f83fe2e7d7b346c435b84b7302967a70c12cf7a7640b29c2a"
+    },
+    {
+      "path": "jars/java-cup-11b-20160615.jar",
+      "bytes": 124262,
+      "sha256": "b6b27727d80f563950b20b3b6b5062ae7ce78a1b61a0f3113f42164ce0b31d5f"
+    },
+    {
+      "path": "jars/java-sizeof-0.0.5.jar",
+      "bytes": 25259,
+      "sha256": "3061a3a8178da337314aa05f0e03adfab6db10b53e826366cb5a3d6ecf41418a"
+    },
+    {
+      "path": "jars/java3d-core-1.7.2.jar",
+      "bytes": 1753016,
+      "sha256": "a73bdac94fef81091a8b0b972f9a3d222ae27ed96dc988b09fb2dba7e1c32662"
+    },
+    {
+      "path": "jars/java3d-utils-1.7.2.jar",
+      "bytes": 1017521,
+      "sha256": "e50203e77f7832310a917bbdab018a81bc74096cb330575f9abfeb20f0e135c1"
+    },
+    {
+      "path": "jars/javaGeom-0.11.1.jar",
+      "bytes": 362872,
+      "sha256": "bffff8ab8eb8b76a0c38a7b00c16be05492aae2358cdc2d5d45d4f2104a7fa9f"
+    },
+    {
+      "path": "jars/javacl-1.0.0-RC4.jar",
+      "bytes": 1158484,
+      "sha256": "6d356f3d489e686c4378d97d559ed30acca312bfe3bfb4c3119b72c7e5fa665f"
+    },
+    {
+      "path": "jars/javacpp.jar",
+      "bytes": 386638,
+      "sha256": "3c2209ee2315c4782ccf82b31dcb85b3100d962a97a4b2960ec64eb8680d98a4"
+    },
+    {
+      "path": "jars/javacv.jar",
+      "bytes": 406695,
+      "sha256": "b46c71ff8be781d698f64eb0221d0ea5b59208aae1d6aaf6f2c9ca1140dfc817"
+    },
+    {
+      "path": "jars/javafx-base-23.0.2.jar",
+      "bytes": 302,
+      "sha256": "9a12c46e92d617785fc296251754ae4b406494110d44cbc2a0a018cabe189c5c"
+    },
+    {
+      "path": "jars/javafx-controls-23.0.2.jar",
+      "bytes": 306,
+      "sha256": "c83957342e7d3bc858ace6219a091e324fbde29f48f47a785ba313685c17f0e4"
+    },
+    {
+      "path": "jars/javafx-graphics-23.0.2.jar",
+      "bytes": 306,
+      "sha256": "3fb45f728e30a64202c08e72da2e2718659f8712b42eee601e658740482a897e"
+    },
+    {
+      "path": "jars/javafx-media-23.0.2.jar",
+      "bytes": 303,
+      "sha256": "ae41210fe09b7e6e775273dd7440680d370a7f1bed2e58e2e2010b7445fb6fc1"
+    },
+    {
+      "path": "jars/javassist-3.30.2-GA.jar",
+      "bytes": 794714,
+      "sha256": "eba37290994b5e4868f3af98ff113f6244a6b099385d9ad46881307d3cb01aaf"
+    },
+    {
+      "path": "jars/javax.servlet-api-3.1.0.jar",
+      "bytes": 95806,
+      "sha256": "af456b2dd41c4e82cf54f3e743bc678973d9fe35bd4d3071fa05c7e5333b8482"
+    },
+    {
+      "path": "jars/jaxb-core-3.0.2.jar",
+      "bytes": 238361,
+      "sha256": "9beb3f846ac998d619b8aab9ac498d30a8f3a01632ed8791e4aee8d0ba02fac9"
+    },
+    {
+      "path": "jars/jaxb-impl-3.0.2.jar",
+      "bytes": 916623,
+      "sha256": "c54cf2db4a5ed571857dc27c2019798a1549793e3b2eca70b53a1744dc35e648"
+    },
+    {
+      "path": "jars/jaxb-runtime-2.3.5.jar",
+      "bytes": 1019255,
+      "sha256": "4a25453756d08be89c6537cc26fea237677ab99eea857ce1bcb84346715cfae4"
+    },
+    {
+      "path": "jars/jblosc-1.0.1.jar",
+      "bytes": 11008,
+      "sha256": "dc2a694beab39f17283c0d2efa5277f67b3a2ccb0c96ed6ae5a0f4b820802aa5"
+    },
+    {
+      "path": "jars/jclipboardhelper-0.1.0.jar",
+      "bytes": 9572,
+      "sha256": "eecc85ec16abf300dccbdd72245c2bcb8bb471a516673bac9d512734d217704f"
+    },
+    {
+      "path": "jars/jcodings-1.0.63.jar",
+      "bytes": 1760082,
+      "sha256": "ef11e1741a65160c5619cd2c3c79c40ee0affda847062f012616034b9d10e719"
+    },
+    {
+      "path": "jars/jcommander-1.48.jar",
+      "bytes": 63504,
+      "sha256": "a7313fcfde070930e40ec79edf3c5948cf34e4f0d25cb3a09f9963d8bdd84113"
+    },
+    {
+      "path": "jars/jcommon-1.0.24.jar",
+      "bytes": 330507,
+      "sha256": "13e2596044935f76694cce65a22d1df908907ddcba0da2b49ff030930262d417"
+    },
+    {
+      "path": "jars/jdatepicker-1.3.2.jar",
+      "bytes": 33887,
+      "sha256": "e2b8f768f0ee996083d01d192bf6f239122d7e2e8c2c44f0d15dcd13a53474d5"
+    },
+    {
+      "path": "jars/jdom2-2.0.6.1.jar",
+      "bytes": 327806,
+      "sha256": "0b20f45e3a0fd8f0d12cdc5316b06776e902b1365db00118876f9175c60f302c"
+    },
+    {
+      "path": "jars/jep-2.4.2.jar",
+      "bytes": 553984,
+      "sha256": "8c0fc6ec8645cb2bf9351cf76be17674dadf57579cd20da31df145bbbe63457c"
+    },
+    {
+      "path": "jars/jffi-1.3.13-native.jar",
+      "bytes": 1015456,
+      "sha256": "a38dd049951a27f7a423389fecf0195a5bd414f418e90f5ac9992652c22a5b8e"
+    },
+    {
+      "path": "jars/jffi-1.3.13.jar",
+      "bytes": 162076,
+      "sha256": "78df5fb05d7e2541b867bedc538b18840245a601bb2160fa26824bb67ed93878"
+    },
+    {
+      "path": "jars/jfilechooser-bookmarks-0.1.6.jar",
+      "bytes": 48619,
+      "sha256": "9b4c0b75e9e0d1f2f64d3ec241b628afe8635fc5e2e578fa4a247ebcbe2695a5"
+    },
+    {
+      "path": "jars/jfreechart-1.5.6.jar",
+      "bytes": 1652288,
+      "sha256": "be7ae6310ca005ac98eceb74fa514af88cad098c808845786f762ca08a5b4bb3"
+    },
+    {
+      "path": "jars/jfreesvg-3.4.4.jar",
+      "bytes": 46211,
+      "sha256": "2c02ebf810ed164a3e51c1bfd2705827aeb6816d71ce3ed54f21bb0ba60d2305"
+    },
+    {
+      "path": "jars/jgoodies-common-1.7.0.jar",
+      "bytes": 33832,
+      "sha256": "a17480c628e17dbe5fc1f5d866fa5db038a8b52359072c6076debeb07eef8bc9"
+    },
+    {
+      "path": "jars/jgoodies-forms-1.7.2.jar",
+      "bytes": 117714,
+      "sha256": "8b45de231624622f1889c18167f2a67c3ad793daa169cac38c817a91a5f45ce4"
+    },
+    {
+      "path": "jars/jgrapht-core-1.5.2.jar",
+      "bytes": 1267450,
+      "sha256": "dfa596e9f0d0838f1b5e81dd0cd60e3a76c2c290ac25a0a029ffde58cf5e4c14"
+    },
+    {
+      "path": "jars/jgraphx-4.2.2.jar",
+      "bytes": 832332,
+      "sha256": "8030369bdcaf8f46545c317ae84cd2bc832da54fdb615e48b0a8862280882a82"
+    },
+    {
+      "path": "jars/jhdf5-19.04.1.jar",
+      "bytes": 8467645,
+      "sha256": "0c20636d3388ebaa3c941f6a2c867fc0420ebbc2a5768c14f008f87069e6cecc"
+    },
+    {
+      "path": "jars/jheaps-0.14.jar",
+      "bytes": 153258,
+      "sha256": "49a9898da3758659388f1333c53ccadb6fbd142a7d18aa7b1a33577090684279"
+    },
+    {
+      "path": "jars/jhotdraw-7.6.0.jar",
+      "bytes": 2098069,
+      "sha256": "89656586326e5cb7930044f26d502cd8e5a2c226267c62dbd565f6625fa7c00b"
+    },
+    {
+      "path": "jars/jitk-tps-3.0.4.jar",
+      "bytes": 19215,
+      "sha256": "929058aaf12151f563a25470f1bb218c736ee994ec676bb298746e10b91b3930"
+    },
+    {
+      "path": "jars/jline-2.14.6.jar",
+      "bytes": 268780,
+      "sha256": "97d1acaac82409be42e622d7a54d3ae9d08517e8aefdea3d2ba9791150c2f02d"
+    },
+    {
+      "path": "jars/jline-native-3.30.5.jar",
+      "bytes": 190172,
+      "sha256": "cd1eba2f366b695cb39294538433a946bb9c662685ed4f134c78b5ba0cacca74"
+    },
+    {
+      "path": "jars/jline-reader-3.30.5.jar",
+      "bytes": 187118,
+      "sha256": "e023c683023c7e5692530364fde63d20c4597cf5ef7dcd7c6f6541e5aeb81c16"
+    },
+    {
+      "path": "jars/jline-terminal-3.30.5.jar",
+      "bytes": 275530,
+      "sha256": "4e871b40d2ce03bbb1f8713d6a3a268bf66c82164529756e8223f0e311a8ed96"
+    },
+    {
+      "path": "jars/jline-terminal-jna-3.30.5.jar",
+      "bytes": 74680,
+      "sha256": "60e8720d7fc866fa51f01256771a6daae79cd622e097f838caec1e2dbce3cf31"
+    },
+    {
+      "path": "jars/jna-5.14.0.jar",
+      "bytes": 1878533,
+      "sha256": "34ed1e1f27fa896bca50dbc4e99cf3732967cec387a7a0d5e3486c09673fe8c6"
+    },
+    {
+      "path": "jars/jna-platform-5.14.0.jar",
+      "bytes": 1369287,
+      "sha256": "ae4caceb3840730c2537f9b7fb55a01baba580286b4122951488bcee558c2449"
+    },
+    {
+      "path": "jars/jnr-a64asm-1.0.0.jar",
+      "bytes": 86270,
+      "sha256": "53ae5ea7fa5c284e8279aa348e7b9de4548b0cae10bfd058fa217c791875e4cf"
+    },
+    {
+      "path": "jars/jnr-constants-0.10.4.jar",
+      "bytes": 1579612,
+      "sha256": "9a5b8cf9798d9d0331b8d8966c5235a22c4307676e35803a24659e6d76096f78"
+    },
+    {
+      "path": "jars/jnr-enxio-0.16.jar",
+      "bytes": 27586,
+      "sha256": "675001ce11e8cfc8859d4dd72bc8de88d09d097989f6352dbbd08c0d55f23df0"
+    },
+    {
+      "path": "jars/jnr-ffi-2.2.17.jar",
+      "bytes": 730217,
+      "sha256": "37b494600b956a7932e799d4a7284bbf1ad0b0b23b4df62d0c01f55f1d3ee681"
+    },
+    {
+      "path": "jars/jnr-netdb-1.2.0.jar",
+      "bytes": 63112,
+      "sha256": "24f54abd859979b6caabf4918b022c57fc0d3247def4bfe68e5a30172409fc3c"
+    },
+    {
+      "path": "jars/jnr-posix-3.1.20.jar",
+      "bytes": 285785,
+      "sha256": "e4f28d47be66a8710950425c037318442af2b8021708de0b7871ff65fab8cd86"
+    },
+    {
+      "path": "jars/jnr-unixsocket-0.17.jar",
+      "bytes": 44804,
+      "sha256": "9faf96cb7291af5caffdd51bc84daa91fbf68056c7bd9dec3a1010bd316fea3b"
+    },
+    {
+      "path": "jars/jnr-x86asm-1.0.2.jar",
+      "bytes": 219943,
+      "sha256": "39f3675b910e6e9b93825f8284bec9f4ad3044cd20a6f7c8ff9e2f8695ebf21e"
+    },
+    {
+      "path": "jars/jocl-2.0.5.jar",
+      "bytes": 424167,
+      "sha256": "88e425bda01a3edb15777f7831eaa364bde3d19c6a833b51a018a5ffac3ad667"
+    },
+    {
+      "path": "jars/joda-time-2.14.0.jar",
+      "bytes": 639779,
+      "sha256": "1e2da6f9eb65f20a25d9a3186831ed2b3fb14f7a48e1ef8206135ee58cb143d3"
+    },
+    {
+      "path": "jars/jogl-all-2.6.0.jar",
+      "bytes": 3991187,
+      "sha256": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f"
+    },
+    {
+      "path": "jars/joml-1.10.8.jar",
+      "bytes": 778846,
+      "sha256": "bf19510145178df82cd3bd37edd514c13f411531ec5545299fd3abcbc98fe7c2"
+    },
+    {
+      "path": "jars/joni-2.2.6.jar",
+      "bytes": 232385,
+      "sha256": "fb33f60ab43e38653317bbf41a1fec89cbee270c48e53b0b56d1165c00de0e07"
+    },
+    {
+      "path": "jars/jpedalSTD-2.80b11.jar",
+      "bytes": 1469651,
+      "sha256": "fa3e70497f8b1c8d439843b79b7ccf62800d4f72a2e53cb954c6c342f8fc335b"
+    },
+    {
+      "path": "jars/jply-0.2.1.jar",
+      "bytes": 57107,
+      "sha256": "c62398ff7279dbab239127185316cbf654546dc3e025dc35257a02303dc23e51"
+    },
+    {
+      "path": "jars/jruby-core-9.1.17.0.jar",
+      "bytes": 9534389,
+      "sha256": "0ee45099644690809fad8031942cb06e0455260187be2d27581634f8c72882b9"
+    },
+    {
+      "path": "jars/jruby-stdlib-9.4.12.0.jar",
+      "bytes": 17565816,
+      "sha256": "efb56bc918fc426b98086e8b0a25015c61858dd2ad9b066c24921c6cb60cf63e"
+    },
+    {
+      "path": "jars/jsch-0.1.55.jar",
+      "bytes": 282591,
+      "sha256": "d492b15a6d2ea3f1cc39c422c953c40c12289073dbe8360d98c0f6f9ec74fc44"
+    },
+    {
+      "path": "jars/json-20250517.jar",
+      "bytes": 82710,
+      "sha256": "3ea61b2a06e31edf1c91134fe9106b0ebb16628be169f3db75bc7a2b06b45796"
+    },
+    {
+      "path": "jars/json-simple-1.1.1.jar",
+      "bytes": 23931,
+      "sha256": "4e69696892b88b41c55d49ab2fdcc21eead92bf54acc588c0050596c3b75199c"
+    },
+    {
+      "path": "jars/json-utils-2.46.15.jar",
+      "bytes": 33490,
+      "sha256": "785d3454f45893cd0356f07c7d2a9819d6678d71768bd1a758543a906db13869"
+    },
+    {
+      "path": "jars/jsoup-1.7.2.jar",
+      "bytes": 293671,
+      "sha256": "bdd2f2b281dae829915fbd1802c09269f7f5add5a886242eaa0d1ae362d329cc"
+    },
+    {
+      "path": "jars/jspecify-1.0.0.jar",
+      "bytes": 3819,
+      "sha256": "1fad6e6be7557781e4d33729d49ae1cdc8fdda6fe477bb0cc68ce351eafdfbab"
+    },
+    {
+      "path": "jars/jsr166y-1.7.0.jar",
+      "bytes": 59716,
+      "sha256": "4d4e74532e81bc6a54e4cbda865999f4ab29885e850f0b835ea374800b84d0b2"
+    },
+    {
+      "path": "jars/jsr305-3.0.2.jar",
+      "bytes": 19936,
+      "sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7"
+    },
+    {
+      "path": "jars/jtransforms-2.4.jar",
+      "bytes": 498954,
+      "sha256": "deaeb28fcb0df7e4401afdcf445254c77167ab0488d0c3e0de67266bddd22640"
+    },
+    {
+      "path": "jars/jung-api-2.0.1.jar",
+      "bytes": 40973,
+      "sha256": "f5dca2c6a8e313a467a67c8131ad709f550799698cdd33bec26f32979a209550"
+    },
+    {
+      "path": "jars/jung-graph-impl-2.0.1.jar",
+      "bytes": 62328,
+      "sha256": "9426fe626020aae1391a03a8976e6db670e523a8c2e971b3855fae523a7bc2bf"
+    },
+    {
+      "path": "jars/jxrlib-all-0.2.4.jar",
+      "bytes": 508170,
+      "sha256": "c5677ff87125def275cc996c982682a917dbef5a3bf0aa614a2081c68769a346"
+    },
+    {
+      "path": "jars/jython-slim-2.7.4.jar",
+      "bytes": 15213524,
+      "sha256": "c59a72c5d9b25a8630a6b476ede342988ea296731ba2e86ec3115106c649e6b9"
+    },
+    {
+      "path": "jars/jzlib-1.1.3.jar",
+      "bytes": 71976,
+      "sha256": "89b1360f407381bf61fde411019d8cbd009ebb10cff715f3669017a031027560"
+    },
+    {
+      "path": "jars/kotlin-stdlib-1.9.22.jar",
+      "bytes": 1718956,
+      "sha256": "6abe146c27864138b874ccccfe5f534e3eb923c99a1b7b5d45494ee5694f3e0a"
+    },
+    {
+      "path": "jars/kotlin-stdlib-common-1.8.22.jar",
+      "bytes": 221491,
+      "sha256": "d0c2365e2437ef70f34586d50f055743f79716bcfe65e4bc7239cdd2669ef7c5"
+    },
+    {
+      "path": "jars/kotlin-stdlib-jdk7-1.9.22.jar",
+      "bytes": 961,
+      "sha256": "f91f24cfad3a756688a35129e5f335480d0eb408f1568a17f707c289f8769bdd"
+    },
+    {
+      "path": "jars/kotlin-stdlib-jdk8-1.9.22.jar",
+      "bytes": 967,
+      "sha256": "47046c3edc32fe0db1a36bfe3d3822958bb5be4411c5ba80f3ae895a3ec27291"
+    },
+    {
+      "path": "jars/kryo-5.6.2.jar",
+      "bytes": 373885,
+      "sha256": "4e8b1d2f4977187af8a51a957329722dc1cdc56a7c94fbb5a791e82897629cff"
+    },
+    {
+      "path": "jars/labkit-pixel-classification-0.1.18.jar",
+      "bytes": 335846,
+      "sha256": "7a8bd1f6a270d6ea8f4675167d76abf8eeabd54d680aec38cffd5327da868252"
+    },
+    {
+      "path": "jars/labkit-ui-0.4.0.jar",
+      "bytes": 429076,
+      "sha256": "5d3b774e9f2b94432131bd10887b5e1e307fa8013bf683ee02c88abc57e27127"
+    },
+    {
+      "path": "jars/languagesupport-3.3.0.jar",
+      "bytes": 1106264,
+      "sha256": "939c332d88e11b9d8364a6dbdd791de26a467e70e01ffd5f420f4909e76f7608"
+    },
+    {
+      "path": "jars/lapack-0.8.jar",
+      "bytes": 960384,
+      "sha256": "f01804debd3c87820daefcea3d6f33d660b331ab1793061966e2da45d0d6c33e"
+    },
+    {
+      "path": "jars/leastsquares-1.0.0.jar",
+      "bytes": 20810,
+      "sha256": "82387b0079df0636a2ea46a2d71f2bd9d5d308b190bfcd25b281fd617b6e0b79"
+    },
+    {
+      "path": "jars/legacy-imglib1-1.1.11.jar",
+      "bytes": 863820,
+      "sha256": "fe01ae0a24a7f69922e246880830421037c49875ffc4797eeadbaccf5b417f7b"
+    },
+    {
+      "path": "jars/libtensorflow-1.15.0.jar",
+      "bytes": 2103016,
+      "sha256": "9c51d1b825f189f60836e4ce75484106e7b13eca589f3db932725223f28c2d63"
+    },
+    {
+      "path": "jars/libtensorflow_jni-1.15.0.jar",
+      "bytes": 141714774,
+      "sha256": "f08ce6e684b50eb57e7b3c98347c3597433f945b17f0d1937517ef49ab47d047"
+    },
+    {
+      "path": "jars/lightsheet-brain-workflows-0.1.2.jar",
+      "bytes": 50921,
+      "sha256": "04fab5ac97a6bd7bc60112e6c1e6ef689feccece8dfea696f22df1dd6e2c2ac8"
+    },
+    {
+      "path": "jars/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
+      "bytes": 2199,
+      "sha256": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99"
+    },
+    {
+      "path": "jars/logback-classic-1.3.16.jar",
+      "bytes": 274469,
+      "sha256": "3f63cbc593b91670f75890ab256aa47c123a9b125185939a272c720ca1417c2c"
+    },
+    {
+      "path": "jars/logback-core-1.3.16.jar",
+      "bytes": 571946,
+      "sha256": "f153c7d582ad19219c906dd728df335232790663f5b3d2db187ac83d9e5a3b8b"
+    },
+    {
+      "path": "jars/lz4-java-1.9-inv.jar",
+      "bytes": 796476,
+      "sha256": "fbecf1b00eeba64806c23f99a9e4a00c2946a3220978bd14a716104f1f9afaad"
+    },
+    {
+      "path": "jars/macos-arm64/ffmpeg-6.1.1-1.5.10-macosx-arm64.jar",
+      "bytes": 18483172,
+      "sha256": "386dac8a99af483c1044bca2d46d4159f4289cb28e045138d6007e432e32c97f"
+    },
+    {
+      "path": "jars/macos-arm64/flimlib-2.1.1-natives-osx_arm64.jar",
+      "bytes": 166108,
+      "sha256": "b68de9ef772694ae1ea0aaf2213e878c3bea3eb67d06660ecc515d0f83713931"
+    },
+    {
+      "path": "jars/macos-arm64/javafx-base-23.0.2-mac-aarch64.jar",
+      "bytes": 756715,
+      "sha256": "1e0b22c5a79239df71f7658379d896acc6f37411ce78d1235d6c3839defdfbeb"
+    },
+    {
+      "path": "jars/macos-arm64/javafx-controls-23.0.2-mac-aarch64.jar",
+      "bytes": 2605885,
+      "sha256": "39d923ab76f456784f189ff022a5437994726c79f40680540060a16cb259631f"
+    },
+    {
+      "path": "jars/macos-arm64/javafx-fxml-23.0.2-mac-aarch64.jar",
+      "bytes": 130605,
+      "sha256": "7f3c4c8e18dffa10aad345b931cf69e3d009a761c4beecf3aa9fbf4d6bb3dd88"
+    },
+    {
+      "path": "jars/macos-arm64/javafx-graphics-23.0.2-mac-aarch64.jar",
+      "bytes": 4935899,
+      "sha256": "774f9d4980980730573e5b56f335203507522b7961953d8ed9a7a32b064c201e"
+    },
+    {
+      "path": "jars/macos-arm64/javafx-media-23.0.2-mac-aarch64.jar",
+      "bytes": 1638917,
+      "sha256": "3f7499c1551d873cadaa94e7f4445bbe71ca4326d7578d8aeea9ceccb395b1de"
+    },
+    {
+      "path": "jars/macos-arm64/javafx-swing-23.0.2-mac-aarch64.jar",
+      "bytes": 91164,
+      "sha256": "660c433d078bcf86b3f08110558c6e727529ef666e82f87802673a2ef9c5aee1"
+    },
+    {
+      "path": "jars/macos-arm64/javafx-web-23.0.2-mac-aarch64.jar",
+      "bytes": 32659603,
+      "sha256": "e837a157aa0cb6874818f09d9dbb32faa7affd03c247c537f9340c26e419325a"
+    },
+    {
+      "path": "jars/macos-arm64/openblas-0.3.26-1.5.10-macosx-arm64.jar",
+      "bytes": 7701407,
+      "sha256": "e7f4e89ba4dbb63bfe0de99056f1da730028842abd31671abae29c00f2c010d5"
+    },
+    {
+      "path": "jars/macos-arm64/opencv-4.9.0-1.5.10-macosx-arm64.jar",
+      "bytes": 22474763,
+      "sha256": "879b1b3e88e2e0836602a5aab5cf4973cf6c739af3db4dbda2022ad2ec40bf74"
+    },
+    {
+      "path": "jars/macosx/gluegen-rt-2.6.0-natives-macosx-universal.jar",
+      "bytes": 9734,
+      "sha256": "e543d5e81bc8b8f63e5dc365ac47da009f82175b2c6eba16a24ce3b2eb031773"
+    },
+    {
+      "path": "jars/macosx/jogl-all-2.6.0-natives-macosx-universal.jar",
+      "bytes": 583638,
+      "sha256": "81db6a2b50f3803d4307a8bd7570a4f78c41ae0d44361208d0885a5cdf289dfa"
+    },
+    {
+      "path": "jars/macosx/opencv-macosx-x86_64.jar",
+      "bytes": 20628443,
+      "sha256": "465391854fd86ec3aaf4c8e0469af2dd2432a7a6f7d6e95795d3d0c0d6f3893d"
+    },
+    {
+      "path": "jars/markdownj-0.3.0-1.0.2b4.jar",
+      "bytes": 40987,
+      "sha256": "bf6fc818fd33723fd6ca7125d985b970b046f32d3fbdb13b621c7220c2699987"
+    },
+    {
+      "path": "jars/maven-scm-api-1.4.jar",
+      "bytes": 94421,
+      "sha256": "8603b43b7f6cd3d11785acd9f2d507ab6bdccda5cbd2c316a23979e7822fe64f"
+    },
+    {
+      "path": "jars/maven-scm-provider-svn-commons-1.4.jar",
+      "bytes": 40066,
+      "sha256": "dfce4e5f3e5273df241f1848eaa7c18d73de766f127d4a6b5727193c4c30d40d"
+    },
+    {
+      "path": "jars/maven-scm-provider-svnexe-1.4.jar",
+      "bytes": 69858,
+      "sha256": "03580d8d7f8c0061bc784aaccdb9460c3dbd8a31c1944453fa30a98e2bd7d36d"
+    },
+    {
+      "path": "jars/metadata-extractor-2.19.0.jar",
+      "bytes": 764623,
+      "sha256": "e51bb454ed08ea2bfcc3ad147d088ad1aa73a999e0072563f8ae50021a2fcadb"
+    },
+    {
+      "path": "jars/metakit-5.3.10.jar",
+      "bytes": 13838,
+      "sha256": "74070aa42e2144a717f6f9942b62a91858c0af39e0d639de4c4251c5c89cfc1a"
+    },
+    {
+      "path": "jars/methods-0.8.1906.jar",
+      "bytes": 1338906,
+      "sha256": "71c188bff73e8874e1f594f1e3279495b2ae3fd700812f551b5ca92a6d20d5ea"
+    },
+    {
+      "path": "jars/metrics-spi-2.46.15.jar",
+      "bytes": 27519,
+      "sha256": "e6e87369eacb507be9636c5260a75399c1fbd8d96cad8452eeadb2c644e9adcb"
+    },
+    {
+      "path": "jars/miglayout-core-5.3.jar",
+      "bytes": 106949,
+      "sha256": "cf3cb12d94b76c2f80c113977d0372d037784002943e566fcdac6b92d076935e"
+    },
+    {
+      "path": "jars/miglayout-swing-5.3.jar",
+      "bytes": 22576,
+      "sha256": "ae384b680242234170de6b939bebf56effa40dd483477e13cd898104ba1e1de1"
+    },
+    {
+      "path": "jars/mij-1.3.6-fiji2.jar",
+      "bytes": 12537,
+      "sha256": "aeb4822eb7ecbeccf8301e8f01d0075f8cb7ef9c552f439ced3440f577577d8a"
+    },
+    {
+      "path": "jars/mina-core-2.2.1.jar",
+      "bytes": 676828,
+      "sha256": "355a2417a939f7ff96bb44d54c418901a69de8f0df2519d9ec9cf009e3d2fd59"
+    },
+    {
+      "path": "jars/mines-jtk-20151125.jar",
+      "bytes": 2011420,
+      "sha256": "21c7c16001b2360d42b8332775a5b621b8c66cafbc30f93a988864da8f059841"
+    },
+    {
+      "path": "jars/minimaven-2.2.3.jar",
+      "bytes": 59422,
+      "sha256": "cf4c81c4a27f5c4c45a8b90c60b45f92bcf2e966e1eeec07088572d4f6245237"
+    },
+    {
+      "path": "jars/minio-5.0.2.jar",
+      "bytes": 127821,
+      "sha256": "5932993ea00702ae8baf0b54f6e068a81005467acf9223611006f75baa143dd1"
+    },
+    {
+      "path": "jars/minlog-1.3.1.jar",
+      "bytes": 5923,
+      "sha256": "5d4d632cfbebfe0a7644501cc303570b691406181bee65e9916b921c767d7c72"
+    },
+    {
+      "path": "jars/modulator-1.0.jar",
+      "bytes": 4616,
+      "sha256": "027520bb2fe031b10bf4760c4d71255089419b6d2bc29addadcfa7155db93767"
+    },
+    {
+      "path": "jars/mpicbg-1.6.6.jar",
+      "bytes": 356702,
+      "sha256": "43605b945958c6e675f3b0ec2090fd3f4e328ba6fffef9aacfc96fc1ebfee3d8"
+    },
+    {
+      "path": "jars/mtj-1.0.4.jar",
+      "bytes": 268984,
+      "sha256": "27a53db335bc6af524b30f97ec3fb4b6df65e7648d70e752447c7dd9bc4697c8"
+    },
+    {
+      "path": "jars/multiverse-core-0.7.0.jar",
+      "bytes": 246777,
+      "sha256": "c54398f0228054b7fae65227433ae9da87e5b2a96eba824e66a924912d10fc50"
+    },
+    {
+      "path": "jars/multiview-reconstruction-9.0.11.jar",
+      "bytes": 2765011,
+      "sha256": "307bacb3b9d698b73a19f24146eeabf5da8000cabf5ffbe2ea4527df692ad18d"
+    },
+    {
+      "path": "jars/multiview-simulation-0.3.1.jar",
+      "bytes": 511708,
+      "sha256": "ab72a57ef9c52d913412c780978637b7300193a464003d91b6b2677d6b5c50ec"
+    },
+    {
+      "path": "jars/n2v-0.8.6.jar",
+      "bytes": 481479,
+      "sha256": "b41d876860f8d08166c64be3d4c5c5de1d356edb653092428af37e899f856fc0"
+    },
+    {
+      "path": "jars/n5-4.0.1.jar",
+      "bytes": 308786,
+      "sha256": "1970555bb1b49d98393d05b76501df9a5728fe0d89b341b08383524bd5d1c2d4"
+    },
+    {
+      "path": "jars/n5-aws-s3-5.0.1.jar",
+      "bytes": 25096,
+      "sha256": "cafdc4ef4be265c9930f148badf2516931c5dc8c7f308941c0f7a83a6c97e0e1"
+    },
+    {
+      "path": "jars/n5-blosc-2.0.0.jar",
+      "bytes": 6326,
+      "sha256": "7daf5c0e12c5bc4bcfaf1044af487fed443c5fcfdca46705b93fca13b95479b1"
+    },
+    {
+      "path": "jars/n5-google-cloud-6.0.1.jar",
+      "bytes": 24910,
+      "sha256": "1cd63aa18b5b2ffbb2be324464c38470e43b2ff9e1bce58f304fbc886cca23a0"
+    },
+    {
+      "path": "jars/n5-hdf5-3.0.0.jar",
+      "bytes": 34287,
+      "sha256": "f2fbfdf82126d43ed81878cc1055dc32cfcea4c4196c57a72d726ef3b18a6e02"
+    },
+    {
+      "path": "jars/n5-ij-5.0.0.jar",
+      "bytes": 183276,
+      "sha256": "3ebf9eff2ce6ab762510cc2965314192c079f5a12725a1e394bd222b39f53a84"
+    },
+    {
+      "path": "jars/n5-imglib2-8.0.0.jar",
+      "bytes": 72265,
+      "sha256": "bf75322c3fc91bc78ff21cd4f2b2172f080c2075ba55210a0177d9cff26d4a3a"
+    },
+    {
+      "path": "jars/n5-universe-3.0.2.jar",
+      "bytes": 354911,
+      "sha256": "49ce6c9e36ae083d0863df82676bf9b9617db091df78fac826a51c05f4bb206b"
+    },
+    {
+      "path": "jars/n5-zarr-2.0.1.jar",
+      "bytes": 107257,
+      "sha256": "f9ff44c24cd1f181f12822d5b9669fe4307ff201d86f1f86cb3eac1d70918f09"
+    },
+    {
+      "path": "jars/n5-zstandard-2.0.0.jar",
+      "bytes": 7638,
+      "sha256": "e3277b6b730fc5c7fefad5d44460cbd4427adb66c5668b6a3f15d7ddcc2990d0"
+    },
+    {
+      "path": "jars/nailgun-server-0.9.1.jar",
+      "bytes": 32927,
+      "sha256": "4518faa6bf4bd26fccdc4d85e1625dc679381a08d56872d8ad12151dda9cef25"
+    },
+    {
+      "path": "jars/nashorn-core-15.6.jar",
+      "bytes": 2167261,
+      "sha256": "c7fc8ee4a5ac3a2d8ed9c0369439e457c675631307055704fcb8406bb1bf677b"
+    },
+    {
+      "path": "jars/native-lib-loader-2.5.0.jar",
+      "bytes": 20860,
+      "sha256": "7ec0dcf847cabdd6487c4724c3cede107a46bdb6585a9dcb63f54c0276b04b40"
+    },
+    {
+      "path": "jars/nativelibs4java-utils-1.6.jar",
+      "bytes": 14874,
+      "sha256": "2db83e3f3f5ca82d772a4c6dddc45a69e1f858440142f13d990401d7ab91a46d"
+    },
+    {
+      "path": "jars/netlib-java-0.9.3-renjin-patched-2.jar",
+      "bytes": 604886,
+      "sha256": "e041719896d27542f396ded1a9c216bf61002bb4d5eeb5a74089e32fa93de95b"
+    },
+    {
+      "path": "jars/netty-buffer-4.1.73.Final.jar",
+      "bytes": 302927,
+      "sha256": "4e0db7b30fc07e2c0560f3cf561512f61f4e9ca14914a8a22966e2f563fdf3f2"
+    },
+    {
+      "path": "jars/netty-codec-4.1.73.Final.jar",
+      "bytes": 337170,
+      "sha256": "b4bfca6b2411d3aa691069aa0971122ba091baaa6d26e0c8b060627436a1e04f"
+    },
+    {
+      "path": "jars/netty-codec-http-4.1.135.Final.jar",
+      "bytes": 691335,
+      "sha256": "4018529d3d6aecf4044b98c75d9a90c91839ddf49c7aa484c5ac81c90a15da02"
+    },
+    {
+      "path": "jars/netty-codec-http2-4.1.135.Final.jar",
+      "bytes": 503395,
+      "sha256": "aa4e81ab5fa3b7b243eb3e814aa582ab26c073d31b0abffdbb58ee150fa49c16"
+    },
+    {
+      "path": "jars/netty-common-4.1.73.Final.jar",
+      "bytes": 649516,
+      "sha256": "1e141f7673269234316778f1ff8934e8c118827896f106e2c3324b9cd099484f"
+    },
+    {
+      "path": "jars/netty-handler-4.1.73.Final.jar",
+      "bytes": 522638,
+      "sha256": "ad376f5a4aaf9da2e483a15c83d3f3a6b2ec5db5579fa0a7e0769be650533d8f"
+    },
+    {
+      "path": "jars/netty-nio-client-2.46.15.jar",
+      "bytes": 298320,
+      "sha256": "e06405d5f6c741bd20881ed6737cecf33e52a577385eaab79031a5c227b4e0f1"
+    },
+    {
+      "path": "jars/netty-resolver-4.1.73.Final.jar",
+      "bytes": 37776,
+      "sha256": "e9a2ec622b9d968a564b13c11e647540eb8ce60851049abd0e60795e79b58a0a"
+    },
+    {
+      "path": "jars/netty-tcnative-classes-2.0.46.Final.jar",
+      "bytes": 33919,
+      "sha256": "d3ec888dcc4ac7915bf88b417c5e04fd354f4311032a748a6882df09347eed9a"
+    },
+    {
+      "path": "jars/netty-transport-4.1.73.Final.jar",
+      "bytes": 478804,
+      "sha256": "26e2208b0dcdf7a4d321d18c342fe16835c368c2b4dcf7c3c93891cd8c394499"
+    },
+    {
+      "path": "jars/netty-transport-classes-epoll-4.1.135.Final.jar",
+      "bytes": 147746,
+      "sha256": "9d9537ab9e15164c9f0dc0748884c148814a18d78ac6dfa65cf4b3d06068ce01"
+    },
+    {
+      "path": "jars/netty-transport-native-unix-common-4.1.135.Final.jar",
+      "bytes": 44327,
+      "sha256": "a7895075f112611d1640a596c2678a28aab92d5681c1c14755b109b8998f995e"
+    },
+    {
+      "path": "jars/object-inspector-0.1.jar",
+      "bytes": 25501,
+      "sha256": "a3a40398ee86a602a88cd5d5c702973443ebce48c22630f7aa850e9a9a3b17b8"
+    },
+    {
+      "path": "jars/objenesis-3.4.jar",
+      "bytes": 49076,
+      "sha256": "95488102feaf2e2858adf6b299353677dac6c15294006f8ed1c5556f8e3cd251"
+    },
+    {
+      "path": "jars/ojalgo-45.1.1.jar",
+      "bytes": 1763194,
+      "sha256": "c7f075bae9585283eb6408cfc9fe724edc8013d28772b803dbd7a5a3488665f8"
+    },
+    {
+      "path": "jars/okhttp-4.12.0.jar",
+      "bytes": 789531,
+      "sha256": "b1050081b14bb7a3a7e55a4d3ef01b5dcfabc453b4573a4fc019767191d5f4e0"
+    },
+    {
+      "path": "jars/okio-3.16.0.jar",
+      "bytes": 76426,
+      "sha256": "e1710de2b36b3bbc6e610623db8062a7fbfd0659d7ec83a07a71b63ed1e43337"
+    },
+    {
+      "path": "jars/okio-jvm-3.16.0.jar",
+      "bytes": 382591,
+      "sha256": "c737c035ca675187bf11a67ddb9581954bf0d5ca9f3e048e838b3267cf32b5c3"
+    },
+    {
+      "path": "jars/ome-codecs-1.1.3.jar",
+      "bytes": 93029,
+      "sha256": "b5211fe1e97ae5535ab6edf625a0a89d4b20c842e4b8b537bd6054280b07cb1c"
+    },
+    {
+      "path": "jars/ome-common-6.2.1.jar",
+      "bytes": 143317,
+      "sha256": "8f0c60b8239baf3cdd28034ade4b216c7d9488e380cc391be057a33506543f0c"
+    },
+    {
+      "path": "jars/ome-mdbtools-5.3.4.jar",
+      "bytes": 91855,
+      "sha256": "fad80deb3662e23b7a1860ba2d8a84fcf68aff8df9ad371063a7b66c0f27e63b"
+    },
+    {
+      "path": "jars/ome-poi-5.3.11.jar",
+      "bytes": 949831,
+      "sha256": "d749a4fe140399664de1d3dd762bd990aa8737c73db0f806cf552d35ffde4ecd"
+    },
+    {
+      "path": "jars/ome-xml-6.5.3.jar",
+      "bytes": 659435,
+      "sha256": "e2da731b8b22d953453fd198b85102a7ceba878e1ef72e5fb3c7ffcdc2364dab"
+    },
+    {
+      "path": "jars/omero-blitz-5.7.4.jar",
+      "bytes": 17071781,
+      "sha256": "11fe7a2ca219b7f814f089ff9050d8603705935877f47903663c1b3e5e2df59f"
+    },
+    {
+      "path": "jars/omero-gateway-5.9.3.jar",
+      "bytes": 315328,
+      "sha256": "559313251466acf9787e3b9db235f581edb9a9499ca28528072b3134e311a238"
+    },
+    {
+      "path": "jars/omero-server-5.6.12.jar",
+      "bytes": 1204967,
+      "sha256": "af8155a778c56f4b8808dd1e78e986c0e7580cfa74a7a2e17555437c9b2ca4c6"
+    },
+    {
+      "path": "jars/op-finder-0.1.4.jar",
+      "bytes": 52969,
+      "sha256": "63e959c5676b8cb246c6450ab29d4fbd8c8e39be3774c056a0465232ad9c4ea3"
+    },
+    {
+      "path": "jars/openblas-0.3.26-1.5.10.jar",
+      "bytes": 172483,
+      "sha256": "190ac4de8e3a1769f26ae9a1bfa7b1e63e119bec36563f59d269ebb7d55f7458"
+    },
+    {
+      "path": "jars/opencensus-api-0.31.1.jar",
+      "bytes": 355405,
+      "sha256": "f1474d47f4b6b001558ad27b952e35eda5cc7146788877fc52938c6eba24b382"
+    },
+    {
+      "path": "jars/opencensus-contrib-http-util-0.31.1.jar",
+      "bytes": 23415,
+      "sha256": "3ea995b55a4068be22989b70cc29a4d788c2d328d1d50613a7a9afd13fdd2d0a"
+    },
+    {
+      "path": "jars/opencensus-proto-0.2.0.jar",
+      "bytes": 749538,
+      "sha256": "0c192d451e9dd74e98721b27d02f0e2b6bca44b51563b5dabf2e211f7a3ebf13"
+    },
+    {
+      "path": "jars/opencl4java-1.0.0-RC4.jar",
+      "bytes": 63852,
+      "sha256": "87b65f3815f7b9014e4c1d0d70a9f41e5c3be51351536d9ec3bfdd0c2a760303"
+    },
+    {
+      "path": "jars/opencsv-5.12.0.jar",
+      "bytes": 242337,
+      "sha256": "f1c55d80a92c8ecfe3f15fb71785d5b156f3674cb5b9ad55dcfd378ffeed2960"
+    },
+    {
+      "path": "jars/opencv.jar",
+      "bytes": 1516552,
+      "sha256": "2797c1e135d7cf4c355c6d0c5d534d1db8b7e609fb7bf641596c2aecf6595e03"
+    },
+    {
+      "path": "jars/opentelemetry-api-1.62.0.jar",
+      "bytes": 175114,
+      "sha256": "d58143928c049233653e6bf1282ff8a767ebdd5e6a82b3f336158c30e40b431d"
+    },
+    {
+      "path": "jars/opentelemetry-common-1.62.0.jar",
+      "bytes": 4458,
+      "sha256": "d6310bebde67d65c1519696728d8604005315ed08ab14071956fc0826fd71815"
+    },
+    {
+      "path": "jars/opentelemetry-context-1.62.0.jar",
+      "bytes": 50758,
+      "sha256": "8ec86c3609222b9b6307bf40154c1f1c288d1f18ada0155409e7797adbdbe517"
+    },
+    {
+      "path": "jars/opentelemetry-gcp-resources-1.37.0-alpha.jar",
+      "bytes": 8276,
+      "sha256": "f7b6baddfbbe57f0e3e1e3cc08eb68bb61c29ef6c17898ce7ce35b1f3029d3e6"
+    },
+    {
+      "path": "jars/opentelemetry-sdk-1.62.0.jar",
+      "bytes": 13010,
+      "sha256": "99d421ea0e5a1ca8e45cb67f1d5db7f0e8a718dd55eeb86c1323597e1f10aed3"
+    },
+    {
+      "path": "jars/opentelemetry-sdk-common-1.62.0.jar",
+      "bytes": 85065,
+      "sha256": "bf9d13df9a50e49a5db664ba8ebfad79f73f03219d2ac6f6709d432f6896eba0"
+    },
+    {
+      "path": "jars/opentelemetry-sdk-extension-autoconfigure-spi-1.62.0.jar",
+      "bytes": 20581,
+      "sha256": "220c22bcf420faae59b7225c789f572eaa22e7af2304d55508aaf2a3efcfecf8"
+    },
+    {
+      "path": "jars/opentelemetry-sdk-logs-1.62.0.jar",
+      "bytes": 79362,
+      "sha256": "51c94329bc8e335ed79027d29d49c075c11b91b39e48679edf590e784a392406"
+    },
+    {
+      "path": "jars/opentelemetry-sdk-metrics-1.62.0.jar",
+      "bytes": 365132,
+      "sha256": "50b057fbf063f6801f623212f4b51b6a3fefc77837314a1316b2f54894c8b5d4"
+    },
+    {
+      "path": "jars/opentelemetry-sdk-trace-1.62.0.jar",
+      "bytes": 145227,
+      "sha256": "fb6c0953b229a6da1db813135ae11a621bf9da56b7356c1e93049ed4b088c232"
+    },
+    {
+      "path": "jars/opentelemetry-semconv-1.29.0-alpha.jar",
+      "bytes": 74817,
+      "sha256": "a95f1aed7e3f64353ec625c6def72a0caaf06b6c53970f578fdd513dafd995fd"
+    },
+    {
+      "path": "jars/options-1.4.jar",
+      "bytes": 14188,
+      "sha256": "7e1ac7036b75c9d66e5ae1931ca80724d3b49e93b8639d96ba5844b619984413"
+    },
+    {
+      "path": "jars/org.apache.servicemix.bundles.antlr-2.7.7_5.jar",
+      "bytes": 453914,
+      "sha256": "3902794d36d9b81da1b7e697f21ed04ccae276cc116eecc640a4cd0fff2691f2"
+    },
+    {
+      "path": "jars/org.apache.servicemix.bundles.dom4j-2.1.3_1.jar",
+      "bytes": 763861,
+      "sha256": "62740dbf5e9d3b73139bc6a1c2deeba479780c137e98ce9dd57a82eb6a340939"
+    },
+    {
+      "path": "jars/org.apache.servicemix.bundles.xpp3-1.1.4c_7.jar",
+      "bytes": 130370,
+      "sha256": "61e106d5964f9109d7fb7462aa6b3c79b80f769fb6d95fb5f0042899471db19f"
+    },
+    {
+      "path": "jars/org.renjin.utils-0.8.1906.jar",
+      "bytes": 394440,
+      "sha256": "7e0910e7130aa21b6b437abc50adcfb4e2ff74e49e013133c7443f7e4471b435"
+    },
+    {
+      "path": "jars/oshi-core-5.5.1.jar",
+      "bytes": 808555,
+      "sha256": "037cfaea5873197e8731ffa7d46d8ccbed335a60bf558b40a04fff1489edb14a"
+    },
+    {
+      "path": "jars/pal-optimization-2.0.1.jar",
+      "bytes": 44492,
+      "sha256": "c50f73d30ea7b4b1bd991fb23c8096b2bb551c997b35c585300bf2423d06b3f1"
+    },
+    {
+      "path": "jars/parsington-3.1.0.jar",
+      "bytes": 47987,
+      "sha256": "7943c91a1e62918ea47d0a08f6b5989a8b388e019216441002236528f769c72a"
+    },
+    {
+      "path": "jars/perf4j-0.9.16.jar",
+      "bytes": 123598,
+      "sha256": "74f3cd5a0ea1cf3c150a8cfe7f76f844babbab16630ab731b805543827b83841"
+    },
+    {
+      "path": "jars/perfmark-api-0.27.0.jar",
+      "bytes": 6954,
+      "sha256": "c7b478503ec524e55df19b424d46d27c8a68aeb801664fadd4f069b71f52d0f6"
+    },
+    {
+      "path": "jars/picocli-4.7.7.jar",
+      "bytes": 417640,
+      "sha256": "f86e30fffd10d2b13b8caa8d4b237a7ee61f2ffccf5b1941de718b765d235bf8"
+    },
+    {
+      "path": "jars/plexus-utils-4.0.2.jar",
+      "bytes": 192537,
+      "sha256": "8957274e75fe2c278b1428dd16a0daeee1dd38152cb6eff816177ac28fccb697"
+    },
+    {
+      "path": "jars/postgresql-42.7.7.jar",
+      "bytes": 1098916,
+      "sha256": "157963d60ae66d607e09466e8c0cdf8087e9cb20d0159899ffca96bca2528460"
+    },
+    {
+      "path": "jars/preloader_-0.1.1.jar",
+      "bytes": 12502,
+      "sha256": "39d23b3385067ec4b2c3318726dfed4e12f6f71c9a42c253ee3072b9197c9216"
+    },
+    {
+      "path": "jars/prettytime-4.0.1.Final.jar",
+      "bytes": 118147,
+      "sha256": "ef7098d973ae78b57d1a22dc37d3b8a771bf030301300e24055d676b6cdc5e75"
+    },
+    {
+      "path": "jars/profiles-2.46.15.jar",
+      "bytes": 53135,
+      "sha256": "00e1f176e669ef79f4388b049153a20d1e029b7a069e27ae5be5e21a0c7a7100"
+    },
+    {
+      "path": "jars/proto-1.15.0.jar",
+      "bytes": 2882802,
+      "sha256": "bc97062b6a89cf80ac6165e0085eb5c44f48d879a8679346ce31acfd16c17cb6"
+    },
+    {
+      "path": "jars/proto-google-cloud-monitoring-v3-3.52.0.jar",
+      "bytes": 2023127,
+      "sha256": "8238b3216aa59ffeed9a157833d7fcc844a7dc9f101b23d728f1cdec6c5c3ba2"
+    },
+    {
+      "path": "jars/proto-google-cloud-resourcemanager-v3-1.96.0.jar",
+      "bytes": 851818,
+      "sha256": "ee1d1035a3eda9c24e47a36846ef660a039f03a6e57f92d4112152f6d30e1826"
+    },
+    {
+      "path": "jars/proto-google-cloud-storage-v2-2.70.0.jar",
+      "bytes": 1095374,
+      "sha256": "5178ff547e7c64c0b50555dd545e30e69115290f0d461c3b14b444ae8e8f9f4a"
+    },
+    {
+      "path": "jars/proto-google-common-protos-2.61.1.jar",
+      "bytes": 2713809,
+      "sha256": "dd8f29e813d2b27a4d5e9ae34c90dd17af3e98af3f445556815516b39eeaf366"
+    },
+    {
+      "path": "jars/proto-google-iam-v1-1.56.1.jar",
+      "bytes": 186477,
+      "sha256": "8d70957543b642ba6707084c5ba7ce83c29726e791d20918bfa0e73ab532b287"
+    },
+    {
+      "path": "jars/protobuf-java-4.32.0.jar",
+      "bytes": 1877730,
+      "sha256": "e902c91b454812b7d056b8d303a572733bf0587576ff157c1049116c9626241d"
+    },
+    {
+      "path": "jars/protobuf-java-util-4.32.0.jar",
+      "bytes": 77382,
+      "sha256": "22b146afd08e92493402e992f5ea1f1f6300a9d5545b479d7ed1a08fb34555e1"
+    },
+    {
+      "path": "jars/protocol-core-2.46.15.jar",
+      "bytes": 44629,
+      "sha256": "e3d447b1fd05361c45eb897a15b6921216c44cafe69d0cfbad47dcdc9750327d"
+    },
+    {
+      "path": "jars/pyimagej-scijava-command-0.2.1.jar",
+      "bytes": 19749,
+      "sha256": "238f97b3b448a8743045ab674c411712cd2c7ae79b5eee32f064602d07b7760e"
+    },
+    {
+      "path": "jars/re2j-1.8.jar",
+      "bytes": 114335,
+      "sha256": "7b52c72156dd7f98b3237a5b35c1d34fba381b21048c89208913ad80a45dfbd7"
+    },
+    {
+      "path": "jars/reactive-streams-1.0.4.jar",
+      "bytes": 11640,
+      "sha256": "f75ca597789b3dac58f61857b9ac2e1034a68fa672db35055a8fb4509e325f28"
+    },
+    {
+      "path": "jars/reflectasm-1.11.9.jar",
+      "bytes": 72265,
+      "sha256": "712b44da79a5b7f47a28cbfcb3d8ecfc872fae349c48aa4d3e38a5d69956afce"
+    },
+    {
+      "path": "jars/regexp-1.3.jar",
+      "bytes": 25429,
+      "sha256": "27998732ecd5745924644f891f41adaf73736fe259a0a20843979452574f0385"
+    },
+    {
+      "path": "jars/regions-2.46.15.jar",
+      "bytes": 965475,
+      "sha256": "3c1773be3f40d95a563511f97dac8f15b8a68d2a0de4550df37854c5c7af652b"
+    },
+    {
+      "path": "jars/reload4j-1.2.26.jar",
+      "bytes": 338688,
+      "sha256": "a7e86ae144541d04d24d1b7123d7425415477d50f387bb868e5c955aeaedd96f"
+    },
+    {
+      "path": "jars/renjin-appl-0.8.1906.jar",
+      "bytes": 23134,
+      "sha256": "4661bbb7333fbb14d2fea50de3ecc8d04746769db053431986ae8ad3d6a60e29"
+    },
+    {
+      "path": "jars/renjin-core-0.8.1906.jar",
+      "bytes": 3211680,
+      "sha256": "a57553f420381905c4aee2ca6ba23d2e61e4d937e0e6a32057eb5e847397ef56"
+    },
+    {
+      "path": "jars/renjin-gnur-runtime-0.8.1906.jar",
+      "bytes": 85644,
+      "sha256": "d6f51b50237fbcfd6426b8605865d886d5e80a43a76eb776599e645e719573db"
+    },
+    {
+      "path": "jars/renjin-script-engine-0.8.1906.jar",
+      "bytes": 17452,
+      "sha256": "cb8329d721d9583a176840427efdb6e77fed8765a1350eb233b6d6eea2a67477"
+    },
+    {
+      "path": "jars/retries-2.46.15.jar",
+      "bytes": 69373,
+      "sha256": "ed9722eea14a6905ecab64d1b7959d30214257cd49e0faee79fd709d7e2cbd6c"
+    },
+    {
+      "path": "jars/retries-spi-2.46.15.jar",
+      "bytes": 32184,
+      "sha256": "a13e1029f76bb043bfe326243428e28b0228fb4e37d6c706af1930fd8f48c2f7"
+    },
+    {
+      "path": "jars/rhino-1.7.14.jar",
+      "bytes": 1383644,
+      "sha256": "c9290b0d801bf0dbbbc44338e0f769b7650a0c5d04e6bb1aeb85775c0211b003"
+    },
+    {
+      "path": "jars/rsyntaxtextarea-3.6.0.jar",
+      "bytes": 1330192,
+      "sha256": "bf00ec1015798edd433c3dfadf0c34a12a395b8c010f8f9fd8ec6ff4f44eb94c"
+    },
+    {
+      "path": "jars/s3-2.46.15.jar",
+      "bytes": 4339853,
+      "sha256": "124798312e104cf72067c9ce1abc950ceee2bee716e32cda69727c5d3bcfc6df"
+    },
+    {
+      "path": "jars/scala-asm-9.4.0-scala-1.jar",
+      "bytes": 320149,
+      "sha256": "d55573711d63b6278443bc2fad577f63a3c60a2ee16633741a54ee202185fe95"
+    },
+    {
+      "path": "jars/scala-library-2.13.10.jar",
+      "bytes": 5949244,
+      "sha256": "e6ca607c3fce03e8fa38af3374ce1f8bb098e316e8bf6f6d27331360feddb1c1"
+    },
+    {
+      "path": "jars/scala3-compiler_3-3.3.0.jar",
+      "bytes": 19181912,
+      "sha256": "783cfb049fc762ecc49fd774197d0ca9f011cfb7aca17a81a2206c4b574c31a7"
+    },
+    {
+      "path": "jars/scala3-interfaces-3.3.0.jar",
+      "bytes": 3965,
+      "sha256": "8bc0a975553be0a7d1e0f4dfb864553bdeb1ce03f86d0df8f6d5af09a0dba391"
+    },
+    {
+      "path": "jars/scala3-library_3-3.3.0.jar",
+      "bytes": 1266563,
+      "sha256": "78add3aaa13701690b73fd90a13d1cae1da32565dedb379e65ade30a16973f6b"
+    },
+    {
+      "path": "jars/scifio-0.49.0.jar",
+      "bytes": 966558,
+      "sha256": "057e7e5233e472168ed3e21c29b27e7b1e40ece28becc81b1baa5f2c7e628e58"
+    },
+    {
+      "path": "jars/scifio-bf-compat-4.1.1.jar",
+      "bytes": 22428,
+      "sha256": "5e8218dc252b2c0a230450b46a8c8a68069e0c4e8ca9ce33ef88187a6f998c4d"
+    },
+    {
+      "path": "jars/scifio-cli-0.6.1.jar",
+      "bytes": 36613,
+      "sha256": "7f345269e77ebb5d53e56ff3ae58602590cf85dfd755dd79f95f42fae8839852"
+    },
+    {
+      "path": "jars/scifio-hdf5-0.2.2.jar",
+      "bytes": 30071,
+      "sha256": "1bc9fe2591780846726087c1cfb3085b8cf93865c85a138d4b53ba3e6b8da5b0"
+    },
+    {
+      "path": "jars/scifio-jai-imageio-1.1.1.jar",
+      "bytes": 1007491,
+      "sha256": "c7f7e4f714bfdc362112e0e457807fb06e5cf0d58c1af31ea12a5b0c95f89f19"
+    },
+    {
+      "path": "jars/scifio-labeling-0.4.0.jar",
+      "bytes": 14503,
+      "sha256": "124afe420da5624e359dadee13e7888d0d926315ac5d5aea9b8788a9fde24cac"
+    },
+    {
+      "path": "jars/scifio-lifesci-0.9.0.jar",
+      "bytes": 18163,
+      "sha256": "f424019c5a38e14a9401dce6bdbac16840682d397da9854ac2f53b319125aa3c"
+    },
+    {
+      "path": "jars/scifio-ome-xml-0.17.1.jar",
+      "bytes": 56911,
+      "sha256": "db1142cf340e352ff2d9c6c0271ec5889bb842e843f7d7309bfb49cf5c5a3a0d"
+    },
+    {
+      "path": "jars/scijava-collections-1.0.1-SNAPSHOT.jar",
+      "bytes": 28625,
+      "sha256": "803ff303555a17e10932ecd08bab80a99a737ab421c0f27d06333e9ee4aebb14"
+    },
+    {
+      "path": "jars/scijava-common-2.101.0.jar",
+      "bytes": 952963,
+      "sha256": "815e9842ab75733c6cce6869c07d6170f395eaad9095ecb4cd21f7e1e647ee60"
+    },
+    {
+      "path": "jars/scijava-common3-1.0.1-SNAPSHOT.jar",
+      "bytes": 67399,
+      "sha256": "f8de355dfac9f5f2ecc233f7edcc66a8bc1b6d0dc8f8f447748251c457afff0d"
+    },
+    {
+      "path": "jars/scijava-concurrent-1.0.1-SNAPSHOT.jar",
+      "bytes": 17600,
+      "sha256": "2c1764080a2496887f4722027b0b1e29340f79648aee28241e81d92f37b847e6"
+    },
+    {
+      "path": "jars/scijava-config-2.0.3.jar",
+      "bytes": 6990,
+      "sha256": "7e81837bfab7c804c676bb3985ed6968cf9f15b998915f47efb432dff562ef71"
+    },
+    {
+      "path": "jars/scijava-desktop-1.0.0.jar",
+      "bytes": 68211,
+      "sha256": "bbcd46627a71e182f48ef47d2856deac62102262983b8f40f16627517bf4c20e"
+    },
+    {
+      "path": "jars/scijava-discovery-1.0.1-SNAPSHOT.jar",
+      "bytes": 9803,
+      "sha256": "39bfd90b7499551274fb3ae7b44bf5baa40441ddf02034eb99ce655d0bdaddcb"
+    },
+    {
+      "path": "jars/scijava-discovery-test-1.0.1-SNAPSHOT.jar",
+      "bytes": 6341,
+      "sha256": "9825d94dccbb15ab1d43af3019572351aad0d8e5be07a2260cd21e684f4f7993"
+    },
+    {
+      "path": "jars/scijava-function-1.0.1-SNAPSHOT.jar",
+      "bytes": 296920,
+      "sha256": "bbaa0a27bd097090140353e5fcc06972130e41a9645e1c13fc374d3ee9e7b155"
+    },
+    {
+      "path": "jars/scijava-io-http-0.3.0.jar",
+      "bytes": 9920,
+      "sha256": "a0d3e3b40f543e2baf9bd388b475e400081e02d4e093578af297e8466bc7beee"
+    },
+    {
+      "path": "jars/scijava-legacy-1.0.1-SNAPSHOT.jar",
+      "bytes": 12217,
+      "sha256": "6b763881e4acf4ed6c991b8e39573d245157f24afa6b2d337144fe5a85d358f1"
+    },
+    {
+      "path": "jars/scijava-listeners-1.0.0-beta-3.jar",
+      "bytes": 9384,
+      "sha256": "4bf7e3a963481eb5900197ef1e600831d0669bbff08a9537328d4fa9e1301a66"
+    },
+    {
+      "path": "jars/scijava-meta-1.0.1-SNAPSHOT.jar",
+      "bytes": 15636,
+      "sha256": "28c75c3ddc731eb7d9f45f56301607d2b938673ca4b8c182917400eaa07e53e9"
+    },
+    {
+      "path": "jars/scijava-ops-api-1.0.1-SNAPSHOT.jar",
+      "bytes": 227063,
+      "sha256": "a4d01a7f000483b5021680a10d8fc59927f9a26a82457d78ba7a893e83b0ac33"
+    },
+    {
+      "path": "jars/scijava-ops-engine-1.0.1-SNAPSHOT.jar",
+      "bytes": 1106121,
+      "sha256": "a6579f8eef3d4f594fcc8f0426e30fa1050adb57fb3ccb73d9e068536cdd59b5"
+    },
+    {
+      "path": "jars/scijava-ops-ext-parser-1.0.1-SNAPSHOT.jar",
+      "bytes": 14329,
+      "sha256": "65a07272e5bc96bbdd16708339490605307e238d09ae4aa3c4d389750a04d244"
+    },
+    {
+      "path": "jars/scijava-ops-flim-1.0.1-SNAPSHOT.jar",
+      "bytes": 53990,
+      "sha256": "7858d24c370c3755e786ec73e6fb9d9e7be2e42c77466c83e42ecf2bd28dca9d"
+    },
+    {
+      "path": "jars/scijava-ops-image-2.0.0-SNAPSHOT.jar",
+      "bytes": 1363850,
+      "sha256": "7b8f8a3dddc1f21d671f7cbbe34b16f9e4e896b226160f133ec23170976f4bcc"
+    },
+    {
+      "path": "jars/scijava-ops-indexer-1.0.1-SNAPSHOT.jar",
+      "bytes": 30329,
+      "sha256": "44407592f3c0312ad390025158795a462c4db6cdf3def604a356c30dbbd3eef6"
+    },
+    {
+      "path": "jars/scijava-ops-opencv-1.0.1-SNAPSHOT.jar",
+      "bytes": 18246,
+      "sha256": "8589d1cc44f5195c986f56708888c7f5cf7788d237b734593005ece22e7bffc3"
+    },
+    {
+      "path": "jars/scijava-ops-spi-1.0.1-SNAPSHOT.jar",
+      "bytes": 8724,
+      "sha256": "8bd1816eb2e5d923124fe4a43c1e160bd28bd65d73f308fa313c41a3eea19894"
+    },
+    {
+      "path": "jars/scijava-optional-1.0.2.jar",
+      "bytes": 7528,
+      "sha256": "9f41b9bd4410b593177aa541a710f867118f0817038022c374b5774a779d19b7"
+    },
+    {
+      "path": "jars/scijava-plot-0.2.0.jar",
+      "bytes": 25349,
+      "sha256": "3432f559ea20f7d5da20e38577dbc610ae1a992681a91f52c06b41dbe5e07f3b"
+    },
+    {
+      "path": "jars/scijava-plugins-commands-0.2.5.jar",
+      "bytes": 24221,
+      "sha256": "1efc81c8d8660d28c0a5872f932e0ebed1acaed28e199161c88c5cd5902b9fed"
+    },
+    {
+      "path": "jars/scijava-plugins-text-markdown-0.1.3.jar",
+      "bytes": 4362,
+      "sha256": "cf3dfada0776689cc6a48f0e3bb46c00cdbafe120c5b2adf09bb1173227761cd"
+    },
+    {
+      "path": "jars/scijava-plugins-text-plain-0.1.4.jar",
+      "bytes": 4157,
+      "sha256": "f40cd5edc18e1b80833a5e0699356468f7ffef18bde488a98f1a9327881caa1c"
+    },
+    {
+      "path": "jars/scijava-priority-1.0.1-SNAPSHOT.jar",
+      "bytes": 4899,
+      "sha256": "c40cc8de5b39bbda1a01f7a1b26ea32839c710b746b13aaaa095fc873a300728"
+    },
+    {
+      "path": "jars/scijava-progress-1.0.1-SNAPSHOT.jar",
+      "bytes": 9631,
+      "sha256": "c741ed64c6666737ecca716226fb9579b90fe68624aaf88985a45defcc5775be"
+    },
+    {
+      "path": "jars/scijava-search-3.0.2.jar",
+      "bytes": 81872,
+      "sha256": "6dd36a088e0eaad36cddc19cccaec340ba53ae021dc13fc4816d742e8713fe9a"
+    },
+    {
+      "path": "jars/scijava-struct-1.0.1-SNAPSHOT.jar",
+      "bytes": 13698,
+      "sha256": "eca3c81d2bb6c8de4c885e2e0ff58356dd76c71ede6f21f6d1209ae7068b8150"
+    },
+    {
+      "path": "jars/scijava-table-1.0.3.jar",
+      "bytes": 72543,
+      "sha256": "b18f303bf087f3bdd8cb0a7311105798249e826b15cbdb94c24a6d861d72fbe3"
+    },
+    {
+      "path": "jars/scijava-taglets-1.0.1-SNAPSHOT.jar",
+      "bytes": 7614,
+      "sha256": "dc2e50090ee1c4c7d50f665c10eeefae62b6794301d67276de4954b56490435a"
+    },
+    {
+      "path": "jars/scijava-types-1.0.1-SNAPSHOT.jar",
+      "bytes": 36251,
+      "sha256": "3e5b656a1dd8be74e2dccbc2d9199c10c8ec49c782500ab2c6df7579433a2dca"
+    },
+    {
+      "path": "jars/scijava-ui-awt-0.1.7.jar",
+      "bytes": 48165,
+      "sha256": "b103b8ea0be62a3d12d11db53c1ab49e34a70d2ff55ab7e8cc57ca41a7fd7fc2"
+    },
+    {
+      "path": "jars/scijava-ui-swing-1.0.5.jar",
+      "bytes": 247114,
+      "sha256": "140b057bbe52a457f1e1725ae04605e058c1db1f2b2500ab6ab3f0110ac63698"
+    },
+    {
+      "path": "jars/scijava-vecmath-1.6.0-scijava-2.jar",
+      "bytes": 164203,
+      "sha256": "9ff4ede53f0fd6e25dc32f8139640a14f7222bebaae45fc4bced6f51d797b8fd"
+    },
+    {
+      "path": "jars/script-editor-1.4.0.jar",
+      "bytes": 382467,
+      "sha256": "ebf7186506cfe360098019a125f6634a5f4959dc8719206b0e417b4eb5c18c9a"
+    },
+    {
+      "path": "jars/script-editor-jython-1.1.0.jar",
+      "bytes": 59865,
+      "sha256": "7da1e149acc45233b5cbc10e5c326fa86e81588257009e613cef80fc2aa43349"
+    },
+    {
+      "path": "jars/script-editor-scala-0.2.1.jar",
+      "bytes": 24134,
+      "sha256": "58dc1e5031cf2960790ed314ed1eb98836c0c3ed045a392b898aa5e89846fbf2"
+    },
+    {
+      "path": "jars/scripting-appose-python-0.1.0.jar",
+      "bytes": 42296,
+      "sha256": "a2a89124b06fce9a8b979de8f4a6d57401c2890a25dafb9383e055b7f22ad9fb"
+    },
+    {
+      "path": "jars/scripting-beanshell-1.0.0.jar",
+      "bytes": 7197,
+      "sha256": "317c1b33ffe0a47148e01bcc5f18dbda6e2488e32b000748e10237727a048f51"
+    },
+    {
+      "path": "jars/scripting-clojure-1.0.0.jar",
+      "bytes": 9156,
+      "sha256": "19ef9715cc09b3099b118dc4bab8d8277abfb2c530226c73b141cdf19c8444c4"
+    },
+    {
+      "path": "jars/scripting-groovy-1.0.0.jar",
+      "bytes": 12621,
+      "sha256": "502fb3aee07b04040dca99567ba153fd654c2645c89d7c55cb1d0ef29b3c9ffd"
+    },
+    {
+      "path": "jars/scripting-java-1.0.1.jar",
+      "bytes": 17979,
+      "sha256": "0752117c03335c1eff2fbe052b0dd396ed7bcd4afd33e533db1135377d680907"
+    },
+    {
+      "path": "jars/scripting-javascript-1.0.0.jar",
+      "bytes": 7590,
+      "sha256": "6c8bd0d014c1ac0bdb82b12b20d33ac2ad6e18aa1b5255faaa5a113fc2cd7183"
+    },
+    {
+      "path": "jars/scripting-jruby-0.3.1.jar",
+      "bytes": 8057,
+      "sha256": "b5c8ea694c47d69881296bf2005613e7bde1459bd63826e07954b65a0bec3c6e"
+    },
+    {
+      "path": "jars/scripting-jython-1.0.1.jar",
+      "bytes": 5842,
+      "sha256": "2c61cfdcc3aa10bdc71a9ac7d82da14928d126a8f8b48390e41e642e6aa7deb5"
+    },
+    {
+      "path": "jars/scripting-python-0.4.3.jar",
+      "bytes": 23887,
+      "sha256": "ba45d0b7b0b826eafcccf712e88c91edd333a4067f588a44bf7794b75fd97ec8"
+    },
+    {
+      "path": "jars/scripting-renjin-0.2.3.jar",
+      "bytes": 7046,
+      "sha256": "0086b568d78a60259f01dd156e776b5d87182532ec1069b06b563a47c0c96675"
+    },
+    {
+      "path": "jars/scripting-scala-0.3.2.jar",
+      "bytes": 42832,
+      "sha256": "28495e62f44921a77a04dbca2fde92e0a351f40d8eafa7835bb5ebc88da1f63f"
+    },
+    {
+      "path": "jars/sdk-core-2.46.15.jar",
+      "bytes": 1041486,
+      "sha256": "f4a431a0b2fd9b2a6e343f0b0e21de0c2eec49b887e7c63f22db1a5dc2f74fb5"
+    },
+    {
+      "path": "jars/serializer-2.7.2.jar",
+      "bytes": 276420,
+      "sha256": "e8f5b4340d3b12a0cfa44ac2db4be4e0639e479ae847df04c4ed8b521734bb4a"
+    },
+    {
+      "path": "jars/shared-resourcemapping-0.33.0.jar",
+      "bytes": 92851,
+      "sha256": "eea9a3e11db783626cc15dd1835c1ed09f53b70a1fca8c58bf723ce813e9f843"
+    },
+    {
+      "path": "jars/slf4j-api-2.0.17.jar",
+      "bytes": 69908,
+      "sha256": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832"
+    },
+    {
+      "path": "jars/snakeyaml-2.5.jar",
+      "bytes": 340015,
+      "sha256": "e6682acf1ace77508ef13649cbf4f8d09d2cf5457bdb61d25ffb6ac0233d78dd"
+    },
+    {
+      "path": "jars/software.amazon.awssdk.annotations-2.46.15.jar",
+      "bytes": 13606,
+      "sha256": "229f049a509cec78df066716bbff82de595b870e9cf67bfc90c090eaaed3b70d"
+    },
+    {
+      "path": "jars/spec.alpha-0.5.238.jar",
+      "bytes": 636643,
+      "sha256": "94cd99b6ea639641f37af4860a643b6ed399ee5a8be5d717cff0b663c8d75077"
+    },
+    {
+      "path": "jars/specification-6.5.3.jar",
+      "bytes": 629287,
+      "sha256": "a5dd60ddd9732188867435f1ec77464a95c82f95d4aa4547031e48aaa92b59ff"
+    },
+    {
+      "path": "jars/spim_data-2.3.5.jar",
+      "bytes": 118839,
+      "sha256": "5653e11f0018486422714a63c05800638c413d8a45c5965c3f6b4d8df11b9a7f"
+    },
+    {
+      "path": "jars/sqlite-jdbc-3.49.1.0.jar",
+      "bytes": 14317659,
+      "sha256": "5c8609d2ca341deb8c6f71778974b5ba4995c7d32d7c7c89d9392a3e72c39291"
+    },
+    {
+      "path": "jars/stats-0.8.1906.jar",
+      "bytes": 759376,
+      "sha256": "14e58e3988db3e6dde11eadbeaa50ec7473ca510ad4fc3378491f37727161b36"
+    },
+    {
+      "path": "jars/stax2-api-4.2.2.jar",
+      "bytes": 195922,
+      "sha256": "a61c48d553efad78bc01fffc4ac528bebbae64cbaec170b2a5e39cf61eb51abe"
+    },
+    {
+      "path": "jars/swing-checkbox-tree-1.0.2.jar",
+      "bytes": 8607,
+      "sha256": "79694c92031253a585fac2fe7ebd4cfe6b740e436aab2c58e6b334f5c0a4e60d"
+    },
+    {
+      "path": "jars/swing-worker-1.1.jar",
+      "bytes": 12591,
+      "sha256": "8367bc401d38d96ec987ef72502a310599552210dd60cb9e494b58a7c23be1ca"
+    },
+    {
+      "path": "jars/swingx-1.6.1.jar",
+      "bytes": 1389926,
+      "sha256": "ad9e3577517e8b4d08ca58f637338ebed79ef8bd955b734600d95c8ad182840f"
+    },
+    {
+      "path": "jars/tasty-core_3-3.3.0.jar",
+      "bytes": 73993,
+      "sha256": "dc88fcb0fc4e766ac681e805ad2fbecfc485e6774d167e5cefdd764840d2f97c"
+    },
+    {
+      "path": "jars/tensorflow-1.15.0.jar",
+      "bytes": 1825,
+      "sha256": "8ce4b87401fc04936834c5167c41d828407028f2c17455300044577f9db6b4cd"
+    },
+    {
+      "path": "jars/third-party-jackson-core-2.46.15.jar",
+      "bytes": 582370,
+      "sha256": "e5ab6d9b39c26e2320bfdf043198a7967470a99aa28504f176eeba6f1ce0fa6d"
+    },
+    {
+      "path": "jars/threetenbp-1.7.2.jar",
+      "bytes": 514750,
+      "sha256": "541c224d8dcf76271e538416575bb81b933deffd69e17e2314142786e481ecb8"
+    },
+    {
+      "path": "jars/trakem2-transform-1.0.1.jar",
+      "bytes": 60198,
+      "sha256": "09a54d23e788a6a25b3019c99a3dc73679f8d76794dba11b11bed44152e178fd"
+    },
+    {
+      "path": "jars/trove4j-3.0.3.jar",
+      "bytes": 2523218,
+      "sha256": "3c8616203d61a12a7e3487e8b34f3c198c2b5ba9e90da0c7ea32d99cd4958012"
+    },
+    {
+      "path": "jars/turbojpeg-8.5.0.jar",
+      "bytes": 1296283,
+      "sha256": "aac27e1ec0a2ba78a902335dd692793019ef2bd697911aa9472e0525d6c23914"
+    },
+    {
+      "path": "jars/txw2-2.3.5.jar",
+      "bytes": 72008,
+      "sha256": "7d75ea1151367fb66287011d9941715f645922932554acba0c5ac3aec67fb01f"
+    },
+    {
+      "path": "jars/udunits-4.3.18.jar",
+      "bytes": 126892,
+      "sha256": "e392cd6b1829b5726da183f4060b54931bd384ce02ada37517c8b740fa4c41df"
+    },
+    {
+      "path": "jars/ui-behaviour-2.0.8.jar",
+      "bytes": 131987,
+      "sha256": "fe63ff433a9d9f365d27b1fe91fad76d19c90ddaceef89013c36354f56a01965"
+    },
+    {
+      "path": "jars/unirest-java-3.14.5.jar",
+      "bytes": 206218,
+      "sha256": "f0cc339221e9e759681bd1435f5918f460beadec4745c27a8719af6da26d45e5"
+    },
+    {
+      "path": "jars/unsafe-fences-1.0.jar",
+      "bytes": 3329,
+      "sha256": "16439ffe5fef90db4cd328481b8a60009c7560f54280077856480de8eea3158a"
+    },
+    {
+      "path": "jars/util-interface-1.3.0.jar",
+      "bytes": 2571,
+      "sha256": "89028234b4621ac92761676a00e2e47598fcf5232a9bb994a7ed6dee94eb5aa2"
+    },
+    {
+      "path": "jars/utils-2.46.15.jar",
+      "bytes": 251333,
+      "sha256": "a699d54f7650e9127f3565d286e650f1969673342bc35fb1889524716b676567"
+    },
+    {
+      "path": "jars/utils-lite-2.46.15.jar",
+      "bytes": 8814,
+      "sha256": "59ab53b80639014652dbe9d73bed3c55f21c68d8e1cca74fe31f4236dc897f28"
+    },
+    {
+      "path": "jars/vecmath-1.7.2.jar",
+      "bytes": 168277,
+      "sha256": "f3e45824fc503d7469c5b02841dad4774358e1378688a6b6a38bb91e87d0b6d0"
+    },
+    {
+      "path": "jars/wavelets-2.0.0.jar",
+      "bytes": 22394,
+      "sha256": "f8b422badd3e2a6350783883ec58839a2f4cf6c97364e314a7af1213a9da6ca7"
+    },
+    {
+      "path": "jars/weave_jy2java-2.1.1.jar",
+      "bytes": 14466,
+      "sha256": "6169b5a4d54bca2c9d0ac2fe6669770e847cb309d0a2f66e88e96f6d56fd457a"
+    },
+    {
+      "path": "jars/webcam-capture-0.3.12.jar",
+      "bytes": 428297,
+      "sha256": "d960b7ea8ec3ddf2df0725ef214c3fccc9699ea7772df37f544e1f8e4fd665f6"
+    },
+    {
+      "path": "jars/weka-dev-3.9.6.jar",
+      "bytes": 9779161,
+      "sha256": "fddae1352375e1518d02ab6e6267e4ab1c9eb04ebc4c3072ea5e9ddd8092d870"
+    },
+    {
+      "path": "jars/woodstox-core-7.0.0.jar",
+      "bytes": 1608603,
+      "sha256": "eeb3853282c24964a93a6eb4c1bbcb60c8d09fd8e0ffc75ab64ad21045a1fa78"
+    },
+    {
+      "path": "jars/xalan-2.7.2.jar",
+      "bytes": 3154938,
+      "sha256": "a44bd80e82cb0f4cfac0dac8575746223802514e3cec9dc75235bc0de646af14"
+    },
+    {
+      "path": "jars/xchart-3.5.4.jar",
+      "bytes": 266705,
+      "sha256": "3175b2e276ab4300fd341623f8337c7555946576fb7ec25b33064aca4eb2f57b"
+    },
+    {
+      "path": "jars/xerbla-0.8.jar",
+      "bytes": 935,
+      "sha256": "e7069f99fda52b64c714c8d8ccf11d76d9dd903d419b4a38f15da891cf3739af"
+    },
+    {
+      "path": "jars/xercesImpl-2.12.2.jar",
+      "bytes": 1446149,
+      "sha256": "6fc991829af1708d15aea50c66f0beadcd2cfeb6968e0b2f55c1b0909883fe16"
+    },
+    {
+      "path": "jars/xml-apis-1.4.01.jar",
+      "bytes": 220536,
+      "sha256": "a840968176645684bb01aed376e067ab39614885f9eee44abe35a5f20ebe7fad"
+    },
+    {
+      "path": "jars/xml-apis-ext-1.3.04.jar",
+      "bytes": 85686,
+      "sha256": "d0b4887dc34d57de49074a58affad439a013d0baffa1a8034f8ef2a5ea191646"
+    },
+    {
+      "path": "jars/xmlgraphics-commons-2.11.jar",
+      "bytes": 686441,
+      "sha256": "1a37948ebfedab0cd292cfc5007e65c2fa16a701b94c206152720d3a738561bc"
+    },
+    {
+      "path": "jars/xmlunit-1.5.jar",
+      "bytes": 97665,
+      "sha256": "b041399902889bef7fa489370d0e8f4d862812938beb14c88d93d250d464fb0d"
+    },
+    {
+      "path": "jars/xmpcore-6.1.11.jar",
+      "bytes": 142953,
+      "sha256": "8f7033c579b99fa0d9d6ddcb9448875b5e4b577c350002278ce46997d678b737"
+    },
+    {
+      "path": "jars/xpp3-1.1.4c.jar",
+      "bytes": 120069,
+      "sha256": "0341395a481bb887803957145a6a37879853dd625e9244c2ea2509d9bb7531b9"
+    },
+    {
+      "path": "jars/xz-1.10.jar",
+      "bytes": 168569,
+      "sha256": "95c63c1a55b22dd6453890a419cc1a640f790bbf7d8ae82db1e30aefefb08888"
+    },
+    {
+      "path": "jars/zstd-jni-1.5.7-4.jar",
+      "bytes": 7409448,
+      "sha256": "e7f064bf1eab83fa785cf587f657f09649e3b0af6f27caa5382416953b5a35f8"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/README.md",
+      "bytes": 355,
+      "sha256": "741ca56647fc1814e28712c93ac357613eccc62887622893c38eed1ffcbfeb5d"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/best_model_torchscript.pt",
+      "bytes": 181605085,
+      "sha256": "1c59382b776acc2beed84bc2309e29f474aa69ff6356ec2248a04854d4feca7b"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/binarize.ijm",
+      "bytes": 735,
+      "sha256": "5a428f3a710dc1212c1a86830978f4707932b251c37b912fad15578ef6a1fce1"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/cover.png",
+      "bytes": 3145894,
+      "sha256": "bc3a57a13bb401507003d38ef453770f18456680e29008b2119439631129d375"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/doc.md",
+      "bytes": 10,
+      "sha256": "5db0bcc3a59b899f282f3bab27c0397a82685fa131a64525ef741c8d23ad4190"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/im_preprocessing.ijm",
+      "bytes": 604,
+      "sha256": "cd950ddbcbadcb5cbc016bb71ee33d2ee7b730b3ca6bbc0ea17dc54c4b2167ec"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml",
+      "bytes": 2511,
+      "sha256": "1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/sample_input_0.tif",
+      "bytes": 3146493,
+      "sha256": "c991490991c180ce3b5bba38ff0f9f0acc58f4c4cca578c2755330e903db024b"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/sample_output_0.tif",
+      "bytes": 2359648,
+      "sha256": "2d5e99db60aac9a3a8546dbb2466c8140f247c194472c7a104dd99771331e5c5"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-input.npy",
+      "bytes": 3145856,
+      "sha256": "986cfd751c0e2cfd3367cfc39b5583c10e55da2f1a7772d73845c6395eefd681"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-output.npy",
+      "bytes": 2359424,
+      "sha256": "c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9"
+    },
+    {
+      "path": "models/2D_enteric_neuron_subtype_v4.zip",
+      "bytes": 15832489,
+      "sha256": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8"
+    },
+    {
+      "path": "models/2D_enteric_neuron_v4_1.zip",
+      "bytes": 37145743,
+      "sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276"
+    },
+    {
+      "path": "plugins/3D_Blob_Segmentation-4.0.0.jar",
+      "bytes": 13421,
+      "sha256": "fa8c6074d940bb92c30748dc2aede0e132b15211aa94be9775ef132af5ea9002"
+    },
+    {
+      "path": "plugins/3D_Objects_Counter-2.0.1.jar",
+      "bytes": 22913,
+      "sha256": "e5cb0928d46dd76b755d7478b77996b24f4ce569e70b15715c57766824100fef"
+    },
+    {
+      "path": "plugins/3D_Viewer-5.0.1.jar",
+      "bytes": 564860,
+      "sha256": "da304cb75bdba7d1fffad0bba9e7611a2ee88565e066a66b8adafa3172713f7e"
+    },
+    {
+      "path": "plugins/Analyze/Dynamic_ROI_Profiler.clj",
+      "bytes": 3676,
+      "sha256": "da3093fd0a5560a5f8ad066f3d5798633c822db48c6842d51f817b83f001ff4b"
+    },
+    {
+      "path": "plugins/Analyze/Measure_RGB.txt",
+      "bytes": 744,
+      "sha256": "b911ea8f01fdf19c46a5c08e74be9b6b973d128b57a56117a7180570c28780b0"
+    },
+    {
+      "path": "plugins/AnalyzeSkeleton_-3.4.2.jar",
+      "bytes": 50158,
+      "sha256": "043f52f936d7fb69500b01fe061b0ab948ed85b68e05bd244e4ba3e40b9961ac"
+    },
+    {
+      "path": "plugins/Anisotropic_Diffusion_2D-2.0.1.jar",
+      "bytes": 11405,
+      "sha256": "5fdca34d9925c7d5ce9c9a78e887b7c72fb9731511fa4b8072fa421f46764a84"
+    },
+    {
+      "path": "plugins/Archipelago_Plugins-0.5.4.jar",
+      "bytes": 28131,
+      "sha256": "bb426b03646e72a737c407984e4c7e74500a0da237dd01dac999de2ed37ff7ef"
+    },
+    {
+      "path": "plugins/Arrow_-2.0.2.jar",
+      "bytes": 29138,
+      "sha256": "6ed543c29f260c1a65c8757ecd2f70aea46f759d5b48ee2557eb633ff2bdb05e"
+    },
+    {
+      "path": "plugins/Auto_Local_Threshold-1.11.0.jar",
+      "bytes": 12290,
+      "sha256": "b4cc8e4373b06718fec35fb5818def894ef971c5bff3d58309f6cba8589bec30"
+    },
+    {
+      "path": "plugins/Auto_Threshold-1.18.0.jar",
+      "bytes": 18539,
+      "sha256": "cd13304b65d5451bf873c3263b74e71736ee0d32cfe4a848732857bd1bb5c606"
+    },
+    {
+      "path": "plugins/BIOP/BIOPLib.ijm",
+      "bytes": 29790,
+      "sha256": "f850d6d318db48b7d47de57f023c1ee9f24accd60466035f9eed7fb6bfe89014"
+    },
+    {
+      "path": "plugins/BIOP/BIOP_Basics.jar",
+      "bytes": 2941,
+      "sha256": "110c04d4a3a9ab85246a687544cdc78070403eb34fee75af498ba9c21afa57d3"
+    },
+    {
+      "path": "plugins/BIOP/BIOP_Channel_Tools.jar",
+      "bytes": 5737,
+      "sha256": "cdeb5761fca11da7b1f4d670fecb041ba0065a87e40aa1ab7b33b8d92efbd8a9"
+    },
+    {
+      "path": "plugins/BIOP/BIOP_Common_Tools.jar",
+      "bytes": 9647,
+      "sha256": "95d31c1fefa8eafd1c1f39f903fe4cc8fc61052aed53f4496312be9609aaaf7f"
+    },
+    {
+      "path": "plugins/BIOP/BIOP_LibInstaller-1.1.0-SNAPSHOT.jar",
+      "bytes": 5962,
+      "sha256": "7a7880fa531ddb5fc5471245cc56399d2f6d0f343a04c1e835c471e1cd634783"
+    },
+    {
+      "path": "plugins/BIOP/BIOP_MultiManual_Select.jar",
+      "bytes": 6301,
+      "sha256": "9978f95bc7836d922935939c6215b63e2210021a05e5136e6f4aed218f19197a"
+    },
+    {
+      "path": "plugins/BIOP/BIOP_VSI_reader.jar",
+      "bytes": 55329,
+      "sha256": "cbf11b3bee7bb464c3e43ba628eddeda80e4a32db52bd861b7c68a8e36981957"
+    },
+    {
+      "path": "plugins/BIOP/B_Run_Macro-1.0.0-SNAPSHOT.jar",
+      "bytes": 5387,
+      "sha256": "d071abf484bf5bae8d4aefb9f0034a298e882ba365a0e6d0bcd6b63a9668af3a"
+    },
+    {
+      "path": "plugins/BIOP/FRC_-1.0.2.jar",
+      "bytes": 17247,
+      "sha256": "6b46913ad80c4dc56f19bf30025182fe7fa389def4f0131e62f626a6b1457fd4"
+    },
+    {
+      "path": "plugins/BIOP/LaRoMe-0.3.2.jar",
+      "bytes": 20020,
+      "sha256": "05688ffeb139dac5d723426b090e8fc15bf5c63d4af4feb8235ab7b35e8c9371"
+    },
+    {
+      "path": "plugins/BIOP/Multi_Stack_Montage-1.1.2.jar",
+      "bytes": 10683,
+      "sha256": "8e9419c61afad5249a80ea8c3f22799668ee099d41ee437bf2ed38814f52d645"
+    },
+    {
+      "path": "plugins/BIOP/argolight_analysis_tool-1.1.2.jar",
+      "bytes": 126262,
+      "sha256": "a6a5718c95c26d46e9d8fdb1e6fe38d65d7e03d21e37a1a30511630bdaf76a9d"
+    },
+    {
+      "path": "plugins/BalloonSegmentation_-3.0.1.jar",
+      "bytes": 69164,
+      "sha256": "1392d8b26acb102d25f12dda8ad82849ffcbe17c67af744d226f2869f8238701"
+    },
+    {
+      "path": "plugins/Bug_Submitter-2.1.1.jar",
+      "bytes": 23811,
+      "sha256": "3b8c1668a2c0111632fdebf5b4c9d49984567ad367f81edce7caa3679ed6f9b6"
+    },
+    {
+      "path": "plugins/CPU_Meter-2.0.2.jar",
+      "bytes": 6183,
+      "sha256": "688001fbb22e5e5fc53eefc37494fad0c2ab6bfd55eb859a859ff9b53934ba41"
+    },
+    {
+      "path": "plugins/Calcium/_Align Images in a folder.ijm",
+      "bytes": 4246,
+      "sha256": "618131921e117739f397497e047b874012815eef3e1c61bbf168f74371547566"
+    },
+    {
+      "path": "plugins/Calculator_Plus-2.0.1.jar",
+      "bytes": 7288,
+      "sha256": "2153402f3e678c004137fa9a8e31954e5422bc8e2b6f5f8b2ffb17710f8453ed"
+    },
+    {
+      "path": "plugins/Cell_Counter-3.0.0.jar",
+      "bytes": 33260,
+      "sha256": "aeb12efd15238ea349fb572a5bc2cb18888f4c54f0e9be35e94112ffd0bf57e1"
+    },
+    {
+      "path": "plugins/Colocalisation_Analysis-3.1.0.jar",
+      "bytes": 153303,
+      "sha256": "f686c152d99163ccb66e1964665c8c9a69c7fbfd37a687053c51d472b5cba88f"
+    },
+    {
+      "path": "plugins/Color_Histogram-2.0.7.jar",
+      "bytes": 21902,
+      "sha256": "c0574af99de2222a58eeb2c71db85f4b5fa607b4e5e16130b55ed2587e026379"
+    },
+    {
+      "path": "plugins/Color_Inspector_3D-2.5.0.jar",
+      "bytes": 258312,
+      "sha256": "52e359a44914747abb209da4d321433e738bc5f42bc772fd2531cb1dbf8d7ca3"
+    },
+    {
+      "path": "plugins/Colour_Deconvolution-3.0.3.jar",
+      "bytes": 15155,
+      "sha256": "3f41e7bfb442f711898d0e367d8f002045119e0001bdbc3e967d8334da3c5d50"
+    },
+    {
+      "path": "plugins/CorrectBleach_-2.1.0.jar",
+      "bytes": 19065,
+      "sha256": "65b861ebae641b2aaa235e296f42afdb948d356bbddec92d2808f0c40da1174a"
+    },
+    {
+      "path": "plugins/DeepImageJ-3.2.0-SNAPSHOT.jar",
+      "bytes": 97253,
+      "sha256": "ce07bfa791c83034538ef858bce17b03fb414e18082aa78b1e63594d3829b5c6"
+    },
+    {
+      "path": "plugins/Descriptor_based_registration-3.0.3.jar",
+      "bytes": 91873,
+      "sha256": "78216b4ac87e9450334d0b03e3bff23eba087565c0bc0072ee00754c96dc2f80"
+    },
+    {
+      "path": "plugins/Dichromacy_-2.1.2.jar",
+      "bytes": 20494,
+      "sha256": "48db6c467dbab9be41357f2aae54141bb0d2b2cae401262850c8c1e7c5b6b536"
+    },
+    {
+      "path": "plugins/Differentials_-2.0.1.jar",
+      "bytes": 7443,
+      "sha256": "8c49428a0da9fbce740c65a407bc0c58ccb74c4d014ca67538a6475af4a99c77"
+    },
+    {
+      "path": "plugins/Directionality_-2.3.0.jar",
+      "bytes": 25076,
+      "sha256": "81f916d6e21746c947240a93e1b788e27a6774a8033e439848a142ce3ca71cae"
+    },
+    {
+      "path": "plugins/Examples/Add_Popup_Split_Channels.bsh",
+      "bytes": 420,
+      "sha256": "3b511fe67e6280e695f32a63118573d4d4d8f6838352d75a05053873454e8b6a"
+    },
+    {
+      "path": "plugins/Examples/Anaglyph_for_Red_Cyan_glasses.rb",
+      "bytes": 1835,
+      "sha256": "b06ae3d45e2d74c668b90a687fa6bac26026bbebeb5ac3e82f265d50451a8850"
+    },
+    {
+      "path": "plugins/Examples/Blobs_Demo_in_Ruby.rb",
+      "bytes": 2012,
+      "sha256": "b2d003eee8c401a9549ea61a5e6a6d00bf035df594821b839e29e016a24bc723"
+    },
+    {
+      "path": "plugins/Examples/Command_Launchers/Command_Launcher_BeanShell.bsh",
+      "bytes": 1163,
+      "sha256": "95425c3e9ee93bc906e9453cb66b6d374816c9da1b638769408d9732c907169f"
+    },
+    {
+      "path": "plugins/Examples/Command_Launchers/Command_Launcher_Clojure.clj",
+      "bytes": 1223,
+      "sha256": "435b06069d4491fbd5fdd60d68e286da399bb777820124d2f666d2788e7ffc35"
+    },
+    {
+      "path": "plugins/Examples/Command_Launchers/Command_Launcher_Javascript.js",
+      "bytes": 1010,
+      "sha256": "1bf4e75739e67a5ebe86f2df19bd898701891d6fa15423c3ab967c7af2e59829"
+    },
+    {
+      "path": "plugins/Examples/Command_Launchers/Command_Launcher_Python.py",
+      "bytes": 1216,
+      "sha256": "1d66f488254c5435d211efab26d5f6087d6f202000dcafeedd9ff49e4e06d34b"
+    },
+    {
+      "path": "plugins/Examples/Command_Launchers/Command_Launcher_Ruby.rb",
+      "bytes": 826,
+      "sha256": "3bee9a7239e9fd351035ddcec4f65f1ac2dda734a4f38e17607ae6b274e91322"
+    },
+    {
+      "path": "plugins/Examples/CoverMaker/Cover_Maker.py",
+      "bytes": 8702,
+      "sha256": "0f5644613cffebeaeeedaedb3029a7c474dd5a171bcf7df16a5ed6f5e02f294c"
+    },
+    {
+      "path": "plugins/Examples/CoverMaker/Prepare_Cover_Maker_Database.py",
+      "bytes": 7430,
+      "sha256": "2f1236fed1a14442908f4a1b7739441deeca60065bd245b8541c9f1412268c7e"
+    },
+    {
+      "path": "plugins/Examples/Delayed_Snapshot.py",
+      "bytes": 647,
+      "sha256": "7998b95bc033d042db6c0fa701f8bc14d2ef42b8d67986127e05d899ee352437"
+    },
+    {
+      "path": "plugins/Examples/Delayed_Snapshot_Window.bsh",
+      "bytes": 3118,
+      "sha256": "906d0dc8c7181fd6ad518690bb2b597355e96b512ab43b578e0011388a1e3b2f"
+    },
+    {
+      "path": "plugins/Examples/Edit_LUT_As_Text.py",
+      "bytes": 2161,
+      "sha256": "960cfdadc4e81723fb630df3d625be4df2cf756148edb26e9c8911802b36f7e1"
+    },
+    {
+      "path": "plugins/Examples/Extended_Profile_Plot.bsh",
+      "bytes": 580,
+      "sha256": "b068d860cf5d5e7717afe55a84fb40de4c29f0e7a4a0adc545de593821c1e2d9"
+    },
+    {
+      "path": "plugins/Examples/Fiji_Cube.ijm",
+      "bytes": 2028,
+      "sha256": "3daebd2d22433b4ba52b221e5d19ffffaf043b2ec40539896523e7899cb6886e"
+    },
+    {
+      "path": "plugins/Examples/Fiji_Logo_3D.js",
+      "bytes": 2069,
+      "sha256": "3af0f474c39db77c5ecd56423c5f6f9d0dd902c3125d77757d9f685212bd2b6c"
+    },
+    {
+      "path": "plugins/Examples/Find_Dimension_of_Raw_Image.py",
+      "bytes": 1431,
+      "sha256": "473392ce38301ea683c1058cc2029701785d38b091e20ae75e18bb9fb5f1ab7b"
+    },
+    {
+      "path": "plugins/Examples/Image_To_Tool_Icon.bsh",
+      "bytes": 1731,
+      "sha256": "00181785d584782cd60f3d7945349f550a5beadd82998e6de5bd79a41c7348bd"
+    },
+    {
+      "path": "plugins/Examples/Multithreaded_Image_Processing.clj",
+      "bytes": 6952,
+      "sha256": "d478a046b09990696d7ca88984334ec3142ba567d75e60cf3c3f39c5777a89c7"
+    },
+    {
+      "path": "plugins/Examples/Multithreaded_Image_Processing_in_Javascript.js",
+      "bytes": 6031,
+      "sha256": "91493f46dfb7efef6087004d311cd074112e311a8de9931a4c363c2e35f206a2"
+    },
+    {
+      "path": "plugins/Examples/Plasma_Cloud.rb",
+      "bytes": 6271,
+      "sha256": "bef6834e70a74cc494025c994de50a196ebfe4ddf736a26eb16d7ab98a4b0495"
+    },
+    {
+      "path": "plugins/Examples/Same_Slice_in_Multiple_Images.rb",
+      "bytes": 1634,
+      "sha256": "86dd0b1af352cd0159861874735d47b555b16a2edc8ac52b020423b57d805edc"
+    },
+    {
+      "path": "plugins/Examples/The_Hue_Game.bsh",
+      "bytes": 8737,
+      "sha256": "e99b5f6cda204939f4fd4cc542de483b6e389191aca03a3ce2a8c45fc5dc6c55"
+    },
+    {
+      "path": "plugins/Examples/TrakEM2_Example_Scripts/Homogenize_Ball_Radius.py",
+      "bytes": 665,
+      "sha256": "a679b7aa239191cf263d159a750d68689133445f4ff38c05b9039dfa2349a1a1"
+    },
+    {
+      "path": "plugins/Examples/TrakEM2_Example_Scripts/Measure_AreaLists.py",
+      "bytes": 4441,
+      "sha256": "ba11458e5f1c4f93e9188b26d9e9221528a8977c1b71c7435384b873ddaff36f"
+    },
+    {
+      "path": "plugins/Examples/TrakEM2_Example_Scripts/T2_Select_All.py",
+      "bytes": 411,
+      "sha256": "7caab80dd4c957624e0d87438711162c93f58a6db96dffa9fc1e248f606192ec"
+    },
+    {
+      "path": "plugins/Examples/TrakEM2_Example_Scripts/T2_set_all_transforms_to_identity.py",
+      "bytes": 256,
+      "sha256": "c8594abfadbbb570b488344328f3df34ce6caaf531b067ad7aaf5bff24a2d07c"
+    },
+    {
+      "path": "plugins/Examples/TrakEM2_Example_Scripts/extract_stack_under_arealist.py",
+      "bytes": 2199,
+      "sha256": "6da42dde2bc2e3a75557741303fb0c4dbd5e9c59acb808658ccd3a2fa0ec0edd"
+    },
+    {
+      "path": "plugins/Examples/blend_two_images.clj",
+      "bytes": 1485,
+      "sha256": "3fea241ce27ab70a2ea4177fba8761e652b149f931b703ac0ebb60f6dd976dfd"
+    },
+    {
+      "path": "plugins/Examples/celsius_to_fahrenheit.clj",
+      "bytes": 2091,
+      "sha256": "4850504df48c6d4a5ca8d5faffbd7e6fb2185946b7b8cdc8830e5470113f3a13"
+    },
+    {
+      "path": "plugins/Examples/chess_.py",
+      "bytes": 3781,
+      "sha256": "1738e777ae822bcbc0c2d89d99729263344999680d579d7d1e41bae9769a9a97"
+    },
+    {
+      "path": "plugins/Examples/compose_rgb-stacks.bsh",
+      "bytes": 3173,
+      "sha256": "7a9008f3e174dcf9f98d5e06ba4b0253320b8f5db411e9f0857760e4b0f4fae9"
+    },
+    {
+      "path": "plugins/Examples/downsample_.js",
+      "bytes": 4303,
+      "sha256": "143eb2ddd789f5fbfe66ed5167e2b5205f570e66b82f5e3f479159182fc16a52"
+    },
+    {
+      "path": "plugins/Examples/list_all_threads.py",
+      "bytes": 777,
+      "sha256": "a1dba173d8b086ca1cfb33aaa95f3cecb40e7dce02d4f60a60ab405d4e753202"
+    },
+    {
+      "path": "plugins/Examples/random_noise_example.clj",
+      "bytes": 1593,
+      "sha256": "5c2030e789377f2d533a45218f2116149738f1f523839adfacdcd6405be4a5bd"
+    },
+    {
+      "path": "plugins/Extended_Depth_Field-2.0.1.jar",
+      "bytes": 116910,
+      "sha256": "6f6b4a5d2bcfa4f5763c6ba4c0d2fee7abe9f67c7fff4a1e023985a6679a848c"
+    },
+    {
+      "path": "plugins/FS_Align_TrakEM2-2.0.4.jar",
+      "bytes": 22006,
+      "sha256": "92ad3e93a14501b55402116b35e4e6bf0ac996b70653e2cc3937003f102eaccb"
+    },
+    {
+      "path": "plugins/Feature_Detection-2.0.3.jar",
+      "bytes": 19859,
+      "sha256": "dc864336c9bafc041884a4192439975b7781e6f6a906c2f18d59966789b69530"
+    },
+    {
+      "path": "plugins/Fiji_Archipelago-2.0.1.jar",
+      "bytes": 185588,
+      "sha256": "bf7e3ae19d7ec03f48962a64dd555eb08bf2fce2fa452410291a461302638038"
+    },
+    {
+      "path": "plugins/Fiji_Developer-2.0.8.jar",
+      "bytes": 45383,
+      "sha256": "f0f6b2a231d586d7c681c58a016b692dd60be520865750b16b46d21e98decc7b"
+    },
+    {
+      "path": "plugins/Fiji_Package_Maker-2.1.1.jar",
+      "bytes": 24031,
+      "sha256": "00afbf6bbeb5d52b00bbafe0d97d120ff0ba32d4871af5c2bd7ae343ef8eb2ec"
+    },
+    {
+      "path": "plugins/Fiji_Plugins-3.2.0.jar",
+      "bytes": 97618,
+      "sha256": "e9705fc55f2f59f578579e80cdc7c5acb9d3a5f26048a1ceb8ec2b85b11cc882"
+    },
+    {
+      "path": "plugins/FlowJ_-2.0.1.jar",
+      "bytes": 6869,
+      "sha256": "979199df0ba4b2acc72eb1370457f8844bb1e77f47f6467aa6008b5e12315225"
+    },
+    {
+      "path": "plugins/Fresh_Fiji_Probe.jar",
+      "bytes": 34724,
+      "sha256": "9c71b9cf321bec6231d4d29f20ad5e3603272dd77fe28eb74f407f97179f60e2"
+    },
+    {
+      "path": "plugins/Graph_Cut-1.0.2.jar",
+      "bytes": 40018,
+      "sha256": "892f8bc11023749a3478b318f48eca7fcfa7e9cb8f2a3c6ad8cc621fd8f7aafa"
+    },
+    {
+      "path": "plugins/Gray_Morphology-2.3.5.jar",
+      "bytes": 33651,
+      "sha256": "3bb0f5ccc5d8276f14d11cfa353fb3a3e41a5bd09bd581ceced272780933d67a"
+    },
+    {
+      "path": "plugins/H5J_Loader_Plugin-1.1.5.jar",
+      "bytes": 43050,
+      "sha256": "c1f7a73ef121e8adafeb9b9bcea25f09c1d3430d1da095a2c1d2d3a9692216d0"
+    },
+    {
+      "path": "plugins/HDF5_Vibez-1.1.1.jar",
+      "bytes": 46466,
+      "sha256": "f1072d69843847a8bc3646c54885c67ec28f1224347f09af58bc5f2c6a67b545"
+    },
+    {
+      "path": "plugins/Helmholtz_Analysis-2.0.2.jar",
+      "bytes": 8940,
+      "sha256": "de4ae392208fbe30c7327a0feec477c54791c986d2af51702d5b5c124178ff9d"
+    },
+    {
+      "path": "plugins/IJ_Robot-2.0.1.jar",
+      "bytes": 6167,
+      "sha256": "2d7ab2237b1766318f661557b460df2c76833bb665498fdb5c48abf72124b195"
+    },
+    {
+      "path": "plugins/IO_-4.3.0.jar",
+      "bytes": 170534,
+      "sha256": "530428671fb583bd6d6bfd242f49e9655465036a0edf7253b282be93cdac7d5b"
+    },
+    {
+      "path": "plugins/Image_5D-2.0.2.jar",
+      "bytes": 130627,
+      "sha256": "74435980496cbf15f0de2cabc1d8a511eefa4acf0e12db6d0bb853c269a2dad6"
+    },
+    {
+      "path": "plugins/Image_Expression_Parser-3.0.1.jar",
+      "bytes": 83901,
+      "sha256": "d3a2c45a6a23201d911cb2b9f8ead26409bc9a6a30bdba8fba8d663e68c4572c"
+    },
+    {
+      "path": "plugins/Interactive_3D_Surface_Plot-3.0.1.jar",
+      "bytes": 96320,
+      "sha256": "834fc974e917cc053622939d42db3d218f33a89656c4775bc027181f96e79544"
+    },
+    {
+      "path": "plugins/IsoData_Classifier-2.0.1.jar",
+      "bytes": 4623,
+      "sha256": "ce2cc3cca69629f820bb3930f607bea50f8478c772f839a218eda3aa6c194ecc"
+    },
+    {
+      "path": "plugins/JACoP_B-1.3.0.jar",
+      "bytes": 47545,
+      "sha256": "301fe9fe691684a70a52a6413505a4ba609d37e56d991f898a166ac94c349202"
+    },
+    {
+      "path": "plugins/JRuby/imagej.rb",
+      "bytes": 20949,
+      "sha256": "70f399e98eb014f774f947203132d498007447e3fbfb60d1f5baaf709a4f6ab9"
+    },
+    {
+      "path": "plugins/Kuwahara_Filter-2.0.1.jar",
+      "bytes": 5536,
+      "sha256": "306e863f9c59424e893d96c9b6c5d1deb2913a7a797abd7f629ea65d383bfea0"
+    },
+    {
+      "path": "plugins/LSM_Reader-4.1.2.jar",
+      "bytes": 20469,
+      "sha256": "e4d7dc6091773421c6a985952a709d28c25a2bd93b5c0b72f6a7bfed520c5635"
+    },
+    {
+      "path": "plugins/LSM_Toolbox-4.1.2.jar",
+      "bytes": 338579,
+      "sha256": "15a95539b5d3bfba37cee511b90e331e0d77943d98c28ffbf39ee2167ff95e61"
+    },
+    {
+      "path": "plugins/Lasso_and_Blow_Tool-2.0.2.jar",
+      "bytes": 25180,
+      "sha256": "db5f8ef57f108fe3b571734e6ec82b973498b00cd8903945bc0315e19b930d84"
+    },
+    {
+      "path": "plugins/Linear_Kuwahara-2.0.1.jar",
+      "bytes": 7642,
+      "sha256": "e51b05aa4431067ed7ef4ad4da245995255f0120a5a7ae77e48952763142c2b0"
+    },
+    {
+      "path": "plugins/LocalThickness_-5.0.0.jar",
+      "bytes": 32083,
+      "sha256": "938c20145f9cd7d2104e951fd4b22621cfa0a1fcb870da6ef5ec3d38c61582ff"
+    },
+    {
+      "path": "plugins/MTrack2_-2.0.1.jar",
+      "bytes": 11644,
+      "sha256": "7b985c4cb54a2c39b4aaa5dcd6ffa56cad3f35ce0db5d15cecf1f53d019250cb"
+    },
+    {
+      "path": "plugins/M_I_P-2.0.1.jar",
+      "bytes": 14058,
+      "sha256": "a8598684f6aeadfcc9fda315353682464b6a98066a8b6fefdaa057be07153de4"
+    },
+    {
+      "path": "plugins/Macros/About_Plugin_Macros.txt",
+      "bytes": 178,
+      "sha256": "afe992f13ba6bb74f614209e75f8723e942bdf05f6ab0c771116d514e343c53b"
+    },
+    {
+      "path": "plugins/Macros/Bulls_Eye.txt",
+      "bytes": 734,
+      "sha256": "8cdb721a0342cf31456fbfde41461abf4edcd0f880a8989baa47b2493ae0ead1"
+    },
+    {
+      "path": "plugins/Macros/Polygon_.txt",
+      "bytes": 2750,
+      "sha256": "add99d1f6b5635366a790244bd20ddea1eddd68cf229e02907326d33f9001008"
+    },
+    {
+      "path": "plugins/Macros/RGB_Histogram.txt",
+      "bytes": 961,
+      "sha256": "0801f215de4be885207a5abd34505724180143351947df17875e524a4e467436"
+    },
+    {
+      "path": "plugins/Macros/batch_convert_any_to_tif.txt",
+      "bytes": 581,
+      "sha256": "3e58119ee028691e66d05cb554c6c8319c7efad8b2e5f66f77e9dc994f9803b0"
+    },
+    {
+      "path": "plugins/Manual_Tracking-2.1.1.jar",
+      "bytes": 24978,
+      "sha256": "7760851446cca6b06084421a61295a887bdc92a4cba551f2d0e8dfef9f9e73ff"
+    },
+    {
+      "path": "plugins/MaxInscribedCircles-2.0.2.jar",
+      "bytes": 22908,
+      "sha256": "5adf77612503e965d574fee86af2a20b2a625187a6a09c8fb4015f7bfdb88f26"
+    },
+    {
+      "path": "plugins/MorphoLibJ_-1.6.5.jar",
+      "bytes": 1161276,
+      "sha256": "086c4661ccdd8c2787a6433468955df7646589b16cbae5c97607c18d8fe2af59"
+    },
+    {
+      "path": "plugins/MosaicJ_-2.0.1.jar",
+      "bytes": 71027,
+      "sha256": "07d23f3dc25f1c4d6db2b66cdaaa706e5f540749be05a9e011a5d95c26a878e9"
+    },
+    {
+      "path": "plugins/Multi_Kymograph-3.0.1.jar",
+      "bytes": 15591,
+      "sha256": "328ad6acd95e8aaa190e91201f92338d12fa3c0ef7c34e46d2508fa306c13296"
+    },
+    {
+      "path": "plugins/OrientationJ_-2.0.7.jar",
+      "bytes": 448691,
+      "sha256": "bf5cba4442ae4da42694020bca89a48084086fb817d9fdb1aab8763a388a106d"
+    },
+    {
+      "path": "plugins/PIV_analyser-2.0.0.jar",
+      "bytes": 23750,
+      "sha256": "6236786ef4ca82c9470a53dd61721b939378505978c8e8d2594be97b7ddef54a"
+    },
+    {
+      "path": "plugins/PointPicker_-2.0.1.jar",
+      "bytes": 25920,
+      "sha256": "5d7c6e73594e9b4ea5ae2d6aebcf497650ff7da740616561c4aa097bb0d4c623"
+    },
+    {
+      "path": "plugins/Quality_Filter-0.1.0-SNAPSHOT.jar",
+      "bytes": 7818,
+      "sha256": "3bf99564f939376dd7f416427b6fbcb58a2c5149597858185eb8d91dc74028fe"
+    },
+    {
+      "path": "plugins/QuickPALM_-1.1.2.jar",
+      "bytes": 59014,
+      "sha256": "cfe03a70c7090820a9b66d5cba40b995ebecf858a06daa90fd7d0e6434255baf"
+    },
+    {
+      "path": "plugins/RATS_-2.0.2.jar",
+      "bytes": 12958,
+      "sha256": "c126c15700cc68e3c273d2ef9ebc542dd0feddf6cd33912d40775bd4b858cee0"
+    },
+    {
+      "path": "plugins/Reconstruct_Reader-2.0.5.jar",
+      "bytes": 67843,
+      "sha256": "11d899f544c3862ada08ab9ee94d0ced6e42d146f90da42f872331a87952259f"
+    },
+    {
+      "path": "plugins/SPIM_Opener-2.0.2.jar",
+      "bytes": 39924,
+      "sha256": "d90cd4557c551181d748eb19d8afe734c67f3de5c7d417a0fdd3407b9b86ef42"
+    },
+    {
+      "path": "plugins/SPIM_Registration-5.0.26.jar",
+      "bytes": 1615109,
+      "sha256": "1870298e5136b269c31166427dc35d4c3acd8fb384fa7bbe9e793108f1730617"
+    },
+    {
+      "path": "plugins/Samples_-2.0.3.jar",
+      "bytes": 2962,
+      "sha256": "b73b35026cc4df23e636fc201181a3b8ff6c0247f9efccb6725036725620ddde"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/AutoRun/clij2_assistant_autostart.ijm",
+      "bytes": 84,
+      "sha256": "1e6d942469f291fd5507026e169adc5a236bf3faab797140fac18946cf064a39"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Admin/Create_New_User_Project.groovy",
+      "bytes": 10072,
+      "sha256": "5014131a8bee3215ef583e36e2500b66ec9ee93e0ab232829d71207935b21933"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Admin/GitLab User Manager.groovy",
+      "bytes": 17250,
+      "sha256": "cc00d2dfd9a7b13eca60acb97e735059ae344b6816612b217a82cb8793a10319"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Admin/List Heavy Folders.ijm.groovy",
+      "bytes": 417,
+      "sha256": "137f5347ca593dbe6fde37809698167aa51b47bf13fb7314d2fecfd3df33fc4c"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Admin/PPMS_Emails_To_Outlook.ijm",
+      "bytes": 1014,
+      "sha256": "89ad0e744acc9af40676eaf6b43423854e70625f09c723c87912926c7fdbc511"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Image Analysis/ROIs/Cell_Maker.groovy",
+      "bytes": 4679,
+      "sha256": "417d9fcda705f191c78c2d0549c053e171cb409372473939b5527d82af013d68"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Image Analysis/ROIs/Run_TrackMate_from_RoiManager.groovy",
+      "bytes": 21523,
+      "sha256": "22ecff237ed70e623c64553aa6b71899e2763a68cebf8e0fe8410c2953b731b8"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Image Processing/BIOP_SimpleColorBalance.bsh",
+      "bytes": 1741,
+      "sha256": "57f7330a0110787c19e454175ba526af42f78cdc0d7e03f6a826f439d681f576"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Image Processing/Unmixing/Get_Linear_Unmixing_Parameters.groovy",
+      "bytes": 5769,
+      "sha256": "e7e6078f36d502ddbdeac46a9579a1bccb505ed6f1409ba55c5d182621d0d300"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/Image Processing/Unmixing/Linear_Unmixing.groovy",
+      "bytes": 7679,
+      "sha256": "dbee6ed2160e88ca613ecde8136a7a5aa48f1901658ed0f3703e87b89a90d1d2"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/BIOP/OMERO/Batch_convert_to_tiff_and_upload_to_OMERO.groovy",
+      "bytes": 11522,
+      "sha256": "ee0512d6f61b392e743feeaf211363542a81c6a424df652941675ed3c358d786"
+    },
+    {
+      "path": "plugins/Scripts/Plugins/Gut Analysis Toolbox/Extract and save images.groovy",
+      "bytes": 5031,
+      "sha256": "a771e0d471e150876a16e2d6f36016c68c530053a51a9577bc22b9ac084afd70"
+    },
+    {
+      "path": "plugins/Series_Labeler-2.0.1.jar",
+      "bytes": 34838,
+      "sha256": "f59fdc18ac7331a724f333ea9a990e60beeb82fdfb948945d04dd04dc8551beb"
+    },
+    {
+      "path": "plugins/SheppLogan_-2.0.1.jar",
+      "bytes": 4984,
+      "sha256": "aa1af206b7849850f2978ee8afda35e5f6a76399568299ed88baa4abe5d1b09f"
+    },
+    {
+      "path": "plugins/Siox_Segmentation-1.0.5.jar",
+      "bytes": 113625,
+      "sha256": "c415f7f1b5fbcdad698fabefb3046a039f68675c31864e48a0d32a30c10454ec"
+    },
+    {
+      "path": "plugins/Skeletonize3D_-2.1.1.jar",
+      "bytes": 10204,
+      "sha256": "666ae144ec77d5078e9e31174bce7150bdf494c5610ffe4f1a74424fe092d737"
+    },
+    {
+      "path": "plugins/Snakuscule_-2.0.1.jar",
+      "bytes": 35910,
+      "sha256": "e324260c76d7cfafbb08a027d546c54bc4b80687b71a67988ec4bdc66d066331"
+    },
+    {
+      "path": "plugins/SplineDeformationGenerator_-2.0.2.jar",
+      "bytes": 44679,
+      "sha256": "3136c463e0078bc7a52993861f8a08ef08696b153b3cb617207aa0b29d2d98c7"
+    },
+    {
+      "path": "plugins/StackReg_-2.0.1.jar",
+      "bytes": 20947,
+      "sha256": "a62e509a88b0b28fc9926722ac1f6e81ff45362ae4fd3f7fcb60020cc9c11787"
+    },
+    {
+      "path": "plugins/Stack_Manipulation-2.1.2.jar",
+      "bytes": 37232,
+      "sha256": "1c91e89a3cae56478434481208e51e3e8c93bc8be903cf4fed05142c32b581b9"
+    },
+    {
+      "path": "plugins/StarDist_-0.3.0.jar",
+      "bytes": 16180976,
+      "sha256": "fff483154961e60cb6305e4ef73ef9e662298e1e65a077858e018717eb30d2bd"
+    },
+    {
+      "path": "plugins/Statistical_Region_Merging-2.0.1.jar",
+      "bytes": 7711,
+      "sha256": "9a9baa672ecb1952daba170fd3b7b7b3bf113a9baba7229c6153baf36bcba43a"
+    },
+    {
+      "path": "plugins/Stitching_-3.1.10.jar",
+      "bytes": 372216,
+      "sha256": "e9ceafd1a30c622a77945f1f2b952f9ad68823aaee7abab8c045716e32a45478"
+    },
+    {
+      "path": "plugins/Sync_Win-1.7-fiji4.jar",
+      "bytes": 45125,
+      "sha256": "0cd0ff869244b6c68459206cfeebb853705a414ddba127f46cab4ad52d1cb46b"
+    },
+    {
+      "path": "plugins/Template_Matching.jar",
+      "bytes": 10695,
+      "sha256": "cdc4ac16d70486c7420b9704e56c26b90084b54a1b558405451fd22cc8aa823c"
+    },
+    {
+      "path": "plugins/Thread_Killer-2.0.1.jar",
+      "bytes": 4336,
+      "sha256": "3ec4d45ded6b50ddb9fc1242cfb985a525a7699d0e90d3256c74326764edce26"
+    },
+    {
+      "path": "plugins/Time_Lapse-2.1.1.jar",
+      "bytes": 79894,
+      "sha256": "6b8497db9a470867d7647cf2c33d56c0d6ded7efee49adc5648c1d4f54fed877"
+    },
+    {
+      "path": "plugins/Time_Stamper-2.1.0.jar",
+      "bytes": 6138,
+      "sha256": "d615870023d33ab7d51929593696dea1b218e93b9f04eec61acf5f08159731d1"
+    },
+    {
+      "path": "plugins/ToAST_-25.0.2.jar",
+      "bytes": 25263,
+      "sha256": "6e149bb5936c0fa33e569aa38fbf8e916cb55b36c87132f6a2f3464d65f37431"
+    },
+    {
+      "path": "plugins/TopoJ_-2.0.1.jar",
+      "bytes": 9420,
+      "sha256": "6200aba0ece382f37c366a926108ac7af95a639f1b10c3d40f14d2438fb455fe"
+    },
+    {
+      "path": "plugins/TrackMate_clij2-2.5.1.3.jar",
+      "bytes": 19060,
+      "sha256": "2b1bd9bbcd884eaff777c21ad330a130e9424aeb511a6fd643017f4cc53bc79d"
+    },
+    {
+      "path": "plugins/Trainable_Segmentation-4.0.0.jar",
+      "bytes": 501343,
+      "sha256": "f85a8c764d64b9f52cf4f026d5af7278549c65f304a3f759d33339259d0437f6"
+    },
+    {
+      "path": "plugins/TrakEM2_-2.0.0.jar",
+      "bytes": 2368518,
+      "sha256": "8772e3e3bbbe81d206a96b53ae7079292af6fa4564c349197060932253ec3c49"
+    },
+    {
+      "path": "plugins/TrakEM2_Archipelago-2.0.4.jar",
+      "bytes": 22478,
+      "sha256": "7065dded020baf0da52d222ab498906079892e5655d1de795d34a264cd701b01"
+    },
+    {
+      "path": "plugins/TurboReg_-2.0.1.jar",
+      "bytes": 96387,
+      "sha256": "e7fde441f1913e9818f6c7de7baf6cd3e728b4972b4a0e674550a3f9471b1817"
+    },
+    {
+      "path": "plugins/UnwarpJ_-2.0.0.jar",
+      "bytes": 100020,
+      "sha256": "b4e8b5b03b5c078746adf1b6abe320d32669fa18bd8fd8705b5e12d3bb011f9b"
+    },
+    {
+      "path": "plugins/Utilities/Close_All_Without_Saving.txt",
+      "bytes": 404,
+      "sha256": "9f39866e9cab9d42eaab7f85dfe145c52ffa88b27fe8c3d069ae8a7e9576e8dd"
+    },
+    {
+      "path": "plugins/VIB_-4.0.0.jar",
+      "bytes": 448065,
+      "sha256": "af9344c42d41fb233a88bc33af0bd952e5fbb5e8e97f61172571c3750f8b79f6"
+    },
+    {
+      "path": "plugins/Vaa3d_Reader-2.0.3.jar",
+      "bytes": 20505,
+      "sha256": "1f57560551cedbb66756db7247a28a23957ebcea737ab42e87ed2c52d2166f18"
+    },
+    {
+      "path": "plugins/Vaa3d_Writer-1.0.3.jar",
+      "bytes": 6476,
+      "sha256": "280aff9e48764add19c965f7186ba3cd6a9686cc4585da1241df4b1ef2b6494d"
+    },
+    {
+      "path": "plugins/Video_Editing-2.0.1.jar",
+      "bytes": 30046,
+      "sha256": "aecd41e8337140437fe21bf15a4922ceecbe30038a34a81d82b8486bf17235d6"
+    },
+    {
+      "path": "plugins/View5D_-2.5.6.jar",
+      "bytes": 180808,
+      "sha256": "64ae35d781e926ca097b9094702d4ee4ba63a8abf38d0d5a4fb1f7822ccdab10"
+    },
+    {
+      "path": "plugins/Volume_Calculator-3.0.0.jar",
+      "bytes": 31417,
+      "sha256": "dbadb83713bf4c0a7f5d60881eef543e2409fa84e05f82cbe90bfd4b740352d3"
+    },
+    {
+      "path": "plugins/Volume_Viewer-2.01.4.jar",
+      "bytes": 121862,
+      "sha256": "9d252be541818a638679f66ef36d486565214c9711659a909233fb3e5d2a7711"
+    },
+    {
+      "path": "plugins/bUnwarpJ_-2.6.13.jar",
+      "bytes": 192299,
+      "sha256": "5f51e606947e0878f0045de7ba5620050314096d4b0fe7de7955f4d678825134"
+    },
+    {
+      "path": "plugins/bdvpgsettings/bdvkeyconfig.yaml.default.txt",
+      "bytes": 5039,
+      "sha256": "29674c8d8d796d31346131a157f745925fdb60bb1854ef4ede503f25fe240152"
+    },
+    {
+      "path": "plugins/bdvpgsettings/bdvpg.editor.actions.txt.default.txt",
+      "bytes": 2803,
+      "sha256": "befa0665c290630a80f57c0b83cb00fae8e33dc21046889e5b8f372900d71316"
+    },
+    {
+      "path": "plugins/bdvpgsettings/bdvpg.tree.actions.txt.default.txt",
+      "bytes": 3441,
+      "sha256": "61ea121c8d10a62da82b343be8e89b2ebdedbace3e58e283a87a9ddd91e137af"
+    },
+    {
+      "path": "plugins/bigwarp_fiji-9.4.0.jar",
+      "bytes": 685616,
+      "sha256": "b372fda039031e9242c8c41942cf66c363f39a3656821c775c24cc17a26b5854"
+    },
+    {
+      "path": "plugins/bio-formats_plugins-8.5.0.jar",
+      "bytes": 250637,
+      "sha256": "70aafb497e61ff4c61fed0f99ea6913bbaf4bf34be6e39b3e2093db19c0d3f23"
+    },
+    {
+      "path": "plugins/blockmatching_-2.1.4.jar",
+      "bytes": 17383,
+      "sha256": "3cf8240f16800800216c82840a04966f32124353798ae0114a70cc580694549c"
+    },
+    {
+      "path": "plugins/clij2-assistant_-2.5.1.6.jar",
+      "bytes": 234999,
+      "sha256": "ec5f6a6156e4cec6fd3f2547c6871ba8648e1bbb2222d191fc79e4da5a32c633"
+    },
+    {
+      "path": "plugins/clij2-fft_-2.2.0.15.jar",
+      "bytes": 390124,
+      "sha256": "a57243fb31aaf45fa3bd7325c726399839293e2b97284cdd9af5d9b331fe7fb6"
+    },
+    {
+      "path": "plugins/clij2_-2.5.3.5.jar",
+      "bytes": 1161438,
+      "sha256": "e62351f3be262abfd77f68b7629b553b5d184006c7a16aaa2f66b3954cca7b0a"
+    },
+    {
+      "path": "plugins/clij_-1.9.0.1.jar",
+      "bytes": 211999,
+      "sha256": "8212a1bbbc4f199fd17615f351b7baa92fa54a841283d6f8b3c67743fbab4cb4"
+    },
+    {
+      "path": "plugins/clijx-weka_-0.32.1.1.jar",
+      "bytes": 73065,
+      "sha256": "cd360d757ce4adac095878dc61c99a6c3e2262646f3b8eaa5fb54acd29b064d8"
+    },
+    {
+      "path": "plugins/clijx_-0.32.2.0.jar",
+      "bytes": 851525,
+      "sha256": "84f44b4c61344323178c44e212fda670b1bb28b6d19e60df1658b2863548de02"
+    },
+    {
+      "path": "plugins/ij_ridge_detect-1.4.1.jar",
+      "bytes": 129915,
+      "sha256": "2e1c972ff88d9fa927752713bc3ed91ada22d7b461abfe344f64729b8c5fe1d9"
+    },
+    {
+      "path": "plugins/level_sets-1.0.2.jar",
+      "bytes": 85238,
+      "sha256": "8db460ed2eb03c412ebc2b28ca549e4be8744c3576dbc117df835f30f7c8b1bf"
+    },
+    {
+      "path": "plugins/mcib3d-suite/MacroV4.ijm",
+      "bytes": 1216,
+      "sha256": "3195606edefb1250438d3e1baff87757916646811999b9c03ee38d8782484d63"
+    },
+    {
+      "path": "plugins/mcib3d-suite/mcib3d-core-4.1.7b.jar",
+      "bytes": 1130323,
+      "sha256": "514d5ea459825a3a01fc920f6f9f5179a820e83149c4ca33931c70a7f13275e2"
+    },
+    {
+      "path": "plugins/mcib3d-suite/mcib3d-jipipe-0.0.3.jar",
+      "bytes": 27080,
+      "sha256": "4d62fc636b184805fc69a4beacc8fad6f046738af8be147eb2569102c664209c"
+    },
+    {
+      "path": "plugins/mcib3d-suite/mcib3d_dev-0.0.2.jar",
+      "bytes": 15479,
+      "sha256": "9416bff8659e250c2c4852a63e06fb6751c54db90c5924732452739dbd465021"
+    },
+    {
+      "path": "plugins/mcib3d-suite/mcib3d_plugins-4.1.7b.jar",
+      "bytes": 422186,
+      "sha256": "f828728be0bf57400366356340bc100783e570e6a1f0cb8b0151140da4498b53"
+    },
+    {
+      "path": "plugins/mcib3d-suite/quickhull3d-1.0.0.jar",
+      "bytes": 31534,
+      "sha256": "54a09d704483e5d2cc0f96408449dd126c017f5e844aa1110b29e9f3f154ec0c"
+    },
+    {
+      "path": "plugins/mpicbg_-1.6.6.jar",
+      "bytes": 147119,
+      "sha256": "a18fc250b1fd464f6b79855c425e1b23d765974e0b0d2e9fdb03ce2f137406bb"
+    },
+    {
+      "path": "plugins/n5-viewer_fiji-6.2.0.jar",
+      "bytes": 93878,
+      "sha256": "4f19c804ce3b088d7c3f61dae1e5355d747b2c675edaf3885f0de6d9edefed32"
+    },
+    {
+      "path": "plugins/omero-tools-0.2.0.jar",
+      "bytes": 20563,
+      "sha256": "6db850b4b86d2d2013ed8b10328f40280c8cdbb0994ef1fea2d76bd153791f68"
+    },
+    {
+      "path": "plugins/panorama_-3.0.2.jar",
+      "bytes": 30997,
+      "sha256": "619b0fdd5ace911edb219af27f6dd6f9fa4f027fdcf9181d12e9d7468b24c737"
+    },
+    {
+      "path": "plugins/readme.txt",
+      "bytes": 22,
+      "sha256": "29ddf4679247734f19a32232d58ad99922d95a3c3f8474f844facdf139f826b3"
+    },
+    {
+      "path": "plugins/register_virtual_stack_slices-3.0.8.jar",
+      "bytes": 42334,
+      "sha256": "6992d590b4aaf8c94d1164d10c3ffbe7f24ad72f48ee3606f0f05daaafaecad7"
+    },
+    {
+      "path": "plugins/registration_3d-2.0.1.jar",
+      "bytes": 32632,
+      "sha256": "d19f2fb66a8ea0cfabbbb48fdf1f1a44d328a7207c0d3bcca25f604e8947d89c"
+    },
+    {
+      "path": "plugins/simple-omero-client-5.19.0.jar",
+      "bytes": 184484,
+      "sha256": "4d3e592b4d3bd2e9c692cab376d8a1b83ea29ba2a2d56d606ed5de09b5077734"
+    },
+    {
+      "path": "plugins/trakem2_tps-2.0.0.jar",
+      "bytes": 11160,
+      "sha256": "972da6d5b49be7dcd7ea5276bd21d23f5edbd29e8d5bd6908ff4e870a4b798cc"
+    },
+    {
+      "path": "plugins/z_spacing-1.1.3.jar",
+      "bytes": 131427,
+      "sha256": "fce2136459f4d1a950b98ccbdd070f359ec32198d4b63941cecdf5cc3c07d823"
+    }
+  ],
+  "engine_jars_identical_in_engine_ready_original_and_fork": [
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/api-0.22.1.jar",
+      "bytes": 831237,
+      "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/commons-compress-1.22.jar",
+      "bytes": 1039712,
+      "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/dl-modelrunner-pytorch-0.4.4.jar",
+      "bytes": 31502,
+      "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/jna-5.13.0.jar",
+      "bytes": 1879325,
+      "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-engine-0.22.1.jar",
+      "bytes": 89668,
+      "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-jni-2.0.0-0.22.1.jar",
+      "bytes": 5134206,
+      "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+      "bytes": 34791618,
+      "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995"
+    },
+    {
+      "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/slf4j-api-2.0.6.jar",
+      "bytes": 62531,
+      "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+    }
+  ],
+  "model_files_identical_in_all_four_inventories": [
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/README.md",
+      "bytes": 355,
+      "sha256": "741ca56647fc1814e28712c93ac357613eccc62887622893c38eed1ffcbfeb5d"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/best_model_torchscript.pt",
+      "bytes": 181605085,
+      "sha256": "1c59382b776acc2beed84bc2309e29f474aa69ff6356ec2248a04854d4feca7b"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/binarize.ijm",
+      "bytes": 735,
+      "sha256": "5a428f3a710dc1212c1a86830978f4707932b251c37b912fad15578ef6a1fce1"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/cover.png",
+      "bytes": 3145894,
+      "sha256": "bc3a57a13bb401507003d38ef453770f18456680e29008b2119439631129d375"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/doc.md",
+      "bytes": 10,
+      "sha256": "5db0bcc3a59b899f282f3bab27c0397a82685fa131a64525ef741c8d23ad4190"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/im_preprocessing.ijm",
+      "bytes": 604,
+      "sha256": "cd950ddbcbadcb5cbc016bb71ee33d2ee7b730b3ca6bbc0ea17dc54c4b2167ec"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml",
+      "bytes": 2511,
+      "sha256": "1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/sample_input_0.tif",
+      "bytes": 3146493,
+      "sha256": "c991490991c180ce3b5bba38ff0f9f0acc58f4c4cca578c2755330e903db024b"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/sample_output_0.tif",
+      "bytes": 2359648,
+      "sha256": "2d5e99db60aac9a3a8546dbb2466c8140f247c194472c7a104dd99771331e5c5"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-input.npy",
+      "bytes": 3145856,
+      "sha256": "986cfd751c0e2cfd3367cfc39b5583c10e55da2f1a7772d73845c6395eefd681"
+    },
+    {
+      "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-output.npy",
+      "bytes": 2359424,
+      "sha256": "c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9"
+    },
+    {
+      "path": "models/2D_enteric_neuron_subtype_v4.zip",
+      "bytes": 15832489,
+      "sha256": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8"
+    },
+    {
+      "path": "models/2D_enteric_neuron_v4_1.zip",
+      "bytes": 37145743,
+      "sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276"
+    }
+  ],
+  "isolated_worker_files_added_only_to_fork": [
+    {
+      "path": "gat-native-alignment/LICENSE",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "gat-native-alignment/README.md",
+      "bytes": 1413,
+      "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432"
+    },
+    {
+      "path": "gat-native-alignment/THIRD_PARTY_NOTICES.md",
+      "bytes": 1056,
+      "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97"
+    },
+    {
+      "path": "gat-native-alignment/gat-native-alignment.jar",
+      "bytes": 18876,
+      "sha256": "8309bb3ef320f8d26b3617be8470df9043d7d4670b30d15924821f3258848a02"
+    },
+    {
+      "path": "gat-native-alignment/lib/ij-1.54p.jar",
+      "bytes": 2586953,
+      "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+    },
+    {
+      "path": "gat-native-alignment/lib/javacpp-1.5.12-macosx-arm64.jar",
+      "bytes": 38562,
+      "sha256": "7fad9210bdbd88ca3666a6d0991d202849587985273b648ffe6bc59be1869fe5"
+    },
+    {
+      "path": "gat-native-alignment/lib/javacpp-1.5.12.jar",
+      "bytes": 515488,
+      "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe"
+    },
+    {
+      "path": "gat-native-alignment/lib/javacv-1.5.12.jar",
+      "bytes": 434277,
+      "sha256": "79ddd361c82f9f6d3e05424470639ba7faf0a66764a0b18a139c881e046a905b"
+    },
+    {
+      "path": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "bytes": 12718897,
+      "sha256": "5fbd3dcaf764b242c1088a3cf896337ed30ad14b6f84b9ceb87f7c08144c4aa7"
+    },
+    {
+      "path": "gat-native-alignment/lib/openblas-0.3.30-1.5.12.jar",
+      "bytes": 338356,
+      "sha256": "802ca4bb29b76b11dff644174352a34efc8eb76bca3325cbd38b3a1f2ef69ea6"
+    },
+    {
+      "path": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "bytes": 24727449,
+      "sha256": "41bbadd0187788ad5789188cbba476b9bb1ed36ab9b8edac518cd2641655f36c"
+    },
+    {
+      "path": "gat-native-alignment/lib/opencv-4.11.0-1.5.12.jar",
+      "bytes": 1885153,
+      "sha256": "c50b3ee9780c4a0fbb1335317e7bb99ca32c40162a55680828e01bc98e1e2382"
+    },
+    {
+      "path": "gat-native-alignment/source/LICENSE",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "gat-native-alignment/source/README.md",
+      "bytes": 1413,
+      "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432"
+    },
+    {
+      "path": "gat-native-alignment/source/THIRD_PARTY_NOTICES.md",
+      "bytes": 1056,
+      "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97"
+    },
+    {
+      "path": "gat-native-alignment/source/pom.xml",
+      "bytes": 3782,
+      "sha256": "66a2beee51d0ce1562d20335f47fd4f468d3a0248a8d20d7ad8e84a2d8960542"
+    },
+    {
+      "path": "gat-native-alignment/source/src/assembly/distribution.xml",
+      "bytes": 929,
+      "sha256": "f67e0610e8a81557a58c1a604b1ed37790082210586aca7d7428a5c85e3b727e"
+    },
+    {
+      "path": "gat-native-alignment/source/src/main/java/TemplateMatching/Align_slices.java",
+      "bytes": 9629,
+      "sha256": "cd715d900075f6d373dc180c92324bc10943b3492e87a41768c371dbeed48fcf"
+    },
+    {
+      "path": "gat-native-alignment/source/src/main/java/TemplateMatching/NativeAlignmentMain.java",
+      "bytes": 6601,
+      "sha256": "a510c77e9ef8239fe0e8fffab59a891164d49a73861a9f04bbd89112d2536756"
+    },
+    {
+      "path": "gat-native-alignment/source/src/main/java/TemplateMatching/cvMatch_Template.java",
+      "bytes": 13992,
+      "sha256": "2698cfdcbd00dc2852e7d100aa1da1ad9ed9c0fa324a5ba52fc3c2f99d29549d"
+    },
+    {
+      "path": "gat-native-alignment/source/src/test/java/TemplateMatching/AlignmentProtocolTest.java",
+      "bytes": 2640,
+      "sha256": "2aa9129697a4a392505e90dd59f7cc0367406e06f264c0c0fb72cf8ec3ed3e7a"
+    },
+    {
+      "path": "gat-native-inference/LICENSE",
+      "bytes": 1526,
+      "sha256": "a02de9e10cb9bd94a2971d7f01d6fe2f3d3c8cffb11a0dfa973ab322baeb6a23"
+    },
+    {
+      "path": "gat-native-inference/README.md",
+      "bytes": 5552,
+      "sha256": "cf0ad23b47a95174ce2b915e32c2b457ac9fa4bb860121c5a95c56be5fcd114a"
+    },
+    {
+      "path": "gat-native-inference/THIRD_PARTY_NOTICES.md",
+      "bytes": 1889,
+      "sha256": "c40b692b44ab1ba750d81191c6ade80bb008741daf2c033591ed5f811a2ae9bc"
+    },
+    {
+      "path": "gat-native-inference/gat-native-inference.jar",
+      "bytes": 20847,
+      "sha256": "0b323ff7d0c82b00627ddd84d4e483d4ce1995d5fbc6287661944254c43c0dae"
+    },
+    {
+      "path": "gat-native-inference/lib/javacpp-1.5.12.jar",
+      "bytes": 515488,
+      "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe"
+    },
+    {
+      "path": "gat-native-inference/lib/protobuf-java-4.31.1.jar",
+      "bytes": 1873183,
+      "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae"
+    },
+    {
+      "path": "gat-native-inference/lib/tensorflow-core-api-1.2.0.jar",
+      "bytes": 4150141,
+      "sha256": "9d87d75ebb7eb10bdddbbd3b6bf9a91c327d719bc2e402538c475fb3abd19e60"
+    },
+    {
+      "path": "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+      "bytes": 151381240,
+      "sha256": "570d8b845e4832cc06a59ae0a05d1bb8c7a11197f48de9664b4f86123dbcafd3"
+    },
+    {
+      "path": "gat-native-inference/lib/tensorflow-core-native-1.2.0.jar",
+      "bytes": 4027609,
+      "sha256": "85ee6d600f5b1ceb81c6a1bdcc13081cfa9656442abd8aa45732a94271a26f17"
+    },
+    {
+      "path": "gat-native-inference/lib/tensorflow-ndarray-1.2.0.jar",
+      "bytes": 304345,
+      "sha256": "abbc2c528a2200059cfb1b54e4fa6b338394e7ca2d608a9d52989e7ccb43850a"
+    },
+    {
+      "path": "gat-native-inference/validation/RESULTS.md",
+      "bytes": 4780,
+      "sha256": "47c09eeabaf5401001d388270dee23542367d04d66fb4d74d7c2191106e57a89"
+    }
+  ],
+  "qualification": "Installation inventory is separate from original source-checkout cleanliness. The original GAT plugin changes because the freshly built immutable original replaces the update-site GAT jar. Between initial and engine-ready inventories the validation probe is extended for ganglia checks and eight engine jars are added; no shared runtime/model substitutions occur."
+}
