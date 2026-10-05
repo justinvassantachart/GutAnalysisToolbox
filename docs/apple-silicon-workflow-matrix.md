@@ -3,8 +3,10 @@
 **Updated 2026-10-05. Scope: Java GATV2 in this fork.** Native evidence comes
 from hosted Apple M1 (Virtual), macOS 14.8.9 and 15.7.9, arm64 Java 17/21. It is not a
 physical-M1 installation, GPU or complete interactive dashboard certification.
-Use [TEST preview 2](APPLE-SILICON-TEST-PREVIEW-2.md) and the
-[clean-Mac installation handoff](M1-CHATGPT-HANDOFF.md).
+This matrix accompanies corrective **2.0.1-apple-silicon.3**. Use the matching
+ZIP and clean-Mac handoff asset from the [release index](https://github.com/justinvassantachart/GutAnalysisToolbox/releases).
+Verify the version/source/checksum before installing; an unlisted preview is
+not yet published. Preview 2 does not contain the multiplex correction.
 
 ## Evidence keys
 
@@ -17,18 +19,21 @@ Use [TEST preview 2](APPLE-SILICON-TEST-PREVIEW-2.md) and the
 
 Primary evidence:
 
-- [Complete bounded official-Fiji install](../validation/fiji-install/results/mac-accepted-26298b7/REPORT.md): real updater/engine/model, both dashboards and ganglia, fork neuron/alignment; shared 854-file inventory identical
+- [Corrected native full-service multiplex exports](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/multiplex-full/results/mac-ab046cb/README.md): unchanged synthetic inputs/assertions, independently reopened aligned/QC TIFFs and landmark ROI archives
+- [Actual retained ganglia-mask TIFFs](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/validation/fiji-install/results/mac-mask-retention-5e2e0f4/REPORT.md): exact binary masks, raw/file hashes and calibrated reopen controls
 
-- [Completed same-host evidence job](../native-inference/validation/baseline/results/mac-live-dialog-ee2907e/REPORT.md), original failures and repaired passes, with all live controls
-- [Final optional JPEG-XR package audit](../native-inference/validation/jpeg-xr/results/mac-6996dd5/REPORT.md), golden tile/ABI/source gates passed; full importer still open
+- [Complete bounded official-Fiji install](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/validation/fiji-install/results/mac-accepted-26298b7/REPORT.md): real updater/engine/model, both dashboards and ganglia, fork neuron/alignment; shared 854-file inventory identical
 
-- [Qualified Sonoma/Sequoia paired results](../native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md), original `1870d9e`, fork `fe5fd7b`
+- [Completed same-host evidence job](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/baseline/results/mac-live-dialog-ee2907e/REPORT.md), original failures and repaired passes, with all live controls
+- [Final optional JPEG-XR package audit](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/jpeg-xr/results/mac-6996dd5/REPORT.md), golden tile/ABI/source gates passed; full importer still open
 
-- [Same-host unchanged original versus fork](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37357196889), original `1870d9e`, fork `69feedb`
-- [Native workflow commands after ganglia/SIFT changes](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37354405010), fork `000464e`
-- [Native real-image TensorFlow fixture on Java 17 and 21](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37344903137)
-- [Native JPEG-XR and initial Template Matching comparisons](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37351640627)
-- [371-pair Linux inference/NMS consistency report](../native-inference/validation/corpus/REGRESSION_REPORT.md), including the local outline counterexample
+- [Qualified Sonoma/Sequoia paired results](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md), original `1870d9e`, fork `fe5fd7b`
+
+- [Same-host unchanged original versus fork](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37357196889), original `1870d9e`, fork `69feedb`
+- [Native workflow commands after ganglia/SIFT changes](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37354405010), fork `000464e`
+- [Native real-image TensorFlow fixture on Java 17 and 21](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37344903137)
+- [Native JPEG-XR and initial Template Matching comparisons](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37351640627)
+- [371-pair Linux inference/NMS consistency report](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/corpus/REGRESSION_REPORT.md), including the local outline counterexample
 
 ## Workflow inventory
 
@@ -54,7 +59,7 @@ Primary evidence:
 | Calcium F/F0, ROI intensity, CSV/ROI ZIP | Accepted-dialog original and fork controls both PASS on Sonoma and Sequoia, F/F0 `[1,1,2]`, ROI/CSV round trip | Full GUI, zero-baseline/nonfinite cases and representative biological movies |
 | Calcium automatic StarDist ROI generation | **Disabled stub in original and fork** | Requires a separately specified implementation/validation; use imported or manual ROIs |
 | Temporal color coding | Native small 8-bit helper test passes | Selected frame range, projection, scale, 16-bit/float behavior and complete GUI/save flow |
-| Multiplex registration | Native SIFT correspondence/landmark control passes (62 landmarks, about 5.23e-7 px residual) | MOPS/block-matching fallbacks, missing markers, all-channel transformation/order and complete saved output |
+| Multiplex registration | Corrected native full service and real command route pass: SIFT later-marker interiors exact; forced-MOPS MSE 0.180–0.360; seven-channel order, distinct exported landmarks, aligned/QC calibration, source preservation, final dialogs and input/error cases verified from saved files | Biological samples, natural SIFT failure→MOPS fallback, unavailable Block Matching command, computation-time cancellation and complete interactive modes. Preview 2 retains the confirmed unaligned-export/calibration defects |
 | CSV merging | Native helper checks for small files and overwrite refusal pass | Quoted/mixed schemas, non-ASCII paths, larger trees and UI. Default merger does not enforce identical headers |
 | Summary CSV / label TIFF export | Native basic counts and lossless label round-trip helpers pass; SIFT/ganglia saved outputs checked | Every workflow's overlays, ROI ZIPs, multichannel summaries and calibration |
 | Ordinary TIFF and microscopy IO | TIFF controls pass; actual readers depend on format/compression | Representative LIF/CZI/HDF5/user formats and metadata; a filename extension does not identify its codec |
@@ -74,9 +79,11 @@ passes are retained. Not every old workflow is expected to fail.
 
 The first paired job's calcium automation did not reliably accept its dialog.
 That ambiguity is now resolved: corrected accepted-dialog controls pass on BOTH
-original and fork on Sonoma and Sequoia. Later paired jobs remain overall red
-because the unchanged original TF native-load error dialog times out; repaired
-workflow steps pass. The saved reports preserve those timeout classifications.
+original and fork on Sonoma and Sequoia. Early URL-loader diagnostic jobs remain recorded as failed because the old
+TF native-load modal timed out. The later completed same-host evidence job
+records that exact unanswered error dialog and ends only the isolated original
+process; its repaired output gates and all three live observer controls pass.
+The historical reports retain their original timeout classifications.
 Do not call calcium an established old numerical or architecture defect.
 
 ## Native dependency status
@@ -103,10 +110,10 @@ Do not call calcium an established old numerical or architecture defect.
   Wrapper headers are GPL-2.0-or-later despite a BSD POM; preserve both sets of
   notices/corresponding source and do not describe the wrapper as BSD-only
 
-The [historical initial dependency audit](apple-silicon-dependency-audit.md)
+The [historical initial dependency audit](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/docs/apple-silicon-dependency-audit.md)
 retains official update-site/source links and artifact findings. Its earlier
 untested statuses are superseded by this matrix. Exact pinned dependencies and
-checksums are in [the workflow harness](../native-inference/validation/workflows/).
+checksums are in [the workflow harness](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/workflows/).
 
 ## Remaining physical-Mac acceptance
 

@@ -1,4 +1,4 @@
-# Experimental Apple Silicon GAT v2
+# Experimental Apple Silicon GAT v2: corrective preview 3
 
 This fork targets **native arm64 Fiji on macOS 14 Sonoma or newer, Java 11+**
 (Fiji's bundled Java 21 recommended). It is a test build. The current native
@@ -9,16 +9,21 @@ separate workflows and are not redirected by this plugin.
 
 ## What has actually run
 
-[TEST preview 2](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2)
-contains the native-Mac-built fork at `fe5fd7b` and a separate unchanged original
-`1870d9e` bundle. The [clean-Mac handoff](M1-CHATGPT-HANDOFF.md) pins every package,
-model and fixture and includes the current before/after coverage table.
+This guide accompanies **2.0.1-apple-silicon.3**, which includes the corrected
+multiplex result/landmark handling. Select that version from the
+[verified repository releases](https://github.com/justinvassantachart/GutAnalysisToolbox/releases), and use the clean-Mac handoff asset
+published beside the matching ZIP. Verify the ZIP checksum and its
+`BUILD_INFO.json`; if preview 3 is not listed, it has not been published yet.
+**Preview 2 lacks this multiplex correction and should not be used for
+quantitative multiplex-registration exports.** Earlier release bytes are
+preserved; passing new-source tests do not repair an older installation.
 
 Same-host native M1 Virtual comparisons on Sonoma 14.8.9 and Sequoia 15.7.9
 confirm fork StarDist and Template Matching output success, original native
 failures, and fork SIFT helper/save/batch fixes. The original TF1 error dialog
-records no library for `darwin/aarch64`; its diagnostic process times out while
-waiting in that dialog. The actual official-Fiji launcher separately reproduces
+records no library for `darwin/aarch64`. Early diagnostic runs timed out in
+that dialog; the completed comparison below records the untouched failure
+dialog and terminates only its isolated test process. The actual official-Fiji launcher separately reproduces
 the earlier Java21 loader cast before JNI and explicit old OpenCV JNI errors.
 These are distinct observed failure paths, not an assumption of one cause.
 
@@ -26,23 +31,25 @@ These are distinct observed failure paths, not an assumption of one cause.
 `[1,1,2]`, ROI measurement and CSV/ROI export controls on both OS versions.
 The earlier ambiguous calcium control was resolved; no old numerical defect is
 claimed. Both ganglia commands run, with intentional output changes from the
-RDF input-scaling correction described below. [Qualified paired evidence](../native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md).
+RDF input-scaling correction described below. [Qualified paired evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md).
 
-The [complete bounded official-Fiji install](../validation/fiji-install/results/mac-accepted-26298b7/REPORT.md)
+The [complete bounded official-Fiji install](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/validation/fiji-install/results/mac-accepted-26298b7/REPORT.md)
 now passes real engine installation/model inference, both dashboards, fork
 neuron/alignment and both ganglia commands. All 854 shared model/dependency/engine
 paths match exactly between the two copies. The earlier missing-engine and
 boxed-parameter setup failures remain preserved in their historical packets.
-Physical OpenCL/GPU and complete interactive workflows remain open. See the
+The later [saved ganglia-mask evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/validation/fiji-install/results/mac-mask-retention-5e2e0f4/REPORT.md)
+retains both actual TIFFs and independent pixel/calibration checks. Physical
+OpenCL/GPU and complete interactive workflows remain open. See the
 [workflow matrix](apple-silicon-workflow-matrix.md).
 
-The [completed same-host comparison](../native-inference/validation/baseline/results/mac-live-dialog-ee2907e/REPORT.md)
+The [completed same-host comparison](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/baseline/results/mac-live-dialog-ee2907e/REPORT.md)
 is green: a strictly verified observer records the unchanged original's visible,
 unanswered TensorFlow error dialog and ends only that isolated process. All
 three live observer controls ran without skips; no dialog is dismissed and no
 installer is entered. The original still fails while fork output gates pass.
 
-The [optional native JPEG-XR package](../native-inference/validation/jpeg-xr/results/mac-6996dd5/REPORT.md)
+The [optional native JPEG-XR package](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/jpeg-xr/results/mac-6996dd5/REPORT.md)
 now passes its final resource-JAR decode, exact source/license checks and all 13
 golden fixtures. It is a separate release asset with complete source, not part
 of the core ZIP. Full Fiji importer/container/metadata testing remains required.
@@ -63,7 +70,7 @@ non-Apple-Silicon installations keep their legacy StarDist path by default.
 A child-process failure is reported without loading old TF1 JNI into native
 Fiji. Startup preflight does not call `TensorFlow.version()`.
 
-[All 371 paired Linux regression cases and evidence](../native-inference/validation/corpus/REGRESSION_REPORT.md)
+[All 371 paired Linux regression cases and evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/corpus/REGRESSION_REPORT.md)
 have the same counts (28,958 detections), but masks are not universally exact:
 359 raw label rasters match, three more differ only in IDs, eight differ at one
 boundary pixel, and one near-tied cell changes center/outline (affected-cell
@@ -72,11 +79,11 @@ also differ slightly in many otherwise identical raster cases. Thresholds and
 production numerical settings were not adjusted to hide these differences.
 This is runtime consistency evidence, not biological ground-truth validation.
 
-A [native Mac replay of the selected moved-center outlier](../native-inference/validation/moved-center/results/mac-c6e2011/REPORT.md)
+A [native Mac replay of the selected moved-center outlier](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/moved-center/results/mac-c6e2011/REPORT.md)
 matched the legacy Linux raster/centers exactly, including the affected cell;
 four other subpixel vertices still differed by about 0.01 px. This is one
 deliberately selected fixture, not a native replay of the entire corpus.
-The [native 300-frame Template Matching evidence](../native-inference/validation/template-matching/results/mac-ee2907e/REPORT.md)
+The [native 300-frame Template Matching evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/template-matching/results/mac-ee2907e/REPORT.md)
 also preserves exact shifts, aligned pixels and all motion CSV rows for both
 the port and actual GAT adapter.
 Native Mac compact fixtures pass; the complete 371-case corpus ran on Linux.
@@ -94,6 +101,27 @@ frames, with explicit validation before modifying the source. Linux tests
 include 300 output frames across synthetic references 1/2/3 and the public
 142-frame calcium movie with references 1/71. The actual native Mac GAT adapter
 passed the paired synthetic control and all six/300-frame port and actual-adapter comparisons on native Mac; interactive single/batch review remains.
+
+### Multiplex registration
+
+The [unchanged full-service native Mac comparison](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/multiplex-full/results/mac-ab046cb/README.md)
+reproduced and corrected pre-existing landmark ownership, current-image and
+saved-calibration defects. The two runs use the same 18 input files, five
+harness sources and 97 runtime JAR identities. Registration parameters and
+acceptance assertions were unchanged.
+
+Both SIFT and forced-MOPS routes now pass all nine full-service checks. Saved
+SIFT later-round marker interiors match their references exactly. MOPS residual
+MSE is 0.180–0.360, compared with 2,751–4,313 before correction; saved landmark
+errors are at most about 0.0392 px. Both aligned and QC stacks preserve the
+reopened reference's physical calibration and frame interval. Independent
+reopening of the actual TIFFs and ROI archives reproduces these measurements.
+
+This is bounded synthetic native service/command acceptance. It does not prove
+biological registration quality, natural SIFT-failure fallback, the unavailable
+Block Matching command, computation-time cancellation or every interactive UI
+mode. These Java result-handling defects also existed before the fork; they are
+not evidence that ARM SIFT or MOPS numerics themselves were broken.
 
 ### Existing result-handling corrections
 
@@ -114,8 +142,9 @@ passed the paired synthetic control and all six/300-frame port and actual-adapte
 
 ## Install an experimental overlay
 
-For a computer with no Fiji or development tools, use the separate
-[M1 computer-test handoff](M1-CHATGPT-HANDOFF.md). It covers official Fiji,
+For a computer with no Fiji or development tools, use the clean-Mac handoff
+asset beside the matching package on the [release page](https://github.com/justinvassantachart/GutAnalysisToolbox/releases).
+It covers official Fiji,
 update sites, models, engine initialization, paired installations and reporting.
 Do not substitute preview 1 for a newer workflow-fix package: **preview 1 is
 immutable and contains only the earlier neuron backend**, not these later fixes.
@@ -124,7 +153,7 @@ the handoff being followed.
 
 1. Install a separate native arm64 Fiji with bundled Java on macOS 14+.
    Preserve any working installation and use copies of images
-2. Install the required update sites/models from the repository README and
+2. Install the required update sites/models from the [repository README](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/README.md) and
    finish DeepImageJ engine initialization. Record all exact versions
 3. Quit Fiji. Identify its **ImageJ data root** containing `jars`, `plugins`
    and `models`. Current Fiji Latest places these in outer `Fiji/`, beside

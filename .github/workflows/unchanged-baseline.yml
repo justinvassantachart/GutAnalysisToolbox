@@ -15,6 +15,9 @@ on:
       - 'pom.xml'
       - 'scripts/package-apple-silicon-preview.py'
       - 'scripts/tests/**'
+      - 'docs/apple-silicon.md'
+      - 'docs/apple-silicon-workflow-matrix.md'
+      - 'LICENSE'
       - '!native-inference/validation/**/results/**'
   workflow_dispatch:
 

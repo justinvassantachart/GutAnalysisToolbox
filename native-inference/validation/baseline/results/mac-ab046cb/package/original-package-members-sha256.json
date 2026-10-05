@@ -1,0 +1,18 @@
+{
+  "BUILD_INFO.json": {
+    "sha256": "37e6cdff9cd2c8f26c349c09147e9936b0cdddec85207bc08754dbd216cf2e40",
+    "bytes": 385
+  },
+  "GAT_LICENSE": {
+    "sha256": "a02de9e10cb9bd94a2971d7f01d6fe2f3d3c8cffb11a0dfa973ab322baeb6a23",
+    "bytes": 1526
+  },
+  "README.txt": {
+    "sha256": "c53ce94d593a8275ada7cd50f7e1007288c05d91d5757860238ab6fa3a08e182",
+    "bytes": 247
+  },
+  "plugins/GutAnalysisToolbox_-2.0.0.jar": {
+    "sha256": "f80f2f3fbdf078cae84e1ac072e81c712853ba9a9606f2b10c5f618bd6ddb1b3",
+    "bytes": 1725068
+  }
+}

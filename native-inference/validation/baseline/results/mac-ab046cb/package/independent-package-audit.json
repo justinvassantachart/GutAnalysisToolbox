@@ -1,0 +1,45 @@
+{
+  "source_commit": "ab046cb604dc04e75cf935b7a9f3c17b52843188",
+  "source_worktree_modified": false,
+  "github_run": 37380707932,
+  "github_job": 112001650462,
+  "github_install_artifact": 11372914623,
+  "github_report_artifact": 11374062110,
+  "original_package_build_info": {
+    "source_repository": "https://github.com/pr4deepr/GutAnalysisToolbox",
+    "source_commit": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+    "tracked_source_changes": false,
+    "purpose": "Unmodified original baseline for isolated before/after tests",
+    "plugin_sha256": "f80f2f3fbdf078cae84e1ac072e81c712853ba9a9606f2b10c5f618bd6ddb1b3",
+    "plugin_classes_match_tested_classes": true
+  },
+  "fork_package_build_info": {
+    "version": "2.0.1-apple-silicon.3",
+    "source_commit": "ab046cb604dc04e75cf935b7a9f3c17b52843188",
+    "source_worktree_modified": false,
+    "target": "macos-arm64",
+    "minimum_macos": "14",
+    "minimum_java": "11",
+    "experimental": true,
+    "install_root": "ImageJ data root containing jars and plugins; current Fiji Latest uses outer Fiji/, not inner Fiji.app/",
+    "plugin_classes_match_tested_classes": true,
+    "plugin_classes_compared": 156,
+    "plugin_sha256": "d92e18b467af9a1ba4ba13d0e4e82a8982b552dcdbbd434a9deec488e42ec535",
+    "inference_bundle_sha256": "24a9304b636411a9da57acbeeca916ecefe45628c0ef97e13e121abbf00ae410",
+    "alignment_bundle_sha256": "bbf79f1f2ae32bf65d1629e3107461529cc87c21ffddb7922bd4e8b8d7942712",
+    "validation_note": "See APPLE_SILICON.md and workflow matrix. Packaging is not a Fiji GUI or physical-Mac test."
+  },
+  "fork_package_sha256": "0be755efe7dbac48b2fa93a6e38dc04a2d4d713251a93a6b7f5ebae057ed9cf5",
+  "fork_package_bytes": 203285587,
+  "packaged_multiplex_classes_match_passing_job": {
+    "services/multiplex/config/MultiplexConfig$Builder.class": "792a872a4331060158a27a314dcc362457ce4c61ea2562631e70abe635c94df9",
+    "services/multiplex/config/MultiplexConfig.class": "a10b5acbe8a7c970afcca2e4dee3c7a207031aa5218457b952171665a6c59eae",
+    "services/multiplex/core/FeatureMatching.class": "fbf4bbf5d7489a17ef221500af9d1265d68dc0eb10b728445a04d42e97f128c5",
+    "services/multiplex/core/MultiplexRegistrationService.class": "3b384c885230de810efbfa40742e5a7afe95f127ffef633001606e9f1bc701c4",
+    "services/multiplex/util/IJUtils.class": "aad0a94270bfa22de7aa3a93218b5c6e3a874552cc6e1b837d06ea19ec875e38",
+    "services/multiplex/util/NamingUtils.class": "b3171b6ef291e389cbf26ab40401c01003243181bbaea72482ead187f906469f"
+  },
+  "dependencies_and_native_audit": "independent-native-and-source-audit.json",
+  "status": "PASS_BOUNDED_PACKAGING_REVIEW",
+  "qualification": "No release seal; external handoff must distinguish corrected .3 from unchanged released preview2. Packaging is not a physical Mac or biological acceptance claim."
+}

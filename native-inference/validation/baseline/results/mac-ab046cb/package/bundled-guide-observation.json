@@ -1,0 +1,28 @@
+{
+  "scope": "Derived observation of immutable ab046cb package guidance; no edits to original package",
+  "documents": [
+    {
+      "member": "APPLE_SILICON.md",
+      "bytes": 11847,
+      "sha256": "b252b8f85e9a71eff8fab4d6a2839c4ea1a5c18a244f04ce44a217e7c13c5693",
+      "observed_preview2_references": [
+        {
+          "line": 12,
+          "text": "[TEST preview 2](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2)"
+        }
+      ]
+    },
+    {
+      "member": "apple-silicon-workflow-matrix.md",
+      "bytes": 11625,
+      "sha256": "f0b54fad41a0816b506b4d691ea957d221d41df84863a0877e2737bc224a433c",
+      "observed_preview2_references": [
+        {
+          "line": 6,
+          "text": "Use [TEST preview 2](APPLE-SILICON-TEST-PREVIEW-2.md) and the"
+        }
+      ]
+    }
+  ],
+  "qualification": "Bundled guides still point to preview2. This candidate is archived evidence, not the final release seal; any documentation-corrected package requires its own source and byte identity."
+}

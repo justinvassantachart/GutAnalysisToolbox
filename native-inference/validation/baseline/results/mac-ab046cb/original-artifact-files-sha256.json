@@ -1,0 +1,318 @@
+{
+  "alignment-build.log": {
+    "sha256": "61a3a71540a652f27b135a3db343e02de0c282a22508e4794e169ad836b9934a",
+    "bytes": 3330
+  },
+  "fork-build.log": {
+    "sha256": "b36b5d2394a4c40858053eb52f423544ae00ca71b9725a7d212be3aca77086c5",
+    "bytes": 15133
+  },
+  "fork-native/alignment.json": {
+    "sha256": "e145df207720393dfc9f7303a130e71dbc774862591c318145fbff6070983820",
+    "bytes": 20652
+  },
+  "fork-native/alignment.log": {
+    "sha256": "ac21cc92b8198ea306bb44cb99446adf1affd4de35fe5c620dbb5a107fdfb3db",
+    "bytes": 23131
+  },
+  "fork-native/compile.log": {
+    "sha256": "eb9b0d39860ce3dd9e499887bd126edcbebe744360b77750beb701946ecaf05e",
+    "bytes": 1068
+  },
+  "fork-native/dependencies.log": {
+    "sha256": "1d62f8f6b8f2a473a46e81d58153767275d06a42f9a0d2926c57e92e38d75ac5",
+    "bytes": 915
+  },
+  "fork-native/native-summary.json": {
+    "sha256": "68b79c5503e3d03115176ec0d3c07a10c9b8de7a3c42d90f2cd4e60ed194bb76",
+    "bytes": 96970
+  },
+  "fork-native/opencv-jni.json": {
+    "sha256": "ebaf34dce4c424ef0bdbd28a7b26cba0e4b65f33e9af651e3382c6c18c487a06",
+    "bytes": 2327
+  },
+  "fork-native/opencv-jni.log": {
+    "sha256": "6b31b386753bae887aed3aeb9f1ade3c8a98539f583dc3a12668f6acb8653b0c",
+    "bytes": 4405
+  },
+  "fork-native/stardist.json": {
+    "sha256": "99d11e3c05428ef1b6b0b95defac8a7a3e8db2a8f623f0202d16f3ce238b6239",
+    "bytes": 23983
+  },
+  "fork-native/stardist.log": {
+    "sha256": "5c9d7a23a544666a2371cf3a5d4f0d005bc47f7a9ff9c2c8ffb435e4c933ca9f",
+    "bytes": 32632
+  },
+  "fork-native/template-plugin-direct.json": {
+    "sha256": "95dbd36168dbfe6d525a14981280631f1658c0f8db1c5eca5555a76dda6d3a95",
+    "bytes": 2778
+  },
+  "fork-native/template-plugin-direct.log": {
+    "sha256": "41ff08f587dc595de43e0a59d0091b4c1eb4cbe9bec6cecf516835d3a526acad",
+    "bytes": 5065
+  },
+  "fork-native/tensorflow-jni.json": {
+    "sha256": "07b29f28b9961b06ac4876c4a722f0c8d20d28a414d8aa087864b914ae35df91",
+    "bytes": 1377
+  },
+  "fork-native/tensorflow-jni.log": {
+    "sha256": "6abdee369b8af42c60aebc10f4879087d8fe372cbf82067b76891836d9911643",
+    "bytes": 2580
+  },
+  "fork-workflows/calcium/RESULTS/calcium-fixture/RESULTS_calcium-fixture.tif.csv": {
+    "sha256": "960ab0cfdc45151c597007fa9caad918c984847cb581e76734bd19fb0402f128",
+    "bytes": 36
+  },
+  "fork-workflows/calcium/calcium-report.json": {
+    "sha256": "85d5311eee2ffb284bfd56a4f11ef1f6c76b5b556d2fba366567d39d7233199d",
+    "bytes": 1556
+  },
+  "fork-workflows/calcium/compile.log": {
+    "sha256": "e76273597cc6c68c2ec6e8812c87ce20a3c711a3b636272227a5ba6c4a1a492b",
+    "bytes": 766
+  },
+  "fork-workflows/calcium/execution.log": {
+    "sha256": "f31ba8fc9891afd55556133497be955281aaf1a14d3011bfe0d54e26d085ec3a",
+    "bytes": 961
+  },
+  "fork-workflows/environment.json": {
+    "sha256": "ac9ed4b0484ea6ce721132bf0fe67dcf03b082c51adb1616d40167641d078911",
+    "bytes": 20629
+  },
+  "fork-workflows/ganglia-command/compile.log": {
+    "sha256": "1d8bb0f7ad5092dbaf478c369a99a6610b6beef7169fe3d3953ca408aa0a490b",
+    "bytes": 985
+  },
+  "fork-workflows/ganglia-command/execution.log": {
+    "sha256": "c8b8ed5a35efd8222b214a954c4ce099b15eea980878aa3c8beae21e7b1c8426",
+    "bytes": 5412
+  },
+  "fork-workflows/ganglia-command/ganglia-command-report.json": {
+    "sha256": "4d72cd2807b7e4a85bd99e3ced12ffb1645ca45444e4c59bee68f481b01290a6",
+    "bytes": 1438
+  },
+  "fork-workflows/ganglia-contract/compile.log": {
+    "sha256": "e76273597cc6c68c2ec6e8812c87ce20a3c711a3b636272227a5ba6c4a1a492b",
+    "bytes": 766
+  },
+  "fork-workflows/ganglia-contract/execution.log": {
+    "sha256": "edda188867dfddfce99b0fd8917c7b5f68ece289544103aa375d2a050893f276",
+    "bytes": 173
+  },
+  "fork-workflows/ganglia-contract/ganglia-contract-report.json": {
+    "sha256": "9fc64748f62f5b72a8d27658b956ece1fe04e24c1a36019c672a36fe108c450e",
+    "bytes": 1660
+  },
+  "fork-workflows/helpers/compile.log": {
+    "sha256": "e76273597cc6c68c2ec6e8812c87ce20a3c711a3b636272227a5ba6c4a1a492b",
+    "bytes": 766
+  },
+  "fork-workflows/helpers/counts.csv": {
+    "sha256": "0ee2ff3a85e29574b0503d6ff3724a75c0880c5fd6c07f1efef86dee81b246d9",
+    "bytes": 27
+  },
+  "fork-workflows/helpers/execution.log": {
+    "sha256": "31fd9b902de8aae208332344a66e6336dc90f54b8c64d0751fd77aa8168cee73",
+    "bytes": 307
+  },
+  "fork-workflows/helpers/merge input ü/Merged_merge input ü_results.csv": {
+    "sha256": "69b132f6f8136d5b6d2539b0e10a33975fe23441438f4cbf88c947a9cd0c3d93",
+    "bytes": 50
+  },
+  "fork-workflows/helpers/merge input ü/sample A/results.csv": {
+    "sha256": "d5695b5c89319eb13af74753c5aec1230c0c0df2e71832f4130dc1c835baf102",
+    "bytes": 16
+  },
+  "fork-workflows/helpers/merge input ü/sample B/results.csv": {
+    "sha256": "3ab3ed233ee729ec57920e38cd9f561161c47c8b4d4c3c9aeb8476e2d76af375",
+    "bytes": 16
+  },
+  "fork-workflows/helpers/workflow-smoke.json": {
+    "sha256": "33fb44ab24b7b10c0ca1158b494ca4887bf203a21ce6303a0930a1b0152acc2c",
+    "bytes": 2524
+  },
+  "fork-workflows/registration/compile.log": {
+    "sha256": "e76273597cc6c68c2ec6e8812c87ce20a3c711a3b636272227a5ba6c4a1a492b",
+    "bytes": 766
+  },
+  "fork-workflows/registration/execution.log": {
+    "sha256": "3cd3069c7da4e8c74bad2457db82fe80f77970b80df02b532ee1fd99336e028a",
+    "bytes": 1799
+  },
+  "fork-workflows/registration/registration-morphology.json": {
+    "sha256": "5e591c34150a27105727aea48af6be2aa4c1201ac3bca0b5863ccc613fd89ab6",
+    "bytes": 4732
+  },
+  "fork-workflows/run-summary.json": {
+    "sha256": "45883ee8d4d7fb3a11afd6a037f128e9a598aefc42d3e0bd904928ed2dced356",
+    "bytes": 34476
+  },
+  "inference-build.log": {
+    "sha256": "2e1b2d1f4e3c6ff7c004d0dbb8647be3b5c9477ab636d4199e4cc5e97df2e714",
+    "bytes": 4004
+  },
+  "live-dialog-controls.log": {
+    "sha256": "78595a74c9f6eadf14ea5827b56b2fb2556a09216abc083faecf42d37c4d39b1",
+    "bytes": 610
+  },
+  "original-build.log": {
+    "sha256": "e1cae42196f8cb2091064c0c99dfad744ffbeb5224637d97e4a709e4e9892598",
+    "bytes": 15493
+  },
+  "original-final-status.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "original-native/alignment.json": {
+    "sha256": "0770174c925f55aecff6dccdab2cf5559efd87d326f934cc966a1a91ce898b23",
+    "bytes": 26882
+  },
+  "original-native/alignment.log": {
+    "sha256": "1b0873427412e7f40d83921fa953ac1c30a8775335c3c6f76b20e5a0d1169a92",
+    "bytes": 32347
+  },
+  "original-native/compile.log": {
+    "sha256": "eb9b0d39860ce3dd9e499887bd126edcbebe744360b77750beb701946ecaf05e",
+    "bytes": 1068
+  },
+  "original-native/dependencies.log": {
+    "sha256": "945656088d33dc00b67a4a8e9712b1b7d249924ab21953dd111be84b93d2c767",
+    "bytes": 8558
+  },
+  "original-native/native-summary.json": {
+    "sha256": "9c8f62650adaa816942319d6748c47e05d4d73fd0bf4e8343b57deeb08155e82",
+    "bytes": 140054
+  },
+  "original-native/opencv-jni.json": {
+    "sha256": "ebaf34dce4c424ef0bdbd28a7b26cba0e4b65f33e9af651e3382c6c18c487a06",
+    "bytes": 2327
+  },
+  "original-native/opencv-jni.log": {
+    "sha256": "844a4b4e247e51b8b3a9981a7a321bb52667455d3c9f767def42bdf3d135f9b4",
+    "bytes": 4405
+  },
+  "original-native/stardist.json": {
+    "sha256": "cc6015531828eabb297ab56e8854c1f158d1253bede5bdb39e7e84936da96c1e",
+    "bytes": 58364
+  },
+  "original-native/stardist.log": {
+    "sha256": "5d77a44fe9663eed496c3a46c48d009b646444daa7cf8726b3a4b4d3a42c0719",
+    "bytes": 9469
+  },
+  "original-native/template-plugin-direct.json": {
+    "sha256": "95dbd36168dbfe6d525a14981280631f1658c0f8db1c5eca5555a76dda6d3a95",
+    "bytes": 2778
+  },
+  "original-native/template-plugin-direct.log": {
+    "sha256": "53118eefed3d6be48469cd17416964e777788d3220b50c68bbedde982dfe90c1",
+    "bytes": 5065
+  },
+  "original-native/tensorflow-jni.json": {
+    "sha256": "07b29f28b9961b06ac4876c4a722f0c8d20d28a414d8aa087864b914ae35df91",
+    "bytes": 1377
+  },
+  "original-native/tensorflow-jni.log": {
+    "sha256": "f025ab87ee0542044c12ccb5d685ea7745c6e13d6fc21ae2c2514bdeb5cc7281",
+    "bytes": 2580
+  },
+  "original-workflows/baseline-provenance.json": {
+    "sha256": "7f7116b410746324eb663803ff9318350c6224af3866aa345fe23c6cd6af0b23",
+    "bytes": 795
+  },
+  "original-workflows/calcium/RESULTS/calcium-fixture/RESULTS_calcium-fixture.tif.csv": {
+    "sha256": "960ab0cfdc45151c597007fa9caad918c984847cb581e76734bd19fb0402f128",
+    "bytes": 36
+  },
+  "original-workflows/calcium/calcium-report.json": {
+    "sha256": "61bc1f060458af4990e3d366001548a0a1aa02b39a6d53747534ff6bb599b36b",
+    "bytes": 1555
+  },
+  "original-workflows/calcium/compile.log": {
+    "sha256": "e76273597cc6c68c2ec6e8812c87ce20a3c711a3b636272227a5ba6c4a1a492b",
+    "bytes": 766
+  },
+  "original-workflows/calcium/execution.log": {
+    "sha256": "749ccaae6a188d166cc91329be911f36b5e4abeb6b6b6cc8f977fc1df3cf3014",
+    "bytes": 966
+  },
+  "original-workflows/environment.json": {
+    "sha256": "ef0d6bbd01b83f276a0b3e297e64b50e683e7ccdef391e28f93204e5dd60c860",
+    "bytes": 20629
+  },
+  "original-workflows/ganglia-command/compile.log": {
+    "sha256": "1d8bb0f7ad5092dbaf478c369a99a6610b6beef7169fe3d3953ca408aa0a490b",
+    "bytes": 985
+  },
+  "original-workflows/ganglia-command/execution.log": {
+    "sha256": "b8a2c5402eac7e33c65b7376f4c1855e984eb7773c4b13f1df0a735cf02a3bcf",
+    "bytes": 5424
+  },
+  "original-workflows/ganglia-command/ganglia-command-report.json": {
+    "sha256": "81f72594d8e0d761bfe0e68cfd5ae8ad0fe831b3a313413d7a3b432f82e840df",
+    "bytes": 1434
+  },
+  "original-workflows/ganglia-contract/compile.log": {
+    "sha256": "e76273597cc6c68c2ec6e8812c87ce20a3c711a3b636272227a5ba6c4a1a492b",
+    "bytes": 766
+  },
+  "original-workflows/ganglia-contract/execution.log": {
+    "sha256": "962b003f7fb9f2783dd2450bcc8c27ba217758fc050ab1af8a0008b1319a6ebf",
+    "bytes": 497
+  },
+  "original-workflows/ganglia-contract/ganglia-contract-report.json": {
+    "sha256": "f65a753ff1d9806808fe3859f49a11807c1ae9564105ed3b32563128b7fbe672",
+    "bytes": 1343
+  },
+  "original-workflows/helpers/compile.log": {
+    "sha256": "e76273597cc6c68c2ec6e8812c87ce20a3c711a3b636272227a5ba6c4a1a492b",
+    "bytes": 766
+  },
+  "original-workflows/helpers/counts.csv": {
+    "sha256": "0ee2ff3a85e29574b0503d6ff3724a75c0880c5fd6c07f1efef86dee81b246d9",
+    "bytes": 27
+  },
+  "original-workflows/helpers/execution.log": {
+    "sha256": "31fd9b902de8aae208332344a66e6336dc90f54b8c64d0751fd77aa8168cee73",
+    "bytes": 307
+  },
+  "original-workflows/helpers/merge input ü/Merged_merge input ü_results.csv": {
+    "sha256": "69b132f6f8136d5b6d2539b0e10a33975fe23441438f4cbf88c947a9cd0c3d93",
+    "bytes": 50
+  },
+  "original-workflows/helpers/merge input ü/sample A/results.csv": {
+    "sha256": "d5695b5c89319eb13af74753c5aec1230c0c0df2e71832f4130dc1c835baf102",
+    "bytes": 16
+  },
+  "original-workflows/helpers/merge input ü/sample B/results.csv": {
+    "sha256": "3ab3ed233ee729ec57920e38cd9f561161c47c8b4d4c3c9aeb8476e2d76af375",
+    "bytes": 16
+  },
+  "original-workflows/helpers/workflow-smoke.json": {
+    "sha256": "d9be05cf34e9e433614e8ad12f8a2dc7e5eb81462cc035f2047a32dba9bc997c",
+    "bytes": 2525
+  },
+  "original-workflows/registration/compile.log": {
+    "sha256": "e76273597cc6c68c2ec6e8812c87ce20a3c711a3b636272227a5ba6c4a1a492b",
+    "bytes": 766
+  },
+  "original-workflows/registration/execution.log": {
+    "sha256": "0f2990ebcbe362196530173417ba33d522383ec5469b1edb06af85cba0d6769f",
+    "bytes": 4317
+  },
+  "original-workflows/registration/registration-morphology.json": {
+    "sha256": "9bdde6bc118254df753a1545e77fe3919ed20c1a00c03d14036ebbe3475d5853",
+    "bytes": 5585
+  },
+  "original-workflows/registration/sift-batch-output/C2-batch-input.tif_aligned.tif_alignment.csv": {
+    "sha256": "169efd2316547668250c2a8be36948c0d317a5f120b76e4685a3fb92dd6fa07d",
+    "bytes": 169
+  },
+  "original-workflows/run-summary.json": {
+    "sha256": "9a41d50c1f54b1f57dc8fe353c083c5f34a54646222ecad0740b94feea830fdd",
+    "bytes": 34490
+  },
+  "shared-host.log": {
+    "sha256": "77187dbd6cd8d512117d35e5ce9d0121fdaa3bdac8c004a062b68be2ff522180",
+    "bytes": 603
+  }
+}

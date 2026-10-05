@@ -1,0 +1,807 @@
+{
+  "natives": [
+    {
+      "jar": "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+      "entry": "org/tensorflow/internal/c_api/macosx-arm64/libjnitensorflow.dylib",
+      "sha256": "475565a187db6a579498cd01460e3cc795b496d4e5a174374ef1b50f7bc230b0",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+      "entry": "org/tensorflow/internal/c_api/macosx-arm64/libtensorflow_cc.2.dylib",
+      "sha256": "ff9c51060f9b59128111137a7db14648497f4098dad97bcf9d7be5b6ed2e072a",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+      "entry": "org/tensorflow/internal/c_api/macosx-arm64/libtensorflow_framework.2.dylib",
+      "sha256": "b85ee779d05c7f091032ef076a1de24567a72e2af6280c078c71c95d531460fb",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/javacpp-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/javacpp/macosx-arm64/libjnijavacpp.dylib",
+      "sha256": "c76b5bc48451ecd708beb040d78a5964b4755e83ad3fa061fb9a4193528da386",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/openblas/macosx-arm64/libgfortran.dylib",
+      "sha256": "8cc95c803267ca6deaa5f85143d0f5442929d347d49b47e4326b720e50c2960d",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/openblas/macosx-arm64/libjniopenblas_full.dylib",
+      "sha256": "f206486a5f8a23009620a81fc81f65dd3b8b9a57a8351f21af52cfdffba7ba83",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/openblas/macosx-arm64/libjniopenblas_nolapack.dylib",
+      "sha256": "4f0d8347b1ec85e6847d2ba508b80b336e62efd1eb74c5e25d6492a1245e8d54",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/openblas/macosx-arm64/libjniopenblas.dylib",
+      "sha256": "e9d820bf036a6edbad66cc75dece4a360a7de75ac786fa7ee515e2fd810949fa",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/openblas/macosx-arm64/libgfortran.5.dylib",
+      "sha256": "8cc95c803267ca6deaa5f85143d0f5442929d347d49b47e4326b720e50c2960d",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/openblas/macosx-arm64/libquadmath.0.dylib",
+      "sha256": "814b2a1815afe77a4b7b00d51c447a9ac53d8607359e437234131def1d17f870",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/openblas/macosx-arm64/libgcc_s.1.1.dylib",
+      "sha256": "d6fca3f8eb7c7e89aae161ebfeaecbb7f65f6acbbf12972d0ac005a4ce4615e1",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/openblas/macosx-arm64/libopenblas.0.dylib",
+      "sha256": "31f4d7e94cfe996c605f3d01f471d49b2a7f340de4be1b5f6f4cb380ccc0cfd2",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_face.dylib",
+      "sha256": "8b93383a802a0b6c1711f3243c397236a284854898543499d285dbc5067e6fd9",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_dnn_superres.dylib",
+      "sha256": "e72ad35defa0afec178acfc910a7c0e7853b9cedf82a89981105564bfbf82e9a",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_video.411.dylib",
+      "sha256": "0973c3b2e8b116653b87295e297a72456cbbd59ec440bc1baee8905202bc06e8",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_signal.dylib",
+      "sha256": "f97a81f13f9f4d2aab3acbdc607af2dd4d9939ddd5ddf125cbeff10c42a2d833",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_imgcodecs.411.dylib",
+      "sha256": "9446b13763f0a9bc35c04dae0b860de0e1cf8a96db388139f827f4ba68fb3cc9",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_objdetect.411.dylib",
+      "sha256": "5796844c52a59bf313672d537e7d6727cd3b7d14ae87db1357a5574c738c28c2",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_highgui.411.dylib",
+      "sha256": "b862b5fde3c7b0dbe296eeac8ebf61b68738f6a93d73da0c6d9cb6722d498508",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_img_hash.dylib",
+      "sha256": "e5381d0e6f138f7c89a2ad671d4d49e147a6fb391d4caa8af0794c210b435f08",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_quality.dylib",
+      "sha256": "bc36b87a8cf77c52d40226f59ae35f434d37af1cf20dd6c55fc4dffcbbb57115",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_wechat_qrcode.411.dylib",
+      "sha256": "36b30c4cb7f9b3fefa538f4713ccff1f1ccb2db45912ae5fa8939580b37a876e",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_ximgproc.411.dylib",
+      "sha256": "5a6ac0e1f871a4f411304f2c48876b1aec6b06341b4706e947e6a1d91ac67712",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_videoio.dylib",
+      "sha256": "7720c7819f53c0db84d9dec294ccbe78afb57b92c159e76e51bd024ac8eb5f5b",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_videoio.411.dylib",
+      "sha256": "8521fa32db65cb478cf14f5787eb8c0ea277c3c95372755959c950f2f3eb5b34",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_videostab.411.dylib",
+      "sha256": "1b79a1427c1dd63b3515f5a9cc525987ce7fb62a08381093577c8df510a2a1b1",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_aruco.411.dylib",
+      "sha256": "560733bdf8bebe331a9f9db795e0ec0066d33a2bacc75a1e3df72853968bc41a",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_aruco.dylib",
+      "sha256": "e8a11acf9e749632bad449b300a79c1647c62b158193ab2184658cbeeecd2d49",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_videostab.dylib",
+      "sha256": "78c3af66bf145932386e267664d3a8aef567ce835a9b208653e2bcf6ebca97ea",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_optflow.dylib",
+      "sha256": "0517f6138b5b246cc1a507a73ff79aed959f79c3f47e68348bd13c627e2f37af",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_xfeatures2d.411.dylib",
+      "sha256": "70b037326938da5827b1804bb0d1ea503854242ee908fe6d8f5512b9b6ec3fb8",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_superres.411.dylib",
+      "sha256": "669048c509841350a6977eafee7674f958fc2375ebb24a595f2deb6b8df7d050",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_dnn.411.dylib",
+      "sha256": "fbef03459eaf47de4bd2fc4b47a39dfaafefaa4a27707802ee5c09a65d865ce3",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_structured_light.dylib",
+      "sha256": "3b558a4164108404eead9b505c2493e34a5c12212f114573c8baeddd9f62799f",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_dnn_superres.411.dylib",
+      "sha256": "edd2b8b47c448f5ab950307b195a833a52081ae01000682972efcf7277f653ff",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_xfeatures2d.dylib",
+      "sha256": "b1eedd3a2a6183dfa2fe4626a54edfdbd082203e159946744dd0361d09040e8c",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_shape.411.dylib",
+      "sha256": "e9c0a8041787de914a6d88245dcd1f552b256f1513a02a25eedcbada3e358e18",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_mcc.411.dylib",
+      "sha256": "ceb8f07597899f9841a15c755bc68acf3626327b8ffae09407abc944dff1a705",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_xphoto.411.dylib",
+      "sha256": "e687585e92101b095aecdce176da2c48984a7fa648e2fdd87fef272762ab2c71",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_saliency.411.dylib",
+      "sha256": "3f14c7ecd42471a76e33a25a90f4ca6487484b1a973e7e0044478eab5b1ec83a",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_saliency.dylib",
+      "sha256": "9ee315d5fff9cc5cf2b9466e217834bdcc22916641fccd103b20f1df50824fd3",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_bgsegm.411.dylib",
+      "sha256": "c302b9c0f767ae386d4d340eb5705e56a18ff65098430eb9827506bdeecbd59d",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_bioinspired.dylib",
+      "sha256": "879b9ecb99963d1c1bae64019d9b0c6f9ce0cd019d445ae3b814a204677e3f12",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_img_hash.411.dylib",
+      "sha256": "b9ea7b33ff4e9d04775bbd2a74e7e9151321fb34467813f97c8caf341cd85329",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_rapid.dylib",
+      "sha256": "d435bd167fa160520edd23f45cb3b17d409b755cec6618e867f3708944918f78",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_ml.dylib",
+      "sha256": "ec21aab63101b8be91c1609cfd2d203c9afb63dcb1f731755e6090754d4952cf",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_highgui.dylib",
+      "sha256": "e758a94152c5889081d831d2bebccc5dd49533a5bcced07fa296a03622621c65",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_photo.411.dylib",
+      "sha256": "a3e7fbf6d10d362b7c795be9c6f836dda361612b831ee4a964cacabc7ec7f5e7",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_photo.dylib",
+      "sha256": "033ab941e8cd6c4f9dc67fe2e7215358f9d63f20d7b474d7e72d6691e214e0e8",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_bioinspired.411.dylib",
+      "sha256": "6168489db6fa0aa973fa859615ac0fe6893d22b5e3762a5e66622630ca4b93cf",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_flann.dylib",
+      "sha256": "d6448ea1444a53ad5e0163fbd2998828ada715bc753c2de011baa0adcd097d2d",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_imgcodecs.dylib",
+      "sha256": "b2494ff310132b04d003d54757d9416eb77583366e851aea62aef9b934eca17e",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_face.411.dylib",
+      "sha256": "35c88f73b53a00777ce04fe76839d3162b0206561ae467190d276dd6c7089b70",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_shape.dylib",
+      "sha256": "8cb6ff2320429c4e20f9d14e4a73ba03a69ee2fcadbe420b2a179622b2141f37",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_ximgproc.dylib",
+      "sha256": "217804edc4dd76c1b3282ed0b3424af1d104548256d8269a6792d1afaa7b9933",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_mcc.dylib",
+      "sha256": "3628a0bca275e571e551418df0e318381bfca95f11faf5149df1f4a398a7ff4e",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_tracking.dylib",
+      "sha256": "0e83d2a53d5e2bd7fbeb001d52c1f1914171344a81c9b69a4cf416ff719ae56f",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_structured_light.411.dylib",
+      "sha256": "72444a826fad2a568ebcebd40598a2fe1467dd62a8e34cd7506775868de30755",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_signal.411.dylib",
+      "sha256": "453b30c0298c887faf44b196aad6e5aafef09ab19d5816f7db4ebfa32081cd88",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_java.dylib",
+      "sha256": "f29ae6cb311b8196d302927a88acfdde7513709da8ce31417d5298f58aa15193",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_tracking.411.dylib",
+      "sha256": "d8f6ba25d54a94f7271d44d81b67bc93f115e29602f6191d31140ddb1cab4ae5",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_features2d.dylib",
+      "sha256": "b34c674beddb3d3b21e601ae11c7b46272a10546c1b3d2902a67a520a2b612f6",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_plot.dylib",
+      "sha256": "a84c04f8db8e49830688ba48de76783a054411da3bc4ed0acd422999a5e7cb1a",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_plot.411.dylib",
+      "sha256": "9ef06038b0a9d84766350a7d97f3e80e33475167c6d63c2750c52a253f3f8cba",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_superres.dylib",
+      "sha256": "653614bbb1ada10cfb16dae77cdeb4d346fb3f0dd4200f0366cfb8016018e04f",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_core.dylib",
+      "sha256": "3c8a780d6b1347860356645742f186996fc6ebeb11ec2e3ea49ed6358207a423",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_dnn.dylib",
+      "sha256": "c681dc85d489b248294040d782398f3899a9f8631a483de8157918c9f82cedfc",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_flann.411.dylib",
+      "sha256": "3787334efd52c863d51926e18d26d543d41b1796e79d9da7b73db87a9b78736a",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_intensity_transform.411.dylib",
+      "sha256": "efc774ae10de57d0f6b1c4bd78bb2c6a25d961079ae9c66fabc0570d61114e74",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_python3.dylib",
+      "sha256": "eb2230dd1b2ee1f19c8abd642037d35f7b63e120beed914434458352b8e4e495",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_stitching.dylib",
+      "sha256": "d402ae4ae71c8e5c11f49c027ea56e919a9b9cc884d1be7658dde869b9fc4aa3",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_optflow.411.dylib",
+      "sha256": "bc0888ee177b804dff5436d10bba18593022b769561e7f7345ef9c15d468ab54",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_xphoto.dylib",
+      "sha256": "8fe085ec2bfe9983bbe6fcb05ee06b200002a05b8011bc6d3eec8ccca3e14dd4",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_imgproc.411.dylib",
+      "sha256": "5ff393e03aca1216f85b0ff461a29497f8d7ef09ae1bccb09d93ec8122ad7797",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_stitching.411.dylib",
+      "sha256": "f22378eb711906018ba39c24e076f75d45c0beaa59c38f62010731d7bde6602c",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_rapid.411.dylib",
+      "sha256": "53fac933658a9a053d69cf2b4ad337c4dc8e521812ea18f4fbd130e9ebcb6c76",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_core.411.dylib",
+      "sha256": "23259d2e3fc774c54a163e60a0185c5e25ab07270ffc6dbac3e5838db3db1497",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_video.dylib",
+      "sha256": "7fc8f58358810042ea77d3c262896630c6cf9bd850989279c3b70e917da467f4",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjnicvkernels.dylib",
+      "sha256": "41cf4b8f7b0d2b1d8bc90b9d745dac3281a0197e7fc3fe8a645359e28690e323",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_bgsegm.dylib",
+      "sha256": "5aef5b29020f317c4063de95e329a2d2e071bff76b7424eb5007d06b68c1839b",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_phase_unwrapping.411.dylib",
+      "sha256": "cac586ece4e5c70abc1254f4b1ae50072babec6e680bc4bcfce32ab89c26b960",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_objdetect.dylib",
+      "sha256": "725b2c62f7aa2af979b4fb553c65edc2e0eb24fb1e0a71f34d8551f65c74b818",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_ml.411.dylib",
+      "sha256": "efc0fcf256568719fa9c5875ae1f85d5bab6601557f4818567e4a4a9980db18f",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_calib3d.411.dylib",
+      "sha256": "9cc059aae3d5d526b8518aacf262304066f1f92b87a44673cbbc5ac5002918e8",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_java.dylib",
+      "sha256": "f93035fac013d4c82c7686ed9c40f589e9d5a39493c6f5bbf4be353e11ca01a5",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_quality.411.dylib",
+      "sha256": "d70568b6ac844780ec1017e279c8f3e86591733b76b32c4f3d4ed0a69855ce2a",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_intensity_transform.dylib",
+      "sha256": "5322b7b95a413b6220ccfc0a06a97520398f0718e12ec4e8bf1930838028f15c",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_imgproc.dylib",
+      "sha256": "6ad790d40cd66fe7cea33004986b1a9d25575383a3704ff41588a6f49456d8ee",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_features2d.411.dylib",
+      "sha256": "1b704cc77faf4962a7cb5b76026f42880349849c02f3a0fbf2e2f1643a900150",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_wechat_qrcode.dylib",
+      "sha256": "e218e7fcdd1c4111b1c48c965ecc83d6043c65f121337fce2ff338c91ed209d1",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libopencv_text.411.dylib",
+      "sha256": "6035d306f4fbbbf8f2a1e8c4cd88bab9915596f06b572019aab971b62a79a67f",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_calib3d.dylib",
+      "sha256": "18e80374c31d5301ea9ed4b7feb764df42a67174d77c0ec83d22d2585cac46a0",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_phase_unwrapping.dylib",
+      "sha256": "4f66c927725aefc3919e1f8d1d79dd72cdd096d22389f07809237bcb7789f963",
+      "cpu_types": [
+        16777228
+      ]
+    },
+    {
+      "jar": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "entry": "org/bytedeco/opencv/macosx-arm64/libjniopencv_text.dylib",
+      "sha256": "b8e60b04920b50428f1626a9286657a81da7bb886b3f4e79d91cf27473906b90",
+      "cpu_types": [
+        16777228
+      ]
+    }
+  ],
+  "dependencies_identical_to_preview2": [
+    "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+    "gat-native-inference/lib/tensorflow-ndarray-1.2.0.jar",
+    "gat-native-inference/lib/protobuf-java-4.31.1.jar",
+    "gat-native-inference/lib/tensorflow-core-native-1.2.0.jar",
+    "gat-native-inference/lib/javacpp-1.5.12.jar",
+    "gat-native-inference/lib/tensorflow-core-api-1.2.0.jar",
+    "gat-native-alignment/lib/opencv-4.11.0-1.5.12.jar",
+    "gat-native-alignment/lib/javacpp-1.5.12-macosx-arm64.jar",
+    "gat-native-alignment/lib/ij-1.54p.jar",
+    "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+    "gat-native-alignment/lib/openblas-0.3.30-1.5.12.jar",
+    "gat-native-alignment/lib/javacpp-1.5.12.jar",
+    "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+    "gat-native-alignment/lib/javacv-1.5.12.jar"
+  ],
+  "worker_class_continuity": [
+    {
+      "path": "gat-native-inference/gat-native-inference.jar",
+      "classes_byte_identical_to_preview2": [
+        "org/gatanalysis/inference/NativeInferenceMain.class",
+        "org/gatanalysis/inference/TensorProtocol.class",
+        "org/gatanalysis/inference/ImageTensor.class",
+        "org/gatanalysis/inference/TensorFlowPredictor.class",
+        "org/gatanalysis/inference/TilePredictor.class",
+        "org/gatanalysis/inference/CsbdeepNormalizer.class",
+        "org/gatanalysis/inference/CsbdeepTiling.class",
+        "org/gatanalysis/inference/ModelArchive.class"
+      ]
+    },
+    {
+      "path": "gat-native-alignment/gat-native-alignment.jar",
+      "classes_byte_identical_to_preview2": [
+        "TemplateMatching/cvMatch_Template.class",
+        "TemplateMatching/NativeAlignmentMain$Input.class",
+        "TemplateMatching/NativeAlignmentMain.class",
+        "TemplateMatching/Align_slices.class"
+      ]
+    }
+  ],
+  "exact_source_entries": [
+    "gat-native-alignment/source/LICENSE",
+    "gat-native-alignment/source/pom.xml",
+    "gat-native-alignment/source/THIRD_PARTY_NOTICES.md",
+    "gat-native-alignment/source/README.md",
+    "gat-native-alignment/source/src/test/java/TemplateMatching/AlignmentProtocolTest.java",
+    "gat-native-alignment/source/src/assembly/distribution.xml",
+    "gat-native-alignment/source/src/main/java/TemplateMatching/NativeAlignmentMain.java",
+    "gat-native-alignment/source/src/main/java/TemplateMatching/Align_slices.java",
+    "gat-native-alignment/source/src/main/java/TemplateMatching/cvMatch_Template.java"
+  ]
+}
