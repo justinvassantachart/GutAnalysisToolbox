@@ -1,0 +1,53 @@
+name: apple-silicon-workflows
+
+on:
+  push:
+    branches: [feat/apple-silicon-stardist]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-opencl:
+    name: Native Mac OpenCL and GAT spatial components
+    runs-on: macos-14
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Record native runner and operating-system OpenCL capability
+        run: |
+          mkdir -p target/workflow-validation
+          test "$(uname -m)" = arm64
+          java -XshowSettings:properties -version 2>&1 | tee target/workflow-validation/java.txt
+          python3 native-inference/validation/workflows/system-opencl.py --output target/workflow-validation/system-opencl.json
+      - name: Build unchanged production classes and resolve their runtime classpath
+        run: >-
+          mvn -B -ntp -DskipTests package dependency:build-classpath
+          -Dmdep.outputFile=target/workflow-classpath.txt
+      - name: Compile validation-only OpenCL probe
+        run: |
+          mkdir -p target/workflow-validation/classes
+          javac --release 11 -cp "target/classes:$(cat target/workflow-classpath.txt)" \
+            -d target/workflow-validation/classes native-inference/validation/workflows/OpenClWorkflowSmoke.java
+      - name: Run actual bindings, transfers, kernels and GAT spatial code
+        run: |
+          java -Djava.awt.headless=true -cp "target/workflow-validation/classes:target/classes:$(cat target/workflow-classpath.txt)" \
+            OpenClWorkflowSmoke target/workflow-validation/opencl 2>&1 | tee target/workflow-validation/opencl.log
+      - name: Save capability and component diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-workflow-diagnostics
+          path: |
+            target/workflow-validation/**/*.json
+            target/workflow-validation/**/*.log
+            target/workflow-validation/**/*.txt
+            target/workflow-validation/**/*.csv
+            target/workflow-classpath.txt
+          if-no-files-found: error
