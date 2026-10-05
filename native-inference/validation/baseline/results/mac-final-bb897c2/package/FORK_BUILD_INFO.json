@@ -1,0 +1,16 @@
+{
+  "version": "2.0.1-apple-silicon.3",
+  "source_commit": "bb897c237732cf8569a1515eb8d7ed69feb2ab31",
+  "source_worktree_modified": false,
+  "target": "macos-arm64",
+  "minimum_macos": "14",
+  "minimum_java": "11",
+  "experimental": true,
+  "install_root": "ImageJ data root containing jars and plugins; current Fiji Latest uses outer Fiji/, not inner Fiji.app/",
+  "plugin_classes_match_tested_classes": true,
+  "plugin_classes_compared": 156,
+  "plugin_sha256": "0bb1c33b452fcd607f13291532e103199223d947eeec605a91dcac03dc047792",
+  "inference_bundle_sha256": "0fab4ea2529b083b762686073628d0980f66e70dda1d2e906f70e4ec125b6e79",
+  "alignment_bundle_sha256": "b12d42b9e00ab1c9c17bd572521a40c8cfef2ff355b9010cc1e3e412459d94a1",
+  "validation_note": "See APPLE_SILICON.md and workflow matrix. Packaging is not a Fiji GUI or physical-Mac test."
+}

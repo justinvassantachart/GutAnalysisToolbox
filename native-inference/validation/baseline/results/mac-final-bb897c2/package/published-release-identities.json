@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "source": "published-release-metadata.json: separately preserved decoded release API snapshot supplied by the coordinator",
+  "release_id": 404144196,
+  "release_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-3",
+  "tag_name": "apple-silicon-preview-3",
+  "target_commitish": "bb897c237732cf8569a1515eb8d7ed69feb2ab31",
+  "prerelease": true,
+  "github_release_immutable_flag": false,
+  "published_at": "2026-10-05T22:37:47Z",
+  "snapshot_release_updated_at": "2026-10-05T22:37:47Z",
+  "snapshot_sha256": "409daa166af702b546e9616eeac8c0e9d48b82cd5eab0fe208ac73dd9a92469b",
+  "qualification": "Point-in-time snapshot predating the later v5 handoff-guide upload. The listed assets are not an exhaustive/current-forever release inventory. Release API digests are source evidence; final core/baseline/build-info bytes were independently matched locally. Kit/manual-fixture identities are recorded API metadata, not rerun validation.",
+  "assets": [
+    {
+      "id": 613782239,
+      "name": "FORK_BUILD_INFO.json",
+      "size": 844,
+      "digest": "sha256:25259712b2f5c5048e865aff93fc0472af47b743ac6545ef3e81043006a2d15a",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/FORK_BUILD_INFO.json",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:13Z",
+      "updated_at": "2026-10-05T22:36:14Z"
+    },
+    {
+      "id": 613782240,
+      "name": "GAT-2.0.0-unchanged-1870d9e-baseline.zip",
+      "size": 1664352,
+      "digest": "sha256:3c7f3289f714f3789b9dad47dd4f9e7032812b8886c43705a97853888d50ce86",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-2.0.0-unchanged-1870d9e-baseline.zip",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:13Z",
+      "updated_at": "2026-10-05T22:36:14Z"
+    },
+    {
+      "id": 613782241,
+      "name": "GAT-2.0.0-unchanged-1870d9e-baseline.zip.sha256",
+      "size": 107,
+      "digest": "sha256:baa29d6e9ec4d1406dd3841a9fef754e926695fb195479fdcc4b58e3cb14481f",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-2.0.0-unchanged-1870d9e-baseline.zip.sha256",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:13Z",
+      "updated_at": "2026-10-05T22:36:14Z"
+    },
+    {
+      "id": 613782242,
+      "name": "GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip",
+      "size": 203286850,
+      "digest": "sha256:5c746a31c65727779566ed9b9a1bfdd4966167504bce7ee95bd4878ed2159d03",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:13Z",
+      "updated_at": "2026-10-05T22:36:22Z"
+    },
+    {
+      "id": 613782243,
+      "name": "GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip.sha256",
+      "size": 116,
+      "digest": "sha256:1547bbeebbee735f208aebb1dd822bdec258e77f7225a9e1177139d2fa53592c",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip.sha256",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:13Z",
+      "updated_at": "2026-10-05T22:36:14Z"
+    },
+    {
+      "id": 613782290,
+      "name": "GAT-M1-test-kit-preview-2.1.zip",
+      "size": 4726604,
+      "digest": "sha256:979d818165e677215824808834391ad80b70866c86ead5da2ae8830e022a2d55",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-M1-test-kit-preview-2.1.zip",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:14Z",
+      "updated_at": "2026-10-05T22:36:15Z"
+    },
+    {
+      "id": 613782293,
+      "name": "GAT-M1-test-kit-preview-2.1.zip.sha256",
+      "size": 98,
+      "digest": "sha256:b43b759823092486faee3eaa2cec1f67684a35ed778edde0e19c4a28efa69c42",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-M1-test-kit-preview-2.1.zip.sha256",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:15Z",
+      "updated_at": "2026-10-05T22:36:15Z"
+    },
+    {
+      "id": 613782292,
+      "name": "GAT-multiplex-manual-fixtures.zip",
+      "size": 231740,
+      "digest": "sha256:31e15feb164b38c5ab42f9ff6cdceee5507c4563cea648a2b85ae9f38524a04c",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-multiplex-manual-fixtures.zip",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:15Z",
+      "updated_at": "2026-10-05T22:36:15Z"
+    },
+    {
+      "id": 613782311,
+      "name": "GAT-multiplex-manual-fixtures.zip.sha256",
+      "size": 100,
+      "digest": "sha256:8f361119d1ddeb27b4861c4d8bfe175902b9f75b54595726328fb25ba8542c9b",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-multiplex-manual-fixtures.zip.sha256",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:15Z",
+      "updated_at": "2026-10-05T22:36:16Z"
+    },
+    {
+      "id": 613782285,
+      "name": "ORIGINAL_BUILD_INFO.json",
+      "size": 385,
+      "digest": "sha256:7346aaf5a1e8cf9093f52fefe7a6a5762cc6c241c560130998c1927e122e3255",
+      "browser_download_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/ORIGINAL_BUILD_INFO.json",
+      "state": "uploaded",
+      "created_at": "2026-10-05T22:36:14Z",
+      "updated_at": "2026-10-05T22:36:15Z"
+    }
+  ]
+}

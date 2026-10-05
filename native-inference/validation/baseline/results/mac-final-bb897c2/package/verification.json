@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "kind": "Retention-only independent read/copy/hash audit; no application, model, or test execution",
+  "source_commit": "bb897c237732cf8569a1515eb8d7ed69feb2ab31",
+  "comparison_source_commit": "ab046cb604dc04e75cf935b7a9f3c17b52843188",
+  "matched_install_artifact": {
+    "id": 11375352270,
+    "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593/artifacts/11375352270",
+    "sha256": "ff8a14a251b8ee7e9959f3c2f4ee93efd484c192299b0f2dd3621a388010099c",
+    "bytes": 206660395,
+    "members": 6,
+    "crc": "PASS",
+    "large_archive_copied": false
+  },
+  "fork_package": {
+    "filename": "GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip",
+    "sha256": "5c746a31c65727779566ed9b9a1bfdd4966167504bce7ee95bd4878ed2159d03",
+    "bytes": 203286850,
+    "members": 37,
+    "crc": "PASS",
+    "large_archive_copied": false
+  },
+  "original_package": {
+    "filename": "GAT-2.0.0-unchanged-1870d9e-baseline.zip",
+    "sha256": "3c7f3289f714f3789b9dad47dd4f9e7032812b8886c43705a97853888d50ce86",
+    "bytes": 1664352,
+    "members": 4,
+    "crc": "PASS",
+    "large_archive_copied": false
+  },
+  "jar_identities": [
+    {
+      "path": "plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.3.jar",
+      "sha256": "0bb1c33b452fcd607f13291532e103199223d947eeec605a91dcac03dc047792",
+      "bytes": 1757253,
+      "class_entries": 282,
+      "all_class_bytes_identical_to_ab046cb": true,
+      "same_whole_jar_as_ab046cb": false
+    },
+    {
+      "path": "gat-native-inference/gat-native-inference.jar",
+      "sha256": "1e24e30805e01ebb838684c913d317e3d3f09cfaa7cd66f02d8c3a6d57247b04",
+      "bytes": 20847,
+      "class_entries": 8,
+      "all_class_bytes_identical_to_ab046cb": true,
+      "same_whole_jar_as_ab046cb": false
+    },
+    {
+      "path": "gat-native-alignment/gat-native-alignment.jar",
+      "sha256": "2ebec1639dfd3c4ed321783c03e7079bab7f36b46f0a3af8e4da9ad34924a204",
+      "bytes": 18876,
+      "class_entries": 4,
+      "all_class_bytes_identical_to_ab046cb": true,
+      "same_whole_jar_as_ab046cb": false
+    }
+  ],
+  "class_manifest": "identical-class-members-sha256.json",
+  "build_time_project_class_comparison": {
+    "classes": 156,
+    "source": "FORK_BUILD_INFO.json",
+    "replayed_during_packet_preparation": false
+  },
+  "dependency_jars_identical_to_ab046cb": [
+    {
+      "path": "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+      "sha256": "570d8b845e4832cc06a59ae0a05d1bb8c7a11197f48de9664b4f86123dbcafd3",
+      "bytes": 151381240
+    },
+    {
+      "path": "gat-native-inference/lib/tensorflow-ndarray-1.2.0.jar",
+      "sha256": "abbc2c528a2200059cfb1b54e4fa6b338394e7ca2d608a9d52989e7ccb43850a",
+      "bytes": 304345
+    },
+    {
+      "path": "gat-native-inference/lib/protobuf-java-4.31.1.jar",
+      "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae",
+      "bytes": 1873183
+    },
+    {
+      "path": "gat-native-inference/lib/tensorflow-core-native-1.2.0.jar",
+      "sha256": "85ee6d600f5b1ceb81c6a1bdcc13081cfa9656442abd8aa45732a94271a26f17",
+      "bytes": 4027609
+    },
+    {
+      "path": "gat-native-inference/lib/javacpp-1.5.12.jar",
+      "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe",
+      "bytes": 515488
+    },
+    {
+      "path": "gat-native-inference/lib/tensorflow-core-api-1.2.0.jar",
+      "sha256": "9d87d75ebb7eb10bdddbbd3b6bf9a91c327d719bc2e402538c475fb3abd19e60",
+      "bytes": 4150141
+    },
+    {
+      "path": "gat-native-alignment/lib/opencv-4.11.0-1.5.12.jar",
+      "sha256": "c50b3ee9780c4a0fbb1335317e7bb99ca32c40162a55680828e01bc98e1e2382",
+      "bytes": 1885153
+    },
+    {
+      "path": "gat-native-alignment/lib/javacpp-1.5.12-macosx-arm64.jar",
+      "sha256": "7fad9210bdbd88ca3666a6d0991d202849587985273b648ffe6bc59be1869fe5",
+      "bytes": 38562
+    },
+    {
+      "path": "gat-native-alignment/lib/ij-1.54p.jar",
+      "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20",
+      "bytes": 2586953
+    },
+    {
+      "path": "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+      "sha256": "5fbd3dcaf764b242c1088a3cf896337ed30ad14b6f84b9ceb87f7c08144c4aa7",
+      "bytes": 12718897
+    },
+    {
+      "path": "gat-native-alignment/lib/openblas-0.3.30-1.5.12.jar",
+      "sha256": "802ca4bb29b76b11dff644174352a34efc8eb76bca3325cbd38b3a1f2ef69ea6",
+      "bytes": 338356
+    },
+    {
+      "path": "gat-native-alignment/lib/javacpp-1.5.12.jar",
+      "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe",
+      "bytes": 515488
+    },
+    {
+      "path": "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+      "sha256": "41bbadd0187788ad5789188cbba476b9bb1ed36ab9b8edac518cd2641655f36c",
+      "bytes": 24727449
+    },
+    {
+      "path": "gat-native-alignment/lib/javacv-1.5.12.jar",
+      "sha256": "79ddd361c82f9f6d3e05424470639ba7faf0a66764a0b18a139c881e046a905b",
+      "bytes": 434277
+    }
+  ],
+  "main_plugin_forbidden_class_prefixes_absent": [
+    "org/tensorflow/",
+    "org/bytedeco/",
+    "TemplateMatching/"
+  ],
+  "guides_license_and_alignment_source_match_exact_commit": [
+    {
+      "package_member": "APPLE_SILICON.md",
+      "source_path": "docs/apple-silicon.md",
+      "sha256": "03b3329d3e753e4f6c5fd201bb115a83c67769b4deab3d6ec72859befeadc496",
+      "bytes": 14826
+    },
+    {
+      "package_member": "apple-silicon-workflow-matrix.md",
+      "source_path": "docs/apple-silicon-workflow-matrix.md",
+      "sha256": "5f3d7abbfab8aa8bdef99b39e40c14ff18aa2fcb9c14a2862693a1daa1a83db7",
+      "bytes": 13682
+    },
+    {
+      "package_member": "GAT_LICENSE",
+      "source_path": "LICENSE",
+      "sha256": "a02de9e10cb9bd94a2971d7f01d6fe2f3d3c8cffb11a0dfa973ab322baeb6a23",
+      "bytes": 1526
+    },
+    {
+      "package_member": "gat-native-alignment/source/LICENSE",
+      "source_path": "native-alignment/LICENSE",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147
+    },
+    {
+      "package_member": "gat-native-alignment/source/pom.xml",
+      "source_path": "native-alignment/pom.xml",
+      "sha256": "66a2beee51d0ce1562d20335f47fd4f468d3a0248a8d20d7ad8e84a2d8960542",
+      "bytes": 3782
+    },
+    {
+      "package_member": "gat-native-alignment/source/THIRD_PARTY_NOTICES.md",
+      "source_path": "native-alignment/THIRD_PARTY_NOTICES.md",
+      "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97",
+      "bytes": 1056
+    },
+    {
+      "package_member": "gat-native-alignment/source/README.md",
+      "source_path": "native-alignment/README.md",
+      "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432",
+      "bytes": 1413
+    },
+    {
+      "package_member": "gat-native-alignment/source/src/test/java/TemplateMatching/AlignmentProtocolTest.java",
+      "source_path": "native-alignment/src/test/java/TemplateMatching/AlignmentProtocolTest.java",
+      "sha256": "2aa9129697a4a392505e90dd59f7cc0367406e06f264c0c0fb72cf8ec3ed3e7a",
+      "bytes": 2640
+    },
+    {
+      "package_member": "gat-native-alignment/source/src/assembly/distribution.xml",
+      "source_path": "native-alignment/src/assembly/distribution.xml",
+      "sha256": "f67e0610e8a81557a58c1a604b1ed37790082210586aca7d7428a5c85e3b727e",
+      "bytes": 929
+    },
+    {
+      "package_member": "gat-native-alignment/source/src/main/java/TemplateMatching/NativeAlignmentMain.java",
+      "source_path": "native-alignment/src/main/java/TemplateMatching/NativeAlignmentMain.java",
+      "sha256": "a510c77e9ef8239fe0e8fffab59a891164d49a73861a9f04bbd89112d2536756",
+      "bytes": 6601
+    },
+    {
+      "package_member": "gat-native-alignment/source/src/main/java/TemplateMatching/Align_slices.java",
+      "source_path": "native-alignment/src/main/java/TemplateMatching/Align_slices.java",
+      "sha256": "cd715d900075f6d373dc180c92324bc10943b3492e87a41768c371dbeed48fcf",
+      "bytes": 9629
+    },
+    {
+      "package_member": "gat-native-alignment/source/src/main/java/TemplateMatching/cvMatch_Template.java",
+      "source_path": "native-alignment/src/main/java/TemplateMatching/cvMatch_Template.java",
+      "sha256": "2698cfdcbd00dc2852e7d100aa1da1ad9ed9c0fa324a5ba52fc3c2f99d29549d",
+      "bytes": 13992
+    }
+  ],
+  "constituent_worker_distribution_archive_hashes_from_build_metadata": {
+    "inference_bundle_sha256": "0fab4ea2529b083b762686073628d0980f66e70dda1d2e906f70e4ec125b6e79",
+    "alignment_bundle_sha256": "b12d42b9e00ab1c9c17bd572521a40c8cfef2ff355b9010cc1e3e412459d94a1",
+    "qualification": "These identify constituent distribution ZIPs used during packaging, not worker JARs. Whole worker JAR hashes are independently computed in jar_identities. Constituent ZIPs are not retained in this packet."
+  },
+  "qualification": "Only immutable evidence preparation occurred here. The original CI applications/tests ran earlier at the exact linked run/source; no new application/model/test execution or release change occurred."
+}
