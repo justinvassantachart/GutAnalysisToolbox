@@ -1,0 +1,24 @@
+{
+  "source_commit": "6996dd50f5ea06ac1f5ecb38c245139cb1508292",
+  "run_id": 37371362801,
+  "job_id": 111969570023,
+  "github_artifact_id": 11369937490,
+  "github_artifact_sha256": "7b26c133c9e7632bc1d369ce5ce035a45ff905433239c7e6e2b1ed4be4d38135",
+  "package_sha256": "d3208ee74c26edbb44846e56de76004a9962257f63b2050cd8beaffae0f8a1b5",
+  "source_sha256": "73da2e0285c3d305daea6a464f99a1843481d86b1c4f3dedbbb2ebfe6af75a0b",
+  "jar_sha256": "7e7695897a43bb75a4402e92613fd35c1372b9abea3faee6a33cb134ae759445",
+  "native_sha256": "19777cc4c6f2bb4f3f65851514324e304c0c6956c96299c85384222a4a5e543a",
+  "packaged_entries_checked": 25,
+  "source_entries_checked": 165,
+  "macho_minimum_macos": "11.0.0",
+  "native_runtime_dependencies": [
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libSystem.B.dylib"
+  ],
+  "custom_rpaths": [],
+  "java_class_overrides": 0,
+  "golden_fixtures_exact": 13,
+  "published_JNI_signatures": 59,
+  "status": "PASS",
+  "scope": "Optional resource-only JPEG-XR codec overlay and corresponding source. This is not a full CZI/LIF microscopy-reader, Fiji GUI/updater or metadata/series validation."
+}

@@ -1,0 +1,15 @@
+__pycache__/
+*.class
+# Earlier local harness-development runs remain on disk; only the reviewed run is published.
+/results/linux-6996dd5/
+/results/linux-6996dd5-final/
+/results/unit-tests.log
+
+/results/linux-6996dd5-reviewed/
+/results/unit-tests-reviewed.log
+
+/results/linux-6996dd5-dialog-reviewed/
+
+/results/unit-tests-dialog-reviewed.log
+
+/results/linux-6996dd5-dialog-final/

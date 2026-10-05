@@ -1,0 +1,50 @@
+# Owner-ready standalone workflow. This example does not alter repository workflows.
+# Copy to .github/workflows/multiplex-full.yml when you choose to enable it.
+name: native-mac-multiplex-full
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-mac-multiplex:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Require actual native arm64 host
+        run: test "$(uname -m)" = arm64
+      - name: Build unchanged production classes and runtime classpath
+        run: >-
+          mvn -B -ntp -DskipTests package dependency:build-classpath
+          -Dmdep.outputFile=target/multiplex-classpath.txt
+      - name: Test reporting and immutable dependency/fixture pins
+        run: python3 -m unittest discover -s native-inference/validation/multiplex-full -p 'test_*.py' -v
+      - name: Invoke every selected real-service case in fresh native JVMs
+        run: >-
+          python3 native-inference/validation/multiplex-full/run.py
+          --root-classpath target/multiplex-classpath.txt
+          --expect-native-mac --output target/multiplex-full-mac
+      - name: Preserve independent scope gate
+        if: success()
+        run: |
+          python3 - <<'PY'
+          import json
+          report = json.load(open('target/multiplex-full-mac/summary.json'))
+          assert report['full_service_acceptance_passed'] is True, report['status']
+          PY
+      - name: Preserve outputs, source hashes, logs and native host provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-multiplex-full
+          path: |
+            target/multiplex-full-mac/**/*.json
+            target/multiplex-full-mac/**/*.log
+            target/multiplex-full-mac/**/*.tif
+            target/multiplex-full-mac/**/*.zip
+          if-no-files-found: error

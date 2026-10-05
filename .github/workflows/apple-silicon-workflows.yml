@@ -3,6 +3,15 @@ name: apple-silicon-workflows
 on:
   push:
     branches: [feat/apple-silicon-stardist]
+    paths:
+      - '.github/workflows/apple-silicon-workflows.yml'
+      - 'pom.xml'
+      - 'src/**'
+      - 'native-alignment/**'
+      - 'native-inference/validation/workflows/**'
+      - 'native-inference/validation/template-matching/**'
+      - 'native-inference/validation/jpeg-xr/**'
+      - '!native-inference/validation/**/results/**'
   workflow_dispatch:
 
 permissions:
@@ -10,7 +19,8 @@ permissions:
 
 concurrency:
   group: gat-native-workflows-${{ github.ref }}
-  cancel-in-progress: true
+  # Do not discard an acquired Mac runner when publishing follow-up evidence.
+  cancel-in-progress: false
 
 defaults:
   run:

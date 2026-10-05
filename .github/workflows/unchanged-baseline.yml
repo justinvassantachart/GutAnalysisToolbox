@@ -13,6 +13,9 @@ on:
       - 'native-alignment/**'
       - 'src/**'
       - 'pom.xml'
+      - 'scripts/package-apple-silicon-preview.py'
+      - 'scripts/tests/**'
+      - '!native-inference/validation/**/results/**'
   workflow_dispatch:
 
 permissions:

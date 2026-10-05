@@ -1,0 +1,152 @@
+{
+  "diagnostics": {
+    "github_artifact_id": 11370097389,
+    "original_filename": "gat-6996-codec-diagnostics.zip",
+    "bytes": 13539,
+    "sha256": "22220ed8f7d09f2ffa02b243bc00f7fb9a8bf8225648f394cb45db10270ba545",
+    "retained_path": "original-ci-diagnostics.zip",
+    "payload_note": "Complete original GitHub artifact preserved byte-for-byte",
+    "members": [
+      {
+        "path": "abi-compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "build.log",
+        "bytes": 41814,
+        "sha256": "dcd780beb51211df4d455bb05e035825d26ca4c951b0aef213c32269f916115c"
+      },
+      {
+        "path": "actual.tsv",
+        "bytes": 3893,
+        "sha256": "c23f6258d0940aedc8f3701df068c2bbae0fa57362b6f567b7d213ed6d1d7aec"
+      },
+      {
+        "path": "compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "compiler-version.log",
+        "bytes": 206,
+        "sha256": "df12815703ce3452ab4bd51ecbea4cf8155246b94b5b15113a580ff6aec2befd"
+      },
+      {
+        "path": "decode.log",
+        "bytes": 4717,
+        "sha256": "326c7a9778e5b59581aee991628b254a6f4e58b98f20086f29879ac5e50e7f6a"
+      },
+      {
+        "path": "fixtures.tsv",
+        "bytes": 2034,
+        "sha256": "abdc0600918649a4e11ab7f6d74ec028d0eb5b18702935ac09a6055d8a8fda0e"
+      },
+      {
+        "path": "generated-jni.log",
+        "bytes": 7304,
+        "sha256": "97ab00e13c162739b6830cf0d1997d75023b7ab0ea682c6d421e683b5b21a20f"
+      },
+      {
+        "path": "native-architecture.log",
+        "bytes": 184,
+        "sha256": "27a2a2ca6047220e1927f6dfb6ca0cfe8f12f68b54176d823cd8fae3b3a72055"
+      },
+      {
+        "path": "native-dependencies.log",
+        "bytes": 516,
+        "sha256": "898e3677999fea51daa808a65dd8fdb39ad0693bcccd1f71f34d14686b2d9683"
+      },
+      {
+        "path": "native-file.log",
+        "bytes": 202,
+        "sha256": "e52c1c6ab3b7cacad21bf5d6cc1b9ee3c65144067e9b987273569d3c57e1a397"
+      },
+      {
+        "path": "native-load-commands.log",
+        "bytes": 6150,
+        "sha256": "9122d959b56b1b9654566d787abbca0744b641762e6072d24121abe22f5aac84"
+      },
+      {
+        "path": "published-jni.log",
+        "bytes": 7304,
+        "sha256": "97ab00e13c162739b6830cf0d1997d75023b7ab0ea682c6d421e683b5b21a20f"
+      },
+      {
+        "path": "report.json",
+        "bytes": 1885,
+        "sha256": "b126dc588f5f7996003c05e8f417f6cae0fdc6ba74113049e8ff2dde7138e005"
+      },
+      {
+        "path": "swig-version.log",
+        "bytes": 175,
+        "sha256": "fa7d7253caa844c577cb9dc30220f38b020d38b049d7119264087cc5bf5c568d"
+      },
+      {
+        "path": "swig.log",
+        "bytes": 685,
+        "sha256": "b863b748d8c021df9648393f50abb037f3970a480c7730ff6f39a8a50e755b27"
+      }
+    ]
+  },
+  "overlay": {
+    "github_artifact_id": 11369937490,
+    "original_filename": "gat-6996-codec-overlay.zip",
+    "bytes": 1058667,
+    "sha256": "7b26c133c9e7632bc1d369ce5ce035a45ff905433239c7e6e2b1ed4be4d38135",
+    "retained_path": null,
+    "payload_note": "Original binary/source artifact intentionally not duplicated; its distribution payloads are preview-2 release assets",
+    "members": [
+      {
+        "path": "final-overlay-actual.tsv",
+        "bytes": 3893,
+        "sha256": "c23f6258d0940aedc8f3701df068c2bbae0fa57362b6f567b7d213ed6d1d7aec"
+      },
+      {
+        "path": "final-overlay-compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "final-overlay-decode.log",
+        "bytes": 4726,
+        "sha256": "a2adee3b8da1a9952b99947b89ddadc063592e61a94e30f7a30f8694d0021187"
+      },
+      {
+        "path": "gat-jpeg-xr-0.2.4-macos-arm64-test-overlay.zip",
+        "bytes": 645514,
+        "sha256": "d3208ee74c26edbb44846e56de76004a9962257f63b2050cd8beaffae0f8a1b5"
+      },
+      {
+        "path": "gat-jpeg-xr-0.2.4-macos-arm64-test-overlay.zip.sha256",
+        "bytes": 113,
+        "sha256": "ee569ade85814e8ab1376106e2931d56c7548c0f82c757865abb35092060d648"
+      },
+      {
+        "path": "gat-jxrlib-0.2.4-corresponding-source.zip",
+        "bytes": 443806,
+        "sha256": "73da2e0285c3d305daea6a464f99a1843481d86b1c4f3dedbbb2ebfe6af75a0b"
+      },
+      {
+        "path": "gat-jxrlib-0.2.4-corresponding-source.zip.sha256",
+        "bytes": 108,
+        "sha256": "ecccb5e9fcf6075c12a2067272b3f516dfb00041a0bdc499b1d41c5ff97f6b8d"
+      },
+      {
+        "path": "gat-jxrlib-0.2.4-osx-arm64-test-overlay.jar.sha256",
+        "bytes": 110,
+        "sha256": "65c8519481525ddff69fe07afb54676578d9bc1ce22797886a4654828fe9332c"
+      },
+      {
+        "path": "package-report.json",
+        "bytes": 4010,
+        "sha256": "d5302c156210adb2c4a5d551a1dd371f554560890db4d56b3b4bfdb70605ea45"
+      },
+      {
+        "path": "source-regeneration.log",
+        "bytes": 617,
+        "sha256": "15622255f6a8d63fca232c2a28f0b79f3180776059223cc8347767c0b4d165b2"
+      }
+    ]
+  }
+}

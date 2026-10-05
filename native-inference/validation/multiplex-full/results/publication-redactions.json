@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "purpose": "Portable published copies of Linux machine provenance; untouched originals retained separately outside the repository publication scope",
+  "replacements": {
+    "<CLOUD_WORKSPACE>": "Cloud shared workspace root; only absolute prefix replaced, file and dependency suffixes retained",
+    "<RUNNER_HOME>": "Runner account home-directory prefix",
+    "<RUNNER_USER>": "Runner account name in JVM system-property diagnostic"
+  },
+  "unchanged": "All test outcomes, numeric values, source/class/dependency/fixture SHA-256 values, OS/architecture/JDK details and relative artifact paths remain unchanged",
+  "files": [
+    {
+      "path": "results/linux-6996dd5-checkpointed/controls/execution.log",
+      "original_sha256": "c690827ad103b825722c4677fcd815363bd6a1f110b91d16e3251743a4f4cb22",
+      "published_sha256": "a959ddb72cdca88c9a66d3b1c8208307d511b5f3ac03ab0a76b9a7d6ed6019f3"
+    },
+    {
+      "path": "results/linux-6996dd5-checkpointed/controls/report.json",
+      "original_sha256": "31cb26eaa0fcebe42fa9253fafca2469adc5447028a078f9e1f3aeeb564501ec",
+      "published_sha256": "a7be95bed37075db9108996049ba3d8aa60b47bf4c15e78fb404878b39527da9"
+    },
+    {
+      "path": "results/linux-6996dd5-checkpointed/display-probe/execution.log",
+      "original_sha256": "d6d7fae80fb62d6548aa75b1a2561f5352787ecd308715b6cc51b37e9020bf23",
+      "published_sha256": "29f810d4e6b6f3b7de646daa6ccb79132a147cea9819a74f59649592e4825206"
+    },
+    {
+      "path": "results/linux-6996dd5-checkpointed/display-probe/report.json",
+      "original_sha256": "43a5868b2c75835d173a05d031f916770edcd52f52fb6bfcd77a0c3262e0949e",
+      "published_sha256": "da95b5b347b532d16907043103b45a3a793636e466c652ed9d198739a8b8d199"
+    },
+    {
+      "path": "results/linux-6996dd5-checkpointed/summary.json",
+      "original_sha256": "577008a6cd2d9c680b973b801a67c7cc1066c475ad20989263ad2a45a83d4a56",
+      "published_sha256": "f5e2cc71e36663d054302b3c50ae4de929f8aa46fa96bbcaa63679979f52f851"
+    }
+  ]
+}

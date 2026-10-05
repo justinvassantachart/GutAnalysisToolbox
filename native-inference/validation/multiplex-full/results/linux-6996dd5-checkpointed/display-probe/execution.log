@@ -1,0 +1,2 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx768m -XX:ActiveProcessorCount=1
+REPORT=<CLOUD_WORKSPACE>/gat-publishing-main/native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/display-probe/report.json

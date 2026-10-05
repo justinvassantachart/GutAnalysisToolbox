@@ -33,6 +33,17 @@ initially block until DeepImageJ engines are initialized. The extended automated
 engine-setup test remains pending. Physical OpenCL/GPU and complete interactive
 workflows remain open. See the [workflow matrix](apple-silicon-workflow-matrix.md).
 
+The [completed same-host comparison](../native-inference/validation/baseline/results/mac-live-dialog-ee2907e/REPORT.md)
+is green: a strictly verified observer records the unchanged original's visible,
+unanswered TensorFlow error dialog and ends only that isolated process. All
+three live observer controls ran without skips; no dialog is dismissed and no
+installer is entered. The original still fails while fork output gates pass.
+
+The [optional native JPEG-XR package](../native-inference/validation/jpeg-xr/results/mac-6996dd5/REPORT.md)
+now passes its final resource-JAR decode, exact source/license checks and all 13
+golden fixtures. It is a separate release asset with complete source, not part
+of the core ZIP. Full Fiji importer/container/metadata testing remains required.
+
 ## Changes and scientific implications
 
 ### Neuron and subtype inference

@@ -17,6 +17,9 @@ Use [TEST preview 2](APPLE-SILICON-TEST-PREVIEW-2.md) and the
 
 Primary evidence:
 
+- [Completed same-host evidence job](../native-inference/validation/baseline/results/mac-live-dialog-ee2907e/REPORT.md), original failures and repaired passes, with all live controls
+- [Final optional JPEG-XR package audit](../native-inference/validation/jpeg-xr/results/mac-6996dd5/REPORT.md), golden tile/ABI/source gates passed; full importer still open
+
 - [Qualified Sonoma/Sequoia paired results](../native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md), original `1870d9e`, fork `fe5fd7b`
 
 - [Same-host unchanged original versus fork](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37357196889), original `1870d9e`, fork `69feedb`

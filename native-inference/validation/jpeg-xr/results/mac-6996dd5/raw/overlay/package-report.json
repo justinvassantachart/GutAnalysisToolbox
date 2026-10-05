@@ -1,0 +1,71 @@
+{
+  "check_artifacts": {
+    "bioformats_package-8.5.0.jar": {
+      "sha256": "c6e60665d53a334b66e4d635340151f403dfe57a64704c573dd4c03b873befb9",
+      "url": "https://downloads.openmicroscopy.org/bio-formats/8.5.0/artifacts/bioformats_package.jar"
+    },
+    "jxrlib-all-0.2.4.jar": {
+      "sha256": "c5677ff87125def275cc996c982682a917dbef5a3bf0aa614a2081c68769a346",
+      "url": "https://maven.scijava.org/content/groups/public/ome/jxrlib-all/0.2.4/jxrlib-all-0.2.4.jar"
+    },
+    "jxrlib-v0.2.4.tar.gz": {
+      "sha256": "3de034f3d0f1a408e2d7ea5ec497ec70edc632406910fac75a5bb8887dea2ee9",
+      "url": "https://codeload.github.com/glencoesoftware/jxrlib/tar.gz/a8e7f81b8f13ef620049caddeb537b5ea5ecffda"
+    },
+    "native-lib-loader-2.5.0.jar": {
+      "sha256": "7ec0dcf847cabdd6487c4724c3cede107a46bdb6585a9dcb63f54c0276b04b40",
+      "url": "https://repo.maven.apache.org/maven2/org/scijava/native-lib-loader/2.5.0/native-lib-loader-2.5.0.jar"
+    },
+    "slf4j-api-1.7.36.jar": {
+      "sha256": "d3ef575e3e4979678dc01bf1dcce51021493b4d11fb7f1be8ad982877c16a1c0",
+      "url": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar"
+    },
+    "swig-3.0.10-std_vector.i": {
+      "sha256": "9616473e5f30d20de87528ddeba6a75596ea4cd6ae2459d90ffdef4203de50bf",
+      "url": "https://raw.githubusercontent.com/swig/swig/d9875c6579efc8a56132313704c69e627c990dac/Lib/java/std_vector.i"
+    }
+  },
+  "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin24.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "corresponding_source_sha256": "73da2e0285c3d305daea6a464f99a1843481d86b1c4f3dedbbb2ebfe6af75a0b",
+  "generated_sources_regenerated_and_identical": true,
+  "golden_fixtures_passed": 13,
+  "install_requires": [
+    "native macOS arm64 Fiji/Java",
+    "jxrlib-all 0.2.4",
+    "native-lib-loader 2.5.0",
+    "Bio-Formats 8.5.0"
+  ],
+  "jar_sha256": "7e7695897a43bb75a4402e92613fd35c1372b9abea3faee6a33cb134ae759445",
+  "java_classes": 0,
+  "macho": {
+    "architecture": "arm64",
+    "install_id": "/Users/runner/work/GutAnalysisToolbox/GutAnalysisToolbox/target/jpeg-xr-mac/jxrlib-a8e7f81b8f13ef620049caddeb537b5ea5ecffda/build/libjxrjava.dylib",
+    "install_id_note": "Preserved LC_ID_DYLIB identifies this library; it is not a dependency. No install_name_tool mutation.",
+    "rpaths": [],
+    "runtime_dependencies": [
+      "/usr/lib/libc++.1.dylib",
+      "/usr/lib/libSystem.B.dylib"
+    ]
+  },
+  "native_sha256": "19777cc4c6f2bb4f3f65851514324e304c0c6956c96299c85384222a4a5e543a",
+  "optional_test_overlay": true,
+  "published_jni_signatures_matched": 59,
+  "resource": "META-INF/lib/osx_arm64/libjxrjava.dylib",
+  "schema_version": 1,
+  "scope": "Final resource JAR decode/vector/JNI via published Java bindings and Bio-Formats service/codec. Full Fiji updater/classloader and full microscopy container GUI testing remain required.",
+  "source_check_report_sha256": "b126dc588f5f7996003c05e8f417f6cae0fdc6ba74113049e8ff2dde7138e005",
+  "status": "pass",
+  "swig_generator": "\nSWIG Version 4.5.1\n\nCompiled with clang++ [aarch64-apple-darwin24.6.0]\n\nConfigured options: +pcre\n\nPlease see https://www.swig.org for reporting bugs and further information\n",
+  "swig_generator_provenance": {
+    "notice_sha256": {
+      "COPYRIGHT": "0ecb0b7b8363a337f1dc42d4b735983c08b1b65a462e778419d8b4fa5e541961",
+      "LICENSE": "f53abaeed775018d519a1b9615f0ca17894772bd9ca21c2a156bf340ac41c13e",
+      "LICENSE-GPL": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "LICENSE-UNIVERSITIES": "7f50d942373a871211c5efee03f3db2f9efd1cff1002b0ef8e3748baa611a5c2"
+    },
+    "source_url": "https://github.com/swig/swig/tree/88649f559942c29a228fa783dd01581e217bcb20",
+    "upstream_commit": "88649f559942c29a228fa783dd01581e217bcb20",
+    "version": "4.5.1"
+  },
+  "upstream_commit": "a8e7f81b8f13ef620049caddeb537b5ea5ecffda"
+}

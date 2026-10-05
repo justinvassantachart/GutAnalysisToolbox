@@ -28,11 +28,11 @@ The two installation packages were built together on an **Apple M1 (Virtual), na
 - A real official-Fiji clean-install run already passes fork neuron/alignment and reproduces original failures, but both dashboards stop until DeepImageJ engines are initialized. The extended automatic engine-initialization/dashboard test is still pending; GitHub reported a hosted-runner assignment incident during this validation
 - Physical-M1 OpenCL/GPU, full interactive workflows and representative biological acceptance remain to be tested. The virtual runner exposes no usable OpenCL device
 - Automatic calcium ROI segmentation and batch StackReg were incomplete upstream and are not supplied by this release
-- Optional JPEG-XR native repair is not included in this core ZIP; its final package validation is separate
+- Optional JPEG-XR native repair is now available as the separate `gat-jpeg-xr-0.2.4-macos-arm64-test-overlay.zip`, with complete matching source and `OPTIONAL-JPEG-XR-README.md`. Its final native packaged-JAR decode passed 13 golden fixtures and 59 JNI signatures. Full Fiji importer, microscopy-container metadata and GUI checks remain pending; it is not bundled into the core ZIP
 - CPU inference only. No GPU speedup claim. Start with small images; tiling does not remove the full prediction-memory limit
 - Modern TensorFlow and OpenCV stay in child processes outside Fiji's plugin classpath. Do not copy worker library JARs into Fiji `jars` or `plugins`
 
-The paired job has a red overall result because the unchanged original hangs in its TensorFlow failure dialog. Its repaired workflow steps pass. See the exact logs rather than interpreting red as failure of every fork workflow.
+The original packaging comparison retains its red overall result from the unchanged original TensorFlow error-dialog timeout. A [later same-host comparison completed green](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37369827141): it passively recorded that exact unanswered failure dialog and ended only the isolated original process. All repaired gates passed. Green means complete before/after observations, not original compatibility.
 
 ## Evidence
 - [Saved qualified paired report](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/ee2907e371b12b1951a507141f797afedb460aef/native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md)
@@ -46,3 +46,5 @@ Fork ZIP SHA-256: `9c5a542b82eb146b9c1d6c78ca20d1a0ffb8d10af7d35d6cd8ead8b927ac1
 Original ZIP SHA-256: `d2224b968368abd5a198f190db51022d8fa41cd72d6cfb7c845a224f94420ad8`
 
 The earlier preview-1 tag and files retain their original provenance. No upstream pull request has been opened.
+
+Optional JPEG-XR ZIP SHA-256: `d3208ee74c26edbb44846e56de76004a9962257f63b2050cd8beaffae0f8a1b5` (645,514 bytes). Built/validated from fork `6996dd50f5ea06ac1f5ecb38c245139cb1508292`; core package/tag remain unchanged at `fe5fd7b`.

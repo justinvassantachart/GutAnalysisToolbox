@@ -1,0 +1,38 @@
+{
+  "mode": "native",
+  "target": "osx_arm64",
+  "upstream_commit": "a8e7f81b8f13ef620049caddeb537b5ea5ecffda",
+  "status": "pass",
+  "artifacts": {
+    "swig-3.0.10-std_vector.i": {
+      "url": "https://raw.githubusercontent.com/swig/swig/d9875c6579efc8a56132313704c69e627c990dac/Lib/java/std_vector.i",
+      "sha256": "9616473e5f30d20de87528ddeba6a75596ea4cd6ae2459d90ffdef4203de50bf"
+    },
+    "jxrlib-v0.2.4.tar.gz": {
+      "url": "https://codeload.github.com/glencoesoftware/jxrlib/tar.gz/a8e7f81b8f13ef620049caddeb537b5ea5ecffda",
+      "sha256": "3de034f3d0f1a408e2d7ea5ec497ec70edc632406910fac75a5bb8887dea2ee9"
+    },
+    "jxrlib-all-0.2.4.jar": {
+      "url": "https://maven.scijava.org/content/groups/public/ome/jxrlib-all/0.2.4/jxrlib-all-0.2.4.jar",
+      "sha256": "c5677ff87125def275cc996c982682a917dbef5a3bf0aa614a2081c68769a346"
+    },
+    "native-lib-loader-2.5.0.jar": {
+      "url": "https://repo.maven.apache.org/maven2/org/scijava/native-lib-loader/2.5.0/native-lib-loader-2.5.0.jar",
+      "sha256": "7ec0dcf847cabdd6487c4724c3cede107a46bdb6585a9dcb63f54c0276b04b40"
+    },
+    "slf4j-api-1.7.36.jar": {
+      "url": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar",
+      "sha256": "d3ef575e3e4979678dc01bf1dcce51021493b4d11fb7f1be8ad982877c16a1c0"
+    },
+    "bioformats_package-8.5.0.jar": {
+      "url": "https://downloads.openmicroscopy.org/bio-formats/8.5.0/artifacts/bioformats_package.jar",
+      "sha256": "c6e60665d53a334b66e4d635340151f403dfe57a64704c573dd4c03b873befb9"
+    }
+  },
+  "native_library_sha256": "19777cc4c6f2bb4f3f65851514324e304c0c6956c96299c85384222a4a5e543a",
+  "native_overlay_sha256": "fc600482cbebf8f160b0e792bacec11ea858ce9b5d8c46d9c84dbe9137a76030",
+  "published_jni_signatures_matched": 59,
+  "fixtures": 13,
+  "exact_linux_reference": true,
+  "completed_utc": "2026-10-05T20:31:25Z"
+}

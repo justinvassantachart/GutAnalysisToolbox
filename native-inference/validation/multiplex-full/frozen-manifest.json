@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-10-05T21:07:15.609062+00:00",
+  "source_revision": "6996dd50f5ea06ac1f5ecb38c245139cb1508292",
+  "scope": "Validation-only full multiplex workflow harness; production algorithms unchanged",
+  "manifest_note": "This manifest excludes itself and ignored intermediate runs/classes/pycache. File list is exact publication scope. Published Linux evidence uses documented portable path placeholders.",
+  "validation": {
+    "python_unit_tests": 13,
+    "python_status": "PASS",
+    "java_compile": "PASS",
+    "headless_controls": 4,
+    "headless_status": "PASS",
+    "strict_dialog_matcher": "PASS: exact message + single pane + INFORMATION_MESSAGE + OK_CANCEL_OPTION; 5 adversarial negative controls",
+    "report_durability": "Each independent check writes its report before subsequent I/O/GUI operations",
+    "full_workflow_status": "BLOCKED_SETUP: no working AWT display",
+    "native_mac_status": "NOT_RUN",
+    "latest_report": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/summary.json",
+    "reached_actual_production_path": "MultiplexRegistrationService.run existing-Results overwrite guard"
+  },
+  "files": [
+    {
+      "path": "native-inference/validation/multiplex-full/.gitignore",
+      "sha256": "ef6284c40b0c8a43b5ede562174109eaacc281a2409bdcfb57e560693cfa0a3c",
+      "bytes": 379
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/MultiplexFullProbe.java",
+      "sha256": "06afb9f781a66ff320b3d8e71939c227d2ccbe6e0c451ec07691d42e97b7dabd",
+      "bytes": 36050
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/README.md",
+      "sha256": "94f334e0b67184d6e57e01829d57c2dc4b002b4df59c3c8ece849bd0901e0141",
+      "bytes": 11344
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/dependencies.json",
+      "sha256": "cbec4df65c59bab889a85b1edd42423ad658847e008feed4560b436282b058e3",
+      "bytes": 910
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/mac-ci-job.yml.example",
+      "sha256": "4e8e9f0e9b7482f5e5ad3f87b91505a2bb9b42750588e1b7173db2901c1d5588",
+      "bytes": 2010
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/provenance.json",
+      "sha256": "84c2e3e3fa11a3b10ed5be7632a3a679b3345c0547cfc951fede4fa5ae69ca7c",
+      "bytes": 1573
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/compile.log",
+      "sha256": "b77c77f821bb2ba9cdff4101d5e1db7a55607520b853bf4f44d3cb90938a0f6a",
+      "bytes": 65
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/commands.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/execution.log",
+      "sha256": "a959ddb72cdca88c9a66d3b1c8208307d511b5f3ac03ab0a76b9a7d6ed6019f3",
+      "bytes": 3220
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/fixture-manifest.json",
+      "sha256": "4816a9d3abe3699968128caf88a2f83d619d695c63cbe3551ef8817191bbf130",
+      "bytes": 1137
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer1_Hu.tif",
+      "sha256": "5793ccb70eb4cd4194ec797d1297cc413ecfa648c0aede27fc9bf51006a7b8f1",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer1_MarkerA.tif",
+      "sha256": "caafd02b59130b63e2841133acbd471e9ad9f5ec7bd50cc5afc202aa8b45b244",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer1_MarkerB.tif",
+      "sha256": "dff8718dc4cf67dd807ee99c0ecd566e5e0b52c0085c2f6f20992661c82a0bd9",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer2_Hu.tif",
+      "sha256": "51ac670b688a0d6d9eeeb1e54511ff739bfe5deccdad76fc8e0678ade23326b2",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer2_MarkerA.tif",
+      "sha256": "325ed651a50519547884ef7503fdcb56f936d863d09d6a421267866fb3b2f3eb",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer2_MarkerB.tif",
+      "sha256": "5821d916b4c12005f188f5497b56ef8f8b1a08ab08149f74d8bfa635d97e60dc",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer3_Hu.tif",
+      "sha256": "4c729853750fdc17645f1d706d201c0ecc8de4ee584c3f859ee3cd6842ca2772",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer3_MarkerA.tif",
+      "sha256": "9443d1c80378be0545a7a66040934d867894d93003bcca8f360ad463a9d886ff",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/inputs/Layer3_MarkerB.tif",
+      "sha256": "9ea91cabc3b7435a1da8ba58464ddcb19a02b425931f2c150291b227c581c875",
+      "bytes": 65776
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/output/Results/owner-sentinel.txt",
+      "sha256": "7f09515df57386e82c3649b042fc80c26994879f47f07d74832327e59f73a4a7",
+      "bytes": 22
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/phase.json",
+      "sha256": "685abe485e9675db140afbb4064d165ed69b6315984c5e15b3a0b0ac58d073fb",
+      "bytes": 65
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/controls/report.json",
+      "sha256": "a7be95bed37075db9108996049ba3d8aa60b47bf4c15e78fb404878b39527da9",
+      "bytes": 2681
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/display-probe/commands.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/display-probe/execution.log",
+      "sha256": "29f810d4e6b6f3b7de646daa6ccb79132a147cea9819a74f59649592e4825206",
+      "bytes": 214
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/display-probe/phase.json",
+      "sha256": "142bfcb9694d818ac15856de080ea905c6ae0adfbb023db9bc33e58955d3a32c",
+      "bytes": 65
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/display-probe/report.json",
+      "sha256": "da95b5b347b532d16907043103b45a3a793636e466c652ed9d198739a8b8d199",
+      "bytes": 687
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/linux-6996dd5-checkpointed/summary.json",
+      "sha256": "f5e2cc71e36663d054302b3c50ae4de929f8aa46fa96bbcaa63679979f52f851",
+      "bytes": 10066
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/publication-redactions.json",
+      "sha256": "2de64059581e83ae8fc7d7b6d7f2f3c074ccd284d0880692fa0a99e931d1f41a",
+      "bytes": 2024
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/unit-tests-final.log",
+      "sha256": "11e508b1d2b5d3beb1e9a1ea8dd371d61bfda065a0baa6e84ef4a52f3df43a20",
+      "bytes": 1651
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/run.py",
+      "sha256": "e23097b894e292f663bb0cdb9976d30ea66ab91c7249aa9410f7e37138d08725",
+      "bytes": 12694
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/test_runner.py",
+      "sha256": "eb4d97a8c0dd77865ad4b2e6eb5f40f59fe923bd435702c46aecc82da380e0c5",
+      "bytes": 4484
+    }
+  ]
+}
