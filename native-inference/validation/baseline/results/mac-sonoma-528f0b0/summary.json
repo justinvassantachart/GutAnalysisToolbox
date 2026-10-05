@@ -1,0 +1,1283 @@
+{
+  "schema_version": 1,
+  "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37363236215/attempts/2",
+  "run_id": 37363236215,
+  "attempt": 2,
+  "job_id": 111949522086,
+  "job_conclusion": "failure",
+  "reason": "Original URL-system-loader StarDist command reached a TensorFlow native-load failure dialog and timed out; all fork observed checks passed.",
+  "first_attempt": "No runner acquired; infrastructure failure, no application execution.",
+  "source_commits": {
+    "original": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+    "fork": "528f0b045682fa4e32465b5aaf1b61d6e834d8c3"
+  },
+  "artifact": {
+    "id": 11369085599,
+    "sha256": "a7b19dfdf4a425fef9e9e6f15463e9b91aeb6b0f0f50bdadda57ba605aa47313",
+    "bytes": 153013,
+    "members": 78
+  },
+  "matched_install_artifact": {
+    "id": 11368870465,
+    "sha256": "710cb06fc816cdc887d14f0a9126fb3b6b5a4f97ef800462ce1f9138d3316b7c",
+    "bytes": 206656698,
+    "interpretation": "Recorded GitHub artifact identity; archive packaging/content audit reported separately."
+  },
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "platform": "macOS-14.8.9-arm64-arm-64bit-Mach-O",
+    "python_version": "3.14.7",
+    "logical_processors": 3,
+    "github_actions": true,
+    "java": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+    },
+    "source_revision": {
+      "exit_code": 0,
+      "stdout": "528f0b045682fa4e32465b5aaf1b61d6e834d8c3",
+      "stderr": ""
+    },
+    "performance_scope": "Hosted-runner/component timing only; not a benchmark of the user's M1",
+    "macos": {
+      "exit_code": 0,
+      "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t14.8.9\nBuildVersion:\t\t23J631",
+      "stderr": ""
+    },
+    "chip": {
+      "exit_code": 0,
+      "stdout": "Apple M1 (Virtual)",
+      "stderr": ""
+    },
+    "model": {
+      "exit_code": 0,
+      "stdout": "VirtualMac2,1",
+      "stderr": ""
+    },
+    "memory_bytes": {
+      "exit_code": 0,
+      "stdout": "7516192768",
+      "stderr": ""
+    },
+    "physical_cores": {
+      "exit_code": 0,
+      "stdout": "3",
+      "stderr": ""
+    },
+    "logical_cores": {
+      "exit_code": 0,
+      "stdout": "3",
+      "stderr": ""
+    },
+    "root_classes_sha256_manifest_digest": "dd6716900acb28fe476681cf87526751484b54bc2d8a24983778a044ecd47bd8"
+  },
+  "original_provenance": {
+    "revision": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+    "tracked_source_changes": false,
+    "fork_inference_classes_present": false,
+    "fixture_and_probe_source": "Current validation harness only; production classes from unchanged baseline",
+    "after_run": {
+      "revision": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+      "tracked_source_changes": false,
+      "fork_inference_classes_present": false,
+      "fixture_and_probe_source": "Current validation harness only; production classes from unchanged baseline"
+    },
+    "workflow_comparator_exit_code": 1,
+    "interpretation": "Actual observed checks, not expected-failure assertions. A baseline PASS remains PASS; FAIL, BLOCKED, NOT_RUN and process resource limits remain distinct. A successful evidence job does not imply old GAT passed."
+  },
+  "observations": {
+    "original": {
+      "workflow_checks": [
+        {
+          "report": "original-workflows/calcium/calcium-report.json",
+          "suite": "gat-calcium-commands",
+          "checks": [
+            {
+              "id": "calcium_ff0_measure_export",
+              "scope": "Actual GAT command workflow; no dashboard clicks",
+              "algorithm": "CalciumAnalysis open/projection/normalize/ROI/measure/save",
+              "status": "PASS",
+              "metrics": {
+                "dialog_accepted_values": {
+                  "Select Max Projection Frames": 0,
+                  "Select Baseline Frames": 0
+                },
+                "baseline_frames": [
+                  1,
+                  2
+                ],
+                "max_projection_frames": [
+                  1,
+                  3
+                ],
+                "expected_ff0": [
+                  1.0,
+                  1.0,
+                  2.0
+                ],
+                "measured_ff0": [
+                  1.0,
+                  1.0,
+                  2.0
+                ],
+                "roi_count": 1,
+                "csv": "RESULTS/calcium-fixture/RESULTS_calcium-fixture.tif.csv",
+                "roi_zip": "RESULTS/calcium-fixture/ROIS_calcium-fixture.tif_CELLS.zip",
+                "scope_note": "Invoked production methods and controlled only their own known dialogs; not a manual dashboard/navigation test"
+              },
+              "elapsed_seconds": 2.916148875
+            },
+            {
+              "id": "calcium_zero_baseline",
+              "scope": "Numerical edge case",
+              "status": "NOT_RUN",
+              "reason": "First smoke covers nonzero known baseline only"
+            },
+            {
+              "id": "calcium_auto_stardist",
+              "scope": "Unsupported production path",
+              "status": "NOT_RUN",
+              "reason": "Automatic StarDist method remains disabled; no generated-ROI claim"
+            }
+          ],
+          "unexpected_failures": 0
+        },
+        {
+          "report": "original-workflows/ganglia-command/ganglia-command-report.json",
+          "suite": "ganglia-gat-command",
+          "checks": [
+            {
+              "id": "gat_ganglia_command",
+              "scope": "Actual production GAT call through DeepImageJ Run and morphological cleanup",
+              "algorithm": "PluginCalls.runDeepImageJForGanglia",
+              "status": "PASS",
+              "metrics": {
+                "input": "Public supplied test-input.npy channels 0=Hu and 1=ganglia; GAT builds R=Hu,G=ganglia,B=Hu",
+                "width": 1024,
+                "height": 1024,
+                "foreground_pixels": 167430,
+                "command_seconds_including_model_load": 21.844330917,
+                "rdf_threshold": 0.6,
+                "gat_threshold": 0.6,
+                "open_iterations": 1,
+                "minimum_area_um2": 1.0,
+                "source_unchanged": true,
+                "evidence": "gat-ganglia-mask.tif",
+                "scope_note": "Actual command, model inference and cleanup; interactive painting/dashboard navigation excluded. Scientific correction, not legacy-mask parity."
+              },
+              "elapsed_seconds": 22.487211584
+            },
+            {
+              "id": "ganglia_manual_paint_review",
+              "scope": "Optional interactive edit",
+              "status": "NOT_RUN",
+              "reason": "Requires a person choosing biologically correct edits"
+            }
+          ],
+          "unexpected_failures": 0
+        },
+        {
+          "report": "original-workflows/ganglia-contract/ganglia-contract-report.json",
+          "suite": "ganglia-input-contract",
+          "checks": [
+            {
+              "id": "actual_gat_deepimagej_rdf_input",
+              "scope": "Reached preprocessing contract; no model execution",
+              "algorithm": "GAT RGB construction, DeepImageJ ImageJGui conversion, JDLL Processing.preprocess",
+              "status": "FAIL",
+              "error": "java.lang.AssertionError: GAT/DeepImageJ changed raw intensity channel 0: 1.0",
+              "trace": [
+                "WorkflowReport.check(WorkflowReport.java:33)",
+                "GangliaInputContractSmoke.lambda$main$0(GangliaInputContractSmoke.java:43)",
+                "WorkflowReport.test(WorkflowReport.java:16)",
+                "GangliaInputContractSmoke.main(GangliaInputContractSmoke.java:30)"
+              ],
+              "elapsed_seconds": 0.1496715
+            },
+            {
+              "id": "full_gat_ganglia_command",
+              "scope": "DeepImageJ command and morphological cleanup",
+              "status": "NOT_RUN",
+              "reason": "This suite proves the reached input contract only; use a separate native AWT command test"
+            }
+          ],
+          "unexpected_failures": 1
+        },
+        {
+          "report": "original-workflows/helpers/workflow-smoke.json",
+          "suite": "gat-java-workflows",
+          "checks": [
+            {
+              "id": "hu_marker_overlap",
+              "scope": "GAT helper",
+              "algorithm": "LabelOps.neuronsPositiveByOverlap",
+              "status": "PASS",
+              "metrics": {
+                "thresholds": [
+                  0.5,
+                  0.6
+                ],
+                "expected_kept_labels": [
+                  "1,2",
+                  "2"
+                ]
+              },
+              "elapsed_seconds": 0.002532583
+            },
+            {
+              "id": "ganglia_count_area",
+              "scope": "GAT helper",
+              "algorithm": "GangliaOps.countPerGanglion",
+              "status": "PASS",
+              "metrics": {
+                "counts": [
+                  0,
+                  1,
+                  1
+                ],
+                "area_um2": [
+                  0.0,
+                  16.0,
+                  16.0
+                ],
+                "pixel_width_um": 2,
+                "minimum_count_filter": 2
+              },
+              "elapsed_seconds": 0.001494708
+            },
+            {
+              "id": "temporal_color_8bit",
+              "scope": "GAT helper",
+              "algorithm": "TemporalColorCoder.run",
+              "status": "PASS",
+              "metrics": {
+                "frames": 2,
+                "bit_depth": 24,
+                "lut": "Fire",
+                "evidence": "temporal-color.tif",
+                "scope_note": "8-bit/no projection only"
+              },
+              "elapsed_seconds": 0.011096917
+            },
+            {
+              "id": "csv_merge_and_overwrite",
+              "scope": "GAT helper",
+              "algorithm": "CsvMerger.mergeSinglePattern",
+              "status": "PASS",
+              "metrics": {
+                "input_files": 2,
+                "output_rows": 2,
+                "overwrite_refused": true,
+                "evidence": "merge input \u00fc/Merged_merge input \u00fc_results.csv"
+              },
+              "elapsed_seconds": 0.012275167
+            },
+            {
+              "id": "counts_csv",
+              "scope": "GAT helper",
+              "algorithm": "OutputIO.writeCountsCsv",
+              "status": "PASS",
+              "metrics": {
+                "count": 2,
+                "evidence": "counts.csv"
+              },
+              "elapsed_seconds": 0.002409875
+            },
+            {
+              "id": "label_tiff_roundtrip",
+              "scope": "GAT helper",
+              "algorithm": "OutputIO.saveTiff + ImageJ Opener",
+              "status": "PASS",
+              "metrics": {
+                "differing_pixels": 0,
+                "pixel_width_um": 0.5,
+                "evidence": "labels.tif"
+              },
+              "elapsed_seconds": 0.007740125
+            },
+            {
+              "id": "multiplex_naming",
+              "scope": "GAT helper only",
+              "algorithm": "NamingUtils",
+              "status": "PASS",
+              "metrics": {
+                "scope_note": "Filename handling only; registration is in a separate command harness"
+              },
+              "elapsed_seconds": 0.000137291
+            },
+            {
+              "id": "neuron_subtype_full_gui",
+              "scope": "Full GAT Fiji workflow",
+              "status": "NOT_RUN",
+              "reason": "Covered separately by inference fixtures; this helper run does not automate complete segmentation/review GUI"
+            },
+            {
+              "id": "calcium_auto_stardist",
+              "scope": "Full GAT Fiji workflow",
+              "status": "NOT_RUN",
+              "reason": "Existing production method is a disabled stub; not counted as a compatibility pass"
+            }
+          ],
+          "unexpected_failures": 0
+        },
+        {
+          "report": "original-workflows/registration/registration-morphology.json",
+          "suite": "registration-morphology",
+          "checks": [
+            {
+              "id": "morpholibj_library_control",
+              "scope": "Official MorphoLibJ algorithm API only, not GAT command bridge",
+              "algorithm": "Label-size and border-label controls",
+              "status": "PASS",
+              "metrics": {
+                "pixel_assertions": 6144,
+                "gat_plugin_bridge_validated": false
+              },
+              "elapsed_seconds": 0.067358834
+            },
+            {
+              "id": "sift_library_fixture_control",
+              "scope": "Official mpicbg algorithm only, not GAT command bridge",
+              "algorithm": "SIFT affine known-translation control, descriptor sizes 4 and 8",
+              "status": "PASS",
+              "metrics": {
+                "configurations": [
+                  {
+                    "descriptor_size": 4,
+                    "reference_features": 230,
+                    "target_features": 217,
+                    "inliers": 62,
+                    "fitted_dx": 7.000000000000004,
+                    "fitted_dy": -5.0,
+                    "translation_error_px": 4.440892098500626e-15
+                  },
+                  {
+                    "descriptor_size": 8,
+                    "reference_features": 293,
+                    "target_features": 262,
+                    "inliers": 77,
+                    "fitted_dx": 7.0,
+                    "fitted_dy": -5.0,
+                    "translation_error_px": 0.0
+                  }
+                ],
+                "gat_plugin_bridge_validated": false
+              },
+              "elapsed_seconds": 0.287414208
+            },
+            {
+              "id": "morpholibj_size_gat",
+              "scope": "GAT PluginCalls.labelMinSizeFilterPx on real 16-bit pixels",
+              "algorithm": "Label Size Filtering",
+              "status": "PASS",
+              "metrics": {
+                "threshold_px": 16,
+                "kept_label2_pixels": 16,
+                "kept_label3_pixels": 36,
+                "boundary_is_inclusive": true
+              },
+              "elapsed_seconds": 0.991321917
+            },
+            {
+              "id": "morpholibj_border_gat",
+              "scope": "GAT PluginCalls.removeBorderLabels on real 16-bit pixels",
+              "algorithm": "Remove Border Labels",
+              "status": "PASS",
+              "metrics": {
+                "kept_interior_labels": 2,
+                "removed_border_label_pixels": 36
+              },
+              "elapsed_seconds": 0.121782083
+            },
+            {
+              "id": "sift_gat_helper",
+              "scope": "Actual GAT AlignStack.alignSIFT command, plugin output pixels",
+              "algorithm": "Affine SIFT",
+              "status": "FAIL",
+              "error": "java.lang.AssertionError: SIFT result lost calibration/timing",
+              "trace": [
+                "WorkflowReport.check(WorkflowReport.java:33)",
+                "RegistrationMorphologySmoke.lambda$main$2(RegistrationMorphologySmoke.java:91)",
+                "RegistrationMorphologySmoke.lambda$commandTest$10(RegistrationMorphologySmoke.java:322)",
+                "WorkflowReport.test(WorkflowReport.java:16)",
+                "RegistrationMorphologySmoke.commandTest(RegistrationMorphologySmoke.java:321)",
+                "RegistrationMorphologySmoke.main(RegistrationMorphologySmoke.java:74)"
+              ],
+              "elapsed_seconds": 0.5085465
+            },
+            {
+              "id": "sift_gat_saved_workflow",
+              "scope": "GAT AlignStack.run including TIFF save and re-open; ten-frame fixture",
+              "algorithm": "Affine SIFT",
+              "status": "FAIL",
+              "error": "java.lang.AssertionError: Alignment did not reduce MSE by at least 85%: before=4727.119059726331, after=4727.119059726331",
+              "trace": [
+                "WorkflowReport.check(WorkflowReport.java:33)",
+                "RegistrationMorphologySmoke.requireAlignment(RegistrationMorphologySmoke.java:424)",
+                "RegistrationMorphologySmoke.lambda$main$3(RegistrationMorphologySmoke.java:124)",
+                "RegistrationMorphologySmoke.lambda$commandTest$10(RegistrationMorphologySmoke.java:322)",
+                "WorkflowReport.test(WorkflowReport.java:16)",
+                "RegistrationMorphologySmoke.commandTest(RegistrationMorphologySmoke.java:321)",
+                "RegistrationMorphologySmoke.main(RegistrationMorphologySmoke.java:97)"
+              ],
+              "elapsed_seconds": 0.900394417
+            },
+            {
+              "id": "sift_gat_batch_channel1",
+              "scope": "GAT AlignStackBatch.runBatch, actual two-channel 12-frame TIFF and saved output",
+              "algorithm": "Affine SIFT with deterministic channel 1",
+              "status": "FAIL",
+              "error": "java.lang.AssertionError: Missing batch aligned output",
+              "trace": [
+                "WorkflowReport.check(WorkflowReport.java:33)",
+                "RegistrationMorphologySmoke.lambda$main$4(RegistrationMorphologySmoke.java:160)",
+                "RegistrationMorphologySmoke.lambda$commandTest$10(RegistrationMorphologySmoke.java:322)",
+                "WorkflowReport.test(WorkflowReport.java:16)",
+                "RegistrationMorphologySmoke.commandTest(RegistrationMorphologySmoke.java:321)",
+                "RegistrationMorphologySmoke.main(RegistrationMorphologySmoke.java:128)"
+              ],
+              "elapsed_seconds": 0.844326625
+            },
+            {
+              "id": "stackreg_turboreg_gat_helper",
+              "scope": "Direct GAT AlignStack.alignStackReg helper only; NOT GAT batch implementation",
+              "algorithm": "StackReg rigid-body with TurboReg",
+              "status": "PASS",
+              "metrics": {
+                "initial_mse": 4727.119059726331,
+                "aligned_mse": 0.0,
+                "stackreg_batch_validated": false
+              },
+              "elapsed_seconds": 0.284985584
+            },
+            {
+              "id": "stackreg_gat_batch",
+              "scope": "GAT AlignStackBatch.processFile",
+              "status": "BLOCKED",
+              "reason": "GAT explicitly throws UnsupportedOperationException for StackReg batch registration; direct plugin/helper success does not implement or validate batch mode."
+            },
+            {
+              "id": "multiplex_gat_feature_matching",
+              "scope": "GAT FeatureMatching.matchWithFallbacks and ROI Manager landmarks only",
+              "algorithm": "SIFT first-choice correspondence extraction",
+              "status": "PASS",
+              "metrics": {
+                "matched_landmarks": 62,
+                "known_dx": 7,
+                "known_dy": -5,
+                "mean_translation_error_px": 5.229826896421371e-07,
+                "full_multiplex_export_validated": false
+              },
+              "elapsed_seconds": 0.4912305
+            },
+            {
+              "id": "multiplex_full_export",
+              "scope": "MultiplexRegistrationService.run",
+              "status": "NOT_RUN",
+              "reason": "Focused real landmark test above does not cover every round/channel warp, naming combination, and exported hyperstack."
+            },
+            {
+              "id": "multiplex_mops_block_fallbacks",
+              "scope": "GAT feature matching fallback branches",
+              "status": "NOT_RUN",
+              "reason": "The translated fixture targets the first-choice SIFT route; MOPS and Block Matching are not claimed tested."
+            }
+          ],
+          "unexpected_failures": 3
+        }
+      ],
+      "workflow_status_counts": {
+        "PASS": 15,
+        "NOT_RUN": 8,
+        "FAIL": 4,
+        "BLOCKED": 1
+      },
+      "native": {
+        "evidence_complete": false,
+        "component_evidence_complete": true,
+        "bootstrap": "url-system",
+        "observations": [
+          {
+            "probe": "stardist",
+            "java_version": "21.0.12.1",
+            "system_classloader": "BaselineUrlClassLoader",
+            "probe_classloader": "BaselineUrlClassLoader",
+            "thread_context_classloader": "BaselineUrlClassLoader",
+            "full_legacy_context": false,
+            "os": "Mac OS X",
+            "os_version": "14.8.9",
+            "java_arch": "aarch64",
+            "allow_fork": false,
+            "status": "process_timeout",
+            "stage": "calling_actual_GAT_StarDist",
+            "actual_gat_method_invoked": true,
+            "errors": [
+              "SCIJAVA: Could not load TensorFlow. Check previous errors and warnings for details."
+            ],
+            "fork_inference_classes_present": false,
+            "modern_tensorflow_classes_present": false,
+            "command_from_macro_menu": "command:de.csbdresden.CommandFromMacro",
+            "imagej_plugin_classloader": "BaselineUrlClassLoader",
+            "legacy_hooks_class": "net.imagej.legacy.DefaultLegacyHooks",
+            "input_sha256": "55251741add488f9a08cf5b33a4ee8ec3fd3023e25ffb0fc18800f80953948d7",
+            "model_sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276",
+            "input_pixel_sha256": "8ab11f1b4d45b7c67251cd0eee23781688eae44d292497032886d9b898045993",
+            "requested_tiles": 4,
+            "probability_threshold": 0.5,
+            "nms_threshold": 0.3,
+            "last_probe_status": "running",
+            "execution": {
+              "exit_code": -9,
+              "cold_process_wall_seconds": 600.692521709,
+              "observed_peak_process_tree_rss_kib": 382560,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": "process deadline exceeded",
+              "log": "stardist.log",
+              "timed_out": true
+            }
+          },
+          {
+            "probe": "alignment",
+            "java_version": "21.0.12.1",
+            "system_classloader": "BaselineUrlClassLoader",
+            "probe_classloader": "BaselineUrlClassLoader",
+            "thread_context_classloader": "BaselineUrlClassLoader",
+            "full_legacy_context": false,
+            "os": "Mac OS X",
+            "os_version": "14.8.9",
+            "java_arch": "aarch64",
+            "allow_fork": false,
+            "status": "workflow_failure",
+            "stage": "calling_actual_GAT_alignment",
+            "actual_gat_method_invoked": true,
+            "errors": [
+              "IMAGEJ EXCEPTION WINDOW:\nImageJ 1.54p; Java 21.0.12.1 [64-bit]; Mac OS X 14.8.9; 127MB of 3072MB (4%)\n \njava.lang.UnsatisfiedLinkError: no jniopencv_core in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1043)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:935)\n\tat org.bytedeco.javacpp.opencv_core.<clinit>(opencv_core.java:10)\n\tat java.base/java.lang.Class.forName0(Native Method)\n\tat java.base/java.lang.Class.forName(Class.java:536)\n\tat java.base/java.lang.Class.forName(Class.java:515)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:994)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:951)\n\tat TemplateMatching.cvMatch_Template.doMatch(cvMatch_Template.java:232)\n\tat TemplateMatching.Align_slices.alignSlices(Align_slices.java:155)\n\tat TemplateMatching.Align_slices.run(Align_slices.java:107)\n\tat ij.plugin.filter.PlugInFilterRunner.processOneImage(PlugInFilterRunner.java:266)\n\tat ij.plugin.filter.PlugInFilterRunner.<init>(PlugInFilterRunner.java:114)\n\tat ij.IJ.runUserPlugIn(IJ.java:246)\n\tat ij.IJ.runPlugIn(IJ.java:210)\n\tat ij.Executer.runCommand(Executer.java:152)\n\tat ij.Executer.run(Executer.java:70)\n\tat ij.IJ.run(IJ.java:326)\n\tat ij.IJ.run(IJ.java:416)\n\tat Features.Tools.AlignStack.alignTemplateMatching(AlignStack.java:177)\n\tat BaselineNativeProbe.alignment(BaselineNativeProbe.java:250)\n\tat BaselineNativeProbe.main(BaselineNativeProbe.java:279)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat BaselineBootstrap.main(BaselineBootstrap.java:20)\nCaused by: java.lang.UnsatisfiedLinkError: no opencv_imgproc in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1021)\n\t... 24 more\n",
+              "java.lang.AssertionError: Alignment left shifted input unchanged\n\tat BaselineNativeProbe.alignment(BaselineNativeProbe.java:256)\n\tat BaselineNativeProbe.main(BaselineNativeProbe.java:279)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat BaselineBootstrap.main(BaselineBootstrap.java:20)\n"
+            ],
+            "fork_inference_classes_present": false,
+            "modern_tensorflow_classes_present": false,
+            "alignment_menu": "TemplateMatching.Align_slices",
+            "imagej_plugin_classloader": "BaselineUrlClassLoader",
+            "legacy_hooks_class": "net.imagej.patcher.EssentialLegacyHooks",
+            "fixture": "seed8291-128x96-byte-shifts_0_0_3_-2_-4_5_0_0",
+            "input_pixel_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+            "frames": 4,
+            "input_locked_before_dispatch": false,
+            "input_locked_by_other_thread": false,
+            "separate_setup_control_filter_classloader": "BaselineUrlClassLoader",
+            "separate_setup_control_is_plugin_filter": true,
+            "separate_setup_control_flags": 2053,
+            "aligned_pixel_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+            "unchanged_input": true,
+            "expected_aligned_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+            "elapsed_milliseconds": 809,
+            "execution": {
+              "exit_code": 2,
+              "cold_process_wall_seconds": 2.4020952920000127,
+              "observed_peak_process_tree_rss_kib": 349760,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "alignment.log",
+              "timed_out": false
+            }
+          }
+        ],
+        "component_observations": [
+          {
+            "probe": "tensorflow-jni",
+            "scope": "direct original JNI component control; not actual GAT workflow evidence",
+            "actual_gat_method_invoked": false,
+            "java_version": "21.0.12.1",
+            "java_arch": "aarch64",
+            "os": "Mac OS X",
+            "system_classloader": "BaselineUrlClassLoader",
+            "native_operation_attempted": true,
+            "code_source": "file:<runner-home>/.m2/repository/org/tensorflow/libtensorflow/1.15.0/libtensorflow-1.15.0.jar",
+            "status": "native_component_failure",
+            "exception": "java.lang.UnsatisfiedLinkError: Cannot find TensorFlow native library for OS: darwin, architecture: aarch64. See https://github.com/tensorflow/tensorflow/tree/master/tensorflow/java/README.md for possible solutions (such as building the library from source). Additional information on attempts to find the native library can be obtained by adding org.tensorflow.NativeLibrary.DEBUG=1 to the system properties of the JVM.\n\tat org.tensorflow.NativeLibrary.load(NativeLibrary.java:77)\n\tat org.tensorflow.TensorFlow.init(TensorFlow.java:67)\n\tat org.tensorflow.TensorFlow.<clinit>(TensorFlow.java:82)\n\tat LegacyJniProbe.main(LegacyJniProbe.java:32)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat BaselineBootstrap.main(BaselineBootstrap.java:20)\n",
+            "execution": {
+              "exit_code": 2,
+              "cold_process_wall_seconds": 0.6445428749999564,
+              "observed_peak_process_tree_rss_kib": 86288,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "tensorflow-jni.log",
+              "timed_out": false
+            }
+          },
+          {
+            "probe": "opencv-jni",
+            "scope": "direct original JNI component control; not actual GAT workflow evidence",
+            "actual_gat_method_invoked": false,
+            "java_version": "21.0.12.1",
+            "java_arch": "aarch64",
+            "os": "Mac OS X",
+            "system_classloader": "BaselineUrlClassLoader",
+            "native_operation_attempted": true,
+            "code_source": "file:<runner-home>/.m2/repository/org/bytedeco/javacpp-presets/opencv/4.0.1-1.4.4/opencv-4.0.1-1.4.4.jar",
+            "javacpp_platform": "macosx-arm64",
+            "status": "native_component_failure",
+            "exception": "java.lang.UnsatisfiedLinkError: no jniopencv_core in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1043)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:935)\n\tat org.bytedeco.javacpp.opencv_core.<clinit>(opencv_core.java:10)\n\tat java.base/java.lang.Class.forName0(Native Method)\n\tat java.base/java.lang.Class.forName(Class.java:536)\n\tat java.base/java.lang.Class.forName(Class.java:515)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:994)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:951)\n\tat LegacyJniProbe.main(LegacyJniProbe.java:38)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat BaselineBootstrap.main(BaselineBootstrap.java:20)\nCaused by: java.lang.UnsatisfiedLinkError: no opencv_imgproc in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1021)\n\t... 11 more\n",
+            "execution": {
+              "exit_code": 2,
+              "cold_process_wall_seconds": 0.7429506249999349,
+              "observed_peak_process_tree_rss_kib": 90784,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "opencv-jni.log",
+              "timed_out": false
+            }
+          },
+          {
+            "probe": "template-plugin-direct",
+            "scope": "published original plugin setup/run component control; not original GAT IJ.run dispatch",
+            "actual_gat_method_invoked": false,
+            "plugin_run_invoked": true,
+            "java_arch": "aarch64",
+            "java_version": "21.0.12.1",
+            "input_pixel_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+            "code_source": "file:<runner-work>/baseline-native-dependencies/plugins/Template_Matching.jar",
+            "setup_flags": 2053,
+            "macro_options": "method=5 windowsizex=89 windowsizey=67 x0=21 y0=16 swindow=0 subpixel=false itpmethod=0 ref.slice=1 show=true ",
+            "exception": "java.lang.UnsatisfiedLinkError: no jniopencv_core in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1043)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:935)\n\tat org.bytedeco.javacpp.opencv_core.<clinit>(opencv_core.java:10)\n\tat java.base/java.lang.Class.forName0(Native Method)\n\tat java.base/java.lang.Class.forName(Class.java:536)\n\tat java.base/java.lang.Class.forName(Class.java:515)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:994)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:951)\n\tat TemplateMatching.cvMatch_Template.doMatch(cvMatch_Template.java:232)\n\tat TemplateMatching.Align_slices.alignSlices(Align_slices.java:155)\n\tat TemplateMatching.Align_slices.run(Align_slices.java:107)\n\tat LegacyPluginProbe.main(LegacyPluginProbe.java:55)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat BaselineBootstrap.main(BaselineBootstrap.java:20)\nCaused by: java.lang.UnsatisfiedLinkError: no opencv_imgproc in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1021)\n\t... 14 more\n",
+            "status": "plugin_component_failure",
+            "execution": {
+              "exit_code": 2,
+              "cold_process_wall_seconds": 1.3495856250000315,
+              "observed_peak_process_tree_rss_kib": 324672,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "template-plugin-direct.log",
+              "timed_out": false
+            }
+          }
+        ]
+      }
+    },
+    "fork": {
+      "workflow_checks": [
+        {
+          "report": "fork-workflows/calcium/calcium-report.json",
+          "suite": "gat-calcium-commands",
+          "checks": [
+            {
+              "id": "calcium_ff0_measure_export",
+              "scope": "Actual GAT command workflow; no dashboard clicks",
+              "algorithm": "CalciumAnalysis open/projection/normalize/ROI/measure/save",
+              "status": "PASS",
+              "metrics": {
+                "dialog_accepted_values": {
+                  "Select Max Projection Frames": 0,
+                  "Select Baseline Frames": 0
+                },
+                "baseline_frames": [
+                  1,
+                  2
+                ],
+                "max_projection_frames": [
+                  1,
+                  3
+                ],
+                "expected_ff0": [
+                  1.0,
+                  1.0,
+                  2.0
+                ],
+                "measured_ff0": [
+                  1.0,
+                  1.0,
+                  2.0
+                ],
+                "roi_count": 1,
+                "csv": "RESULTS/calcium-fixture/RESULTS_calcium-fixture.tif.csv",
+                "roi_zip": "RESULTS/calcium-fixture/ROIS_calcium-fixture.tif_CELLS.zip",
+                "scope_note": "Invoked production methods and controlled only their own known dialogs; not a manual dashboard/navigation test"
+              },
+              "elapsed_seconds": 2.612356916
+            },
+            {
+              "id": "calcium_zero_baseline",
+              "scope": "Numerical edge case",
+              "status": "NOT_RUN",
+              "reason": "First smoke covers nonzero known baseline only"
+            },
+            {
+              "id": "calcium_auto_stardist",
+              "scope": "Unsupported production path",
+              "status": "NOT_RUN",
+              "reason": "Automatic StarDist method remains disabled; no generated-ROI claim"
+            }
+          ],
+          "unexpected_failures": 0
+        },
+        {
+          "report": "fork-workflows/ganglia-command/ganglia-command-report.json",
+          "suite": "ganglia-gat-command",
+          "checks": [
+            {
+              "id": "gat_ganglia_command",
+              "scope": "Actual production GAT call through DeepImageJ Run and morphological cleanup",
+              "algorithm": "PluginCalls.runDeepImageJForGanglia",
+              "status": "PASS",
+              "metrics": {
+                "input": "Public supplied test-input.npy channels 0=Hu and 1=ganglia; GAT builds R=Hu,G=ganglia,B=Hu",
+                "width": 1024,
+                "height": 1024,
+                "foreground_pixels": 72236,
+                "command_seconds_including_model_load": 15.558654041,
+                "rdf_threshold": 0.6,
+                "gat_threshold": 0.6,
+                "open_iterations": 1,
+                "minimum_area_um2": 1.0,
+                "source_unchanged": true,
+                "evidence": "gat-ganglia-mask.tif",
+                "scope_note": "Actual command, model inference and cleanup; interactive painting/dashboard navigation excluded. Scientific correction, not legacy-mask parity."
+              },
+              "elapsed_seconds": 16.081333459
+            },
+            {
+              "id": "ganglia_manual_paint_review",
+              "scope": "Optional interactive edit",
+              "status": "NOT_RUN",
+              "reason": "Requires a person choosing biologically correct edits"
+            }
+          ],
+          "unexpected_failures": 0
+        },
+        {
+          "report": "fork-workflows/ganglia-contract/ganglia-contract-report.json",
+          "suite": "ganglia-input-contract",
+          "checks": [
+            {
+              "id": "actual_gat_deepimagej_rdf_input",
+              "scope": "Reached preprocessing contract; no model execution",
+              "algorithm": "GAT RGB construction, DeepImageJ ImageJGui conversion, JDLL Processing.preprocess",
+              "status": "PASS",
+              "metrics": {
+                "source": "Synthetic 8x8 two-channel uint8",
+                "tensor_axes": "bcyx",
+                "tensor_shape": [
+                  1,
+                  3,
+                  8,
+                  8
+                ],
+                "raw_rgb_pixel": [
+                  255.0,
+                  128.0,
+                  255.0
+                ],
+                "corrected_model_input_pixel": [
+                  2.2488980293273926,
+                  0.20518101751804352,
+                  2.6399881839752197
+                ],
+                "former_double_scaled_control_pixel": [
+                  -2.1007699966430664,
+                  -2.0269174575805664,
+                  -1.7870073318481445
+                ],
+                "expected_rdf_only_normalization": [
+                  2.2488984681289605,
+                  0.2051811525841404,
+                  2.639988258274408
+                ],
+                "scientific_change": "Correcting a reached double 1/255 scaling bug changes predictions; legacy output parity is not expected",
+                "unchanged": "Weights, RDF mean/std/epsilon/scale, RDF threshold, GAT RGB order and display-range conversion"
+              },
+              "elapsed_seconds": 0.171127541
+            },
+            {
+              "id": "full_gat_ganglia_command",
+              "scope": "DeepImageJ command and morphological cleanup",
+              "status": "NOT_RUN",
+              "reason": "This suite proves the reached input contract only; use a separate native AWT command test"
+            }
+          ],
+          "unexpected_failures": 0
+        },
+        {
+          "report": "fork-workflows/helpers/workflow-smoke.json",
+          "suite": "gat-java-workflows",
+          "checks": [
+            {
+              "id": "hu_marker_overlap",
+              "scope": "GAT helper",
+              "algorithm": "LabelOps.neuronsPositiveByOverlap",
+              "status": "PASS",
+              "metrics": {
+                "thresholds": [
+                  0.5,
+                  0.6
+                ],
+                "expected_kept_labels": [
+                  "1,2",
+                  "2"
+                ]
+              },
+              "elapsed_seconds": 0.001729708
+            },
+            {
+              "id": "ganglia_count_area",
+              "scope": "GAT helper",
+              "algorithm": "GangliaOps.countPerGanglion",
+              "status": "PASS",
+              "metrics": {
+                "counts": [
+                  0,
+                  1,
+                  1
+                ],
+                "area_um2": [
+                  0.0,
+                  16.0,
+                  16.0
+                ],
+                "pixel_width_um": 2,
+                "minimum_count_filter": 2
+              },
+              "elapsed_seconds": 0.001607958
+            },
+            {
+              "id": "temporal_color_8bit",
+              "scope": "GAT helper",
+              "algorithm": "TemporalColorCoder.run",
+              "status": "PASS",
+              "metrics": {
+                "frames": 2,
+                "bit_depth": 24,
+                "lut": "Fire",
+                "evidence": "temporal-color.tif",
+                "scope_note": "8-bit/no projection only"
+              },
+              "elapsed_seconds": 0.010817666
+            },
+            {
+              "id": "csv_merge_and_overwrite",
+              "scope": "GAT helper",
+              "algorithm": "CsvMerger.mergeSinglePattern",
+              "status": "PASS",
+              "metrics": {
+                "input_files": 2,
+                "output_rows": 2,
+                "overwrite_refused": true,
+                "evidence": "merge input \u00fc/Merged_merge input \u00fc_results.csv"
+              },
+              "elapsed_seconds": 0.0125285
+            },
+            {
+              "id": "counts_csv",
+              "scope": "GAT helper",
+              "algorithm": "OutputIO.writeCountsCsv",
+              "status": "PASS",
+              "metrics": {
+                "count": 2,
+                "evidence": "counts.csv"
+              },
+              "elapsed_seconds": 0.00245475
+            },
+            {
+              "id": "label_tiff_roundtrip",
+              "scope": "GAT helper",
+              "algorithm": "OutputIO.saveTiff + ImageJ Opener",
+              "status": "PASS",
+              "metrics": {
+                "differing_pixels": 0,
+                "pixel_width_um": 0.5,
+                "evidence": "labels.tif"
+              },
+              "elapsed_seconds": 0.006188958
+            },
+            {
+              "id": "multiplex_naming",
+              "scope": "GAT helper only",
+              "algorithm": "NamingUtils",
+              "status": "PASS",
+              "metrics": {
+                "scope_note": "Filename handling only; registration is in a separate command harness"
+              },
+              "elapsed_seconds": 0.000112542
+            },
+            {
+              "id": "neuron_subtype_full_gui",
+              "scope": "Full GAT Fiji workflow",
+              "status": "NOT_RUN",
+              "reason": "Covered separately by inference fixtures; this helper run does not automate complete segmentation/review GUI"
+            },
+            {
+              "id": "calcium_auto_stardist",
+              "scope": "Full GAT Fiji workflow",
+              "status": "NOT_RUN",
+              "reason": "Existing production method is a disabled stub; not counted as a compatibility pass"
+            }
+          ],
+          "unexpected_failures": 0
+        },
+        {
+          "report": "fork-workflows/registration/registration-morphology.json",
+          "suite": "registration-morphology",
+          "checks": [
+            {
+              "id": "morpholibj_library_control",
+              "scope": "Official MorphoLibJ algorithm API only, not GAT command bridge",
+              "algorithm": "Label-size and border-label controls",
+              "status": "PASS",
+              "metrics": {
+                "pixel_assertions": 6144,
+                "gat_plugin_bridge_validated": false
+              },
+              "elapsed_seconds": 0.069836875
+            },
+            {
+              "id": "sift_library_fixture_control",
+              "scope": "Official mpicbg algorithm only, not GAT command bridge",
+              "algorithm": "SIFT affine known-translation control, descriptor sizes 4 and 8",
+              "status": "PASS",
+              "metrics": {
+                "configurations": [
+                  {
+                    "descriptor_size": 4,
+                    "reference_features": 230,
+                    "target_features": 217,
+                    "inliers": 62,
+                    "fitted_dx": 7.000000000000004,
+                    "fitted_dy": -5.0,
+                    "translation_error_px": 4.440892098500626e-15
+                  },
+                  {
+                    "descriptor_size": 8,
+                    "reference_features": 293,
+                    "target_features": 262,
+                    "inliers": 77,
+                    "fitted_dx": 7.0,
+                    "fitted_dy": -5.0,
+                    "translation_error_px": 0.0
+                  }
+                ],
+                "gat_plugin_bridge_validated": false
+              },
+              "elapsed_seconds": 0.339539375
+            },
+            {
+              "id": "morpholibj_size_gat",
+              "scope": "GAT PluginCalls.labelMinSizeFilterPx on real 16-bit pixels",
+              "algorithm": "Label Size Filtering",
+              "status": "PASS",
+              "metrics": {
+                "threshold_px": 16,
+                "kept_label2_pixels": 16,
+                "kept_label3_pixels": 36,
+                "boundary_is_inclusive": true
+              },
+              "elapsed_seconds": 0.429029333
+            },
+            {
+              "id": "morpholibj_border_gat",
+              "scope": "GAT PluginCalls.removeBorderLabels on real 16-bit pixels",
+              "algorithm": "Remove Border Labels",
+              "status": "PASS",
+              "metrics": {
+                "kept_interior_labels": 2,
+                "removed_border_label_pixels": 36
+              },
+              "elapsed_seconds": 0.159173958
+            },
+            {
+              "id": "sift_gat_helper",
+              "scope": "Actual GAT AlignStack.alignSIFT command, plugin output pixels",
+              "algorithm": "Affine SIFT",
+              "status": "PASS",
+              "metrics": {
+                "initial_mse": 4727.119059726331,
+                "aligned_mse": 0.0,
+                "source_mse_after_helper": 4727.119059726331,
+                "returned_as_new_image": true,
+                "frames": 2
+              },
+              "elapsed_seconds": 0.84791025
+            },
+            {
+              "id": "sift_gat_saved_workflow",
+              "scope": "GAT AlignStack.run including TIFF save and re-open; ten-frame fixture",
+              "algorithm": "Affine SIFT",
+              "status": "PASS",
+              "metrics": {
+                "initial_mse": 4727.119059726331,
+                "saved_mse": 0.0,
+                "saved_file": "<runner-work>/baseline-results/fork-workflows/registration/sift-saved-workflow/sift-workflow-input_aligned.tif",
+                "frames": 10
+              },
+              "elapsed_seconds": 0.971228417
+            },
+            {
+              "id": "sift_gat_batch_channel1",
+              "scope": "GAT AlignStackBatch.runBatch, actual two-channel 12-frame TIFF and saved output",
+              "algorithm": "Affine SIFT with deterministic channel 1",
+              "status": "PASS",
+              "metrics": {
+                "input_channels": 2,
+                "output_channels": 1,
+                "frames": 12,
+                "initial_mse": 4727.119059726331,
+                "saved_mse": 0.0,
+                "first_frame_squared_error": 0.0,
+                "input_file_unchanged": true,
+                "pixel_width": 0.5,
+                "pixel_height": 0.7500001875000468,
+                "frame_interval": 1.25,
+                "calibration_comparator": "Reopened source TIFF; rational TIFF resolution can round 0.75",
+                "evidence": "sift-batch-output/batch-input.tif_aligned.tif"
+              },
+              "elapsed_seconds": 1.059818125
+            },
+            {
+              "id": "stackreg_turboreg_gat_helper",
+              "scope": "Direct GAT AlignStack.alignStackReg helper only; NOT GAT batch implementation",
+              "algorithm": "StackReg rigid-body with TurboReg",
+              "status": "PASS",
+              "metrics": {
+                "initial_mse": 4727.119059726331,
+                "aligned_mse": 0.0,
+                "stackreg_batch_validated": false
+              },
+              "elapsed_seconds": 0.264944333
+            },
+            {
+              "id": "stackreg_gat_batch",
+              "scope": "GAT AlignStackBatch.processFile",
+              "status": "BLOCKED",
+              "reason": "GAT explicitly throws UnsupportedOperationException for StackReg batch registration; direct plugin/helper success does not implement or validate batch mode."
+            },
+            {
+              "id": "multiplex_gat_feature_matching",
+              "scope": "GAT FeatureMatching.matchWithFallbacks and ROI Manager landmarks only",
+              "algorithm": "SIFT first-choice correspondence extraction",
+              "status": "PASS",
+              "metrics": {
+                "matched_landmarks": 62,
+                "known_dx": 7,
+                "known_dy": -5,
+                "mean_translation_error_px": 5.229826896421371e-07,
+                "full_multiplex_export_validated": false
+              },
+              "elapsed_seconds": 0.65205
+            },
+            {
+              "id": "multiplex_full_export",
+              "scope": "MultiplexRegistrationService.run",
+              "status": "NOT_RUN",
+              "reason": "Focused real landmark test above does not cover every round/channel warp, naming combination, and exported hyperstack."
+            },
+            {
+              "id": "multiplex_mops_block_fallbacks",
+              "scope": "GAT feature matching fallback branches",
+              "status": "NOT_RUN",
+              "reason": "The translated fixture targets the first-choice SIFT route; MOPS and Block Matching are not claimed tested."
+            }
+          ],
+          "unexpected_failures": 0
+        }
+      ],
+      "workflow_status_counts": {
+        "PASS": 19,
+        "NOT_RUN": 8,
+        "BLOCKED": 1
+      },
+      "native": {
+        "evidence_complete": true,
+        "component_evidence_complete": true,
+        "bootstrap": "url-system",
+        "observations": [
+          {
+            "probe": "stardist",
+            "java_version": "21.0.12.1",
+            "system_classloader": "BaselineUrlClassLoader",
+            "probe_classloader": "BaselineUrlClassLoader",
+            "thread_context_classloader": "BaselineUrlClassLoader",
+            "full_legacy_context": false,
+            "os": "Mac OS X",
+            "os_version": "14.8.9",
+            "java_arch": "aarch64",
+            "allow_fork": true,
+            "status": "success",
+            "stage": "calling_actual_GAT_StarDist",
+            "actual_gat_method_invoked": true,
+            "errors": [],
+            "fork_inference_classes_present": true,
+            "modern_tensorflow_classes_present": false,
+            "command_from_macro_menu": "command:de.csbdresden.CommandFromMacro",
+            "imagej_plugin_classloader": "BaselineUrlClassLoader",
+            "legacy_hooks_class": "net.imagej.legacy.DefaultLegacyHooks",
+            "input_sha256": "55251741add488f9a08cf5b33a4ee8ec3fd3023e25ffb0fc18800f80953948d7",
+            "model_sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276",
+            "input_pixel_sha256": "8ab11f1b4d45b7c67251cd0eee23781688eae44d292497032886d9b898045993",
+            "requested_tiles": 4,
+            "probability_threshold": 0.5,
+            "nms_threshold": 0.3,
+            "returned_input_fallback": false,
+            "output_bit_depth": 16,
+            "object_count": 39,
+            "raw_label_sha256": "ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "elapsed_milliseconds": 11650,
+            "execution": {
+              "exit_code": 0,
+              "cold_process_wall_seconds": 12.709277917000009,
+              "observed_peak_process_tree_rss_kib": 923632,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "stardist.log",
+              "timed_out": false
+            }
+          },
+          {
+            "probe": "alignment",
+            "java_version": "21.0.12.1",
+            "system_classloader": "BaselineUrlClassLoader",
+            "probe_classloader": "BaselineUrlClassLoader",
+            "thread_context_classloader": "BaselineUrlClassLoader",
+            "full_legacy_context": false,
+            "os": "Mac OS X",
+            "os_version": "14.8.9",
+            "java_arch": "aarch64",
+            "allow_fork": true,
+            "status": "success",
+            "stage": "calling_actual_GAT_alignment",
+            "actual_gat_method_invoked": true,
+            "errors": [],
+            "fork_inference_classes_present": true,
+            "modern_tensorflow_classes_present": false,
+            "alignment_menu": "TemplateMatching.Align_slices",
+            "imagej_plugin_classloader": "BaselineUrlClassLoader",
+            "legacy_hooks_class": "net.imagej.patcher.EssentialLegacyHooks",
+            "fixture": "seed8291-128x96-byte-shifts_0_0_3_-2_-4_5_0_0",
+            "input_pixel_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+            "frames": 4,
+            "input_locked_before_dispatch": false,
+            "input_locked_by_other_thread": false,
+            "separate_setup_control_filter_classloader": "BaselineUrlClassLoader",
+            "separate_setup_control_is_plugin_filter": true,
+            "separate_setup_control_flags": 2053,
+            "aligned_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+            "unchanged_input": false,
+            "expected_aligned_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+            "elapsed_milliseconds": 3147,
+            "execution": {
+              "exit_code": 0,
+              "cold_process_wall_seconds": 4.3721039579999115,
+              "observed_peak_process_tree_rss_kib": 463648,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "alignment.log",
+              "timed_out": false
+            }
+          }
+        ],
+        "component_observations": [
+          {
+            "probe": "tensorflow-jni",
+            "scope": "direct original JNI component control; not actual GAT workflow evidence",
+            "actual_gat_method_invoked": false,
+            "java_version": "21.0.12.1",
+            "java_arch": "aarch64",
+            "os": "Mac OS X",
+            "system_classloader": "BaselineUrlClassLoader",
+            "native_operation_attempted": true,
+            "code_source": "file:<runner-home>/.m2/repository/org/tensorflow/libtensorflow/1.15.0/libtensorflow-1.15.0.jar",
+            "status": "native_component_failure",
+            "exception": "java.lang.UnsatisfiedLinkError: Cannot find TensorFlow native library for OS: darwin, architecture: aarch64. See https://github.com/tensorflow/tensorflow/tree/master/tensorflow/java/README.md for possible solutions (such as building the library from source). Additional information on attempts to find the native library can be obtained by adding org.tensorflow.NativeLibrary.DEBUG=1 to the system properties of the JVM.\n\tat org.tensorflow.NativeLibrary.load(NativeLibrary.java:77)\n\tat org.tensorflow.TensorFlow.init(TensorFlow.java:67)\n\tat org.tensorflow.TensorFlow.<clinit>(TensorFlow.java:82)\n\tat LegacyJniProbe.main(LegacyJniProbe.java:32)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat BaselineBootstrap.main(BaselineBootstrap.java:20)\n",
+            "execution": {
+              "exit_code": 2,
+              "cold_process_wall_seconds": 0.40560662500001854,
+              "observed_peak_process_tree_rss_kib": 4880,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "tensorflow-jni.log",
+              "timed_out": false
+            }
+          },
+          {
+            "probe": "opencv-jni",
+            "scope": "direct original JNI component control; not actual GAT workflow evidence",
+            "actual_gat_method_invoked": false,
+            "java_version": "21.0.12.1",
+            "java_arch": "aarch64",
+            "os": "Mac OS X",
+            "system_classloader": "BaselineUrlClassLoader",
+            "native_operation_attempted": true,
+            "code_source": "file:<runner-home>/.m2/repository/org/bytedeco/javacpp-presets/opencv/4.0.1-1.4.4/opencv-4.0.1-1.4.4.jar",
+            "javacpp_platform": "macosx-arm64",
+            "status": "native_component_failure",
+            "exception": "java.lang.UnsatisfiedLinkError: no jniopencv_core in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1043)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:935)\n\tat org.bytedeco.javacpp.opencv_core.<clinit>(opencv_core.java:10)\n\tat java.base/java.lang.Class.forName0(Native Method)\n\tat java.base/java.lang.Class.forName(Class.java:536)\n\tat java.base/java.lang.Class.forName(Class.java:515)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:994)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:951)\n\tat LegacyJniProbe.main(LegacyJniProbe.java:38)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat BaselineBootstrap.main(BaselineBootstrap.java:20)\nCaused by: java.lang.UnsatisfiedLinkError: no opencv_imgproc in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1021)\n\t... 11 more\n",
+            "execution": {
+              "exit_code": 2,
+              "cold_process_wall_seconds": 0.618901957999924,
+              "observed_peak_process_tree_rss_kib": 5904,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "opencv-jni.log",
+              "timed_out": false
+            }
+          },
+          {
+            "probe": "template-plugin-direct",
+            "scope": "published original plugin setup/run component control; not original GAT IJ.run dispatch",
+            "actual_gat_method_invoked": false,
+            "plugin_run_invoked": true,
+            "java_arch": "aarch64",
+            "java_version": "21.0.12.1",
+            "input_pixel_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+            "code_source": "file:<runner-work>/baseline-native-dependencies/plugins/Template_Matching.jar",
+            "setup_flags": 2053,
+            "macro_options": "method=5 windowsizex=89 windowsizey=67 x0=21 y0=16 swindow=0 subpixel=false itpmethod=0 ref.slice=1 show=true ",
+            "exception": "java.lang.UnsatisfiedLinkError: no jniopencv_core in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1043)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:935)\n\tat org.bytedeco.javacpp.opencv_core.<clinit>(opencv_core.java:10)\n\tat java.base/java.lang.Class.forName0(Native Method)\n\tat java.base/java.lang.Class.forName(Class.java:536)\n\tat java.base/java.lang.Class.forName(Class.java:515)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:994)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:951)\n\tat TemplateMatching.cvMatch_Template.doMatch(cvMatch_Template.java:232)\n\tat TemplateMatching.Align_slices.alignSlices(Align_slices.java:155)\n\tat TemplateMatching.Align_slices.run(Align_slices.java:107)\n\tat LegacyPluginProbe.main(LegacyPluginProbe.java:55)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat BaselineBootstrap.main(BaselineBootstrap.java:20)\nCaused by: java.lang.UnsatisfiedLinkError: no opencv_imgproc in java.library.path: <runner-home>/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2064)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1021)\n\t... 14 more\n",
+            "status": "plugin_component_failure",
+            "execution": {
+              "exit_code": 2,
+              "cold_process_wall_seconds": 1.3744961249999506,
+              "observed_peak_process_tree_rss_kib": 222752,
+              "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+              "rss_ceiling_kib": 3145728,
+              "timeout_seconds": 600,
+              "resource_stop_reason": null,
+              "log": "template-plugin-direct.log",
+              "timed_out": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  "diagnostic_evidence": {
+    "original_stardist_log": "original-native/stardist.log",
+    "native_load_warning_line": 116,
+    "timeout_thread_dump_main_call_lines": [
+      132,
+      150
+    ],
+    "timeout_thread_dump_modal_error_lines": [
+      399,
+      425
+    ],
+    "interpretation": "Actual GAT/StarDist was invoked. The native-load failure is observed in its log; at the deadline its worker is waiting in the error dialog. The command did not return and remains a process_timeout, not a completed failed prediction."
+  }
+}

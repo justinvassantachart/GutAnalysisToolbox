@@ -79,7 +79,7 @@ jobs:
       - name: Compare native OpenCV port to original plugin references
         run: >-
           python3 native-inference/validation/template-matching/check.py
-          --platform macosx-arm64 --output target/template-matching-mac
+          --platform macosx-arm64 --output validation-artifacts/template-matching-mac
       - name: Build the actual GAT adapter and native alignment worker
         run: |
           mvn -B -ntp -DskipTests clean compile dependency:build-classpath -Dmdep.outputFile=target/workflow-classpath.txt
@@ -96,8 +96,8 @@ jobs:
         with:
           name: gat-native-mac-template-matching-diagnostics
           path: |
-            target/template-matching-mac/actual.json
-            target/template-matching-mac/comparison.json
+            validation-artifacts/template-matching-mac/actual.json
+            validation-artifacts/template-matching-mac/comparison.json
             target/alignment-adapter-mac/*.json
             target/alignment-adapter-mac/*.log
             target/alignment-adapter-mac/**/*.csv

@@ -100,7 +100,7 @@ def main():
         raise ValueError('Forbidden modern TensorFlow/native worker classpath entries: ' + ', '.join(forbidden))
     cp = os.pathsep.join(entries)
     classes = out / 'probe-classes'; classes.mkdir(exist_ok=True)
-    sources = ['BaselineNativeProbe.java', 'BaselineUrlClassLoader.java', 'BaselineBootstrap.java', 'LegacyJniProbe.java', 'LegacyPluginProbe.java']
+    sources = ['BaselineNativeProbe.java', 'CsbdeepTensorFlowDialogObserver.java', 'BaselineUrlClassLoader.java', 'BaselineBootstrap.java', 'LegacyJniProbe.java', 'LegacyPluginProbe.java']
     compilation = run([args.javac, '-encoding', 'UTF-8', '-cp', cp, '-d', classes]
                       + [HERE / name for name in sources], out / 'compile.log', 180)
     if compilation['exit_code'] != 0:

@@ -123,6 +123,19 @@ jobs:
           if-no-files-found: error
       - name: Verify baseline isolation harness
         run: python3 -m unittest discover -s fork/native-inference/validation/baseline -p 'test_*.py' -v
+      - name: Require live passive TensorFlow-error dialog controls on this Mac
+        timeout-minutes: 3
+        run: |
+          python3 - <<'PYDIALOG' 2>&1 | tee baseline-results/live-dialog-controls.log
+          import pathlib, sys, unittest
+          sys.path.insert(0, str(pathlib.Path('fork/native-inference/validation/baseline').resolve()))
+          from test_native_dialog import NativeDialogObserverTests
+          suite = unittest.defaultTestLoader.loadTestsFromTestCase(NativeDialogObserverTests)
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          if result.skipped or result.testsRun != 3 or not result.wasSuccessful():
+              raise SystemExit('Native Mac requires all three observer tests, including live modal/negative controls; skips are not acceptance.')
+          print('PASS required live synthetic dialog controls; no actual GAT workflow claim')
+          PYDIALOG
       - name: Observe original helper, SIFT, calcium and ganglia behavior
         if: always()
         run: >-

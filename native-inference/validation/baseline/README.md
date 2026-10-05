@@ -75,3 +75,18 @@ failure. The same recipe is provided in the separate
 `.github/workflows/unchanged-baseline.yml`; it does not modify the general
 workflow-validation job. Native probe implementation and exact dependency provenance
 are supplied by `BaselineNativeProbe.java` and `run_native.py`.
+
+## Preserved native Mac observations
+
+- [First paired run](results/mac-first-69feedb/REPORT.md): original command failures,
+  classloader qualification and unresolved calcium dialog interaction
+- [Sonoma accepted-dialog rerun](results/mac-sonoma-528f0b0/REPORT.md): original and
+  fork calcium pass; original SIFT data-flow failures are reached; repaired native
+  APIs pass; original TensorFlow native-load error and modal timeout are explicit
+- [Sequoia independent comparison](results/mac-sequoia-fe5fd7b/REPORT.md): same
+  substantive before/after outcomes on macOS 15.7.9, with separate immutable evidence
+
+Both later runs keep their failed overall CI status from the original native
+error-dialog timeout. Original unaffected helpers and ganglia command passes
+are preserved, as are unsupported/unrun branches. They do not establish complete
+GUI coverage or support across all Apple Silicon chip generations.

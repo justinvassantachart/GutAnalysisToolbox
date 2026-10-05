@@ -35,7 +35,9 @@ public final class BaselineNativeProbe {
     private static final List<String> errors = Collections.synchronizedList(new ArrayList<>());
     private static final Map<String, Object> result = Collections.synchronizedMap(new LinkedHashMap<>());
     private static Path reportFile;
-    private static boolean invoked;
+    private static volatile boolean invoked;
+    private static volatile boolean observedNativeFailureDialog;
+    private static long startedAt;
     private static net.imagej.ImageJ imagej;
     private static final List<Map<String, Object>> commands = Collections.synchronizedList(new ArrayList<>());
 
@@ -70,8 +72,8 @@ public final class BaselineNativeProbe {
     private static void record(Throwable error) {
         String message = trace(error); errors.add(message); System.err.println(message); saveSnapshot();
     }
-    private static void saveSnapshot() {
-        if (reportFile == null) return;
+    private static boolean saveSnapshot() {
+        if (reportFile == null) return false;
         try {
             synchronized (result) {
                 result.put("actual_gat_method_invoked", invoked);
@@ -79,9 +81,20 @@ public final class BaselineNativeProbe {
                 result.put("imagej_command_dispatch", new ArrayList<>(commands));
                 if (reportFile.toAbsolutePath().getParent() != null) Files.createDirectories(reportFile.toAbsolutePath().getParent());
                 String json = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().create().toJson(result);
-                Files.writeString(reportFile, json + "\n");
+                Path pending = reportFile.resolveSibling(reportFile.getFileName() + ".pending");
+                Files.writeString(pending, json + "\n");
+                try {
+                    Files.move(pending, reportFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE,
+                            java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                } catch (java.nio.file.AtomicMoveNotSupportedException unsupported) {
+                    Files.move(pending, reportFile, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                }
             }
-        } catch (Exception problem) { System.err.println("Could not persist probe snapshot: " + problem); }
+            return true;
+        } catch (Exception problem) {
+            System.err.println("Could not persist probe snapshot: " + problem);
+            return false;
+        }
     }
     private static Map<String, Object> codeSources() throws Exception {
         Map<String, Object> sources = new LinkedHashMap<>();
@@ -152,6 +165,48 @@ public final class BaselineNativeProbe {
         }
         result.put("imagej_text_windows", windows); saveSnapshot();
     }
+    private static CsbdeepTensorFlowDialogObserver.Scope dialogScope() {
+        synchronized (result) {
+            return new CsbdeepTensorFlowDialogObserver.Scope((String) result.get("probe"),
+                    invoked, (String) result.get("stage"));
+        }
+    }
+    private static void nativeFailureDialog(Map<String, Object> evidence) {
+        boolean persisted;
+        synchronized (result) {
+            // The observer is deliberately limited to a visible, exact upstream
+            // dialog from a new window during the actual StarDist invocation.
+            observedNativeFailureDialog = true;
+            result.put("native_load_failure_dialog", evidence);
+            result.put("status", "workflow_failure");
+            result.put("stage", "observed_CSBDeep_TensorFlow_load_failure_dialog");
+            result.put("elapsed_milliseconds", (System.nanoTime() - startedAt) / 1000000);
+            result.put("imagej_log", IJ.getLog());
+            Map<String, Object> threads = new LinkedHashMap<>();
+            for (Map.Entry<Thread, StackTraceElement[]> entry : Thread.getAllStackTraces().entrySet()) {
+                List<String> stack = new ArrayList<>();
+                for (StackTraceElement frame : entry.getValue()) stack.add(frame.toString());
+                threads.put(entry.getKey().getName() + "#" + entry.getKey().getId(), stack);
+            }
+            result.put("threads_at_native_load_failure_dialog", threads);
+            errors.add("CSBDEEP NATIVE LOAD FAILURE DIALOG: " + evidence.get("title")
+                    + " | " + evidence.get("message"));
+            persisted = saveSnapshot();
+            if (!persisted) {
+                // An observed dialog without its complete saved evidence must not
+                // be counted as a completed workflow observation by the runner.
+                result.put("status", "probe_report_failure");
+                result.put("stage", "native_dialog_evidence_persistence_failed");
+            }
+        }
+        System.err.println("Observed exact CSBDeep TensorFlow load failure during actual GAT StarDist; "
+                + "exiting isolated probe without dismissing the dialog or opening Library Management.");
+        // This is an isolated validation JVM. Bypass shutdown hooks here: a GUI
+        // hook could dispose the modal dialog and let CSBDeep open its installer.
+        // Normal probe completion still uses System.exit below.
+        System.err.flush();
+        Runtime.getRuntime().halt(persisted ? 2 : 3);
+    }
     private static void initialize(boolean stardist) throws Exception {
         IJ.setExceptionHandler(BaselineNativeProbe::record);
         Thread.setDefaultUncaughtExceptionHandler((thread, error) -> record(error));
@@ -206,8 +261,12 @@ public final class BaselineNativeProbe {
         result.put("requested_tiles", PluginCalls.suggestTiles(input.getWidth(), input.getHeight()));
         result.put("probability_threshold", 0.5); result.put("nms_threshold", 0.3);
         input.setTitle("baseline_public_Hu");
-        invoked = true; result.put("stage", "calling_actual_GAT_StarDist"); saveSnapshot();
-        ImagePlus labels = PluginCalls.runStarDist2DLabel(input, model.toString(), 0.5, 0.3);
+        ImagePlus labels;
+        try (CsbdeepTensorFlowDialogObserver observer = CsbdeepTensorFlowDialogObserver.start(
+                BaselineNativeProbe::dialogScope, BaselineNativeProbe::nativeFailureDialog)) {
+            invoked = true; result.put("stage", "calling_actual_GAT_StarDist"); saveSnapshot();
+            labels = PluginCalls.runStarDist2DLabel(input, model.toString(), 0.5, 0.3);
+        }
         captureTextWindows();
         result.put("returned_input_fallback", labels == input);
         result.put("output_bit_depth", labels == null ? null : labels.getBitDepth());
@@ -267,7 +326,7 @@ public final class BaselineNativeProbe {
         result.put("full_legacy_context", Boolean.getBoolean("gat.probe.fullLegacyContext"));
         result.put("os", System.getProperty("os.name")); result.put("os_version", System.getProperty("os.version"));
         result.put("java_arch", System.getProperty("os.arch")); result.put("allow_fork", Boolean.getBoolean("gat.probe.allowFork"));
-        long start = System.nanoTime();
+        long start = System.nanoTime(); startedAt = start;
         result.put("status", "running"); result.put("stage", "validating_runtime"); saveSnapshot();
         try {
             checkIsolation(); result.put("code_sources", codeSources()); result.put("native_inventory", nativeInventory());
@@ -277,7 +336,7 @@ public final class BaselineNativeProbe {
                 result.put("stage", "initializing_real_plugins"); saveSnapshot();
                 initialize(mode.equals("stardist"));
                 if (mode.equals("stardist")) stardist(Path.of(args[1]), Path.of(args[2])); else alignment();
-                result.put("status", errors.isEmpty() ? "success" : "workflow_failure");
+                result.put("status", errors.isEmpty() && !observedNativeFailureDialog ? "success" : "workflow_failure");
             }
         } catch (Throwable error) {
             record(error); result.put("status", invoked ? "workflow_failure" : "setup_failure");
@@ -288,7 +347,7 @@ public final class BaselineNativeProbe {
             String ijError = IJ.getErrorMessage(); if (ijError != null && !ijError.isEmpty()) errors.add("IMAGEJ: " + ijError);
             result.put("imagej_log", IJ.getLog()); result.put("errors", new ArrayList<>(errors));
             result.put("imagej_command_dispatch", new ArrayList<>(commands));
-            if (!errors.isEmpty() && "success".equals(result.get("status"))) result.put("status", "workflow_failure");
+            if ((!errors.isEmpty() || observedNativeFailureDialog) && "success".equals(result.get("status"))) result.put("status", "workflow_failure");
             String json = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().create().toJson(result);
             if (report.toAbsolutePath().getParent() != null) Files.createDirectories(report.toAbsolutePath().getParent());
             Files.writeString(report, json + "\n"); System.out.println(json);

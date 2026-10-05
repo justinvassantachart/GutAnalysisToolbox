@@ -116,6 +116,27 @@ exceptions, so a later modal dialog/native abort can retain useful evidence.
 Process timeouts/resource stops remain separately labeled and do not become
 ordinary incompatibility claims.
 
+One narrowly recognized upstream failure has a passive early-stop path. During
+the actual StarDist call only, the observer requires a newly created, visible,
+modal Swing dialog with the exact CSBDeep title `Loading TensorFlow failed`, its
+unchanged raw HTML message, and `JOptionPane.ERROR_MESSAGE`. It records the full
+message/component tree, unmodified option state, call stage and thread stacks,
+atomically writes `workflow_failure`, then exits that isolated JVM with code 2.
+It never clicks, accepts, closes or dismisses the dialog, and does not proceed
+to TensorFlow Library Management. A fork displaying it also fails the fork's
+success gate. Preexisting, generic, near-matching and pre-call dialogs do not
+qualify. Evidence-persistence failure is incomplete evidence, not a completed
+workflow result; ordinary deadlines remain unchanged.
+After the atomic-write attempt, this isolated dialog branch uses `Runtime.halt`
+rather than shutdown hooks, so no GUI cleanup hook can dismiss the modal dialog
+and unblock the Library Management action. Normal probe exits are unchanged.
+
+This observer is validation code, not a repair to the original application. The
+preserved Sonoma and Sequoia runs predate it and retain their original
+`process_timeout` classifications and error-dialog thread dumps. Focused tests
+exercise the signature and report/exit behavior; live modal controls require a
+GUI-capable host and report an explicit skip on a headless host.
+
 `native-summary.json` includes `evidence_complete`:
 
 - Original success stays success; original `workflow_failure` after the real
