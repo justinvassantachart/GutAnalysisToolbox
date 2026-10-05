@@ -102,6 +102,13 @@ jobs:
                   'plugin_sha256': hashlib.sha256(jar.read_bytes()).hexdigest(),
                   'plugin_classes_match_tested_classes': True}
           pathlib.Path('preview-artifacts/ORIGINAL_BUILD_INFO.json').write_text(json.dumps(info, indent=2)+'\n')
+          baseline = pathlib.Path('preview-artifacts/GAT-2.0.0-unchanged-1870d9e-baseline.zip')
+          with zipfile.ZipFile(baseline, 'w', zipfile.ZIP_DEFLATED) as archive:
+              archive.write(jar, 'plugins/' + jar.name)
+              archive.write(root / 'LICENSE', 'GAT_LICENSE')
+              archive.writestr('BUILD_INFO.json', json.dumps(info, indent=2)+'\n')
+              archive.writestr('README.txt', 'Unchanged original GAT source1870d9e. Install only in the separate original Fiji data root.\nDependencies/models are not included. See the paired-test handoff and recorded CI outcomes.\nThis is the comparison baseline, not the Apple Silicon repair.\n')
+          baseline.with_suffix('.zip.sha256').write_text(hashlib.sha256(baseline.read_bytes()).hexdigest()+'  '+baseline.name+'\n')
           PYINFO
       - name: Preserve matched install artifacts (test outcomes are recorded separately)
         uses: actions/upload-artifact@v4
