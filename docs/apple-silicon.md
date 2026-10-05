@@ -183,7 +183,14 @@ automatic threshold change is applied to make results agree.
 - The Mac package contains three ARM64 dylibs. The JNI dylib requires macOS
   14.0; the TensorFlow framework/core dylibs declare macOS 12.0. Packaging and
   inspection were performed on Linux, not a Mac.
-- Native M1 execution, M2–M5 hardware, full-size images and optional
+- **Native macOS execution passed in CI:** macOS 14.8.9 ARM64 GitHub runner,
+  native aarch64 Java 17.0.20.1, 16 worker tests, TensorFlow 2.21 JNI loading,
+  and inference through both real model ZIPs on a synthetic 129 × 97 image.
+  [Verified CI job](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37338503480/job/111859285053).
+  This validates the backend on native macOS, not the full Fiji GUI or
+  scientific equivalence across hardware. Real-image cross-architecture
+  reference checks are being added separately.
+- Full Fiji execution on the user's M1, M2–M5 hardware, full-size images and optional
   ganglia/OpenCL/calcium/registration workflows remain unverified unless
   separately recorded in the workflow matrix or CI results.
 
