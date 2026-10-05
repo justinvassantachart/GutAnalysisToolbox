@@ -72,7 +72,18 @@ def execute(command, log, timeout, env, rss_limit_kib=3145728):
             if time.monotonic() - start > timeout:
                 stop = "process deadline exceeded"
             if stop:
-                os.killpg(process.pid, signal.SIGKILL)
+                # A JVM SIGQUIT writes thread stacks to its existing log. This
+                # distinguishes a modal ImageJ command/dialog from slow inference.
+                if "java" in Path(command[0]).name and stop == "process deadline exceeded":
+                    try:
+                        os.kill(process.pid, signal.SIGQUIT)
+                        time.sleep(0.5)
+                    except ProcessLookupError:
+                        pass
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
                 break
             time.sleep(0.25)
         code = process.wait()
@@ -91,7 +102,8 @@ def fetch(artifact, cache):
         return path
     temporary = path.with_suffix(path.suffix + ".download")
     subprocess.run(["curl", "--fail", "--location", "--silent", "--show-error", "--proto", "=https",
-                    "--max-time", "180", artifact["url"], "--output", str(temporary)], check=True)
+                    "--retry", "2", "--retry-delay", "2", "--retry-max-time", "60",
+                    "--max-time", "180", artifact["url"], "--output", str(temporary)], check=True, timeout=240)
     if digest(temporary) != artifact["sha256"]:
         raise RuntimeError("Downloaded artifact checksum mismatch: " + artifact["filename"])
     temporary.replace(path)

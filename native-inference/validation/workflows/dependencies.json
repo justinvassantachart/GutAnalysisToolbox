@@ -113,7 +113,7 @@
     },
     {
       "filename": "imglib2-7.1.5.jar",
-      "url": "https://maven.scijava.org/content/groups/public/net/imglib2/imglib2/7.1.5/imglib2-7.1.5.jar",
+      "url": "https://repo1.maven.org/maven2/net/imglib2/imglib2/7.1.5/imglib2-7.1.5.jar",
       "sha256": "b575a8e705647583950a2fb3aefdf13d5baabe4b3b7849e21bc536e9d278c3e3",
       "groups": [
         "jdll-base"

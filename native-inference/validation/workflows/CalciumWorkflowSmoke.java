@@ -20,7 +20,7 @@ public final class CalciumWorkflowSmoke {
    if(!w.isShowing()||!(w instanceof Dialog))continue;String title=((Dialog)w).getTitle();java.util.List<Component> all=new ArrayList<>();visit(w,all);
    if("Select Baseline Frames".equals(title)||"Select Max Projection Frames".equals(title)){
     java.util.List<JSpinner> spins=new ArrayList<>();JOptionPane pane=null;for(Component c:all){if(c instanceof JSpinner)spins.add((JSpinner)c);if(c instanceof JOptionPane)pane=(JOptionPane)c;}
-    if(spins.size()==2&&pane!=null){spins.get(0).setValue(1);spins.get(1).setValue("Select Baseline Frames".equals(title)?2:3);pane.setValue(JOptionPane.OK_OPTION);}
+    if(spins.size()==2&&pane!=null){spins.get(0).setValue(1);spins.get(1).setValue("Select Baseline Frames".equals(title)?2:3);System.out.println("DIALOG_CONTROL "+title+" start="+spins.get(0).getValue()+" end="+spins.get(1).getValue());pane.setValue(JOptionPane.OK_OPTION);}
    } else if("Multi Measure".equals(title)) {
     for(Component c:all)if(c instanceof Checkbox){Checkbox b=(Checkbox)c;String label=b.getLabel().toLowerCase(Locale.ROOT);if(label.contains("all")||label.contains("one row"))b.setState(true);if(label.contains("append"))b.setState(false);}
     for(Component c:all)if(c instanceof Button&&"OK".equals(((Button)c).getLabel())){for(ActionListener l:((Button)c).getActionListeners())l.actionPerformed(new ActionEvent(c,ActionEvent.ACTION_PERFORMED,"OK"));break;}
@@ -38,7 +38,13 @@ public final class CalciumWorkflowSmoke {
     ImagePlus fixture=new ImagePlus("calcium-fixture",st);Path input=out.resolve("calcium-fixture.tif");WorkflowReport.check(new FileSaver(fixture).saveAsTiffStack(input.toString()),"Cannot write synthetic movie");
     Params params=new Params();params.imagePath=input.toAbsolutePath().toString();params.useFF0=true;params.useStarDist=false;params.cellNames=Arrays.asList("SyntheticCell");
     CalciumAnalysis a=new CalciumAnalysis(params);a.openImage();WorkflowReport.check(a.maxProj!=null&&a.maxProj.getStackSize()==3,"GAT did not open full stack");
-    a.createMaxProjection();WorkflowReport.check(a.maxProj.getProcessor().getf(0,0)==200,"Projection selected wrong frames/pixels");
+    ImagePlus rawBeforeProjection=a.maxProj;
+    ij.plugin.ZProjector control=new ij.plugin.ZProjector(rawBeforeProjection);control.setStartSlice(1);control.setStopSlice(3);control.setMethod(ij.plugin.ZProjector.MAX_METHOD);control.doProjection();
+    float controlPixel=control.getProjection().getProcessor().getf(0,0);WorkflowReport.check(controlPixel==200,"Direct ImageJ projection control failed: "+controlPixel);
+    a.createMaxProjection();
+    System.out.println("PROJECTION_OBSERVED value="+a.maxProj.getProcessor().getf(0,0)+" stack="+a.maxProj.getStackSize()+" source_alias="+(a.maxProj==rawBeforeProjection)+" title="+a.maxProj.getTitle()+" control="+controlPixel);
+    FileSaver observed=new FileSaver(a.maxProj);if(a.maxProj.getStackSize()>1)observed.saveAsTiffStack(out.resolve("projection-observed.tif").toString());else observed.saveAsTiff(out.resolve("projection-observed.tif").toString());
+    WorkflowReport.check(a.maxProj!=rawBeforeProjection&&a.maxProj.getStackSize()==1&&a.maxProj.getProcessor().getf(0,0)==200,"Projection selected wrong result: value="+a.maxProj.getProcessor().getf(0,0)+" planes="+a.maxProj.getStackSize()+" source_alias="+(a.maxProj==rawBeforeProjection));
     a.normalizeStack();WorkflowReport.check(a.normStack!=null&&a.normStack.getStackSize()==3,"No F/F0 stack");
     double[] expect={1,1,2};for(int z=1;z<=3;z++)WorkflowReport.check(Math.abs(a.normStack.getStack().getProcessor(z).getf(0,0)-expect[z-1])<1e-6,"Wrong normalized ROI pixel at frame "+z);
     a.setupROIManager();RoiManager rm=RoiManager.getInstance();rm.addRoi(new Roi(0,0,2,2));a.renameROIs();WorkflowReport.check(rm.getRoi(0).getName().equals("SyntheticCell_1"),"ROI rename mismatch");

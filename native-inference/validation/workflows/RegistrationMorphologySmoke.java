@@ -1,6 +1,7 @@
 import Features.Core.Params;
 import Features.Core.PluginCalls;
 import Features.Tools.AlignStack;
+import Features.Tools.AlignStackBatch;
 import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
@@ -75,6 +76,10 @@ public final class RegistrationMorphologySmoke {
             source.show();
             int[] before = WindowManager.getIDList();
             double initial = stackMse(source);
+            String originalPixels = pixelHash(source);
+            source.getCalibration().pixelWidth = 0.5;
+            source.getCalibration().pixelHeight = 0.75;
+            source.getCalibration().frameInterval = 1.25;
             AlignStack.alignSIFT(source, false);
             checkPluginFailure();
             ImagePlus aligned = newStack(before, source);
@@ -82,6 +87,10 @@ public final class RegistrationMorphologySmoke {
             if (aligned == null) aligned = source;
             double after = stackMse(aligned);
             requireAlignment(initial, after);
+            WorkflowReport.check(originalPixels.equals(pixelHash(source)), "SIFT changed source pixels");
+            WorkflowReport.check(aligned.getCalibration().pixelWidth == 0.5
+                    && aligned.getCalibration().pixelHeight == 0.75
+                    && aligned.getCalibration().frameInterval == 1.25, "SIFT result lost calibration/timing");
             save(aligned, output.resolve("sift-helper-aligned.tif"));
             return WorkflowReport.values("initial_mse", initial, "aligned_mse", after, "source_mse_after_helper", stackMse(source), "returned_as_new_image", aligned != source, "frames", aligned.getStackSize());
         });
@@ -115,6 +124,60 @@ public final class RegistrationMorphologySmoke {
             requireAlignment(initial, savedMse);
             requireAlignment(initial, stackMse(result.alignedStack));
             return WorkflowReport.values("initial_mse", initial, "saved_mse", savedMse, "saved_file", saved.toString(), "frames", 10);
+        });
+        commandTest("sift_gat_batch_channel1", "GAT AlignStackBatch.runBatch, actual two-channel 12-frame TIFF and saved output", "Affine SIFT with deterministic channel 1", new String[]{"SIFT_Align", "mpicbg.ij.SIFT", "Jama.Matrix"}, () -> {
+            Path inputDir = Files.createDirectories(output.resolve("sift-batch-input"));
+            Path outputDir = Files.createDirectories(output.resolve("sift-batch-output"));
+            ImageStack multi = new ImageStack(W, H);
+            ImageStack expectedFirst = new ImageStack(W, H);
+            ByteProcessor reference = pattern();
+            for (int i = 0; i < 12; i++) {
+                ImageProcessor first = i % 2 == 0 ? reference.duplicate() : translated(reference, DX, DY);
+                multi.addSlice(first);
+                ByteProcessor other = new ByteProcessor(W, H);
+                other.setValue(19); other.fill();
+                multi.addSlice(other);
+                expectedFirst.addSlice(first.duplicate());
+            }
+            ImagePlus input = new ImagePlus("batch-input", multi);
+            input.setDimensions(2, 1, 12); input.setOpenAsHyperStack(true);
+            input.setPosition(2, 1, 12);
+            input.getCalibration().pixelWidth = 0.5;
+            input.getCalibration().pixelHeight = 0.75;
+            input.getCalibration().frameInterval = 1.25;
+            Path inputPath = inputDir.resolve("batch-input.tif");
+            save(input, inputPath);
+            byte[] originalFile = Files.readAllBytes(inputPath);
+            Params p = new Params();
+            p.inputDir = inputDir.toAbsolutePath().toString();
+            p.outputDir = outputDir.toAbsolutePath().toString();
+            p.fileExt = ".tif"; p.useSIFT = true; p.useTemplateMatching = false; p.useStackReg = false;
+            p.referenceFrame = 1;
+            AlignStackBatch.runBatch(p);
+            checkPluginFailure();
+            Path saved = outputDir.resolve("batch-input.tif_aligned.tif");
+            WorkflowReport.check(Files.isRegularFile(saved), "Missing batch aligned output");
+            ImagePlus reopened = new Opener().openImage(saved.toString());
+            WorkflowReport.check(reopened != null && reopened.getNChannels() == 1
+                    && reopened.getNSlices() == 1 && reopened.getNFrames() == 12,
+                    "Batch output did not preserve channel-1/time dimensions");
+            WorkflowReport.check(reopened.getCalibration().pixelWidth == 0.5
+                    && reopened.getCalibration().pixelHeight == 0.75
+                    && reopened.getCalibration().frameInterval == 1.25,
+                    "Batch output lost calibration/frame interval");
+            double initial = stackMse(new ImagePlus("expected-first", expectedFirst));
+            double after = stackMse(reopened);
+            requireAlignment(initial, after);
+            double firstFrameError = 0;
+            for (int i = 0; i < W * H; i++) {
+                double difference = reopened.getStack().getProcessor(1).getf(i) - reference.getf(i);
+                firstFrameError += difference * difference;
+            }
+            WorkflowReport.check(firstFrameError == 0, "Batch used the wrong channel/reference pixels");
+            WorkflowReport.check(java.util.Arrays.equals(originalFile, Files.readAllBytes(inputPath)), "Batch overwrote original input file");
+            return WorkflowReport.values("input_channels", 2, "output_channels", 1, "frames", 12,
+                    "initial_mse", initial, "saved_mse", after, "first_frame_squared_error", firstFrameError,
+                    "input_file_unchanged", true, "evidence", output.relativize(saved).toString());
         });
         commandTest("stackreg_turboreg_gat_helper", "Direct GAT AlignStack.alignStackReg helper only; NOT GAT batch implementation", "StackReg rigid-body with TurboReg", new String[]{"StackReg_", "TurboReg_"}, () -> {
             ImagePlus source = pair("stackreg-direct-helper");
@@ -296,6 +359,21 @@ public final class RegistrationMorphologySmoke {
 
     private static void calibration(ImagePlus image) {
         WorkflowReport.check(image.getCalibration().pixelWidth == 0.5 && image.getCalibration().pixelHeight == 0.75, "GAT discarded label calibration");
+    }
+
+    private static String pixelHash(ImagePlus image) throws Exception {
+        java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
+        for (int plane = 1; plane <= image.getStackSize(); plane++) {
+            ImageProcessor processor = image.getStack().getProcessor(plane);
+            for (int i = 0; i < image.getWidth() * image.getHeight(); i++) {
+                int bits = Float.floatToIntBits(processor.getf(i));
+                digest.update((byte) (bits >>> 24)); digest.update((byte) (bits >>> 16));
+                digest.update((byte) (bits >>> 8)); digest.update((byte) bits);
+            }
+        }
+        StringBuilder text = new StringBuilder();
+        for (byte b : digest.digest()) text.append(String.format("%02x", b & 255));
+        return text.toString();
     }
 
     private static ByteProcessor pattern() {

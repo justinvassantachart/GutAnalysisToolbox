@@ -93,20 +93,13 @@ public class AlignStackBatch {
             return;
         }
 
-        // Keep only first channel if multi-channel
-        int sizeC = imp.getNChannels();
-        if (sizeC > 1) {
-            IJ.run(imp, "Split Channels", "");
-            ImagePlus firstChannel = IJ.getImage();
-            IJ.selectWindow("C1-" + imp.getTitle());
-            for (int c = 2; c <= sizeC; c++) IJ.run("Close");
-            imp = firstChannel;
-        }
+        // Deterministic channel 1 extraction; never depend on or close global windows.
+        if (imp.getNChannels() > 1) imp = AlignStack.firstAlignmentChannel(imp);
 
         IJ.log("Running alignment on " + imp.getTitle());
 
         // Alignment steps
-        if (p.useSIFT) AlignStack.alignSIFT(imp, true);
+        if (p.useSIFT) imp = AlignStack.alignedWithSIFT(imp, true);
         if (p.useTemplateMatching) AlignStack.alignTemplateMatching(imp, p.referenceFrame);
         if (p.useStackReg) {
             throw new UnsupportedOperationException(
