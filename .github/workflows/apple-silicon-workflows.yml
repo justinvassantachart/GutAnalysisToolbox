@@ -74,6 +74,8 @@ jobs:
             target/workflow-results/**/*.csv
             target/workflow-results/**/*.tif
             target/workflow-results/**/*.zip
+            target/workflow-results/**/*.npy
+            target/workflow-results/**/*.f32le
             target/workflow-classpath.txt
           if-no-files-found: error
   native-opencl:
