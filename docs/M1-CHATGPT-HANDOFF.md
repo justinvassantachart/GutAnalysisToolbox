@@ -86,6 +86,11 @@ what is actually available; do not claim to have run an absent harness. Keep
 any newer validation checkout separate, record its revision, and do not silently
 replace the production baseline.
 
+The compact real-image regression harness is now verified at validation revision
+`d6fc18aa7ca5df8295108639efbeac3d01d509e3`. That revision adds tests/instructions
+without changing the preview's production code. Use a separate checkout at this
+revision for the automated comparator while testing the installed preview JARs.
+
 ### What this preview changes
 
 On Apple Silicon, GATV2 launches a separate Java process containing TensorFlow
@@ -234,10 +239,19 @@ you performed on my Mac:
   https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37338503480/job/111859285053
   That job tested commit `94e039cc5b5c396bd248c04b5c5925c20f4df3a1`;
   the pinned `366c833...` source adds documentation/whitespace changes
-- Linux TF1.15-versus-TF2.21 comparison completed all 40 held-out author images
+- Linux TF1.15-versus-TF2.21 comparison completed all 40 author test-partition files
   with matching object counts, totaling 4,472 output objects per runtime.
   It included one one-pixel boundary/mask difference and a separate label-ID
   permutation. Matching counts do not mean every mask or measurement is identical
+- Corpus accounting found that these are 40 source-labeled test files containing
+  39 distinct pixel inputs, with one input also present in the training folder.
+  This does not establish which files trained the shipped model; do not describe
+  all 40 as independent held-out biological samples
+- The compact real-image fixture also passed native macOS ARM64 CI: raw label
+  masks, counts and pixel measurements matched the fixed TF1 references for
+  39 neuron objects and 3 subtype-on-Hu objects at their specified defaults.
+  This is a technical fixture, not representative subtype validation:
+  https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37342883130/job/111874107725
 - Quantized polygon vertex differences of roughly 0.01 pixel were observed;
   nominal 0.01 may be represented as 0.01001, and a two-axis Euclidean difference
   can be roughly 0.0142. Identical raster labels do not prove identical subpixel
@@ -268,6 +282,26 @@ you performed on my Mac:
 6. Repeat a small workflow to catch state leaks. Exercise Cancel during manual
    review, missing model/worker paths, and a failed worker run in the test copy;
    verify the original image and previous completed outputs survive
+
+For step 3, use the separately pinned validation checkout above. After verifying
+the real local paths, define `FIJI_JAVA` as Fiji's native Java executable,
+`NATIVE_JAVAC` as an approved native JDK compiler, `INSTALLED_WORKER` as the
+installed `gat-native-inference.jar`, `PINNED_MODELS` as the directory containing
+the verified model ZIPs, and `TEST_OUTPUT` as a new output directory. From that
+checkout's root:
+
+```sh
+python3 -m unittest discover -s native-inference/validation/cross-platform -p 'test_*.py' -v
+python3 native-inference/validation/cross-platform/check.py \
+  --worker "$INSTALLED_WORKER" --models "$PINNED_MODELS" \
+  --output "$TEST_OUTPUT" --java "$FIJI_JAVA" --javac "$NATIVE_JAVAC"
+```
+
+The comparator downloads only its declared, checksum-pinned official Java
+dependencies and NMS sources. Inspect its manifest first and follow the required
+permissions for downloads/compilation/execution. Do not invoke its reference
+regenerator or the legacy TensorFlow launcher on this M1. Keep the emitted JSON
+diagnostics even if a strict comparison fails.
 
 Use a conservative crop of at most about 1024×1024 pixels **after GAT rescaling**
 for initial tests. The preview's full 97-channel tensor limit is 268,435,456
