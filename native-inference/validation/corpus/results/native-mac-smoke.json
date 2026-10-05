@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "platform": "native Mac, Java 21",
+  "source_commit": "432bf74c934f6b5be44ce11858ad93329f29a5c4",
+  "job_url": "https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37344903137/job/111880910287",
+  "fixture": "public 175x175 Hu image",
+  "cases": [
+    {
+      "model": "2D_enteric_neuron_v4_1.zip",
+      "probability_threshold": 0.5,
+      "tiles": 1,
+      "objects": 39,
+      "labels_equal_to_legacy_reference": true,
+      "winning_centers_equal": true,
+      "pixel_measurements_equal": true,
+      "max_abs_probability_difference": 1.25169754e-06
+    },
+    {
+      "model": "2D_enteric_neuron_subtype_v4.zip",
+      "probability_threshold": 0.4,
+      "tiles": 4,
+      "objects": 3,
+      "labels_equal_to_legacy_reference": true,
+      "winning_centers_equal": true,
+      "pixel_measurements_equal": true,
+      "max_abs_probability_difference": 1.49011612e-06,
+      "scope_note": "Subtype on a Hu image is a technical smoke test, not representative subtype accuracy"
+    }
+  ],
+  "scope_limit": "Separate narrow native-Mac smoke only. The 371-case cross-runtime corpus was run on Linux CPU, not on native Mac."
+}
