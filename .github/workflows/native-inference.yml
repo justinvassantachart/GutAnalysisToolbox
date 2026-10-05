@@ -19,9 +19,15 @@ jobs:
           - os: ubuntu-latest
             platform: linux-x86_64
             architecture: x64
+            java: '17'
           - os: macos-14
             platform: macosx-arm64
             architecture: aarch64
+            java: '17'
+          - os: macos-14
+            platform: macosx-arm64
+            architecture: aarch64
+            java: '21'
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     steps:
@@ -29,7 +35,7 @@ jobs:
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: ${{ matrix.java }}
           cache: maven
       - name: Record actual architecture
         run: |
@@ -70,7 +76,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gat-real-fixture-${{ matrix.platform }}
+          name: gat-real-fixture-${{ matrix.platform }}-jdk${{ matrix.java }}
           path: |
             target/cross-platform-${{ matrix.platform }}/comparison.json
             target/cross-platform-${{ matrix.platform }}/*.nms.json
@@ -80,7 +86,7 @@ jobs:
       - name: Save matching-platform worker bundle and test reports
         uses: actions/upload-artifact@v4
         with:
-          name: gat-worker-${{ matrix.platform }}
+          name: gat-worker-${{ matrix.platform }}-jdk${{ matrix.java }}
           path: |
             native-inference/target/gat-native-inference-${{ matrix.platform }}.zip
             native-inference/target/surefire-reports/
