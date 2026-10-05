@@ -57,6 +57,14 @@ IoU 0.8979). Tiny probability changes can change NMS ordering. Subpixel outlines
 also differ slightly in many otherwise identical raster cases. Thresholds and
 production numerical settings were not adjusted to hide these differences.
 This is runtime consistency evidence, not biological ground-truth validation.
+
+A [native Mac replay of the selected moved-center outlier](../native-inference/validation/moved-center/results/mac-c6e2011/REPORT.md)
+matched the legacy Linux raster/centers exactly, including the affected cell;
+four other subpixel vertices still differed by about 0.01 px. This is one
+deliberately selected fixture, not a native replay of the entire corpus.
+The [native 300-frame Template Matching evidence](../native-inference/validation/template-matching/results/mac-ee2907e/REPORT.md)
+also preserves exact shifts, aligned pixels and all motion CSV rows for both
+the port and actual GAT adapter.
 Native Mac compact fixtures pass; the complete 371-case corpus ran on Linux.
 
 ### Template Matching

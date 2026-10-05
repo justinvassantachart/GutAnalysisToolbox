@@ -28,6 +28,19 @@ SOURCE_NAME = 'gat-jxrlib-0.2.4-corresponding-source.zip'
 PACKAGE_NAME = 'gat-jpeg-xr-0.2.4-macos-arm64-test-overlay.zip'
 COMPAT = b'#include <wchar.h>\nextern unsigned int _byteswap_ulong(unsigned int);\n'
 SYSTEM_LIBRARIES = {'/usr/lib/libc++.1.dylib', '/usr/lib/libSystem.B.dylib'}
+# Deliberate release allowlist, not a minimum-version check. Adding a release
+# requires reviewing its official, commit-pinned notices and exact regeneration.
+REVIEWED_SWIG_GENERATORS = {
+    '4.5.0': 'd598176759f5d199e288cf78413cfaa3bf84449f',
+    '4.5.1': '88649f559942c29a228fa783dd01581e217bcb20',
+}
+# These four official files are byte-identical in the two reviewed releases.
+SWIG_NOTICE_SHA256 = {
+    'LICENSE': 'f53abaeed775018d519a1b9615f0ca17894772bd9ca21c2a156bf340ac41c13e',
+    'COPYRIGHT': '0ecb0b7b8363a337f1dc42d4b735983c08b1b65a462e778419d8b4fa5e541961',
+    'LICENSE-UNIVERSITIES': '7f50d942373a871211c5efee03f3db2f9efd1cff1002b0ef8e3748baa611a5c2',
+    'LICENSE-GPL': '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903',
+}
 
 
 def digest(data):
@@ -133,19 +146,53 @@ def verify_pass(report):
             raise ValueError('Check artifact provenance mismatch: ' + name)
 
 
-def legal_assets():
+def reviewed_swig_generator(version):
+    if version not in REVIEWED_SWIG_GENERATORS:
+        raise ValueError('Review/include matching generator notices before packaging another SWIG version')
+    commit = REVIEWED_SWIG_GENERATORS[version]
+    return {'version': version, 'upstream_commit': commit,
+            'source_url': 'https://github.com/swig/swig/tree/' + commit,
+            'notice_sha256': dict(SWIG_NOTICE_SHA256)}
+
+
+def parse_swig_version(log):
+    lines = [line for line in log.splitlines() if line.startswith('SWIG Version ')]
+    match = re.fullmatch(r'SWIG Version ([0-9]+\.[0-9]+\.[0-9]+)', lines[0]) if len(lines) == 1 else None
+    if not match:
+        raise ValueError('Exactly one unambiguous SWIG release version required')
+    version = match.group(1)
+    reviewed_swig_generator(version)
+    return version
+
+
+def legal_assets(swig_version):
+    generator = reviewed_swig_generator(swig_version)
     manifest = json.loads((ASSETS / 'license-manifest.json').read_text())
-    result = {}
+    result, records = {}, {}
     for item in manifest['files']:
+        if item['path'] in result:
+            raise ValueError('Duplicate license asset: ' + item['path'])
         data = local_file(ASSETS, item['path'])
         if digest(data) != item['sha256']:
             raise ValueError('License asset checksum mismatch: ' + item['path'])
         result[item['path']] = data
+        records[item['path']] = item
     required = {'LICENSES/GPL-2.0.txt', 'LICENSES/MICROSOFT-CODEC-HEADER.txt',
                 'LICENSES/GLENCOE-WRAPPER-HEADER.txt', 'LICENSES/SWIG-3-LICENSE',
-                'LICENSES/SWIG-4.5.0-LICENSE'}
+                'LICENSES/SWIG-3-COPYRIGHT', 'LICENSES/SWIG-3-LICENSE-UNIVERSITIES',
+                'LICENSES/SWIG-GPL-3.0.txt', 'LICENSES/GAT-BSD-3-Clause.txt'}
+    required.update('LICENSES/SWIG-' + swig_version + '-' + name
+                    for name in SWIG_NOTICE_SHA256 if name != 'LICENSE-GPL')
     if not required.issubset(result):
         raise ValueError('Required source license notices are missing')
+    for name, sha in SWIG_NOTICE_SHA256.items():
+        path = 'LICENSES/SWIG-GPL-3.0.txt' if name == 'LICENSE-GPL' else 'LICENSES/SWIG-' + swig_version + '-' + name
+        if digest(result[path]) != sha:
+            raise ValueError('Reviewed SWIG notice checksum mismatch: ' + path)
+        # GPL3 is shared with the pinned SWIG3 notice; retain that original URL.
+        if name != 'LICENSE-GPL' and records[path]['source_url'] != (
+                'https://raw.githubusercontent.com/swig/swig/' + generator['upstream_commit'] + '/' + name):
+            raise ValueError('Reviewed SWIG notice source provenance mismatch: ' + path)
     if b'GNU GENERAL PUBLIC LICENSE' not in result['LICENSES/GPL-2.0.txt']:
         raise ValueError('Missing complete GPL license')
     if b'either version 2' not in result['LICENSES/GLENCOE-WRAPPER-HEADER.txt']:
@@ -155,7 +202,8 @@ def legal_assets():
     return result
 
 
-def corresponding_source(archive, source, license_entries):
+def corresponding_source(archive, source, license_entries, swig_version):
+    generator = reviewed_swig_generator(swig_version)
     if check.sha256(archive) != check.ARTIFACTS['jxrlib-v0.2.4.tar.gz'][1]:
         raise ValueError('Upstream source archive hash mismatch')
     prefix = 'jxrlib-' + check.COMMIT + '/'
@@ -199,7 +247,9 @@ def corresponding_source(archive, source, license_entries):
     entries.update(license_entries)
     entries['rebuild.sh'] = local_file(ASSETS, 'rebuild.sh')
     entries['REBUILD.md'] = local_file(ASSETS, 'REBUILD.md')
+    entries['SWIG_VERSION'] = (swig_version + '\n').encode()
     entries['SOURCE_PROVENANCE.json'] = json_bytes({'upstream_commit': check.COMMIT,
+        'swig_generator': generator,
         'source_url': check.ARTIFACTS['jxrlib-v0.2.4.tar.gz'][0],
         'source_archive_sha256': check.ARTIFACTS['jxrlib-v0.2.4.tar.gz'][1],
         'unchanged_original_source_sha256': original_hashes, 'included_generated_sources': copied,
@@ -209,12 +259,15 @@ def corresponding_source(archive, source, license_entries):
     return zip_bytes(entries)
 
 
-def verify_generated_sources(source_zip, output, expected_swig="4.5.0"):
+def verify_generated_sources(source_zip, output, expected_swig):
     """Regenerate from the supplied preferred source; reject changed generated JNI."""
+    reviewed_swig_generator(expected_swig)
     root = output / 'source-regeneration'
     root.mkdir()
     expected = {}
     with zipfile.ZipFile(io.BytesIO(source_zip)) as archive:
+        if archive.read('SWIG_VERSION') != (expected_swig + '\n').encode():
+            raise ValueError('Corresponding source SWIG version mismatch')
         for name in archive.namelist():
             safe_name(name)
             if not name.startswith('jxrlib/'):
@@ -225,7 +278,7 @@ def verify_generated_sources(source_zip, output, expected_swig="4.5.0"):
             if name.startswith('jxrlib/java/target/swig/'):
                 expected[name] = archive.read(name)
     swig = shutil.which('swig')
-    if not swig or ('SWIG Version ' + expected_swig) not in subprocess.check_output([swig, '-version'], text=True):
+    if not swig or parse_swig_version(subprocess.check_output([swig, '-version'], text=True)) != expected_swig:
         raise ValueError('Matching SWIG ' + expected_swig + ' required to verify corresponding generated source')
     tree = root / 'jxrlib'
     check.run(['make', 'swig', 'SWIG=' + swig + ' -I' + str(tree / 'gat-legacy-swig')],
@@ -284,13 +337,12 @@ def main():
     library = local_file(source, 'build/libjxrjava.dylib')
     if digest(library) != report['native_library_sha256']:
         raise ValueError('Validated native binary changed')
-    swig_version = local_file(origin, 'swig-version.log').decode()
-    if 'SWIG Version 4.5.0' not in swig_version:
-        raise ValueError('Review/include matching generator notices before packaging another SWIG version')
+    swig_log = local_file(origin, 'swig-version.log').decode()
+    swig_version = parse_swig_version(swig_log)
     macho = audit_macho(library)
-    legal = legal_assets()
-    src = corresponding_source(cache / 'jxrlib-v0.2.4.tar.gz', source, legal)
-    verify_generated_sources(src, output)
+    legal = legal_assets(swig_version)
+    src = corresponding_source(cache / 'jxrlib-v0.2.4.tar.gz', source, legal, swig_version)
+    verify_generated_sources(src, output, swig_version)
     entries = {RESOURCE: library, 'META-INF/MANIFEST.MF': b'Manifest-Version: 1.0\nImplementation-Title: GAT optional JPEG-XR arm64 test overlay\nImplementation-Version: 0.2.4-gat-test.1\n\n'}
     entries.update({'META-INF/' + name: value for name, value in legal.items()})
     jar_data = zip_bytes(entries)
@@ -306,7 +358,8 @@ def main():
             'source_check_report_sha256': check.sha256(origin / 'report.json'),
             'check_artifacts': report['artifacts'], 'golden_fixtures_passed': 13,
             'published_jni_signatures_matched': 59,
-            'swig_generator': swig_version,
+            'swig_generator': swig_log,
+            'swig_generator_provenance': reviewed_swig_generator(swig_version),
             'generated_sources_regenerated_and_identical': True,
             'compiler': local_file(origin, 'compiler-version.log').decode(),
             'install_requires': ['native macOS arm64 Fiji/Java', 'jxrlib-all 0.2.4', 'native-lib-loader 2.5.0', 'Bio-Formats 8.5.0'],

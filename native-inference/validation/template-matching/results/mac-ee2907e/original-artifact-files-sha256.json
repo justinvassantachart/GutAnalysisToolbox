@@ -1,0 +1,46 @@
+{
+  "target/alignment-adapter-mac/adapter-comparison.json": {
+    "sha256": "966980ebced20c84e1fda1b9f1710c951ddbab3af9cf27c6b74fd1580f472955",
+    "bytes": 1173
+  },
+  "target/alignment-adapter-mac/adapter.json": {
+    "sha256": "165ab48ec9004867da0973f8e0f2f6d7721981d6194d9cb1e760aedc66b3b2ab",
+    "bytes": 4980
+  },
+  "target/alignment-adapter-mac/adapter.log": {
+    "sha256": "acdbc590820e197eae32e1ef2fa932342d9b40a15825295a9927eda5de127ca8",
+    "bytes": 540
+  },
+  "target/alignment-adapter-mac/public-calcium-ref71_template_matching_alignment.csv": {
+    "sha256": "cc753a511142115ccaffbdd00daeffdd97efc360116951289dd176a3f5afe537",
+    "bytes": 6017
+  },
+  "target/alignment-adapter-mac/public-calcium_template_matching_alignment.csv": {
+    "sha256": "8019862230926f3819e57071b9fb9a2ab718433da4331d1a89b33c005fe24387",
+    "bytes": 5774
+  },
+  "target/alignment-adapter-mac/synthetic16-ref2_template_matching_alignment.csv": {
+    "sha256": "273c4e0a2bd96acd55442e1964975e6a35e794c85fcb4eb334528ecfb12a2521",
+    "bytes": 196
+  },
+  "target/alignment-adapter-mac/synthetic16_template_matching_alignment.csv": {
+    "sha256": "1f368d32b60f3599421766dc97a3f8e2843b6b9354d331055adb5cf2cf401206",
+    "bytes": 195
+  },
+  "target/alignment-adapter-mac/synthetic8-ref3_template_matching_alignment.csv": {
+    "sha256": "43dada42ce2aa3dc626df32c1bb56f15ccbf6250b7e57576be561a9194292e25",
+    "bytes": 196
+  },
+  "target/alignment-adapter-mac/synthetic8_template_matching_alignment.csv": {
+    "sha256": "1f368d32b60f3599421766dc97a3f8e2843b6b9354d331055adb5cf2cf401206",
+    "bytes": 195
+  },
+  "validation-artifacts/template-matching-mac/actual.json": {
+    "sha256": "4f34a15da47504cb0d64b9aa6b4aeb73b87ebe702183282bbd64e864bed91c38",
+    "bytes": 4950
+  },
+  "validation-artifacts/template-matching-mac/comparison.json": {
+    "sha256": "8dc93664e8b80d75360ffead35d74aef0f67943519ad91b2f2da9d4d601ca34b",
+    "bytes": 3283
+  }
+}

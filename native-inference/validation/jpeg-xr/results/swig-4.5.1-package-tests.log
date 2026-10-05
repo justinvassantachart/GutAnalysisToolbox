@@ -1,0 +1,39 @@
+test_ambiguous_or_suffixed_swig_versions_rejected (test_package_overlay.PackagingTests.test_ambiguous_or_suffixed_swig_versions_rejected) ... ok
+test_build_install_id_is_not_a_dependency (test_package_overlay.PackagingTests.test_build_install_id_is_not_a_dependency) ... ok
+test_changed_upstream_source_rejected (test_package_overlay.PackagingTests.test_changed_upstream_source_rejected) ... ok
+test_complete_build_inputs_and_no_fixture_redistribution (test_package_overlay.PackagingTests.test_complete_build_inputs_and_no_fixture_redistribution) ... ok
+test_custom_rpath_rejected (test_package_overlay.PackagingTests.test_custom_rpath_rejected) ... ok
+test_duplicate_license_records_rejected (test_package_overlay.PackagingTests.test_duplicate_license_records_rejected) ... ok
+test_exact_reviewed_swig_versions_accepted (test_package_overlay.PackagingTests.test_exact_reviewed_swig_versions_accepted) ... ok
+test_failed_or_wrong_platform_reports_rejected (test_package_overlay.PackagingTests.test_failed_or_wrong_platform_reports_rejected) ... ok
+test_license_assets_cover_gpl_and_bsd_and_both_swig_sources (test_package_overlay.PackagingTests.test_license_assets_cover_gpl_and_bsd_and_both_swig_sources) ... ok
+test_missing_generated_wrapper_rejected (test_package_overlay.PackagingTests.test_missing_generated_wrapper_rejected) ... ok
+test_missing_generator_notices_rejected_even_if_manifest_omits_them (test_package_overlay.PackagingTests.test_missing_generator_notices_rejected_even_if_manifest_omits_them) ... ok
+test_non_system_dependency_is_rejected (test_package_overlay.PackagingTests.test_non_system_dependency_is_rejected) ... ok
+test_offline_rebuild_exact_version_gate (test_package_overlay.PackagingTests.test_offline_rebuild_exact_version_gate) ... ok
+test_regeneration_accepts_only_matching_recorded_swig (test_package_overlay.PackagingTests.test_regeneration_accepts_only_matching_recorded_swig) ... ok
+test_regeneration_rejects_different_available_swig (test_package_overlay.PackagingTests.test_regeneration_rejects_different_available_swig) ... ok
+test_regeneration_rejects_wrong_archive_swig_version (test_package_overlay.PackagingTests.test_regeneration_rejects_wrong_archive_swig_version) ... ok
+test_regeneration_still_rejects_changed_generated_source (test_package_overlay.PackagingTests.test_regeneration_still_rejects_changed_generated_source) ... ok
+test_resource_only_deterministic_archive (test_package_overlay.PackagingTests.test_resource_only_deterministic_archive) ... ok
+test_reviewed_notice_hash_cannot_be_overridden_by_manifest (test_package_overlay.PackagingTests.test_reviewed_notice_hash_cannot_be_overridden_by_manifest) ... ok
+test_source_archive_records_exact_generator_and_provenance (test_package_overlay.PackagingTests.test_source_archive_records_exact_generator_and_provenance) ... ok
+test_symlink_source_rejected (test_package_overlay.PackagingTests.test_symlink_source_rejected) ... ok
+test_tampered_license_rejected (test_package_overlay.PackagingTests.test_tampered_license_rejected) ... ok
+test_truncated_commands_rejected (test_package_overlay.PackagingTests.test_truncated_commands_rejected) ... ok
+test_trusted_root_accepts_ancestor_alias_but_not_internal_links (test_package_overlay.PackagingTests.test_trusted_root_accepts_ancestor_alias_but_not_internal_links) ... ok
+test_unknown_swig_versions_rejected (test_package_overlay.PackagingTests.test_unknown_swig_versions_rejected) ... ok
+test_unpinned_generator_notice_provenance_rejected (test_package_overlay.PackagingTests.test_unpinned_generator_notice_provenance_rejected) ... ok
+test_unreviewed_license_version_rejected (test_package_overlay.PackagingTests.test_unreviewed_license_version_rejected) ... ok
+test_unsafe_paths_rejected (test_package_overlay.PackagingTests.test_unsafe_paths_rejected) ... ok
+test_x86_64_rejected (test_package_overlay.PackagingTests.test_x86_64_rejected) ... ok
+test_cached_hash_mismatch_is_rejected_without_network (test_runner.ValidationTests.test_cached_hash_mismatch_is_rejected_without_network) ... ok
+test_exact_cached_hash_is_accepted_without_network (test_runner.ValidationTests.test_exact_cached_hash_is_accepted_without_network) ... ok
+test_golden_manifest_matches_recorded_reference (test_runner.ValidationTests.test_golden_manifest_matches_recorded_reference) ... ok
+test_path_traversal_archive_rejected (test_runner.ValidationTests.test_path_traversal_archive_rejected) ... ok
+test_source_tree_never_reused (test_runner.ValidationTests.test_source_tree_never_reused) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.170s
+
+OK

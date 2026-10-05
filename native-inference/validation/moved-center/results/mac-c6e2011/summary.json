@@ -1,0 +1,227 @@
+{
+  "diagnostic_complete": true,
+  "scientific_equivalence_claimed": false,
+  "case_id": "repo_Tilescan_GAT_ms_distal_colon_MP_hu_c1_t1_x4096_y0",
+  "input_sha256": "ffdcd531daefe2dc07723236b6dfc6d5f12629ff902454f36898857813a4c6a1",
+  "expected_model_sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276",
+  "executed_model_sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276",
+  "prediction_origin": "verified model and fixed input executed by this checker",
+  "prediction_sha256": "4370f494f4fe359f3ba9b228b98c4731f4b5ebc612bf7454031aa30634063ab4",
+  "prediction_seconds": 7.1324631659999795,
+  "inference_executed_by_checker": true,
+  "runner": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "os_release": "23.6.0",
+    "logical_cpu_count": 3,
+    "reported_cpu_brand": "Apple M1 (Virtual)",
+    "gpu_comparison_performed": false,
+    "worker_cuda_visible_devices": "-1",
+    "system_load_average_1m_5m_15m": [
+      8.28955078125,
+      12.19287109375,
+      6.9375
+    ],
+    "macos_version": "14.8.9",
+    "reported_physical_cpu_count": 3,
+    "java": {
+      "java.version": "21.0.12.1",
+      "java.vm.name": "OpenJDK 64-Bit Server VM",
+      "java.vm.vendor": "Eclipse Adoptium",
+      "os.arch": "aarch64"
+    },
+    "numeric_thread_environment": {}
+  },
+  "worker_jar_sha256": "2d280304b6d8dfe240b80c949dfffe6d76e6584030fd9c962d0c2ce5ffc4df71",
+  "oneDNN_environment_value": "unset_or_unrecognized",
+  "validation_source_sha256": {
+    "moved-center/check.py": "148ba5844170fdf52cffa6c7f838b21a0e530cf3f88089fd1a0a97f5bf3f7a13",
+    "moved-center/MovedCenterNms.java": "c4fa846cc57ff5b5574c57cdc355c5a43689518dfb1915e1b46af4088f61b1d6",
+    "moved-center/fixture-manifest.json": "813e185f4e18379aa862e55d8d853117cdd7fc1bb29a92de36510bb1c8653f6a",
+    "cross-platform/check.py": "0edd19253c888957bcfa7a802bf1021354b4645a7d0160e97ae2dc6143ff7fc9",
+    "cross-platform/dependencies.json": "d3bf00e2449fa8013735aa7a5eb84cc89930f1dfe51a2be59b7c19be6d8b092a"
+  },
+  "exact_raster_reference_sides": [
+    "legacy"
+  ],
+  "interpretation": "Completed diagnostic, not an equivalence pass. Differences against both fixed Linux reference sides are reported without changing thresholds or tolerances. No complete distance maps are retained in this compact packet.",
+  "score_probes": [
+    {
+      "x": 394,
+      "y": 168,
+      "probability": 0.6602801084518433
+    },
+    {
+      "x": 396,
+      "y": 166,
+      "probability": 0.6602807641029358
+    }
+  ],
+  "schema_version": 1,
+  "ci_source_commit": "c6e2011a9bc930c6b87e9cc7bfddd8af5bc292e4",
+  "fixture_production_baseline_commit": "366c8339e18563105ba41f82ea9d0ac6b6650077",
+  "source_commit_note": "The immutable raw report production_source_commit field names the fixture baseline, not the actual CI checkout. Production worker Java sources are unchanged between these revisions.",
+  "run_id": 37363502181,
+  "job_id": 111943305508,
+  "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37363502181/job/111943305508",
+  "artifact_id": 11367950413,
+  "artifact_sha256": "7ac6de4193b06a17250ec87beefb2c153ab5ca47df7a895ebb757d999b584cb8",
+  "comparisons": [
+    {
+      "reference": "legacy",
+      "expected_count": 148,
+      "actual_count": 148,
+      "counts_equal": true,
+      "expected_candidates": 4851,
+      "actual_candidates": 4851,
+      "candidates_equal": true,
+      "winner_centers_and_label_order_equal": true,
+      "raw_label_pixels_differing": 0,
+      "canonical_masks_equal": true,
+      "foreground_pixels_differing": 0,
+      "whole_image_foreground_iou": 1.0,
+      "measurements_equal": true,
+      "measurement_differences_by_label_id": [],
+      "probability_atol": 0.0001,
+      "probability_rtol": 0.0001,
+      "probability_values_outside_tolerance": 0,
+      "probability_max_abs_error": 2.7418136596679688e-06,
+      "probability_mean_abs_error": 1.927524140514868e-08,
+      "probability_threshold_flips": 0,
+      "probability_maps_exact": false,
+      "distance_maps_compared": false,
+      "outline_comparison": {
+        "scope": "Delta maxima cover matched winning centers only",
+        "matched_centers": 148,
+        "unmatched_reference_centers": [],
+        "unmatched_actual_centers": [],
+        "changed_vertices_at_matched_centers": 4,
+        "max_abs_coordinate_delta_px": 0.010009765625,
+        "max_euclidean_vertex_delta_px": 0.010009765625,
+        "max_abs_polygon_area_delta_px2": 0.011152360530104488,
+        "max_abs_polygon_perimeter_delta_px": 0.0033449188738643443,
+        "strict_quantized_outlines_equal": false
+      },
+      "affected_cell": {
+        "matching_method": "maximum filled-mask IoU across all actual labels; ties prefer lower label ID",
+        "reference_label": 104,
+        "matched_actual_label": 104,
+        "reference_center": [
+          396.5,
+          166.5
+        ],
+        "actual_center": [
+          396.5,
+          166.5
+        ],
+        "reference_area_pixels": 441,
+        "actual_area_pixels": 441,
+        "intersection_pixels": 441,
+        "union_pixels": 441,
+        "iou": 1.0,
+        "dice": 1.0
+      },
+      "exact_raster_centers_measurements_match": true
+    },
+    {
+      "reference": "modern",
+      "expected_count": 148,
+      "actual_count": 148,
+      "counts_equal": true,
+      "expected_candidates": 4851,
+      "actual_candidates": 4851,
+      "candidates_equal": true,
+      "winner_centers_and_label_order_equal": false,
+      "raw_label_pixels_differing": 48,
+      "canonical_masks_equal": false,
+      "foreground_pixels_differing": 48,
+      "whole_image_foreground_iou": 0.9993997448915789,
+      "measurements_equal": false,
+      "measurement_differences_by_label_id": [
+        {
+          "label": 104,
+          "reference": {
+            "label": 104,
+            "area_pixels": 451,
+            "integrated_intensity": 7650044.0,
+            "centroid_x_pixels": 396.8281596452328,
+            "centroid_y_pixels": 162.82372505543236,
+            "mean_intensity": 16962.40354767184,
+            "bbox": [
+              389,
+              147,
+              405,
+              179
+            ],
+            "perimeter_4_neighbor_pixels": 104
+          },
+          "actual": {
+            "label": 104,
+            "area_pixels": 441,
+            "integrated_intensity": 7612906.0,
+            "centroid_x_pixels": 396.9013605442177,
+            "centroid_y_pixels": 162.43424036281178,
+            "mean_intensity": 17262.825396825396,
+            "bbox": [
+              389,
+              146,
+              404,
+              179
+            ],
+            "perimeter_4_neighbor_pixels": 106
+          }
+        }
+      ],
+      "probability_atol": 0.0001,
+      "probability_rtol": 0.0001,
+      "probability_values_outside_tolerance": 0,
+      "probability_max_abs_error": 2.9802322387695312e-06,
+      "probability_mean_abs_error": 1.3156229817976331e-08,
+      "probability_threshold_flips": 0,
+      "probability_maps_exact": false,
+      "distance_maps_compared": false,
+      "outline_comparison": {
+        "scope": "Delta maxima cover matched winning centers only",
+        "matched_centers": 147,
+        "unmatched_reference_centers": [
+          [
+            394.5,
+            168.5
+          ]
+        ],
+        "unmatched_actual_centers": [
+          [
+            396.5,
+            166.5
+          ]
+        ],
+        "changed_vertices_at_matched_centers": 9,
+        "max_abs_coordinate_delta_px": 0.010009765625,
+        "max_euclidean_vertex_delta_px": 0.010009765625,
+        "max_abs_polygon_area_delta_px2": 0.013313006609678268,
+        "max_abs_polygon_perimeter_delta_px": 0.008909455123443877,
+        "strict_quantized_outlines_equal": false
+      },
+      "affected_cell": {
+        "matching_method": "maximum filled-mask IoU across all actual labels; ties prefer lower label ID",
+        "reference_label": 104,
+        "matched_actual_label": 104,
+        "reference_center": [
+          394.5,
+          168.5
+        ],
+        "actual_center": [
+          396.5,
+          166.5
+        ],
+        "reference_area_pixels": 451,
+        "actual_area_pixels": 441,
+        "intersection_pixels": 422,
+        "union_pixels": 470,
+        "iou": 0.8978723404255319,
+        "dice": 0.9461883408071748
+      },
+      "exact_raster_centers_measurements_match": false
+    }
+  ]
+}

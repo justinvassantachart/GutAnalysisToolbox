@@ -8,7 +8,8 @@ check directory, not a diagnostics-only download.
 ## Mac CI commands
 
 After the existing successful checker command, in the **same native Mac job**
-with its original source/cache and SWIG 4.5.0 still available:
+with its original source/cache and the exact recorded SWIG release still
+available (reviewed releases: 4.5.0 and 4.5.1):
 
 ```sh
 python3 -m unittest discover -s native-inference/validation/jpeg-xr -p 'test_*.py' -v
@@ -21,8 +22,11 @@ If `check.py` used an external cache, add `--cache /exact/original/cache`. No
 network request occurs in this packaging step. It rejects non-native-Mac hosts,
 failed/incomplete checks, changed artifact/native/source/license hashes,
 incorrect architectures/dependencies, unsafe paths and missing corresponding
-source. A different SWIG generator version requires a reviewed notice/provenance
-update, not suppression of the version check.
+source. Only the two explicitly reviewed SWIG releases are accepted, with an
+exact, single version line. A different generator version requires a reviewed
+notice/provenance update, not suppression of the version check. The selected
+release's LICENSE, COPYRIGHT, LICENSE-UNIVERSITIES and shared GPL3 text must
+match their reviewed hashes and immutable official source provenance.
 
 Upload only after the package command succeeds. Suggested owner-managed CI
 artifact paths (the owner edits shared YAML):
@@ -54,11 +58,14 @@ output/cache: it contains upstream fixture images and third-party dependencies.
 - Original build inputs compare byte-for-byte with the pinned upstream archive
 - Complete corresponding JNI/C/C++/Java source, Makefile, preferred SWIG interface,
   generated wrapper, compatibility header, pinned old vector typemap and offline
-  rebuild recipe are packaged. Generated sources are independently regenerated
-  with the recorded SWIG version and compared byte-for-byte
+  rebuild recipe are packaged. `SWIG_VERSION` pins that source archive's exact
+  release; `SOURCE_PROVENANCE.json` records its immutable upstream generator
+  commit. Generated sources are independently regenerated with the same exact
+  recorded SWIG version and compared byte-for-byte
 - Resource-only JAR has zero Java classes and retains exact license materials,
   including Glencoe GPL-2.0-or-later headers/full GPL2, Microsoft BSD-style notices,
-  and both SWIG versions' library terms/copyright notices
+  and the old SWIG3 typemap plus reviewed SWIG4 generators' library terms and
+  complete copyright/university notices
 - Final JAR is put last on the actual published Java/Bio-Formats classpath and
   decoded again in a fresh JVM with no native-path overrides; its resource URL
   must be the source of the loaded dylib and all 13 outputs must match
@@ -71,10 +78,13 @@ an all-format compatibility claim in a release.
 
 ## Local packaging unit tests
 
-The 14 packaging tests plus five existing checker tests cover dependency/install-ID
+The packaging tests plus five existing checker tests cover dependency/install-ID
 distinction, bad architecture/commands, unsafe paths/symlinks, deterministic
 resource-only archives, license completeness/tampering, failed-check rejection,
-complete source assembly, source changes and missing generated source. Unit
+complete source assembly, source changes and missing generated source. Additional
+generator regression tests cover both reviewed releases, unknown/ambiguous/version
+suffix rejection, notice omissions/tampering/provenance, exact source-version
+recording, matching-version regeneration and the offline rebuild version gate. Unit
 fixtures are not represented as successful native binaries. A real pinned Linux
 source-tree assembly/regeneration check tests the packaging mechanism separately;
 only a native Mac final-JAR rerun can produce a distributable overlay ZIP.

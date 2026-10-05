@@ -16,8 +16,13 @@ assertion that the upstream POM's BSD-only label covers the entire wrapper.
   inconsistency is documented at https://github.com/glencoesoftware/jxrlib/issues/28.
 - The vector typemap comes unchanged from SWIG 3.0.10 commit
   `d9875c6579efc8a56132313704c69e627c990dac`. The remaining generated wrapper
-  came from the recorded SWIG 4.5.0 generator. Both versions' license,
-  university notices and copyright files are retained. Their LICENSE files
+  came from the exact generator recorded in `SWIG_VERSION` and
+  `SOURCE_PROVENANCE.json` (reviewed releases: SWIG 4.5.0 and 4.5.1).
+  The old typemap and both reviewed generator releases' license, university
+  notices and copyright files are retained. The four corresponding official
+  SWIG 4.5.0/4.5.1 notice files are byte-identical, verified at their immutable
+  source commits; their version-specific source URLs remain explicit in
+  `license-manifest.json`. Their LICENSE files
   separately permit copying/modifying/distributing the Lib/Examples library
   code; the SWIG executable's GPL-3.0 terms are not presented as a restriction
   on all generated output. A GPL-3.0 text is included for completeness of those

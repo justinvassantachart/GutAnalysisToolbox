@@ -13,7 +13,10 @@ sh rebuild.sh
 
 The default uses the supplied generated JNI C++ source. SWIG need not be
 installed for that build. To regenerate wrapper sources from `java/JXR.i`, use
-SWIG **4.5.0**, with the included unchanged SWIG **3.0.10** `std_vector.i` override:
+the **exact SWIG release recorded in `SWIG_VERSION`** (reviewed releases are
+**4.5.0** and **4.5.1**), with the included unchanged SWIG **3.0.10**
+`std_vector.i` override. The recipe rejects an unreviewed release or a generator
+that differs from this particular archive's recorded version:
 
 ```sh
 SWIG=/absolute/path/to/swig sh rebuild.sh --regenerate
@@ -28,7 +31,9 @@ No OpenSSL-dependent command-line decoder is built. No source files or engine
 metadata are patched during installation.
 
 `BUILD_INFO.json` in the outer overlay records the successful compiler and SWIG
-versions, exact native hash and source hash. Reproducing the build recipe does
+versions, exact native hash and source hash. `SOURCE_PROVENANCE.json` records the
+generator's official immutable source commit and notice checksums; the full
+version-specific notices and their source URLs are included. Reproducing the build recipe does
 not promise a byte-identical Mach-O with a different SDK, compiler, path or
 linker: UUIDs/install IDs can differ. Test any rebuild against the pinned golden
 fixtures and published Java API before installing it. The library's own

@@ -7,11 +7,21 @@ test "$(uname -m)" = arm64
 : "${JAVA_HOME:?Set JAVA_HOME to an existing native ARM JDK with JNI headers}"
 test -f "$JAVA_HOME/include/jni.h"
 # Generated sources are included so an ordinary native rebuild needs no SWIG.
-# To regenerate, explicitly request it and use the recorded SWIG 4.5.0 tool.
+# To regenerate, explicitly request it and use this archive's recorded release.
 if [ "${1:-}" = --regenerate ]; then
     : "${SWIG:=swig}"
-    "$SWIG" -version
-    "$SWIG" -version | grep 'SWIG Version 4.5.0' >/dev/null
+    recorded_swig=$(cat ../SWIG_VERSION)
+    case "$recorded_swig" in
+        4.5.0|4.5.1) ;;
+        *) echo 'Unreviewed SWIG release in source archive' >&2; exit 1 ;;
+    esac
+    swig_log=$("$SWIG" -version)
+    printf '%s\n' "$swig_log"
+    actual_swig=$(printf '%s\n' "$swig_log" | sed -n 's/^SWIG Version //p')
+    if [ "$actual_swig" != "$recorded_swig" ]; then
+        echo "Matching SWIG $recorded_swig required to regenerate this archive" >&2
+        exit 1
+    fi
     make swig "SWIG=$SWIG -I$(pwd)/gat-legacy-swig"
 fi
 export JAVA_HOME
