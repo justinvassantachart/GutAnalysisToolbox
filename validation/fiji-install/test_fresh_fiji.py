@@ -5,6 +5,8 @@ import tempfile
 import unittest
 import zipfile
 import stat
+import subprocess
+import shutil
 
 SPEC = importlib.util.spec_from_file_location('fresh', Path(__file__).with_name('run_fresh_fiji.py'))
 fresh = importlib.util.module_from_spec(SPEC)
@@ -23,6 +25,29 @@ class ArchiveSafetyTests(unittest.TestCase):
             for name, content in names:
                 z.writestr(name, content)
         return self.path
+    def test_ganglia_reflection_against_actual_params_source(self):
+        here = Path(__file__).resolve().parent
+        java = shutil.which('java')
+        javac = shutil.which('javac')
+        self.assertIsNotNone(java, 'JDK required for the actual Params reflection contract')
+        self.assertIsNotNone(javac, 'JDK required for the actual Params reflection contract')
+        classes = self.root / 'actual-params-classes'
+        classes.mkdir()
+        source = here.parents[1] / 'src/main/java/Features/Core/Params.java'
+        self.assertTrue(source.is_file())
+        subprocess.run([javac, '--release', '11', '-d', str(classes), str(source),
+                        str(here / 'Fresh_Ganglia_Params.java'),
+                        str(here / 'GangliaParamsContractTest.java')],
+                       check=True, capture_output=True, text=True, timeout=30)
+        result = subprocess.run([java, '-Djava.awt.headless=true', '-cp', str(classes),
+                                 'GangliaParamsContractTest'], check=True,
+                                capture_output=True, text=True, timeout=30)
+        self.assertIn('PASS actual Params', result.stdout)
+        # The installed probe must execute the same tested setter helper.
+        self.assertIn('Fresh_Ganglia_Params.configure(params)',
+                      (here / 'Fresh_Ganglia_Probe.java').read_text())
+        self.assertIn("HERE / 'Fresh_Ganglia_Params.java'", (here / 'run_fresh_fiji.py').read_text())
+
     def test_actual_gat_reference_uses_four_tiles(self):
         reference = fresh.MANIFEST['neuron_reference']
         self.assertEqual(reference['tiles'], 4)

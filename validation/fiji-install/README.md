@@ -149,3 +149,18 @@ The proposed YAML preserves diagnostics only.
 
 Full-byte archive verification and local-only test results are recorded in
 `PREPARATION_RESULTS.json`. Those are not native Mac results.
+
+## Reached clean-install follow-up
+
+Native attempt 3 of run 37366290437 installed the actual PyTorch engine, ran the
+full 1024×1024 model, opened both GAT dashboards, and passed fork neuron/alignment.
+Both ganglia probes then stopped before invoking GAT because the harness used
+primitive reflection setters on two boxed Double parameters. This is a test
+setup defect, not evidence that either ganglia implementation failed.
+
+The corrected probe uses Fresh_Ganglia_Params for the two boxed assignments.
+A regression compiles the repository's actual Params.java, demonstrates both
+old setters fail, and checks all four configured values. The same check passes
+against unchanged 1870d9e Params. Production code, models, thresholds and engine
+selection are unchanged; the final installed-Fiji ganglia gate still requires
+the new native run. Historical artifacts retain their original failure status.

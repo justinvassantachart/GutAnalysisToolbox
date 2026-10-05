@@ -68,10 +68,7 @@ public final class Fresh_Ganglia_Probe {
         byte[] originalHu=hu.clone(),originalGanglia=ganglia.clone();
         ImagePlus unrelated=new ImagePlus("unrelated-existing-image",new ByteProcessor(w,h));unrelated.show();
         Class<?> paramsType=Class.forName("Features.Core.Params",true,loader);Object params=paramsType.getDeclaredConstructor().newInstance();
-        paramsType.getField("gangliaInteractiveReview").setBoolean(params,false);
-        paramsType.getField("gangliaProbThresh01").setDouble(params,.6);
-        paramsType.getField("gangliaOpenIterations").setInt(params,1);
-        paramsType.getField("gangliaMinAreaUm2").setDouble(params,1.0);
+        Fresh_Ganglia_Params.configure(params);
         Class<?> calls=Class.forName("Features.Core.PluginCalls",true,loader);
         Method method=Arrays.stream(calls.getMethods()).filter(m->m.getName().equals("runDeepImageJForGanglia") && m.getParameterCount()==7).findFirst().orElseThrow(()->new NoSuchMethodException("GAT ganglia call"));
         long start=System.nanoTime();

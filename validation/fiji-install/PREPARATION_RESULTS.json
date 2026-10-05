@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "prepared_utc": "2026-10-05T19:16:00Z",
-  "status": "ENGINE_INITIALIZATION_EXTENSION_READY_FOR_NATIVE_RERUN",
+  "status": "BOXED_PARAMS_SETUP_FIX_READY_FOR_NATIVE_RERUN",
   "local_validation_host": "Linux-6.18.44-x86_64-with-glibc2.41",
   "official_archive": {
     "url": "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip",
@@ -47,11 +47,11 @@
     },
     {
       "path": "validation/fiji-install/Fresh_Ganglia_Probe.java",
-      "sha256": "4c5704d960efda55ef3af03fb9d3dc4725827914e4dfa4b05ccbf8dd34643b60"
+      "sha256": "941595f16879f0b97525fd8821be885caeeb5f4cabd839220873c9474fa1afc0"
     },
     {
       "path": "validation/fiji-install/README.md",
-      "sha256": "3813071fb8d3af34239f65b3d5f7ef3bf7bf8f3bb2e495dfe750d8f1c625a313"
+      "sha256": "51f8b0ec065215ce772d9f8287e862b2f5366aa1624017acf3918f83729ea328"
     },
     {
       "path": "validation/fiji-install/manifest.json",
@@ -63,11 +63,19 @@
     },
     {
       "path": "validation/fiji-install/run_fresh_fiji.py",
-      "sha256": "b3354384d09bea2291cf8ab89d5b783d3e370e69f19616409bf825a4b224deb4"
+      "sha256": "8ee3486ff2dceff775000465e544d11ae69cd83f63c4c3369f40272bcbaca397"
     },
     {
       "path": "validation/fiji-install/test_fresh_fiji.py",
-      "sha256": "253b0f19110ba15dcf990f9fd394183bca2e1e25a4b9bd58b3c332e1c5e9ec06"
+      "sha256": "250049a9404f8518abc5f16cb211d3f62dfb6b8709bf5c515164911752c76369"
+    },
+    {
+      "path": "validation/fiji-install/Fresh_Ganglia_Params.java",
+      "sha256": "cab0a6fee3b42ad47e0051fc1184737dc80ec45927d48f2f0fbbae0caf5051e9"
+    },
+    {
+      "path": "validation/fiji-install/GangliaParamsContractTest.java",
+      "sha256": "f4aff3b9e27adb25c9a56cef0f9d717058b1f0978cd01af9ba003d0f07cec413"
     }
   ],
   "review_correction": {
@@ -110,5 +118,26 @@
     "next_standard_runner": "macos-15",
     "reason": "Hosted macOS14 runner acquisition failed after multiple attempts; preserve Sonoma evidence and record distinct Sequoia runtime.",
     "paid_or_larger_runner": false
+  },
+  "boxed_parameter_followup": {
+    "local_python_tests": 17,
+    "local_python_status": "PASS",
+    "actual_original_and_fork_params_contract": "PASS: both Double fields reject primitive setDouble; tested boxed assignments and primitive int/boolean values succeed",
+    "java_probe_compilation": "PASS --release 11, pinned ImageJ/JDLL/ImgLib2 dependencies",
+    "native_attempt3": {
+      "run_id": 37366290437,
+      "job_id": 111973920737,
+      "source": "fe5fd7b0a5a9b6e79074ef24d79c27fd2c5c2372",
+      "passed": [
+        "real engine install",
+        "full model inference",
+        "original dashboard",
+        "fork dashboard",
+        "fork neuron",
+        "fork alignment"
+      ],
+      "ganglia_status": "Harness setup exception before either GAT command; no application result inferred"
+    },
+    "next_native_ganglia_result": "PENDING"
   }
 }
