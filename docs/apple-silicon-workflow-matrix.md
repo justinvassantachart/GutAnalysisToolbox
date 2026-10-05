@@ -7,6 +7,12 @@ M1–M5 release certification. **No workflow has yet been run on a physical Mac
 in this audit.** Linux tests and the existence of arm64 libraries do not prove
 macOS execution or scientific equivalence.
 
+Since the component audit, the isolated neuron worker has passed native macOS
+14.8.9 ARM64 CI: 16 unit tests, JNI loading, and both real models on a synthetic
+129×97 image. [CI evidence](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37338503480/job/111859285053).
+This does not mark any complete Fiji workflow below as Mac-tested or validate
+the separate PyTorch, OpenCL, registration or IO dependencies.
+
 Follow the [installation and validation guide](apple-silicon.md) for the exact
 supported preview configuration, model/input limits, and diagnostic reporting.
 The neuron worker does not change DeepImageJ, OpenCL, registration, or data
