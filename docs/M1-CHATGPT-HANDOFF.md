@@ -1,507 +1,557 @@
-# GAT Apple Silicon M1 testing handoff
+# Clean Mac Fiji and GAT TEST release handoff
 
-Prepared 2026-10-05. Give this document to the ChatGPT session that you choose to
-control your M1 Mac. The instructions below are self-contained. The preview is
-experimental, and this task is to establish what actually works on your Mac
-and which architecture should be maintained long term.
+Prepared 5 October 2026. TEST release 2. This is a self-contained instruction document for the computer assistant the owner chooses to use on their physical M1 Mac. No Fiji, Java, Homebrew, Git, Maven, Python, command-line developer tools, plugins, or models are assumed to be installed.
 
-## Prompt to give ChatGPT
+**This is an experimental TEST release, not an all-workflow compatibility
+certificate.** Native hosted-Mac checks pass the fork's actual neuron/registration
+controls and the covered Java/ganglia/calcium workflows. The newly prepared
+fresh-install engine-initialization extension still awaits its native run;
+physical OpenCL/GPU access, complete desktop navigation and format-specific IO
+remain local checks. Optional JPEG-XR overlay packaging is pending and is not
+part of this core install. These limits do not prevent testing the supplied core
+package safely in the two separate Fiji copies below.
 
-Please test this Gut Analysis Toolbox Apple Silicon preview on my M1 Mac,
-safely and thoroughly. Start with neuron and subtype detection, then audit and
-test the other workflow dependencies. Return reproducible evidence and a
-recommendation on the cleanest long-term architecture: a shared CSBDeep/StarDist
-backend integration or the separate GAT inference worker used by this preview.
+Do not substitute the earlier `apple-silicon-preview-1` package: it lacks the
+newer workflow changes. If a download or checksum is unavailable, stop that
+specific step, retain evidence and report it rather than fabricating success.
 
-I am choosing to run this session myself. Use only the Mac/computer access I
-authorize for this task. Do not publish changes, open a pull request, or contact maintainers.
-Follow your own tool, computer-access, installation, execution, and permission
-rules. This document is a test plan, not permission to bypass any of them.
+## Paste this prompt into the computer assistant
 
-### Safety and scope
+Please install and test Gut Analysis Toolbox on my physical M1 Mac from scratch, using this entire document. First verify that you actually have access to my Mac, its filesystem and its desktop. A cloud Linux machine or hosted virtual Mac is not my computer. If access is missing, explain the supported connection step and wait; do not claim local tests from cloud results.
 
-- Begin with read-only inspection. Explain the proposed local test installation
-  and ask for any installation or code-execution approval required by your rules
-- Use a new, separate native-arm64 Fiji test installation and a new test/output
-  directory. Keep my working Fiji installation, original images, existing
-  models, settings, and analysis results unchanged
-- Use public test images first. Use copies of my research images only after I
-  explicitly identify and authorize them. Do not upload research images or
-  unrelated local data anywhere
-- Inspect downloaded scripts and their declared dependencies before running
-  them. Use official project/vendor repositories and checksum-pinned assets
-- Do not disable Gatekeeper, remove security protections, bypass certificate
-  warnings, change credentials, create tokens, or expand persistent access.
-  Stop and ask me to handle security or authentication prompts when required
-- Do not install random native JARs, blindly upgrade TensorFlow/PyTorch/OpenCV,
-  change model metadata to get past errors, or overwrite reference outputs
-- Do not silently change registration methods, model thresholds, calibration,
-  channel order, normalization, crop boundaries, or measurement definitions
-- Run analysis serially, with bounded memory, thread counts, and temporary
-  storage. Start with small images. Stop a test if it threatens normal Mac use
-- Save logs before retrying. Report failures, blocked stages, and unrun stages
-  separately. Do not turn “the plugin opened” into “the workflow passed”
-- You may create local test scripts, synthetic fixtures, measurements, and
-  reports within the agreed test directory. Keep production-code changes as
-  proposed patches for review unless I separately approve implementing them
+Use two separate native ARM Fiji test copies, one with the unchanged original GAT and one with the specified corrected fork. Establish a fair before/after comparison with the same Fiji/dependencies, public inputs, models and settings. Then test the physical-machine and complete GUI paths that hosted CI cannot establish. Report what passes, fails, is blocked, and has not run. Do not assume every old workflow fails or that loading a plugin proves its outputs are correct.
 
-### Exact source and package
+Start with read-only inspection and explain the proposed downloads and local code execution. Obtain whatever installation, execution, accessibility, screen-recording or other permissions your rules require. This document does not override them. Work only in the new test directory. Use public/synthetic images first. Do not upload private research data, credentials, system-wide inventories or crash logs containing sensitive data. Ask before using any of my research images; keep such work local unless I explicitly approve sharing particular files.
 
-Public fork: https://github.com/simplecoreorg-cyber/GutAnalysisToolbox
+Do not change OS security settings, disable Gatekeeper, remove quarantine attributes, run `xattr` or `spctl` workarounds, bypass certificate warnings, install Rosetta as a workaround, change credentials, create tokens, or contact maintainers. Let me personally handle normal macOS security decisions when required. Do not run an app marked malicious or damaged. Do not open a PR or publish anything. Preserve original downloads, fixtures and failed-run evidence; make a new output directory for each retry.
 
-Branch: `feat/apple-silicon-stardist`
+Use the downloadable, checksum-verified packages and Fiji's bundled Java for the normal path. Do not install a development toolchain just to open Fiji. Use Finder and built-in macOS tools where possible. If an optional automated test genuinely needs another tool, state why and obtain permission before installing it from its official source. Never silently upgrade an engine, alter model metadata, change thresholds or registration algorithms, or replace a scientific reference to get a green result.
 
-Verified source revision to start from:
-`366c8339e18563105ba41f82ea9d0ac6b6650077`
+## Exact TEST release packages
 
-Preview archive download:
-https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/releases/download/apple-silicon-preview-1/GAT-2.0.1-apple-silicon.1-macos-arm64-preview.zip
+Verify every downloaded archive against the hashes below. These packages were built on native macOS and their plugin class contents matched the tested classes. The source commit and whole-package hashes pin this test; a moving branch is not a replacement.
 
-Verified release page:
-https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/releases/tag/apple-silicon-preview-1
+| Item | Exact value required before running |
+| --- | --- |
+| Original source | `1870d9e16e16fd6daeac0bd05122e851029ddedc` in `pr4deepr/GutAnalysisToolbox` |
+| Original source link | https://github.com/pr4deepr/GutAnalysisToolbox/tree/1870d9e16e16fd6daeac0bd05122e851029ddedc |
+| Unchanged baseline install bundle | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/GAT-2.0.0-unchanged-1870d9e-baseline.zip |
+| Baseline ZIP SHA-256 and contained GAT JAR SHA-256 | `d2224b968368abd5a198f190db51022d8fa41cd72d6cfb7c845a224f94420ad8` / `b54076cc642f9e0795e38fa778c05241648e76ee4388d69206ff2ebdd557c0d9` |
+| Corrected fork source commit | `fe5fd7b0a5a9b6e79074ef24d79c27fd2c5c2372` |
+| Corrected fork release page and install ZIP | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2 / https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/GAT-2.0.1-apple-silicon.2-macos-arm64-preview.zip |
+| Fork ZIP and GAT JAR SHA-256 | `9c5a542b82eb146b9c1d6c78ca20d1a0ffb8d10af7d35d6cd8ead8b927ac1f9f` / `3d7a112228aba6b4748d604912ed1dd4336e6fb8f68e83fc4cd69385e00af7e9` |
+| Companion worker/alignment bundle inventory | Both `gat-native-inference/` and `gat-native-alignment/`, already in the core ZIP; preserve complete directories and BUILD_INFO.json |
+| Public fixtures, validation scripts, references and dependency manifest | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-2/GAT-M1-test-kit-preview-2.1.zip / `979d818165e677215824808834391ad80b70866c86ead5da2ae8830e022a2d55` |
+| Optional pinned ganglia engine/model data pack | No separate engine pack is required; use the supported official installation instructions in section 5 (fresh-install extension verification remains pending) |
+| Native paired baseline/fork CI run and report archive | [Qualified Sequoia paired report](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/ee2907e371b12b1951a507141f797afedb460aef/native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md); copies of the relevant evidence are in the test kit |
+| Final package's recorded Fiji/dependency inventory | `native-inference/validation/workflows/dependencies.json` at the pinned source; record actual updater-resolved versions and hashes as well |
 
-Preview archive SHA-256: `014c88bf6a52951a5e842a0eeef0d1f154238cac3f0a20e497414b17d27c1abc`
+Fork repository: https://github.com/justinvassantachart/GutAnalysisToolbox
 
-Download the linked asset (also listed on the verified release page) named
-`GAT-2.0.1-apple-silicon.1-macos-arm64-preview.zip` and verify its bytes against
-the SHA-256 above before extracting. The release tag points to the pinned source
-revision. Do not substitute a similarly named file. If download is unavailable,
-use the pinned source/build route below after the required permissions.
-If a newer package is supplied, read its
-`BUILD_INFO.json`, record its source commit and hashes, and explain any version
-change before treating its results as tests of the baseline above.
+Verified public repository default branch: `main`. Do not substitute its moving HEAD for `fe5fd7b0a5a9b6e79074ef24d79c27fd2c5c2372`. The public repository/default branch was independently verified through GitHub's API.
 
-Read these repository files when present, but do not depend on earlier chats:
+The baseline ZIP includes the unchanged original JAR; there is no need to build it or install developer tools. The fork ZIP is 203,283,161 bytes; the baseline ZIP is 1,664,353 bytes. Dependencies and models are installed separately as described below. A missing optional test or unavailable GitHub check does not become an all-workflow pass.
 
-- `docs/apple-silicon.md`
-- `docs/apple-silicon-workflow-matrix.md`
-- `native-inference/README.md`
-- `native-inference/validation/RESULTS.md`
-- `native-inference/validation/cross-platform/README.md` and its fixture manifest,
-  if present in the tested source revision
-- `native-inference/validation/corpus/README.md`, if present
+## Current before and after evidence
 
-Some validation additions may arrive after the pinned source revision. Record
-what is actually available; do not claim to have run an absent harness. Keep
-any newer validation checkout separate, record its revision, and do not silently
-replace the production baseline.
+The unchanged original source is `1870d9e16e16fd6daeac0bd05122e851029ddedc`.
+Native paired controls have now run on hosted **Apple M1 Virtual** machines with
+Sonoma 14.8.9 and Sequoia 15.7.9. The final TEST package comes from fork commit
+`fe5fd7b0a5a9b6e79074ef24d79c27fd2c5c2372`; original production source remained
+unchanged and isolated from the fork's modern runtimes. Hosted virtual hardware
+is not the owner's physical M1 and does not expose a usable OpenCL device here.
 
-The compact real-image regression harness is now verified at validation revision
-`d6fc18aa7ca5df8295108639efbeac3d01d509e3`. That revision adds tests/instructions
-without changing the preview's production code. Use a separate checkout at this
-revision for the automated comparator while testing the installed preview JARs.
+| Workflow or boundary | Unchanged original | Fork TEST release | What remains |
+| --- | --- | --- | --- |
+| Actual GAT Hu StarDist call | FAIL or timeout depending on the loader control; separate old TensorFlow JNI control fails | PASS: 39 cells and exact reference label raster | Full dashboard image transforms/filters and the user's physical setup |
+| Template Matching actual GAT call | FAIL: shifted image unchanged; installed-Fiji run captures missing `jniopencv_core` | PASS: aligned pixels exactly match seeded legacy reference | Broader real movies, GUI settings, physical Mac performance |
+| SIFT | Original result/metadata controls expose dropped or unpreserved output | PASS covered helper, single save/reopen and two-channel batch controls | Wider datasets and complete interactive navigation |
+| Ganglia | Command/model/cleanup executes; the pre-RDF input is incorrectly divided by 255 again | PASS command and corrected input contract | Biological review; complete fresh-installed-Fiji engine/command extension still pending |
+| Calcium | **PASS** on Sonoma and Sequoia: MAX control, F/F0 `[1,1,2]`, ROI measurement/export | **PASS** on both systems with the same numerical/export control | User-specific movies, cancellation/edge cases and complete GUI navigation |
+| Morphology, counts, merge/export and TIFF helpers | Covered Java/helper checks pass | Covered Java/helper/command checks pass | Broader schemas, formats and full workflows |
+| StackReg/TurboReg and multiplex | Original library/control coverage is partial | Direct StackReg and multiplex landmark controls pass | StackReg batch remains unimplemented; full multiplex export/fallbacks untested |
+| Fresh official Fiji with bundled Java | Native Fiji startup works; original neuron/alignment controls fail | Native Fiji startup plus actual neuron/alignment controls pass | GAT dashboards hit real missing-engine preflight; engine-initialization extension prepared but not native-verified |
+| OpenCL/CLIJ, spatial/EDF/GPU overlap | Virtual runner cannot establish physical-device support | Same limitation | Physical M1 device enumeration and real kernels/workflows |
+| JPEG-XR and other reader paths | Old macOS JPEG-XR JNI binary is Intel-only | Separate native codec prototype passes golden tests | Final optional overlay packaging and full importer/container testing are pending; not bundled in core |
 
-### What this preview changes
+The calcium direct-return changes are **hardening**, not proof that the original
+calcium calculation was broken. Earlier calcium failures were confounded by the
+automated dialog controller; reliable controls now pass both original and fork.
+Do not describe calcium as “broken before and fixed afterward.” Likewise,
+original ganglia and many pure-Java controls work: the old software did not
+universally fail.
 
-On Apple Silicon, GATV2 launches a separate Java process containing TensorFlow
-Java 1.2.0 / TensorFlow 2.21.0 for neuron and neuronal-subtype neural inference.
-The worker loads the existing author model ZIPs without conversion or retraining.
-Fiji retains the existing StarDist 2D NMS and subsequent ROI/label processing.
-Modern TensorFlow and its dependencies must remain outside Fiji's main classpath.
+On the public 175×175 Hu crop, probability 0.5, NMS 0.3 and four requested tiles,
+the fork's raw 16-bit label SHA-256 is
+`ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443`,
+matching archived legacy-TF1 and modern-worker rasters at that setting. Its
+four-frame Template Matching pixel SHA-256 is
+`8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c`,
+matching the seeded legacy Linux reference. These are actual output comparisons,
+not just successful class loading or equal counts. The historical four-frame
+CI hash is distinct from the manual kit 2.1 twelve-frame input/expected files;
+use the kit manifest for those files, not this historical hash.
 
-The worker ports the existing CSBDeep normalization and tiling behavior. It uses
-CPU inference. It does not provide Metal acceleration, replace DeepImageJ,
-replace CLIJ2/OpenCL, or establish that every workflow is Mac-compatible.
+The ganglia fixture produced 167,430 foreground pixels with the original and
+72,236 with the corrected fork. This is the expected consequence of correcting
+a reached double-scaling contract, **not legacy-mask parity or proof of superior
+biological accuracy**. Weights, RDF mean/std and thresholds were not changed.
 
-Use **Plugins → GutAnalysisToolbox → GATV2**. The old update-site `.ijm` macros
-under the legacy GAT menus are **not patched** and can still call legacy
-TensorFlow. Do not use those old macros to test the new backend. Do not force
-the legacy TensorFlow backend on Apple Silicon, including through Rosetta.
+The first original StarDist command failed at a Java 21 classloader cast before
+an ARM JNI error was observed. Later standalone direct JNI controls separately
+show the old TensorFlow/OpenCV native components fail. Do not merge these into a
+fictional single traceback. The fork's direct probes of those same old native
+libraries can still fail intentionally: its working GAT paths use isolated
+workers, not patched global legacy libraries. Old `.ijm` macros and arbitrary
+legacy plugin menu calls are not automatically repaired.
 
-### Requirements and environment inventory
+Historical evidence is preserved, including
+[first paired run 37357196889](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37357196889)
+and fresh-installed-Fiji run `37363502221` at `c6e2011`. Follow-up reports in the
+validation kit supersede the earlier dialog-controller failures. A PARTIAL suite
+contains explicitly scoped passes plus blocked/unrun checks; it is not a whole
+application PASS. Failed-original and successful-fork elapsed times cannot be
+compared as a speedup. No physical-M1 or CPU-versus-GPU speed multiplier is claimed.
 
-The packaged preview requires **macOS 14 Sonoma or newer**. Its TensorFlow Java
-JNI library has minimum macOS deployment target 14.0. If my Mac is older, stop
-and explain the blocker; do not upgrade my OS automatically.
+## 1 Confirm local hardware and make a workspace
 
-Use **native macOS arm64 Fiji Latest with its bundled Java 21**, from:
-https://imagej.net/software/fiji/downloads
+1. Use Apple menu → About This Mac to record chip, memory and macOS version. Do not collect serial numbers. The fork's current TensorFlow native worker requires macOS 14 or later. If this Mac is older, mark that blocker and ask; do not upgrade the OS automatically.
+2. In Finder choose Go → Home. Create a folder named `GAT-M1-Validation`. Prefer this local home folder over an iCloud-synced Documents/Desktop folder. Record the actual path. It must not replace any existing folder.
+3. Inside it create `Downloads`, `Original`, `Fork`, `Inputs`, `Runs`, `Reports`, and `Backups`. Run one Fiji copy at a time. Use clearly labelled window titles and output folders.
+4. Open Terminal from Applications → Utilities only when needed. No Git, Python, Homebrew or `java` command is assumed. The following built-in commands are read-only:
 
-The worker requires Java 11 or newer; JDK 17 or newer is required for the build
-route below. Native Java is essential. “Apple Silicon hardware” is insufficient
-if Fiji or Java is running as Intel through Rosetta.
+```sh
+sw_vers
+uname -m
+sysctl -n machdep.cpu.brand_string
+sysctl -n hw.memsize
+sysctl -n hw.logicalcpu
+sysctl -n sysctl.proc_translated 2>/dev/null || true
+```
 
-Record, without exposing unrelated personal information:
+`arm64` is expected. A missing `sysctl.proc_translated` value alone is not a failure. Check Fiji's actual JVM architecture later; the terminal architecture is insufficient.
 
-- Mac chip/model, memory, macOS version/build, and whether the session is translated
-- Fiji application path, build/version, and launcher architecture
-- The exact Java executable used by Fiji and the worker, Java version,
-  `java.home`, `os.arch`, and `os.name`; expected Java architecture is `aarch64`
-  or `arm64`
-- Git revision, working-tree state, package checksum, `BUILD_INFO.json`, and
-  SHA-256 of the actual plugin and worker JARs
-- Enabled Fiji update sites and actual loaded plugin/JAR versions, with paths
-- Model filenames, exact source URLs, SHA-256, and relevant model metadata
-- Input filenames/hashes, source, dimensions, bit depth, C/Z/T axes, calibration,
-  channels selected, crop/scale transforms, thresholds, and output directory
+## 2 Download official native Fiji with its JDK
 
-Read-only OS tools such as `sw_vers`, `uname -m`, `sysctl`, `file`, and Java's
-version/properties output can help. Verify the actual Fiji JVM from inside Fiji
-as well; the terminal's default Java may be different. Do not collect serial
-numbers or unrelated inventory.
+Use the official [Fiji download page](https://imagej.net/software/fiji/downloads), selecting **Fiji Latest → macOS → arm64**, with the JDK. Do not select Intel/x86-64, Fiji Stable/Java 8, or Portable/no JDK for this task. Fiji is a portable download that is unpacked and opened; a system Java installer is not required. The page also links dated archives for reproducibility.
 
-### Install into the separate test Fiji
+Current official moving download, verified when this draft was prepared:
+https://downloads.imagej.net/fiji/latest/fiji-latest-macos-arm64-jdk.zip
 
-Use Fiji's updater to install the normal dependencies, following prompts and
-your permission rules:
+Use this exact dated official native Fiji archive:
+https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip
 
-- StarDist, CSBDeep, DeepImageJ
-- clij and clij2
-- IJPB-plugins, PTBIOP, 3D ImageJ Suite, BIG-EPFL
-- Gut Analysis Toolbox: https://sites.imagej.net/GutAnalysisToolbox/
+Its verified SHA-256 is
+`26af2159ca1d770de2c6b4fd99b98292891c50abdeaa00d1c66a425cd3de45b0`.
+The complete 669,037,040-byte download was independently hashed and matched the
+publisher's adjacent `.zip.sha256` file. ZIP CRC and guarded archive-member/path
+checks also passed (859,133,844 uncompressed member bytes). That verification
+was performed without executing ARM code on Linux; it is **archive verification,
+not a successful installed-Fiji GUI test**. The receiving assistant must hash its
+own download too. Record and explain any deliberate replacement of this pinned
+build before proceeding; use the same base on both sides.
 
-Record the resolved versions. Complete the required DeepImageJ initialization
-in this test copy if preflight requires it. A folder named `engines` alone is
-not evidence of a usable model engine. The native neuron worker does not require
-selecting TensorFlow 1.15 in Fiji, and you must not load that runtime to test it.
+The moving `latest` URL is shown only for source verification. Use the dated ZIP above, save it once, and derive **both** test copies from those same verified bytes. Never download “latest” separately for each side of a before/after comparison.
 
-Quit the test Fiji before copying files. Move any existing GAT plugin JAR from
-the **test copy only** to a backup outside that Fiji. Do not leave two GAT
-versions installed. Extract the verified preview into the directory containing
-Fiji's `plugins`, `jars`, and `models` folders. Expected layout:
+In Terminal, type `shasum -a 256 `, drag the downloaded ZIP from Finder into Terminal, then press Return. Save the complete hash and filename. If a verified publisher checksum is available, compare it; otherwise clearly label this as the locally recorded download hash, not a verified external checksum.
+
+Use Archive Utility/Finder to extract the ZIP. Keep the entire extracted directory together. **The official ZIP inspected on 5 October 2026 contains this layout:**
 
 ```text
-Fiji.app/
-  plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.1.jar
+Fiji/
+  Fiji.app/                    <- double-click this app
+  plugins/
+  jars/
+  scripts/
+  java/macos-arm64/.../Contents/Home/bin/java
+  java/macos-arm64/.../Contents/Home/bin/javac
+  db.xml.gz
+  fiji
+```
+
+`models/` and `engines/` may be added by the GAT/DeepImageJ setup. The distribution root is the directory containing `plugins` and `jars`; it is **not necessarily `Fiji.app`**. Do not put a plugin overlay inside `Fiji.app/Contents` just because an older installation guide shows `Fiji.app/models`.
+
+The inspected ZIP included native Zulu Java 21.0.7 and `javac`; the receiving assistant must record the actual downloaded version. The folder spelling and Java version may change in another dated Fiji build. Preserve the folder layout and obtain the root path from Fiji itself.
+
+## 3 First startup and normal macOS security handling
+
+1. Move the unpacked Fiji directory into the new workspace, not into a read-only disk image or the ZIP. Keep all adjacent folders with the app.
+2. Double-click `Fiji.app`. For normal “downloaded from the Internet” confirmation, follow the required user-approval flow. If macOS cannot verify the app, pause and show me the exact message and verified source. Apple documents a user-controlled “Open Anyway” path in System Settings → Privacy & Security, but **I must make that decision myself**. Never run security-bypass commands. A malicious/damaged warning is a stop condition. See [Apple's app safety guidance](https://support.apple.com/en-us/102445).
+3. Confirm the ImageJ toolbar and menus appear. Record a screenshot, Fiji/ImageJ version, launch path, and any console warnings. Opening a toolbar is only a startup pass.
+4. Use File → New → Script, choose Groovy, and run the following small read-only inventory script. If menu labels differ, find the Script Editor through the command search. Groovy is included in the inspected Fiji distribution; no separate Groovy installation is needed.
+
+```groovy
+import ij.IJ
+import ij.Prefs
+IJ.log("GAT validation Fiji root=" + IJ.getDirectory("imagej"))
+IJ.log("ImageJ=" + IJ.getVersion())
+IJ.log("Java=" + System.getProperty("java.version"))
+IJ.log("java.home=" + System.getProperty("java.home"))
+IJ.log("os.arch=" + System.getProperty("os.arch"))
+IJ.log("IJ1 preferences=" + Prefs.getPrefsDir())
+IJ.log("Heap MiB=" + Runtime.getRuntime().maxMemory()/1024/1024)
+```
+
+5. Expected JVM architecture is `aarch64`/`arm64`. If it is `x86_64`, stop and resolve the wrong launcher/JDK before calling this native Apple Silicon validation. Do not install Rosetta to make an old native library load.
+6. Save the Log into `Reports`. Record actual JVM and launcher paths; use `file` on the bundled `bin/java` if needed. The macOS `/usr/bin/java` stub may ask for a system JDK; do not use it as evidence that bundled Fiji Java is missing.
+On an 8 GB M1, begin with the 175×175 public sample and then small crops no
+larger than roughly 1024×1024 before increasing workloads. A protocol/image-size
+ceiling is **not a RAM guarantee**; there is no promise that a 1600×1600 image
+always fits. The neuron child uses the current Fiji Java executable with JVM
+heap ergonomics, not a hardcoded child heap limit. The alignment child currently
+uses `-Xmx1g`. Record the actual parent/child heap settings and observed peak
+memory, close unnecessary images, run serially, and stop before the Mac becomes
+unresponsive. CI's explicitly bounded test processes do not automatically give
+an interactive Fiji run those same bounds. Installing pip, TensorFlow for Python
+or Metal is not a fix for this Java worker's memory/runtime contract.
+
+7. Note that two application copies can still share some user preferences. Record where preferences live, run serially, and explicitly restore matching settings before each paired case. Do not claim OS-level sandbox isolation from copying folders. Avoid changing global preferences unnecessarily.
+
+## 4 Install dependency sites once then make identical copies
+
+Use Help → Update… → Manage update sites. Keep ImageJ and Fiji enabled and add the GAT-required sites below. The official [updater instructions](https://imagej.net/update-sites/following) explain enabling sites and applying changes. Record each site's resolved URL and the update summary before accepting installation under your permission rules.
+
+- 3D ImageJ Suite
+- BIG-EPFL
+- CSBDeep
+- clij
+- clij2
+- DeepImageJ
+- Gut Analysis Toolbox, `https://sites.imagej.net/GutAnalysisToolbox/`
+- IJPB-plugins, which supplies MorphoLibJ
+- StarDist
+- PTBIOP
+
+For the original Template Matching comparison, the upstream instructions additionally list an unlisted site: `https://sites.imagej.net/Template_Matching/`. Record whether it is needed by the final paired manifest. Its legacy macOS OpenCV libraries are Intel-only. Merely installing the files is not proof they can run on ARM; execute any legacy native-risk probe in a separate Fiji/JVM process and preserve its failure log. Do not mix random replacement OpenCV JARs into Fiji.
+
+Apply changes, quit Fiji completely, and restart if the updater requests it. Save the update-site list and actual file inventory. Do not accept a blanket upgrade beyond the tested manifest without recording that the environment differs. The [GAT source installation list](https://github.com/pr4deepr/GutAnalysisToolbox/tree/1870d9e16e16fd6daeac0bd05122e851029ddedc) and [author's user documentation](https://gut-analysis-toolbox.gitbook.io/docs/) are references; older Intel/Java-8 instructions do not override this native-ARM test plan.
+
+Once dependencies and models are installed and verified, quit Fiji. Make two full copies of this same prepared distribution: `Original/Fiji` and `Fork/Fiji`. Do not use symlinks between their plugins, models, engines, workers or output directories. Copying files can use Finder Duplicate or built-in `ditto` after checking the destination is new. Keep the original prepared download as a recovery source until space constraints are discussed.
+
+## 5 Verify models and initialize the actual ganglia engine
+
+The updater should provide these model files under the **reported Fiji root**:
+
+| Model | Required location | SHA-256 |
+| --- | --- | --- |
+| Hu neuron | `models/2D_enteric_neuron_v4_1.zip` | `114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276` |
+| Neuronal subtype | `models/2D_enteric_neuron_subtype_v4.zip` | `49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8` |
+| Ganglia TorchScript weights | `models/2D_Ganglia_RGB_v3.bioimage.io.model/best_model_torchscript.pt` | `1c59382b776acc2beed84bc2309e29f474aa69ff6356ec2248a04854d4feca7b` |
+| Ganglia RDF | same directory, `rdf.yaml` | `1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c` |
+
+Official pinned neuron-model downloads, if the updater did not install them:
+
+- https://sites.imagej.net/GutAnalysisToolbox/models/2D_enteric_neuron_v4_1.zip-20250724102211
+- https://sites.imagej.net/GutAnalysisToolbox/models/2D_enteric_neuron_subtype_v4.zip-20250724102211
+
+Download as the plain filenames shown in the table; retain the original StarDist ZIPs zipped. Use `shasum -a 256` to verify. If a model differs, keep it separate and ask before substituting it.
+
+For ganglia, install the **complete official model directory**, including its descriptor, weights and supplied assets, through the updater or the final pinned model pack. Do not download only the `.pt` file and assume the rest. Public official directory:
+https://sites.imagej.net/GutAnalysisToolbox/models/2D_Ganglia_RGB_v3.bioimage.io.model/
+
+Use the supported setup instructions below and save the selected engine,
+installed JAR versions/paths and initialization log. No separate prebuilt engine
+pack is required. Do not create an empty `engines` directory merely to pass GAT's
+startup check. The new fresh-install engine-initialization extension remains
+pending; the instructions below are not presented as a completed install test.
+
+### Supported initialization when the fresh GAT dashboard asks for engines
+
+The observed preflight message is **GAT – DeepImageJ not initialized**, directing
+you to **Plugins → DeepImageJ → DeepImageJ Run**. That is a setup blocker, not
+proof that the neuron worker failed. Open that actual plugin, select the installed
+`2D_Ganglia_RGB_v3.bioimage.io.model`, and follow its model/CPU-engine setup flow.
+Keep its logs and approve downloads according to your rules. Do not choose a
+TensorFlow engine for this TorchScript model.
+
+If the GUI does not offer a clear install action, the installed JDLL exposes the
+following supported installer used by the prepared clean-Fiji validation lane.
+After approval for these official dependency downloads, run this in Fiji's
+Groovy Script Editor. It uses the real installed classes and this Fiji's own
+root, without Python, Maven, a fake sentinel or an empty-directory workaround:
+
+```groovy
+import ij.IJ
+
+def loader = IJ.getClassLoader()
+def versions = Class.forName("io.bioimage.modelrunner.versionmanagement.SupportedVersions", true, loader)
+def resolved = versions.getMethod("getJavaVersionForPythonVersion", String.class, String.class)
+                       .invoke(null, "pytorch", "2.4.1+cpu")
+if (resolved != "2.0.0") throw new IllegalStateException("Unexpected JDLL catalog result: " + resolved)
+def root = new File(IJ.getDirectory("imagej"), "engines")
+def installer = Class.forName("io.bioimage.modelrunner.engine.installation.EngineInstall", true, loader)
+installer.getMethod("installEngineWithArgsInDir", String.class, String.class,
+                    Boolean.TYPE, Boolean.TYPE, String.class)
+         .invoke(null, "pytorch", "2.0.0", true, false, root.getAbsolutePath())
+IJ.log("Engine installer returned. Verify all hashes and run the full model before marking initialization PASS.")
+```
+
+Expected engine directory under the reported Fiji root:
+`engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/`.
+Verify these pinned files. Download the last native CPU JAR from its official
+Maven URL if the installer did not provide it; save/copy it into this engine
+directory, **not Fiji's global jars/plugins**. Do not replace a mismatched file
+without recording the discrepancy and asking whether to use the pinned setup.
+
+| Filename | SHA-256 |
+| --- | --- |
+| `api-0.22.1.jar` | `1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb` |
+| `pytorch-engine-0.22.1.jar` | `ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627` |
+| `pytorch-jni-2.0.0-0.22.1.jar` | `ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6` |
+| `dl-modelrunner-pytorch-0.4.4.jar` | `004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933` |
+| `jna-5.13.0.jar` | `66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb` |
+| `commons-compress-1.22.jar` | `53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b` |
+| `slf4j-api-2.0.6.jar` | `2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda` |
+| `pytorch-native-cpu-2.0.0-osx-aarch64.jar` | `5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995` |
+
+Official native CPU JAR:
+https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-native-cpu/2.0.0/pytorch-native-cpu-2.0.0-osx-aarch64.jar
+
+Restart Fiji after dependency setup. Run the supplied public ganglia model input
+through DeepImageJ and then the GAT ganglia path, and save the output/log before
+claiming readiness. If any required JAR, model, class or native load fails,
+report that exact error. Merely seeing an engines folder or an installer return
+is insufficient. The extended clean-install/native test of this exact setup is
+**still pending for this TEST handoff**; these instructions are not labelled as
+an already completed full-installer verification.
+
+The audited JDLL 0.6.2-SNAPSHOT resolves the model's declared `PyTorch 2.4.1+cpu` to its available `PyTorch 2.0.0` CPU engine using DJL 0.22.1. Real native ARM model tests have run through that engine; do not “repair” the descriptor to say 2.0 or upgrade it blindly. The native worker for neuron/subtype inference is separate and does not require loading legacy TensorFlow 1.15 in Fiji. Keep the copied model and engine files identical across original and fork for a fair comparison.
+
+## 6 Install the baseline and fork overlays
+
+Quit both Fiji copies before changing their files. Inspect both downloaded archives and their manifests before extraction. Verify ZIP hashes, source commits, actual filenames and all declared companion modules. Reject absolute paths, parent-directory traversal or unexpected executable installation locations.
+
+In each **test copy only**, move any updater-installed GAT plugin JAR to the workspace's corresponding `Backups` folder outside Fiji, then install exactly the intended baseline or fork JAR. Do not leave two GAT versions on one classpath. Never remove unrelated Fiji dependencies to suppress an error. Merge overlay contents into the actual Fiji root; do not replace the entire `plugins` or `jars` folder.
+
+The fork's neuron module requires this arrangement:
+
+```text
+Fork/Fiji/
+  Fiji.app/
+  plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar
   gat-native-inference/gat-native-inference.jar
-  gat-native-inference/lib/...
-  models/2D_enteric_neuron_v4_1.zip
-  models/2D_enteric_neuron_subtype_v4.zip
-  models/2D_Ganglia_RGB_v3.bioimage.io.model/...
+  gat-native-inference/lib/<complete pinned worker dependencies>
+  models/<verified model files>
+  engines/<verified DeepImageJ engine>
+  gat-native-alignment/gat-native-alignment.jar
+  gat-native-alignment/lib/<complete pinned alignment dependencies>
 ```
 
-Keep the worker JAR and its `lib` directory together. Do not put them in Fiji's
-`jars` or `plugins`. Do not remove unrelated dependencies to silence warnings.
-Fiji updates can replace the preview plugin, so finish updating before installing
-it and recheck its hash after any later update.
+Keep worker JAR and `lib` together. Never place worker TensorFlow dependencies in Fiji's `jars` or `plugins`. This release includes `gat-native-alignment/`: keep its worker JAR, full `lib` directory, GPL-3.0 license and original source/notices together, outside Fiji's global classpath. The archive BUILD_INFO records inference-bundle SHA `e59c0c55aa36baf73cc97b6f87993fee211bd1828de2a673b39c3d6f00bf4bf6` and alignment-bundle SHA `510c20e2f9d0d04c5d23161153f5abc485cb3f30555df16532dd89424992e669`. Those identify the constituent build archives, not a hash of an extracted directory.
 
-Launch GATV2 and capture the log line:
-`StarDist backend: isolated native TensorFlow worker (experimental)`.
+The unchanged original copy must not contain the fork's adapter/plugin or silently gain its worker as a substitute. A failure in the original is valid evidence when the dependency/input environment is otherwise matched. Preserve logs before closing a failed baseline process.
 
-### Build route if no verified preview archive is available
+After overlay installation, do not run the updater again during paired tests. It may replace the selected GAT JAR or change dependencies. If updating becomes necessary, preserve the old inventory, obtain any needed permission, rehash files and start a newly labelled comparison.
 
-After the required approvals, use official native-arm64 JDK 17+ and Maven 3.9+.
-A full native JDK bundled with Fiji may suffice; verify `javac` is present.
-Do not assume an installed Intel JDK is suitable.
+## 7 Full installed Fiji and GAT startup check
 
-```sh
-git clone --branch feat/apple-silicon-stardist https://github.com/simplecoreorg-cyber/GutAnalysisToolbox.git
-cd GutAnalysisToolbox
-git checkout --detach 366c8339e18563105ba41f82ea9d0ac6b6650077
-git rev-parse HEAD
-mvn clean package
-mvn -f native-inference/pom.xml clean package -Dtensorflow.platform=macosx-arm64
-python3 scripts/package-apple-silicon-preview.py --output dist
-```
+For each copy, independently:
 
-Keep test output and Maven logs. Root tests use AWT and may need the active Mac
-desktop; do not substitute skipped tests for a pass. Package with the included
-script only after both builds succeed, verify its generated checksum and
-`BUILD_INFO.json`, then install into the separate test Fiji as above. If any
-command is unavailable or blocked, report that exact stage and continue safe
-independent checks. Do not solve a build issue by mixing old and new TensorFlow
-libraries on one classpath.
+1. Launch the copy's own `Fiji.app` and save architecture/version/root information from inside that JVM.
+2. Open the GATV2 entry. The inspected plugin configuration registers **Plugins → GutAnalysisToolbox → GATV2**. If the final installation exposes `GATV2 → Start GAT`, record the actual menu and loaded JAR rather than launching an old `.ijm` macro by accident.
+3. Screenshot every first-run/preflight message. Verify models, DeepImageJ engine, required plugin commands and dashboard controls. Do not dismiss an error by manufacturing a sentinel file.
+4. For the fork, verify the Log identifies the isolated native TensorFlow worker when neuron/subtype inference actually runs. Record the worker's real Java executable and architecture, not merely its folder's presence.
+5. Open a public image, inspect channel names and C/Z/T dimensions, change nothing, close without saving. Confirm menus, dialogs and normal exit work.
+6. Repeat startup once after quitting. Record repeated launch, stale-worker/window behavior and whether settings persist as expected.
 
-### Public first image and model provenance
+Old GAT `.ijm` macros are separate legacy entry points and are not automatically patched by GATV2. Record their status separately. Do not use a legacy macro to judge whether the fork's new worker is reached. Only the approved, isolated original-baseline probe should deliberately attempt known incompatible legacy native runtimes; a crash must not take the fork test session or unsaved work with it.
 
-Public Hu image, pinned upstream revision:
+## 8 Public inputs and reproducible synthetic controls
+
+Use **test kit preview 2.1**, not the superseded four-frame preview-2 kit.
+The corrected ZIP is 4,726,604 bytes, with the SHA-256 in the package table.
+It extracts to `GAT-M1-test-kit/`. Read its README, `manifest.json`,
+`SHA256SUMS` and `fixtures/image-inventory.tsv` before running anything. Its
+fixtures open directly in Fiji; the optional `developer-validation/` sources are
+not prerequisites for the manual tests.
+
+| Test | Files under `GAT-M1-test-kit/fixtures/` | Settings and expected result |
+| --- | --- | --- |
+| Hu technical fixture | `Hu_crop.tif` | 175×175 uint8, C1/Z1/T1; raw 39-cell reference only with matched inference/NMS configuration, not arbitrary GUI rescaling/filters |
+| Calcium | `calcium-fixture.tif`, `calcium-roi.zip` | 8×8 float32, C1/Z3/T1; choose planes 1–3 as frames, baseline 1–2, top-left 2×2 ROI named SyntheticCell_1; MAX=200 and F/F0 `[1,1,2]`; verify actual three-row export |
+| SIFT single | `sift-workflow-input.tif`, `sift-workflow-expected.tif` | 256×256 uint8, C1/Z1/T10, reference frame 1; saved/reopened pixels should match the expected aligned stack |
+| SIFT batch | `sift-batch-input.tif`, `sift-batch-expected.tif` | 256×256 uint8, input C2/Z1/T12, output C1/Z1/T12; intended channel 1, reference frame 1; compare saved pixels and calibration with reopened files |
+| Template Matching 8-bit | `template-8bit-input.tif`, `template-8bit-expected.tif` | 128×96, C1/Z1/T12; **reference frame 2**; integer method 5, subpixel off; exact expected stack comparison |
+| Template Matching 16-bit | `template-16bit-input.tif`, `template-16bit-expected.tif` | Same geometry/reference as above, preserving 16-bit pixels and metadata |
+
+The Template Matching cases have **12 frames**, because the full GAT alignment
+workflow rejects fewer than 10. Their expected shifts are `(3,-2), (0,0), (7,-7),
+(3,-2)` repeated for three four-frame cycles, with reference frame 2. The exact
+12-frame 8/16-bit client→worker controls were checked on Linux; the recorded
+native-Mac paired alignment reference uses a different seeded fixture. Do not
+claim this exact kit's 12-frame pixels were already tested on the physical M1.
+Do not use the obsolete four-frame kit for the GAT dashboard.
+
+The kit's historical calcium TIFF uses **C1/Z3/T1, pixel sizes 1×1 and frame
+interval 0**. Appendix A creates an alternative temporal fixture with C1/Z1/T3,
+pixel sizes 0.5×0.75 and interval 1.25. They share the `[1,1,2]` numerical control,
+but their dimensions/calibration are intentionally different; do not compare
+metadata as if they were the same file. The kit's Hu TIFF also carries its own
+non-unit calibration (about 1.51445 in X/Y); read the actual unit and calibration
+in Fiji. Full GAT rescaling can therefore differ from the raw-worker fixture.
+
+Use the validation bundle's manifest for provenance and hashes. Each fixture must have a source, SHA-256, dimensions, data type, channels, Z/T ordering, calibration and purpose recorded before testing. Keep original fixtures read-only by convention and make per-run copies. Never overwrite reference masks.
+
+First public Hu sample:
 https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/DYM_22_7_Pr_Hu_crop.tif
 
-Save as `DYM_22_7_Pr_Hu_crop.tif` and verify SHA-256:
+Save as `DYM_22_7_Pr_Hu_crop.tif`. SHA-256:
 `55251741add488f9a08cf5b33a4ee8ec3fd3023e25ffb0fc18800f80953948d7`
 
-It is a public 175×175, 8-bit grayscale image. For raw backend/reference testing,
-use its original unscaled pixels. For a GAT GUI test, record the image calibration
-and every GAT rescaling step; do not assume a raw-backend count is the expected
-GUI count after different preprocessing.
+It is a 175×175 uint8 image. The supplied compact raw-worker/NMS fixtures use neuron probability 0.5, subtype probability 0.4, NMS 0.3 and boundary exclusion 2. Their historical raw counts are 39 neurons and 3 subtype detections. **Those are raw technical-fixture counts, not an unconditional full-GAT dashboard result.** Full GAT can rescale, change calibration and apply size/border/overlap filters. Match every stage before comparing counts. Subtype inference on this Hu image is an execution control, not a biological subtype accuracy test.
 
-The checksum-pinned neuron/subtype model source base is:
-https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Models/
+Ganglia public test arrays from the same official model directory:
 
-- `2D_enteric_neuron_v4_1.zip`
-  SHA-256 `114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276`
-- `2D_enteric_neuron_subtype_v4.zip`
-  SHA-256 `49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8`
+- `test-input.npy-20250501124309`, SHA-256 `986cfd751c0e2cfd3367cfc39b5583c10e55da2f1a7772d73845c6395eefd681`
+- `test-output.npy-20250501124309`, SHA-256 `c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9`
 
-If an update-site model has a different hash, preserve it and report the
-provenance difference; do not overwrite it silently or compare it as though it
-were the same model. Use a separate pinned test copy.
+The input is uint8 `[1,3,1024,1024]` in Fortran storage order. The supplied reference is `[1,1,768,768]`, while the reached engines produce 1024×1024. Do not invent a crop or relax a tolerance to force parity. A 64-pixel halo crop alone yields 896×896. Use the final command fixture and published native outputs for reproducible execution checks; label the original reference mismatch unresolved unless a validated complete transformation is supplied.
 
-### What has already been established
+The shipped validation sources provide exact synthetic patterns, known shifts, label maps and calcium movies. They can be inspected without developer tools. For an alternative calcium GUI control without any downloads beyond Fiji, use Appendix A. It has different C/Z/T and calibration from the historical kit TIFF, as documented above.
 
-Treat these as prior evidence to verify against the linked records, not as tests
-you performed on my Mac:
+## 9 Workflow acceptance checklist
 
-- The Linux plugin build passed 30 tests; the isolated worker passed 16 tests
-- Native macOS CI passed on macOS 14.8.9 ARM64 with native aarch64 Java
-  17.0.20.1: 16 worker tests, TensorFlow 2.21 JNI allocation, and both real model
-  ZIPs on a synthetic 129×97 input. Verified job:
-  https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37338503480/job/111859285053
-  That job tested commit `94e039cc5b5c396bd248c04b5c5925c20f4df3a1`;
-  the pinned `366c833...` source adds documentation/whitespace changes
-- Linux TF1.15-versus-TF2.21 comparison completed all 40 author test-partition files
-  with matching object counts, totaling 4,472 output objects per runtime.
-  It included one one-pixel boundary/mask difference and a separate label-ID
-  permutation. Matching counts do not mean every mask or measurement is identical
-- Corpus accounting found that these are 40 source-labeled test files containing
-  39 distinct pixel inputs, with one input also present in the training folder.
-  This does not establish which files trained the shipped model; do not describe
-  all 40 as independent held-out biological samples
-- The compact real-image fixture also passed native macOS ARM64 CI: raw label
-  masks, counts and pixel measurements matched the fixed TF1 references for
-  39 neuron objects and 3 subtype-on-Hu objects at their specified defaults.
-  This is a technical fixture, not representative subtype validation:
-  https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37342883130/job/111874107725
-- Quantized polygon vertex differences of roughly 0.01 pixel were observed;
-  nominal 0.01 may be represented as 0.01001, and a two-axis Euclidean difference
-  can be roughly 0.0142. Identical raster labels do not prove identical subpixel
-  contours, areas, or perimeters
-- A broader planned 371-pair regression is still in progress as this handoff is
-  prepared. Do not report it as completed, and do not count training images,
-  crops, or temporal frames as independent held-out biological validation
-- Full Fiji GUI validation on my M1 and comprehensive optional-workflow testing
-  have not been established. A native backend CI pass is narrower than that
+Run the original and fork on identical fresh fixture copies and separately named output directories. Save exact GUI options, logs and output hashes for each. Do not mark an entire row PASS if only a helper or library-load subcheck ran.
 
-### First run and quantitative comparison
+### Neurons and subtypes
 
-1. Run worker `--backend-info` and, after execution approval, `--self-test` using
-   the **same native Java as Fiji**. Keep stdout/stderr and exit codes. These
-   checks establish runtime loading, not scientific parity
-2. Run `scripts/validate-native-worker.py` if available, pointing it to the
-   installed worker and the pinned models. Its synthetic-image test should return
-   finite outputs for both real models. The script accepts an explicit `--java`
-3. If the compact real-image regression harness is present, read its instructions
-   and manifest, verify all hashes, and run its comparator tests and native Mac
-   fixture check. Use the existing fixed references. Never regenerate references
-   or relax tolerances just to turn a failure into a pass
-4. Run the GATV2 **neuron-only** workflow first with MIP, no EDF, no ganglia, and
-   no spatial analysis. Use the public small image; inspect ROIs and saved results
-5. Run one representative subtype-stained public image, then Hu-gated and no-Hu
-   multichannel examples. The subtype model on the Hu-only crop is a technical
-   smoke test, not evidence of subtype accuracy
-6. Repeat a small workflow to catch state leaks. Exercise Cancel during manual
-   review, missing model/worker paths, and a failed worker run in the test copy;
-   verify the original image and previous completed outputs survive
+- Run the pinned raw worker/NMS fixture if its ready-to-run validation package is supplied; verify probabilities, finite values, raw label numbering, canonical masks, counts, centers, areas and original-image intensity measurements against the published references.
+- Run the public Hu image through the full GATV2 neuron workflow, recording input calibration, rescaling, model, normalization percentiles, requested tiles, thresholds, minimum size and border settings. Save the actual segmentation, ROI ZIP, counts/measurement CSV and overlay; reopen all of them.
+- Repeat on a representative public subtype image from the final fixture manifest with Hu and subtype channels explicitly identified. Check cell overlap and count denominators. Never call Hu-only subtype smoke biological validation.
+- Test image dimensions not divisible by tiling requirements, one tile and multiple tiles, all-zero and constant images, and repeat-run consistency. Preserve boundary differences rather than tuning them away.
+- Compare label IDs separately from object shapes. Report mask IoU, differing pixels, one-to-one matched objects, area/centroid/intensity differences, and subpixel polygon-vertex distances. Equal counts alone do not establish parity.
 
-For step 3, use the separately pinned validation checkout above. After verifying
-the real local paths, define `FIJI_JAVA` as Fiji's native Java executable,
-`NATIVE_JAVAC` as an approved native JDK compiler, `INSTALLED_WORKER` as the
-installed `gat-native-inference.jar`, `PINNED_MODELS` as the directory containing
-the verified model ZIPs, and `TEST_OUTPUT` as a new output directory. From that
-checkout's root:
+### Ganglia
 
-```sh
-python3 -m unittest discover -s native-inference/validation/cross-platform -p 'test_*.py' -v
-python3 native-inference/validation/cross-platform/check.py \
-  --worker "$INSTALLED_WORKER" --models "$PINNED_MODELS" \
-  --output "$TEST_OUTPUT" --java "$FIJI_JAVA" --javac "$NATIVE_JAVAC"
+- Verify the exact GAT → DeepImageJ conversion → RDF preprocessing contract before inference. Corrected GAT retains byte-range R=Hu/G=ganglia/B=Hu pixels; the RDF applies 1/255 and ImageNet normalization once. The contract fixture's white Hu pixel reaches the model near +2.248898; the old double-scaled path reached about −2.100770.
+- Run the actual GAT ganglia workflow, not only DJL/JDLL. Check the output belongs to that invocation despite an unrelated pre-existing image window. Save the returned binary mask, overlay, size-filtered labels, counts per ganglion and area measurements. Reopen outputs and check source pixels are unchanged.
+- Keep supplied weights, metadata and thresholds unchanged. Correcting double scaling can change scientific masks: report this as a bug correction, not legacy-output parity.
+- Test optional manual painting separately: add/remove a clearly marked synthetic region, finish review, verify precisely that edit survives filtering/export. Ask me to make biological decisions.
+- Engine-only cross-platform context: the public raw direct-PyTorch outputs previously differed by at most 1.78814e-6 and had equal threshold-0.6 masks; JDLL's tiled binary outputs differed by one pixel out of 1,048,576. These observations do not certify the full corrected GAT pipeline or solve the differently sized supplied reference.
+
+### Registration and saved results
+
+- SIFT single: use the exact known-shift fixture; confirm returned image and saved/reopened TIFF are aligned. Inspect residual pixel error, not just the separate window the SIFT plugin creates. Verify calibration, frame interval, reference frame and unchanged original.
+- SIFT batch: use the two-channel, 12-frame fixture with channel 2 initially selected. Verify intended channel 1 output, C1/Z1/T12, correct reference pixels and unchanged input file. Compare output calibration with the **reopened input TIFF**; TIFF rational storage may encode 0.75 as 0.7500001875000468.
+- Template Matching: run the pinned algorithm and settings through actual single and batch GAT paths. If the final fork includes the native adapter, confirm its process/JAR architecture and returned shifts. Do not silently fall back to SIFT. Inspect logs and saved results; a protective guard is BLOCKED, not an alignment pass.
+- StackReg/TurboReg: verify the supported GAT helper on a known rigid shift, then separately check any requested batch path. The original code's explicitly unimplemented batch path must not be described as working because the plugin itself passes.
+- Repeat with non-square pixels, two channels, nonzero reference frame, user cancellation and invalid/missing plugin result. Failed alignment must not overwrite input or publish stale output. If motion CSV fields are placeholder zeros, report that defect even when the image aligns.
+
+### Calcium end to end
+
+- Use the 8×8, three-frame movie with values 100/100/200 in a 2×2 ROI. Select MAX frames 1–3: that ROI must be 200 in a new one-plane projection, while source frame 1 remains 100.
+- Select baseline frames 1–2. F/F0 in that ROI must be `[1, 1, 2]`. This is F/F0, not ΔF/F0. Verify non-ROI control pixels remain 1.
+- Create/import the 2×2 ROI, give it a known name, measure all frames, save CSV, normalized TIFF and ROI ZIP, then reopen. Check three numeric measurement rows, ROI position/name, dimensions, frame timing and calibration.
+- Test selected subranges, cancelled dialogs, baseline zero and nonfinite values separately. The current division path preserves ImageJ's 0/0→NaN semantics; do not silently replace NaN with zero. Flag whether downstream export handles it intelligibly.
+- Automatic calcium StarDist has been a disabled stub in the original code. Only mark it working if the final tested source actually implements it and returned ROIs are verified. A “segmentation completed” message alone is insufficient.
+
+### Multiplex
+
+- Use two known-shift rounds with a shared reference marker and an independent second channel. Match SIFT landmarks, verify geometric transform direction and calibrated overlay, and ensure the same transform reaches every channel of each round.
+- Verify round/channel naming, C/Z/T, source preservation, ROI transfer and saved/reopened aligned images. Run the complete multiplex analysis/measurement/export route, not just correspondence detection.
+- Test no usable landmarks and mismatched dimensions as explicit failures/cancellations without output corruption. If block/MOPS fallback is not actually run, mark it NOT_RUN.
+
+### Physical OpenCL and CLIJ workflows
+
+- Record actual OpenCL platform/device name, CPU/GPU type, driver/version and device selected by CLIJ2. An Apple GPU name in a system report does not prove CLIJ access.
+- Run 8-, 16- and 32-bit ImagePlus push → simple known kernel → pull controls and compare every pixel with a CPU/ImageJ reference. JOCL can load while device enumeration or kernels fail.
+- Run actual GAT spatial analysis on the known label layout; compare neighbor counts/distances and exported CSV against the CPU expectation. Test at/just outside the distance boundary.
+- Run the full ROI/label overlap route, with known disjoint, partial and complete overlaps. Distinguish the actual ROI Manager command chain from a private helper-only control.
+- Test EDF on identical slices (known invariant) and a public/synthetic stack with different planes in focus; verify the chosen algorithm and any CPU comparison. Do not call an unrelated projection “EDF.”
+- The hosted virtual M1 previously returned OpenCL device-query error −30, although native OS/JOCL libraries loaded. The physical M1 is needed to settle real device/kernel availability. Treat no device as a concrete environment blocker and retain the error; do not claim GPU success from an engine DLL load.
+- Avoid unnecessary BridJ/off-heap paths. The audited JOCL includes arm64, while a shipped legacy BridJ macOS binary is x86-64. Test the actual reached path rather than declaring all CLIJ broken or all compatible.
+
+### Morphology, counts, formats, merge and export
+
+- MorphoLibJ: known-size labels, threshold boundary inclusion, border-label removal, connectivity and preserved calibration. Java-only code is still subject to workflow/result-handling bugs.
+- Counts/areas: known label IDs and pixel counts, zero objects, ganglion minimum-count filtering and calibrated area. Use unequal pixel widths/heights to reveal incorrect area conversion; report rather than hiding a pre-existing calculation bug.
+- Image IO: 8/16/32-bit TIFF, RGB, C/Z/T hyperstack, calibration and frame interval save/reopen. For CZI/LIF/other formats, use a public vendor/Bio-Formats sample with exact compression/series metadata and record selected series/channels.
+- JPEG-XR: use a genuinely JPEG-XR-compressed public microscopy sample or a validated codec fixture. The shipped old macOS decoder was Intel-only; a plain TIFF or non-JPEG-XR CZI does not exercise it. If the final fork supplies a replacement/adapter, verify that precise path and sample separately.
+- HDF5 and other native formats: only claim support after a real public sample decode/write control. The presence of an arm64 library alone is insufficient.
+- Merge/export: two known CSVs with distinct row IDs, headers, units, Unicode/spaces in names, missing/empty inputs, and a deliberately existing destination. Check row counts/content and explicit overwrite behavior; never test by deleting a real result.
+- Reopen all saved ROI ZIPs, masks, overlays and CSVs. Check titles, column definitions, identifiers, units, output paths and whether the original images remain unchanged.
+
+## 10 Optional automated checks without assuming a developer toolchain
+
+Prefer a final validation pack that runs with Fiji's bundled native Java and includes its checksum-pinned dependencies. Inspect its scripts first, obtain required execution approval, and invoke the exact documented command from that pack. Record which production JAR it loads: accidentally testing source `target/classes` while using a different installed JAR is not installed-Fiji validation.
+
+The repository's current developer workflow runners use Python 3 and compiled Java classes; Python is not guaranteed on a clean Mac. If no ready-to-run pack exists, either complete the GUI checks first or request permission for this optional developer route:
+
+1. Use the Fiji-bundled `java` and `javac` by full verified path. If a full JDK is genuinely unavailable, obtain a native ARM JDK from [Eclipse Adoptium](https://adoptium.net/) after approval.
+2. Download the **pinned commit source ZIP** through GitHub in the browser. Git is optional; do not trigger installation of Apple's command-line developer tools just by typing `git`.
+3. If builds are needed, install the official Maven binary distribution from [Apache Maven](https://maven.apache.org/download.cgi) in this workspace; verify its published checksums/signature. Use its `bin/mvn` by full path. Do not assume Homebrew.
+4. If a supplied Python runner is needed, use the official macOS installer from [python.org](https://www.python.org/downloads/macos/) after explaining that it installs another runtime and obtaining approval. No Python packages should be added unless the exact runner declares them. Prefer built-in-only runners over installing NumPy just to inspect a log.
+5. Build the original and fork in separate source directories at the pinned commits. Save all build/test output, Java/Maven versions and produced JAR hashes. Follow that revision's module instructions, including any final native-alignment module; do not copy an outdated build command from preview 1.
+6. Run fixture comparisons and workflow harnesses separately from normal interactive Fiji sessions. Use bounded processes and original scripts' failure handling. Capture model-load/cold-start time separately from inference-only time. A timeout remains a failure/blocker until diagnosed.
+
+Do not begin a local source modification to “make the test pass” without separately asking me. A proposed patch and reproducible failing fixture are useful results.
+
+## 11 Report and return evidence
+
+Create `Reports/summary.md` plus a machine-readable `results.csv` or JSON. Each check needs:
+
+- Workflow and exact boundary: library load, helper, actual GAT command, full GUI, or saved/exported result
+- Original and fork status: PASS, FAIL, BLOCKED or NOT_RUN, with exact reason
+- Source commit, package/JAR/model/input hashes and all relevant loaded plugin versions/paths
+- Hardware, macOS, native/translated state, actual Fiji and worker Java version/architecture/path, heap/thread settings and OpenCL device
+- Input source, dimensions/type, axes, calibration, channel selections, transforms/crops, model and settings
+- Expected numerical/image outcome and actual outcome, including label/count/area/centroid/intensity/IoU and subpixel differences where applicable
+- Cold launch/model-load time, inference/processing time and observed memory, labelled with this Mac's hardware and run conditions
+- Logs, errors, screenshots and output paths; keep failures before retries and distinguish cancelled tests
+
+Suggested report layout:
+
+```text
+Reports/
+  summary.md
+  results.csv
+  inventory/
+  original/<case-id>/
+  fork/<case-id>/
+  comparisons/
+  screenshots/
+  checksums.txt
 ```
 
-The comparator downloads only its declared, checksum-pinned official Java
-dependencies and NMS sources. Inspect its manifest first and follow the required
-permissions for downloads/compilation/execution. Do not invoke its reference
-regenerator or the legacy TensorFlow launcher on this M1. Keep the emitted JSON
-diagnostics even if a strict comparison fails.
+Keep public/synthetic images and resulting small outputs in the report. Exclude downloaded engine JARs, model weights and full Fiji copies from the report ZIP; include their hashes and provenance instead. Exclude usernames where unnecessary, credentials, serial numbers, private research images and unrelated logs. Review screenshots for private information before packaging. In Finder, Compress the Reports folder, or use built-in `ditto -c -k --keepParent` on this report directory. Verify the ZIP opens. Share it only back to me through this session after any required approval; do not upload it to GitHub or a third-party issue tracker.
 
-Use a conservative crop of at most about 1024×1024 pixels **after GAT rescaling**
-for initial tests. The preview's full 97-channel tensor limit is 268,435,456
-floats, approximately 2.77 million spatial pixels including padding; RAM can
-impose a lower limit. Tiling does not remove that assembled-output limit.
-Do not start with a full-size wholemount or a 2048×2048 image. Preserve crop
-origins and calibration, and do not sum crop counts as a whole-image parity claim.
+Finish with a short recommendation: which workflows I can safely try with the stated limitations, which remain blocked, and the next smallest useful test. Discuss the long-term backend choice using evidence: a shared CSBDeep/StarDist backend versus the isolated GAT worker, including output semantics, dependencies, native packaging, reproducibility, maintenance and rollback. Do not choose solely from speed on one tiny image. Do not call M1 success proof of M2–M5 support without corresponding evidence.
 
-For every paired image/model/parameter set, report:
+## Appendix A Minimal calcium fixture using only Fiji
 
-- Dimensions/axes, calibration and scaling, model/input hashes, exact thresholds,
-  requested/actual tiling, normalization, and comparison-reference provenance
-- Finite outputs, shape, probability and distance absolute errors where accessible,
-  and crossings of the fixed probability threshold
-- Candidate and object counts, winner-center matching, raw label-raster differences,
-  and label-ID permutations separately from actual object geometry changes
-- Foreground-mask IoU and per-object IoU after explicit matching; unmatched objects,
-  changed pixels, area/centroid/intensity changes and affected object identifiers
-- Subpixel polygon vertices, maximum coordinate and Euclidean displacement, and
-  polygon area/perimeter differences independently of raster measurements
-- Runtime, peak memory when measurable, worker exit status, and temporary-file
-  cleanup. State any metric you could not measure instead of estimating it
+This is an optional alternative, not a regeneration of the kit’s historical TIFF: it uses C1/Z1/T3, 0.5×0.75 pixels and 1.25-second timing instead of C1/Z3/T1, unit pixel sizes and unspecified timing. In the verified test Fiji, open File → New → Script, choose Groovy, paste this code, and run it. The only write is a TIFF you select in the save dialog. Save into the new `Inputs` folder. No external packages, network or Python are used.
 
-The compact raw-backend fixture, if present, uses probability 0.5 for Hu and
-0.4 for subtype, NMS 0.3 and boundary exclusion 2. Its documented reference counts
-are 39 Hu objects and 3 subtype objects on the unscaled Hu crop. An earlier
-subtype test used probability 0.5 and produced 2; those are different parameter
-sets. Do not compare them as equal tests or change thresholds to match a count.
+```groovy
+import ij.ImagePlus
+import ij.ImageStack
+import ij.process.FloatProcessor
+import ij.io.SaveDialog
+import ij.io.FileSaver
+import java.util.Arrays
 
-Never try to run TF1.15 natively on my M1 to create a reference. Use the supplied
-checksum-pinned legacy outputs or an explicitly identified trusted reference
-from a compatible platform. If none is available, report execution evidence
-and mark scientific parity BLOCKED or NOT RUN.
+def stack = new ImageStack(8, 8)
+for (int frame = 0; frame < 3; frame++) {
+    float[] pixels = new float[64]
+    Arrays.fill(pixels, 100f)
+    if (frame == 2)
+        for (int y = 0; y < 2; y++)
+            for (int x = 0; x < 2; x++) pixels[y * 8 + x] = 200f
+    stack.addSlice(new FloatProcessor(8, 8, pixels))
+}
+def image = new ImagePlus("calcium-public-synthetic", stack)
+image.setDimensions(1, 1, 3)
+image.setOpenAsHyperStack(true)
+image.getCalibration().pixelWidth = 0.5
+image.getCalibration().pixelHeight = 0.75
+image.getCalibration().frameInterval = 1.25
+image.getCalibration().setUnit("um")
+def save = new SaveDialog("Save synthetic calcium fixture", "calcium-fixture", ".tif")
+if (save.getFileName() != null) {
+    if (!new FileSaver(image).saveAsTiffStack(save.getDirectory() + save.getFileName()))
+        throw new IOException("TIFF save failed")
+    image.show()
+}
+```
 
-### Audit the other libraries with the actual Mac installation
+Record its SHA-256 after saving. Select the top-left 2×2 ROI at x=0,y=0 for the `[1,1,2]` calcium control. TIFF byte hashes can vary with metadata/version even when pixels are identical, so compare reopened dimensions, calibration and pixel values as well as recording the file hash.
 
-Distinguish an incompatible binary from an unused dependency, and a supported
-binary from a fully working scientific workflow. Check actual loaded JAR paths,
-not only updater labels. Record official source URLs and audit date because
-upstream packages can change.
-
-**Template Matching and calcium alignment.** The audited official update site
-ships `opencv-macosx-x86_64.jar` (`20190625083034`), without a macOS arm64 OpenCV
-binary. The preview now guards this option before opening or modifying inputs
-in single/batch alignment and on direct calls. Verify that guard without bypassing
-it. If appropriate, explicitly select SIFT with Template Matching disabled;
-record that this is a different method. Source:
-https://sites.imagej.net/Template_Matching/db.xml.gz
-
-**CLIJ2 OpenCL.** JOCL 2.0.5 contains an Apple-arm64 binary, while BridJ 0.7.0's
-inspected macOS library is x86-64. Standard 8/16/32-bit ImagePlus transfers use
-NIO; older off-heap paths can still reference BridJ. Do not declare every CLIJ
-operation broken just because BridJ is installed, or working because a GPU name
-is printed. Test the actual transfer/kernel paths below. Source:
-https://sites.imagej.net/clij/db.xml.gz
-
-**DeepImageJ ganglia.** The model declares PyTorch `2.4.1+cpu`. The audited
-shipped JDLL `0.6.2-SNAPSHOT` (`20251011144925`) maps it to PyTorch 2.0.0 via DJL
-0.22.1, which lists a native macOS-arm64 CPU engine. The actual model loaded and
-ran in that exact older CPU engine on Linux, with finite 1024×1024 output.
-However, its supplied reference is 768×768, inconsistent with the descriptor's
-64-pixel halo; diagnostic cropping did not establish parity. This is not proof
-of a runtime-version failure. Verify the selected Mac engine and investigate
-model/test-asset, preprocessing and halo behavior without editing metadata.
-GAT's normalized input, an external macro's divide-by-255, and RDF preprocessing
-must be traced to exclude double scaling. Sources:
-https://sites.imagej.net/DeepImageJ/db.xml.gz
-https://sites.imagej.net/GutAnalysisToolbox/models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml-20250501124309
-https://github.com/bioimage-io/JDLL/blob/main/src/main/java/io/bioimage/modelrunner/versionmanagement/SupportedVersions.java
-
-**Morphology and registration.** Audited MorphoLibJ 1.6.5 and StackReg/TurboReg
-2.0.1 JARs contained no native binaries or native-library loading references.
-Their declared dependencies are Java/ImageJ/JAMA. SIFT and multiplex use mpicbg
-1.6.6 Java algorithms, separate from OpenCV Template Matching. These have lower
-architecture risk but still need command/API, UI, and quality checks. Sources:
-https://sites.imagej.net/IJPB-plugins/db.xml.gz
-https://sites.imagej.net/BIG-EPFL/db.xml.gz
-https://github.com/axtimwalde/mpicbg
-
-**Image IO.** Audited Fiji Bio-Formats 8.5.0 includes `jxrlib-all-0.2.4.jar` with
-an Intel-only macOS JPEG-XR decoder. It is needed for JPEG-XR-compressed inputs,
-including some CZI files; this is not a blanket TIFF/LIF/CZI incompatibility.
-Avoid deliberately loading the known-incompatible decoder. The distributed
-JHDF5 19.04.1 contains a verified macOS-arm64 HDF5 library. Ordinary GAT TIFF/CSV
-export is Java/ImageJ code, but format, compression and metadata still need tests.
-Sources:
-https://sites.imagej.net/Fiji/db.xml.gz
-https://github.com/ome/bioformats/blob/v8.5.0/components/formats-bsd/src/loci/formats/services/JPEGXRServiceImpl.java
-
-### Full workflow acceptance checklist
-
-For each item use PASS, FAIL, BLOCKED, or NOT RUN, with test conditions and an
-evidence filename. A PASS must say whether it covers a component or the full GUI
-workflow. Do not use a green result for a stage whose dependency was mocked.
-
-1. **Hu neurons:** native worker routing, MIP, border/size filtering, manual review,
-   repeat run, cancellation, saved TIFF, ROI ZIP and count CSV
-2. **Subtypes with Hu:** one/two markers, overlap threshold around a known boundary,
-   channel selection, combined-marker counts, review and output summaries
-3. **Subtypes without Hu:** independent marker labels/combinations, custom ROIs,
-   correct marker names/order, saved measurements
-4. **Tuning tools:** small bounded probability, rescaling, and ganglia-expansion
-   sweeps; preserve inputs and record all tested parameters
-5. **Ganglia without a neural model:** Hu expansion, manual drawing, imported ROI
-   ZIP, no-ganglia mode, minimum neuron count, and empty regions. Use synthetic
-   labels with known count and calibrated area
-6. **DeepImageJ ganglia:** actual selected engine, public model sample first,
-   channel construction, preprocessing, tensor dimensions, halo/tiling,
-   probability/mask output and per-ganglion measurements. Mark reference parity
-   unresolved if the documented mismatch cannot be explained
-7. **CLIJ transfer and kernels:** small 8/16/32-bit push/pull checks, then known
-   label dilation, touching-neighbor count, two-label overlap count, ganglia-mask
-   restriction, and intensity replacement. Retain OpenCL device/build logs
-8. **EDF:** small Z-stack with known focus changes; dimensions/calibration and
-   fused-pixel comparison. MIP is a separately chosen operation, not an EDF pass
-9. **Spatial analysis:** both single-cell-type and two-cell-type workflows, with
-   and without ganglia boundaries, and CSV plus parametric-image output. Inspect
-   logs because optional spatial failure can coexist with completed segmentation
-10. **Alignment:** Template Matching guard; explicitly selected SIFT on at least
-    12 synthetic frames with known shifts/features; single and batch separately.
-    Baseline batch StackReg is unimplemented and throws; the single workflow
-    does not call its separate StackReg helper. Do not label either a Mac-only
-    regression. Baseline batch shift CSV contains zero placeholders, not measured
-    motion. Verify alignment from actual pixels/landmarks
-11. **StackReg/TurboReg directly:** optional separate plugin check on copied
-    synthetic stacks, recording that this does not implement missing GAT routes
-12. **Calcium:** imported/manual ROIs, baseline 100 with a known rise to 200,
-    expected F/F0 1 then 2, frame order, zero baseline behavior, ROI names, and
-    trace/ROI/TIFF exports. Automatic StarDist ROI generation is a disabled
-    baseline stub; do not trust its completion message or count it as working
-13. **Temporal color:** 8-bit known frames, frame range, LUT, projection and scale.
-    Check 16-bit/float separately before extending a pass to those data types
-14. **Multiplex:** two rounds with a shared marker and a known affine transform,
-    plus a low-feature/missing-marker example. Verify SIFT/MOPS/block matching,
-    landmark direction, application to all channels, round/channel order,
-    dimensions/calibration, and saved stack
-15. **IO and export:** public TIFF and other intended supported microscopy formats;
-    record actual compression and reader. Reopen label TIFFs and ROI ZIPs, inspect
-    overlays, and compare physical/raster measurements and CSV values
-16. **Merge:** copied CSVs from multiple image folders; check one header, expected
-    row count, experiment labels, quoting, Unicode/spaces in paths, mixed-schema
-    behavior and refusal to overwrite. Default merging does not enforce matching
-    headers, so an output file alone is not a correctness pass
-17. **Failure recovery:** missing dependencies, missing model/worker, worker timeout,
-    interrupted review, repeated runs, and restart of the test Fiji. Preserve
-    existing results and report cleanup or stale global-window/ROI state
-
-### Architecture recommendation
-
-After testing, inspect the relevant current official sources read-only:
-
-- https://github.com/CSBDeep/CSBDeep_fiji
-- https://github.com/stardist/stardist-imagej
-- https://github.com/tensorflow/java
-- The pinned GAT fork above
-
-Compare these concrete options:
-
-1. Keep the separate GAT worker as the experimental integration
-2. Move the isolated inference boundary into a reusable CSBDeep/StarDist backend,
-   keeping one scientific preprocessing/NMS contract for downstream plugins
-3. A direct modern-runtime integration only if you can demonstrate it avoids
-   Fiji classpath/JNI conflicts and preserves compatible plugin behavior
-
-Evaluate native architectures and minimum macOS/Java versions, TF1/TF2/protobuf
-coexistence, test coverage, normalization/tiling parity, NMS and subpixel geometry,
-model version support, maintainability and upstream API boundaries, packaging,
-process startup/IPC/memory costs, larger-image streaming, and failure isolation.
-Do not maintain a second NMS algorithm just to obtain an easier pass. Distinguish
-an architecture recommendation from completed code or an accepted upstream plan.
-
-Recommend the cleanest option with evidence, migration steps, validation gates,
-and remaining uncertainty. This task does not authorize an upstream PR or contact
-with project maintainers. Ask me before any publication or external communication.
-
-### Return portable evidence
-
-Return a short readable summary plus an attached folder/ZIP of portable files,
-containing no passwords, tokens, unrelated screenshots, or private research data:
-
-- `REPORT.md`: overall result, tested revision/package, installation steps,
-  significant findings, architecture recommendation, and specific next decisions
-- `environment.json` or `.txt`: chip/OS/Fiji/Java architectures and paths, versions,
-  update sites, loaded JAR paths, OpenCL device, and any Rosetta detection
-- `checksums.sha256`: package, plugin, worker, native dependencies, models, public
-  inputs, references, and important result files
-- `workflow-status.csv`: every checklist workflow, component/full-GUI scope,
-  PASS/FAIL/BLOCKED/NOT RUN, parameters, evidence path, and exact blocker
-- `cases.csv` and `metrics.json`: input provenance/calibration/transforms, counts,
-  masks, IoU, label-ID mapping, outline/subpixel and measurement comparisons,
-  numerical tolerances, timings, and memory where measurable
-- `logs/`: build/test output, Fiji log, worker stdout/stderr/exit codes, native-load
-  errors, and relevant crash diagnostics with unrelated paths/data redacted
-- `screenshots/`: labeled setup/backend/ROI-overlay/result evidence only
-- `outputs/`: public or synthetic result TIFFs, ROI ZIPs, CSVs and compact reference
-  comparisons; any private-image inclusion requires my explicit approval
-- `reproduce/`: local test scripts, exact commands/versions and a minimal README;
-  use relative paths or documented variables so another machine can rerun them
-
-Keep full measurements alongside the concise summary. State exactly which tests
-ran on this M1, which were prior Linux/CI evidence, and which remain untested.
-Do not claim M2–M5 testing from an M1 result, or biological validity from engine
-agreement. Finish with the smallest useful next step for each unresolved blocker.
