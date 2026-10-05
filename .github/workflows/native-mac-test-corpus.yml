@@ -1,0 +1,83 @@
+name: native-mac-official-test-corpus
+on:
+  push:
+    branches: [feat/apple-silicon-stardist]
+    paths:
+      - '.github/workflows/native-mac-test-corpus.yml'
+      - 'native-inference/validation/mac-corpus/**'
+      - 'native-inference/src/**'
+      - 'native-inference/pom.xml'
+      - '!native-inference/validation/mac-corpus/results/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: native-mac-official-test-corpus-${{ github.ref }}
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash --noprofile --norc -e -o pipefail {0}
+jobs:
+  all40-source-labeled-tests:
+    # Standard free hosted ARM runner only. No large/paid runner labels.
+    runs-on: macos-15
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          architecture: aarch64
+          cache: maven
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require real native ARM hardware and Java
+        run: |
+          test "$(uname -m)" = arm64
+          java -XshowSettings:properties -version 2>&1 | grep 'os.arch = aarch64'
+          sysctl -n machdep.cpu.brand_string
+          sysctl -n hw.model
+      - name: Build and test only the unchanged isolated modern worker
+        run: mvn -B -ntp -f native-inference/pom.xml clean package -Dtensorflow.platform=macosx-arm64
+      - name: Install public image decoder with fixed version
+        run: python3 -m pip install Pillow==11.3.0
+      - name: Test immutable scope, hashes and reporting
+        run: python3 -m unittest discover -s native-inference/validation/mac-corpus -p 'test_*.py' -v
+      - name: Prepare only 40 source-labeled official test inputs and archived references
+        run: >-
+          python3 native-inference/validation/mac-corpus/prepare.py
+          --archives target/mac-corpus-archives --models target/mac-corpus-models
+          --output target/mac-corpus-prepared --download
+      - name: Run all 40 serial cold native inferences and unchanged StarDist NMS
+        run: >-
+          python3 native-inference/validation/mac-corpus/run.py
+          --worker native-inference/target/gat-native-inference.jar
+          --models target/mac-corpus-models --prepared target/mac-corpus-prepared
+          --output target/mac-corpus-results --expect-native-mac
+      - name: Check execution coverage only, not scientific equivalence
+        if: success()
+        run: |
+          python3 - <<'PY'
+          import json
+          s = json.load(open('target/mac-corpus-results/summary.json'))
+          assert s['run_completed'] and s['native_all40_completed'] and s['compared_cases'] ==40, s['status']
+          assert s['scientific_equivalence_established'] is False
+          assert s['metadata']['runner']['machine'] == 'arm64'
+          print('Coverage complete. Read exact-hash flags and per-cell outliers separately.')
+          PY
+      - name: Preserve every case status, compact geometry, logs and hardware provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-official40-corpus
+          path: |
+            target/mac-corpus-results/summary.json
+            target/mac-corpus-results/artifact-manifest.json
+            target/mac-corpus-results/*/*.json
+            target/mac-corpus-results/*/*.log
+            target/mac-corpus-results/*/*.gz
+            target/mac-corpus-prepared/preparation.json
+            native-inference/target/surefire-reports/
+          if-no-files-found: error
