@@ -1,0 +1,133 @@
+name: unchanged-baseline
+
+on:
+  push:
+    branches: [feat/apple-silicon-stardist]
+    paths:
+      - '.github/workflows/unchanged-baseline.yml'
+      - 'native-inference/validation/baseline/**'
+      - 'native-inference/validation/workflows/**'
+      - 'native-inference/src/**'
+      - 'native-inference/pom.xml'
+      - 'native-inference/validation/cross-platform/fixture-manifest.json'
+      - 'native-alignment/**'
+      - 'src/**'
+      - 'pom.xml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gat-unchanged-baseline-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -e -o pipefail {0}
+
+jobs:
+  # Owner-managed workflow: insert under jobs. Both revisions execute on ONE host.
+  unchanged-baseline-comparison:
+    name: Unchanged pre-fork versus repaired GAT on one native Mac
+    runs-on: macos-14
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: fork
+          persist-credentials: false
+      - uses: actions/checkout@v5
+        with:
+          repository: pr4deepr/GutAnalysisToolbox
+          ref: 1870d9e16e16fd6daeac0bd05122e851029ddedc
+          path: original
+          persist-credentials: false
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: |
+            original/pom.xml
+            fork/pom.xml
+            fork/native-inference/pom.xml
+            fork/native-alignment/pom.xml
+            fork/native-inference/validation/baseline/dependencies-pom.xml
+      - name: Record the one shared native host and both revisions
+        run: |
+          mkdir -p baseline-results
+          test "$(uname -m)" = arm64
+          {
+            uname -a
+            sw_vers
+            sysctl -n machdep.cpu.brand_string
+            java -version 2>&1
+            echo "Original source: $(git -C original rev-parse HEAD)"
+            echo "Fork source: $(git -C fork rev-parse HEAD)"
+          } | tee baseline-results/shared-host.log
+          test "$(git -C original rev-parse HEAD)" = 1870d9e16e16fd6daeac0bd05122e851029ddedc
+          test -z "$(git -C original status --porcelain --untracked-files=no)"
+      - name: Build original source without modifying its POM
+        run: |
+          mvn -B -ntp -s fork/native-inference/validation/baseline/scijava-settings.xml \
+            -f original/pom.xml -DskipTests -Dlicense.skipAddLicense=true -Dlicense.skip=true \
+            clean compile dependency:build-classpath \
+            -Dmdep.outputFile="$PWD/original-classpath.txt" \
+            | tee baseline-results/original-build.log
+          test -z "$(git -C original status --porcelain --untracked-files=no)"
+      - name: Build repaired source and its isolated native workers
+        run: |
+          mvn -B -ntp -f fork/pom.xml -DskipTests clean compile dependency:build-classpath \
+            -Dmdep.outputFile="$PWD/fork-classpath.txt" | tee baseline-results/fork-build.log
+          mvn -B -ntp -f fork/native-inference/pom.xml clean package \
+            | tee baseline-results/inference-build.log
+          mvn -B -ntp -f fork/native-alignment/pom.xml clean package \
+            | tee baseline-results/alignment-build.log
+      - name: Verify baseline isolation harness
+        run: python3 -m unittest discover -s fork/native-inference/validation/baseline -p 'test_*.py' -v
+      - name: Observe original helper, SIFT, calcium and ganglia behavior
+        if: always()
+        run: >-
+          python3 fork/native-inference/validation/baseline/run_workflows.py
+          --project-root original --root-classpath original-classpath.txt
+          --output baseline-results/original-workflows --cache baseline-dependencies
+          --only helpers registration calcium ganglia-contract ganglia-command
+      - name: Run identical controls against repaired source on this same host
+        if: always()
+        run: >-
+          python3 fork/native-inference/validation/workflows/run_workflows.py
+          --root-classpath fork-classpath.txt
+          --output baseline-results/fork-workflows --cache baseline-dependencies
+          --only helpers registration calcium ganglia-contract ganglia-command
+      - name: Observe original StarDist and Template Matching call paths
+        if: always()
+        run: >-
+          python3 fork/native-inference/validation/baseline/run_native.py
+          --project-root original --root-classpath original-classpath.txt
+          --output baseline-results/original-native --cache baseline-native-dependencies
+      - name: Run the same native-call probes against repaired GAT
+        if: always()
+        run: >-
+          python3 fork/native-inference/validation/baseline/run_native.py
+          --project-root fork --root-classpath fork-classpath.txt
+          --output baseline-results/fork-native --cache baseline-native-dependencies --allow-fork
+          --inference-directory fork/native-inference/target
+          --alignment-directory fork/native-alignment/target
+      - name: Confirm original production sources remain unchanged
+        if: always()
+        run: |
+          test "$(git -C original rev-parse HEAD)" = 1870d9e16e16fd6daeac0bd05122e851029ddedc
+          git -C original status --porcelain --untracked-files=no | tee baseline-results/original-final-status.log
+          test ! -s baseline-results/original-final-status.log
+      - name: Preserve observations, not dependency caches or source images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-unchanged-original-versus-fork-native-mac
+          path: |
+            baseline-results/**/*.json
+            baseline-results/**/*.log
+            baseline-results/**/*.tsv
+            baseline-results/**/*.csv
+          if-no-files-found: error
