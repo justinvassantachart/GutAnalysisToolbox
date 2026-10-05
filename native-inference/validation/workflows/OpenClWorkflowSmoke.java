@@ -80,7 +80,17 @@ public final class OpenClWorkflowSmoke {
             int[] number = new int[1];
             error = CL.clGetDeviceIDs(platform, CL.CL_DEVICE_TYPE_ALL, 0, null, number);
             if (error == CL.CL_DEVICE_NOT_FOUND) continue;
+            if (error != 0) {
+                for (long kind : new long[]{CL.CL_DEVICE_TYPE_ALL, CL.CL_DEVICE_TYPE_CPU, CL.CL_DEVICE_TYPE_GPU, CL.CL_DEVICE_TYPE_DEFAULT}) {
+                    cl_device_id[] alternate = new cl_device_id[128];
+                    int[] alternateCount = new int[1];
+                    int alternateError = CL.clGetDeviceIDs(platform, kind, alternate.length, alternate, alternateCount);
+                    System.out.println("Bounded OpenCL device query type=" + kind + " error=" + alternateError
+                            + " count=" + alternateCount[0]);
+                }
+            }
             require(error == 0 && number[0] <= 128, "clGetDeviceIDs error " + error);
+            if (number[0] == 0) continue;
             cl_device_id[] devices = new cl_device_id[number[0]];
             require(CL.clGetDeviceIDs(platform, CL.CL_DEVICE_TYPE_ALL, devices.length, devices, null) == 0,
                     "Device enumeration failed");

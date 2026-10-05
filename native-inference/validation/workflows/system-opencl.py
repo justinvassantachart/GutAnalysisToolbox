@@ -65,6 +65,15 @@ def inspect():
             devices = u()
             error = cl.clGetDeviceIDs(pid, 0xFFFFFFFF, 0, None, c.byref(devices))
             entry["device_query_error"] = error
+            entry["alternate_device_queries"] = {}
+            for label, device_type in (("all", 0xFFFFFFFF), ("cpu", 2), ("gpu", 4), ("default", 1)):
+                bounded = (p * 128)()
+                bounded_count = u()
+                bounded_error = cl.clGetDeviceIDs(pid, device_type, 128, bounded, c.byref(bounded_count))
+                entry["alternate_device_queries"][label] = {
+                    "error": bounded_error, "count": bounded_count.value,
+                    "names": [info(cl.clGetDeviceInfo, did, 0x102B) for did in bounded[:min(128, bounded_count.value)]]
+                    if not bounded_error else []}
             if not error and devices.value:
                 if devices.value > 128: raise ValueError("Unexpected device count")
                 dids = (p * devices.value)()
@@ -75,7 +84,7 @@ def inspect():
                                              "version": info(cl.clGetDeviceInfo, did, 0x102F)})
             report["platforms"].append(entry)
         report["status"] = "PASS" if any(p["devices"] for p in report["platforms"]) else "BLOCKED_ENVIRONMENT"
-        report["detail"] = "Enumeration only; Java bindings, transfers and kernels require separate tests"
+        report["detail"] = "Enumeration only; Java bindings, transfers and kernels require separate tests. Preserve error codes: failed enumeration is not proof of a defect on a physical Mac."
     except Exception as exc:
         report.update(status="FAIL", detail=type(exc).__name__ + ": " + str(exc))
     return report
