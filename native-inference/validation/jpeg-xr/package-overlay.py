@@ -43,10 +43,18 @@ def safe_name(name):
 
 def local_file(root, relative):
     safe_name(relative)
-    path = root / relative
-    if not path.is_file() or any(p.is_symlink() for p in [path, *path.parents] if p != root.parent):
+    # The caller chooses a trusted root. Canonicalize its location once: macOS
+    # legitimately aliases /var to /private/var outside a temporary source root.
+    # Only components BELOW that boundary must be free of symlinks.
+    root = Path(root).resolve(strict=True)
+    path = root
+    for component in PurePosixPath(relative).parts:
+        path = path / component
+        if path.is_symlink():
+            raise ValueError('Missing file or unsafe symlink: ' + str(path))
+    if not path.is_file():
         raise ValueError('Missing file or unsafe symlink: ' + str(path))
-    if root.resolve() not in path.resolve().parents:
+    if root not in path.resolve(strict=True).parents:
         raise ValueError('Path escaped source root')
     return path.read_bytes()
 

@@ -19,8 +19,9 @@ permissions:
   contents: read
 
 concurrency:
-  group: gat-unchanged-baseline-${{ github.ref }}
-  cancel-in-progress: true
+  group: gat-unchanged-baseline-macos15-${{ github.ref }}
+  # Preserve a same-host original/fork comparison once it has acquired a runner.
+  cancel-in-progress: false
 
 defaults:
   run:
@@ -30,7 +31,9 @@ jobs:
   # Owner-managed workflow: insert under jobs. Both revisions execute on ONE host.
   unchanged-baseline-comparison:
     name: Unchanged pre-fork versus repaired GAT on one native Mac
-    runs-on: macos-14
+    # Standard arm64 M1 alternative during documented macOS14 runner-capacity failures.
+    # Preserve the earlier Sonoma attempt and record this distinct Sequoia host.
+    runs-on: macos-15
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v5

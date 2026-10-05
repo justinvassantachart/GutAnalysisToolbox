@@ -1,9 +1,18 @@
-# Fresh native Fiji installation lane (review-only)
+# Fresh native Fiji installation lane
 
-Status: prepared 2026-10-05; **not yet executed on macOS**. The proposed workflow
-is deliberately stored as `native-mac-fresh-fiji.yml.example`, outside active
-workflows. No publication or existing workflow was changed. An owner can review
-and later copy it to `.github/workflows/native-mac-fresh-fiji.yml`.
+Status: the initial lane ran natively on macOS 14.8.9 / Apple M1 Virtual with
+Fiji's bundled Zulu Java 21.0.7 in GitHub Actions run `37363502221`,
+source `c6e2011`. Fresh archive/updater/startup and fork neuron/alignment passed;
+original neuron/alignment failed. Both dashboards were genuinely blocked by
+missing DeepImageJ engines. The engine-initialization extension described below
+is prepared for a new native rerun; it is not yet a passed result.
+
+The active workflow is `.github/workflows/native-mac-fresh-fiji.yml`; the
+example is retained as a reference. The next run uses the standard macOS15
+arm64 M1 label because GitHub reported macOS14 runner-acquisition capacity
+failures. The recorded Sonoma results are preserved, the actual new OS/hardware
+must be reported, and no paid/larger runner is selected. The engine extension
+itself is validation-only and does not change production GAT algorithms.
 
 This lane complements the existing standalone GAT API tests. It does not claim
 full workflow support, physical-Mac validation, or a zero-prerequisite user
@@ -22,16 +31,24 @@ The end-user GUI installation instructions remain separate.
    initialize ImageJ, install a replacement classloader, or inject command menus
 4. Invoke the supported ImageJ updater CLI to activate the exact documented GAT
    sites, apply updates and retain update databases, resolved versions and hashes
-5. Copy that one resolved installation into two independent trees on one runner.
+5. Use the shipped JDLL supported installer to install the catalog-selected
+   PyTorch 2.0.0 CPU engine. Verify its seven jars against existing validation
+   hashes, add the exact pinned official native macOS ARM CPU jar, then load and
+   execute the whole supplied model through JDLL inside installed Fiji. The real
+   model, descriptor, preprocessing/postprocessing macros and JDLL/DeepImageJ
+   jars must match their pins; conflicts fail without changing those files
+6. Copy that one engine-ready installation into two independent trees on one runner.
    Install the original immutable GAT plugin in one, and the exact clean fork
    preview in the other. Only identified GAT plugin jars are displaced; worker
    libraries stay in their isolated folders, never Fiji's `jars`/`plugins`
-6. In each tree, use a small validation-only plugin, reached through a regular
+7. In each tree, use a small validation-only plugin, reached through a regular
    ImageJ macro/command, to record real runtime/menu/class-source information,
    invoke the registered `GATV2` entry point, and observe the actual preflight
-7. Separately execute the real GAT neuron call on the pinned public 175×175 Hu
+8. Separately execute the real GAT neuron call on the pinned public 175×175 Hu
    TIFF and Template Matching call on the established deterministic shifted
-   stack. Check output against the existing exact raster references. The neuron
+   stack. Check output against the existing exact raster references. Also invoke
+   the actual GAT ganglia command using the whole public two-channel fixture,
+   registered DeepImageJ command, real model and MorphoLibJ cleanup. The neuron
    reference is corpus case `repo_DYM_22_7_Pr_Hu_crop_c1_t1_x0_y0`, tiles 4,
    probability 0.5/NMS 0.3, matching the actual GAT API; the separate one-tile
    compact reference is not used
@@ -40,7 +57,10 @@ The plugin is added as `Fresh_Fiji_Probe.jar`; its source is in this directory.
 It runs inside the normal installed Fiji classloader. Its only startup-dialog
 automation dismisses GAT's informational first-run notice. Any other modal dialog
 is recorded as **BLOCKED** and left unaccepted until the isolated process exits.
-No sentinel or fake engine directory is created by the harness.
+No sentinel or fake engine directory is created by the harness. JDLL itself
+installs the real engine; full model loading/inference must pass before either
+matched copy is created. Installer success or folder existence alone cannot
+pass the initialization stage.
 
 ## Important expected blockers and limits
 
@@ -48,13 +68,16 @@ No sentinel or fake engine directory is created by the harness.
   recommends Fiji **Stable**. This lane deliberately tests native arm64 Fiji
   **Latest**, with Java 21. That is a compatibility deviation needing direct
   evidence, not an equivalent supported setup
-- A fresh installation may have no DeepImageJ engines. GAT's real preflight can
-  therefore block the dashboard even if neuron/alignment probes pass. The first
-  lane records that blocker; a later explicit real engine-installation stage can
-  use the documented GUI or the already-hashed actual JDLL engine artifacts
-- No engine installer, ganglia command, OpenCL/EDF/spatial workflow, exhaustive
-  dashboard navigation, manual ROI/painting review, or all-workflow claim is
-  included. Those stages remain **BLOCKED** in the report
+- The first run proved the missing-engine blocker. The extension uses
+  `EngineInstall.installEngineWithArgsInDir("pytorch", "2.0.0", true, false, dir)`
+  from the actual installed JDLL, then verifies all downloaded bytes. Its native
+  library is supplied from the pinned official CPU jar before inference, avoiding
+  an unpinned automatic DJL native download
+- The unchanged model declares PyTorch `2.4.1+cpu`; shipped JDLL maps this to
+  `2.0.0`. The extension asserts that exact catalog result. It is the already
+  native-tested engine combination, not a claim of version/scientific parity
+- OpenCL/EDF/spatial workflows, exhaustive dashboard navigation, manual
+  ROI/painting review, and an all-workflow claim remain **BLOCKED**
 - The current virtual M1 runner has no exposed OpenCL devices. A physical M1 must
   supply that separate evidence. CI cannot validate a Finder download's
   Gatekeeper/quarantine experience; no OS security setting is changed
@@ -90,7 +113,8 @@ runner is discarded. It does not use cached installed plugins/models/engines.
 The source build toolchain is not represented as an end-user prerequisite.
 
 The acceptance gate requires fresh download/updater/runtime setup plus fork
-startup, dashboard, neuron and alignment passes. A blocked fork dashboard is
+startup, dashboard, neuron, alignment and ganglia-command passes, plus successful
+real engine initialization/full-model inference. A blocked fork dashboard is
 **not a green installation result**. Original neuron/alignment failures are
 baseline observations. The separate all-workflow exclusions never disappear.
 Exit codes: 0 = this bounded acceptance gate passed; 2 = a required stage failed;
@@ -99,12 +123,16 @@ Exit codes: 0 = this bounded acceptance gate passed; 2 = a required stage failed
 ## Evidence
 
 - `fresh-fiji-report.json`: explicit PASS / FAIL / BLOCKED stages and command logs
-- `installed-inventory.json`, `*-final-inventory.json`: installed file hashes,
+- `installed-inventory.json`, `engine-ready-inventory.json`, `*-final-inventory.json`: installed file hashes,
   including models and worker libraries
 - `pin-comparison.json`: exact prior validation pin matches/conflicts
 - `updater-databases/`: observed official update databases and installed database
 - `pristine_startup.json`, `original_*.json`, `fork_*.json`: actual runtime,
   command menu, class source, exception window, preflight dialog, and result evidence
+- `official_engine_install.json`, `official_engine_inference.json`: supported
+  installer and full-model execution proof, before copying either GAT revision
+- `original_ganglia.json`, `fork_ganglia.json`: actual installed-Fiji GAT ganglia
+  command results. Mask TIFFs are retained locally; JSON reports record metrics
 
 Do not upload the whole temp directory or distribution as a test artifact.
 The proposed YAML preserves diagnostics only.

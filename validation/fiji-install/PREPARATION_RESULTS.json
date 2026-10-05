@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "prepared_utc": "2026-10-05T19:16:00Z",
-  "status": "REVIEW_ONLY_NOT_RUN_ON_MAC",
+  "status": "ENGINE_INITIALIZATION_EXTENSION_READY_FOR_NATIVE_RERUN",
   "local_validation_host": "Linux-6.18.44-x86_64-with-glibc2.41",
   "official_archive": {
     "url": "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip",
@@ -39,19 +39,23 @@
       "status": "PASS"
     }
   ],
-  "native_fiji_installation_execution": "BLOCKED: lane prepared only; pending owner review/publication and a native macOS runner",
+  "native_fiji_installation_execution": "Initial native run observed missing engine; added real installer/model verification requires a fresh native rerun",
   "frozen_files": [
     {
       "path": "validation/fiji-install/Fresh_Fiji_Probe.java",
-      "sha256": "222bf7fd7f210e4a745e02f77ef6d94df2cd8f1b724f9baa06c873ee3c6df500"
+      "sha256": "f2b32d406526b1515f3ce3657a4c823152e8ac9aff32b4077ea7f387172a191d"
+    },
+    {
+      "path": "validation/fiji-install/Fresh_Ganglia_Probe.java",
+      "sha256": "4c5704d960efda55ef3af03fb9d3dc4725827914e4dfa4b05ccbf8dd34643b60"
     },
     {
       "path": "validation/fiji-install/README.md",
-      "sha256": "9d894411e6b0427d91ce99381f141d9785bb1f2b0d79b35159f76a2df4cba070"
+      "sha256": "3813071fb8d3af34239f65b3d5f7ef3bf7bf8f3bb2e495dfe750d8f1c625a313"
     },
     {
       "path": "validation/fiji-install/manifest.json",
-      "sha256": "b07f65738ffc7f335ade6295691e845189516469703a2a760856bf5e5bc1dd38"
+      "sha256": "47c8d7d9bcc658664462ac8c08e2bf9d66b16a132330b1dd6bd5390e14fd7c86"
     },
     {
       "path": "validation/fiji-install/native-mac-fresh-fiji.yml.example",
@@ -59,15 +63,52 @@
     },
     {
       "path": "validation/fiji-install/run_fresh_fiji.py",
-      "sha256": "a6e08935c86f4cc4791578c4485b970a46b82149d11c3f38ab2db7a3fefe9034"
+      "sha256": "b3354384d09bea2291cf8ab89d5b783d3e370e69f19616409bf825a4b224deb4"
     },
     {
       "path": "validation/fiji-install/test_fresh_fiji.py",
-      "sha256": "d131cf2584ee013d95464fea0d0e79a5fd78c3f947434a5e059eb3477f79812b"
+      "sha256": "253b0f19110ba15dcf990f9fd394183bca2e1e25a4b9bd58b3c332e1c5e9ec06"
     }
   ],
   "review_correction": {
     "date_utc": "2026-10-05T19:26:00Z",
     "description": "Bound actual GAT neuron reference to four tiles, matching both archived Linux engines and the first native-Mac actual GAT call. The initial one-tile compact hash was a parameter mismatch, not a production failure or changed tolerance."
+  },
+  "initial_native_run": {
+    "job_id": 111943964948,
+    "source_commit_prefix": "c6e2011",
+    "host": "Apple M1 Virtual, macOS 14.8.9, bundled Zulu Java 21.0.7",
+    "passed": [
+      "archive integrity",
+      "real launcher",
+      "official updater",
+      "startup",
+      "fork neuron",
+      "fork alignment"
+    ],
+    "failed": [
+      "original neuron",
+      "original alignment"
+    ],
+    "blocked": [
+      "original dashboard: DeepImageJ not initialized",
+      "fork dashboard: DeepImageJ not initialized"
+    ],
+    "run_id": 37363502221
+  },
+  "engine_extension_checks": {
+    "python_unit_tests": 16,
+    "python_unit_tests_status": "PASS",
+    "python_syntax": "PASS",
+    "java_probe_compilation": "PASS: --release 11 against exact Fiji ImageJ1 jar and existing pinned JDLL/ImgLib2 dependencies",
+    "native_engine_installer_and_inference": "PENDING_NEW_NATIVE_RUN",
+    "production_or_workflow_files_changed": false,
+    "four_tile_neuron_reference": "PRESERVED"
+  },
+  "workflow_integration": {
+    "active_workflow": ".github/workflows/native-mac-fresh-fiji.yml",
+    "next_standard_runner": "macos-15",
+    "reason": "Hosted macOS14 runner acquisition failed after multiple attempts; preserve Sonoma evidence and record distinct Sequoia runtime.",
+    "paid_or_larger_runner": false
   }
 }

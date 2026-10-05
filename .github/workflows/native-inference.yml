@@ -28,7 +28,7 @@ jobs:
             platform: macosx-arm64
             architecture: aarch64
             java: '17'
-          - os: macos-14
+          - os: macos-15
             platform: macosx-arm64
             architecture: aarch64
             java: '21'

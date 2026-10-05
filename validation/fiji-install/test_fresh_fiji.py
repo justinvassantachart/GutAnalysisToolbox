@@ -28,6 +28,36 @@ class ArchiveSafetyTests(unittest.TestCase):
         self.assertEqual(reference['tiles'], 4)
         self.assertEqual(reference['corpus_case'], 'repo_DYM_22_7_Pr_Hu_crop_c1_t1_x0_y0')
         self.assertEqual(fresh.MANIFEST['expected_neuron_label_sha256'], 'ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443')
+    def test_empty_engine_directory_is_never_initialized(self):
+        directory=self.root/'engines';directory.mkdir()
+        with self.assertRaises(ValueError):
+            fresh.verify_engine_files(directory,[{'filename':'real.jar','sha256':'0'*64}])
+    def test_engine_requires_exact_bytes_and_no_extra_jars(self):
+        directory=self.root/'engines';directory.mkdir();jar=directory/'real.jar';jar.write_bytes(b'verified')
+        artifact={'filename':'real.jar','sha256':fresh.sha256(jar)}
+        self.assertEqual(1,len(fresh.verify_engine_files(directory,[artifact])))
+        jar.write_bytes(b'changed')
+        with self.assertRaises(ValueError):fresh.verify_engine_files(directory,[artifact])
+        jar.write_bytes(b'verified');(directory/'unrequested.jar').write_bytes(b'extra')
+        with self.assertRaises(ValueError):fresh.verify_engine_files(directory,[artifact])
+    def test_native_binary_is_separately_required(self):
+        directory=self.root/'engine';directory.mkdir();jar=directory/'engine.jar';jar.write_bytes(b'engine')
+        native=directory/'native.jar';native.write_bytes(b'cpu');native_hash=fresh.sha256(native);native.unlink()
+        artifacts=[{'filename':'engine.jar','sha256':fresh.sha256(jar)},
+                   {'filename':'native.jar','sha256':native_hash,'platform':'macosx-arm64'}]
+        fresh.verify_engine_files(directory,artifacts)
+        with self.assertRaises(ValueError):fresh.verify_engine_files(directory,artifacts,include_native=True)
+        native.write_bytes(b'cpu');self.assertEqual(2,len(fresh.verify_engine_files(directory,artifacts,True)))
+    def test_model_conflict_is_reported_without_overwrite(self):
+        model=self.root/'rdf.yaml';model.write_bytes(b'actual descriptor')
+        with self.assertRaises(ValueError):fresh.verify_required_assets(self.root,[{'path':'rdf.yaml','sha256':'0'*64}])
+        self.assertEqual(b'actual descriptor',model.read_bytes())
+    def test_engine_manifest_matches_previously_validated_artifacts(self):
+        dependencies=json.loads((Path(__file__).resolve().parents[2]/'native-inference/validation/workflows/dependencies.json').read_text())['artifacts']
+        expected=[a for a in dependencies if 'engine' in a['groups'] and a.get('platform','macosx-arm64')=='macosx-arm64']
+        self.assertEqual(expected,fresh.MANIFEST['ganglia_engine']['artifacts'])
+        self.assertEqual(8,len(expected))
+        self.assertEqual('2.0.0',fresh.MANIFEST['ganglia_engine']['catalog_resolved_version'])
     def test_normal_layout(self):
         self.archive([('Fiji/', ''),('Fiji/jars/ij.jar','data')])
         self.assertEqual(4, fresh.safe_archive(self.path, 'Fiji', True))

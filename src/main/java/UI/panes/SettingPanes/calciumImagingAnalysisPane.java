@@ -79,7 +79,9 @@ public class calciumImagingAnalysisPane extends JPanel {
         panel.add(box("Normalization", useFF0Box));
 
         // StarDist segmentation
-        useStarDistBox = new JCheckBox("Use StarDist Segmentation", false);
+        useStarDistBox = new JCheckBox("Automatic StarDist ROIs (not implemented)", false);
+        useStarDistBox.setEnabled(false);
+        useStarDistBox.setToolTipText("Import ROI ZIPs or draw ROIs manually. This option does not generate ROIs.");
         panel.add(box("Segmentation", useStarDistBox));
 
         // Number of cell types

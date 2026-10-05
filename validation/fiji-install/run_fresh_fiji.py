@@ -24,7 +24,8 @@ STAGES = ['native_host', 'archive_download', 'archive_integrity', 'archive_extra
           'bundled_java', 'pristine_startup', 'official_updater', 'installed_inventory',
           'paired_overlays', 'original_startup', 'original_dashboard', 'original_neuron',
           'original_alignment', 'fork_startup', 'fork_dashboard', 'fork_neuron', 'fork_alignment',
-          'ganglia_engine_setup', 'ganglia_command', 'opencl_workflows', 'full_interactive_workflows']
+          'official_engine_install', 'official_engine_inference', 'ganglia_engine_setup',
+          'original_ganglia', 'fork_ganglia', 'ganglia_command', 'opencl_workflows', 'full_interactive_workflows']
 
 
 def sha256(path):
@@ -142,6 +143,29 @@ def compare_pins(records):
     return rows
 
 
+
+def verify_required_assets(root, records):
+    """Never replace updater-installed model, descriptor, macro or JDLL files to meet pins."""
+    verified = []
+    for record in records:
+        path = root / record['path']
+        if not path.is_file() or sha256(path) != record['sha256']:
+            raise ValueError('Updater asset conflicts with ganglia validation pin: ' + record['path'])
+        verified.append({'path': record['path'], 'sha256': record['sha256']})
+    return verified
+
+
+def verify_engine_files(directory, artifacts, include_native=False):
+    """An empty/partial engine folder can never satisfy initialization."""
+    required = [a for a in artifacts if include_native or 'platform' not in a]
+    expected = {a['filename'] for a in required}
+    actual = {p.name for p in directory.glob('*.jar')}
+    if actual != expected:
+        raise ValueError('Engine jar inventory conflicts with pins: missing=' + str(sorted(expected-actual))
+                         + ', extra=' + str(sorted(actual-expected)))
+    return verify_required_assets(directory, [{'path': a['filename'], 'sha256': a['sha256']} for a in required])
+
+
 def overlay(root, plugin=None, archive=None, source_commit=None, evidence=None):
     if (plugin is None) == (archive is None):
         raise ValueError('Exactly one explicit GAT plugin or preview archive is required')
@@ -230,7 +254,7 @@ def main():
     def launch(root):
         return [root / MANIFEST['fiji']['launcher'], '--java-home=' + str(root / MANIFEST['fiji']['java_home']),
                 '--allow-multiple', '--no-splash', '--heap=1536m', '-Duser.home=' + str(runtime_home(root)),
-                '-XX:ActiveProcessorCount=2']
+                '-XX:ActiveProcessorCount=2', '-Dai.djl.pytorch.num_threads=1', '-Dai.djl.pytorch.num_interop_threads=1']
     def install_probe(root):
         ij = list((root / 'jars').glob('ij-*.jar'))
         if len(ij) != 1:
@@ -242,6 +266,15 @@ def main():
             for path in classes.glob('*.class'):
                 z.write(path, path.name)
             z.writestr('plugins.config', 'Plugins>GAT Validation, "GAT Fresh Install Probe", Fresh_Fiji_Probe\n')
+    def install_ganglia_probe(root):
+        classes = work / 'ganglia-probe-classes'; classes.mkdir()
+        jars = sorted((root / 'jars').rglob('*.jar')) + sorted((root / 'plugins').rglob('*.jar'))
+        cp = os.pathsep.join(str(p) for p in jars)
+        command([root / MANIFEST['fiji']['java_home'] / 'bin/javac', '--release', '11', '-cp', cp,
+                 '-d', classes, HERE / 'Fresh_Ganglia_Probe.java'], 'ganglia-probe-compile.log')
+        with zipfile.ZipFile(root / 'plugins' / 'Fresh_Fiji_Probe.jar', 'a') as z:
+            for path in classes.glob('*.class'):
+                z.write(path, path.name)
     def probe(root, variant, mode, fixture=None):
         name = variant + '_' + mode
         target = args.output / (name + '.json')
@@ -253,7 +286,7 @@ def main():
         if fixture:
             cmd += ['-Dgat.validation.fixture=' + str(fixture)]
         cmd += ['--run', str(macro)]
-        execution = execute(cmd, args.output / (name + '.log'), clean_env(runtime_home(root)), 300, root)
+        execution = execute(cmd, args.output / (name + '.log'), clean_env(runtime_home(root)), 900 if mode == 'engine_install' else 300, root)
         if target.exists():
             result = json.loads(target.read_text())
             status = result.get('status')
@@ -331,6 +364,34 @@ def main():
         fixture = work / 'public-Hu.tif'
         report['fixture'] = download(MANIFEST['fixture']['url'], fixture, env, args.output / 'fixture-download.log',
                                      expected_sha=MANIFEST['fixture']['sha256'], timeout=120)
+        # Complete real DeepImageJ/JDLL engine setup before copying the matched installations.
+        current = 'ganglia_engine_setup'
+        config = MANIFEST['ganglia_engine']
+        validated_assets = verify_required_assets(base, config['required_updater_assets'])
+        if probe(base, 'official', 'engine_install') != 'PASS':
+            raise RuntimeError('The supported JDLL installer failed; inspect official_engine_install evidence')
+        current = 'ganglia_engine_setup'
+        engine_dir = base / 'engines' / config['directory']
+        installer_files = verify_engine_files(engine_dir, config['artifacts'])
+        native = [a for a in config['artifacts'] if a.get('platform') == 'macosx-arm64']
+        if len(native) != 1:
+            raise ValueError('Exactly one pinned native CPU jar is required')
+        native = native[0]
+        native_stage = work / native['filename']
+        native_download = download(native['url'], native_stage, env, args.output / 'ganglia-native-download.log',
+                                   expected_sha=native['sha256'], timeout=300)
+        # The supported installer has already created a real verified engine here.
+        # Add its exact official native CPU binary; never fabricate readiness with an empty directory.
+        shutil.copy2(native_stage, engine_dir / native['filename'])
+        final_engine_files = verify_engine_files(engine_dir, config['artifacts'], include_native=True)
+        install_ganglia_probe(base)
+        if probe(base, 'official', 'engine_inference') != 'PASS':
+            raise RuntimeError('Real full-model JDLL load/inference failed; engine setup is not validated')
+        stage(current, 'PASS', installer='official_engine_install.json', inference='official_engine_inference.json',
+              model_and_installed_runtime_pins=validated_assets, installer_files=installer_files,
+              verified_engine_files=final_engine_files, native_cpu_download=native_download,
+              note='Shipped JDLL installer plus exact pinned official native CPU jar; completed full model inference before copying either installation')
+        (args.output / 'engine-ready-inventory.json').write_text(json.dumps(inventory(base), indent=2)+'\n')
         # Both source revisions use byte-identical updater output on the same native host.
         current = 'paired_overlays'; overlays = {}
         for variant in ('original','fork'):
@@ -350,15 +411,15 @@ def main():
             current = variant + '_dashboard'
             probe(root, variant, 'dashboard')
             # A blocked dashboard remains blocked; the named API smokes are separate evidence.
-            for mode in ('neuron','alignment'):
+            for mode in ('neuron','alignment','ganglia'):
                 current = variant + '_' + mode
                 if mode=='neuron' and any(p['status']!='MATCH' for p in pins if p['file']=='2D_enteric_neuron_v4_1.zip'):
                     stage(variant+'_neuron','BLOCKED',reason='Updater-installed neuron model differs from pinned reference; no substitution')
                 else:
                     probe(root, variant, mode, fixture)
             (args.output / (variant+'-final-inventory.json')).write_text(json.dumps(inventory(root),indent=2)+'\n')
-        stage('ganglia_engine_setup','BLOCKED',reason='This initial lane observes first-startup state; real DeepImageJ engine installation is a separate pending stage, not fabricated')
-        stage('ganglia_command','BLOCKED',reason='Real installed-Fiji ganglia engine setup and command execution remain to be added; standalone command evidence is separate')
+        stage('ganglia_command', report['stages']['fork_ganglia']['status'], evidence='fork_ganglia.json',
+              note='Real installed-Fiji GAT command; original observation is separately recorded in original_ganglia.json')
         stage('opencl_workflows','BLOCKED',reason='Native virtual M1 runner has no exposed OpenCL devices; requires a physical-device lane')
         stage('full_interactive_workflows','BLOCKED',reason='Biological review, parameter UI, every workflow, and physical-Mac Finder/Gatekeeper first-open are outside this bounded lane')
     except Exception as exc:
@@ -371,7 +432,8 @@ def main():
     # Expected original API failures do not fail the paired smoke acceptance gate.
     required = ['native_host','archive_download','archive_integrity','archive_extraction','bundled_java',
                 'pristine_startup','official_updater','installed_inventory','paired_overlays',
-                'original_startup','fork_startup','fork_dashboard','fork_neuron','fork_alignment']
+                'original_startup','fork_startup','fork_dashboard','fork_neuron','fork_alignment',
+                'ganglia_engine_setup','official_engine_inference','fork_ganglia']
     states = [report['stages'][s]['status'] for s in required]
     return 0 if all(s == 'PASS' for s in states) else 2 if 'FAIL' in states else 3
 

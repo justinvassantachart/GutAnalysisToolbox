@@ -22,7 +22,7 @@ defaults:
 jobs:
   paired-installed-fiji:
     name: Fresh native Fiji startup and bounded paired GAT checks
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v5

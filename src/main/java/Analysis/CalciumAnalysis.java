@@ -221,13 +221,11 @@ public class CalciumAnalysis {
 
     /** Run StarDist segmentation (currently disabled) */
     private void runStarDist(ImagePlus img, File resultsDir) {
-        if (img == null) {
-            IJ.showMessage("Error", "No image available for StarDist segmentation.");
-            return;
-        }
-
-        IJ.showMessage("Error", "StarDist segmentation is currently disabled.");
-        return;
+        // A disabled implementation must not return as if it generated ROIs.
+        // The caller keeps imported=false and offers the existing manual route.
+        throw new UnsupportedOperationException(
+                "Automatic calcium StarDist ROI generation is not implemented. "
+                + "Import ROI ZIPs or draw ROIs manually.");
     }
 
     /** Prompt user to select start and end frames for max projection */

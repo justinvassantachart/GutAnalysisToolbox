@@ -43,6 +43,26 @@ class CalciumResultHandlingTest {
         assertEquals(200,source.getStack().getProcessor(3).getf(0));
         assertTrue(Float.isNaN(result.getStack().getProcessor(1).getf(1)), "Preserve ImageJ's existing 0/0 semantics");
     }
+    @Test void disabledAutomaticSegmentationCannotReturnFalseSuccess() throws Exception {
+        CalciumAnalysis analysis=new CalciumAnalysis(new Features.Core.Params());
+        java.lang.reflect.Method method=CalciumAnalysis.class.getDeclaredMethod("runStarDist",ImagePlus.class,java.io.File.class);
+        method.setAccessible(true);
+        java.lang.reflect.InvocationTargetException error=assertThrows(java.lang.reflect.InvocationTargetException.class,
+                ()->method.invoke(analysis,movie(),null));
+        assertInstanceOf(UnsupportedOperationException.class,error.getCause());
+        assertTrue(error.getCause().getMessage().contains("not implemented"));
+    }
+    @Test void unavailableAutomaticOptionIsClearlyDisabledInSettings() throws Exception {
+        javax.swing.SwingUtilities.invokeAndWait(()->{
+            UI.panes.SettingPanes.calciumImagingAnalysisPane pane=new UI.panes.SettingPanes.calciumImagingAnalysisPane(null,null);
+            try {
+                java.lang.reflect.Field field=pane.getClass().getDeclaredField("useStarDistBox");field.setAccessible(true);
+                javax.swing.JCheckBox option=(javax.swing.JCheckBox)field.get(pane);
+                assertFalse(option.isEnabled());assertFalse(option.isSelected());
+                assertTrue(option.getText().contains("not implemented"));
+            } catch(ReflectiveOperationException error) {throw new AssertionError(error);}
+        });
+    }
     @Test void badRangesFailBeforeProcessing() {
         ImagePlus source=movie();
         assertThrows(IllegalArgumentException.class,()->CalciumAnalysis.projectFrames(source,3,2,ZProjector.MAX_METHOD));

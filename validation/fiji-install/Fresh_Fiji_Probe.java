@@ -38,6 +38,12 @@ public final class Fresh_Fiji_Probe implements PlugIn {
             if(mode.equals("dashboard")) dashboard();
             else if(mode.equals("neuron")) neuron();
             else if(mode.equals("alignment")) alignment();
+            else if(mode.equals("engine_install")) engineInstall();
+            else if(mode.equals("engine_inference") || mode.equals("ganglia")) {
+                report.put("action", mode.equals("engine_inference") ? "Actual full-model JDLL inference in installed Fiji" : "Actual GAT DeepImageJ ganglia command in installed Fiji");snapshot();
+                Object metrics=Class.forName("Fresh_Ganglia_Probe",true,IJ.getClassLoader()).getMethod("run",String.class,Path.class).invoke(null,mode,output);
+                report.put("metrics",metrics);
+            }
             else if(!mode.equals("startup")) throw new IllegalArgumentException("Unknown mode "+mode);
             captureWindows();
             report.put("status", blocked ? "BLOCKED" : errors.isEmpty() ? "PASS" : "FAIL");
@@ -75,7 +81,21 @@ public final class Fresh_Fiji_Probe implements PlugIn {
         }
         report.put("class_sources",sources);
         require(IJ.getClassLoader().getResource("org/tensorflow/types/TFloat32.class")==null,"Modern TensorFlow leaked onto Fiji classpath");
-        if(!mode.equals("startup"))require(commands.containsKey("GATV2"),"GATV2 menu command was not registered by installed Fiji");
+        if(!mode.equals("startup") && !mode.startsWith("engine_"))require(commands.containsKey("GATV2"),"GATV2 menu command was not registered by installed Fiji");
+    }
+    private void engineInstall() throws Exception {
+        ClassLoader loader=IJ.getClassLoader();
+        String resolved=(String)Class.forName("io.bioimage.modelrunner.versionmanagement.SupportedVersions",true,loader)
+                .getMethod("getJavaVersionForPythonVersion",String.class,String.class).invoke(null,"pytorch","2.4.1+cpu");
+        require("2.0.0".equals(resolved),"Installed JDLL resolver disagrees with pinned engine: "+resolved);
+        Path engines=Paths.get(IJ.getDirectory("imagej"),"engines");
+        report.put("action","Shipped JDLL EngineInstall.installEngineWithArgsInDir(pytorch,2.0.0,true,false,engines)");
+        report.put("model_declared_version","2.4.1+cpu");report.put("catalog_resolved_version",resolved);snapshot();
+        Class.forName("io.bioimage.modelrunner.engine.installation.EngineInstall",true,loader)
+                .getMethod("installEngineWithArgsInDir",String.class,String.class,boolean.class,boolean.class,String.class)
+                .invoke(null,"pytorch","2.0.0",true,false,engines.toString());
+        require(Files.isDirectory(engines.resolve("pytorch-2.0.0-2.0.0-macosx-arm64-cpu")),"Supported installer did not create the requested real engine");
+        report.put("note","Installer return alone is not proof: Python verifies all hashes, adds the pinned official native CPU jar, then a separate launcher process must load/run the full model before copying installations");
     }
     private void dashboard() throws Exception {
         report.put("action","IJ.run(\"GATV2\") using the real installed menu mapping"); snapshot();

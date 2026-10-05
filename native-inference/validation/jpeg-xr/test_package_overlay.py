@@ -109,4 +109,25 @@ class PackagingTests(unittest.TestCase):
             root=Path(td);(root/'actual').write_bytes(b'x');(root/'link').symlink_to(root/'actual')
             with self.assertRaisesRegex(ValueError,'symlink'):p.local_file(root,'link')
 
+    def test_trusted_root_accepts_ancestor_alias_but_not_internal_links(self):
+        # Reproduce macOS /var -> /private/var on Linux without changing /var.
+        with tempfile.TemporaryDirectory() as td:
+            parent=Path(td)
+            real=parent/'private'/'var';real.mkdir(parents=True)
+            alias=parent/'var';alias.symlink_to(real,target_is_directory=True)
+            actual=real/'fixture';actual.mkdir()
+            (actual/'source.c').write_bytes(b'unchanged source')
+            trusted=alias/'fixture'
+            self.assertEqual(p.local_file(trusted,'source.c'),b'unchanged source')
+            inside=actual/'nested';inside.mkdir();(inside/'child.c').write_bytes(b'child')
+            (actual/'linked-dir').symlink_to(inside,target_is_directory=True)
+            with self.assertRaisesRegex(ValueError,'symlink'):
+                p.local_file(trusted,'linked-dir/child.c')
+            outside=real/'outside';outside.mkdir();(outside/'secret').write_bytes(b'outside')
+            (actual/'escape').symlink_to(outside,target_is_directory=True)
+            with self.assertRaisesRegex(ValueError,'symlink'):
+                p.local_file(trusted,'escape/secret')
+            with self.assertRaisesRegex(ValueError,'Unsafe archive path'):
+                p.local_file(trusted,'../outside/secret')
+
 if __name__=='__main__':unittest.main()

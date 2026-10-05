@@ -26,7 +26,9 @@ assertion that the upstream POM's BSD-only label covers the entire wrapper.
   typemap, the supplied generated wrapper, explicit ARM64/macOS deployment/C++98
   build flags and packaging/validation instructions. Codec/wrapper function
   source from the pinned jxrlib archive is unchanged. Supplied build/packaging
-  scripts follow this GAT repository's GPL-2.0-or-later terms.
+  scripts follow GAT's BSD-3-Clause repository license, included separately as
+  `LICENSES/GAT-BSD-3-Clause.txt`. This does not replace or weaken the native
+  Glencoe wrapper's GPL-2.0-or-later terms.
 
 `license-manifest.json` identifies exact source URLs, checksums and the one
 readability-only character-set conversion for the displayed Microsoft header.
