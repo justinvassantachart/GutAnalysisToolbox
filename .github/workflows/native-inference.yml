@@ -58,6 +58,25 @@ jobs:
           PY
       - name: Run both real models with native CPU backend
         run: python3 scripts/validate-native-worker.py --worker native-inference/target/gat-native-inference.jar --models target/model-fixtures
+      - name: Test strict fixture comparator failure paths
+        run: python3 -m unittest discover -s native-inference/validation/cross-platform -p 'test_*.py' -v
+      - name: Compare real Hu inference and unchanged NMS to TensorFlow 1.15 references
+        run: >-
+          python3 native-inference/validation/cross-platform/check.py
+          --worker native-inference/target/gat-native-inference.jar
+          --models target/model-fixtures
+          --output target/cross-platform-${{ matrix.platform }}
+      - name: Save cross-platform scientific regression diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-real-fixture-${{ matrix.platform }}
+          path: |
+            target/cross-platform-${{ matrix.platform }}/comparison.json
+            target/cross-platform-${{ matrix.platform }}/*.nms.json
+            target/cross-platform-${{ matrix.platform }}/*.labels.u16be
+            target/cross-platform-${{ matrix.platform }}/*.probability.f32be
+          if-no-files-found: warn
       - name: Save matching-platform worker bundle and test reports
         uses: actions/upload-artifact@v4
         with:
