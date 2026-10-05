@@ -19,6 +19,8 @@ SUITES = {
     "registration": ("RegistrationMorphologySmoke", "registration-morphology.json", False, 300),
     "calcium": ("CalciumWorkflowSmoke", "calcium-report.json", False, 180),
     "opencl": ("OpenClWorkflowSmoke", "opencl-report.json", True, 240),
+    "ganglia-command": ("GangliaCommandSmoke", "ganglia-command-report.json", False, 300),
+    "ganglia-contract": ("GangliaInputContractSmoke", "ganglia-contract-report.json", True, 120),
     "ganglia-djl": ("GangliaDjlSmoke", "ganglia-djl-report.json", True, 300),
     "ganglia-jdll": ("GangliaJdllSmoke", "ganglia-jdll-report.json", True, 300),
 }
@@ -56,13 +58,13 @@ def tree_rss_kib(pid):
         return None
 
 
-def execute(command, log, timeout, env, rss_limit_kib=3145728):
+def execute(command, log, timeout, env, rss_limit_kib=3145728, cwd=None):
     start = time.monotonic()
     max_rss = 0
     stop = None
     with log.open("w") as stream:
         process = subprocess.Popen(command, stdout=stream, stderr=subprocess.STDOUT,
-                                   env=env, start_new_session=True)
+                                   env=env, start_new_session=True, cwd=cwd)
         while process.poll() is None:
             rss = tree_rss_kib(process.pid)
             if rss is not None:
@@ -182,11 +184,15 @@ def main():
             groups = set()
             if name == "registration":
                 groups.add("registration")
-            if name.startswith("ganglia"):
+            if name == "ganglia-contract":
+                groups.update(("jdll-base", "deepimagej", "descriptor"))
+            elif name.startswith("ganglia"):
                 if not platform_key:
                     row.update(status="BLOCKED", reason="No pinned PyTorch CPU native for this platform")
                     continue
                 groups.update(("engine", "jdll-base", "model"))
+                if name == "ganglia-command":
+                    groups.update(("deepimagej", "registration"))
             artifacts = [a for a in pinned if groups.intersection(a["groups"]) and (not a.get("platform") or a["platform"] == platform_key)]
             paths = {a["filename"]: fetch(a, cache) for a in artifacts}
             for a in artifacts:
@@ -194,7 +200,12 @@ def main():
                     summary["artifacts"].append(a)
             classes = suite_out / "classes"
             classes.mkdir()
-            if name.startswith("ganglia"):
+            if name in ("ganglia-contract", "ganglia-command"):
+                cp_items = [str(paths[a["filename"]]) for a in artifacts
+                            if a["filename"].endswith(".jar")
+                            and ("engine" not in a["groups"] or "jdll-base" in a["groups"])]
+                cp_items += [str(ROOT / "target/classes"), root_cp]
+            elif name.startswith("ganglia"):
                 group = "engine" if name == "ganglia-djl" else "jdll-base"
                 cp_items = [str(paths[a["filename"]]) for a in artifacts if group in a["groups"]]
                 if name == "ganglia-djl":
@@ -212,20 +223,24 @@ def main():
                        class_name, str(suite_out)]
             if name.startswith("ganglia"):
                 model_dir = suite_out / "model"
-                model_dir.mkdir()
+                if name == "ganglia-command":
+                    model_dir = suite_out / "fiji-fixture/models/ganglia"
+                    (suite_out / "fiji-fixture/plugins").mkdir(parents=True)
+                model_dir.mkdir(parents=True)
                 for a in artifacts:
-                    if "model" in a["groups"]:
+                    if "model" in a["groups"] or "descriptor" in a["groups"]:
                         shutil.copy2(paths[a["filename"]], model_dir / a["filename"])
                 command.append(str(model_dir))
-                if name == "ganglia-jdll":
-                    engine_root = suite_out / "engines"
+                if name in ("ganglia-jdll", "ganglia-command"):
+                    engine_root = suite_out / "engines" if name == "ganglia-jdll" else suite_out / "fiji-fixture/engines"
                     engine_dir = engine_root / ("pytorch-2.0.0-2.0.0-" + platform_key + "-cpu" + ("-gpu" if platform_key == "linux-x86_64" else ""))
                     engine_dir.mkdir(parents=True)
                     for a in artifacts:
                         if "engine" in a["groups"]:
                             shutil.copy2(paths[a["filename"]], engine_dir / a["filename"])
                     command.append(str(engine_root))
-            result = execute(command, suite_out / "execution.log", deadline, base_env)
+            result = execute(command, suite_out / "execution.log", deadline, base_env,
+                             cwd=suite_out / "fiji-fixture" if name == "ganglia-command" else None)
             row["execution"] = result
             report = suite_out / report_name
             if report.exists():
@@ -236,7 +251,8 @@ def main():
             else:
                 row.update(status="FAIL", reason="No report produced; see execution log/exit code, including native abort or resource stop")
             # Keep portable output/evidence, not duplicated models and dependency jars.
-            for bulky in (suite_out / "model", suite_out / "engines"):
+            for bulky in (suite_out / "model", suite_out / "engines",
+                          suite_out / "fiji-fixture/models", suite_out / "fiji-fixture/engines"):
                 if bulky.exists():
                     shutil.rmtree(bulky)
         except (OSError, RuntimeError, subprocess.SubprocessError, ValueError) as exc:

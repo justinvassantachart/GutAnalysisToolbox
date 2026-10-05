@@ -95,7 +95,10 @@ def main():
         entries.extend((name + "/outlines/" + path.name, path) for path in (source / "outlines").glob("*.gz"))
     (output / "controls").mkdir()
     save(output / "controls/sensitivity.json", controls)
-    shutil.copyfile(Path(__file__).with_name("REGRESSION_REPORT.md"), output / "REPORT.md")
+    report = Path(__file__).with_name("REGRESSION_REPORT.md").read_text()
+    report = report.replace("The portable evidence is in [results/](results/REPORT.md). Evidence paths named\n"
+                            "below are relative to that directory.\n\n", "")
+    (output / "REPORT.md").write_text(report)
     if args.outlier_overlap:
         save(output / "controls/moved-center-object-overlap.json", json.loads(args.outlier_overlap.read_text()))
     if args.mac_smoke:

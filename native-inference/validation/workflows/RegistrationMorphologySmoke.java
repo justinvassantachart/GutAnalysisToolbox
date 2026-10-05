@@ -148,6 +148,7 @@ public final class RegistrationMorphologySmoke {
             Path inputPath = inputDir.resolve("batch-input.tif");
             save(input, inputPath);
             byte[] originalFile = Files.readAllBytes(inputPath);
+            ImagePlus reopenedInput = new Opener().openImage(inputPath.toString());
             Params p = new Params();
             p.inputDir = inputDir.toAbsolutePath().toString();
             p.outputDir = outputDir.toAbsolutePath().toString();
@@ -161,9 +162,10 @@ public final class RegistrationMorphologySmoke {
             WorkflowReport.check(reopened != null && reopened.getNChannels() == 1
                     && reopened.getNSlices() == 1 && reopened.getNFrames() == 12,
                     "Batch output did not preserve channel-1/time dimensions");
-            WorkflowReport.check(reopened.getCalibration().pixelWidth == 0.5
-                    && reopened.getCalibration().pixelHeight == 0.75
-                    && reopened.getCalibration().frameInterval == 1.25,
+            WorkflowReport.check(reopened.getCalibration().pixelWidth == reopenedInput.getCalibration().pixelWidth
+                    && reopened.getCalibration().pixelHeight == reopenedInput.getCalibration().pixelHeight
+                    && reopened.getCalibration().frameInterval == reopenedInput.getCalibration().frameInterval
+                    && reopened.getCalibration().getUnit().equals(reopenedInput.getCalibration().getUnit()),
                     "Batch output lost calibration/frame interval");
             double initial = stackMse(new ImagePlus("expected-first", expectedFirst));
             double after = stackMse(reopened);
@@ -177,7 +179,10 @@ public final class RegistrationMorphologySmoke {
             WorkflowReport.check(java.util.Arrays.equals(originalFile, Files.readAllBytes(inputPath)), "Batch overwrote original input file");
             return WorkflowReport.values("input_channels", 2, "output_channels", 1, "frames", 12,
                     "initial_mse", initial, "saved_mse", after, "first_frame_squared_error", firstFrameError,
-                    "input_file_unchanged", true, "evidence", output.relativize(saved).toString());
+                    "input_file_unchanged", true, "pixel_width", reopened.getCalibration().pixelWidth,
+                    "pixel_height", reopened.getCalibration().pixelHeight, "frame_interval", reopened.getCalibration().frameInterval,
+                    "calibration_comparator", "Reopened source TIFF; rational TIFF resolution can round 0.75",
+                    "evidence", output.relativize(saved).toString());
         });
         commandTest("stackreg_turboreg_gat_helper", "Direct GAT AlignStack.alignStackReg helper only; NOT GAT batch implementation", "StackReg rigid-body with TurboReg", new String[]{"StackReg_", "TurboReg_"}, () -> {
             ImagePlus source = pair("stackreg-direct-helper");

@@ -3,6 +3,8 @@ package Analysis;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.plugin.frame.RoiManager;
+import ij.plugin.ZProjector;
+import ij.plugin.ImageCalculator;
 import java.io.File;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -51,17 +53,16 @@ public class CalciumAnalysis {
 
     /** Step 2: Generate max intensity projection for user-specified frame range */
     public void createMaxProjection() {
-        if (maxProj.getStackSize() <= 1) {
+        if (rawStack.getStackSize() <= 1) {
             IJ.showMessage("Error", "Image must have multiple slices for Max Projection.");
             return;
         }
-        int[] frames = promptForFrames(maxProj.getStackSize());
+        int[] frames = promptForFrames(rawStack.getStackSize());
         if (frames == null) return;
 
         int start = frames[0];
         int end = frames[1];
-        IJ.run(rawStack, "Z Project...", "start=" + start + " stop=" + end + " projection=[Max Intensity]");
-        maxProj = IJ.getImage();
+        maxProj = projectFrames(rawStack, start, end, ZProjector.MAX_METHOD);
         maxProj.setTitle("MAX_" + new File(p.imagePath).getName());
         maxProj.show();
         IJ.log("Step 2: Max intensity projection created.");
@@ -79,14 +80,38 @@ public class CalciumAnalysis {
 
         int start = frames[0];
         int end = frames[1];
-        IJ.run(rawStack, "Z Project...", "start=" + start + " stop=" + end + " projection=[Average Intensity]");
-        ImagePlus f0 = IJ.getImage();
-
-        IJ.run("Image Calculator...", "image1=[" + rawStack.getTitle() + "] operation=Divide image2=[" + f0.getTitle() + "] create 32-bit stack");
-        normStack = IJ.getImage();
+        ImagePlus f0 = projectFrames(rawStack, start, end, ZProjector.AVG_METHOD);
+        normStack = divideByBaseline(rawStack, f0);
         normStack.setTitle("F_F0_" + new File(p.imagePath).getName());
         normStack.show();
         IJ.log("Step 3: F/F0 normalization completed.");
+    }
+
+    /** Use the selected stack planes and ImageJ's unchanged projection algorithm. */
+    static ImagePlus projectFrames(ImagePlus source, int first, int last, int method) {
+        if (source == null || first < 1 || last < first || last > source.getStackSize())
+            throw new IllegalArgumentException("Invalid calcium frame range.");
+        ZProjector projector = new ZProjector(source);
+        projector.setStartSlice(first);
+        projector.setStopSlice(last);
+        projector.setMethod(method);
+        projector.doProjection();
+        ImagePlus result = projector.getProjection();
+        if (result == null || result == source || result.getStackSize() != 1)
+            throw new IllegalStateException("ImageJ did not return a calcium projection.");
+        result.setCalibration(source.getCalibration().copy());
+        return result;
+    }
+
+    /** Keep ImageJ Divide/create/32-bit/stack semantics, including zero-baseline values. */
+    static ImagePlus divideByBaseline(ImagePlus source, ImagePlus baseline) {
+        ImagePlus result = new ImageCalculator().run("Divide create 32-bit stack", source, baseline);
+        if (result == null || result == source || result.getStackSize() != source.getStackSize())
+            throw new IllegalStateException("ImageJ did not return a complete F/F0 stack.");
+        result.setDimensions(source.getNChannels(), source.getNSlices(), source.getNFrames());
+        result.setOpenAsHyperStack(source.isHyperStack());
+        result.setCalibration(source.getCalibration().copy());
+        return result;
     }
 
     /** Step 4: Initialize ROI Manager */

@@ -180,7 +180,8 @@
       "url": "https://sites.imagej.net/GutAnalysisToolbox/models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml-20250501124309",
       "sha256": "1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c",
       "groups": [
-        "model"
+        "model",
+        "descriptor"
       ]
     },
     {
@@ -197,6 +198,14 @@
       "sha256": "c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9",
       "groups": [
         "model"
+      ]
+    },
+    {
+      "filename": "DeepImageJ-3.2.0-SNAPSHOT.jar",
+      "url": "https://sites.imagej.net/DeepImageJ/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar-20260708144022",
+      "sha256": "ce07bfa791c83034538ef858bce17b03fb414e18082aa78b1e63594d3829b5c6",
+      "groups": [
+        "deepimagej"
       ]
     }
   ]

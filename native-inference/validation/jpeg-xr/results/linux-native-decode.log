@@ -4,10 +4,10 @@ SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 bioformats.version=8.5.0
-native.resource=jar:file:/workspace/shared/gat-jpeg-xr/final-native-linux/jxrlib-native-linux_64-validation.jar!/META-INF/lib/linux_64/libjxrjava.so
-loader.code=file:/workspace/shared/gat-jpeg-xr/deps/native-lib-loader-2.5.0.jar
-decode.code=file:/workspace/shared/gat-jpeg-xr/deps/jxrlib-all-0.2.4.jar
-codec.code=file:/workspace/shared/gat-jpeg-xr/deps/bioformats_package-8.5.0.jar
+native.resource=jar:file:<VALIDATION_OUTPUT>/jxrlib-native-linux_64-validation.jar!/META-INF/lib/linux_64/libjxrjava.so
+loader.code=file:<DEPENDENCY_CACHE>/native-lib-loader-2.5.0.jar
+decode.code=file:<DEPENDENCY_CACHE>/jxrlib-all-0.2.4.jar
+codec.code=file:<DEPENDENCY_CACHE>/bioformats_package-8.5.0.jar
 BF-1scene-nozstack-compression50pct.jxr	587	246	3	true	28d93c4e569f164a09876c44c88d59f1493fde3641bb7548486bcc1700408222	c47d171c6659e4c5d44207a8ab7a1ca4	ec9170e72e8a710123a512c99ddd57ac05f85de9de6ba0247cfa75112e7d4d10	2c36b39866bc30f65fa02b49ec1ccd75ddf2e635a21ac47eb51b1d7d5160aa5b	PASS
 BF-1scene-nozstack-compression85pct.jxr	587	246	3	true	f89509658d0c12a28c4ceba7993b945f8e0fa886181f6dc154b7f9205d327ef0	c8d868d691c32d8392400bffb856bddc	25ee56af4dc709ec0811a373fc3c6f44cf1a3bb9a2c350b3afd79dd1ceae2ecb	41e849a07cd34990c3eae37e2ff1625a541162e6dce3b5b555f17343a1968432	PASS
 BF-1scene-nozstack-compressionlossless.jxr	587	246	3	true	7f9da56c6dfefbf0e7fe6f87ba264676e20fb27364ecfb10eef1f55e4dc1ec61	018a28fb6ce524e3b3acff240fe44b58	50c11eeea17808e8df9af478c6e6103b9a11a350f9a2e5eb0985d7e0d353b14d	7f90b2465da2615da392968d603105932952ff0d487990d60cbf496bfb536f18	PASS

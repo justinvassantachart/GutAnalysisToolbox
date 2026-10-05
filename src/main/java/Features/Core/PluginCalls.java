@@ -363,13 +363,13 @@ public final class PluginCalls {
     /**
      * Container object for ganglia segmentation prep.
      *
-     * dijInput3C: a hidden 3-channel float hyperstack (C=3,Z=1,T=1) normalized to [0..1]
+     * dijInput3C: a hidden 3-channel float hyperstack (C=3,Z=1,T=1) retaining [0..255]
      *             ready to feed DeepImageJ.
      * rgbForOverlay: an RGB visualization where Hu is magenta and ganglia channel is green,
      *                used for overlay review / saving pretty figures.
      */
     public static final class GangliaPrep {
-        public final ImagePlus dijInput3C;   // 3-channel, 32-bit hyperstack (C=3,Z=1,T=1), 0..1
+        public final ImagePlus dijInput3C;   // 3-channel, 32-bit hyperstack (C=3,Z=1,T=1), 0..255
         public final ImagePlus rgbForOverlay; // RGB Color image for painting overlay
         GangliaPrep(ImagePlus d, ImagePlus r) { dijInput3C=d; rgbForOverlay=r; }
     }
@@ -378,7 +378,7 @@ public final class PluginCalls {
      * Prepare inputs for ganglia segmentation.
      *
      * Produces:
-     *   - a 3-channel float hyperstack (R=Hu, G=Ganglia, B=Hu) normalized to [0..1] for DeepImageJ,
+     *   - a 3-channel float hyperstack (R=Hu, G=Ganglia, B=Hu) retaining 0..255 image values for DeepImageJ,
      *   - an RGB preview image for overlay/QA, with calibration copied.
      *
      * This mirrors the macro's "build RGB preview and DIJ input" steps,
@@ -415,10 +415,13 @@ public final class PluginCalls {
         rgb2.setCalibration(maxProj.getCalibration());
         rgb2.hide();
 
-        // Build DeepImageJ input: 3 slices of float 0..1, exposed as C=3 hyperstack
-        ij.process.FloatProcessor rf = r8.convertToFloatProcessor(); rf.multiply(1.0/255.0);
-        ij.process.FloatProcessor gf = g8.convertToFloatProcessor(); gf.multiply(1.0/255.0);
-        ij.process.FloatProcessor bf = b8.convertToFloatProcessor(); bf.multiply(1.0/255.0);
+        // Preserve image intensities. The supplied ganglia RDF already applies
+        // scale_linear(1/255), followed by its ImageNet mean/std normalization.
+        // Dividing here as well would change a white pixel from 255 to 1 before
+        // that model-owned preprocessing and materially alter predictions.
+        ij.process.FloatProcessor rf = r8.convertToFloatProcessor();
+        ij.process.FloatProcessor gf = g8.convertToFloatProcessor();
+        ij.process.FloatProcessor bf = b8.convertToFloatProcessor();
 
         ImageStack st = new ImageStack(w, h);
         st.addSlice("R", rf); st.addSlice("G", gf); st.addSlice("B", bf);
@@ -483,11 +486,28 @@ public final class PluginCalls {
         if (!modelDir.isDirectory())
             throw new IllegalArgumentException("DeepImageJ model folder not found: " + modelDir);
 
+        // DeepImageJ names output windows from the input's short title and
+        // publishes them on the Swing event queue. Bind this invocation to its
+        // own unique output; never mistake an old/current window for a result.
+        String requestTitle = "GAT_ganglia_" + java.util.UUID.randomUUID();
+        in3C.setTitle(requestTitle);
         int[] before = ij.WindowManager.getIDList();
-        IJ.run(in3C, "DeepImageJ Run", "model_path=[" + modelDir.getAbsolutePath() + "] input_path=null output_folder=null display_output=all");
-        ImagePlus out = Features.Core.PluginCalls.findNewImageSince(before);
-        if (out == null) out = IJ.getImage();
-        if (out == null) throw new IllegalStateException("DeepImageJ produced no output.");
+        ImagePlus out;
+        try {
+            IJ.run(in3C, "DeepImageJ Run", "model_path=[" + modelDir.getAbsolutePath() + "] input_path=null output_folder=null display_output=all");
+            finishGangliaDisplayEvents();
+            java.util.Set<Integer> previous = new java.util.HashSet<>();
+            if (before != null) for (int id : before) previous.add(id);
+            java.util.List<ImagePlus> created = new java.util.ArrayList<>();
+            int[] after = ij.WindowManager.getIDList();
+            if (after != null) for (int id : after) {
+                if (!previous.contains(id)) created.add(ij.WindowManager.getImage(id));
+            }
+            out = selectGangliaOutput(requestTitle, maxProj.getWidth(), maxProj.getHeight(), created);
+        } finally {
+            in3C.changes = false;
+            in3C.close();
+        }
         out.setCalibration(maxProj.getCalibration());
 
 
@@ -569,6 +589,68 @@ public final class PluginCalls {
         if (out.getWindow() != null) out.hide();
         return out;
     }
+
+    /** Complete DeepImageJ's queued image publication before inspecting results. */
+    private static void finishGangliaDisplayEvents() {
+        if (SwingUtilities.isEventDispatchThread()) {
+            java.awt.SecondaryLoop loop = java.awt.Toolkit.getDefaultToolkit()
+                    .getSystemEventQueue().createSecondaryLoop();
+            java.util.concurrent.atomic.AtomicBoolean timedOut = new java.util.concurrent.atomic.AtomicBoolean();
+            javax.swing.Timer timeout = new javax.swing.Timer(5000, event -> {
+                timedOut.set(true);
+                loop.exit();
+            });
+            timeout.setRepeats(false);
+            timeout.start();
+            java.awt.EventQueue.invokeLater(loop::exit);
+            boolean entered = loop.enter();
+            timeout.stop();
+            if (!entered || timedOut.get()) {
+                throw new IllegalStateException("DeepImageJ output display did not complete; no result was selected.");
+            }
+        } else {
+            java.util.concurrent.FutureTask<Void> marker = new java.util.concurrent.FutureTask<>(() -> null);
+            SwingUtilities.invokeLater(marker);
+            try {
+                marker.get(5, java.util.concurrent.TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new IllegalStateException("Interrupted while waiting for DeepImageJ output.", e);
+            } catch (java.util.concurrent.ExecutionException | java.util.concurrent.TimeoutException e) {
+                throw new IllegalStateException("DeepImageJ output display did not complete; no result was selected.", e);
+            }
+        }
+    }
+
+    /** A result must be a new, uniquely named, full-size single-channel 2D image. */
+    static ImagePlus selectGangliaOutput(String requestTitle, int width, int height,
+                                        java.util.List<ImagePlus> created) {
+        ImagePlus result = null;
+        String prefix = requestTitle + "_";
+        for (ImagePlus image : created) {
+            if (image == null || !image.getTitle().startsWith(prefix)) continue;
+            if (image.getWidth() != width || image.getHeight() != height
+                    || image.getNChannels() != 1 || image.getStackSize() != 1
+                    || image.getType() == ImagePlus.COLOR_RGB) {
+                throw new IllegalStateException("DeepImageJ returned an incompatible ganglia output shape/type.");
+            }
+            if (result != null) {
+                throw new IllegalStateException("DeepImageJ returned multiple ganglia outputs; no ambiguous result was used.");
+            }
+            result = image;
+        }
+        if (result == null) {
+            throw new IllegalStateException("DeepImageJ did not publish a ganglia result for this run. "
+                    + "Check the Fiji Log and model engine; an existing image will not be used as output.");
+        }
+        for (int pixel = 0; pixel < width * height; pixel++) {
+            if (!Float.isFinite(result.getProcessor().getf(pixel))) {
+                throw new IllegalStateException("DeepImageJ returned non-finite ganglia predictions.");
+            }
+        }
+        return result;
+    }
+
 
     /**
      * Clear any active threshold overlay (red LUT) on an ImagePlus.

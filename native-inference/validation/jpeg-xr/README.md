@@ -20,7 +20,10 @@ JAR is an experimental resource overlay, **not an upstream release**.
   does not establish that a Mac binary builds, loads, or returns correct pixels
 
 Final Linux execution reports and decode/compiler logs are checked in under
-`results/`. Native binary SHA-256: `04d4c1431ea6c45098e9722b5e3acac0f20586b31860cfd1aec84eb43ec7465a`.
+`results/`. Checked-in execution logs are path-redacted: `<VALIDATION_OUTPUT>`
+replaces the local output-directory prefix and `<DEPENDENCY_CACHE>` replaces
+the local dependency-cache prefix. Filenames, resource paths, source URLs,
+hashes and observed results are preserved. Original local logs are unmodified. Native binary SHA-256: `04d4c1431ea6c45098e9722b5e3acac0f20586b31860cfd1aec84eb43ec7465a`.
 This is the final recorded build, not a reproducible-build promise: upstream
 assertions can embed absolute source paths. The source rebuild used GCC 14.2.0, SWIG 4.3.0 and Temurin 17.0.20.1.
 
