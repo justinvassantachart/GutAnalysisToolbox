@@ -23,6 +23,11 @@ class ArchiveSafetyTests(unittest.TestCase):
             for name, content in names:
                 z.writestr(name, content)
         return self.path
+    def test_actual_gat_reference_uses_four_tiles(self):
+        reference = fresh.MANIFEST['neuron_reference']
+        self.assertEqual(reference['tiles'], 4)
+        self.assertEqual(reference['corpus_case'], 'repo_DYM_22_7_Pr_Hu_crop_c1_t1_x0_y0')
+        self.assertEqual(fresh.MANIFEST['expected_neuron_label_sha256'], 'ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443')
     def test_normal_layout(self):
         self.archive([('Fiji/', ''),('Fiji/jars/ij.jar','data')])
         self.assertEqual(4, fresh.safe_archive(self.path, 'Fiji', True))

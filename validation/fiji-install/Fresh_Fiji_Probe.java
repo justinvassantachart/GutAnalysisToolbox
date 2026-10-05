@@ -119,6 +119,9 @@ public final class Fresh_Fiji_Probe implements PlugIn {
         String before=pixels(input);
         report.put("action","Features.Core.PluginCalls.runStarDist2DLabel, invoked inside installed Fiji");snapshot();
         Class<?> type=Class.forName("Features.Core.PluginCalls",true,IJ.getClassLoader());
+        int tiles=((Number)type.getMethod("suggestTiles",int.class,int.class).invoke(null,175,175)).intValue();
+        report.put("requested_tiles",tiles);require(tiles==4,"The fixed API reference requires GAT's four-tile setting");
+        report.put("probability_threshold",.5);report.put("nms_threshold",.3);
         ImagePlus labels=(ImagePlus)type.getMethod("runStarDist2DLabel",ImagePlus.class,String.class,double.class,double.class).invoke(null,input,model.toString(),.5,.3);
         captureWindows();
         require(labels!=null && labels!=input,"Null/unchanged-input fallback is not a segmentation result");

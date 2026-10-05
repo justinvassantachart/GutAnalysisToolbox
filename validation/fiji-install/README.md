@@ -31,7 +31,10 @@ The end-user GUI installation instructions remain separate.
    invoke the registered `GATV2` entry point, and observe the actual preflight
 7. Separately execute the real GAT neuron call on the pinned public 175×175 Hu
    TIFF and Template Matching call on the established deterministic shifted
-   stack. Check output against the existing exact raster references
+   stack. Check output against the existing exact raster references. The neuron
+   reference is corpus case `repo_DYM_22_7_Pr_Hu_crop_c1_t1_x0_y0`, tiles 4,
+   probability 0.5/NMS 0.3, matching the actual GAT API; the separate one-tile
+   compact reference is not used
 
 The plugin is added as `Fresh_Fiji_Probe.jar`; its source is in this directory.
 It runs inside the normal installed Fiji classloader. Its only startup-dialog

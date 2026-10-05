@@ -107,12 +107,20 @@
     "dtype": "uint8",
     "conversion": "Original unrescaled row-major grayscale pixels converted to big-endian float32 GATI v1; no crop or resize"
   },
-  "expected_neuron_label_sha256": "0fe525b3b13e0f69c2f5593c7f227324ff748044906874006095b3b37cb67b95",
+  "expected_neuron_label_sha256": "ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
   "sources": {
     "update_site_catalog": "https://github.com/imagej/list-of-update-sites/blob/master/sites.yml",
     "updater_cli": "https://github.com/imagej/imagej-updater/blob/master/src/main/java/net/imagej/updater/CommandLine.java",
     "updater_docs": "https://imagej.net/learn/command-line",
     "gat_installation": "https://gut-analysis-toolbox.gitbook.io/docs/home#installation-and-configuration",
     "launcher_config": "Fiji/config/jaunch/fiji.toml inside the SHA-256-pinned distribution"
+  },
+  "neuron_reference": {
+    "corpus_case": "repo_DYM_22_7_Pr_Hu_crop_c1_t1_x0_y0",
+    "tiles": 4,
+    "probability_threshold": 0.5,
+    "nms_threshold": 0.3,
+    "boundary": 2,
+    "provenance": "Legacy and modern Linux corpus plus actual native-Mac GAT call in run37357196889 agree on this four-tile raster. The separate one-tile compact fixture is not the reference for this GAT API."
   }
 }

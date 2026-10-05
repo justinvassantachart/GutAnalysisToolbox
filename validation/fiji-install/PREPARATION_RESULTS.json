@@ -17,7 +17,7 @@
     {
       "name": "Python archive, isolation, pin-drift, overlay-safety unit tests",
       "status": "PASS",
-      "count": 10
+      "count": 11
     },
     {
       "name": "Python syntax compilation",
@@ -43,15 +43,15 @@
   "frozen_files": [
     {
       "path": "validation/fiji-install/Fresh_Fiji_Probe.java",
-      "sha256": "2a47d9b4995e06fa368c53a60db586411fb2e4bb9951fff984b33e15d6f625e8"
+      "sha256": "222bf7fd7f210e4a745e02f77ef6d94df2cd8f1b724f9baa06c873ee3c6df500"
     },
     {
       "path": "validation/fiji-install/README.md",
-      "sha256": "1b262c86c309ce191c91f2195ab3cb582b9e8e60410ded6448280a5fcedf8b1b"
+      "sha256": "9d894411e6b0427d91ce99381f141d9785bb1f2b0d79b35159f76a2df4cba070"
     },
     {
       "path": "validation/fiji-install/manifest.json",
-      "sha256": "d87414f7933e28a753fae008a769d417dc7388584a01f1c6b001cad7ae8741fb"
+      "sha256": "b07f65738ffc7f335ade6295691e845189516469703a2a760856bf5e5bc1dd38"
     },
     {
       "path": "validation/fiji-install/native-mac-fresh-fiji.yml.example",
@@ -63,7 +63,11 @@
     },
     {
       "path": "validation/fiji-install/test_fresh_fiji.py",
-      "sha256": "c1e28a4755e22a15a43c0638429542e12fd945cdbf477b55a828ddc0bd434f6e"
+      "sha256": "d131cf2584ee013d95464fea0d0e79a5fd78c3f947434a5e059eb3477f79812b"
     }
-  ]
+  ],
+  "review_correction": {
+    "date_utc": "2026-10-05T19:26:00Z",
+    "description": "Bound actual GAT neuron reference to four tiles, matching both archived Linux engines and the first native-Mac actual GAT call. The initial one-tile compact hash was a parameter mismatch, not a production failure or changed tolerance."
+  }
 }
