@@ -9,30 +9,29 @@ separate workflows and are not redirected by this plugin.
 
 ## What has actually run
 
-On one hosted **Apple M1 (Virtual)** runner, macOS 14.8.9 and native Java
-21.0.12.1, the unchanged upstream `gat_v2` source
-`1870d9e16e16fd6daeac0bd05122e851029ddedc` and fork
-`69feedb86f4c4fd54d6ef91f8ba497d966d5c845` were built and exercised with the same
-inputs, plugin versions and host. The actual fork StarDist call returned 39
-neurons on the public 175×175 Hu image; its Template Matching call returned
-exactly the expected translated pixels. The original calls failed to return
-those results. [Paired run and preserved diagnostics](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37357196889).
+[TEST preview 2](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2)
+contains the native-Mac-built fork at `fe5fd7b` and a separate unchanged original
+`1870d9e` bundle. The [clean-Mac handoff](M1-CHATGPT-HANDOFF.md) pins every package,
+model and fixture and includes the current before/after coverage table.
 
-The original StarDist failure was first a Java 21 classloader cast in the old
-ImageJ TensorFlow loader, **before JNI loading**. Original Template Matching
-left the shifted input unchanged. The installed old native binaries were
-independently identified as x86-64, but these particular command failures are
-not proof that architecture was their only cause. The original source remained
-unchanged and no modern TensorFlow classes entered either Fiji parent JVM.
+Same-host native M1 Virtual comparisons on Sonoma 14.8.9 and Sequoia 15.7.9
+confirm fork StarDist and Template Matching output success, original native
+failures, and fork SIFT helper/save/batch fixes. The original TF1 error dialog
+records no library for `darwin/aarch64`; its diagnostic process times out while
+waiting in that dialog. The actual official-Fiji launcher separately reproduces
+the earlier Java21 loader cast before JNI and explicit old OpenCV JNI errors.
+These are distinct observed failure paths, not an assumption of one cause.
 
-Native Mac tests also ran the real ganglia DeepImageJ command, morphology,
-SIFT single/batch saved-output checks, StackReg/TurboReg helpers and multiplex
-SIFT landmarks. These are individually bounded command/component tests, not
-an installation or full interactive GAT dashboard certification. **The paired
-job is not an overall pass:** its calcium dialog control is being corrected
-and repeated. OpenCL kernels cannot run on the hosted virtual Mac because no
-OpenCL device is exposed. See the [workflow matrix](apple-silicon-workflow-matrix.md)
-for every remaining limit.
+**Both original and fork calcium pass** accepted-dialog projection, F/F0
+`[1,1,2]`, ROI measurement and CSV/ROI export controls on both OS versions.
+The earlier ambiguous calcium control was resolved; no old numerical defect is
+claimed. Both ganglia commands run, with intentional output changes from the
+RDF input-scaling correction described below. [Qualified paired evidence](../native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md).
+
+Real official-Fiji startup and fork neuron/alignment pass; both dashboards
+initially block until DeepImageJ engines are initialized. The extended automated
+engine-setup test remains pending. Physical OpenCL/GPU and complete interactive
+workflows remain open. See the [workflow matrix](apple-silicon-workflow-matrix.md).
 
 ## Changes and scientific implications
 
@@ -72,7 +71,7 @@ The adapter supports 8/16-bit stacks, up to 67,108,864 total pixels and 10,000
 frames, with explicit validation before modifying the source. Linux tests
 include 300 output frames across synthetic references 1/2/3 and the public
 142-frame calcium movie with references 1/71. The actual native Mac GAT adapter
-passed the paired synthetic control; interactive single/batch review remains.
+passed the paired synthetic control and all six/300-frame port and actual-adapter comparisons on native Mac; interactive single/batch review remains.
 
 ### Existing result-handling corrections
 
@@ -88,8 +87,8 @@ passed the paired synthetic control; interactive single/batch review remains.
 - Ganglia output selection requires the newly produced, correctly shaped image;
   an unrelated current image is not accepted as a successful result
 - Calcium projection/division consume ImageJ's returned objects directly.
-  Numeric controls pass; the full native ROI/measurement dialog test remains
-  pending a reliable accepted-dialog rerun, so no blanket calcium pass is claimed
+  This is result-ownership hardening: both original and fork pass the accepted
+  native ROI/measurement/export control. Full GUI and edge-case testing remains
 
 ## Install an experimental overlay
 

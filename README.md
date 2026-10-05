@@ -2,11 +2,25 @@
 
 ## Experimental Apple Silicon preview
 
-This branch adds isolated native TensorFlow inference for GAT v2 neuron and
-subtype segmentation on native arm64 Fiji. See the
-[Apple Silicon installation and validation guide](docs/apple-silicon.md).
-It is a test build, not yet a blanket claim of support for every M-series Mac
-or every GAT workflow. Existing Intel installations keep the legacy backend.
+[Test preview 2 and the unchanged original comparison package](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2)
+are available for native arm64 Fiji on macOS 14+. Start with the
+[complete clean-Mac instructions](docs/M1-CHATGPT-HANDOFF.md), including the
+corrected manual test kit 2.1, even if no Fiji or developer tools are installed.
+
+This branch supplies isolated native neuron/subtype inference and Template
+Matching, plus verified result-handling fixes. See the
+[paired original/fork evidence and remaining limitations](docs/APPLE-SILICON-TEST-PREVIEW-2.md).
+Physical GPU access and complete interactive workflows remain to be tested;
+this is not an all-workflow or all-M-series support claim. Existing Intel
+installations keep their legacy inference backend. Clone this feature branch
+explicitly; the repository's unchanged default `main` does not contain the fork:
+
+```sh
+git clone --branch feat/apple-silicon-stardist https://github.com/justinvassantachart/GutAnalysisToolbox.git
+```
+
+For the immutable tested package source, use tag `apple-silicon-preview-2`.
+No upstream pull request has been opened.
 
 [![DOI:10.1101/2024.01.17.576140](http://img.shields.io/badge/DOI-10.1101/2024.01.17.576140-B31B1B.svg)](https://doi.org/10.1242/jcs.261950)
 

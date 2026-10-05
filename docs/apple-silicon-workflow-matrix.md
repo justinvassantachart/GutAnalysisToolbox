@@ -1,10 +1,10 @@
 # Apple Silicon workflow coverage
 
 **Updated 2026-10-05. Scope: Java GATV2 in this fork.** Native evidence comes
-from hosted Apple M1 (Virtual), macOS 14.8.9, arm64 Java 17/21. It is not a
+from hosted Apple M1 (Virtual), macOS 14.8.9 and 15.7.9, arm64 Java 17/21. It is not a
 physical-M1 installation, GPU or complete interactive dashboard certification.
-Current source goes beyond immutable preview 1; use the matching package and
-[installation guide](apple-silicon.md).
+Use [TEST preview 2](APPLE-SILICON-TEST-PREVIEW-2.md) and the
+[clean-Mac installation handoff](M1-CHATGPT-HANDOFF.md).
 
 ## Evidence keys
 
@@ -16,6 +16,8 @@ Current source goes beyond immutable preview 1; use the matching package and
   its acceptance criterion
 
 Primary evidence:
+
+- [Qualified Sonoma/Sequoia paired results](../native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md), original `1870d9e`, fork `fe5fd7b`
 
 - [Same-host unchanged original versus fork](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37357196889), original `1870d9e`, fork `69feedb`
 - [Native workflow commands after ganglia/SIFT changes](https://github.com/simplecoreorg-cyber/GutAnalysisToolbox/actions/runs/37354405010), fork `000464e`
@@ -34,7 +36,7 @@ Primary evidence:
 | Ganglia, deep-learning RGB model | Actual native GAT → DeepImageJ → JDLL → PyTorch command passes, source unchanged, binary output geometry/calibration and saved TIFF checked | Interactive painting; official supplied reference has unresolved 768² versus 1024² shape mismatch; no biological accuracy claim |
 | Ganglia input normalization | Real reached RDF contract fails in original and passes in fork | **Intentional output change:** old GAT double-normalizes; preserve fixed raw-range RGB input and model metadata |
 | Ganglia expansion/import/manual modes | Native Java helpers/morphology tested | Full UI mode combinations and calibrated parameter review |
-| MIP | Direct ImageJ numeric operation tested | Workflow/dialog result ownership, selected range and dimensions; calcium dialog control is pending reliable rerun |
+| MIP | Direct operation and accepted-dialog GAT calcium max projection pass on both original/fork and both native OS versions | More ranges, cancelled selections and full dashboard behavior |
 | EDF | **Blocked on hosted Mac:** system OpenCL and JOCL load, but no usable OpenCL device | Physical-M1 push/pull and variance-fusion kernels plus paired numerical reference |
 | Single-type spatial analysis | **Blocked by missing hosted OpenCL device** | Physical-M1 label dilation, touching neighbors, CSV and parametric-image correctness |
 | Two-type spatial analysis | **Blocked by missing hosted OpenCL device** | Physical-M1 overlap counts, optional ganglia restriction and output checks; this is not the Java Hu-gating operation |
@@ -44,7 +46,7 @@ Primary evidence:
 | Template Matching alignment | Native isolated OpenCV port; actual GAT paired control produces exact expected pixels. Linux real adapter checks 300 frames, references 1/2/3 and public movie 1/71 | Full native single/batch GUI and larger movies; 8/16-bit and bounded stack sizes only |
 | Motion CSV | Unit tests verify algorithm-owned Template Matching shifts and true frame IDs; fabricated zero/stale-table export removed | Native saved CSV consumer integration. SIFT transforms are unavailable; combined CSV is template refinement only |
 | StackReg/TurboReg | Native direct helper controls pass | **GAT batch StackReg remains unimplemented on every platform.** A plugin helper pass does not implement that option |
-| Calcium F/F0, ROI intensity, CSV/ROI ZIP | Numeric projection/division tests pass | **Pending corrected native dialog control.** Current paired failure may be cancelled selection; do not claim an accepted-dialog production failure or full pass |
+| Calcium F/F0, ROI intensity, CSV/ROI ZIP | Accepted-dialog original and fork controls both PASS on Sonoma and Sequoia, F/F0 `[1,1,2]`, ROI/CSV round trip | Full GUI, zero-baseline/nonfinite cases and representative biological movies |
 | Calcium automatic StarDist ROI generation | **Disabled stub in original and fork** | Requires a separately specified implementation/validation; use imported or manual ROIs |
 | Temporal color coding | Native small 8-bit helper test passes | Selected frame range, projection, scale, 16-bit/float behavior and complete GUI/save flow |
 | Multiplex registration | Native SIFT correspondence/landmark control passes (62 landmarks, about 5.23e-7 px residual) | MOPS/block-matching fallbacks, missing markers, all-channel transformation/order and complete saved output |
@@ -65,11 +67,12 @@ pixels exactly. Original ganglia command execution **passes**, although its
 input-contract test shows double normalization. Unaffected original helper
 passes are retained. Not every old workflow is expected to fail.
 
-The first paired job is overall red because calcium's automated frame-selection
-control did not reliably accept its dialog. Both old and fixed production code
-return early on cancellation. The corrected control must establish accepted
-selection before a result is attributed to either implementation. Do not treat
-that unresolved control as proof of a calcium architecture bug.
+The first paired job's calcium automation did not reliably accept its dialog.
+That ambiguity is now resolved: corrected accepted-dialog controls pass on BOTH
+original and fork on Sonoma and Sequoia. Later paired jobs remain overall red
+because the unchanged original TF native-load error dialog times out; repaired
+workflow steps pass. The saved reports preserve those timeout classifications.
+Do not call calcium an established old numerical or architecture defect.
 
 ## Native dependency status
 
