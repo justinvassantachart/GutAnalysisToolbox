@@ -10,12 +10,87 @@ import json
 import math
 import os
 from pathlib import Path
+import platform
 import struct
 import subprocess
+import time
 import urllib.request
 
 ROOT = Path(__file__).resolve().parent
 ATOL = RTOL = 1e-4
+
+
+def timed_subprocess(command, timeout, env=None):
+    """Wall time includes process startup and all child work, not just a kernel."""
+    started = time.perf_counter()
+    options = {"check": True, "timeout": timeout}
+    if env is not None:
+        options["env"] = env
+    subprocess.run(command, **options)
+    return time.perf_counter() - started
+
+
+def runner_metadata(java):
+    """Read-only, bounded probes; missing metadata never changes scientific gates."""
+    metadata = {"system": platform.system(), "machine": platform.machine(),
+                "os_release": platform.release(), "logical_cpu_count": os.cpu_count(),
+                "reported_cpu_brand": platform.processor() or None,
+                "gpu_comparison_performed": False,
+                "worker_cuda_visible_devices": "-1"}
+    if hasattr(os, "sched_getaffinity"):
+        try:
+            metadata["cpu_affinity_count"] = len(os.sched_getaffinity(0))
+        except OSError:
+            metadata["cpu_affinity_count"] = None
+    if hasattr(os, "getloadavg"):
+        try:
+            metadata["system_load_average_1m_5m_15m"] = list(os.getloadavg())
+        except OSError:
+            pass
+    if metadata["system"] == "Darwin":
+        metadata["macos_version"] = platform.mac_ver()[0]
+        for key, field in (("machdep.cpu.brand_string", "reported_cpu_brand"),
+                           ("hw.physicalcpu", "reported_physical_cpu_count")):
+            try:
+                probe = subprocess.run(["/usr/sbin/sysctl", "-n", key],
+                                       capture_output=True, text=True, timeout=2, check=False)
+                if probe.returncode == 0:
+                    value = probe.stdout.strip()[:200]
+                    metadata[field] = int(value) if field.endswith("count") else value
+            except (OSError, ValueError, subprocess.TimeoutExpired):
+                metadata[field] = None
+    elif metadata["system"] == "Linux":
+        try:
+            with Path("/proc/cpuinfo").open() as cpuinfo:
+                text = cpuinfo.read(65536)
+            for line in text.splitlines():
+                key, separator, value = line.partition(":")
+                if separator and key.strip() == "model name":
+                    metadata["reported_cpu_brand"] = value.strip()[:200]
+                    break
+        except OSError:
+            pass
+    try:
+        probe = subprocess.run([java, "-XshowSettings:properties", "-version"],
+                               stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                               text=True, timeout=10, check=False)
+        # Do not retain usernames, home directories, classpaths or full environment.
+        permitted = {"java.version", "java.vm.name", "java.vm.vendor", "os.arch"}
+        metadata["java"] = {}
+        for line in probe.stdout.splitlines():
+            key, separator, value = line.partition("=")
+            if separator and key.strip() in permitted:
+                metadata["java"][key.strip()] = value.strip()[:200]
+        if probe.returncode:
+            metadata["java_probe_exit_code"] = probe.returncode
+    except (OSError, subprocess.TimeoutExpired) as error:
+        metadata["java_metadata_error"] = type(error).__name__
+    metadata["numeric_thread_environment"] = {
+        name: int(os.environ[name])
+        for name in ("TF_NUM_INTRAOP_THREADS", "TF_NUM_INTEROP_THREADS", "OMP_NUM_THREADS")
+        if os.environ.get(name, "").isdigit()
+    }
+    return metadata
 
 
 def digest(path):
@@ -147,6 +222,10 @@ def main():
     parser.add_argument("--java", default="java")
     parser.add_argument("--javac", default="javac")
     args = parser.parse_args()
+    validation_started = time.perf_counter()
+    metadata_started = time.perf_counter()
+    metadata = runner_metadata(args.java)
+    metadata_seconds = time.perf_counter() - metadata_started
     manifest = json.loads((ROOT / "fixture-manifest.json").read_text())
     fixtures = ROOT / "fixtures"
     for name, sha256 in manifest["files"].items():
@@ -154,10 +233,18 @@ def main():
     source = input_pixels(fixtures / "hu-input.gati")
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
+    dependency_files = json.loads((ROOT / "dependencies.json").read_text())
+    cached_dependencies = sum((output / "dependencies" / item["file"]).is_file()
+                              for item in dependency_files)
+    setup_started = time.perf_counter()
     nms = prepare_nms(output / "dependencies", args.java, args.javac)
+    setup_seconds = time.perf_counter() - setup_started
     worker = args.worker.resolve()
     classpath = str(worker) + os.pathsep + str(worker.parent / "lib" / "*")
     worker_command = [args.java, "-cp", classpath, "org.gatanalysis.inference.NativeInferenceMain"]
+    worker_environment = os.environ.copy()
+    # Match the Fiji adapter's explicit CPU baseline; do not accidentally time CUDA.
+    worker_environment["CUDA_VISIBLE_DEVICES"] = "-1"
     reports = []
     for case in manifest["cases"]:
         model = args.models.resolve() / case["model"]
@@ -167,14 +254,36 @@ def main():
         # A previous result must never be mistaken for the current worker output.
         if prediction.exists():
             prediction.unlink()
-        subprocess.run(worker_command + [str(model), str(fixtures / "hu-input.gati"),
-                                        str(prediction), str(case["tiles"])], check=True, timeout=900)
-        subprocess.run(nms + [str(prediction), str(prefix), str(case["probability_threshold"])],
-                       check=True, timeout=180)
+        worker_seconds = timed_subprocess(
+            worker_command + [str(model), str(fixtures / "hu-input.gati"),
+                              str(prediction), str(case["tiles"])],
+            timeout=900, env=worker_environment)
+        nms_seconds = timed_subprocess(
+            nms + [str(prediction), str(prefix), str(case["probability_threshold"])],
+            timeout=180)
+        comparison_started = time.perf_counter()
         report = compare(fixtures / case["name"], prefix, source)
+        report["timing_seconds"] = {
+            "cold_worker_subprocess_end_to_end": worker_seconds,
+            "nms_subprocess_end_to_end": nms_seconds,
+            "reference_comparison": time.perf_counter() - comparison_started,
+        }
+        report["runner"] = metadata
+        report["timing_sample_count"] = 1
+        report["timing_warmup_runs"] = 0
         reports.append(report)
         print(json.dumps(report, sort_keys=True, allow_nan=False), flush=True)
+    shared_timing = {
+        "runner_metadata_collection": metadata_seconds,
+        "nms_dependency_download_verification_and_compilation": setup_seconds,
+        "fixture_validation_wall": time.perf_counter() - validation_started,
+        "dependency_files_cached_at_start": cached_dependencies,
+        "dependency_files_total": len(dependency_files),
+    }
+    for report in reports:
+        report["shared_setup_and_run_timing"] = shared_timing
     (output / "comparison.json").write_text(json.dumps(reports, indent=2, allow_nan=False) + "\n")
+    print(json.dumps({"shared_setup_and_run_timing": shared_timing}, allow_nan=False), flush=True)
     if not all(report["passed"] for report in reports):
         raise AssertionError("Cross-platform regression failed; see comparison.json (thresholds are fixed)")
     print("PASS: both real-image probability/label/count/measurement regressions")

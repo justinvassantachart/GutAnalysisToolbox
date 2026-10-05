@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-05",
+  "artifacts": [
+    {
+      "filename": "api-0.22.1.jar",
+      "url": "https://repo1.maven.org/maven2/ai/djl/api/0.22.1/api-0.22.1.jar",
+      "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb",
+      "groups": [
+        "engine"
+      ]
+    },
+    {
+      "filename": "pytorch-engine-0.22.1.jar",
+      "url": "https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-engine/0.22.1/pytorch-engine-0.22.1.jar",
+      "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627",
+      "groups": [
+        "engine"
+      ]
+    },
+    {
+      "filename": "pytorch-jni-2.0.0-0.22.1.jar",
+      "url": "https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-jni/2.0.0-0.22.1/pytorch-jni-2.0.0-0.22.1.jar",
+      "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6",
+      "groups": [
+        "engine"
+      ]
+    },
+    {
+      "filename": "dl-modelrunner-pytorch-0.4.4.jar",
+      "url": "https://maven.scijava.org/content/groups/public/io/bioimage/dl-modelrunner-pytorch/0.4.4/dl-modelrunner-pytorch-0.4.4.jar",
+      "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933",
+      "groups": [
+        "engine"
+      ]
+    },
+    {
+      "filename": "jna-5.13.0.jar",
+      "url": "https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar",
+      "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb",
+      "groups": [
+        "engine",
+        "jdll-base"
+      ]
+    },
+    {
+      "filename": "commons-compress-1.22.jar",
+      "url": "https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.22/commons-compress-1.22.jar",
+      "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b",
+      "groups": [
+        "engine",
+        "jdll-base"
+      ]
+    },
+    {
+      "filename": "slf4j-api-2.0.6.jar",
+      "url": "https://repo1.maven.org/maven2/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6.jar",
+      "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda",
+      "groups": [
+        "engine",
+        "jdll-base"
+      ]
+    },
+    {
+      "filename": "pytorch-native-cpu-2.0.0-linux-x86_64.jar",
+      "url": "https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-native-cpu/2.0.0/pytorch-native-cpu-2.0.0-linux-x86_64.jar",
+      "sha256": "361c62344808fb852e768aef35660248297735f882217b271caa02b35020c502",
+      "groups": [
+        "engine"
+      ],
+      "platform": "linux-x86_64"
+    },
+    {
+      "filename": "pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+      "url": "https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-native-cpu/2.0.0/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+      "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995",
+      "groups": [
+        "engine"
+      ],
+      "platform": "macosx-arm64"
+    },
+    {
+      "filename": "dl-modelrunner-0.6.2-SNAPSHOT.jar",
+      "url": "https://sites.imagej.net/DeepImageJ/jars/dl-modelrunner-0.6.2-SNAPSHOT.jar-20251011144925",
+      "sha256": "b8d4821fa5fd8d7f9135e3e673b92b8aeb3317f69dd8d8e05bc60aa981e3f757",
+      "groups": [
+        "jdll-base"
+      ]
+    },
+    {
+      "filename": "snakeyaml-2.3.jar",
+      "url": "https://repo1.maven.org/maven2/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar",
+      "sha256": "63a76fe66b652360bd4c2c107e6f0258daa7d4bb492008ba8c26fcd230ff9146",
+      "groups": [
+        "jdll-base"
+      ]
+    },
+    {
+      "filename": "jna-platform-5.13.0.jar",
+      "url": "https://repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.13.0/jna-platform-5.13.0.jar",
+      "sha256": "474d7b88f6e97009b6ec1d98c3024dd95c23187c65dabfbc35331bcac3d173dd",
+      "groups": [
+        "jdll-base"
+      ]
+    },
+    {
+      "filename": "gson-2.11.0.jar",
+      "url": "https://repo1.maven.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar",
+      "sha256": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "groups": [
+        "jdll-base"
+      ]
+    },
+    {
+      "filename": "imglib2-7.1.5.jar",
+      "url": "https://maven.scijava.org/content/groups/public/net/imglib2/imglib2/7.1.5/imglib2-7.1.5.jar",
+      "sha256": "b575a8e705647583950a2fb3aefdf13d5baabe4b3b7849e21bc536e9d278c3e3",
+      "groups": [
+        "jdll-base"
+      ]
+    },
+    {
+      "filename": "MorphoLibJ_-1.6.5.jar",
+      "url": "https://sites.imagej.net/IJPB-plugins/plugins/MorphoLibJ_-1.6.5.jar-20260219135154",
+      "sha256": "086c4661ccdd8c2787a6433468955df7646589b16cbae5c97607c18d8fe2af59",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "StackReg_-2.0.1.jar",
+      "url": "https://sites.imagej.net/BIG-EPFL/plugins/StackReg_-2.0.1.jar-20241012175606",
+      "sha256": "a62e509a88b0b28fc9926722ac1f6e81ff45362ae4fd3f7fcb60020cc9c11787",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "TurboReg_-2.0.1.jar",
+      "url": "https://sites.imagej.net/BIG-EPFL/plugins/TurboReg_-2.0.1.jar-20241012175606",
+      "sha256": "e7fde441f1913e9818f6c7de7baf6cd3e728b4972b4a0e674550a3f9471b1817",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "mpicbg-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/jars/mpicbg-1.6.6.jar-20260716221137",
+      "sha256": "43605b945958c6e675f3b0ec2090fd3f4e328ba6fffef9aacfc96fc1ebfee3d8",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "mpicbg_-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/plugins/mpicbg_-1.6.6.jar-20260716221137",
+      "sha256": "a18fc250b1fd464f6b79855c425e1b23d765974e0b0d2e9fdb03ce2f137406bb",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "jama-1.0.3.jar",
+      "url": "https://repo1.maven.org/maven2/gov/nist/math/jama/1.0.3/jama-1.0.3.jar",
+      "sha256": "c7325ee29be1aac1287ddac690f73671f1cd911ca9eca7c619990e86310556fd",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "best_model_torchscript.pt",
+      "url": "https://sites.imagej.net/GutAnalysisToolbox/models/2D_Ganglia_RGB_v3.bioimage.io.model/best_model_torchscript.pt-20250501124309",
+      "sha256": "1c59382b776acc2beed84bc2309e29f474aa69ff6356ec2248a04854d4feca7b",
+      "groups": [
+        "model"
+      ]
+    },
+    {
+      "filename": "rdf.yaml",
+      "url": "https://sites.imagej.net/GutAnalysisToolbox/models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml-20250501124309",
+      "sha256": "1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c",
+      "groups": [
+        "model"
+      ]
+    },
+    {
+      "filename": "test-input.npy",
+      "url": "https://sites.imagej.net/GutAnalysisToolbox/models/2D_Ganglia_RGB_v3.bioimage.io.model/test-input.npy-20250501124309",
+      "sha256": "986cfd751c0e2cfd3367cfc39b5583c10e55da2f1a7772d73845c6395eefd681",
+      "groups": [
+        "model"
+      ]
+    },
+    {
+      "filename": "test-output.npy",
+      "url": "https://sites.imagej.net/GutAnalysisToolbox/models/2D_Ganglia_RGB_v3.bioimage.io.model/test-output.npy-20250501124309",
+      "sha256": "c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9",
+      "groups": [
+        "model"
+      ]
+    }
+  ]
+}

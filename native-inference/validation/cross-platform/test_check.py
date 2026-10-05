@@ -5,6 +5,7 @@ import shutil
 import struct
 import tempfile
 import unittest
+from unittest import mock
 
 import check
 
@@ -85,6 +86,46 @@ class StrictComparisonTest(unittest.TestCase):
     def test_fixture_hash_mismatch_fails(self):
         with self.assertRaises(AssertionError):
             check.verify(Path(str(self.actual) + ".probability.f32be"), "0" * 64)
+
+
+class TimingMetadataTest(unittest.TestCase):
+    def test_timed_subprocess_reports_wall_time_and_preserves_timeout(self):
+        with mock.patch.object(check.time, "perf_counter", side_effect=[10.0, 12.5]), \
+                mock.patch.object(check.subprocess, "run") as run:
+            self.assertEqual(2.5, check.timed_subprocess(["java", "FixtureNms"], 15))
+            run.assert_called_once_with(["java", "FixtureNms"], check=True, timeout=15)
+
+    def test_worker_cpu_environment_is_passed_without_global_mutation(self):
+        environment = {"CUDA_VISIBLE_DEVICES": "-1"}
+        with mock.patch.object(check.time, "perf_counter", side_effect=[1.0, 2.0]), \
+                mock.patch.object(check.subprocess, "run") as run:
+            self.assertEqual(1.0, check.timed_subprocess(["java"], 900, environment))
+            run.assert_called_once_with(["java"], check=True, timeout=900, env=environment)
+
+    def test_java_metadata_is_allowlisted_and_does_not_record_private_paths(self):
+        response = mock.Mock(returncode=0, stdout=(
+            "    java.version = 21.0.9\n    os.arch = aarch64\n"
+            "    java.home = /private/do-not-record\n    user.name = private-user\n"))
+        with mock.patch.object(check.platform, "system", return_value="TestOS"), \
+                mock.patch.object(check.platform, "processor", return_value="Test CPU"), \
+                mock.patch.object(check.subprocess, "run", return_value=response) as run:
+            metadata = check.runner_metadata("selected-java")
+        self.assertEqual("21.0.9", metadata["java"]["java.version"])
+        self.assertEqual("aarch64", metadata["java"]["os.arch"])
+        self.assertFalse(metadata["gpu_comparison_performed"])
+        self.assertNotIn("private", json.dumps(metadata, allow_nan=False))
+        self.assertEqual("selected-java", run.call_args.args[0][0])
+        self.assertEqual(10, run.call_args.kwargs["timeout"])
+
+    def test_metadata_probe_failure_is_nonfatal_and_json_safe(self):
+        with mock.patch.object(check.platform, "system", return_value="Darwin"), \
+                mock.patch.object(check.platform, "processor", return_value=""), \
+                mock.patch.object(check.subprocess, "run", side_effect=check.subprocess.TimeoutExpired("probe", 2)):
+            metadata = check.runner_metadata("selected-java")
+        self.assertIsNone(metadata["reported_cpu_brand"])
+        self.assertIsNone(metadata["reported_physical_cpu_count"])
+        self.assertEqual("TimeoutExpired", metadata["java_metadata_error"])
+        json.dumps(metadata, allow_nan=False)
 
 
 if __name__ == "__main__":

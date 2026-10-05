@@ -130,3 +130,18 @@ Local Linux x86-64 validation on 2026-10-05 passed both cases: probability maxim
 absolute error was 1.37090683e-6 (neuron) and 1.51991844e-6 (subtype), with zero raw
 label pixel differences and all listed counts/measurements exactly equal.
 Native macOS evidence must come from a successful run of this new CI step.
+
+## CPU timing metadata
+
+The report now records one timing sample per model, with no warm-up runs:
+
+- `cold_worker_subprocess_end_to_end`: a fresh worker JVM, including JVM/JNI startup, model extraction/loading, image normalization, tiled CPU inference, output writing and worker cleanup
+- `nms_subprocess_end_to_end`: its separate Java process, GATO reading, unchanged StarDist NMS, rasterization and compact output writing
+- `reference_comparison`: Python comparison against the compact legacy references
+- `shared_setup_and_run_timing`: CPU/Java metadata collection; pinned NMS dependency download, checksum verification and Java compilation; total fixture validation wall time through both comparisons; and the dependency cache count at start
+
+The worker receives `CUDA_VISIBLE_DEVICES=-1`, matching the Fiji adapter's explicit CPU baseline. Runner metadata records the OS/architecture, available CPU counts, reported CPU brand, selected Java version/VM, system load where available, and numeric thread controls. Optional metadata probes have short timeouts; their failure does not relax or fail scientific gates. Usernames, home directories, classpaths and unrelated environment variables are not recorded.
+
+These are cold **process** measurements, not a claim that filesystem/native-library caches were cold. OS caches are not flushed. The setup phase can vary substantially with network/cache state. Model downloads and Maven builds performed by earlier workflow steps, Fiji GUI overhead and later GAT analysis/export are outside the fixture timings. The small 175×175 image and shared CI hardware are unsuitable for projecting full-image throughput from a single observation. Concurrent host work can affect timings; inspect the metadata and rerun a controlled benchmark for performance decisions.
+
+No GPU run is performed, so the report does not establish a CPU-versus-GPU slowdown ratio, Metal acceleration, or an extrapolated large-image runtime. Scientific comparison gates and reference fixtures remain unchanged.
