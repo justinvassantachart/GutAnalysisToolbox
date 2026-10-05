@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "prepared_utc": "2026-10-05T19:16:00Z",
+  "status": "REVIEW_ONLY_NOT_RUN_ON_MAC",
+  "local_validation_host": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "official_archive": {
+    "url": "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip",
+    "actual_bytes": 669037040,
+    "actual_sha256": "26af2159ca1d770de2c6b4fd99b98292891c50abdeaa00d1c66a425cd3de45b0",
+    "publisher_sha256_matches": true,
+    "zip_crc_test": "PASS: no corrupt entries",
+    "archive_path_and_symlink_safety": "PASS",
+    "uncompressed_member_bytes": 859133844,
+    "ARM_launcher_executed": false
+  },
+  "checks": [
+    {
+      "name": "Python archive, isolation, pin-drift, overlay-safety unit tests",
+      "status": "PASS",
+      "count": 10
+    },
+    {
+      "name": "Python syntax compilation",
+      "status": "PASS"
+    },
+    {
+      "name": "Java probe compilation against exact downloaded Fiji ij-1.54p.jar with --release 11",
+      "status": "PASS",
+      "compiler": "OpenJDK 17.0.20.1+1, Linux x86_64; compiler only, not Fiji runtime execution"
+    },
+    {
+      "name": "Native-Mac-only gate negative test on Linux",
+      "status": "PASS",
+      "actual_process_exit_code": 3,
+      "reported_native_host_status": "BLOCKED"
+    },
+    {
+      "name": "Proposed workflow YAML parse",
+      "status": "PASS"
+    }
+  ],
+  "native_fiji_installation_execution": "BLOCKED: lane prepared only; pending owner review/publication and a native macOS runner",
+  "frozen_files": [
+    {
+      "path": "validation/fiji-install/Fresh_Fiji_Probe.java",
+      "sha256": "2a47d9b4995e06fa368c53a60db586411fb2e4bb9951fff984b33e15d6f625e8"
+    },
+    {
+      "path": "validation/fiji-install/README.md",
+      "sha256": "1b262c86c309ce191c91f2195ab3cb582b9e8e60410ded6448280a5fcedf8b1b"
+    },
+    {
+      "path": "validation/fiji-install/manifest.json",
+      "sha256": "d87414f7933e28a753fae008a769d417dc7388584a01f1c6b001cad7ae8741fb"
+    },
+    {
+      "path": "validation/fiji-install/native-mac-fresh-fiji.yml.example",
+      "sha256": "1b8b974b38dfa031e113dbe4c3a2111f2f49ceca5080a1ea80fea4cce7895e09"
+    },
+    {
+      "path": "validation/fiji-install/run_fresh_fiji.py",
+      "sha256": "a6e08935c86f4cc4791578c4485b970a46b82149d11c3f38ab2db7a3fefe9034"
+    },
+    {
+      "path": "validation/fiji-install/test_fresh_fiji.py",
+      "sha256": "c1e28a4755e22a15a43c0638429542e12fd945cdbf477b55a828ddc0bd434f6e"
+    }
+  ]
+}

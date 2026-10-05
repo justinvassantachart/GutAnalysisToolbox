@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "prepared_utc": "2026-10-05",
+  "fiji": {
+    "url": "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip",
+    "sha256": "26af2159ca1d770de2c6b4fd99b98292891c50abdeaa00d1c66a425cd3de45b0",
+    "bytes": 669037040,
+    "root": "Fiji",
+    "launcher": "Fiji.app/Contents/MacOS/fiji-macos-arm64",
+    "java_home": "java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home"
+  },
+  "sites": [
+    {
+      "name": "3D ImageJ Suite",
+      "url": "https://sites.imagej.net/Tboudier/"
+    },
+    {
+      "name": "BIG-EPFL",
+      "url": "https://sites.imagej.net/BIG-EPFL/"
+    },
+    {
+      "name": "CSBDeep",
+      "url": "https://sites.imagej.net/CSBDeep/"
+    },
+    {
+      "name": "clij",
+      "url": "https://sites.imagej.net/clij/"
+    },
+    {
+      "name": "clij2",
+      "url": "https://sites.imagej.net/clij2/"
+    },
+    {
+      "name": "DeepImageJ",
+      "url": "https://sites.imagej.net/DeepImageJ/"
+    },
+    {
+      "name": "Gut Analysis Toolbox",
+      "url": "https://sites.imagej.net/GutAnalysisToolbox/"
+    },
+    {
+      "name": "IJPB-plugins",
+      "url": "https://sites.imagej.net/IJPB-plugins/"
+    },
+    {
+      "name": "StarDist",
+      "url": "https://sites.imagej.net/StarDist/"
+    },
+    {
+      "name": "PTBIOP",
+      "url": "https://biop.epfl.ch/Fiji-Update"
+    },
+    {
+      "name": "Template Matching",
+      "url": "https://sites.imagej.net/Template_Matching/"
+    }
+  ],
+  "expected_plugin_artifacts": [
+    {
+      "file": "StarDist_-0.3.0.jar",
+      "url": "https://sites.imagej.net/StarDist/plugins/StarDist_-0.3.0.jar-20200421142655",
+      "sha256": "fff483154961e60cb6305e4ef73ef9e662298e1e65a077858e018717eb30d2bd",
+      "bytes": 16180976
+    },
+    {
+      "file": "csbdeep-0.6.0.jar",
+      "url": "https://sites.imagej.net/CSBDeep/jars/csbdeep-0.6.0.jar-20200808215936",
+      "sha256": "13bfb85d179bedf1d5e6542b0e200cb250ab8e030e88d5e645e6e6b486b22894",
+      "bytes": 142482
+    },
+    {
+      "file": "imagej-tensorflow-1.1.6.jar",
+      "url": "https://sites.imagej.net/CSBDeep/jars/imagej-tensorflow-1.1.6.jar-20200706021812",
+      "sha256": "e6ae932922325818278c87999f2fb57b5426f383e27455a978ae849f1f1cb0a4",
+      "bytes": 54120
+    },
+    {
+      "file": "Template_Matching.jar",
+      "url": "https://sites.imagej.net/Template_Matching/plugins/Template_Matching.jar-20200515134627",
+      "sha256": "cdc4ac16d70486c7420b9704e56c26b90084b54a1b558405451fd22cc8aa823c",
+      "bytes": 10695
+    },
+    {
+      "file": "Clipper-6.4.2.jar",
+      "url": "https://sites.imagej.net/StarDist/jars/Clipper-6.4.2.jar-20200108164851",
+      "sha256": "df1020524cc2cad78d57a6928cf94d00e8558397ccf8d227d2c8f4af1023b970",
+      "bytes": 70822
+    }
+  ],
+  "models": [
+    {
+      "file": "2D_enteric_neuron_v4_1.zip",
+      "sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276"
+    },
+    {
+      "file": "2D_enteric_neuron_subtype_v4.zip",
+      "sha256": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8"
+    }
+  ],
+  "fixture": {
+    "url": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/DYM_22_7_Pr_Hu_crop.tif",
+    "sha256": "55251741add488f9a08cf5b33a4ee8ec3fd3023e25ffb0fc18800f80953948d7",
+    "shape": [
+      175,
+      175
+    ],
+    "dtype": "uint8",
+    "conversion": "Original unrescaled row-major grayscale pixels converted to big-endian float32 GATI v1; no crop or resize"
+  },
+  "expected_neuron_label_sha256": "0fe525b3b13e0f69c2f5593c7f227324ff748044906874006095b3b37cb67b95",
+  "sources": {
+    "update_site_catalog": "https://github.com/imagej/list-of-update-sites/blob/master/sites.yml",
+    "updater_cli": "https://github.com/imagej/imagej-updater/blob/master/src/main/java/net/imagej/updater/CommandLine.java",
+    "updater_docs": "https://imagej.net/learn/command-line",
+    "gat_installation": "https://gut-analysis-toolbox.gitbook.io/docs/home#installation-and-configuration",
+    "launcher_config": "Fiji/config/jaunch/fiji.toml inside the SHA-256-pinned distribution"
+  }
+}
