@@ -1,4 +1,6 @@
 import importlib.util
+import io
+from unittest.mock import patch
 import json
 from pathlib import Path
 import tempfile
@@ -95,6 +97,107 @@ class ArchiveSafetyTests(unittest.TestCase):
         self.assertEqual(expected,fresh.MANIFEST['ganglia_engine']['artifacts'])
         self.assertEqual(8,len(expected))
         self.assertEqual('2.0.0',fresh.MANIFEST['ganglia_engine']['catalog_resolved_version'])
+    def test_current_updater_application_pins_are_explicit(self):
+        pins = fresh.MANIFEST['ganglia_engine']['required_updater_assets']
+        self.assertEqual([
+            {'path': 'jars/dl-modelrunner-0.6.4.jar',
+             'sha256': '376d94bc2a921923c942b735fa4088ca7fb16e1a18c1dc09441401a606af2ce4'},
+            {'path': 'plugins/DeepImageJ-3.2.1-SNAPSHOT.jar',
+             'sha256': '139ec702a1e29e5845d031f1886fe4c3811efac841b429fc83b8f1cf43b80302'},
+        ], pins[:2])
+        engine = fresh.MANIFEST['ganglia_engine']
+        self.assertEqual('2.4.1+cpu', engine['model_declared_version'])
+        self.assertEqual('pytorch-2.0.0-2.0.0-macosx-arm64-cpu', engine['directory'])
+        self.assertEqual(6, len(pins[2:]))
+
+    def test_updater_assets_require_current_path_and_exact_bytes(self):
+        for pin in fresh.MANIFEST['ganglia_engine']['required_updater_assets'][:2]:
+            with self.subTest(path=pin['path']):
+                asset = self.root / pin['path']
+                asset.parent.mkdir(parents=True, exist_ok=True)
+                # Small fixture bytes exercise the verifier, not a native runtime.
+                asset.write_bytes(b'verified fixture')
+                expected = {'path': pin['path'], 'sha256': fresh.sha256(asset)}
+                self.assertEqual([expected], fresh.verify_required_assets(self.root, [expected]))
+                asset.write_bytes(b'changed fixture')
+                with self.assertRaises(ValueError):
+                    fresh.verify_required_assets(self.root, [expected])
+                asset.write_bytes(b'verified fixture')
+                asset.rename(asset.with_name('older-version.jar'))
+                with self.assertRaises(ValueError):
+                    fresh.verify_required_assets(self.root, [expected])
+
+    def test_current_packager_documentation_passes_fresh_fiji_overlay(self):
+        repository = Path(__file__).resolve().parents[2]
+        spec = importlib.util.spec_from_file_location('preview_package', repository / 'scripts/package-apple-silicon-preview.py')
+        package = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(package)
+        build = self.root / 'build'
+        (build / 'target/classes/Features/Inference').mkdir(parents=True)
+        (build / 'target/classes/UI').mkdir()
+        (build / 'pom.xml').write_text('<project xmlns="http://maven.apache.org/POM/4.0.0"><version>test</version></project>')
+        classes = ['UI/GatPluginUI.class', 'Features/Inference/NativeStarDist.class',
+                   'Features/Inference/NativeAlignmentClient.class']
+        with zipfile.ZipFile(build / 'target/GutAnalysisToolbox_-test.jar', 'w') as jar:
+            jar.writestr('plugins.config', 'fixture registration')
+            for name in classes:
+                (build / 'target/classes' / name).write_bytes(b'compiled fixture')
+                jar.writestr(name, b'compiled fixture')
+        bundles = {
+            'inference': ['gat-native-inference.jar', 'THIRD_PARTY_NOTICES.md',
+                          'lib/tensorflow-core-native-test-macosx-arm64.jar'],
+            'alignment': ['gat-native-alignment.jar', 'LICENSE', 'THIRD_PARTY_NOTICES.md',
+                          'source/pom.xml', 'source/src/main/java/TemplateMatching/NativeAlignmentMain.java',
+                          'source/src/main/java/TemplateMatching/Align_slices.java',
+                          'source/src/main/java/TemplateMatching/cvMatch_Template.java',
+                          'lib/opencv-test-macosx-arm64.jar', 'lib/openblas-test-macosx-arm64.jar',
+                          'lib/javacpp-test-macosx-arm64.jar'],
+        }
+        for worker, members in bundles.items():
+            target = build / ('native-' + worker) / 'target'
+            target.mkdir(parents=True)
+            with zipfile.ZipFile(target / ('gat-native-' + worker + '-macosx-arm64.zip'), 'w') as archive:
+                for name in members:
+                    archive.writestr('gat-native-' + worker + '/' + name, b'packaging fixture')
+        for name in ['LICENSE', 'docs/apple-silicon.md', 'docs/apple-silicon-workflow-matrix.md',
+                     'docs/preview-5-setup.md', 'docs/validation/maintainer-review-2026-10-06.md',
+                     'docs/validation/fork-hardening-2026-10-06.md']:
+            destination = build / name
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(repository / name, destination)
+        output = self.root / 'packages'
+        with patch.object(package, '__file__', str(build / 'scripts/package-apple-silicon-preview.py')), \
+                patch('sys.argv', ['package-preview', '--output', str(output)]), \
+                patch.object(package.subprocess, 'check_output', side_effect=['1' * 40, '']):
+            package.main()
+        fiji = self.root / 'Fiji'
+        (fiji / 'plugins').mkdir(parents=True)
+        (fiji / 'jars').mkdir()
+        fresh.overlay(fiji, archive=output / 'GAT-test-macos-arm64-preview.zip',
+                      source_commit='1' * 40, evidence=self.root / 'evidence')
+        for name in fresh.OVERLAY_DOCUMENTS:
+            self.assertTrue((fiji / name).is_file(), name)
+
+    def test_overlay_rejects_unknown_docs_and_executable_paths_before_mutation(self):
+        plugin = io.BytesIO()
+        with zipfile.ZipFile(plugin, 'w') as jar:
+            jar.writestr('UI/GatPluginUI.class', b'fixture')
+            jar.writestr('plugins.config', b'fixture')
+        fiji = self.root / 'Fiji'
+        (fiji / 'plugins').mkdir(parents=True)
+        (fiji / 'jars').mkdir()
+        for name in ['PREVIEW_6_SETUP.md', 'PREVIEW_5_SETUP.md/run.sh',
+                     'BUILD_INFO.json/run.sh', 'install.sh', 'plugins/extra.sh']:
+            with self.subTest(path=name):
+                self.archive([('BUILD_INFO.json', json.dumps({'source_commit': '1' * 40,
+                                                             'source_worktree_modified': False})),
+                              ('plugins/GAT.jar', plugin.getvalue()), (name, 'unexpected')])
+                with self.assertRaisesRegex(ValueError, 'Unexpected overlay path'):
+                    fresh.overlay(fiji, archive=self.path, source_commit='1' * 40,
+                                  evidence=self.root / 'evidence')
+                self.assertEqual([], list((fiji / 'plugins').iterdir()))
+                self.assertEqual([], list((fiji / 'jars').iterdir()))
+
     def test_normal_layout(self):
         self.archive([('Fiji/', ''),('Fiji/jars/ij.jar','data')])
         self.assertEqual(4, fresh.safe_archive(self.path, 'Fiji', True))
