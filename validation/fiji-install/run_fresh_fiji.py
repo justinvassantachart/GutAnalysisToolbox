@@ -20,6 +20,10 @@ import xml.etree.ElementTree as ET
 
 HERE = Path(__file__).resolve().parent
 MANIFEST = json.loads((HERE / 'manifest.json').read_text())
+OVERLAY_DOCUMENTS = ('BUILD_INFO.json', 'APPLE_SILICON.md',
+                     'apple-silicon-workflow-matrix.md', 'GAT_LICENSE',
+                     'PREVIEW_5_SETUP.md', 'MAINTAINER_REVIEW_2026-10-06.md',
+                     'FORK_HARDENING_2026-10-06.md')
 STAGES = ['native_host', 'archive_download', 'archive_integrity', 'archive_extraction',
           'bundled_java', 'pristine_startup', 'official_updater', 'installed_inventory',
           'paired_overlays', 'original_startup', 'original_dashboard', 'original_neuron',
@@ -180,8 +184,10 @@ def overlay(root, plugin=None, archive=None, source_commit=None, evidence=None):
                 raise ValueError('Fork overlay must contain exactly one GAT plugin')
             for name in z.namelist():
                 p = PurePosixPath(name)
-                if p.parts[0] not in ('plugins', 'gat-native-inference', 'gat-native-alignment',
-                                     'BUILD_INFO.json', 'APPLE_SILICON.md', 'apple-silicon-workflow-matrix.md', 'GAT_LICENSE'):
+                # Documentation is allowed only at these exact root paths, not
+                # as a directory prefix that could admit an unrelated payload.
+                if (p.parts[0] not in ('gat-native-inference', 'gat-native-alignment')
+                        and name not in OVERLAY_DOCUMENTS and name not in (files[0], 'plugins/')):
                     raise ValueError('Unexpected overlay path: ' + name)
             import io
             with zipfile.ZipFile(io.BytesIO(z.read(files[0]))) as jar:
