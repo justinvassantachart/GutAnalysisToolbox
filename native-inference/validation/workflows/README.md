@@ -124,7 +124,15 @@ input-scaling bug. These fixes are not claims of biological validation:
 - **Calcium:** GAT now obtains the actual `ZProjector` and `ImageCalculator`
   return objects, using the same MAX/AVG and Divide/create/32-bit/stack operations.
   Unit tests check selected ranges, `[1, 1, 2]` F/F0, temporal metadata, source
-  immutability and unchanged ImageJ `0/0 -> NaN` behavior. The first native
+  immutability and unchanged ImageJ `0/0 -> NaN` behavior. Input is restricted
+  to single-channel grayscale movies: ordinary ImageJ stacks (the stack axis is
+  stored as Z and treated as frames) or C=1/Z=1 time hyperstacks. RGB,
+  multichannel, and combined Z/T inputs are rejected before frame-selection
+  dialogs, including when F/F0 is disabled; distinct C/Z/T axes are never
+  silently flattened together into a temporal baseline. Failed loads clear previous analysis
+  state, and the dashboard reports these errors without advancing the step.
+  Real ImageJ tests cover these dimension guards and supported numerical results.
+  The first native
   command control sometimes returned the unchanged source while its dialog
   automation could cancel frame selection. Therefore that observation alone
   does **not** establish an old production projection bug. The revised controller

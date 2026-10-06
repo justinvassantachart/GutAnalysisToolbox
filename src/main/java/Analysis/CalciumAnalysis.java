@@ -39,12 +39,20 @@ public class CalciumAnalysis {
 
     /** Step 1: Load the image from file path */
     public void openImage() {
+        // A failed reload must not leave the preceding movie/results usable.
+        rawStack = null;
+        maxProj = null;
+        normStack = null;
+        if (p.imagePath == null || p.imagePath.trim().isEmpty())
+            throw new IllegalArgumentException("Select a calcium image file first.");
         File imgFile = new File(p.imagePath);
-        if (!imgFile.exists()) {
-            IJ.error("File not found: " + p.imagePath);
-            return;
-        }
-        rawStack = IJ.openImage(p.imagePath);
+        if (!imgFile.isFile())
+            throw new IllegalArgumentException("Image file not found: " + p.imagePath);
+        ImagePlus loaded = IJ.openImage(p.imagePath);
+        if (loaded == null)
+            throw new IllegalArgumentException("Could not open calcium image: " + p.imagePath);
+        requireSupportedMovie(loaded);
+        rawStack = loaded;
         this.maxProj = rawStack;
         rawStack.show();
         IJ.selectWindow(rawStack.getTitle());
@@ -53,6 +61,7 @@ public class CalciumAnalysis {
 
     /** Step 2: Generate max intensity projection for user-specified frame range */
     public void createMaxProjection() {
+        requireSupportedMovie(rawStack);
         if (rawStack.getStackSize() <= 1) {
             IJ.showMessage("Error", "Image must have multiple slices for Max Projection.");
             return;
@@ -70,6 +79,7 @@ public class CalciumAnalysis {
 
     /** Step 3: Perform F/F0 normalization */
     public void normalizeStack() {
+        requireSupportedMovie(rawStack);
         if (!p.useFF0) {
             normStack = rawStack;
             return;
@@ -87,9 +97,28 @@ public class CalciumAnalysis {
         IJ.log("Step 3: F/F0 normalization completed.");
     }
 
-    /** Use the selected stack planes and ImageJ's unchanged projection algorithm. */
+    /**
+     * This workflow treats one grayscale stack axis as time. Plain ImageJ stacks
+     * store that axis as Z; time hyperstacks use T. Do not flatten channels or
+     * simultaneous Z/T axes into frames.
+     */
+    static void requireSupportedMovie(ImagePlus source) {
+        if (source == null || source.getProcessor() == null)
+            throw new IllegalArgumentException("Open a calcium image first.");
+        if (source.getNChannels() != 1 || source.getBitDepth() == 24
+                || (source.getNSlices() > 1 && source.getNFrames() > 1))
+            throw new IllegalArgumentException(
+                    "Calcium analysis requires a single-channel grayscale movie: "
+                    + "a plain stack or a time series with one Z plane. "
+                    + "RGB, multiple channels, and combined Z/T stacks are not supported "
+                    + "(C=" + source.getNChannels() + ", Z=" + source.getNSlices()
+                    + ", T=" + source.getNFrames() + ", bit depth=" + source.getBitDepth() + ").");
+    }
+
+    /** Use the selected movie frames and ImageJ's unchanged projection algorithm. */
     static ImagePlus projectFrames(ImagePlus source, int first, int last, int method) {
-        if (source == null || first < 1 || last < first || last > source.getStackSize())
+        requireSupportedMovie(source);
+        if (first < 1 || last < first || last > source.getStackSize())
             throw new IllegalArgumentException("Invalid calcium frame range.");
         ZProjector projector = new ZProjector(source);
         projector.setStartSlice(first);
@@ -105,6 +134,11 @@ public class CalciumAnalysis {
 
     /** Keep ImageJ Divide/create/32-bit/stack semantics, including zero-baseline values. */
     static ImagePlus divideByBaseline(ImagePlus source, ImagePlus baseline) {
+        requireSupportedMovie(source);
+        requireSupportedMovie(baseline);
+        if (baseline.getStackSize() != 1 || baseline.getWidth() != source.getWidth()
+                || baseline.getHeight() != source.getHeight())
+            throw new IllegalArgumentException("Calcium baseline must be a single plane matching the movie dimensions.");
         ImagePlus result = new ImageCalculator().run("Divide create 32-bit stack", source, baseline);
         if (result == null || result == source || result.getStackSize() != source.getStackSize())
             throw new IllegalStateException("ImageJ did not return a complete F/F0 stack.");

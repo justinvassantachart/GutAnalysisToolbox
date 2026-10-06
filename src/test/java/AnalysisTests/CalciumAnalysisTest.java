@@ -1,103 +1,100 @@
 package AnalysisTests;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-
 import Analysis.CalciumAnalysis;
 import Features.Core.Params;
 import ij.IJ;
 import ij.ImagePlus;
-import ij.plugin.frame.RoiManager;
+import ij.ImageStack;
+import ij.io.FileSaver;
+import ij.process.FloatProcessor;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.mockito.MockedStatic;
 
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
 class CalciumAnalysisTest {
+    @TempDir Path directory;
 
-    @Mock
-    File mockFile;
-
-    @Mock
-    ImagePlus mockRawStack, mockMaxProj, mockNormStack;
-
-    @Mock
-    RoiManager mockRM;
-
-    @Test
-    void testOpenImage() {
-        // Initialise relevant variables
-
-        // Non-mocks
+    @Test void supportedImageIsValidatedBeforeDisplay() throws Exception {
         Params params = new Params();
-        params.imagePath = "src/test/resources/sampleFiles/2D_enteric_neuron_v4_1.zip";
-
-        // Mock function calls
-        doNothing().when(mockRawStack).show();
-        when(mockRawStack.getTitle()).thenReturn("title");
-
-        try (
-             MockedStatic<IJ> ijMock = Mockito.mockStatic(IJ.class)
-        ) {
-            ijMock.when(() -> IJ.openImage(params.imagePath)).thenReturn(mockRawStack);
-            ijMock.when(() -> IJ.selectWindow("title")).thenAnswer(invocation -> null);
-            ijMock.when(() -> IJ.log(anyString())).thenAnswer(invocation -> null);
-
-            // Create CalciumAnalysis instance
-            CalciumAnalysis calciumAnalysis = new CalciumAnalysis(params);
-
-            // Call openImage method
-            calciumAnalysis.openImage();
-
-            /*
-            * Verify the following:
-            * maxProjection is set to the ImagePlus image
-            * all methods are run
-            */
-
-            assertEquals(mockRawStack, calciumAnalysis.maxProj);
-            ijMock.verify(() -> IJ.openImage(params.imagePath), times(1));
-            verify(mockRawStack, times(1)).show();
-            ijMock.verify(() -> IJ.selectWindow("title"), times(1));
-            ijMock.verify(() -> IJ.log("Step 1: Image loaded successfully."), times(1));
+        params.imagePath = directory.resolve("movie.tif").toString();
+        ImagePlus source = new ImagePlus("movie", new FloatProcessor(2, 1));
+        assertTrue(new FileSaver(source).saveAsTiff(params.imagePath));
+        ImagePlus opened = spy(IJ.openImage(params.imagePath));
+        doNothing().when(opened).show();
+        try (MockedStatic<IJ> ij = mockStatic(IJ.class)) {
+            ij.when(() -> IJ.openImage(params.imagePath)).thenReturn(opened);
+            CalciumAnalysis analysis = new CalciumAnalysis(params);
+            analysis.openImage();
+            assertSame(opened, analysis.maxProj);
+            assertNull(analysis.normStack);
+            verify(opened).show();
+            ij.verify(() -> IJ.selectWindow(opened.getTitle()));
+            ij.verify(() -> IJ.log("Step 1: Image loaded successfully."));
         }
     }
 
-    @Test
-    void testOpenImage_FileNotFound() {
-        // Initialise relevant variables
-
-        // Non-mocks
+    @Test void missingOrUnspecifiedFileClearsPreviousImageAndResults() throws Exception {
         Params params = new Params();
-        params.imagePath = "non_existent_file.zip";
-
-        try (
-             MockedStatic<IJ> ijMock = Mockito.mockStatic(IJ.class)
-        ) {
-            ijMock.when(() -> IJ.openImage(params.imagePath)).thenReturn(null);
-            ijMock.when(() -> IJ.log(anyString())).thenAnswer(invocation -> null);
-
-            // Create CalciumAnalysis instance
-            CalciumAnalysis calciumAnalysis = new CalciumAnalysis(params);
-
-            // Call openImage method
-            calciumAnalysis.openImage();
-
-            /*
-            * Verify the following:
-            * maxProjection is still null
-            * appropriate log message is generated
-            */
-
-            assertNull(calciumAnalysis.maxProj);
-            ijMock.verify(() -> IJ.openImage(params.imagePath), times(0));
-            ijMock.verify(() -> IJ.error("File not found: " + params.imagePath), times(1));
+        for (String path : new String[]{null, "", directory.resolve("missing.tif").toString(), directory.toString()}) {
+            params.imagePath = path;
+            CalciumAnalysis analysis = analysisWithPreviousResults(params);
+            assertThrows(IllegalArgumentException.class, analysis::openImage);
+            assertCleared(analysis);
         }
+    }
+
+    @Test void unreadableFileClearsPreviousImageAndResults() throws Exception {
+        Params params = new Params();
+        params.imagePath = Files.createFile(directory.resolve("invalid.tif")).toString();
+        CalciumAnalysis analysis = analysisWithPreviousResults(params);
+        try (MockedStatic<IJ> ij = mockStatic(IJ.class)) {
+            ij.when(() -> IJ.openImage(params.imagePath)).thenReturn(null);
+            IllegalArgumentException error = assertThrows(IllegalArgumentException.class, analysis::openImage);
+            assertTrue(error.getMessage().contains("Could not open"));
+            ij.verify(() -> IJ.openImage(params.imagePath));
+            ij.verify(() -> IJ.log(anyString()), never());
+        }
+        assertCleared(analysis);
+    }
+
+    @Test void unsupportedTiffFailsBeforeOpeningWindowAndClearsPreviousResults() throws Exception {
+        ImageStack stack = new ImageStack(1, 1);
+        for (float value : new float[]{10, 100, 20, 200, 30, 300})
+            stack.addSlice(new FloatProcessor(1, 1, new float[]{value}));
+        ImagePlus source = new ImagePlus("two channels", stack);
+        source.setDimensions(2, 1, 3);
+        source.setOpenAsHyperStack(true);
+        Params params = new Params();
+        params.imagePath = directory.resolve("two-channels.tif").toString();
+        assertTrue(new FileSaver(source).saveAsTiffStack(params.imagePath));
+        CalciumAnalysis analysis = analysisWithPreviousResults(params);
+        // Real TIFF loading and dimensions, with no mocked ImageJ operations.
+        IllegalArgumentException error = assertThrows(IllegalArgumentException.class, analysis::openImage);
+        assertTrue(error.getMessage().contains("C=2, Z=1, T=3"));
+        assertCleared(analysis);
+    }
+
+    private CalciumAnalysis analysisWithPreviousResults(Params params) throws Exception {
+        CalciumAnalysis analysis = new CalciumAnalysis(params);
+        ImagePlus old = new ImagePlus("previous movie", new FloatProcessor(2, 1));
+        java.lang.reflect.Field raw = CalciumAnalysis.class.getDeclaredField("rawStack");
+        raw.setAccessible(true);
+        raw.set(analysis, old);
+        analysis.maxProj = old;
+        analysis.normStack = old;
+        return analysis;
+    }
+
+    private void assertCleared(CalciumAnalysis analysis) {
+        assertNull(analysis.maxProj);
+        assertNull(analysis.normStack);
+        assertThrows(IllegalArgumentException.class, analysis::createMaxProjection);
+        assertThrows(IllegalArgumentException.class, analysis::normalizeStack);
     }
 }

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  DRAFT — proposed pom.xml migrated onto the pom-scijava parent.
-  NOT built by Maven (only pom.xml is). Review only. See notes at bottom.
--->
+<!-- Production GAT v2 build. Native workers are separate Maven modules and
+     remain outside Fiji's plugin classpath; see docs/fork-development.md. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -14,16 +12,15 @@
     <parent>
         <groupId>org.scijava</groupId>
         <artifactId>pom-scijava</artifactId>
-        <version>45.1.0</version> <!-- latest as of drafting; bump periodically -->
+        <version>45.1.0</version> <!-- Keep upgrades covered by the compatibility suites. -->
         <relativePath/>
     </parent>
 
     <groupId>io.github.pr4deepr</groupId>
     <artifactId>GutAnalysisToolbox_</artifactId>
-    <version>2.0.1-apple-silicon.3</version>
+    <version>2.0.1-apple-silicon.4-SNAPSHOT</version>
 
-    <!-- ===== Metadata REQUIRED by pom-scijava's enforcer / license plugin ===== -->
-    <!-- Build will fail until these are filled in to match reality.            -->
+    <!-- Project metadata used by the SciJava build and license plugins. -->
     <name>Gut Analysis Toolbox</name>
     <description>Semi-automated analysis of enteric neurons, subtypes and ganglia in 2D gut wholemounts (Fiji plugin).</description>
     <url>https://github.com/pr4deepr/GutAnalysisToolbox</url>

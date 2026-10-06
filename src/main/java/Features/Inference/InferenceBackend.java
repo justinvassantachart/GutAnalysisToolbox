@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 /** Selects a backend without initializing any TensorFlow or OpenCL classes. */
 public final class InferenceBackend {
     public static final String PROPERTY = "gat.stardist.backend";
+    private static final String ARM64_KEY = "hw.optional.arm64";
     private InferenceBackend() { }
 
     public static boolean useNativeWorker() {
@@ -17,9 +19,16 @@ public final class InferenceBackend {
 
     /** Hardware check shared by guards for other native-library workflows. */
     public static boolean isAppleSiliconMac() {
-        String os = System.getProperty("os.name", "");
-        String arch = System.getProperty("os.arch", "");
-        Boolean hardware = isArmMac(os, arch) ? Boolean.TRUE : (isMac(os) ? isAppleHardware() : Boolean.FALSE);
+        return isAppleSiliconMac(System.getProperty("os.name", ""),
+                System.getProperty("os.arch", ""), InferenceBackend::isAppleHardware);
+    }
+
+    // Keep OS-probe outcomes testable without changing JVM-global properties or
+    // requiring a particular host architecture to exercise Intel and Rosetta.
+    static boolean isAppleSiliconMac(String os, String arch, Supplier<Boolean> probe) {
+        if (!isMac(os)) return false;
+        if (isArm(arch)) return true;
+        Boolean hardware = isIntel(arch) ? probe.get() : null;
         if (hardware == null) throw new IllegalStateException("Could not determine this Mac's CPU architecture. "
                 + "GAT will not load legacy TensorFlow until the architecture is known. "
                 + "On Apple Silicon use native arm64 Fiji with its bundled Java.");
@@ -44,7 +53,7 @@ public final class InferenceBackend {
         String os = System.getProperty("os.name", "");
         String arch = System.getProperty("os.arch", "");
         requireMacVersion(os, System.getProperty("os.version", "0"));
-        if (isMac(os) && !isArm(arch) && Boolean.TRUE.equals(isAppleHardware())) {
+        if (isMac(os) && !isArm(arch) && isAppleSiliconMac()) {
             throw new IllegalStateException("Fiji is running through Rosetta on Apple Silicon. "
                     + "Install native macOS arm64 Fiji (with its bundled Java 21), then add "
                     + "the GAT Apple Silicon test package. Do not use Intel Fiji/Java 8.");
@@ -75,19 +84,27 @@ public final class InferenceBackend {
         return "aarch64".equalsIgnoreCase(arch) || "arm64".equalsIgnoreCase(arch);
     }
     static boolean isArmMac(String os, String arch) { return isMac(os) && isArm(arch); }
+    private static boolean isIntel(String arch) {
+        return "x86_64".equalsIgnoreCase(arch) || "amd64".equalsIgnoreCase(arch)
+                || "x86".equalsIgnoreCase(arch) || "i386".equalsIgnoreCase(arch);
+    }
 
     // Native Java reports its architecture correctly. This read-only, bounded
     // OS probe also catches an Intel Java process translated by Rosetta.
     private static Boolean isAppleHardware() {
         Process process = null;
         try {
-            process = new ProcessBuilder("/usr/sbin/sysctl", "-n", "hw.optional.arm64")
-                    .redirectErrorStream(true).start();
+            ProcessBuilder builder = new ProcessBuilder("/usr/sbin/sysctl", "-n", ARM64_KEY)
+                    .redirectErrorStream(true);
+            // The exact ENOENT diagnostic below must not depend on user locale.
+            builder.environment().put("LC_ALL", "C");
+            process = builder.start();
             if (!process.waitFor(2, TimeUnit.SECONDS)) return null;
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"))) {
                 String value = reader.readLine();
-                if (process.exitValue() != 0) return null;
-                return "1".equals(value) ? Boolean.TRUE : ("0".equals(value) ? Boolean.FALSE : null);
+                // Reject extra output rather than accidentally accepting a partial response.
+                if (reader.readLine() != null) return null;
+                return parseArm64Probe(process.exitValue(), value);
             }
         } catch (Exception e) {
             if (e instanceof InterruptedException) Thread.currentThread().interrupt();
@@ -95,5 +112,19 @@ public final class InferenceBackend {
         } finally {
             if (process != null && process.isAlive()) process.destroyForcibly();
         }
+    }
+
+    static Boolean parseArm64Probe(int exitCode, String output) {
+        if (exitCode == 0) {
+            return "1".equals(output) ? Boolean.TRUE : ("0".equals(output) ? Boolean.FALSE : null);
+        }
+        // XNU registers hw.optional.arm64 only in its ARM machine branch.
+        // Intel macOS can therefore return ENOENT (exit 1), not a numeric 0.
+        // Recognize only this exact missing-key outcome; timeouts, permission
+        // errors and malformed responses must still fail closed.
+        if (exitCode == 1 && ("sysctl: unknown oid '" + ARM64_KEY + "'").equals(output)) {
+            return Boolean.FALSE;
+        }
+        return null;
     }
 }

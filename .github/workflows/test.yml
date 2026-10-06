@@ -1,53 +1,74 @@
 name: tests
-on: push
+on:
+  push:
+    paths:
+      - '.github/workflows/test.yml'
+      - 'pom.xml'
+      - 'src/**'
+      - 'scripts/**'
+  pull_request:
+    branches: [gat_v2]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gat-unit-tests-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   run_tests:
-    runs-on: ubuntu-latest
-    # Cap the job so a full maven.scijava.org outage fails in minutes instead
-    # of retrying for ~2 hours (as happened on 2026-08-27).
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            java: '17'
+            architecture: x64
+            apple_silicon: 'false'
+          - os: macos-15-intel
+            java: '17'
+            architecture: x64
+            apple_silicon: 'false'
+          - os: macos-15
+            java: '21'
+            architecture: aarch64
+            apple_silicon: 'true'
+    # Standard hosted runners only; no paid larger-runner labels.
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 40
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v5
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with:
-          distribution: "temurin"
-          java-version: 17
-
-      # The ImageJ/SciJava dependencies (scifio, imagej-ops, mines-jtk, ...)
-      # are hosted ONLY on maven.scijava.org — they are not on Maven Central,
-      # and maven.imagej.net is the same server. So there is no alternative
-      # repository to point at; instead we cache ~/.m2/repository. Once a green
-      # run populates it, later runs restore the jars and do not need scijava at
-      # all for unchanged dependencies. restore-keys falls back to the newest
-      # cache even when pom.xml (and thus the exact key) changes.
-      - name: Cache Maven packages
-        uses: actions/cache@v4
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          architecture: ${{ matrix.architecture }}
+      - name: Record actual host architecture
+        run: |
+          uname -a
+          java -XshowSettings:properties -version 2>&1
+      # SciJava-only dependencies have no Central mirror. Keep a fallback cache
+      # across POM changes, but never hide a test failure behind whole-suite retries.
+      - uses: actions/cache@v4
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2-
-
+          key: ${{ matrix.os }}-m2-${{ hashFiles('pom.xml') }}
+          restore-keys: ${{ matrix.os }}-m2-
       - name: Check preview packaging safety
         run: python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
-
-      # Retry the build a few times to ride out brief scijava 503s; the
-      # retryHandler flags also retry individual transient artifact transfers.
-      #
-      - name: Run tests with Maven
-        run: |
-          for attempt in 1 2 3; do
-            echo "::group::Maven attempt $attempt"
-            mvn -B -ntp test --file pom.xml \
-              -Dgat.tests.headless=true \
-              -Daether.connector.http.retryHandler.count=5 \
-              -Dmaven.wagon.http.retryHandler.count=5 \
-              && { echo "::endgroup::"; exit 0; }
-            echo "::endgroup::"
-            echo "Attempt $attempt failed (possibly a transient scijava 503); retrying in $((attempt * 30))s"
-            sleep $((attempt * 30))
-          done
-          echo "All Maven attempts failed"
-          exit 1
+      - name: Run tests and verify the actual host CPU detection
+        run: >-
+          mvn -B -ntp test --file pom.xml
+          -Dgat.tests.headless=true
+          -Dgat.test.expectedAppleSilicon=${{ matrix.apple_silicon }}
+          -Daether.connector.http.retryHandler.count=5
+          -Dmaven.wagon.http.retryHandler.count=5
+      - name: Preserve test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-unit-tests-${{ matrix.os }}
+          path: target/surefire-reports/
+          if-no-files-found: warn

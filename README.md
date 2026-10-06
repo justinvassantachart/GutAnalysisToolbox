@@ -1,5 +1,7 @@
 # Gut Analysis Toolbox
 
+Development branch: [build, input limits and update boundaries](docs/fork-development.md). Published preview 3 remains unchanged.
+
 ## Corrective Apple Silicon test preview 3
 
 [Preview 3 and the unchanged original comparison package](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-3)

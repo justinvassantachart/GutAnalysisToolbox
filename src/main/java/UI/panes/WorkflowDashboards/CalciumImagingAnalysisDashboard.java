@@ -53,22 +53,25 @@ public class CalciumImagingAnalysisDashboard extends JPanel {
         add(tabs, BorderLayout.CENTER);
 
         // --- Button actions ---
-        btnOpenImage.addActionListener(e -> analysis.openImage());
-        btnMaxProj.addActionListener(e -> {
+        btnOpenImage.addActionListener(e -> runImageStep(() -> analysis.openImage()));
+        btnMaxProj.addActionListener(e -> runImageStep(() -> {
             if (analysis.maxProj == null) {
                 IJ.showMessage("Please open an image first.");
                 return;
             }
             analysis.createMaxProjection();
-        });
-        btnNormalize.addActionListener(e -> {
+        }));
+        btnNormalize.addActionListener(e -> runImageStep(() -> {
             if (analysis.normStack == null && analysis.maxProj == null) {
                 IJ.showMessage("Please perform Max Projection first.");
                 return;
             }
+            ImagePlus previous = analysis.normStack;
             analysis.normalizeStack();
-            if (params.useFF0) addImageTab(analysis.normStack, "F/F0 Stack");
-        });
+            // Cancel leaves the existing result unchanged; do not add another tab.
+            if (params.useFF0 && analysis.normStack != previous)
+                addImageTab(analysis.normStack, "F/F0 Stack");
+        }));
         btnSetupROIs.addActionListener(e -> analysis.setupROIManager());
         btnDrawROIs.addActionListener(e -> {
             if (analysis.normStack == null) {
@@ -103,6 +106,16 @@ public class CalciumImagingAnalysisDashboard extends JPanel {
                 addResultsPlot(resultsFile);
             }
         });
+    }
+
+    /** Report an input/processing failure and stop this button action. */
+    private void runImageStep(Runnable step) {
+        try {
+            step.run();
+        } catch (RuntimeException ex) {
+            IJ.showMessage("Calcium analysis", ex.getMessage() != null
+                    ? ex.getMessage() : "The image step failed.");
+        }
     }
 
     /**
