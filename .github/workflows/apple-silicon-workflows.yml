@@ -2,7 +2,7 @@ name: apple-silicon-workflows
 
 on:
   push:
-    branches: [feat/apple-silicon-stardist]
+    branches: [main, feat/apple-silicon-stardist]
     paths:
       - '.github/workflows/apple-silicon-workflows.yml'
       - 'pom.xml'

@@ -27,8 +27,8 @@ including small mask/outline differences in prior runtime comparisons. Existing
 Intel installations keep their legacy inference backend; this download's native
 workers are ARM64 only.
 
-Clone the release tag for its exact source; the unchanged default `main` does
-not contain these changes:
+Clone the release tag for its exact source; ongoing development on `main` may
+include changes beyond a published preview:
 
 ```sh
 git clone --branch apple-silicon-preview-4 https://github.com/justinvassantachart/GutAnalysisToolbox.git

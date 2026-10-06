@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 /** Local protocol for a separately licensed/native-classpath Template Matching worker. */
 public final class NativeAlignmentClient {
-    static final int INPUT_MAGIC = 0x47415441, OUTPUT_MAGIC = 0x47415453, VERSION = 1;
+    static final int INPUT_MAGIC = 0x47415441, OUTPUT_MAGIC = 0x47415453, VERSION = 2;
     static final long MAX_PIXELS = 67_108_864L;
     private NativeAlignmentClient() { }
 
@@ -86,6 +86,13 @@ public final class NativeAlignmentClient {
                         || ((IndexColorModel) pixels.getColorModel()).getMapSize() != 256)
                     throw new IllegalArgumentException("Native Template Matching requires ImageJ's 256-entry grayscale/indexed palette");
                 IndexColorModel palette = (IndexColorModel) pixels.getColorModel();
+                double minimum = pixels.getMin(), maximum = pixels.getMax();
+                if (!Double.isFinite(minimum) || !Double.isFinite(maximum) || minimum > maximum)
+                    throw new IllegalArgumentException("Native Template Matching requires a finite ordered display range");
+                // The original 8-bit matcher uses getBufferedImage(), whose pixels
+                // depend on BOTH the base palette and the current display range.
+                out.writeDouble(minimum);
+                out.writeDouble(maximum);
                 for (int i = 0; i < 256; i++) out.writeInt(palette.getRGB(i));
                 if (bits == 8) out.write((byte[]) pixels.getPixels());
                 else for (short value : (short[]) pixels.getPixels()) out.writeShort(value);
@@ -96,7 +103,7 @@ public final class NativeAlignmentClient {
         if (Files.size(input) != 12L + 16L * frames) throw new IOException("Incomplete or extra native alignment response bytes");
         try (DataInputStream in = new DataInputStream(new BufferedInputStream(Files.newInputStream(input)))) {
             if (in.readInt() != OUTPUT_MAGIC || in.readInt() != VERSION || in.readInt() != frames)
-                throw new IOException("Invalid native alignment response header");
+                throw new IOException("Invalid native alignment response header; install the matching plugin and alignment worker together");
             double[][] shifts = new double[frames][2];
             for (int frame = 0; frame < frames; frame++) for (int axis = 0; axis < 2; axis++) {
                 double value = in.readDouble();

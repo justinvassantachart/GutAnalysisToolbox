@@ -9,10 +9,14 @@ Build: `mvn -f native-alignment/pom.xml clean package` (macOS arm64 bundle).
 Linux validation: append `-Dopencv.platform=linux-x86_64`.
 The worker requires native Java11+. No runtime downloads are performed.
 
-Input GATA protocol version1 contains width, height, frame count, bit depth,
-1-based reference slice, then each frame's 256-entry ARGB palette followed by
-unsigned 8-bit or big-endian16-bit pixels. Stack limit is67,108,864 pixels.
-Output GATS version1 contains frame count and a pair of finite integer-valued
+Input GATA protocol version 2 contains width, height, frame count, bit depth,
+1-based reference slice, then each frame's display minimum/maximum (two
+big-endian doubles), 256-entry base ARGB palette, and unsigned 8-bit or
+big-endian 16-bit pixels. Palette and display range must be shared across the
+stack, as in ImageJ's ordinary ImageStack. Both are preserved because the
+original 8-bit matcher uses the rendered image. Stack limit is 67,108,864 pixels.
+Version 1 is rejected: install the matching plugin and worker together.
+Output GATS version 2 contains frame count and a pair of finite integer-valued
 shift doubles for every frame, including zero for the reference. The caller
 validates the complete output before changing its images. Standard GAT options
 are fixed: method5, 70% reference ROI at floor(size/6), whole-image search,

@@ -7,7 +7,7 @@ on:
       - 'src/**'
       - 'scripts/**'
   pull_request:
-    branches: [gat_v2]
+    branches: [main, gat_v2]
   workflow_dispatch:
 
 permissions:

@@ -58,7 +58,7 @@ def verify_compiled_classes(plugin, classes):
         for path in paths:
             name = path.relative_to(classes).as_posix()
             if archive.read(name) != path.read_bytes():
-                raise ValueError('Plugin class differs from tested compiled class: ' + name)
+                raise ValueError('Plugin class differs from compiled class: ' + name)
     return len(paths)
 
 
@@ -101,11 +101,11 @@ def main():
         'version': version, 'source_commit': source_commit, 'source_worktree_modified': dirty,
         'target': 'macos-arm64', 'minimum_macos': '14', 'minimum_java': '11', 'experimental': True,
         'install_root': 'ImageJ data root containing jars and plugins; current Fiji Latest uses outer Fiji/, not inner Fiji.app/',
-        'plugin_classes_match_tested_classes': True, 'plugin_classes_compared': class_count,
+        'plugin_classes_match_compiled_classes': True, 'plugin_classes_compared': class_count,
         'plugin_sha256': hashlib.sha256(plugin.read_bytes()).hexdigest(),
         'inference_bundle_sha256': hashlib.sha256(inference.read_bytes()).hexdigest(),
         'alignment_bundle_sha256': hashlib.sha256(alignment.read_bytes()).hexdigest(),
-        'validation_note': 'See APPLE_SILICON.md and workflow matrix. Packaging is not a Fiji GUI or physical-Mac test.',
+        'validation_note': 'Class comparison establishes build consistency only. Test execution and outcomes are recorded separately; see APPLE_SILICON.md and workflow matrix.',
     }
     with zipfile.ZipFile(destination, 'w', compression=zipfile.ZIP_DEFLATED) as output:
         output.write(plugin, 'plugins/' + plugin.name)

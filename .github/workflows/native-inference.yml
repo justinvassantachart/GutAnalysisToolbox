@@ -2,7 +2,7 @@ name: native-inference
 
 on:
   push:
-    branches: [feat/apple-silicon-stardist]
+    branches: [main, feat/apple-silicon-stardist]
     # Publishing immutable reports must not restart expensive native runners.
     paths:
       - '.github/workflows/native-inference.yml'
@@ -17,7 +17,7 @@ on:
       - 'scripts/validate-native-worker.py'
       - '!native-inference/validation/**/results/**'
   pull_request:
-    branches: [gat_v2]
+    branches: [main, gat_v2]
   workflow_dispatch:
 
 permissions:

@@ -22,7 +22,7 @@ legacy TensorFlow. CI runs them on Linux, hosted Intel macOS, and native ARM
 macOS. It explicitly checks the real host's CPU detection; unit fixtures also
 cover the Intel missing-sysctl-key response, Rosetta and failed probes. These
 checks do not substitute for a physical Mac's OpenCL or interactive Fiji tests.
-The suite runs on relevant pushes, `gat_v2` pull requests and manual dispatch;
+The suite runs on relevant pushes, `main`/`gat_v2` pull requests and manual dispatch;
 configuring the trigger does not create a pull request.
 
 The isolated workers have their own builds:
@@ -67,7 +67,9 @@ model files and required Fiji dependencies; keep worker `lib/` directories out
 of `Fiji/jars` and `Fiji/plugins`.
 
 Use `scripts/package-apple-silicon-preview.py` and its matching build evidence
-for a new test bundle. Do not replace files inside a published release, mix
+for a new test bundle. Its compiled-class comparison establishes build consistency,
+not test execution; review the separate test results for the packaged revision.
+Do not replace files inside a published release, mix
 worker versions casually, or describe a plugin-only update as a complete native
 installation. The Fiji updater may replace the preview plugin. Reapply only a
 verified matching overlay and rerun its installation checks after an update.
@@ -80,3 +82,5 @@ Historical outputs and evidence stay in place. See
 remaining physical/biological validation limits.
 
 Current hardening evidence: [6 October 2026 verification](validation/fork-hardening-2026-10-06.md).
+
+Independent cleanup review: [6 October 2026 findings and verification](validation/maintainer-review-2026-10-06.md).

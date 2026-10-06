@@ -59,15 +59,15 @@ class BundleChecks(unittest.TestCase):
                 with self.subTest(names=names), self.assertRaises(ValueError):
                     p.validate_bundle(path, 'worker', ['worker/main.jar', 'worker/source/pom.xml'], ['native-'])
 
-    def test_jar_class_bytes_must_match_tested_classes(self):
+    def test_jar_class_bytes_must_match_compiled_classes(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             classes = root / 'classes'
             classes.mkdir()
-            (classes / 'Main.class').write_bytes(b'tested')
+            (classes / 'Main.class').write_bytes(b'compiled')
             jar = root / 'plugin.jar'
             with zipfile.ZipFile(jar, 'w') as z:
-                z.writestr('Main.class', b'tested')
+                z.writestr('Main.class', b'compiled')
             self.assertEqual(p.verify_compiled_classes(jar, classes), 1)
             (classes / 'Main.class').write_bytes(b'different')
             with self.assertRaises(ValueError):

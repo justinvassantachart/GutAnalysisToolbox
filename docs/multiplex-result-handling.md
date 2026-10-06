@@ -28,7 +28,7 @@ pixel type, names it exactly `"Transformed" + source.getTitle()` (no separator),
 and shows it after mapping. The dependency provenance is in
 [`dependencies.json`](../native-inference/validation/multiplex-full/dependencies.json).
 
-## Validation scope
+## Initial correction validation scope
 
 Eight focused JUnit tests pass on headless Linux with real ImageJ pixel/ROI
 objects. They cover distinct subpixel ROI snapshots, explicit-image landmark
@@ -47,3 +47,11 @@ native full-service run is still required to verify actual SIFT/MOPS registratio
 saved aligned pixels, correspondence exports, and final-dialog controls together.
 Focused tests alone do not establish scientific accuracy or complete M1 workflow
 readiness.
+
+## Subsequent verification
+
+The validation limits above describe the initial correction. A later
+[native full-service paired run](../native-inference/validation/multiplex-full/results/mac-ab046cb/README.md)
+completed and preserved the transformed outputs, landmarks and calibration
+checks. See the [current hardening evidence](validation/fork-hardening-2026-10-06.md)
+for later checks and the remaining physical/biological validation limits.

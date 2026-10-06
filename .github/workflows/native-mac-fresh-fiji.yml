@@ -2,7 +2,7 @@ name: native-mac-fresh-fiji
 
 on:
   push:
-    branches: [feat/apple-silicon-stardist]
+    branches: [main, feat/apple-silicon-stardist]
     paths:
       - '.github/workflows/native-mac-fresh-fiji.yml'
       - 'validation/fiji-install/**'

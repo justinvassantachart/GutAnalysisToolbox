@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 
 /** GPL-3.0 standalone protocol adapter for the original, separately licensed plugin. */
 public final class NativeAlignmentMain {
-    static final int INPUT_MAGIC = 0x47415441, OUTPUT_MAGIC = 0x47415453, VERSION = 1;
+    static final int INPUT_MAGIC = 0x47415441, OUTPUT_MAGIC = 0x47415453, VERSION = 2;
     static final long MAX_PIXELS = 67_108_864L;
     static final class Input {
         final ImagePlus image;
@@ -26,18 +26,33 @@ public final class NativeAlignmentMain {
     }
     static Input readInput(Path path) throws IOException {
         try (DataInputStream in = new DataInputStream(new BufferedInputStream(Files.newInputStream(path)))) {
-            if (in.readInt() != INPUT_MAGIC || in.readInt() != VERSION) throw new IOException("Unsupported alignment input protocol");
+            if (in.readInt() != INPUT_MAGIC || in.readInt() != VERSION) throw new IOException("Unsupported alignment input protocol; install the matching plugin and alignment worker together");
             int width = in.readInt(), height = in.readInt(), frames = in.readInt(), bits = in.readInt(), reference = in.readInt();
             long plane = (long) width * height;
             if (width < 2 || height < 2 || frames < 2 || frames > 10000 || (bits != 8 && bits != 16)
                     || reference < 1 || reference > frames || plane > MAX_PIXELS || plane * frames > MAX_PIXELS)
                 throw new IOException("Unsupported stack dimensions, bit depth or reference slice");
-            long expected = 28L + frames * (1024L + plane * (bits / 8));
+            long expected = 28L + frames * (16L + 1024L + plane * (bits / 8));
             if (Files.size(path) != expected) throw new IOException("Incomplete or extra alignment input bytes");
             ImageStack stack = new ImageStack(width, height);
+            int[] firstPalette = null;
+            double firstMinimum = 0, firstMaximum = 0;
             for (int z = 0; z < frames; z++) {
+                double minimum = in.readDouble(), maximum = in.readDouble();
+                if (!Double.isFinite(minimum) || !Double.isFinite(maximum) || minimum > maximum)
+                    throw new IOException("Invalid alignment display range");
                 int[] argb = new int[256];
                 for (int i = 0; i < argb.length; i++) argb[i] = in.readInt();
+                // ImageStack keeps one palette/display range for the whole stack.
+                // Reject unsupported per-plane differences instead of discarding them.
+                if (z == 0) {
+                    firstPalette = argb;
+                    firstMinimum = minimum;
+                    firstMaximum = maximum;
+                } else if (minimum != firstMinimum || maximum != firstMaximum
+                        || !java.util.Arrays.equals(firstPalette, argb)) {
+                    throw new IOException("Alignment requires a shared stack palette and display range");
+                }
                 IndexColorModel palette = new IndexColorModel(8, 256, argb, 0, true, -1, DataBuffer.TYPE_BYTE);
                 ImageProcessor pixels;
                 if (bits == 8) {
@@ -49,6 +64,7 @@ public final class NativeAlignmentMain {
                     for (int i = 0; i < values.length; i++) values[i] = in.readShort();
                     pixels = new ShortProcessor(width, height, values, palette);
                 }
+                pixels.setMinAndMax(minimum, maximum);
                 stack.addSlice(pixels);
             }
             if (in.read() != -1) throw new IOException("Unexpected trailing input bytes");
