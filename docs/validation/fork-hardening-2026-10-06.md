@@ -1,7 +1,9 @@
 # GAT v2 fork hardening — 6 October 2026
 
 Source baseline: `287c27e5bd12b874044f271f13d7a241991ac9ca`.
-Development version: `2.0.1-apple-silicon.4-SNAPSHOT`.
+Hardening development version tested below: `2.0.1-apple-silicon.4-SNAPSHOT`.
+The preview 4 release is version `2.0.1-apple-silicon.4`; its separate exact-source
+build and recheck results are recorded on the release page.
 Published preview 3 and all historical evidence remain unchanged.
 
 ## Corrections
@@ -78,10 +80,11 @@ The following runs target the exact production/test commit
 report is evidence maintenance, not a new tested production revision.
 
 - [Root platform matrix](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37506388212):
-  Linux and hosted native ARM Mac were verified successful. The last verified
-  Intel Mac snapshot was still running at 17:49:58 UTC; its final result and raw
-  sysctl diagnostics were not verified when this report was written. Do not
-  infer that Intel passed or failed; the linked run is the authoritative record
+  Linux, hosted native ARM Mac and hosted Intel Mac completed successfully.
+  The [Intel job](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37506388212/job/112416017555)
+  completed at 17:50:47 UTC; its terminal success was verified on the later
+  authorized recheck. The earlier report's unverified snapshot is superseded;
+  hosted Intel is still not a physical-user-Mac test
 - [Native multiplex](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37506388233):
   completed successfully
 - [Native workflow checks](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37506388283):

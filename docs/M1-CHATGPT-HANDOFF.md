@@ -23,13 +23,14 @@ specific step, retain evidence and report it rather than fabricating success.
 For installation into an existing preview test copy, read the release asset
 `PREVIEW_4_SETUP.md` first. Quit Fiji, back up the old GAT JAR and both entire
 worker directories outside Fiji, then install the new complete overlay. Do not
-leave .3 or SNAPSHOT JARs on the classpath or merge old/new worker libraries.
+leave old GAT plugin .3 or .4-SNAPSHOT JARs on the classpath or merge old/new worker libraries.
 Models, engines and unrelated Fiji dependencies should not be replaced merely
 for this overlay update. Keep the original comparison copy unchanged.
 
 The release adds missing-OID Intel CPU handling plus calcium input/load/cancel
 safeguards. Calcium supports a single-channel grayscale stack with one time
-axis; RGB, C>1 and simultaneous Z/T are rejected before processing. Choose
+axis: ordinary C1/Zn/T1 stacks interpreted as time and C1/Z1/Tn series are
+accepted. RGB, C>1 and simultaneous Z/T are rejected before processing. Choose
 channels and any Z projection explicitly before retrying. The source's hardening
 report and release page distinguish fresh checks from the older scientific and
 fresh-Fiji evidence retained below. Hosted OpenCL remains a separate check, and
@@ -64,7 +65,7 @@ Verify every downloaded archive against its matching release checksum (historica
 | Public fixtures, validation scripts, references and dependency manifest | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-M1-test-kit-preview-2.1.zip / `979d818165e677215824808834391ad80b70866c86ead5da2ae8830e022a2d55` |
 | Corrected multiplex manual inputs and native saved references | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-multiplex-manual-fixtures.zip / SHA-256 `31e15feb164b38c5ab42f9ff6cdceee5507c4563cea648a2b85ae9f38524a04c`, 231,740 bytes |
 | Optional pinned ganglia engine/model data pack | No separate engine pack is required; use the supported official installation instructions in section 5 (the exact native clean-install/model/command checks now pass) |
-| Native paired baseline/fork CI run and report archive | Final preview 4 build/paired controls are linked on its release page; [historical preview 3 final build](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593); [earlier same-code corrective build evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/bb897c237732cf8569a1515eb8d7ed69feb2ab31/native-inference/validation/baseline/results/mac-ab046cb/REPORT.md). Historical Sonoma/Sequoia reports remain in the general test kit |
+| Native paired baseline/fork CI run and report archive | Final preview 4 build/paired controls are linked on its release page; [historical preview 3 final build](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593); [historical preview 3 corrective build evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/bb897c237732cf8569a1515eb8d7ed69feb2ab31/native-inference/validation/baseline/results/mac-ab046cb/REPORT.md). Historical Sonoma/Sequoia reports remain in the general test kit |
 | Final package's recorded Fiji/dependency inventory | `native-inference/validation/workflows/dependencies.json` at the pinned source; record actual updater-resolved versions and hashes as well |
 
 Fork repository: https://github.com/justinvassantachart/GutAnalysisToolbox

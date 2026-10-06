@@ -15,7 +15,8 @@ verify its checksum and `BUILD_INFO.json`, and follow `PREVIEW_4_SETUP.md` plus
 `M1-CHATGPT-HANDOFF-v6.md`. If the release is not listed, it is not yet published.
 The release adds Intel missing-OID CPU detection and calcium input/load/cancel
 safeguards to the retained preview 3 multiplex repair. Calcium accepts only
-single-channel grayscale stacks with one time axis; split channels and choose
+single-channel grayscale stacks with one time axis (ordinary C1/Zn/T1 stacks
+interpreted as time, or C1/Z1/Tn series); split channels and choose
 any scientific Z preprocessing explicitly. RGB, multiple channels and combined
 Z/T are rejected. Numerical projection/F/F0 remains ImageJ's operation.
 

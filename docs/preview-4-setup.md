@@ -76,7 +76,9 @@ bounded technical checks. Historical fresh-Fiji and scientific corpus results
 retain their dates and scope. Hosted OpenCL may expose no usable device;
 physical GPU, full interactive workflows and biological acceptance remain open.
 
-Calcium accepts single-channel grayscale stacks with one time axis. RGB,
+Calcium accepts single-channel grayscale stacks with one time axis: ordinary
+C1/Zn/T1 stacks interpreted as time, or C1/Z1/Tn series. The supplied historical
+calcium fixture is C1/Z3/T1; do not project away its time planes. RGB,
 multiple channels and combined Z/T are rejected. Select channels/Z treatment
 explicitly before analysis; no scientific preprocessing is chosen silently.
 F/F0 retains ImageJ behavior including zero-baseline NaN/infinity. Automatic
