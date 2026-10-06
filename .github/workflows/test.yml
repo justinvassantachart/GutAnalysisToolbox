@@ -49,6 +49,14 @@ jobs:
         run: |
           uname -a
           java -XshowSettings:properties -version 2>&1
+          if [ "$RUNNER_OS" = macOS ]; then
+            if probe=$(/usr/sbin/sysctl -n hw.optional.arm64 2>&1); then
+              probe_status=0
+            else
+              probe_status=$?
+            fi
+            printf 'hw.optional.arm64 exit=%s output=%s\n' "$probe_status" "$probe"
+          fi
       # SciJava-only dependencies have no Central mirror. Keep a fallback cache
       # across POM changes, but never hide a test failure behind whole-suite retries.
       - uses: actions/cache@v4
