@@ -78,3 +78,5 @@ Historical outputs and evidence stay in place. See
 [the preview guide](apple-silicon.md) and
 [the workflow matrix](apple-silicon-workflow-matrix.md) for dated results and
 remaining physical/biological validation limits.
+
+Current hardening evidence: [6 October 2026 verification](validation/fork-hardening-2026-10-06.md).

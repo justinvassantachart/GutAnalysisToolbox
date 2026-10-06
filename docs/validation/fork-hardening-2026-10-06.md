@@ -33,6 +33,11 @@ results.
 - Across the three Maven modules: **97 tests, zero failures, errors or skips**.
   Worker unit suites cover protocol, normalization and signature contracts; they
   are not evidence of a fresh native-Mac or biological corpus run
+- Fresh Linux TensorFlow 2.21 JNI/model smoke: both checksum-pinned GAT models
+  passed using the unchanged validation script and four tiles. Each returned
+  finite 129 × 97 × 97 predictions; neuron probability range 0–0.853756 and
+  subtype range 0–0.754191. This is execution/protocol validation, not scientific
+  equivalence or Fiji/Mac validation
 - Full root package and runtime-classpath generation: passed; the shaded plugin
   includes its UI dependencies and excludes ImageJ classes
 - Focused calcium checks: 17 passed, including real ImageJ 1.54p projection and
@@ -58,6 +63,13 @@ startup Java agent. An initial unbounded Maven process was killed before test
 results; the first bounded run reached 76 tests but 18 mock-based tests could
 not self-attach. With the startup agent, all 76 passed. No tests were excluded
 and no production code was changed to suppress those environment failures.
+
+The first real-model smoke loaded TensorFlow and the neuron model but was killed
+before predictions completed. A bounded retry passed both models with 96 MB
+Java heap/direct-memory caps, one active processor, one thread per native
+runtime and `MALLOC_ARENA_MAX=2`. Model weights, tiling, oneDNN and production
+numerical settings were unchanged. These test-environment limits are not new
+production defaults.
 
 ## Remaining gates
 
