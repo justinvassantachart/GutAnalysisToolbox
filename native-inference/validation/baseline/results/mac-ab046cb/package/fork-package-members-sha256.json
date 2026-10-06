@@ -1,0 +1,150 @@
+{
+  "APPLE_SILICON.md": {
+    "sha256": "b252b8f85e9a71eff8fab4d6a2839c4ea1a5c18a244f04ce44a217e7c13c5693",
+    "bytes": 11847
+  },
+  "BUILD_INFO.json": {
+    "sha256": "b55ca7c04f13b89d19e13c5ca43b396225c6217b37a4daeb8fe693887f9b450a",
+    "bytes": 844
+  },
+  "GAT_LICENSE": {
+    "sha256": "a02de9e10cb9bd94a2971d7f01d6fe2f3d3c8cffb11a0dfa973ab322baeb6a23",
+    "bytes": 1526
+  },
+  "apple-silicon-workflow-matrix.md": {
+    "sha256": "f0b54fad41a0816b506b4d691ea957d221d41df84863a0877e2737bc224a433c",
+    "bytes": 11625
+  },
+  "gat-native-alignment/LICENSE": {
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  "gat-native-alignment/README.md": {
+    "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432",
+    "bytes": 1413
+  },
+  "gat-native-alignment/THIRD_PARTY_NOTICES.md": {
+    "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97",
+    "bytes": 1056
+  },
+  "gat-native-alignment/gat-native-alignment.jar": {
+    "sha256": "281488dccecaca09d29c794a07d2f6f0bf4af570996123966eed0ee0bbe40345",
+    "bytes": 18876
+  },
+  "gat-native-alignment/lib/ij-1.54p.jar": {
+    "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20",
+    "bytes": 2586953
+  },
+  "gat-native-alignment/lib/javacpp-1.5.12-macosx-arm64.jar": {
+    "sha256": "7fad9210bdbd88ca3666a6d0991d202849587985273b648ffe6bc59be1869fe5",
+    "bytes": 38562
+  },
+  "gat-native-alignment/lib/javacpp-1.5.12.jar": {
+    "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe",
+    "bytes": 515488
+  },
+  "gat-native-alignment/lib/javacv-1.5.12.jar": {
+    "sha256": "79ddd361c82f9f6d3e05424470639ba7faf0a66764a0b18a139c881e046a905b",
+    "bytes": 434277
+  },
+  "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar": {
+    "sha256": "5fbd3dcaf764b242c1088a3cf896337ed30ad14b6f84b9ceb87f7c08144c4aa7",
+    "bytes": 12718897
+  },
+  "gat-native-alignment/lib/openblas-0.3.30-1.5.12.jar": {
+    "sha256": "802ca4bb29b76b11dff644174352a34efc8eb76bca3325cbd38b3a1f2ef69ea6",
+    "bytes": 338356
+  },
+  "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar": {
+    "sha256": "41bbadd0187788ad5789188cbba476b9bb1ed36ab9b8edac518cd2641655f36c",
+    "bytes": 24727449
+  },
+  "gat-native-alignment/lib/opencv-4.11.0-1.5.12.jar": {
+    "sha256": "c50b3ee9780c4a0fbb1335317e7bb99ca32c40162a55680828e01bc98e1e2382",
+    "bytes": 1885153
+  },
+  "gat-native-alignment/source/LICENSE": {
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "bytes": 35147
+  },
+  "gat-native-alignment/source/README.md": {
+    "sha256": "dcc3bb81dce34fb0a9ff153083bc7a4aff6ac4e818e1311b2c9d122791767432",
+    "bytes": 1413
+  },
+  "gat-native-alignment/source/THIRD_PARTY_NOTICES.md": {
+    "sha256": "e6381ec0624a22cd8092809f9e338322629527d1ebe670e5593dae5e4548ad97",
+    "bytes": 1056
+  },
+  "gat-native-alignment/source/pom.xml": {
+    "sha256": "66a2beee51d0ce1562d20335f47fd4f468d3a0248a8d20d7ad8e84a2d8960542",
+    "bytes": 3782
+  },
+  "gat-native-alignment/source/src/assembly/distribution.xml": {
+    "sha256": "f67e0610e8a81557a58c1a604b1ed37790082210586aca7d7428a5c85e3b727e",
+    "bytes": 929
+  },
+  "gat-native-alignment/source/src/main/java/TemplateMatching/Align_slices.java": {
+    "sha256": "cd715d900075f6d373dc180c92324bc10943b3492e87a41768c371dbeed48fcf",
+    "bytes": 9629
+  },
+  "gat-native-alignment/source/src/main/java/TemplateMatching/NativeAlignmentMain.java": {
+    "sha256": "a510c77e9ef8239fe0e8fffab59a891164d49a73861a9f04bbd89112d2536756",
+    "bytes": 6601
+  },
+  "gat-native-alignment/source/src/main/java/TemplateMatching/cvMatch_Template.java": {
+    "sha256": "2698cfdcbd00dc2852e7d100aa1da1ad9ed9c0fa324a5ba52fc3c2f99d29549d",
+    "bytes": 13992
+  },
+  "gat-native-alignment/source/src/test/java/TemplateMatching/AlignmentProtocolTest.java": {
+    "sha256": "2aa9129697a4a392505e90dd59f7cc0367406e06f264c0c0fb72cf8ec3ed3e7a",
+    "bytes": 2640
+  },
+  "gat-native-inference/LICENSE": {
+    "sha256": "a02de9e10cb9bd94a2971d7f01d6fe2f3d3c8cffb11a0dfa973ab322baeb6a23",
+    "bytes": 1526
+  },
+  "gat-native-inference/README.md": {
+    "sha256": "cf0ad23b47a95174ce2b915e32c2b457ac9fa4bb860121c5a95c56be5fcd114a",
+    "bytes": 5552
+  },
+  "gat-native-inference/THIRD_PARTY_NOTICES.md": {
+    "sha256": "c40b692b44ab1ba750d81191c6ade80bb008741daf2c033591ed5f811a2ae9bc",
+    "bytes": 1889
+  },
+  "gat-native-inference/gat-native-inference.jar": {
+    "sha256": "b23d8162a92191c1125eb3929f71524d301e1dee7d34d7ed7286ee32cb3a79c5",
+    "bytes": 20847
+  },
+  "gat-native-inference/lib/javacpp-1.5.12.jar": {
+    "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe",
+    "bytes": 515488
+  },
+  "gat-native-inference/lib/protobuf-java-4.31.1.jar": {
+    "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae",
+    "bytes": 1873183
+  },
+  "gat-native-inference/lib/tensorflow-core-api-1.2.0.jar": {
+    "sha256": "9d87d75ebb7eb10bdddbbd3b6bf9a91c327d719bc2e402538c475fb3abd19e60",
+    "bytes": 4150141
+  },
+  "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar": {
+    "sha256": "570d8b845e4832cc06a59ae0a05d1bb8c7a11197f48de9664b4f86123dbcafd3",
+    "bytes": 151381240
+  },
+  "gat-native-inference/lib/tensorflow-core-native-1.2.0.jar": {
+    "sha256": "85ee6d600f5b1ceb81c6a1bdcc13081cfa9656442abd8aa45732a94271a26f17",
+    "bytes": 4027609
+  },
+  "gat-native-inference/lib/tensorflow-ndarray-1.2.0.jar": {
+    "sha256": "abbc2c528a2200059cfb1b54e4fa6b338394e7ca2d608a9d52989e7ccb43850a",
+    "bytes": 304345
+  },
+  "gat-native-inference/validation/RESULTS.md": {
+    "sha256": "47c09eeabaf5401001d388270dee23542367d04d66fb4d74d7c2191106e57a89",
+    "bytes": 4780
+  },
+  "plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.3.jar": {
+    "sha256": "d92e18b467af9a1ba4ba13d0e4e82a8982b552dcdbbd434a9deec488e42ec535",
+    "bytes": 1757253
+  }
+}

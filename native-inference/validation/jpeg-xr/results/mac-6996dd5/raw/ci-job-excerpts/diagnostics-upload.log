@@ -1,0 +1,7 @@
+2026-10-05T20:52:59.6740310Z Uploaded bytes 13539
+2026-10-05T20:52:59.7141720Z Finished uploading artifact content to blob storage!
+2026-10-05T20:52:59.7243200Z SHA256 digest of uploaded artifact zip is 22220ed8f7d09f2ffa02b243bc00f7fb9a8bf8225648f394cb45db10270ba545
+2026-10-05T20:52:59.7343300Z Finalizing artifact upload
+2026-10-05T20:52:59.9553720Z Artifact gat-native-mac-jpeg-xr-diagnostics.zip successfully finalized. Artifact ID 11370097389
+2026-10-05T20:52:59.9556370Z Artifact gat-native-mac-jpeg-xr-diagnostics has been successfully uploaded! Final size is 13539 bytes. Artifact ID is 11370097389
+2026-10-05T20:52:59.9560620Z Artifact download URL: https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37371362801/artifacts/11370097389

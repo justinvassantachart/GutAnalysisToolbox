@@ -1,0 +1,82 @@
+name: tests
+on:
+  push:
+    paths:
+      - '.github/workflows/test.yml'
+      - 'pom.xml'
+      - 'src/**'
+      - 'scripts/**'
+  pull_request:
+    branches: [main, gat_v2]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gat-unit-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run_tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            java: '17'
+            architecture: x64
+            apple_silicon: 'false'
+          - os: macos-15-intel
+            java: '17'
+            architecture: x64
+            apple_silicon: 'false'
+          - os: macos-15
+            java: '21'
+            architecture: aarch64
+            apple_silicon: 'true'
+    # Standard hosted runners only; no paid larger-runner labels.
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          architecture: ${{ matrix.architecture }}
+      - name: Record actual host architecture
+        run: |
+          uname -a
+          java -XshowSettings:properties -version 2>&1
+          if [ "$RUNNER_OS" = macOS ]; then
+            if probe=$(/usr/sbin/sysctl -n hw.optional.arm64 2>&1); then
+              probe_status=0
+            else
+              probe_status=$?
+            fi
+            printf 'hw.optional.arm64 exit=%s output=%s\n' "$probe_status" "$probe"
+          fi
+      # SciJava-only dependencies have no Central mirror. Keep a fallback cache
+      # across POM changes, but never hide a test failure behind whole-suite retries.
+      - uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ matrix.os }}-m2-${{ hashFiles('pom.xml') }}
+          restore-keys: ${{ matrix.os }}-m2-
+      - name: Check preview packaging safety
+        run: python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
+      - name: Run tests and verify the actual host CPU detection
+        run: >-
+          mvn -B -ntp test --file pom.xml
+          -Dgat.tests.headless=true
+          -Dgat.test.expectedAppleSilicon=${{ matrix.apple_silicon }}
+          -Daether.connector.http.retryHandler.count=5
+          -Dmaven.wagon.http.retryHandler.count=5
+      - name: Preserve test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-unit-tests-${{ matrix.os }}
+          path: target/surefire-reports/
+          if-no-files-found: warn

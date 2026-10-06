@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "scope": "Optional native macOS arm64 JPEG-XR resource-only overlay, JNI/golden tile decoding and package/source provenance",
+  "source_commit": "6996dd50f5ea06ac1f5ecb38c245139cb1508292",
+  "source_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/tree/6996dd50f5ea06ac1f5ecb38c245139cb1508292",
+  "run_id": 37371362801,
+  "job_id": 111969570023,
+  "job_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37371362801/job/111969570023",
+  "release_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-2",
+  "environment": {
+    "operating_system": "macOS",
+    "os_version": "15.7.9",
+    "architecture": "arm64",
+    "java_architecture": "aarch64",
+    "java_version": "21.0.12.1",
+    "compiler": "Apple clang 17.0.0 (clang-1700.0.13.5)",
+    "swig_version": "4.5.1",
+    "environment_evidence": [
+      "raw/ci-job-excerpts/host.log",
+      "raw/diagnostics/compiler-version.log",
+      "raw/diagnostics/swig-version.log",
+      "raw/overlay/final-overlay-decode.log"
+    ]
+  },
+  "checks": {
+    "golden_fixtures": {
+      "passed": 13,
+      "source": "Official jxrlib v0.2.4 upstream golden suite; seven 8-bit BGR brightfield and six 16-bit grayscale fluorescence tiles",
+      "exact_input_hashes_dimensions_byte_counts_and_golden_md5": true,
+      "direct_jni_and_direct_bytebuffer_equal": true,
+      "legacy_image_data_vector_api_exercised": true,
+      "bioformats_version": "8.5.0",
+      "bioformats_service_and_codec_equal": true,
+      "bioformats_channel_order": "Documented BGR-to-RGB normalization only; grayscale unchanged",
+      "native_and_bioformats_hashes_exact_linux_reference": true,
+      "native_and_final_overlay_tsv_byte_identical_to_linux_reference": true,
+      "evidence": [
+        "raw/diagnostics/report.json",
+        "raw/diagnostics/actual.tsv",
+        "raw/overlay/final-overlay-actual.tsv",
+        "raw/overlay/final-overlay-decode.log"
+      ]
+    },
+    "jni": {
+      "published_signatures_matched": 59,
+      "published_java_classes_unchanged": true,
+      "generated_and_published_jni_logs_byte_identical": true,
+      "evidence_archive": "original-ci-diagnostics.zip",
+      "archive_members": [
+        "published-jni.log",
+        "generated-jni.log"
+      ]
+    },
+    "unit_tests": {
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "host": "Native Mac job",
+      "evidence": "raw/ci-job-excerpts/unit-tests.log"
+    },
+    "final_overlay": {
+      "java_classes": 0,
+      "native_libraries": 1,
+      "architecture": "arm64",
+      "resource": "META-INF/lib/osx_arm64/libjxrjava.dylib",
+      "overlay_jar_last_on_runtime_classpath": true,
+      "actual_resource_url_verified": true,
+      "native_search_directory_empty": true,
+      "classpath_order": [
+        "probe-classes",
+        "native-lib-loader-2.5.0.jar",
+        "jxrlib-all-0.2.4.jar",
+        "slf4j-api-1.7.36.jar",
+        "bioformats_package-8.5.0.jar",
+        "gat-jxrlib-0.2.4-osx-arm64-test-overlay.jar"
+      ],
+      "evidence": [
+        "raw/ci-job-excerpts/final-packaging.log",
+        "raw/overlay/final-overlay-decode.log",
+        "raw/overlay/package-report.json"
+      ]
+    },
+    "native_linkage": {
+      "minimum_macos_build_target": "11.0.0",
+      "tested_macos": "15.7.9",
+      "runtime_dependencies": [
+        "/usr/lib/libc++.1.dylib",
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "custom_rpaths": [],
+      "install_id": "Preserved build-path LC_ID_DYLIB identifies the library; it is not an external dependency",
+      "evidence": [
+        "raw/diagnostics/native-file.log",
+        "raw/diagnostics/native-architecture.log",
+        "raw/diagnostics/native-dependencies.log",
+        "raw/diagnostics/native-load-commands.log"
+      ]
+    },
+    "source_and_notices": {
+      "package_entries_checked": 25,
+      "source_entries_checked": 165,
+      "preferred_swig_sources_regenerated": true,
+      "regenerated_bytes_identical": true,
+      "exact_swig_version": "4.5.1",
+      "swig_upstream_commit": "88649f559942c29a228fa783dd01581e217bcb20",
+      "pinned_legacy_typemap": "SWIG 3.0.10 Java std_vector.i",
+      "upstream_jxrlib_commit": "a8e7f81b8f13ef620049caddeb537b5ea5ecffda",
+      "evidence": [
+        "raw/independent-audit.json",
+        "raw/overlay/package-report.json",
+        "raw/overlay/source-regeneration.log"
+      ],
+      "archive_entry_count_note": "25 distribution entries and 165 source entries are covered by their own SHA256SUMS; total ZIP entries are 26 and 166 respectively, including each SHA256SUMS itself."
+    }
+  },
+  "hashes": {
+    "native_dylib_sha256": "19777cc4c6f2bb4f3f65851514324e304c0c6956c96299c85384222a4a5e543a",
+    "resource_jar_sha256": "7e7695897a43bb75a4402e92613fd35c1372b9abea3faee6a33cb134ae759445",
+    "distribution_zip_sha256": "d3208ee74c26edbb44846e56de76004a9962257f63b2050cd8beaffae0f8a1b5",
+    "corresponding_source_zip_sha256": "73da2e0285c3d305daea6a464f99a1843481d86b1c4f3dedbbb2ebfe6af75a0b"
+  },
+  "original_github_artifacts": {
+    "diagnostics": {
+      "id": 11370097389,
+      "bytes": 13539,
+      "sha256": "22220ed8f7d09f2ffa02b243bc00f7fb9a8bf8225648f394cb45db10270ba545",
+      "retained_path": "original-ci-diagnostics.zip",
+      "artifact_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37371362801/artifacts/11370097389"
+    },
+    "overlay": {
+      "id": 11369937490,
+      "bytes": 1058667,
+      "sha256": "7b26c133c9e7632bc1d369ce5ce035a45ff905433239c7e6e2b1ed4be4d38135",
+      "retained_path": null,
+      "artifact_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37371362801/artifacts/11369937490"
+    }
+  },
+  "prior_gate_failure": {
+    "job_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37369827047/job/111963931328",
+    "kind": "Packaging notice/provenance gate",
+    "reason": "The installed official SWIG 4.5.1 had not yet been reviewed; only 4.5.0 was accepted. That earlier run already passed the 13 golden fixtures and 59 JNI signatures.",
+    "resolution": "Review and pin official SWIG 4.5.1 notices and generator provenance, require exact-version regeneration, preserve decoder/source/JNI gates",
+    "native_dylib_identical_before_and_after": true,
+    "codec_wrapper_source_and_published_java_abi_unchanged": true,
+    "evidence": [
+      "raw/prior-packaging-gate/native-report.json",
+      "raw/prior-packaging-gate/swig-4.5.1-notice-review.json",
+      "raw/diagnostics/report.json"
+    ]
+  },
+  "not_validated": [
+    "Full CZI/LIF microscopy containers",
+    "Series, metadata and ROI interpretation",
+    "Installed Fiji GUI and actual updater/classloader integration",
+    "Codesigning or quarantine behavior",
+    "macOS 11 runtime compatibility",
+    "All JPEG-XR pixel formats, malformed-input robustness, encoding or long-running concurrent decoding"
+  ],
+  "preservation": {
+    "raw_evidence": "Original diagnostic ZIP and selected original records copied byte-for-byte; original runner paths are intentionally retained in raw evidence. Summary paths are packet-relative.",
+    "ci_log": "Exact byte excerpts of the decoded GitHub job-log content, with its full UTF-8 content digest and line-range provenance; not a claim about opaque HTTP response bytes",
+    "excluded": "Overlay/source binary payloads, upstream fixture pixels and dependency JARs are not duplicated in this packet. The diagnostics ZIP contains logs, JSON and TSV only.",
+    "checksums": "SHA256SUMS covers every other packet file; original-artifact-files-sha256.json hashes every member of both input GitHub artifacts."
+  }
+}

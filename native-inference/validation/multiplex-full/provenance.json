@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "reviewed_revision": "6996dd50f5ea06ac1f5ecb38c245139cb1508292",
+  "fixture_source": "native-inference/validation/workflows/RegistrationMorphologySmoke.java",
+  "fixture_source_sha256": "68022c8309572f064d4553f185ad1c025b1d403194052cfd64157aade824c2ab",
+  "common_marker_pattern": "Exact pattern(), rectangle() and translated() functions from RegistrationMorphologySmoke; seed 17012026; 256x256 8-bit",
+  "independent_markers": "Two synthetic independent marker patterns per round, seed 29092026 + 101*round + 13*marker; no reuse of Hu pixels",
+  "rounds": 3,
+  "round_translations_xy": [
+    [
+      0,
+      0
+    ],
+    [
+      7,
+      -5
+    ],
+    [
+      -6,
+      8
+    ]
+  ],
+  "input_files": 9,
+  "expected_output_channels": 7,
+  "expected_final_output": "Reference Hu + MarkerA/MarkerB for each round; later Hu images are retained unregistered only in hu_stack.tif by the existing service",
+  "source_images": "Generated deterministic synthetic data only; no user image or model",
+  "official_commands": {
+    "Extract SIFT Correspondences": "SIFT_ExtractPointRoi",
+    "Extract MOPS Correspondences": "MOPS_ExtractPointRoi",
+    "Landmark Correspondences": "Transform_Roi"
+  },
+  "fallback_limit": "Extract Block Matching Correspondences is absent from the pinned mpicbg plugin command manifest; no fake mapping is provided",
+  "mops_route": "An explicit supported config value stepsPerScaleOctave=31 skips the service helper SIFT loop (<=30); the real MOPS fallback is then invoked. This does not simulate a natural SIFT failure."
+}

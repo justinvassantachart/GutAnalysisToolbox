@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "base_revision": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+  "frozen_at_utc": "2026-10-05T21:18:23.386174+00:00",
+  "scope": "Validation-only known padded Done-button label correction; production algorithms and prior published evidence unchanged",
+  "changes": "Match only OK or the pinned ImageJ literal with two surrounding ASCII spaces, after exact dialog class/title/body checks; add two positive and five negative headless regression controls",
+  "validation": {
+    "java_compile": "PASS",
+    "headless_controls": 4,
+    "headless_status": "PASS",
+    "python_tests": 13,
+    "python_status": "PASS",
+    "native_gui_service": "NOT_RUN",
+    "full_service_acceptance_passed": false
+  },
+  "files": [
+    {
+      "path": "native-inference/validation/multiplex-full/MultiplexFullProbe.java",
+      "sha256": "d943d6b34e1db1aafeb4f0d33ee71c5bd31d8b7a9b3118ad92c1f5c27482696b",
+      "bytes": 37021
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/PADDED_DONE_CONTROL.md",
+      "sha256": "17b4a6da1926a5038f3a1030c3a1ca0cde5a2c9691a4266ea363bdb43964f388",
+      "bytes": 2154
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/button-label-constant.json",
+      "sha256": "f3bb4b5cc0d7463272fa10c65a743b582053a552bf1e25440ee274667c2a03f1",
+      "bytes": 608
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/compile.log",
+      "sha256": "b77c77f821bb2ba9cdff4101d5e1db7a55607520b853bf4f44d3cb90938a0f6a",
+      "bytes": 65
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/controls/commands.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/controls/execution.log",
+      "sha256": "1603c07ffdf15aa2a69991503915f458980922bf0adeb8558668c4decbae50ef",
+      "bytes": 3166
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/controls/fixture-manifest.json",
+      "sha256": "4816a9d3abe3699968128caf88a2f83d619d695c63cbe3551ef8817191bbf130",
+      "bytes": 1137
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/controls/phase.json",
+      "sha256": "cdaee510b4aeaab967e38ffe7bbe723f909b9694c04771045ac5780180c185ac",
+      "bytes": 65
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/controls/report.json",
+      "sha256": "56f00eb135feaeb03d20df6c9d6fdd609e6980e66cde94a4ec173a224d2cb36f",
+      "bytes": 2749
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/message-dialog-bytecode.log",
+      "sha256": "4e36768983d3339e26b853d17bc100ef4ee547ee6fc5fb570642cffbd707810b",
+      "bytes": 9028
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/publication-provenance.json",
+      "sha256": "05064fdcba197b47a5cf94725ac1376d149f5b6e606ce5398a329c4e524fbbb7",
+      "bytes": 2925
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/summary.json",
+      "sha256": "af8aa9f85c7c36368844eb1a040b2108591f4946869406dd4996e00bcfbd3890",
+      "bytes": 8305
+    },
+    {
+      "path": "native-inference/validation/multiplex-full/results/padded-done-26298b7/unit-tests.log",
+      "sha256": "2d6f9207bcc483ef2a215816f8e4cccfc5cefe7fdd6c38e2253ffe511ed44234",
+      "bytes": 1651
+    }
+  ]
+}

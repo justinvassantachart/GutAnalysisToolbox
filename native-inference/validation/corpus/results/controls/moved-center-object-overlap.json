@@ -1,0 +1,12 @@
+{
+  "legacy_center": "396.5,166.5",
+  "modern_center": "394.5,168.5",
+  "legacy_label": 104,
+  "modern_label": 104,
+  "legacy_area_px2": 441,
+  "modern_area_px2": 451,
+  "intersection_pixels": 422,
+  "union_pixels": 470,
+  "per_object_iou": 0.8978723404255319,
+  "per_object_dice": 0.9461883408071748
+}

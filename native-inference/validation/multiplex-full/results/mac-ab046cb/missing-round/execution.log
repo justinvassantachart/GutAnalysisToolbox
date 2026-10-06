@@ -1,0 +1,38 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx768m -XX:ActiveProcessorCount=1
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Extract SIFT Correspondences
+REAL_COMMAND Remove Overlay
+REAL_COMMAND Select None
+REAL_COMMAND Select None
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+missing_round_failure: PASS
+REPORT=<RUN_OUTPUT>/missing-round/report.json

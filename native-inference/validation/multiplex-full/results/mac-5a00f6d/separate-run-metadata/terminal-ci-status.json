@@ -1,0 +1,114 @@
+{
+  "provenance": "Decoded read-only connector results; not raw HTTP response bytes",
+  "run_id": 37375259755,
+  "source_commit": "5a00f6d6a414f5bd59e0b5dc461eb469afda907c",
+  "jobs": {
+    "jobs": [
+      {
+        "id": 111995832061,
+        "name": "native-mac-multiplex",
+        "status": "completed",
+        "conclusion": "failure",
+        "run_id": 37375259755,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-java@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Require actual native arm64 host",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Build unchanged production classes and runtime classpath",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Test reporting and immutable dependency/fixture pins",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Invoke every selected real-service case in fresh native JVMs",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 7
+          },
+          {
+            "name": "Preserve independent scope gate",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8
+          },
+          {
+            "name": "Preserve outputs, source hashes, logs and native host provenance",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/setup-java@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "artifacts": [
+      {
+        "id": 11372532765,
+        "name": "gat-native-mac-multiplex-full",
+        "size_in_bytes": 394926,
+        "url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/artifacts/11372532765",
+        "archive_download_url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/artifacts/11372532765/zip",
+        "expired": false,
+        "created_at": "2026-10-05T21:56:14Z",
+        "expires_at": "2027-01-03T21:20:36Z",
+        "updated_at": "2026-10-05T21:56:14Z",
+        "digest": "sha256:5fb5df261efbb1666b1427c53b62fc7fc4b8e534456273a3c0109e8ad3a63985",
+        "workflow_run": {
+          "id": 37375259755,
+          "repository_id": 1405990278,
+          "head_repository_id": 1405990278,
+          "head_branch": "feat/apple-silicon-stardist",
+          "head_sha": "5a00f6d6a414f5bd59e0b5dc461eb469afda907c"
+        }
+      }
+    ]
+  }
+}

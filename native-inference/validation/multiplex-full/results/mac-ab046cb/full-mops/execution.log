@@ -1,0 +1,79 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx768m -XX:ActiveProcessorCount=1
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Extract MOPS Correspondences
+REAL_COMMAND Remove Overlay
+REAL_COMMAND Select None
+REAL_COMMAND Select None
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Extract MOPS Correspondences
+REAL_COMMAND Remove Overlay
+REAL_COMMAND Select None
+REAL_COMMAND Select None
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Select None
+REAL_COMMAND Paste
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Landmark Correspondences
+REAL_COMMAND Add Slice
+REAL_COMMAND Select All
+REAL_COMMAND Copy
+REAL_COMMAND Paste
+REAL_COMMAND Stack to Hyperstack...
+DIALOG_CLICK title=Open results? button=Cancel path=<RUN_OUTPUT>/full-mops/output/Results
+DIALOG_VALUE title=Open results? value=2
+DIALOG_CLICK title=Multiplex Registration button_label=[  OK  ] path=<RUN_OUTPUT>/full-mops/output/Results
+service_return: PASS
+saved_dimensions_and_labels: PASS
+CHANNEL_METRIC {"source_file":"Layer1_Hu.tif","before_mse":0.0,"after_mse":0.0}
+CHANNEL_METRIC {"source_file":"Layer1_MarkerA.tif","before_mse":0.0,"after_mse":0.0}
+CHANNEL_METRIC {"source_file":"Layer1_MarkerB.tif","before_mse":0.0,"after_mse":0.0}
+CHANNEL_METRIC {"source_file":"Layer2_MarkerA.tif","before_mse":3030.62287352071,"after_mse":0.1910364275147929}
+CHANNEL_METRIC {"source_file":"Layer2_MarkerB.tif","before_mse":2751.3859791050295,"after_mse":0.17954881656804733}
+CHANNEL_METRIC {"source_file":"Layer3_MarkerA.tif","before_mse":4031.473372781065,"after_mse":0.324426775147929}
+CHANNEL_METRIC {"source_file":"Layer3_MarkerB.tif","before_mse":4313.435465976331,"after_mse":0.35972170857988167}
+every_round_and_channel_transform: PASS
+CALIBRATION_INPUT {pixel_width=0.5, pixel_height=0.7500001875000468, pixel_depth=1.0, frame_interval=1.25, unit=µm}
+CALIBRATION_ALIGNED {pixel_width=0.5, pixel_height=0.7500001875000468, pixel_depth=1.0, frame_interval=1.25, unit=µm}
+CALIBRATION_COMMON {pixel_width=0.5, pixel_height=0.7500001875000468, pixel_depth=1.0, frame_interval=1.25, unit=µm}
+saved_calibration: PASS
+common_marker_qc: PASS
+landmark_zip_roundtrip: PASS
+source_files_preserved: PASS
+real_command_route: PASS
+final_dialog_cancel_preserves_results: PASS
+REPORT=<RUN_OUTPUT>/full-mops/report.json

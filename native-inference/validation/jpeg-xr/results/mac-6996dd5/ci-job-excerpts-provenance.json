@@ -1,0 +1,53 @@
+{
+  "source_url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/jobs/111969570023/logs",
+  "job_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37371362801/job/111969570023",
+  "source_bytes": 38971,
+  "source_lines": 355,
+  "source_sha256": "c395b1620d350bcd44444530e4d1a708167338b0ccabe55fac0db936c95c2ea6",
+  "transformation": "Each excerpt is an unchanged contiguous byte slice of the exact decoded GitHub job-log content at the recorded inclusive line range. No prefix, path rewriting, newline conversion or header was added. Full decoded job-log content is not duplicated in this compact packet.",
+  "excerpts": [
+    {
+      "path": "raw/ci-job-excerpts/host.log",
+      "first_line_1_based": 10,
+      "last_line_inclusive": 20,
+      "sha256": "86d8e46cd12190d908da32ffe3d8bf58fe710022a1077c81ee1fc2a4b0c2bd71",
+      "scope": "macOS 15.7.9 and macos-15-arm64 runner image"
+    },
+    {
+      "path": "raw/ci-job-excerpts/source-revision.log",
+      "first_line_1_based": 106,
+      "last_line_inclusive": 107,
+      "sha256": "be641dc04b656f160faf75e93eba68bc92b76813b68bddfe288b5cf0617fa40d",
+      "scope": "Exact checked-out source revision"
+    },
+    {
+      "path": "raw/ci-job-excerpts/unit-tests.log",
+      "first_line_1_based": 215,
+      "last_line_inclusive": 261,
+      "sha256": "43ba473b695df241e068c9ccd268f43ea7c81dd987227a4596506f0784701d20",
+      "scope": "34 packaging/checker unit tests, zero failures"
+    },
+    {
+      "path": "raw/ci-job-excerpts/final-packaging.log",
+      "first_line_1_based": 262,
+      "last_line_inclusive": 274,
+      "sha256": "da1de681f1feace56a8bb329179b69340c1ce7c9e4d46d8602cb46c47e596110",
+      "scope": "Source regeneration, actual final classpath, package path and SHA-256"
+    },
+    {
+      "path": "raw/ci-job-excerpts/overlay-upload.log",
+      "first_line_1_based": 300,
+      "last_line_inclusive": 306,
+      "sha256": "9de65d297c461cda3b6823ca37386098f037037c10201144df33c06b05fba94a",
+      "scope": "Original overlay artifact upload digest and identity"
+    },
+    {
+      "path": "raw/ci-job-excerpts/diagnostics-upload.log",
+      "first_line_1_based": 331,
+      "last_line_inclusive": 337,
+      "sha256": "6ee031c29fcfcf2f70afec3912f8f72ed2d9993c8b7885515c0f897acdb0923e",
+      "scope": "Original diagnostics artifact upload digest and identity"
+    }
+  ],
+  "source_representation": "Exact decoded GitHub job-log content encoded as UTF-8; not the opaque HTTP response bytes"
+}

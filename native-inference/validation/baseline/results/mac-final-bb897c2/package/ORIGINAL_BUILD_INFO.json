@@ -1,0 +1,8 @@
+{
+  "source_repository": "https://github.com/pr4deepr/GutAnalysisToolbox",
+  "source_commit": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+  "tracked_source_changes": false,
+  "purpose": "Unmodified original baseline for isolated before/after tests",
+  "plugin_sha256": "df6df75b143e50f279e3a27b2bf502515b9e6e534c160f04067893d597494949",
+  "plugin_classes_match_tested_classes": true
+}

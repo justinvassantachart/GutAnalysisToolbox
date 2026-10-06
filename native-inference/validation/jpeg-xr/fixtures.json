@@ -1,0 +1,136 @@
+{
+  "upstream_commit": "a8e7f81b8f13ef620049caddeb537b5ea5ecffda",
+  "upstream_test_source": "java/src/test/resources/testng.xml",
+  "fixtures": [
+    {
+      "filename": "BF-1scene-nozstack-compression50pct.jxr",
+      "width": 587,
+      "height": 246,
+      "bytes_per_pixel": 3,
+      "decoded_md5": "c47d171c6659e4c5d44207a8ab7a1ca4",
+      "input_sha256": "28d93c4e569f164a09876c44c88d59f1493fde3641bb7548486bcc1700408222",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90c",
+      "pixel_type": "uint8 BGR, 3 channels"
+    },
+    {
+      "filename": "BF-1scene-nozstack-compression85pct.jxr",
+      "width": 587,
+      "height": 246,
+      "bytes_per_pixel": 3,
+      "decoded_md5": "c8d868d691c32d8392400bffb856bddc",
+      "input_sha256": "f89509658d0c12a28c4ceba7993b945f8e0fa886181f6dc154b7f9205d327ef0",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90c",
+      "pixel_type": "uint8 BGR, 3 channels"
+    },
+    {
+      "filename": "BF-1scene-nozstack-compressionlossless.jxr",
+      "width": 587,
+      "height": 246,
+      "bytes_per_pixel": 3,
+      "decoded_md5": "018a28fb6ce524e3b3acff240fe44b58",
+      "input_sha256": "7f9da56c6dfefbf0e7fe6f87ba264676e20fb27364ecfb10eef1f55e4dc1ec61",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90c",
+      "pixel_type": "uint8 BGR, 3 channels"
+    },
+    {
+      "filename": "BF-1scene-zstack-compression85pct.jxr",
+      "width": 587,
+      "height": 246,
+      "bytes_per_pixel": 3,
+      "decoded_md5": "d3cd74ca968e4f7086e268a8b7955f7f",
+      "input_sha256": "a4ee4a5580eaa2f182028669952ffd5a4adf218478059edc4c5ea5151c254f65",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90c",
+      "pixel_type": "uint8 BGR, 3 channels"
+    },
+    {
+      "filename": "BF-1scene-zstack-EDF-compression85pct.jxr",
+      "width": 587,
+      "height": 246,
+      "bytes_per_pixel": 3,
+      "decoded_md5": "3670678d8f91985fcc998214c5953993",
+      "input_sha256": "de3c556a54712c35c7d9f4e248d38a0f6a0ed0bfa9f78db4b78ecebcec9eb768",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90c",
+      "pixel_type": "uint8 BGR, 3 channels"
+    },
+    {
+      "filename": "BF-2scenes-nozstack-compression85pct.jxr",
+      "width": 587,
+      "height": 246,
+      "bytes_per_pixel": 3,
+      "decoded_md5": "169bec9efabdb2104f87d0b2292b78af",
+      "input_sha256": "c8d7bf0192e6afb66998d8aaf40c950c2a46bd5cece475925a0cfb892c967227",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90c",
+      "pixel_type": "uint8 BGR, 3 channels"
+    },
+    {
+      "filename": "BF-2scenes-zstack-EDF-compression85pct.jxr",
+      "width": 587,
+      "height": 246,
+      "bytes_per_pixel": 3,
+      "decoded_md5": "44aedce0262e12a09f576920373b9675",
+      "input_sha256": "877e2ae62e544a13de6c5f642878de14708859ee380b60d235653bcbada3f490",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90c",
+      "pixel_type": "uint8 BGR, 3 channels"
+    },
+    {
+      "filename": "FL_1channel_noZ_compression85pct.jxr",
+      "width": 2040,
+      "height": 2040,
+      "bytes_per_pixel": 2,
+      "decoded_md5": "c9e00c1c7aca1659725b23ca940e144a",
+      "input_sha256": "0510c83b5000dca1fab24524fc6bdf348bd48570c4ffca496f7d11ca02e3b8ea",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90b",
+      "pixel_type": "uint16 little-endian gray, 1 channel"
+    },
+    {
+      "filename": "FL_3channel_2scenes_noZ_compression85pct.jxr",
+      "width": 690,
+      "height": 690,
+      "bytes_per_pixel": 2,
+      "decoded_md5": "e6daab7801c9d20e167ccb75a5e0f7c6",
+      "input_sha256": "233a881d647b61add3e76122f9a8859bba574702943f4396fa012dcd7d07459c",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90b",
+      "pixel_type": "uint16 little-endian gray, 1 channel"
+    },
+    {
+      "filename": "FL_3channel_2scenes_Zstack_compression85pct.jxr",
+      "width": 690,
+      "height": 690,
+      "bytes_per_pixel": 2,
+      "decoded_md5": "e2b97bc424786239a798d9cd73113d36",
+      "input_sha256": "45dd42e6a3d4686f30e63cbfb01f9bac6722d5634e2b784cec49b7e2a0a05624",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90b",
+      "pixel_type": "uint16 little-endian gray, 1 channel"
+    },
+    {
+      "filename": "FL_3channel_2scenes_Zstack_EDF_compression85pct.jxr",
+      "width": 697,
+      "height": 690,
+      "bytes_per_pixel": 2,
+      "decoded_md5": "aa82b4b3c8698870c318c7a2441f3143",
+      "input_sha256": "91a8f9dac20d9ae750d169af93e87ab636cf1c2937ad638502144d553713b95c",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90b",
+      "pixel_type": "uint16 little-endian gray, 1 channel"
+    },
+    {
+      "filename": "FL_3channel_noZ_compression85pct.jxr",
+      "width": 2040,
+      "height": 2040,
+      "bytes_per_pixel": 2,
+      "decoded_md5": "2ac92d7699f3a4a77e260c0b5a51c8c6",
+      "input_sha256": "47d78e7be56b4c05d97d1bb47cbe26556ff795100338cd8c621341fdef38d11e",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90b",
+      "pixel_type": "uint16 little-endian gray, 1 channel"
+    },
+    {
+      "filename": "FL_3channel_noZ_compression_lossless.jxr",
+      "width": 2040,
+      "height": 2040,
+      "bytes_per_pixel": 2,
+      "decoded_md5": "9bce4515d533c5617f206f5935bc8c4e",
+      "input_sha256": "7c1eb8c9d5641e4e00235c1481e6b8d3904b2846bde12ecb87352b69253da993",
+      "pixel_format_guid_bytes": "24c3dd6f034efe4bb1853d77768dc90b",
+      "pixel_type": "uint16 little-endian gray, 1 channel"
+    }
+  ]
+}

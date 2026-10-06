@@ -1,0 +1,26 @@
+{
+  "original/target/GutAnalysisToolbox_-2.0.0.jar": {
+    "sha256": "f80f2f3fbdf078cae84e1ac072e81c712853ba9a9606f2b10c5f618bd6ddb1b3",
+    "bytes": 1725068
+  },
+  "preview-artifacts/GAT-2.0.0-unchanged-1870d9e-baseline.zip": {
+    "sha256": "bd8b0f3ae2b9487bc9d1a92c66ddf2f300cc70944ec963754c093e07460bef09",
+    "bytes": 1664423
+  },
+  "preview-artifacts/GAT-2.0.0-unchanged-1870d9e-baseline.zip.sha256": {
+    "sha256": "b114915ae449a1b65b4ac9938d56d37d684c1d577465365bb4a25137201e3b55",
+    "bytes": 107
+  },
+  "preview-artifacts/GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip": {
+    "sha256": "0be755efe7dbac48b2fa93a6e38dc04a2d4d713251a93a6b7f5ebae057ed9cf5",
+    "bytes": 203285587
+  },
+  "preview-artifacts/GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip.sha256": {
+    "sha256": "94afd97c8eca6980ecf41f7bb50597423af0cd25fb6e2cb6dd725885dbcf6fa5",
+    "bytes": 116
+  },
+  "preview-artifacts/ORIGINAL_BUILD_INFO.json": {
+    "sha256": "37e6cdff9cd2c8f26c349c09147e9936b0cdddec85207bc08754dbd216cf2e40",
+    "bytes": 385
+  }
+}

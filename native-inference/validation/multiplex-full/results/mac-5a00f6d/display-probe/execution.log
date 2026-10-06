@@ -1,0 +1,3 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx768m -XX:ActiveProcessorCount=1
+awt_display: PASS
+REPORT=<RUN_OUTPUT>/display-probe/report.json

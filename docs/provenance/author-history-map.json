@@ -1,0 +1,246 @@
+{
+  "upstream_base_unchanged": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+  "old_feature_head": "f45947a3c6c17a98134fa11cd39838452b32402b",
+  "new_feature_head": "48432cd00df2a39c92cb441484e57ef4d845ce2b",
+  "scope": "Only 34 fork-added commits; content trees and dates identical; upstream authors preserved; historical release tag not retargeted.",
+  "commits": [
+    {
+      "old_commit": "798be850c2344ebeea0b4f7e2c1b9d94cfe6f559",
+      "new_commit": "97f3c7f11b0053e6e0135828c5339cf330ae2d9d",
+      "identical_tree": "76d90c4d17dd2fbf2c823fba40242c7f967daeb9",
+      "author_date": "2026-10-05T09:04:53-07:00",
+      "committer_date": "2026-10-05T09:04:53-07:00"
+    },
+    {
+      "old_commit": "94e039cc5b5c396bd248c04b5c5925c20f4df3a1",
+      "new_commit": "e578c4f7dfcbac6d99dd9edf717b2ba6e2ee9ac6",
+      "identical_tree": "a3ec6754760d12756b7375a6d45c0122829b03fb",
+      "author_date": "2026-10-05T09:08:27-07:00",
+      "committer_date": "2026-10-05T09:08:27-07:00"
+    },
+    {
+      "old_commit": "d2aa09cc11afbddcd46001aa917ecf257647e9b7",
+      "new_commit": "760cddad209eb0822e79679ced337d9f4344bbfe",
+      "identical_tree": "4720e8ccfc6641e645f418d5b5c4ca6d3b4cf68e",
+      "author_date": "2026-10-05T09:10:27-07:00",
+      "committer_date": "2026-10-05T09:10:27-07:00"
+    },
+    {
+      "old_commit": "14970e1b4afc58de0ea71af4e7903360083a1687",
+      "new_commit": "b45be764daa9f9dfdd658d4d72bc8819d9f6fa56",
+      "identical_tree": "5e1fb2f731b4b0471ce2a4040500c4286dd82bd9",
+      "author_date": "2026-10-05T09:12:28-07:00",
+      "committer_date": "2026-10-05T09:12:28-07:00"
+    },
+    {
+      "old_commit": "366c8339e18563105ba41f82ea9d0ac6b6650077",
+      "new_commit": "34e0d57a30d7bba24b75a016173758d2658484c1",
+      "identical_tree": "db684e44a54a432543c1f61bd69be11bb654cb46",
+      "author_date": "2026-10-05T09:21:05-07:00",
+      "committer_date": "2026-10-05T09:21:05-07:00"
+    },
+    {
+      "old_commit": "2fd5d19e2997fc0878a608e5c796cb1c6914dee1",
+      "new_commit": "bb2bf91d9621d25e9e78d17d3e9e3b60ed641e31",
+      "identical_tree": "e36258c29ec6dc839a7c708fd17519796a3f5284",
+      "author_date": "2026-10-05T09:40:02-07:00",
+      "committer_date": "2026-10-05T09:40:02-07:00"
+    },
+    {
+      "old_commit": "8a38ee58b85c010ec4194d3a0b58fdaf2b4e6dbd",
+      "new_commit": "730b587b32f697e59a4505f84ad1d5e0c141a925",
+      "identical_tree": "dfd17174202553fa53c52a8889dbd31d9f6278b7",
+      "author_date": "2026-10-05T09:40:58-07:00",
+      "committer_date": "2026-10-05T09:40:58-07:00"
+    },
+    {
+      "old_commit": "d6fc18aa7ca5df8295108639efbeac3d01d509e3",
+      "new_commit": "f9bb7e2d0c87ddfc77f06b74423d7922b073999d",
+      "identical_tree": "f792d9c927b39952737524532ba93305d2fe861b",
+      "author_date": "2026-10-05T09:42:25-07:00",
+      "committer_date": "2026-10-05T09:42:25-07:00"
+    },
+    {
+      "old_commit": "bd8b90d4ad1e9d0a79c83b7b6fc4c2f46ce59a8a",
+      "new_commit": "6e584bc86c908c812eb1056d1f15a6a9331472f3",
+      "identical_tree": "e8afc02867217f9eb68491a9cc3e7b5c4c3e3e31",
+      "author_date": "2026-10-05T09:57:15-07:00",
+      "committer_date": "2026-10-05T09:57:15-07:00"
+    },
+    {
+      "old_commit": "432bf74c934f6b5be44ce11858ad93329f29a5c4",
+      "new_commit": "dd2f5c918a0d48aeace1af91e52f930886d9cbec",
+      "identical_tree": "27c6b527ea103ff4f8cf50c3292622d5c63abf44",
+      "author_date": "2026-10-05T09:58:21-07:00",
+      "committer_date": "2026-10-05T09:58:21-07:00"
+    },
+    {
+      "old_commit": "fcf34da262c7780a9cf1e1c87144c4940dcc9bf7",
+      "new_commit": "a7d7d7ab5e83b2ae99f73154c59fc80c44ff6e70",
+      "identical_tree": "15969caf27e0fe5dc10896ec0188d3b0db3c7d38",
+      "author_date": "2026-10-05T10:06:09-07:00",
+      "committer_date": "2026-10-05T10:06:09-07:00"
+    },
+    {
+      "old_commit": "c545bb79703ceeb6156b2347de85dccfd7402376",
+      "new_commit": "0edbb081ccfc377fc1dda10e4c59260d3925e675",
+      "identical_tree": "78b3324e83c16a461388e24c50d46a6fbf2bfbb6",
+      "author_date": "2026-10-05T10:06:47-07:00",
+      "committer_date": "2026-10-05T10:06:47-07:00"
+    },
+    {
+      "old_commit": "4639649c4f6d613bad5e0582a3bfef2826e4b14a",
+      "new_commit": "98f7a5b27a912900b74ed62f9ea3f793988c908e",
+      "identical_tree": "9e024ff0b34007ba03d94906ae13368bbad9e16e",
+      "author_date": "2026-10-05T10:11:30-07:00",
+      "committer_date": "2026-10-05T10:11:30-07:00"
+    },
+    {
+      "old_commit": "6478a32be7473cc990de9f66c40ec7b8458b3217",
+      "new_commit": "0cfb0748f93b4d069f9abdc7bbcdc3b7e43cd4b1",
+      "identical_tree": "b1b0cd11bf9ea8b083a6fb62a2dc79f0e3188d28",
+      "author_date": "2026-10-05T10:12:24-07:00",
+      "committer_date": "2026-10-05T10:12:24-07:00"
+    },
+    {
+      "old_commit": "3b264f19947a34047102ff5f31e3c4fd601e774c",
+      "new_commit": "2d00bcb6225f71fcf57f826855b9fe9e2b50bbe7",
+      "identical_tree": "31be8958ff78fed8048ca06837e2600b74b58af6",
+      "author_date": "2026-10-05T10:20:18-07:00",
+      "committer_date": "2026-10-05T10:20:18-07:00"
+    },
+    {
+      "old_commit": "94982817fa561f9baabd653c22a9c88e7b3a175b",
+      "new_commit": "c790e5bb3ba899fb15e30eeb89980d8c7c3e737c",
+      "identical_tree": "c1f6db8b03b5da359deee5157c503a648df95d14",
+      "author_date": "2026-10-05T10:21:53-07:00",
+      "committer_date": "2026-10-05T10:21:53-07:00"
+    },
+    {
+      "old_commit": "14bc8598a9ef85bffe399f1524578136d7b0ab04",
+      "new_commit": "fab0fb4aa14c8446c0b6def42c113b5e97601877",
+      "identical_tree": "a38a56ccfb9dd75a1592ee67403576dbe0d23b99",
+      "author_date": "2026-10-05T10:22:46-07:00",
+      "committer_date": "2026-10-05T10:22:46-07:00"
+    },
+    {
+      "old_commit": "ca486e2a2410e5a493eef03a1a4353c1f24a9bd0",
+      "new_commit": "7b2b059185f6bda81ca350cdc26cf9aafeea5865",
+      "identical_tree": "f148bba51e7700c79e3400744fc50d4eb425d306",
+      "author_date": "2026-10-05T10:24:17-07:00",
+      "committer_date": "2026-10-05T10:24:17-07:00"
+    },
+    {
+      "old_commit": "ba231a5965d59eb2784b2a2fd2f053d634185cc8",
+      "new_commit": "f0d6732ac86ed0066a7381c5aee9dfbd21de6d8d",
+      "identical_tree": "0489bbd1189cf207a946ee2097a061ea8dfb1a4f",
+      "author_date": "2026-10-05T10:26:02-07:00",
+      "committer_date": "2026-10-05T10:26:02-07:00"
+    },
+    {
+      "old_commit": "810f35242c9a072085afc4296c2f37cf12a45913",
+      "new_commit": "c444daec1da572657e80cb6fcbfae62f370fb521",
+      "identical_tree": "282e3aa09b32ee692d9c5e6e932ba7451e1697ea",
+      "author_date": "2026-10-05T10:26:55-07:00",
+      "committer_date": "2026-10-05T10:26:55-07:00"
+    },
+    {
+      "old_commit": "57f537a495019ea96013a91ae0346b6e6a9c827a",
+      "new_commit": "bf311bb7a594ca02fbfcef7dc43387bb92ec1bb7",
+      "identical_tree": "b7461e8dad0f3473d67da07b2ad41af3cdab8bc8",
+      "author_date": "2026-10-05T10:40:49-07:00",
+      "committer_date": "2026-10-05T10:40:49-07:00"
+    },
+    {
+      "old_commit": "489418c25124bf61e1dda758e0f889f4e6ee7f9e",
+      "new_commit": "9338051e67e91c706862e4f872bf5e56037e7b81",
+      "identical_tree": "eb00291f7d09d9ae21dd8b21e8ea40515a09caec",
+      "author_date": "2026-10-05T10:41:46-07:00",
+      "committer_date": "2026-10-05T10:41:46-07:00"
+    },
+    {
+      "old_commit": "27e410276347b645b1bae9cc3dcffde7580286cd",
+      "new_commit": "5c527775c61c1b30b1eca0401e45d52345f0021f",
+      "identical_tree": "baa9cae4c6ba0ef69f936d6e78268e80bf6125f1",
+      "author_date": "2026-10-05T10:49:50-07:00",
+      "committer_date": "2026-10-05T10:49:50-07:00"
+    },
+    {
+      "old_commit": "95088af104edd7fc7b774d5cff7d7c23bc947616",
+      "new_commit": "89286b7d2c2f8f75b9866395b535b6b0c86fc43b",
+      "identical_tree": "1f2d9dc86fd350733b85a6926c2feab6f7e23f61",
+      "author_date": "2026-10-05T10:51:14-07:00",
+      "committer_date": "2026-10-05T10:51:14-07:00"
+    },
+    {
+      "old_commit": "8c4ec534b4a64beedcb7d69b5951d2a2cde95fd3",
+      "new_commit": "0ed2fc8909402e215676f26318c3c1148c86d987",
+      "identical_tree": "f3a30bacb686e83b3245fbbabd2fd060f3bb5d17",
+      "author_date": "2026-10-05T10:52:03-07:00",
+      "committer_date": "2026-10-05T10:52:03-07:00"
+    },
+    {
+      "old_commit": "ac3bc00516fe5a7312cdd5d7d6442952b38c0316",
+      "new_commit": "68c5af282495d80aec5209dd01cf8156eb8403be",
+      "identical_tree": "b56195941c7a17f4ef56ff397ce74442a32b97aa",
+      "author_date": "2026-10-05T10:58:02-07:00",
+      "committer_date": "2026-10-05T10:58:02-07:00"
+    },
+    {
+      "old_commit": "d8201ef59e389d6eaee305e29e1c1d6436d327ec",
+      "new_commit": "3907fdfb22a7e7d9503b23d01dd45612031d829e",
+      "identical_tree": "ab56741f30143a2693c0c51300c1ab566fd2760e",
+      "author_date": "2026-10-05T11:00:56-07:00",
+      "committer_date": "2026-10-05T11:00:56-07:00"
+    },
+    {
+      "old_commit": "fa5ccc1780afcb96c66e03be8d0505f2cccc81d3",
+      "new_commit": "cd07e558544b37cfcae3ac30d5e4f60665fd8d6c",
+      "identical_tree": "3dc347b7d80c0ba4ee688554e91996e85902299e",
+      "author_date": "2026-10-05T11:12:56-07:00",
+      "committer_date": "2026-10-05T11:12:56-07:00"
+    },
+    {
+      "old_commit": "000464e9446b68a9aef1368f030883dfc4d18d8f",
+      "new_commit": "6ab6742d39006c3ed21eb7a0db57ca1887a55c2b",
+      "identical_tree": "af4540034003a0c9ec84e8fbd35d0e2d317f8fc6",
+      "author_date": "2026-10-05T11:14:04-07:00",
+      "committer_date": "2026-10-05T11:14:04-07:00"
+    },
+    {
+      "old_commit": "0c434c4e7e9e7488da74a715b0692485471f81a6",
+      "new_commit": "a0a477fd7791a26fadb33bfd86a85430727c2f2d",
+      "identical_tree": "ae68277291eaa1972faaacdaa837aeeae63d4be5",
+      "author_date": "2026-10-05T11:33:02-07:00",
+      "committer_date": "2026-10-05T11:33:02-07:00"
+    },
+    {
+      "old_commit": "092c0ddf842badcb731ad9c591adbedfb19a8970",
+      "new_commit": "f42f2e615dc0cbc626a2db34fdb86125add49295",
+      "identical_tree": "99329bb96e1cf36e7969683f278709326de151c6",
+      "author_date": "2026-10-05T11:35:26-07:00",
+      "committer_date": "2026-10-05T11:35:26-07:00"
+    },
+    {
+      "old_commit": "69feedb86f4c4fd54d6ef91f8ba497d966d5c845",
+      "new_commit": "ff7806bb68cfaf5ba8f347d7e1f34894778ac255",
+      "identical_tree": "8e7b9642e2480dfeae75412ad20b875c742a8fee",
+      "author_date": "2026-10-05T11:36:13-07:00",
+      "committer_date": "2026-10-05T11:36:13-07:00"
+    },
+    {
+      "old_commit": "83e069a5bd8a557abb5123fbc7f5b58598d8c51a",
+      "new_commit": "d8f2c8fb1bbd8bc1f5f926e829f5789b9cbbcf40",
+      "identical_tree": "5231b968a36ae037146f8028ca6d59dd3983f54e",
+      "author_date": "2026-10-05T11:49:17-07:00",
+      "committer_date": "2026-10-05T11:49:17-07:00"
+    },
+    {
+      "old_commit": "f45947a3c6c17a98134fa11cd39838452b32402b",
+      "new_commit": "48432cd00df2a39c92cb441484e57ef4d845ce2b",
+      "identical_tree": "a7590a6ef9d7bc7e7a1823d91356d17ec36e7326",
+      "author_date": "2026-10-05T11:53:01-07:00",
+      "committer_date": "2026-10-05T11:53:01-07:00"
+    }
+  ]
+}

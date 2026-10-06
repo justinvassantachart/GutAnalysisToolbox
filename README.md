@@ -1,4 +1,44 @@
 # Gut Analysis Toolbox
+
+## Apple Silicon TEST preview 5
+
+[Download preview 5](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-5)
+for native arm64 Fiji on macOS 14+. See the short
+[package notes](docs/preview-5-setup.md) and
+[independent review and verification](docs/validation/maintainer-review-2026-10-06.md).
+No developer tools are required to use the package. An unlisted release is not
+published yet.
+
+Preview 5 preserves adjusted image contrast and LUTs in native Template
+Matching, so the isolated worker sees the same rendered pixels as the original
+algorithm. It also prepares CI for `main` and corrects build-evidence wording.
+Preview 4's CPU/calcium safeguards and preview 3's multiplex correction remain.
+**Install the matching plugin and both complete worker folders together:** the
+alignment protocol is now version 2; mixed versions fail explicitly.
+
+**Do not use preview 2 multiplex exports for quantitative work.** All earlier
+release bytes and historical evidence remain unchanged. Legacy macros, models,
+QuPath files and sample data remain in the source distribution; this native
+compatibility work covers Java GATV2, not those separate legacy workflows.
+
+Hosted checks cover recorded command/service paths, not every desktop workflow
+or biological dataset. Physical OpenCL/GPU, complete interactive workflows and
+biological acceptance remain open. The
+[workflow matrix](docs/apple-silicon-workflow-matrix.md) preserves these limits,
+including prior small mask/outline differences. Existing Intel installations
+keep their legacy inference backend; this download's native workers are ARM64.
+
+Clone the release tag for its exact source; ongoing development on `main` may
+include changes beyond a published preview:
+
+```sh
+git clone --branch apple-silicon-preview-5 https://github.com/justinvassantachart/GutAnalysisToolbox.git
+```
+
+Use the release's `FORK_BUILD_INFO.json` and SHA-256 files to verify the exact
+commit and bytes. [Development and input limits](docs/fork-development.md).
+No upstream pull request has been opened.
+
 [![DOI:10.1101/2024.01.17.576140](http://img.shields.io/badge/DOI-10.1101/2024.01.17.576140-B31B1B.svg)](https://doi.org/10.1242/jcs.261950)
 
 
@@ -44,19 +84,31 @@ Click  on this video to watch how to install and configure FIJI and GAT
 
 [![Youtube](https://img.youtube.com/vi/GmE_lz-m0Rg/0.jpg)](https://www.youtube.com/playlist?list=PLmBt1Dumq60p4mIFT4j7TP_PVRjbO55Oi)
 
-GAT requires the following update sites:
+Once installed, launch GAT from the Fiji menu: **GATV2 › Start GAT**. On first
+launch GAT runs an environment check (models, DeepImageJ engines, required
+plugins) and tells you which update sites, if any, still need to be enabled.
+
+GAT requires the following update sites (enable them under
+*Help › Update… › Manage update sites*):
+
+* 3D ImageJ Suite
 * BIG-EPFL
 * CSBDeep
 * clij
 * clij2
 * DeepImageJ
-* IJBP-Plugins (MorphoLibJ)
+* Gut Analysis Toolbox
+* IJPB-plugins (MorphoLibJ)
 * StarDist
-* PT-BIOP
-* 3D ImageJ Suite
-
+* PTBIOP
 
 GAT update site: https://sites.imagej.net/GutAnalysisToolbox/
+
+**Calcium imaging only:** the calcium imaging alignment uses the Template
+Matching plugin, which is not in Fiji's list of update sites and must be added
+manually. In *Manage update sites* click **Add unlisted site** and enter:
+
+`https://sites.imagej.net/Template_Matching/`
 
 ***********
 
@@ -67,7 +119,7 @@ The GAT models are located in `Fiji.app/models` folder and contains 3 separate m
 - **Enteric neuron model: 2D_enteric_neuron_v4_1.zip**
   
   StarDist model to segment enteric neurons labelled with Hu, a pan-neuronal marker
-- **Enteric neuron subtype model: 2D_enteric_neuron_subtype_v4_1.zip**
+- **Enteric neuron subtype model: 2D_enteric_neuron_subtype_v4.zip**
   
   StarDist model to segment enteric neuronal subtypes. It has been trained on images with labelling for:
   * neuronal nitric oxide synthase (nNOS)
@@ -77,7 +129,7 @@ The GAT models are located in `Fiji.app/models` folder and contains 3 separate m
   * Delta-opioid receptor (DOR) reporter (GFP)
   * Choline acetyltransferase (ChAT)
   * Neurofilament (NFM)
-- **Ganglia model folder: 2D_Ganglia_RGB_v3**
+- **Ganglia model folder: 2D_Ganglia_RGB_v3.bioimage.io.model**
   
   DeepImageJ-based UNet model to segment ganglia. Needs both Hu and a neuronal/glial marker labelling the ganglia
 

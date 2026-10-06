@@ -1,0 +1,14 @@
+[
+  {
+    "control": "wrong-golden-md5",
+    "exit_code": 1,
+    "expected_error_observed": "upstream golden-pixel MD5",
+    "status": "pass"
+  },
+  {
+    "control": "wrong-jvm-platform",
+    "exit_code": 1,
+    "expected_error_observed": "JVM architecture does not match requested native platform",
+    "status": "pass"
+  }
+]

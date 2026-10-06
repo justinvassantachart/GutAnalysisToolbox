@@ -1,0 +1,208 @@
+diff --git a/src/main/java/services/multiplex/core/FeatureMatching.java b/src/main/java/services/multiplex/core/FeatureMatching.java
+index df570e2..0d0936e 100644
+--- a/src/main/java/services/multiplex/core/FeatureMatching.java
++++ b/src/main/java/services/multiplex/core/FeatureMatching.java
+@@ -2,6 +2,7 @@ package services.multiplex.core;
+ 
+ import ij.IJ;
+ import ij.ImagePlus;
++import ij.gui.Roi;
+ import ij.plugin.frame.RoiManager;
+ 
+ import static services.multiplex.util.IJUtils.selectWindow;
+@@ -131,28 +132,36 @@ public final class FeatureMatching {
+ 
+         if (!found) return false;
+ 
++        // Capture both selections before touching the global ROI Manager. A
++        // manager selection can restore its ROI onto the current image, which
++        // may still be the target in batch mode.
++        Roi[] landmarks = snapshotLandmarks(ref, target);
++
+         // ---- Store ROI landmarks with stable names in the ROI Manager ----
+         RoiManager rm = RoiManager.getInstance2();
+         if (rm == null) rm = new RoiManager();
+ 
+         // Add landmarks on the reference image
+         selectWindow(ref.getTitle());
+-        rm.addRoi(ref.getRoi());
+-        rm.select(rm.getCount() - 1);
++        rm.addRoi(landmarks[0]);
+         rm.rename(rm.getCount() - 1, commonMarker + "_" + pairIndex + "_ref");
+         IJ.run(ref, "Remove Overlay", "");
+         IJ.run(ref, "Select None", "");
+ 
+         // Add landmarks on the target image
+         selectWindow(target.getTitle());
+-        rm.addRoi(target.getRoi());
+-        rm.select(rm.getCount() - 1);
++        rm.addRoi(landmarks[1]);
+         rm.rename(rm.getCount() - 1, commonMarker + "_" + pairIndex + "_target");
+         IJ.run(target, "Select None", "");
+ 
+         return true;
+     }
+ 
++    /** Independent copies, in reference/target order; never alias live selections. */
++    static Roi[] snapshotLandmarks(ImagePlus ref, ImagePlus target) {
++        return new Roi[]{(Roi) ref.getRoi().clone(), (Roi) target.getRoi().clone()};
++    }
++
+     /**
+      * @return {@code true} if both images currently have a non-null ROI selection,
+      *         indicating that a correspondence extraction step produced landmarks.
+diff --git a/src/main/java/services/multiplex/core/MultiplexRegistrationService.java b/src/main/java/services/multiplex/core/MultiplexRegistrationService.java
+index 9a02b95..4241f01 100644
+--- a/src/main/java/services/multiplex/core/MultiplexRegistrationService.java
++++ b/src/main/java/services/multiplex/core/MultiplexRegistrationService.java
+@@ -4,6 +4,7 @@ import ij.IJ;
+ import ij.ImagePlus;
+ import ij.WindowManager;
+ import ij.gui.NewImage;
++import ij.gui.Roi;
+ import ij.plugin.frame.RoiManager;
+ import services.multiplex.config.MultiplexConfig;
+ import services.multiplex.util.NamingUtils;
+@@ -161,13 +162,9 @@ public class MultiplexRegistrationService {
+         ref.show(); // IJ.run target by title (Copy/Paste, etc.)
+ 
+         final String refTitle = ref.getTitle();
+-        final int width = ref.getWidth();
+-        final int height = ref.getHeight();
+-        final int bitDepth = ref.getBitDepth();
+ 
+         // ---- 6) Build <common>_stack and compute landmarks vs. reference ----
+-        ImagePlus commonStack = NewImage.createImage(
+-                cfg.commonMarker() + "_stack", width, height, 1, bitDepth, NewImage.FILL_BLACK);
++        ImagePlus commonStack = createOutputStack(cfg.commonMarker() + "_stack", ref);
+         commonStack.show();
+ 
+         // Seed first slice with the reference image.
+@@ -216,8 +213,7 @@ public class MultiplexRegistrationService {
+         commonStack.close();
+ 
+         // ---- 7) Prepare the final stack (destination for all aligned channels) ----
+-        ImagePlus finalStack = NewImage.createImage(
+-                "STACK", width, height, 1, bitDepth, NewImage.FILL_BLACK);
++        ImagePlus finalStack = createOutputStack("STACK", ref);
+         finalStack.show();
+ 
+         // ---- 8) Iterate rounds; stack R1 as-is, align R2..N with stored landmarks ----
+@@ -276,27 +272,24 @@ public class MultiplexRegistrationService {
+                     // Select the landmark pair for this round:
+                     //   roiPairOffset     -> reference landmarks
+                     //   roiPairOffset + 1 -> target landmarks
+-                    rm.select(roiPairOffset);
+-                    IJ.selectWindow(refTitle);
+-                    rm.select(roiPairOffset + 1);
+-                    IJ.selectWindow(imp.getTitle());
++                    restoreLandmarks(ref, imp, rm, roiPairOffset);
+ 
+-                    // Apply warp using Landmark Correspondences; plugin usually opens an aligned copy.
++                    // Transform_Roi creates a separate output. Record existing
++                    // images so a plugin failure cannot silently copy an input
++                    // or reuse a stale transformed image as the aligned result.
++                    List<ImagePlus> beforeWarp = openImages();
+                     String args = String.format(
+                             "source_image=[%s] template_image=[%s] transformation_method=[Least Squares] alpha=1 " +
+                                     "mesh_resolution=32 transformation_class=Affine interpolate",
+                             imp.getTitle(), refTitle);
+                     IJ.run("Landmark Correspondences", args);
+ 
+-                    ImagePlus aligned = WindowManager.getCurrentImage();
+-                    if (aligned == null) aligned = imp; // Fallback: if plugin didn't create a new window.
+-
+-                    aligned.show();
++                    ImagePlus aligned = selectWarpedResult(imp, ref, beforeWarp, openImages());
+ 
+                     // Append aligned slice.
+                     IJ.selectWindow(finalStack.getTitle());
+                     IJ.run("Add Slice", "");
+-                    IJ.selectWindow(aligned.getTitle());
++                    IJ.selectWindow(aligned.getID());
+                     IJ.run("Select All", "");
+                     IJ.run("Copy", "");
+                     IJ.selectWindow(finalStack.getTitle());
+@@ -381,4 +374,62 @@ public class MultiplexRegistrationService {
+         }
+ 
+     }
+-}
+\ No newline at end of file
++
++    /** Start export stacks in the reference coordinate system, including time metadata. */
++    static ImagePlus createOutputStack(String title, ImagePlus reference) {
++        ImagePlus stack = NewImage.createImage(title, reference.getWidth(), reference.getHeight(),
++                1, reference.getBitDepth(), NewImage.FILL_BLACK);
++        stack.setCalibration(reference.getCalibration().copy());
++        return stack;
++    }
++
++    /** Restore to explicit images without moving or modifying the stored ROI pair. */
++    static void restoreLandmarks(ImagePlus reference, ImagePlus target, RoiManager manager, int offset) {
++        Roi referencePoints = manager.getRoi(offset);
++        Roi targetPoints = manager.getRoi(offset + 1);
++        if (referencePoints == null || targetPoints == null) {
++            throw new IllegalStateException("Missing landmark ROI pair at offset " + offset);
++        }
++        reference.setRoi((Roi) referencePoints.clone());
++        target.setRoi((Roi) targetPoints.clone());
++    }
++
++    /** WindowManager includes images registered with ImageJ's batch interpreter. */
++    static List<ImagePlus> openImages() {
++        List<ImagePlus> images = new ArrayList<>();
++        int[] ids = WindowManager.getIDList();
++        if (ids != null) {
++            for (int id : ids) {
++                ImagePlus image = WindowManager.getImage(id);
++                if (image != null) images.add(image);
++            }
++        }
++        return images;
++    }
++
++    /**
++     * mpicbg Transform_Roi (Landmark Correspondences) shows one new image named
++     * "Transformed" + source title, with template dimensions and source pixel type.
++     * Do not infer success from the active window: IJ.run can restore it to an input.
++     */
++    static ImagePlus selectWarpedResult(ImagePlus source, ImagePlus template,
++                                        List<ImagePlus> before, List<ImagePlus> after) {
++        Set<Integer> previousIds = before.stream().map(ImagePlus::getID).collect(Collectors.toSet());
++        List<ImagePlus> results = after.stream()
++                .filter(image -> image != source && image != template)
++                .filter(image -> !previousIds.contains(image.getID()))
++                .filter(image -> ("Transformed" + source.getTitle()).equals(image.getTitle()))
++                .collect(Collectors.toList());
++        if (results.size() != 1) {
++            throw new IllegalStateException("Landmark Correspondences did not produce exactly one new "
++                    + "transformed image for " + source.getTitle() + " (found " + results.size() + ")");
++        }
++        ImagePlus result = results.get(0);
++        if (result.getWidth() != template.getWidth() || result.getHeight() != template.getHeight()
++                || result.getStackSize() != 1 || result.getBitDepth() != source.getBitDepth()) {
++            throw new IllegalStateException("Unexpected transformed image dimensions or pixel type for "
++                    + source.getTitle());
++        }
++        return result;
++    }
++}
+diff --git a/src/main/java/services/multiplex/util/IJUtils.java b/src/main/java/services/multiplex/util/IJUtils.java
+index 43a7a6b..58e1afd 100644
+--- a/src/main/java/services/multiplex/util/IJUtils.java
++++ b/src/main/java/services/multiplex/util/IJUtils.java
+@@ -68,9 +68,12 @@ public final class IJUtils {
+      *              If null or no window matches, nothing happens.
+      */
+     public static void selectWindow(String title) {
++        if (title == null) return;
+         ImagePlus imp = WindowManager.getImage(title);
+         if (imp != null) {
+-            WindowManager.setCurrentWindow(imp.getWindow());
++            // Batch images have no ImageWindow. ImageJ's selection API also
++            // activates those images in the macro interpreter/current thread.
++            IJ.selectWindow(imp.getID());
+         }
+     }
+ 

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source_manifest": "../workflows/dependencies.json",
+  "artifacts": [
+    {
+      "filename": "mpicbg-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/jars/mpicbg-1.6.6.jar-20260716221137",
+      "sha256": "43605b945958c6e675f3b0ec2090fd3f4e328ba6fffef9aacfc96fc1ebfee3d8",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "mpicbg_-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/plugins/mpicbg_-1.6.6.jar-20260716221137",
+      "sha256": "a18fc250b1fd464f6b79855c425e1b23d765974e0b0d2e9fdb03ce2f137406bb",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "jama-1.0.3.jar",
+      "url": "https://repo1.maven.org/maven2/gov/nist/math/jama/1.0.3/jama-1.0.3.jar",
+      "sha256": "c7325ee29be1aac1287ddac690f73671f1cd911ca9eca7c619990e86310556fd",
+      "groups": [
+        "registration"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "shape": [
+    175,
+    175,
+    97
+  ],
+  "probability_threshold": 0.5,
+  "nms_threshold": 0.3,
+  "boundary": 2,
+  "candidates": 500,
+  "count": 39,
+  "winner_centers": [
+    [
+      92.5,
+      44.5
+    ],
+    [
+      36.5,
+      96.5
+    ],
+    [
+      154.5,
+      142.5
+    ],
+    [
+      28.5,
+      134.5
+    ],
+    [
+      122.5,
+      42.5
+    ],
+    [
+      44.5,
+      120.5
+    ],
+    [
+      126.5,
+      70.5
+    ],
+    [
+      92.5,
+      66.5
+    ],
+    [
+      108.5,
+      82.5
+    ],
+    [
+      74.5,
+      62.5
+    ],
+    [
+      80.5,
+      80.5
+    ],
+    [
+      84.5,
+      12.5
+    ],
+    [
+      172.5,
+      110.5
+    ],
+    [
+      56.5,
+      52.5
+    ],
+    [
+      172.5,
+      158.5
+    ],
+    [
+      116.5,
+      16.5
+    ],
+    [
+      124.5,
+      102.5
+    ],
+    [
+      148.5,
+      92.5
+    ],
+    [
+      142.5,
+      2.5
+    ],
+    [
+      172.5,
+      134.5
+    ],
+    [
+      46.5,
+      138.5
+    ],
+    [
+      148.5,
+      44.5
+    ],
+    [
+      50.5,
+      84.5
+    ],
+    [
+      136.5,
+      146.5
+    ],
+    [
+      26.5,
+      48.5
+    ],
+    [
+      50.5,
+      102.5
+    ],
+    [
+      62.5,
+      74.5
+    ],
+    [
+      142.5,
+      22.5
+    ],
+    [
+      128.5,
+      24.5
+    ],
+    [
+      164.5,
+      12.5
+    ],
+    [
+      46.5,
+      30.5
+    ],
+    [
+      140.5,
+      74.5
+    ],
+    [
+      134.5,
+      52.5
+    ],
+    [
+      60.5,
+      94.5
+    ],
+    [
+      32.5,
+      28.5
+    ],
+    [
+      38.5,
+      154.5
+    ],
+    [
+      162.5,
+      172.5
+    ],
+    [
+      34.5,
+      74.5
+    ],
+    [
+      164.5,
+      90.5
+    ]
+  ],
+  "raster_object_count": 39,
+  "measurements": [
+    {
+      "label": 1,
+      "area_pixels": 315,
+      "integrated_intensity": 36346.0,
+      "centroid_x_pixels": 91.28095238095239,
+      "centroid_y_pixels": 45.560317460317464,
+      "mean_intensity": 115.38412698412698
+    },
+    {
+      "label": 2,
+      "area_pixels": 304,
+      "integrated_intensity": 29981.0,
+      "centroid_x_pixels": 35.38157894736842,
+      "centroid_y_pixels": 97.89802631578948,
+      "mean_intensity": 98.6217105263158
+    },
+    {
+      "label": 3,
+      "area_pixels": 202,
+      "integrated_intensity": 19702.0,
+      "centroid_x_pixels": 153.6881188118812,
+      "centroid_y_pixels": 141.24257425742573,
+      "mean_intensity": 97.53465346534654
+    },
+    {
+      "label": 4,
+      "area_pixels": 156,
+      "integrated_intensity": 24092.0,
+      "centroid_x_pixels": 28.166666666666668,
+      "centroid_y_pixels": 133.9551282051282,
+      "mean_intensity": 154.43589743589743
+    },
+    {
+      "label": 5,
+      "area_pixels": 199,
+      "integrated_intensity": 16424.0,
+      "centroid_x_pixels": 122.59547738693468,
+      "centroid_y_pixels": 41.972361809045225,
+      "mean_intensity": 82.53266331658291
+    },
+    {
+      "label": 6,
+      "area_pixels": 278,
+      "integrated_intensity": 23573.0,
+      "centroid_x_pixels": 45.05395683453237,
+      "centroid_y_pixels": 120.46762589928058,
+      "mean_intensity": 84.79496402877697
+    },
+    {
+      "label": 7,
+      "area_pixels": 210,
+      "integrated_intensity": 17607.0,
+      "centroid_x_pixels": 126.04285714285714,
+      "centroid_y_pixels": 67.69047619047619,
+      "mean_intensity": 83.84285714285714
+    },
+    {
+      "label": 8,
+      "area_pixels": 171,
+      "integrated_intensity": 10861.0,
+      "centroid_x_pixels": 93.00877192982456,
+      "centroid_y_pixels": 66.46491228070175,
+      "mean_intensity": 63.514619883040936
+    },
+    {
+      "label": 9,
+      "area_pixels": 237,
+      "integrated_intensity": 26917.0,
+      "centroid_x_pixels": 108.23839662447257,
+      "centroid_y_pixels": 83.68987341772151,
+      "mean_intensity": 113.57383966244726
+    },
+    {
+      "label": 10,
+      "area_pixels": 153,
+      "integrated_intensity": 8415.0,
+      "centroid_x_pixels": 73.63071895424837,
+      "centroid_y_pixels": 62.26470588235294,
+      "mean_intensity": 55.0
+    },
+    {
+      "label": 11,
+      "area_pixels": 217,
+      "integrated_intensity": 15310.0,
+      "centroid_x_pixels": 80.86866359447005,
+      "centroid_y_pixels": 80.3110599078341,
+      "mean_intensity": 70.55299539170507
+    },
+    {
+      "label": 12,
+      "area_pixels": 227,
+      "integrated_intensity": 21464.0,
+      "centroid_x_pixels": 83.68061674008811,
+      "centroid_y_pixels": 13.094713656387665,
+      "mean_intensity": 94.55506607929516
+    },
+    {
+      "label": 13,
+      "area_pixels": 189,
+      "integrated_intensity": 21860.0,
+      "centroid_x_pixels": 168.2724867724868,
+      "centroid_y_pixels": 109.83862433862434,
+      "mean_intensity": 115.66137566137566
+    },
+    {
+      "label": 14,
+      "area_pixels": 194,
+      "integrated_intensity": 11848.0,
+      "centroid_x_pixels": 55.654639175257735,
+      "centroid_y_pixels": 52.48969072164948,
+      "mean_intensity": 61.07216494845361
+    },
+    {
+      "label": 15,
+      "area_pixels": 173,
+      "integrated_intensity": 25585.0,
+      "centroid_x_pixels": 170.39595375722544,
+      "centroid_y_pixels": 157.22832369942196,
+      "mean_intensity": 147.89017341040463
+    },
+    {
+      "label": 16,
+      "area_pixels": 185,
+      "integrated_intensity": 14167.0,
+      "centroid_x_pixels": 116.7,
+      "centroid_y_pixels": 16.181081081081082,
+      "mean_intensity": 76.57837837837837
+    },
+    {
+      "label": 17,
+      "area_pixels": 241,
+      "integrated_intensity": 22216.0,
+      "centroid_x_pixels": 124.48755186721992,
+      "centroid_y_pixels": 103.02282157676349,
+      "mean_intensity": 92.18257261410788
+    },
+    {
+      "label": 18,
+      "area_pixels": 247,
+      "integrated_intensity": 30643.0,
+      "centroid_x_pixels": 146.09919028340082,
+      "centroid_y_pixels": 90.12348178137651,
+      "mean_intensity": 124.06072874493927
+    },
+    {
+      "label": 19,
+      "area_pixels": 237,
+      "integrated_intensity": 17572.0,
+      "centroid_x_pixels": 144.77848101265823,
+      "centroid_y_pixels": 5.529535864978903,
+      "mean_intensity": 74.14345991561181
+    },
+    {
+      "label": 20,
+      "area_pixels": 98,
+      "integrated_intensity": 7233.0,
+      "centroid_x_pixels": 170.96938775510205,
+      "centroid_y_pixels": 134.0408163265306,
+      "mean_intensity": 73.8061224489796
+    },
+    {
+      "label": 21,
+      "area_pixels": 132,
+      "integrated_intensity": 13694.0,
+      "centroid_x_pixels": 45.74242424242424,
+      "centroid_y_pixels": 138.5530303030303,
+      "mean_intensity": 103.74242424242425
+    },
+    {
+      "label": 22,
+      "area_pixels": 302,
+      "integrated_intensity": 30193.0,
+      "centroid_x_pixels": 148.08278145695365,
+      "centroid_y_pixels": 45.71523178807947,
+      "mean_intensity": 99.97682119205298
+    },
+    {
+      "label": 23,
+      "area_pixels": 197,
+      "integrated_intensity": 22615.0,
+      "centroid_x_pixels": 49.82994923857868,
+      "centroid_y_pixels": 83.43401015228426,
+      "mean_intensity": 114.79695431472081
+    },
+    {
+      "label": 24,
+      "area_pixels": 187,
+      "integrated_intensity": 25210.0,
+      "centroid_x_pixels": 136.29679144385025,
+      "centroid_y_pixels": 146.17379679144386,
+      "mean_intensity": 134.81283422459893
+    },
+    {
+      "label": 25,
+      "area_pixels": 270,
+      "integrated_intensity": 16043.0,
+      "centroid_x_pixels": 28.403703703703705,
+      "centroid_y_pixels": 48.89259259259259,
+      "mean_intensity": 59.41851851851852
+    },
+    {
+      "label": 26,
+      "area_pixels": 156,
+      "integrated_intensity": 12795.0,
+      "centroid_x_pixels": 51.68589743589744,
+      "centroid_y_pixels": 103.21794871794872,
+      "mean_intensity": 82.01923076923077
+    },
+    {
+      "label": 27,
+      "area_pixels": 162,
+      "integrated_intensity": 9005.0,
+      "centroid_x_pixels": 60.833333333333336,
+      "centroid_y_pixels": 74.98765432098766,
+      "mean_intensity": 55.58641975308642
+    },
+    {
+      "label": 28,
+      "area_pixels": 187,
+      "integrated_intensity": 11732.0,
+      "centroid_x_pixels": 142.37700534759358,
+      "centroid_y_pixels": 22.762032085561497,
+      "mean_intensity": 62.7379679144385
+    },
+    {
+      "label": 29,
+      "area_pixels": 186,
+      "integrated_intensity": 15920.0,
+      "centroid_x_pixels": 128.06451612903226,
+      "centroid_y_pixels": 23.629032258064516,
+      "mean_intensity": 85.59139784946237
+    },
+    {
+      "label": 30,
+      "area_pixels": 341,
+      "integrated_intensity": 24280.0,
+      "centroid_x_pixels": 165.56451612903226,
+      "centroid_y_pixels": 11.186217008797653,
+      "mean_intensity": 71.20234604105572
+    },
+    {
+      "label": 31,
+      "area_pixels": 226,
+      "integrated_intensity": 20568.0,
+      "centroid_x_pixels": 46.491150442477874,
+      "centroid_y_pixels": 28.3141592920354,
+      "mean_intensity": 91.00884955752213
+    },
+    {
+      "label": 32,
+      "area_pixels": 121,
+      "integrated_intensity": 11417.0,
+      "centroid_x_pixels": 141.11157024793388,
+      "centroid_y_pixels": 75.01239669421487,
+      "mean_intensity": 94.35537190082644
+    },
+    {
+      "label": 33,
+      "area_pixels": 113,
+      "integrated_intensity": 9247.0,
+      "centroid_x_pixels": 134.55309734513276,
+      "centroid_y_pixels": 52.5353982300885,
+      "mean_intensity": 81.83185840707965
+    },
+    {
+      "label": 34,
+      "area_pixels": 112,
+      "integrated_intensity": 9580.0,
+      "centroid_x_pixels": 60.669642857142854,
+      "centroid_y_pixels": 94.16964285714286,
+      "mean_intensity": 85.53571428571429
+    },
+    {
+      "label": 35,
+      "area_pixels": 134,
+      "integrated_intensity": 9088.0,
+      "centroid_x_pixels": 32.343283582089555,
+      "centroid_y_pixels": 28.813432835820894,
+      "mean_intensity": 67.82089552238806
+    },
+    {
+      "label": 36,
+      "area_pixels": 151,
+      "integrated_intensity": 11596.0,
+      "centroid_x_pixels": 38.37417218543046,
+      "centroid_y_pixels": 153.30794701986756,
+      "mean_intensity": 76.79470198675497
+    },
+    {
+      "label": 37,
+      "area_pixels": 91,
+      "integrated_intensity": 7833.0,
+      "centroid_x_pixels": 161.73076923076923,
+      "centroid_y_pixels": 171.44505494505495,
+      "mean_intensity": 86.07692307692308
+    },
+    {
+      "label": 38,
+      "area_pixels": 217,
+      "integrated_intensity": 17446.0,
+      "centroid_x_pixels": 33.91935483870968,
+      "centroid_y_pixels": 74.58755760368663,
+      "mean_intensity": 80.3963133640553
+    },
+    {
+      "label": 39,
+      "area_pixels": 134,
+      "integrated_intensity": 19430.0,
+      "centroid_x_pixels": 163.59701492537314,
+      "centroid_y_pixels": 89.24626865671642,
+      "mean_intensity": 145.0
+    }
+  ],
+  "raw_label_sha256": "0fe525b3b13e0f69c2f5593c7f227324ff748044906874006095b3b37cb67b95",
+  "canonical_shape_sha256": "fc86732315d59722dae78ef398252ad3c9dbd8773a1c448a0f71381b3d3fa3a4"
+}

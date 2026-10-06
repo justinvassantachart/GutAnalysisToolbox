@@ -1,0 +1,1071 @@
+{
+  "schema_version": 1,
+  "scope": "Bounded installed-Fiji mask-retention follow-up; separate from prior immutable acceptance packet",
+  "provenance": {
+    "source_commit": "5e2e0f4c42726e480213682808dfa41ea16f064f",
+    "source_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/commit/5e2e0f4c42726e480213682808dfa41ea16f064f",
+    "original_commit": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+    "run_id": 37377537420,
+    "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37377537420",
+    "job_id": 111990534588,
+    "job_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37377537420/job/111990534588",
+    "run_conclusion": "success",
+    "conclusion_source": "Separately verified CI status supplied by review coordinator; no API response is included in this ZIP",
+    "artifact_id": 11372264284,
+    "artifact_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37377537420/artifacts/11372264284",
+    "zip_file": "gat-fresh-fiji-mask-retention-5e2e0f4.zip",
+    "zip_bytes": 1393747,
+    "zip_sha256": "5c8f7d4beb9383c412cda5fb21fbfb95cefc4bea95201f050f47344e85de6007",
+    "zip_members": 87,
+    "zip_crc": "PASS",
+    "all_extracted_member_bytes_match_zip": true,
+    "retained_tiffs": [
+      "original_ganglia-mask.tif",
+      "fork_ganglia-mask.tif"
+    ]
+  },
+  "host": {
+    "source_and_host_log": "Darwin sjc22-be105-b07ea0db-96f8-4124-9554-089d0628ffae-5E1F038C03E0.local 24.6.0 Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:34 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_VMAPPLE arm64\nProductName:\t\tmacOS\nProductVersion:\t\t15.7.9\nBuildVersion:\t\t24G830\nApple M1 (Virtual)\nOriginal: 1870d9e16e16fd6daeac0bd05122e851029ddedc\nFork: 5e2e0f4c42726e480213682808dfa41ea16f064f\n",
+    "native_binaries_log": "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64:                                                     Mach-O 64-bit executable arm64\n$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home/bin/java: Mach-O 64-bit executable arm64\n",
+    "java_version": "21.0.7",
+    "java_vendor": "Azul Systems, Inc.",
+    "os_name": "Mac OS X",
+    "os_version": "15.7.9",
+    "os_arch": "aarch64"
+  },
+  "acceptance": {
+    "status": "PASS",
+    "required_stages": [
+      "native_host",
+      "archive_download",
+      "archive_integrity",
+      "archive_extraction",
+      "bundled_java",
+      "pristine_startup",
+      "official_updater",
+      "installed_inventory",
+      "paired_overlays",
+      "original_startup",
+      "fork_startup",
+      "fork_dashboard",
+      "fork_neuron",
+      "fork_alignment",
+      "ganglia_engine_setup",
+      "official_engine_inference",
+      "fork_ganglia"
+    ],
+    "all_raw_stage_statuses_equal_previous_run": true,
+    "complete_workflow_support": false,
+    "stage_statuses": {
+      "native_host": {
+        "status": "PASS",
+        "evidence": "host.log"
+      },
+      "archive_download": {
+        "status": "PASS",
+        "launcher_seconds": 13.148255875000018
+      },
+      "archive_integrity": {
+        "status": "PASS"
+      },
+      "archive_extraction": {
+        "status": "PASS"
+      },
+      "bundled_java": {
+        "status": "PASS",
+        "launcher_seconds": 0.2426808329999517
+      },
+      "pristine_startup": {
+        "status": "PASS",
+        "evidence": "pristine_startup.json",
+        "launcher_seconds": 21.583027625
+      },
+      "official_updater": {
+        "status": "PASS"
+      },
+      "installed_inventory": {
+        "status": "PASS",
+        "evidence": "installed-inventory.json"
+      },
+      "paired_overlays": {
+        "status": "PASS"
+      },
+      "original_startup": {
+        "status": "PASS",
+        "evidence": "original_startup.json",
+        "launcher_seconds": 23.55236541699992
+      },
+      "original_dashboard": {
+        "status": "PASS",
+        "evidence": "original_dashboard.json",
+        "launcher_seconds": 21.39977266599999
+      },
+      "original_neuron": {
+        "status": "FAIL",
+        "evidence": "original_neuron.json",
+        "launcher_seconds": 21.942340124999987
+      },
+      "original_alignment": {
+        "status": "FAIL",
+        "evidence": "original_alignment.json",
+        "launcher_seconds": 20.928897916999972
+      },
+      "fork_startup": {
+        "status": "PASS",
+        "evidence": "fork_startup.json",
+        "launcher_seconds": 23.305819250000013
+      },
+      "fork_dashboard": {
+        "status": "PASS",
+        "evidence": "fork_dashboard.json",
+        "launcher_seconds": 21.186366582999995
+      },
+      "fork_neuron": {
+        "status": "PASS",
+        "evidence": "fork_neuron.json",
+        "launcher_seconds": 28.919306707999908
+      },
+      "fork_alignment": {
+        "status": "PASS",
+        "evidence": "fork_alignment.json",
+        "launcher_seconds": 20.965908667000008
+      },
+      "official_engine_install": {
+        "status": "PASS",
+        "evidence": "official_engine_install.json",
+        "launcher_seconds": 20.266599917000008
+      },
+      "official_engine_inference": {
+        "status": "PASS",
+        "evidence": "official_engine_inference.json",
+        "launcher_seconds": 50.39837995899995
+      },
+      "ganglia_engine_setup": {
+        "status": "PASS"
+      },
+      "original_ganglia": {
+        "status": "PASS",
+        "evidence": "original_ganglia.json",
+        "launcher_seconds": 43.15362033300005
+      },
+      "fork_ganglia": {
+        "status": "PASS",
+        "evidence": "fork_ganglia.json",
+        "launcher_seconds": 45.31406375000006
+      },
+      "ganglia_command": {
+        "status": "PASS",
+        "evidence": "fork_ganglia.json"
+      },
+      "opencl_workflows": {
+        "status": "BLOCKED",
+        "reason": "Native virtual M1 runner has no exposed OpenCL devices; requires a physical-device lane"
+      },
+      "full_interactive_workflows": {
+        "status": "BLOCKED",
+        "reason": "Biological review, parameter UI, every workflow, and physical-Mac Finder/Gatekeeper first-open are outside this bounded lane"
+      }
+    }
+  },
+  "stage_metrics": {
+    "pristine_startup": {
+      "status": "PASS"
+    },
+    "official_engine_install": {
+      "status": "PASS",
+      "action": "Shipped JDLL EngineInstall.installEngineWithArgsInDir(pytorch,2.0.0,true,false,engines)",
+      "model_declared_version": "2.4.1+cpu",
+      "catalog_resolved_version": "2.0.0"
+    },
+    "official_engine_inference": {
+      "status": "PASS",
+      "action": "Actual full-model JDLL inference in installed Fiji",
+      "metrics": {
+        "engine_framework": "pytorch",
+        "engine_version": "2.0.0",
+        "engine_java_version": "2.0.0",
+        "engine_cpu": true,
+        "model_declared_version": "2.4.1+cpu",
+        "catalog_resolved_version": "2.0.0",
+        "input_shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "output_shape": [
+          1,
+          1,
+          1024,
+          1024
+        ],
+        "output_axes": "bcyx",
+        "finite_values": 1048576,
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "seconds": 32.217359166,
+        "scope": "Actual shipped JDLL model loading, RDF preprocessing, tiling, inference and postprocessing inside installed Fiji; not a scientific reference-parity claim"
+      }
+    },
+    "original_startup": {
+      "status": "PASS"
+    },
+    "original_dashboard": {
+      "status": "PASS",
+      "action": "IJ.run(\"GATV2\") using the real installed menu mapping",
+      "dashboard_visible": true
+    },
+    "original_neuron": {
+      "status": "FAIL",
+      "action": "Features.Core.PluginCalls.runStarDist2DLabel, invoked inside installed Fiji",
+      "requested_tiles": 4,
+      "probability_threshold": 0.5,
+      "nms_threshold": 0.3
+    },
+    "original_alignment": {
+      "status": "FAIL",
+      "action": "Features.Tools.AlignStack.alignTemplateMatching, invoked inside installed Fiji",
+      "input_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+      "aligned_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23"
+    },
+    "original_ganglia": {
+      "status": "PASS",
+      "action": "Actual GAT DeepImageJ ganglia command in installed Fiji",
+      "metrics": {
+        "width": 1024,
+        "height": 1024,
+        "foreground_pixels": 167430,
+        "seconds": 24.084775625,
+        "source_unchanged": true,
+        "calibration_preserved": true,
+        "mask_file": "original_ganglia-mask.tif",
+        "mask_pixels_uint8_row_major_sha256": "a8cb17b67de06f29bf6fa00f5ba54e9f531cc460a9355c855bb8906ffc063fa8",
+        "mask_tiff_sha256": "15f3c92d88890c61f06f431ee31016fe6c1793344d40f815564c29e5f5316829",
+        "input_contract": "Supplied test-input.npy channel 0=Hu/channel 1=ganglia; actual GAT builds R=Hu,G=ganglia,B=Hu",
+        "rdf_threshold": 0.6,
+        "gat_threshold": 0.6,
+        "open_iterations": 1,
+        "minimum_area_um2": 1.0,
+        "scope": "Actual GAT->registered DeepImageJ Run->model->MorphoLibJ cleanup; biological and manual-paint review excluded"
+      }
+    },
+    "fork_startup": {
+      "status": "PASS"
+    },
+    "fork_dashboard": {
+      "status": "PASS",
+      "action": "IJ.run(\"GATV2\") using the real installed menu mapping",
+      "dashboard_visible": true
+    },
+    "fork_neuron": {
+      "status": "PASS",
+      "action": "Features.Core.PluginCalls.runStarDist2DLabel, invoked inside installed Fiji",
+      "requested_tiles": 4,
+      "probability_threshold": 0.5,
+      "nms_threshold": 0.3,
+      "label_sha256": "ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+      "object_count": 39,
+      "source_unchanged": true
+    },
+    "fork_alignment": {
+      "status": "PASS",
+      "action": "Features.Tools.AlignStack.alignTemplateMatching, invoked inside installed Fiji",
+      "input_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+      "aligned_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c"
+    },
+    "fork_ganglia": {
+      "status": "PASS",
+      "action": "Actual GAT DeepImageJ ganglia command in installed Fiji",
+      "metrics": {
+        "width": 1024,
+        "height": 1024,
+        "foreground_pixels": 72236,
+        "seconds": 26.747070167,
+        "source_unchanged": true,
+        "calibration_preserved": true,
+        "mask_file": "fork_ganglia-mask.tif",
+        "mask_pixels_uint8_row_major_sha256": "bf77cecdc827a080b7f2be7f7289fbce918fbb8e593b7c470683ccab9254788f",
+        "mask_tiff_sha256": "c141a0a1e66fa9810d4c42c62834688c224929bdd3764ee6464321c87ea0682b",
+        "input_contract": "Supplied test-input.npy channel 0=Hu/channel 1=ganglia; actual GAT builds R=Hu,G=ganglia,B=Hu",
+        "rdf_threshold": 0.6,
+        "gat_threshold": 0.6,
+        "open_iterations": 1,
+        "minimum_area_um2": 1.0,
+        "scope": "Actual GAT->registered DeepImageJ Run->model->MorphoLibJ cleanup; biological and manual-paint review excluded"
+      }
+    }
+  },
+  "engine_and_archive_setup": {
+    "archive_download": {
+      "status": "PASS",
+      "url": "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip",
+      "sha256": "26af2159ca1d770de2c6b4fd99b98292891c50abdeaa00d1c66a425cd3de45b0",
+      "bytes": 669037040,
+      "execution": {
+        "command": [
+          "curl",
+          "--fail",
+          "--location",
+          "--silent",
+          "--show-error",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--retry",
+          "2",
+          "--connect-timeout",
+          "30",
+          "--max-time",
+          "1185",
+          "--output",
+          "$WORK_ROOT/fiji.zip",
+          "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip"
+        ],
+        "exit_code": 0,
+        "timeout": false,
+        "seconds": 13.148255875000018,
+        "log": "download.log"
+      }
+    },
+    "archive_integrity": {
+      "status": "PASS",
+      "sha256": "26af2159ca1d770de2c6b4fd99b98292891c50abdeaa00d1c66a425cd3de45b0",
+      "expanded_bytes": 859133844
+    },
+    "ganglia_engine_setup": {
+      "status": "PASS",
+      "installer": "official_engine_install.json",
+      "inference": "official_engine_inference.json",
+      "model_and_installed_runtime_pins": [
+        {
+          "path": "jars/dl-modelrunner-0.6.2-SNAPSHOT.jar",
+          "sha256": "b8d4821fa5fd8d7f9135e3e673b92b8aeb3317f69dd8d8e05bc60aa981e3f757"
+        },
+        {
+          "path": "plugins/DeepImageJ-3.2.0-SNAPSHOT.jar",
+          "sha256": "ce07bfa791c83034538ef858bce17b03fb414e18082aa78b1e63594d3829b5c6"
+        },
+        {
+          "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/best_model_torchscript.pt",
+          "sha256": "1c59382b776acc2beed84bc2309e29f474aa69ff6356ec2248a04854d4feca7b"
+        },
+        {
+          "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml",
+          "sha256": "1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c"
+        },
+        {
+          "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-input.npy",
+          "sha256": "986cfd751c0e2cfd3367cfc39b5583c10e55da2f1a7772d73845c6395eefd681"
+        },
+        {
+          "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-output.npy",
+          "sha256": "c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9"
+        },
+        {
+          "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/binarize.ijm",
+          "sha256": "5a428f3a710dc1212c1a86830978f4707932b251c37b912fad15578ef6a1fce1"
+        },
+        {
+          "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/im_preprocessing.ijm",
+          "sha256": "cd950ddbcbadcb5cbc016bb71ee33d2ee7b730b3ca6bbc0ea17dc54c4b2167ec"
+        }
+      ],
+      "installer_files": [
+        {
+          "path": "api-0.22.1.jar",
+          "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+        },
+        {
+          "path": "pytorch-engine-0.22.1.jar",
+          "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+        },
+        {
+          "path": "pytorch-jni-2.0.0-0.22.1.jar",
+          "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+        },
+        {
+          "path": "dl-modelrunner-pytorch-0.4.4.jar",
+          "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+        },
+        {
+          "path": "jna-5.13.0.jar",
+          "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+        },
+        {
+          "path": "commons-compress-1.22.jar",
+          "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+        },
+        {
+          "path": "slf4j-api-2.0.6.jar",
+          "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+        }
+      ],
+      "verified_engine_files": [
+        {
+          "path": "api-0.22.1.jar",
+          "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+        },
+        {
+          "path": "pytorch-engine-0.22.1.jar",
+          "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+        },
+        {
+          "path": "pytorch-jni-2.0.0-0.22.1.jar",
+          "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+        },
+        {
+          "path": "dl-modelrunner-pytorch-0.4.4.jar",
+          "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+        },
+        {
+          "path": "jna-5.13.0.jar",
+          "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+        },
+        {
+          "path": "commons-compress-1.22.jar",
+          "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+        },
+        {
+          "path": "slf4j-api-2.0.6.jar",
+          "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+        },
+        {
+          "path": "pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+          "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995"
+        }
+      ],
+      "native_cpu_download": {
+        "url": "https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-native-cpu/2.0.0/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+        "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995",
+        "bytes": 34791618,
+        "execution": {
+          "command": [
+            "curl",
+            "--fail",
+            "--location",
+            "--silent",
+            "--show-error",
+            "--proto",
+            "=https",
+            "--proto-redir",
+            "=https",
+            "--retry",
+            "2",
+            "--connect-timeout",
+            "30",
+            "--max-time",
+            "285",
+            "--output",
+            "$WORK_ROOT/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+            "https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-native-cpu/2.0.0/pytorch-native-cpu-2.0.0-osx-aarch64.jar"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 0.4240182499999037,
+          "log": "ganglia-native-download.log"
+        }
+      },
+      "note": "Shipped JDLL installer plus exact pinned official native CPU jar; completed full model inference before copying either installation"
+    }
+  },
+  "inventory_comparison": {
+    "method": "Exact relative path, bytes and SHA-256 comparison of retained JSON inventories; rebuilt JAR contents are not in either ZIP and were not independently compared",
+    "previous_source": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+    "previous_packet": "../mac-accepted-26298b7/REPORT.md",
+    "cross_run_deltas": {
+      "installed": {
+        "previous_member_sha256": "a44ad3fa6bd375dcbbb2e0a5cbd94603e04ddccf1f9f5a14147a7d4233f0963b",
+        "current_member_sha256": "5e1de2aa24a29b37f683b70e06649e7142b6c5400ca4b021d43a92c56f301f10",
+        "before_count": 847,
+        "after_count": 847,
+        "common_paths": 847,
+        "byte_identical_common_files": 846,
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "before": {
+              "path": "plugins/Fresh_Fiji_Probe.jar",
+              "bytes": 20940,
+              "sha256": "6fb7d72e2bf530ee72c1ebfad2f7a7d62e61e369d23bc47217922af765767f88"
+            },
+            "after": {
+              "path": "plugins/Fresh_Fiji_Probe.jar",
+              "bytes": 20940,
+              "sha256": "a388cfff13504146a14d440041d1be07c73ebbc152ba232a4f08a44ef6403734"
+            }
+          }
+        ]
+      },
+      "engine-ready": {
+        "previous_member_sha256": "ec6275093835378937cc5de7c2f3c87f453df56258023c6e6d2d97fd7445fd0c",
+        "current_member_sha256": "b5aa12d01456f46580b8785e0dc3f3a1b8de23a650602fd0fdbd1e1ca3e888a5",
+        "before_count": 855,
+        "after_count": 855,
+        "common_paths": 855,
+        "byte_identical_common_files": 854,
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "before": {
+              "path": "plugins/Fresh_Fiji_Probe.jar",
+              "bytes": 34724,
+              "sha256": "9c71b9cf321bec6231d4d29f20ad5e3603272dd77fe28eb74f407f97179f60e2"
+            },
+            "after": {
+              "path": "plugins/Fresh_Fiji_Probe.jar",
+              "bytes": 36090,
+              "sha256": "f3abfde213a452c3850ab219aa4ec59a6562f9e45f702eb270a16c67b24eb2da"
+            }
+          }
+        ]
+      },
+      "original-final": {
+        "previous_member_sha256": "22c33e5d46aa041532058d0547a8b1a7e89ccf6939c7931136faf465c5ff5862",
+        "current_member_sha256": "2bed6af4e48c872e6d210a6b1733208726e843c8cdf8f56f841f87db84738259",
+        "before_count": 855,
+        "after_count": 855,
+        "common_paths": 855,
+        "byte_identical_common_files": 853,
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "before": {
+              "path": "plugins/Fresh_Fiji_Probe.jar",
+              "bytes": 34724,
+              "sha256": "9c71b9cf321bec6231d4d29f20ad5e3603272dd77fe28eb74f407f97179f60e2"
+            },
+            "after": {
+              "path": "plugins/Fresh_Fiji_Probe.jar",
+              "bytes": 36090,
+              "sha256": "f3abfde213a452c3850ab219aa4ec59a6562f9e45f702eb270a16c67b24eb2da"
+            }
+          },
+          {
+            "before": {
+              "path": "plugins/GutAnalysisToolbox_-2.0.0.jar",
+              "bytes": 1725068,
+              "sha256": "f60cc71f2990c66062a133924c6ad0c0f7c76f60dc405158265bca4f1b7ec145"
+            },
+            "after": {
+              "path": "plugins/GutAnalysisToolbox_-2.0.0.jar",
+              "bytes": 1725068,
+              "sha256": "928b62b2abb7d8edcc8626f07bae1235988ab3558f90f0b74f00406ca55de523"
+            }
+          }
+        ]
+      },
+      "fork-final": {
+        "previous_member_sha256": "95f69ab53919f01a6bbb043cafb6ae1cb8620cf136e6d77267f949f2cb6d3cd8",
+        "current_member_sha256": "7658ac07ca91773cd6e92bb24872b2f97c463a0a6b0ecdd282fe03b4571f7086",
+        "before_count": 887,
+        "after_count": 887,
+        "common_paths": 887,
+        "byte_identical_common_files": 883,
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "before": {
+              "path": "gat-native-alignment/gat-native-alignment.jar",
+              "bytes": 18876,
+              "sha256": "8309bb3ef320f8d26b3617be8470df9043d7d4670b30d15924821f3258848a02"
+            },
+            "after": {
+              "path": "gat-native-alignment/gat-native-alignment.jar",
+              "bytes": 18876,
+              "sha256": "8cbc8e17b8c1dbc1f775aa47d0c00f44bff6600799ef85e4a1260a50e272529f"
+            }
+          },
+          {
+            "before": {
+              "path": "gat-native-inference/gat-native-inference.jar",
+              "bytes": 20847,
+              "sha256": "0b323ff7d0c82b00627ddd84d4e483d4ce1995d5fbc6287661944254c43c0dae"
+            },
+            "after": {
+              "path": "gat-native-inference/gat-native-inference.jar",
+              "bytes": 20847,
+              "sha256": "21c045158974d6ad63a5cc4aae8c0fa485289c2f1f368b405288c671d945ae6b"
+            }
+          },
+          {
+            "before": {
+              "path": "plugins/Fresh_Fiji_Probe.jar",
+              "bytes": 34724,
+              "sha256": "9c71b9cf321bec6231d4d29f20ad5e3603272dd77fe28eb74f407f97179f60e2"
+            },
+            "after": {
+              "path": "plugins/Fresh_Fiji_Probe.jar",
+              "bytes": 36090,
+              "sha256": "f3abfde213a452c3850ab219aa4ec59a6562f9e45f702eb270a16c67b24eb2da"
+            }
+          },
+          {
+            "before": {
+              "path": "plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar",
+              "bytes": 1755735,
+              "sha256": "9880583ec53479edfe20e8368b32e83c9d3d07569384162ad6b8595f65948210"
+            },
+            "after": {
+              "path": "plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar",
+              "bytes": 1755735,
+              "sha256": "103054c7637f3c45471af3ff8b11b6c2c6414a7e140673d019c0a506372f4601"
+            }
+          }
+        ]
+      }
+    },
+    "current_original_vs_fork": {
+      "before_count": 855,
+      "after_count": 887,
+      "common_paths": 854,
+      "byte_identical_common_files": 854,
+      "changed": []
+    },
+    "current_original_vs_fork_expected_addition_count": 33,
+    "current_original_vs_fork_expected_removal_count": 1,
+    "shared_runtime_dependencies_unchanged_between_runs": true,
+    "engine_jars_exactly_identical_in_both_runs_and_all_engine_ready_final_inventories": [
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/api-0.22.1.jar",
+        "bytes": 831237,
+        "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/commons-compress-1.22.jar",
+        "bytes": 1039712,
+        "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/dl-modelrunner-pytorch-0.4.4.jar",
+        "bytes": 31502,
+        "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/jna-5.13.0.jar",
+        "bytes": 1879325,
+        "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-engine-0.22.1.jar",
+        "bytes": 89668,
+        "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-jni-2.0.0-0.22.1.jar",
+        "bytes": 5134206,
+        "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+        "bytes": 34791618,
+        "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/slf4j-api-2.0.6.jar",
+        "bytes": 62531,
+        "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+      }
+    ],
+    "models_exactly_identical_in_both_runs_and_all_four_inventories": [
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/README.md",
+        "bytes": 355,
+        "sha256": "741ca56647fc1814e28712c93ac357613eccc62887622893c38eed1ffcbfeb5d"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/best_model_torchscript.pt",
+        "bytes": 181605085,
+        "sha256": "1c59382b776acc2beed84bc2309e29f474aa69ff6356ec2248a04854d4feca7b"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/binarize.ijm",
+        "bytes": 735,
+        "sha256": "5a428f3a710dc1212c1a86830978f4707932b251c37b912fad15578ef6a1fce1"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/cover.png",
+        "bytes": 3145894,
+        "sha256": "bc3a57a13bb401507003d38ef453770f18456680e29008b2119439631129d375"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/doc.md",
+        "bytes": 10,
+        "sha256": "5db0bcc3a59b899f282f3bab27c0397a82685fa131a64525ef741c8d23ad4190"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/im_preprocessing.ijm",
+        "bytes": 604,
+        "sha256": "cd950ddbcbadcb5cbc016bb71ee33d2ee7b730b3ca6bbc0ea17dc54c4b2167ec"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml",
+        "bytes": 2511,
+        "sha256": "1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/sample_input_0.tif",
+        "bytes": 3146493,
+        "sha256": "c991490991c180ce3b5bba38ff0f9f0acc58f4c4cca578c2755330e903db024b"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/sample_output_0.tif",
+        "bytes": 2359648,
+        "sha256": "2d5e99db60aac9a3a8546dbb2466c8140f247c194472c7a104dd99771331e5c5"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-input.npy",
+        "bytes": 3145856,
+        "sha256": "986cfd751c0e2cfd3367cfc39b5583c10e55da2f1a7772d73845c6395eefd681"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-output.npy",
+        "bytes": 2359424,
+        "sha256": "c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9"
+      },
+      {
+        "path": "models/2D_enteric_neuron_subtype_v4.zip",
+        "bytes": 15832489,
+        "sha256": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8"
+      },
+      {
+        "path": "models/2D_enteric_neuron_v4_1.zip",
+        "bytes": 37145743,
+        "sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276"
+      }
+    ]
+  },
+  "classpath_isolation": {
+    "pristine_startup": {
+      "raw_report_member": "pristine_startup.json",
+      "raw_report_sha256": "cc9ce8e6dae6ffa1c953fa408a91a370142e12e95d25bc6f857200c943f5d99c",
+      "java_class_path_utf8_sha256": "85989ee623dcc68854693d1e839a7325cb04c6c8e3ccf6abd5197b843a28bb33",
+      "classpath_entries": 663,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "official_engine_install": {
+      "raw_report_member": "official_engine_install.json",
+      "raw_report_sha256": "08ac6dd49e696419000794e4a4ae94e06f1f640af29e9160cbe0c33c133edf1c",
+      "java_class_path_utf8_sha256": "c003affc120272db27de31af5a95f85de2dcec46e7d8bc2acf8bdccf5365d990",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "official_engine_inference": {
+      "raw_report_member": "official_engine_inference.json",
+      "raw_report_sha256": "a27e5aedaf7e092aec15ebac038078414d985f1007b7a646161a8ca6152b6c45",
+      "java_class_path_utf8_sha256": "c003affc120272db27de31af5a95f85de2dcec46e7d8bc2acf8bdccf5365d990",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "original_startup": {
+      "raw_report_member": "original_startup.json",
+      "raw_report_sha256": "fb4c6795fbd5a8aa3182cf806c9340d5a3a4b5f0c5fc196c6acda36056c621c5",
+      "java_class_path_utf8_sha256": "e4b64d3cee3066871a54663a787057938c25bc4367b4b5c753b97ad49d7bcab7",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "original_dashboard": {
+      "raw_report_member": "original_dashboard.json",
+      "raw_report_sha256": "427265a6ccf05fea16698557742fac7e479cffd6bfa4761c96503750f2095cd4",
+      "java_class_path_utf8_sha256": "e4b64d3cee3066871a54663a787057938c25bc4367b4b5c753b97ad49d7bcab7",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "original_neuron": {
+      "raw_report_member": "original_neuron.json",
+      "raw_report_sha256": "43fba60e7102318646802e9e57a34a6b878c518c85f3d815970d56cd8647e489",
+      "java_class_path_utf8_sha256": "e4b64d3cee3066871a54663a787057938c25bc4367b4b5c753b97ad49d7bcab7",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "original_alignment": {
+      "raw_report_member": "original_alignment.json",
+      "raw_report_sha256": "72b6743e7d4b6c92a037857eede1337884ce485f8e7a3c7bf138407af6214a73",
+      "java_class_path_utf8_sha256": "e4b64d3cee3066871a54663a787057938c25bc4367b4b5c753b97ad49d7bcab7",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "original_ganglia": {
+      "raw_report_member": "original_ganglia.json",
+      "raw_report_sha256": "4667a9d17f21233f0ea08249475211d9b763ceab6af372b0b01131487aeeb088",
+      "java_class_path_utf8_sha256": "e4b64d3cee3066871a54663a787057938c25bc4367b4b5c753b97ad49d7bcab7",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "fork_startup": {
+      "raw_report_member": "fork_startup.json",
+      "raw_report_sha256": "1ecffe0c7c0c8cdd3059bd4105449f1893aadb05b7091e8b2208e1ad056f9afd",
+      "java_class_path_utf8_sha256": "d01a524f2516321fd26f99e6d5f5ee20f07c54803158257ff9d19c01b15ce2b2",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "fork_dashboard": {
+      "raw_report_member": "fork_dashboard.json",
+      "raw_report_sha256": "85b9e20d1656c376f55ca32ed6a9486bf00355cc4c2088bf9b8291bcecb22d2c",
+      "java_class_path_utf8_sha256": "d01a524f2516321fd26f99e6d5f5ee20f07c54803158257ff9d19c01b15ce2b2",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "fork_neuron": {
+      "raw_report_member": "fork_neuron.json",
+      "raw_report_sha256": "8eb8397cef15ce787fb58e8b5df9d163aa5689452dd04c9e63fe354ffaa8f2c8",
+      "java_class_path_utf8_sha256": "d01a524f2516321fd26f99e6d5f5ee20f07c54803158257ff9d19c01b15ce2b2",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "fork_alignment": {
+      "raw_report_member": "fork_alignment.json",
+      "raw_report_sha256": "753ed245f044399aa2ba4f3091d5abbfb82d22fbedcd09014daf0d5662e5ca7e",
+      "java_class_path_utf8_sha256": "d01a524f2516321fd26f99e6d5f5ee20f07c54803158257ff9d19c01b15ce2b2",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    },
+    "fork_ganglia": {
+      "raw_report_member": "fork_ganglia.json",
+      "raw_report_sha256": "ffaf2aae41314a4e69d3b66fe645dda832c2ac27006e9ea7390551fea560b31d",
+      "java_class_path_utf8_sha256": "d01a524f2516321fd26f99e6d5f5ee20f07c54803158257ff9d19c01b15ce2b2",
+      "classpath_entries": 771,
+      "isolated_worker_entries": [],
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader"
+    }
+  },
+  "class_sources": {
+    "original_startup": {
+      "UI.GatPluginUI": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+      },
+      "UI.Preflight": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+      },
+      "Features.Core.PluginCalls": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+      },
+      "Features.Tools.AlignStack": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+      },
+      "ij.IJ": {
+        "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+      },
+      "net.imagej.Main": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-2.18.0.jar"
+      },
+      "de.csbdresden.CommandFromMacro": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+      },
+      "de.csbdresden.stardist.StarDist2D": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+      },
+      "net.imagej.tensorflow.DefaultTensorFlowService": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+      },
+      "org.tensorflow.TensorFlow": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/jars/libtensorflow-1.15.0.jar"
+      },
+      "TemplateMatching.Align_slices": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/plugins/Template_Matching.jar"
+      },
+      "DeepImageJ_Run": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/original/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+      }
+    },
+    "fork_startup": {
+      "UI.GatPluginUI": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+      },
+      "UI.Preflight": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+      },
+      "Features.Core.PluginCalls": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+      },
+      "Features.Tools.AlignStack": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+      },
+      "ij.IJ": {
+        "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+      },
+      "net.imagej.Main": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-2.18.0.jar"
+      },
+      "de.csbdresden.CommandFromMacro": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+      },
+      "de.csbdresden.stardist.StarDist2D": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+      },
+      "net.imagej.tensorflow.DefaultTensorFlowService": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+      },
+      "org.tensorflow.TensorFlow": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/jars/libtensorflow-1.15.0.jar"
+      },
+      "TemplateMatching.Align_slices": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/plugins/Template_Matching.jar"
+      },
+      "DeepImageJ_Run": {
+        "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+        "source": "file:$WORK_ROOT/fork/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "source_verification": {
+    "production_source_identity": {
+      "status": "PASS",
+      "compared_commits": [
+        "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+        "5e2e0f4c42726e480213682808dfa41ea16f064f"
+      ],
+      "paths": [
+        "src",
+        "native-inference/src",
+        "native-alignment/src",
+        "pom.xml",
+        "native-inference/pom.xml",
+        "native-alignment/pom.xml"
+      ],
+      "method": "git diff --exit-code of named source/build-description paths; no differences. This does not imply byte-identical rebuilt JARs."
+    },
+    "evidence_sources": [
+      {
+        "path": "validation/fiji-install/Fresh_Ganglia_Evidence.java",
+        "commit": "5e2e0f4c42726e480213682808dfa41ea16f064f",
+        "sha256": "8a1e0f104fb194de19c1a2772f2920d6ca5460748626c45a06fc270a4508430a",
+        "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/5e2e0f4c42726e480213682808dfa41ea16f064f/validation/fiji-install/Fresh_Ganglia_Evidence.java"
+      },
+      {
+        "path": "validation/fiji-install/Fresh_Ganglia_Probe.java",
+        "commit": "5e2e0f4c42726e480213682808dfa41ea16f064f",
+        "sha256": "249fe47eb8157144a7e2f1aafdb3ead3f4c545e28247c6b779abe3352a267eed",
+        "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/5e2e0f4c42726e480213682808dfa41ea16f064f/validation/fiji-install/Fresh_Ganglia_Probe.java"
+      },
+      {
+        "path": "validation/fiji-install/run_fresh_fiji.py",
+        "commit": "5e2e0f4c42726e480213682808dfa41ea16f064f",
+        "sha256": "1ad64ed382f327c6ffbdc313f105a856081c94768dc025343c4a093ccbde7884",
+        "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/5e2e0f4c42726e480213682808dfa41ea16f064f/validation/fiji-install/run_fresh_fiji.py"
+      },
+      {
+        "path": ".github/workflows/native-mac-fresh-fiji.yml",
+        "commit": "5e2e0f4c42726e480213682808dfa41ea16f064f",
+        "sha256": "e6692596439f1f240e227aedec3974b8b217832cd6e5190d14d86829d249de9c",
+        "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/5e2e0f4c42726e480213682808dfa41ea16f064f/.github/workflows/native-mac-fresh-fiji.yml"
+      }
+    ]
+  },
+  "independent_mask_review": {
+    "original_ganglia-mask.tif": {
+      "width": 1024,
+      "height": 1024,
+      "bit_depth": 8,
+      "slices": 1,
+      "foreground_pixels": 167430,
+      "pixel_width": 0.3780000922320225,
+      "pixel_height": 0.3780000922320225,
+      "unit": "µm",
+      "mask_pixels_uint8_row_major_sha256": "a8cb17b67de06f29bf6fa00f5ba54e9f531cc460a9355c855bb8906ffc063fa8",
+      "mask_tiff_sha256": "15f3c92d88890c61f06f431ee31016fe6c1793344d40f815564c29e5f5316829"
+    },
+    "fork_ganglia-mask.tif": {
+      "width": 1024,
+      "height": 1024,
+      "bit_depth": 8,
+      "slices": 1,
+      "foreground_pixels": 72236,
+      "pixel_width": 0.3780000922320225,
+      "pixel_height": 0.3780000922320225,
+      "unit": "µm",
+      "mask_pixels_uint8_row_major_sha256": "bf77cecdc827a080b7f2be7f7289fbce918fbb8e593b7c470683ccab9254788f",
+      "mask_tiff_sha256": "c141a0a1e66fa9810d4c42c62834688c224929bdd3764ee6464321c87ea0682b"
+    }
+  },
+  "independent_calibration_review": {
+    "requested_pixel_width_and_height": 0.378,
+    "control": "ReviewTiffCalibration.java creates/saves/reopens a fresh 2x2 8-bit ImageJ TIFF with requested 0.378 um calibration",
+    "observed_control_output": "0.3780000922320225 0.3780000922320225 µm",
+    "observed_control_pixel_width_and_height": 0.3780000922320225,
+    "both_actual_masks_match_control_exactly": true,
+    "interpretation": "The reopened spacing is the same rational TIFF serialization seen in the independent control, not absent or lost calibration; the saved spacing is not claimed to be bit-exact 0.378."
+  },
+  "independent_review_runtime": {
+    "host": "Linux x86_64 packet-review environment, separate from native macOS run",
+    "compiler": "Temurin javac 17.0.20.1, --release 11",
+    "runtime": "OpenJDK 21.0.12.1 Debian",
+    "imagej_jar": "ij-1.54p.jar",
+    "imagej_jar_sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20",
+    "masks_reopened_with": "ReviewGangliaMasks.java",
+    "reviews_are_original_zip_members": false,
+    "review_outputs_byte_equal_to_coordinator_review": true
+  },
+  "interpretation": [
+    "The 87-member ZIP now retains exactly two public-fixture output TIFFs; unlike the earlier 85-member ZIP it supports independent mask-raster reopening and hashing. Earlier packet claims and bytes remain unchanged.",
+    "Original 167430 versus fork 72236 foreground pixels remain the documented deliberate input-contract scaling correction. Neither legacy-mask parity nor biological superiority is claimed.",
+    "Source unchanged/calibration preserved inside GAT are original runtime assertions. Independent reopen verifies the retained mask raster, binary geometry and serialized calibration, not original input pixels absent from the ZIP.",
+    "No production source change between the two compared commits in named source/build-description paths; changed rebuilt GAT/worker JAR hashes are recorded inventory observations, not independently verified bytecode identity.",
+    "OpenCL, complete interactive/manual review, physical-Mac Finder/Gatekeeper behavior, all Apple chips and broad biological acceptance remain unestablished.",
+    "Raw original neuron/alignment remain FAIL. The original neuron old-TensorFlow AppClassLoader-to-URLClassLoader failure is distinct from the original alignment missing OpenCV JNI error.",
+    "No dedicated final source-checkout git-status file or CI API response is in the original artifact. Installation inventory is not substituted for source cleanliness."
+  ]
+}

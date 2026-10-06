@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "artifact_id": 11373712129,
+  "archive": {
+    "path": "gat-multiplex-native-ab046cb.zip",
+    "size_bytes": 398562,
+    "sha256": "fac1354084a4e06ff86359c92dfb23ec4979e70b28806905d3b03947b0da441c",
+    "member_count": 77
+  },
+  "members": [
+    {
+      "path": "compile.log",
+      "size_bytes": 696,
+      "sha256": "6e314a99dedc1604eb38b6d203caf799cea00acf669989042d806bdaade66ba3"
+    },
+    {
+      "path": "controls/commands.json",
+      "size_bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "controls/execution.log",
+      "size_bytes": 307,
+      "sha256": "4702622a0b96b4016540f37ca0b407958d4aabe9b2126b56a6d4dd0f8c27f0ff"
+    },
+    {
+      "path": "controls/fixture-manifest.json",
+      "size_bytes": 1137,
+      "sha256": "4816a9d3abe3699968128caf88a2f83d619d695c63cbe3551ef8817191bbf130"
+    },
+    {
+      "path": "controls/inputs/Layer1_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "5793ccb70eb4cd4194ec797d1297cc413ecfa648c0aede27fc9bf51006a7b8f1"
+    },
+    {
+      "path": "controls/inputs/Layer1_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "caafd02b59130b63e2841133acbd471e9ad9f5ec7bd50cc5afc202aa8b45b244"
+    },
+    {
+      "path": "controls/inputs/Layer1_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "dff8718dc4cf67dd807ee99c0ecd566e5e0b52c0085c2f6f20992661c82a0bd9"
+    },
+    {
+      "path": "controls/inputs/Layer2_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "51ac670b688a0d6d9eeeb1e54511ff739bfe5deccdad76fc8e0678ade23326b2"
+    },
+    {
+      "path": "controls/inputs/Layer2_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "325ed651a50519547884ef7503fdcb56f936d863d09d6a421267866fb3b2f3eb"
+    },
+    {
+      "path": "controls/inputs/Layer2_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "5821d916b4c12005f188f5497b56ef8f8b1a08ab08149f74d8bfa635d97e60dc"
+    },
+    {
+      "path": "controls/inputs/Layer3_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "4c729853750fdc17645f1d706d201c0ecc8de4ee584c3f859ee3cd6842ca2772"
+    },
+    {
+      "path": "controls/inputs/Layer3_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "9443d1c80378be0545a7a66040934d867894d93003bcca8f360ad463a9d886ff"
+    },
+    {
+      "path": "controls/inputs/Layer3_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "9ea91cabc3b7435a1da8ba58464ddcb19a02b425931f2c150291b227c581c875"
+    },
+    {
+      "path": "controls/phase.json",
+      "size_bytes": 62,
+      "sha256": "07455084144d1c70578a317a728dfef8968fb45593b804444034a96879459bd6"
+    },
+    {
+      "path": "controls/report.json",
+      "size_bytes": 2790,
+      "sha256": "acd2733dd5e481d730e947b819e7be620ca34d11f13dca28d9bd71e567a735f6"
+    },
+    {
+      "path": "display-probe/commands.json",
+      "size_bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "display-probe/execution.log",
+      "size_bytes": 199,
+      "sha256": "4306e7a2717eba06c70b243e89ef4eda1dd9b8c2dcd33ab3617bd9e5cab6355c"
+    },
+    {
+      "path": "display-probe/phase.json",
+      "size_bytes": 62,
+      "sha256": "d38b432ee2212cd63c6e97a17d671804378f6a6b0599053f69df1b51d849f68b"
+    },
+    {
+      "path": "display-probe/report.json",
+      "size_bytes": 762,
+      "sha256": "7d1ad93cc2f10117fde0dfbdcd18bdf186b08b2c9c688d1ca568d9381f9bcf8c"
+    },
+    {
+      "path": "full-mops/commands.json",
+      "size_bytes": 719,
+      "sha256": "e069c5289255cbe5c9b43223eacbcd79939b7e8f3d3c665d38809e1669607edd"
+    },
+    {
+      "path": "full-mops/execution.log",
+      "size_bytes": 3207,
+      "sha256": "5bd02d92e358fa055a2907d9f392901e0b607bd009fd4e19f656ffab05152343"
+    },
+    {
+      "path": "full-mops/fixture-manifest.json",
+      "size_bytes": 1137,
+      "sha256": "7b0ac7da8780e1defad07e07b4c2b5a8be066746bd4f8fdedb08dc998c0ee919"
+    },
+    {
+      "path": "full-mops/inputs/Layer1_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "4802490a19465486f94d1b936800f5c3661e741a0d7484a3ca644e23e210af1b"
+    },
+    {
+      "path": "full-mops/inputs/Layer1_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "e1b2ec0315dfd1638c0304f1cdcd698da4b0465494040b6af2017bf0d466e1d5"
+    },
+    {
+      "path": "full-mops/inputs/Layer1_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "2b06027f030cf36e1d5e40b51a26b64510376a97ce683a4070d51a3548a93e0e"
+    },
+    {
+      "path": "full-mops/inputs/Layer2_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "d533ef9a258c582c57e731e6ad8a470ddaf0d616a69e54a9359fdd66de541fb9"
+    },
+    {
+      "path": "full-mops/inputs/Layer2_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "d5f11cefdb0b4bec70036dac45cd99948aab3aea6cade69d8bbb55586e5bf3e5"
+    },
+    {
+      "path": "full-mops/inputs/Layer2_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "8f710d96c3dcaa64db3c18c7688d877840398eba6724b4787d3f5affb359469b"
+    },
+    {
+      "path": "full-mops/inputs/Layer3_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "c64a618236df60bee1cd503619735213dd217f2c84e8ea4d918ada755ba4d3c7"
+    },
+    {
+      "path": "full-mops/inputs/Layer3_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "fbcb7a19959fcff174c4c0ef569f2b346fe8516e47576064949b92fa032ad6ff"
+    },
+    {
+      "path": "full-mops/inputs/Layer3_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "eb32256eeb312718c95c4b7d2579fd186ba7deafe97c3d96dbbcc34470dc2670"
+    },
+    {
+      "path": "full-mops/output/Results/Aligned_Stack.tif",
+      "size_bytes": 460517,
+      "sha256": "ff22983922540f0b6b4d4b8f4f161af3b00047f7de966ca0de4fe3e4fd1b3c2f"
+    },
+    {
+      "path": "full-mops/output/Results/hu_stack.tif",
+      "size_bytes": 197495,
+      "sha256": "06c64a64213e32d34ab5c0996bb89d31a2a6118d92701b970d7d090dd332b2cb"
+    },
+    {
+      "path": "full-mops/output/Results/landmark_correspondences.zip",
+      "size_bytes": 48829,
+      "sha256": "316981e3d1864882e793b83bfec52fc297b7eddb8d33d2a5d4ae46220e6dbe94"
+    },
+    {
+      "path": "full-mops/phase.json",
+      "size_bytes": 62,
+      "sha256": "b2f5c63b96417373a209fe931439f28dcbdd68af3860498acf4e4401b332825a"
+    },
+    {
+      "path": "full-mops/report.json",
+      "size_bytes": 5932,
+      "sha256": "d73090e556bf76d17e35788abba3e0f3110f495f15a0ea3c5c309a340895cc9b"
+    },
+    {
+      "path": "full-sift/commands.json",
+      "size_bytes": 719,
+      "sha256": "9e187d4f01adaba6ba2f87f8825cfc6547ce69e7bf50773ee6020639e0fc7808"
+    },
+    {
+      "path": "full-sift/execution.log",
+      "size_bytes": 3146,
+      "sha256": "1128f759ce1a0293460f26a46952b871d3b6de521d92bb2baf4046335dd225c7"
+    },
+    {
+      "path": "full-sift/fixture-manifest.json",
+      "size_bytes": 1137,
+      "sha256": "7b0ac7da8780e1defad07e07b4c2b5a8be066746bd4f8fdedb08dc998c0ee919"
+    },
+    {
+      "path": "full-sift/inputs/Layer1_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "4802490a19465486f94d1b936800f5c3661e741a0d7484a3ca644e23e210af1b"
+    },
+    {
+      "path": "full-sift/inputs/Layer1_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "e1b2ec0315dfd1638c0304f1cdcd698da4b0465494040b6af2017bf0d466e1d5"
+    },
+    {
+      "path": "full-sift/inputs/Layer1_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "2b06027f030cf36e1d5e40b51a26b64510376a97ce683a4070d51a3548a93e0e"
+    },
+    {
+      "path": "full-sift/inputs/Layer2_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "d533ef9a258c582c57e731e6ad8a470ddaf0d616a69e54a9359fdd66de541fb9"
+    },
+    {
+      "path": "full-sift/inputs/Layer2_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "d5f11cefdb0b4bec70036dac45cd99948aab3aea6cade69d8bbb55586e5bf3e5"
+    },
+    {
+      "path": "full-sift/inputs/Layer2_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "8f710d96c3dcaa64db3c18c7688d877840398eba6724b4787d3f5affb359469b"
+    },
+    {
+      "path": "full-sift/inputs/Layer3_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "c64a618236df60bee1cd503619735213dd217f2c84e8ea4d918ada755ba4d3c7"
+    },
+    {
+      "path": "full-sift/inputs/Layer3_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "fbcb7a19959fcff174c4c0ef569f2b346fe8516e47576064949b92fa032ad6ff"
+    },
+    {
+      "path": "full-sift/inputs/Layer3_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "eb32256eeb312718c95c4b7d2579fd186ba7deafe97c3d96dbbcc34470dc2670"
+    },
+    {
+      "path": "full-sift/output/Results/Aligned_Stack.tif",
+      "size_bytes": 460517,
+      "sha256": "e45408ef0fd0e654dcb2830d9f6d53dd72e3586861a812935cf13a2561e22086"
+    },
+    {
+      "path": "full-sift/output/Results/hu_stack.tif",
+      "size_bytes": 197495,
+      "sha256": "06c64a64213e32d34ab5c0996bb89d31a2a6118d92701b970d7d090dd332b2cb"
+    },
+    {
+      "path": "full-sift/output/Results/landmark_correspondences.zip",
+      "size_bytes": 3879,
+      "sha256": "131bcc75aa1916df2669cb3d61fc08c297fe64e416778282caecc8a83b9a96ed"
+    },
+    {
+      "path": "full-sift/phase.json",
+      "size_bytes": 62,
+      "sha256": "3ee92dbd28edf9aa3474475b86561385542ea8f69f559161370341fd9e87ade7"
+    },
+    {
+      "path": "full-sift/report.json",
+      "size_bytes": 5864,
+      "sha256": "864161c249bee965b363e4cb8c8fa79ee6d5d0cc007bde7d65f92f96c108e5e9"
+    },
+    {
+      "path": "missing-marker/commands.json",
+      "size_bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "missing-marker/execution.log",
+      "size_bytes": 211,
+      "sha256": "2ebc1f3fc4c58a75400a740d6d6ca04cc620891de81d7900e776cb213c3b19ba"
+    },
+    {
+      "path": "missing-marker/inputs/Layer1_MarkerA.tif",
+      "size_bytes": 65696,
+      "sha256": "0f35c194879977888e38cde6919798becb5a73725bca2c2f6caba4272dcb1838"
+    },
+    {
+      "path": "missing-marker/phase.json",
+      "size_bytes": 62,
+      "sha256": "ce0c3c6e1a0ff895a98bb372e94a4ebe40bea7748a7b27187ac6efb008f8353d"
+    },
+    {
+      "path": "missing-marker/report.json",
+      "size_bytes": 946,
+      "sha256": "528dbe233331ea88af7bcd68789c9c3a42786f48c401f1675f8c2a5a269953bb"
+    },
+    {
+      "path": "missing-round/commands.json",
+      "size_bytes": 430,
+      "sha256": "7684500e105200df5b4e199fdb6e5e0074d2fb83da6c24d430f52733b1e6f0b4"
+    },
+    {
+      "path": "missing-round/execution.log",
+      "size_bytes": 1022,
+      "sha256": "b9e0d1aa1021d569ee0c691ea567039864a186d812e84c85849df548ea15e400"
+    },
+    {
+      "path": "missing-round/fixture-manifest.json",
+      "size_bytes": 1137,
+      "sha256": "7b0ac7da8780e1defad07e07b4c2b5a8be066746bd4f8fdedb08dc998c0ee919"
+    },
+    {
+      "path": "missing-round/inputs/Layer1_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "4802490a19465486f94d1b936800f5c3661e741a0d7484a3ca644e23e210af1b"
+    },
+    {
+      "path": "missing-round/inputs/Layer1_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "e1b2ec0315dfd1638c0304f1cdcd698da4b0465494040b6af2017bf0d466e1d5"
+    },
+    {
+      "path": "missing-round/inputs/Layer1_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "2b06027f030cf36e1d5e40b51a26b64510376a97ce683a4070d51a3548a93e0e"
+    },
+    {
+      "path": "missing-round/inputs/Layer2_Hu.tif",
+      "size_bytes": 65776,
+      "sha256": "d533ef9a258c582c57e731e6ad8a470ddaf0d616a69e54a9359fdd66de541fb9"
+    },
+    {
+      "path": "missing-round/inputs/Layer2_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "d5f11cefdb0b4bec70036dac45cd99948aab3aea6cade69d8bbb55586e5bf3e5"
+    },
+    {
+      "path": "missing-round/inputs/Layer2_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "8f710d96c3dcaa64db3c18c7688d877840398eba6724b4787d3f5affb359469b"
+    },
+    {
+      "path": "missing-round/inputs/Layer3_MarkerA.tif",
+      "size_bytes": 65776,
+      "sha256": "fbcb7a19959fcff174c4c0ef569f2b346fe8516e47576064949b92fa032ad6ff"
+    },
+    {
+      "path": "missing-round/inputs/Layer3_MarkerB.tif",
+      "size_bytes": 65776,
+      "sha256": "eb32256eeb312718c95c4b7d2579fd186ba7deafe97c3d96dbbcc34470dc2670"
+    },
+    {
+      "path": "missing-round/output/Results/hu_stack.tif",
+      "size_bytes": 131755,
+      "sha256": "73f2233d0bf6290bbc862b9ebffaa56e697d2f5236ef715f7e2cf3065a480911"
+    },
+    {
+      "path": "missing-round/phase.json",
+      "size_bytes": 62,
+      "sha256": "63051f7971b2c4e14cdb1a0b0fee469bc1c1ad76be34be62189efd84925d3631"
+    },
+    {
+      "path": "missing-round/report.json",
+      "size_bytes": 896,
+      "sha256": "932e382699f6c57aa07296ded48fffa1530b445593b51a2346661fc55abddd83"
+    },
+    {
+      "path": "no-files/commands.json",
+      "size_bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "no-files/execution.log",
+      "size_bytes": 205,
+      "sha256": "e5e294bf693c526da65837a8dbd656efb2ded81c36a12ad0714b676b81812569"
+    },
+    {
+      "path": "no-files/phase.json",
+      "size_bytes": 62,
+      "sha256": "d65374b5425fdd61388c3a0bd7599cb6432d880ba4acd33bc020b042f53d02b3"
+    },
+    {
+      "path": "no-files/report.json",
+      "size_bytes": 940,
+      "sha256": "799a4b2f3bb725c95a8aa45ed899adff41464209c859e6a1a3881077915be3cb"
+    },
+    {
+      "path": "summary.json",
+      "size_bytes": 32358,
+      "sha256": "9862ca1f1d21b8864d2e851866fdca67d07f4204a6ce5f5940ad3eef1e172626"
+    }
+  ]
+}

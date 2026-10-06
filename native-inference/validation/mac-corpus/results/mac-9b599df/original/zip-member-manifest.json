@@ -1,0 +1,2902 @@
+{
+  "archive": "gat-native-mac-official40-corpus.zip",
+  "sha256": "678f2f005f2975e8269cdb16d8eb853de05efc401f0d3aada8472f500808d95d",
+  "bytes": 6171926,
+  "member_count": 413,
+  "duplicate_paths": false,
+  "safe_relative_paths": true,
+  "crc_verified": true,
+  "members": [
+    {
+      "path": "native-inference/target/surefire-reports/TEST-org.gatanalysis.inference.CsbdeepCompatibilityTest.xml",
+      "bytes": 9021,
+      "compressed_bytes": 1840,
+      "crc32": "dfb1a70e",
+      "sha256": "3c1eb915c868750fb37bb0d5fea85e3de0abc60ee398ffcc3d6f9d659152fef7"
+    },
+    {
+      "path": "native-inference/target/surefire-reports/TEST-org.gatanalysis.inference.ProtocolAndArchiveTest.xml",
+      "bytes": 9412,
+      "compressed_bytes": 1973,
+      "crc32": "27c650ee",
+      "sha256": "874316cfb0d257731b88da02fc5f490576fb8df89217551cae6f2bcb0a320e2a"
+    },
+    {
+      "path": "native-inference/target/surefire-reports/TEST-org.gatanalysis.inference.SignatureValidationTest.xml",
+      "bytes": 8607,
+      "compressed_bytes": 1734,
+      "crc32": "eb48f45d",
+      "sha256": "63bc4703c285a57d7612cdc218117686dadb418fb652f2c355083f9df9684f65"
+    },
+    {
+      "path": "native-inference/target/surefire-reports/org.gatanalysis.inference.CsbdeepCompatibilityTest.txt",
+      "bytes": 350,
+      "compressed_bytes": 127,
+      "crc32": "ba4d79ec",
+      "sha256": "5d7427196bdc3754798a6b3858acd4668f7555e8ff27931240df4db788c38919"
+    },
+    {
+      "path": "native-inference/target/surefire-reports/org.gatanalysis.inference.ProtocolAndArchiveTest.txt",
+      "bytes": 346,
+      "compressed_bytes": 128,
+      "crc32": "4e385a1b",
+      "sha256": "25a51df2c831e6d7c84b62368d7897ad3864199bd821fbc43d07c2cc5ce54039"
+    },
+    {
+      "path": "native-inference/target/surefire-reports/org.gatanalysis.inference.SignatureValidationTest.txt",
+      "bytes": 348,
+      "compressed_bytes": 125,
+      "crc32": "91b202a2",
+      "sha256": "63d56464f83bdab46d6abdaadf7594bcd64f61a4b1b5cf0d7d7ac7770f260ba0"
+    },
+    {
+      "path": "target/mac-corpus-prepared/preparation.json",
+      "bytes": 2794,
+      "compressed_bytes": 1068,
+      "crc32": "7d30dca3",
+      "sha256": "025ea97d2ebe88c04292d58fda9af2289bcc908e075ea60c4b8b66bc371a9f11"
+    },
+    {
+      "path": "target/mac-corpus-results/artifact-manifest.json",
+      "bytes": 48727,
+      "compressed_bytes": 14847,
+      "crc32": "9c3b9637",
+      "sha256": "d658078e4ed38dd6075a1e071355ea5e65c57587f108e71a85b01b4f4ea02d19"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/actual.geometry.json",
+      "bytes": 245207,
+      "compressed_bytes": 37046,
+      "crc32": "6a7383af",
+      "sha256": "45fb5491b4c69229f11fc588a3300b0b9fe11012125f81a3748a41316ed965d3"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/actual.legacy.foreground.u8.gz",
+      "bytes": 7021,
+      "compressed_bytes": 6972,
+      "crc32": "1f6768af",
+      "sha256": "b4d7eb22b03b6ae4a8af3eb69cbd471514467c609ec701d35e141c00096a93b1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/actual.modern.canonical.u16be.gz",
+      "bytes": 8942,
+      "compressed_bytes": 8214,
+      "crc32": "63c13a3e",
+      "sha256": "8b5e44c3ac9d1e481623395bf8420ece831f7bb8e208f639cc507d1750e944e2"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/actual.modern.foreground.u8.gz",
+      "bytes": 7021,
+      "compressed_bytes": 6972,
+      "crc32": "1f6768af",
+      "sha256": "b4d7eb22b03b6ae4a8af3eb69cbd471514467c609ec701d35e141c00096a93b1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/actual.modern.labels.u16be.gz",
+      "bytes": 8943,
+      "compressed_bytes": 8202,
+      "crc32": "de78327f",
+      "sha256": "2f8bc3a1db8989e542aec129bf73e3349b069a1761c7d838e31e2bdf79e2da25"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/actual.modern.polygons.gz",
+      "bytes": 51039,
+      "compressed_bytes": 50998,
+      "crc32": "0da9bed0",
+      "sha256": "b16e64084f54cd22e94d92a916fe71eee7d375f32bf2036220f3d3e0a75c8004"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/case.json",
+      "bytes": 6341,
+      "compressed_bytes": 2234,
+      "crc32": "368064dd",
+      "sha256": "858590387569dca3d34a7d433aa6a521f9d6bd8af6fa55d780943d4bdf750051"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/geometry.log",
+      "bytes": 3039,
+      "compressed_bytes": 1341,
+      "crc32": "5c49b466",
+      "sha256": "f9c68cce4cbc898c9839fd60a5e252dbc15d7b8f12df74402d5aa26d6779ff60"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/outliers.json",
+      "bytes": 2825,
+      "compressed_bytes": 710,
+      "crc32": "b5ef89ea",
+      "sha256": "6d2d99f4e9090e4a04ab9454c01deb82cf3134df88654f8dde41b141af545de6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal/worker.log",
+      "bytes": 1147,
+      "compressed_bytes": 537,
+      "crc32": "f19eba60",
+      "sha256": "8509efd6c652312ddd638178f0fa8dc6dc81647545ff0b1245cc0219d6fa16ed"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/actual.geometry.json",
+      "bytes": 420980,
+      "compressed_bytes": 61253,
+      "crc32": "312e7e09",
+      "sha256": "c3955399cacb12fe13700f6f00b15c0fce93146412e8db7f5bd851e09e7470d8"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/actual.legacy.foreground.u8.gz",
+      "bytes": 14352,
+      "compressed_bytes": 14213,
+      "crc32": "067cb832",
+      "sha256": "db35d4321085f0e4017ebc8298eb8828d8218462705732bbea0008e28a0f37aa"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/actual.modern.canonical.u16be.gz",
+      "bytes": 17877,
+      "compressed_bytes": 16002,
+      "crc32": "6adf820c",
+      "sha256": "43c654ba8466f1ac81463d29f9b591bd8be4c80d5c1f3301c01b262d628cec91"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/actual.modern.foreground.u8.gz",
+      "bytes": 14352,
+      "compressed_bytes": 14213,
+      "crc32": "067cb832",
+      "sha256": "db35d4321085f0e4017ebc8298eb8828d8218462705732bbea0008e28a0f37aa"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/actual.modern.labels.u16be.gz",
+      "bytes": 17853,
+      "compressed_bytes": 15915,
+      "crc32": "91fa4d20",
+      "sha256": "3efd7cd4715f673b4c06873121b36df66a02d1c2ef805f9838702ef715cc4b3f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/actual.modern.polygons.gz",
+      "bytes": 90330,
+      "compressed_bytes": 90299,
+      "crc32": "e0907dbd",
+      "sha256": "c6b58fe92c9534af5cf7a5b0baf3841a1705e8f706642ed4857bf2c052b14a6f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/case.json",
+      "bytes": 6412,
+      "compressed_bytes": 2255,
+      "crc32": "69e92ab0",
+      "sha256": "bc5fe2a291d39275b2c85272f4c5e27c2b63a73e521c23bf28c942b42b2ccd7f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/geometry.log",
+      "bytes": 3052,
+      "compressed_bytes": 1344,
+      "crc32": "b039baad",
+      "sha256": "1990a8684696f99e6d73d42e111ded334c3bab0c772d577bf5eace3a0272c7cf"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/outliers.json",
+      "bytes": 6466,
+      "compressed_bytes": 921,
+      "crc32": "d7a72edb",
+      "sha256": "f8b39683903203369b9e0fb88ae796145293b07fde12d0a3b3405f31cdbdff6a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_1/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 540,
+      "crc32": "d9a9f55b",
+      "sha256": "9a0a7c073d45a7b3d39858efeef52b77d88fb27d7438e3b9c90911c487fa6a64"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/actual.geometry.json",
+      "bytes": 633253,
+      "compressed_bytes": 91607,
+      "crc32": "68aeb720",
+      "sha256": "d34fe51f7f61fb5172b20e10a474acfcef9b842933b326c709a72fab3da282a3"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/actual.legacy.foreground.u8.gz",
+      "bytes": 18956,
+      "compressed_bytes": 18834,
+      "crc32": "e50f3f2d",
+      "sha256": "57e6cde123dbc4425680a940dad443e16840aa9c63fd1be6bc819bcd6d587a49"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/actual.modern.canonical.u16be.gz",
+      "bytes": 23971,
+      "compressed_bytes": 21229,
+      "crc32": "06e2b8f0",
+      "sha256": "76083f73beacb5ab378feb357948b39b79ac73ac6c608fb082f1477a4133f5bc"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/actual.modern.foreground.u8.gz",
+      "bytes": 18956,
+      "compressed_bytes": 18834,
+      "crc32": "e50f3f2d",
+      "sha256": "57e6cde123dbc4425680a940dad443e16840aa9c63fd1be6bc819bcd6d587a49"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/actual.modern.labels.u16be.gz",
+      "bytes": 23957,
+      "compressed_bytes": 21203,
+      "crc32": "d88ef63c",
+      "sha256": "b5f3dab0c489bfaeb409c8960fa9eb28bc53af337d07d6b78a2e170014864d6e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/actual.modern.polygons.gz",
+      "bytes": 134956,
+      "compressed_bytes": 134904,
+      "crc32": "a191bb0d",
+      "sha256": "57e7063bf93c98dc015791d9b9453a2b94c7d44a02d3bad6bc92beb0439cbd01"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/case.json",
+      "bytes": 6376,
+      "compressed_bytes": 2230,
+      "crc32": "e4d6ad79",
+      "sha256": "f235dce2cbe0d2f8d402b734f2a2388da3690394cc3d0bd3d1562c39baa61d8a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/geometry.log",
+      "bytes": 3053,
+      "compressed_bytes": 1341,
+      "crc32": "fc8dd002",
+      "sha256": "a466112c5873cfc40116eb95a50eabb10e368b082c00a9bc4db7c3d53b520062"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/outliers.json",
+      "bytes": 18635,
+      "compressed_bytes": 1569,
+      "crc32": "e18be3e2",
+      "sha256": "22ca51680948f66843fb36f64090bedd442619d3094ea4a8ad73e4900ddb8f06"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_10/worker.log",
+      "bytes": 1155,
+      "compressed_bytes": 539,
+      "crc32": "3465c7fd",
+      "sha256": "529a9859ed4abe7e1cf74c414df1b76a4a06b394d1a00fdb1c06bff8a4108c45"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/actual.geometry.json",
+      "bytes": 520726,
+      "compressed_bytes": 74765,
+      "crc32": "8347ece0",
+      "sha256": "e36044477a8f94670a185803233dce3d4ee8f272f4c3259fff8fabaf743e6747"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/actual.legacy.foreground.u8.gz",
+      "bytes": 11570,
+      "compressed_bytes": 11280,
+      "crc32": "ff150874",
+      "sha256": "0675e71af0d22d842cd309b0f5bbfb3e17644c7ddcbd802106250fafa8087f84"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/actual.modern.canonical.u16be.gz",
+      "bytes": 15566,
+      "compressed_bytes": 13594,
+      "crc32": "823aec02",
+      "sha256": "a75fed1799693b781307aff8180b89baf64e5ee9a23ad20ca154f8d62451cb6c"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/actual.modern.foreground.u8.gz",
+      "bytes": 11570,
+      "compressed_bytes": 11280,
+      "crc32": "ff150874",
+      "sha256": "0675e71af0d22d842cd309b0f5bbfb3e17644c7ddcbd802106250fafa8087f84"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/actual.modern.labels.u16be.gz",
+      "bytes": 15580,
+      "compressed_bytes": 13620,
+      "crc32": "0aae6557",
+      "sha256": "734c9a2d98f0d26ce35d59a37e2c990b2736cce9ddb9383d12e1466cc8c55c7b"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/actual.modern.polygons.gz",
+      "bytes": 112055,
+      "compressed_bytes": 111933,
+      "crc32": "977f3d2e",
+      "sha256": "b7767c67c3d9b50452cd64504acd64531837ea0db6e1142be4472824db49d97a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/case.json",
+      "bytes": 6369,
+      "compressed_bytes": 2228,
+      "crc32": "75d90398",
+      "sha256": "ad3ef0d9d489046ffb73fa213e4504add17ca24fa3e844331f92cc3b8e719472"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/geometry.log",
+      "bytes": 3045,
+      "compressed_bytes": 1335,
+      "crc32": "131fdde7",
+      "sha256": "efa61a09710ace5df10aa0bee471bddbd78b3f7cd3be413ee2e3abbacb889974"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/outliers.json",
+      "bytes": 7694,
+      "compressed_bytes": 1000,
+      "crc32": "a043c469",
+      "sha256": "6d630acb5626e138267fb236a14241b865e903a5307481594e757780a3a8a73f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_11/worker.log",
+      "bytes": 1155,
+      "compressed_bytes": 538,
+      "crc32": "00979e8a",
+      "sha256": "5adf0727f62eb79870f374c1ddecdcf802fbbb2171a4c62a0e1b3e2f9967dd08"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/actual.geometry.json",
+      "bytes": 139710,
+      "compressed_bytes": 12147,
+      "crc32": "dd7e6e5b",
+      "sha256": "2905565a4f8930819de78a7b264953d0cbf8151630d0b56fa216f1b17c01847a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/actual.legacy.foreground.u8.gz",
+      "bytes": 4204,
+      "compressed_bytes": 4031,
+      "crc32": "83752e39",
+      "sha256": "d1e4f70a8293277b59ca07670edd179a967f53b7a5ceaf85541cc2069563461f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/actual.modern.canonical.u16be.gz",
+      "bytes": 5565,
+      "compressed_bytes": 4952,
+      "crc32": "783eae8a",
+      "sha256": "ccc491d46901a01b90c6fb831580e47915452dee597f347189df0e889bbae843"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/actual.modern.foreground.u8.gz",
+      "bytes": 4204,
+      "compressed_bytes": 4031,
+      "crc32": "83752e39",
+      "sha256": "d1e4f70a8293277b59ca07670edd179a967f53b7a5ceaf85541cc2069563461f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/actual.modern.labels.u16be.gz",
+      "bytes": 5553,
+      "compressed_bytes": 4925,
+      "crc32": "036d7a8a",
+      "sha256": "d5c357dd15d7da5817eed3ee8e6d66fa8a00a2f2f0b26be0fd52ef58d02751f7"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/actual.modern.polygons.gz",
+      "bytes": 28616,
+      "compressed_bytes": 28620,
+      "crc32": "cfd43631",
+      "sha256": "da8d454615b773f1713aedd5d07a79d32faf41e7c112885ae89b4f470c5e6d6b"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/case.json",
+      "bytes": 6301,
+      "compressed_bytes": 2162,
+      "crc32": "5cef1767",
+      "sha256": "6ff20a2daaa9c695daccd1a4ee5279ae47cfc5a2e687b581d9f60a36319352d1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/geometry.log",
+      "bytes": 2983,
+      "compressed_bytes": 1260,
+      "crc32": "745b592f",
+      "sha256": "d222ea3def260b7877e6928817261b920ade4c89c15ff0be0cee5dc5c8d4449e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/outliers.json",
+      "bytes": 387,
+      "compressed_bytes": 232,
+      "crc32": "917dafbe",
+      "sha256": "e7569613c5ab0dddf794c08eb0a8f60cbf8e70d31a5426667422865edd2d783c"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_12/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 537,
+      "crc32": "8d6fa6db",
+      "sha256": "194b71da3f7900cff9f6a768c0531b24e862c387ff078a42b6dd83e08bddb48a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/actual.geometry.json",
+      "bytes": 263427,
+      "compressed_bytes": 39412,
+      "crc32": "6dd09bfc",
+      "sha256": "670c4a4b802bf5514d2d2b85951ac58ed1a875ecff15a716d326d4f7161e969a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/actual.legacy.foreground.u8.gz",
+      "bytes": 8423,
+      "compressed_bytes": 8367,
+      "crc32": "af8f776e",
+      "sha256": "2b299450e70a24063fdf70c9313591b47fd04e7896bb470b365f9264417ee173"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/actual.modern.canonical.u16be.gz",
+      "bytes": 10330,
+      "compressed_bytes": 9400,
+      "crc32": "e5db1f6a",
+      "sha256": "abe4b31efe8153922095b088cb43720b329b49146e6a3807c64a833683b4f022"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/actual.modern.foreground.u8.gz",
+      "bytes": 8423,
+      "compressed_bytes": 8367,
+      "crc32": "af8f776e",
+      "sha256": "2b299450e70a24063fdf70c9313591b47fd04e7896bb470b365f9264417ee173"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/actual.modern.labels.u16be.gz",
+      "bytes": 10341,
+      "compressed_bytes": 9411,
+      "crc32": "02348ca2",
+      "sha256": "02f644fc62a8b2d37bbea894ef8ba1c8ba026f4c43d5d6c368c231e8ccac9761"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/actual.modern.polygons.gz",
+      "bytes": 55662,
+      "compressed_bytes": 55671,
+      "crc32": "2fa1c009",
+      "sha256": "6e5b70159ef22bdb8b49b124bc20bbb7426358f9c420a5fa65d0047865b4fdb7"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/case.json",
+      "bytes": 6358,
+      "compressed_bytes": 2231,
+      "crc32": "2a6a9462",
+      "sha256": "8d2eb002c4ba7ab1f42eb43ae197c3890081ceee3e34a544a9483fde429924d3"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/geometry.log",
+      "bytes": 3043,
+      "compressed_bytes": 1335,
+      "crc32": "7116eb5f",
+      "sha256": "6960031b0f852a6e25cc03b19561b0de0194a19236d7dff1ca7b3e5834feddb4"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/outliers.json",
+      "bytes": 8907,
+      "compressed_bytes": 1055,
+      "crc32": "cfa8924f",
+      "sha256": "1cee6e1c01cd86b8e29016b341a76ae818a1410b38bd5601b6c37a5bcdbb3d3e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_2/worker.log",
+      "bytes": 1149,
+      "compressed_bytes": 538,
+      "crc32": "bce773b6",
+      "sha256": "c8e38d5693bd14d6c8fa8d0782d9ddfcaa4dde7b26655153d355896189146ba9"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/actual.geometry.json",
+      "bytes": 325435,
+      "compressed_bytes": 48477,
+      "crc32": "f9f6b889",
+      "sha256": "865ba96743416e256fb1e47c7cee6bbbf1775d2d396befc232f402ac01995f26"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/actual.legacy.foreground.u8.gz",
+      "bytes": 10719,
+      "compressed_bytes": 10724,
+      "crc32": "fe10af3b",
+      "sha256": "0040a828f2760858f39f2ddcc52437224f0d87930748fc521f519eba915bba90"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/actual.modern.canonical.u16be.gz",
+      "bytes": 13068,
+      "compressed_bytes": 12086,
+      "crc32": "51d20dfa",
+      "sha256": "f282a63b15424427879b121b0daa3bfc2734746723f63979e792ebe55a20b7cd"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/actual.modern.foreground.u8.gz",
+      "bytes": 10719,
+      "compressed_bytes": 10724,
+      "crc32": "fe10af3b",
+      "sha256": "0040a828f2760858f39f2ddcc52437224f0d87930748fc521f519eba915bba90"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/actual.modern.labels.u16be.gz",
+      "bytes": 13049,
+      "compressed_bytes": 12056,
+      "crc32": "071ac2ad",
+      "sha256": "0a8c032fac900c3985c96e5a58abc4a2c209ebef30d2c0de20e66de6fb40b28d"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/actual.modern.polygons.gz",
+      "bytes": 69658,
+      "compressed_bytes": 69627,
+      "crc32": "b8e2f85e",
+      "sha256": "511319992b518e300cd4b8273620af1a61eedd3ba453c4e0a4104723ed181221"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/case.json",
+      "bytes": 6358,
+      "compressed_bytes": 2234,
+      "crc32": "1a55074e",
+      "sha256": "3c02337c823f03729a8d675f0e5ed382891151d7bd5de8ab437d0fedbfa06d42"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/geometry.log",
+      "bytes": 3044,
+      "compressed_bytes": 1337,
+      "crc32": "90a43062",
+      "sha256": "037af59a59534a9d4d6bfca34fcf13a2d310fd3971ebd8e4bacb72d7c130acd5"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/outliers.json",
+      "bytes": 6474,
+      "compressed_bytes": 922,
+      "crc32": "cbf47fcf",
+      "sha256": "29479dd45da3dd4b234190ecf25d4b8f5baf328b716c0bc4ee8a8261bb8411de"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_3/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 540,
+      "crc32": "b945703c",
+      "sha256": "ac4fa2c215499ee8a0a5c81e1423e0f226d610b21042457545e01552e55a0a2c"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/actual.geometry.json",
+      "bytes": 260583,
+      "compressed_bytes": 39111,
+      "crc32": "c3c1f0d4",
+      "sha256": "ceee4753214d5b33bd4bd8b44222e14e9be45747d22e4a745569e57e96d1ccbb"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/actual.legacy.foreground.u8.gz",
+      "bytes": 7679,
+      "compressed_bytes": 7655,
+      "crc32": "eaa1d4b4",
+      "sha256": "742e8484a1c4a23e0ff4cabea9c8207a0dd2dfbe49d9146729c36f9a7aeee0a6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/actual.modern.canonical.u16be.gz",
+      "bytes": 9652,
+      "compressed_bytes": 8968,
+      "crc32": "9b0ce3ac",
+      "sha256": "86e0f31576875dd88323578c3da8e37f2518f8de95bf5d833af0a87b181638fd"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/actual.modern.foreground.u8.gz",
+      "bytes": 7679,
+      "compressed_bytes": 7655,
+      "crc32": "eaa1d4b4",
+      "sha256": "742e8484a1c4a23e0ff4cabea9c8207a0dd2dfbe49d9146729c36f9a7aeee0a6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/actual.modern.labels.u16be.gz",
+      "bytes": 9667,
+      "compressed_bytes": 8965,
+      "crc32": "7940349d",
+      "sha256": "fe93af8e7e6a1bd9f0b61e08449075d77bd9dcbb5a1ec592f3583b63a5b6ee01"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/actual.modern.polygons.gz",
+      "bytes": 55543,
+      "compressed_bytes": 55501,
+      "crc32": "006a3198",
+      "sha256": "00ded8dea309a9494f9af326d37262130644f2093d03d7a87fe467cf60970384"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/case.json",
+      "bytes": 6367,
+      "compressed_bytes": 2230,
+      "crc32": "6b7f5a9e",
+      "sha256": "47c12036b1e305684aeeb2ac34ddb625c44629a517b82d5d4ffe88278d0312dc"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/geometry.log",
+      "bytes": 3053,
+      "compressed_bytes": 1339,
+      "crc32": "c5dc6b0a",
+      "sha256": "78e0d2537ab6cb27c33c1b7bd66e5d91bc9240b149e7f2e7068c7f16e6021fe6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/outliers.json",
+      "bytes": 4049,
+      "compressed_bytes": 778,
+      "crc32": "e2f9beab",
+      "sha256": "dddaab8fe50f80ae801d7168058a4de8e710c684a398960455b8a5e2dbc1c2b1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_4/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 537,
+      "crc32": "13e835ad",
+      "sha256": "5109f3978a29949be37b7ce606ecfa8d62f9d71e9342a959ce1d6a6d23ea1a3a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/actual.geometry.json",
+      "bytes": 273632,
+      "compressed_bytes": 40395,
+      "crc32": "cbbf6ea1",
+      "sha256": "b34a63bcc0da33e17a1934e612784443a2a15f0f43bdd01505f356926badecc9"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/actual.legacy.foreground.u8.gz",
+      "bytes": 6776,
+      "compressed_bytes": 6499,
+      "crc32": "a10e97bc",
+      "sha256": "3bb7de7fb45f905d5bce19704c8b162a5e3dccf7caf768f455c88a3e7a0dbbea"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/actual.modern.canonical.u16be.gz",
+      "bytes": 8741,
+      "compressed_bytes": 7962,
+      "crc32": "3bb0493a",
+      "sha256": "de6f51ee876804def4e93697756a9ba3f0e539ac4c3f00cf55f645331cea5c93"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/actual.modern.foreground.u8.gz",
+      "bytes": 6776,
+      "compressed_bytes": 6499,
+      "crc32": "a10e97bc",
+      "sha256": "3bb7de7fb45f905d5bce19704c8b162a5e3dccf7caf768f455c88a3e7a0dbbea"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/actual.modern.labels.u16be.gz",
+      "bytes": 8722,
+      "compressed_bytes": 7952,
+      "crc32": "22904eb7",
+      "sha256": "03f1dec1eb822cd4d13c0abce2788bac1d2c39a684b9b68d1a285ef15edf10cb"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/actual.modern.polygons.gz",
+      "bytes": 57919,
+      "compressed_bytes": 57908,
+      "crc32": "30621fed",
+      "sha256": "78db2f0cf58b5d106ac44c7aab66c9403ce49ed60b6351c4b6471d850706c7eb"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/case.json",
+      "bytes": 6357,
+      "compressed_bytes": 2227,
+      "crc32": "c97de12a",
+      "sha256": "e8a5eeb8fcf4a7ab2015533d03a8eb27bae79ef2980c8ff0483fc9b0a5a00d7b"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/geometry.log",
+      "bytes": 3043,
+      "compressed_bytes": 1337,
+      "crc32": "0dc7843a",
+      "sha256": "94b01bbc0ad701d5a8806ce074f770efb8d73f94a976bf278dede1c30411f041"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/outliers.json",
+      "bytes": 5252,
+      "compressed_bytes": 845,
+      "crc32": "d0ba4628",
+      "sha256": "5bce2e7d44395014e92c9469d76e948ea4e5d3f6456ed36eff47e3f10c4b9a95"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_5/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 540,
+      "crc32": "3abc496d",
+      "sha256": "5b938a4ee378557360d7438cf51fa427b3293e8ec69aba9c116f2c8d99524c70"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/actual.geometry.json",
+      "bytes": 191360,
+      "compressed_bytes": 29233,
+      "crc32": "b51cc1e8",
+      "sha256": "52f8518ba6593ba21b6e3968686f4ca4a09a6af722fc7136db45589859759be6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/actual.legacy.foreground.u8.gz",
+      "bytes": 6543,
+      "compressed_bytes": 6433,
+      "crc32": "0a33d644",
+      "sha256": "3800253743e27d5e9f8eac1890ac760ac63b6e354b76eafb6cdf2c5ffc97b5c1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/actual.modern.canonical.u16be.gz",
+      "bytes": 8105,
+      "compressed_bytes": 7391,
+      "crc32": "05fd0fc5",
+      "sha256": "8cea6a488b5f0bdb7dcdd4e36c82adee2de3f2d4268137a7a5e62f593a9214c5"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/actual.modern.foreground.u8.gz",
+      "bytes": 6543,
+      "compressed_bytes": 6433,
+      "crc32": "0a33d644",
+      "sha256": "3800253743e27d5e9f8eac1890ac760ac63b6e354b76eafb6cdf2c5ffc97b5c1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/actual.modern.labels.u16be.gz",
+      "bytes": 8061,
+      "compressed_bytes": 7331,
+      "crc32": "f5c9a51b",
+      "sha256": "10115d0cc638ff6f39e0908f4f9e96ec1cb5eca3491b9222a0997abdce693044"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/actual.modern.polygons.gz",
+      "bytes": 39839,
+      "compressed_bytes": 39838,
+      "crc32": "5b04983a",
+      "sha256": "d5956c53aed0a0bd7663a01594795c651dbd6d9af9c40c821dc9ddd315bebc89"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/case.json",
+      "bytes": 6361,
+      "compressed_bytes": 2233,
+      "crc32": "fc28ec9a",
+      "sha256": "0158252de21a0adc2a42083e4948023931cd4240cc816892f034d8af69ca1d36"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/geometry.log",
+      "bytes": 3050,
+      "compressed_bytes": 1340,
+      "crc32": "8f00fadb",
+      "sha256": "ebfdb50f2b4522955ee1fc1228ad7676bfb891ee72bcb78895db63afc139c2ac"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/outliers.json",
+      "bytes": 2835,
+      "compressed_bytes": 706,
+      "crc32": "70bccf3b",
+      "sha256": "3587c9c369a06a8018d5ad8e544aac963d76679ae5e06a4baecf19e35276032e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_6/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 536,
+      "crc32": "c35c2f29",
+      "sha256": "7e99a08f0189674e16c51545ac6015d83692467e10d5807233d32237ecf5e105"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/actual.geometry.json",
+      "bytes": 199069,
+      "compressed_bytes": 30430,
+      "crc32": "fb9feffc",
+      "sha256": "cbd4c5a1794cc0b8c19ee280306ceba1f7f67a3697eab29eb52edf11e6a6fd60"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/actual.legacy.foreground.u8.gz",
+      "bytes": 6585,
+      "compressed_bytes": 6483,
+      "crc32": "dd983ee3",
+      "sha256": "f8f44c50f81be85c6f778189753a1e45d267334ea3170445cb37d80f1da1e534"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/actual.modern.canonical.u16be.gz",
+      "bytes": 8095,
+      "compressed_bytes": 7344,
+      "crc32": "88f36e05",
+      "sha256": "913faf3e4147d4f7cbf5a634f00043e5c2160be69490949ec3161e89cb6c6e92"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/actual.modern.foreground.u8.gz",
+      "bytes": 6585,
+      "compressed_bytes": 6483,
+      "crc32": "dd983ee3",
+      "sha256": "f8f44c50f81be85c6f778189753a1e45d267334ea3170445cb37d80f1da1e534"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/actual.modern.labels.u16be.gz",
+      "bytes": 8068,
+      "compressed_bytes": 7325,
+      "crc32": "0ee32e52",
+      "sha256": "f44ee81226ae300574dab4e2aa3f32605ebfd9b8f4b23443efbde28750addc1d"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/actual.modern.polygons.gz",
+      "bytes": 41333,
+      "compressed_bytes": 41314,
+      "crc32": "7b23f262",
+      "sha256": "cf32df7b8788cfa2bc4d24c8ae9b9bed2598fbdbd1f790c63805715575e07d89"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/case.json",
+      "bytes": 6353,
+      "compressed_bytes": 2234,
+      "crc32": "a0062387",
+      "sha256": "ad00d2fbd8de2f73bcd7285dc42be677220886e8e7f00c060fb64fa8c423b61e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/geometry.log",
+      "bytes": 3041,
+      "compressed_bytes": 1335,
+      "crc32": "a7b968b0",
+      "sha256": "e80560c645e50d96f415f506b93066fd9da04d942df7e792de72d1df259b8075"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/outliers.json",
+      "bytes": 1606,
+      "compressed_bytes": 604,
+      "crc32": "c6792d07",
+      "sha256": "ef37a4706f75ef17e0a7f7bb352113f47cfc4e5ca02d4aa65d6f5f457548aeae"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_7/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 538,
+      "crc32": "74d315e5",
+      "sha256": "d1069a0c656dab01eaa5f53944e9b6ccba2f0413f3a0db3ede1afa6728703c19"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/actual.geometry.json",
+      "bytes": 247889,
+      "compressed_bytes": 37375,
+      "crc32": "c0995b5d",
+      "sha256": "c3d390d12e7e4824fc74b45e80370bedb469ab88fede97c6388b4f1ab8c0477e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/actual.legacy.foreground.u8.gz",
+      "bytes": 7409,
+      "compressed_bytes": 7359,
+      "crc32": "918e8943",
+      "sha256": "3956b46f583dda58694dbf5110505440cae1308801fca7a12c4efa84a4a25690"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/actual.modern.canonical.u16be.gz",
+      "bytes": 9605,
+      "compressed_bytes": 8903,
+      "crc32": "aef1f804",
+      "sha256": "f6eaf2d4f821d1837eb8805b60864dda833a6c1d03ecc3b87e67680a8c3a7cc3"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/actual.modern.foreground.u8.gz",
+      "bytes": 7409,
+      "compressed_bytes": 7359,
+      "crc32": "918e8943",
+      "sha256": "3956b46f583dda58694dbf5110505440cae1308801fca7a12c4efa84a4a25690"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/actual.modern.labels.u16be.gz",
+      "bytes": 9584,
+      "compressed_bytes": 8862,
+      "crc32": "44b463fd",
+      "sha256": "c3f5f2fcc396b12637ff0112d729424a99f4b12436fc3a1c457a70238623a901"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/actual.modern.polygons.gz",
+      "bytes": 52665,
+      "compressed_bytes": 52645,
+      "crc32": "5e9adc72",
+      "sha256": "2c0952fc07680ed6460a7d01c4d63fbc9fc1f90df3d7bfca50c338adc6fe8a9a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/case.json",
+      "bytes": 6352,
+      "compressed_bytes": 2228,
+      "crc32": "57a93d2d",
+      "sha256": "8aed9ae78c8db51d8dcffc05c7eee9b662afe0891d6b0aea08d1dd1f9cee754e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/geometry.log",
+      "bytes": 3040,
+      "compressed_bytes": 1333,
+      "crc32": "515b4838",
+      "sha256": "2b4fc2058cdb1b44210f6e9855c0b778d8ad336eff74523eb1d28dc9b3545a7d"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/outliers.json",
+      "bytes": 5254,
+      "compressed_bytes": 838,
+      "crc32": "eb274618",
+      "sha256": "00875278179f391bf02a6175dbd18f497f3b7a1d3cab3373c17e3cbee9559b28"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_8/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 539,
+      "crc32": "fdfe3379",
+      "sha256": "5133cd4c5b534d4dbd24dd02c47f96db0d316d8fe303756c8055edb21854586d"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/actual.geometry.json",
+      "bytes": 185815,
+      "compressed_bytes": 28348,
+      "crc32": "16fe8679",
+      "sha256": "9f2b58f598f6a66ccc51e2c850c931b587a46ecd5b4c352d93e311f31f062d79"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/actual.legacy.foreground.u8.gz",
+      "bytes": 4964,
+      "compressed_bytes": 4923,
+      "crc32": "3ec7ef0f",
+      "sha256": "2a178969579ee90f0b59efb7ba7f591f93c03654ae6bd95e10374d8d5c73d264"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/actual.modern.canonical.u16be.gz",
+      "bytes": 6394,
+      "compressed_bytes": 5961,
+      "crc32": "9b7ed81a",
+      "sha256": "c2c253d5470c2415161edd53df6adb8bd42b86cf211e07c8178da17e0e3df834"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/actual.modern.foreground.u8.gz",
+      "bytes": 4964,
+      "compressed_bytes": 4923,
+      "crc32": "3ec7ef0f",
+      "sha256": "2a178969579ee90f0b59efb7ba7f591f93c03654ae6bd95e10374d8d5c73d264"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/actual.modern.labels.u16be.gz",
+      "bytes": 6368,
+      "compressed_bytes": 5938,
+      "crc32": "d5082da9",
+      "sha256": "1d456edef666a78f272e08e04e78a2e7318960f434dc256821838a93209f9a41"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/actual.modern.polygons.gz",
+      "bytes": 38681,
+      "compressed_bytes": 38627,
+      "crc32": "897c3c3b",
+      "sha256": "3b3037f9755603c4b1384afe8a15fe86324d47bb8dca2fe7386168cdf289d256"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/case.json",
+      "bytes": 6365,
+      "compressed_bytes": 2233,
+      "crc32": "52cbbe28",
+      "sha256": "584ff31cb65c04d7ed0a4e2db7c9e2c841f8ff389b8fcbbfbe344081a81c89da"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/geometry.log",
+      "bytes": 3052,
+      "compressed_bytes": 1341,
+      "crc32": "593d9873",
+      "sha256": "647fa3a7fcaf672850e1c185ece1469edbe711808d5bf7167ea4156d2880a071"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/outliers.json",
+      "bytes": 2836,
+      "compressed_bytes": 692,
+      "crc32": "85b3a6c8",
+      "sha256": "3678d7a54d1fa0a4b58a8ffe60ab5c52c2597573898fef9001e81a9de0dfcc09"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_confocal_9/worker.log",
+      "bytes": 1149,
+      "compressed_bytes": 539,
+      "crc32": "05c4eb7b",
+      "sha256": "19283f57035d6b9d49092615059d2ce20202e0123e24b1b130ba97ac40ff3264"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/actual.geometry.json",
+      "bytes": 558938,
+      "compressed_bytes": 80759,
+      "crc32": "5b1ed7b7",
+      "sha256": "964ed04af1ca7cf96aa4ab0c816d769d7468864752151c6b3300cde84c682ca8"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/actual.legacy.foreground.u8.gz",
+      "bytes": 17587,
+      "compressed_bytes": 17588,
+      "crc32": "0a831231",
+      "sha256": "9c2160c21cb7a3c94f01d1525efc5aa356106d1fc3902f762e26f8704eb49a23"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/actual.modern.canonical.u16be.gz",
+      "bytes": 22228,
+      "compressed_bytes": 20822,
+      "crc32": "c6ca6ca7",
+      "sha256": "938e164e8c8396a318aef5708c901abb15112048393b47996b4753f3fbde25cc"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/actual.modern.foreground.u8.gz",
+      "bytes": 17587,
+      "compressed_bytes": 17588,
+      "crc32": "0a831231",
+      "sha256": "9c2160c21cb7a3c94f01d1525efc5aa356106d1fc3902f762e26f8704eb49a23"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/actual.modern.labels.u16be.gz",
+      "bytes": 22200,
+      "compressed_bytes": 20781,
+      "crc32": "7d29b34d",
+      "sha256": "36a3f93286b66e619c355ecdf41b700d9c5b9398ba04193bfc66c1070dd66064"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/actual.modern.polygons.gz",
+      "bytes": 121946,
+      "compressed_bytes": 121900,
+      "crc32": "6acf6ac5",
+      "sha256": "d858543d9d17262d87cdc2a55999888a45ea07382abe66644bcba62eeacd9ad7"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/case.json",
+      "bytes": 6408,
+      "compressed_bytes": 2257,
+      "crc32": "f030910d",
+      "sha256": "54e865460db7eab089ca273bef246ba29129e8170caa931242c8ab0e960c1700"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/geometry.log",
+      "bytes": 3058,
+      "compressed_bytes": 1353,
+      "crc32": "81339cf0",
+      "sha256": "3dfc8b626cd9798f7c0680bb75aa76e306fc0a25071bb61cc2bcc08474228f3e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/outliers.json",
+      "bytes": 16227,
+      "compressed_bytes": 1456,
+      "crc32": "370fa434",
+      "sha256": "1b27967bae02066cfba066f0e4a2ca61231a2d89b4758f87a83469729d60a00e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield/worker.log",
+      "bytes": 1150,
+      "compressed_bytes": 538,
+      "crc32": "4da4d3c4",
+      "sha256": "5bbc0e7a895eb4a00b64bf7def8b48e1e2a926828bdf4f73166307867381129c"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/actual.geometry.json",
+      "bytes": 890908,
+      "compressed_bytes": 127142,
+      "crc32": "f75a70bd",
+      "sha256": "71468ec35b8ab4aa0de03a2b74f66094df93d0f34db629eedc0b1825fb585cf1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/actual.legacy.foreground.u8.gz",
+      "bytes": 27293,
+      "compressed_bytes": 26965,
+      "crc32": "afd9595e",
+      "sha256": "fbe55f21932ea06d1b6d56ab1726ac30b36d4bd42ae9e5c86288c6f4d821b041"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/actual.modern.canonical.u16be.gz",
+      "bytes": 34845,
+      "compressed_bytes": 32127,
+      "crc32": "ba08076e",
+      "sha256": "82657d4e91ec843216b7928b6bb9815956ae9daa82df93c0f0e008576c5e3d82"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/actual.modern.foreground.u8.gz",
+      "bytes": 27293,
+      "compressed_bytes": 26965,
+      "crc32": "afd9595e",
+      "sha256": "fbe55f21932ea06d1b6d56ab1726ac30b36d4bd42ae9e5c86288c6f4d821b041"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/actual.modern.labels.u16be.gz",
+      "bytes": 34753,
+      "compressed_bytes": 32246,
+      "crc32": "5977fb19",
+      "sha256": "258c4ac253d0978b05764971eb4fa0c1d241d511af899d634d50ce1b856ad318"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/actual.modern.polygons.gz",
+      "bytes": 192538,
+      "compressed_bytes": 192431,
+      "crc32": "85dfba12",
+      "sha256": "d75b3319a43809960d462b61d9ae58763a1b6e6a54f5d86718859c0238da4c67"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/case.json",
+      "bytes": 6375,
+      "compressed_bytes": 2249,
+      "crc32": "fb3815aa",
+      "sha256": "a39b0699fe782bd41b59e651a695b51c4b1eac0ba5694955075aa9da58afc5fb"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/geometry.log",
+      "bytes": 3051,
+      "compressed_bytes": 1347,
+      "crc32": "967cc706",
+      "sha256": "97d888af6498bfb8c3e458a8310baa03b2a6c9565bceb8bc1033b727ef482a34"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/outliers.json",
+      "bytes": 8899,
+      "compressed_bytes": 1040,
+      "crc32": "dbecdbea",
+      "sha256": "43a6a05519d8c4285f2eb1cf5a9b07ddde645896af8b0800472c140f5746e3a2"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_1/worker.log",
+      "bytes": 1155,
+      "compressed_bytes": 538,
+      "crc32": "fede19be",
+      "sha256": "1231e59587364f832406c8b0638901b092c55e8cf9608895c4c255579e01240f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/actual.geometry.json",
+      "bytes": 514072,
+      "compressed_bytes": 74749,
+      "crc32": "efff7093",
+      "sha256": "a7ee1a00b868a32c0b93688053cdf1b9e31acb54fd2a00e778d06c5f92f8a30a"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/actual.legacy.foreground.u8.gz",
+      "bytes": 17421,
+      "compressed_bytes": 17431,
+      "crc32": "b162a192",
+      "sha256": "45ecf62448565b205a76e74303a2a8009b5006a336f3b805e31d95ea97c6e8b6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/actual.modern.canonical.u16be.gz",
+      "bytes": 21184,
+      "compressed_bytes": 19622,
+      "crc32": "9c503c9c",
+      "sha256": "d58fb454360f12e17c0dd09c5743ce39f2821ec26c10ef887692657ac58ad1bf"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/actual.modern.foreground.u8.gz",
+      "bytes": 17421,
+      "compressed_bytes": 17431,
+      "crc32": "b162a192",
+      "sha256": "45ecf62448565b205a76e74303a2a8009b5006a336f3b805e31d95ea97c6e8b6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/actual.modern.labels.u16be.gz",
+      "bytes": 21174,
+      "compressed_bytes": 19698,
+      "crc32": "621d5672",
+      "sha256": "ce9f4ba9b68584ddb003945006601731e11c5c9c44c2711fab1cbd90727fcbc6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/actual.modern.polygons.gz",
+      "bytes": 112675,
+      "compressed_bytes": 112653,
+      "crc32": "09e6d0df",
+      "sha256": "52ccf5677ad3e765fbe77c809c04ce07a48632c2d544618b1c89cdb362a39bc0"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/case.json",
+      "bytes": 6378,
+      "compressed_bytes": 2248,
+      "crc32": "87831dca",
+      "sha256": "804ead1bb34d06bcd8bcc5c0c3befe48140837bb8780c62257f072888457cc50"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/geometry.log",
+      "bytes": 3051,
+      "compressed_bytes": 1340,
+      "crc32": "33fcdbe3",
+      "sha256": "edab948a7aa09f22bd76c6a004f974512a146238ead3a65d09d906c5e769d6f1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/outliers.json",
+      "bytes": 8898,
+      "compressed_bytes": 1034,
+      "crc32": "2e520734",
+      "sha256": "70491f63cf252932a97640e34784424fe8f01c1b11cc88fcb256c79923a84a56"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_10/worker.log",
+      "bytes": 1154,
+      "compressed_bytes": 537,
+      "crc32": "250906b4",
+      "sha256": "d0cfa6356da35aea1a9b45a2ec03362cf7e5c0bde251fa1a121280ba2ae30824"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/actual.geometry.json",
+      "bytes": 69688,
+      "compressed_bytes": 6781,
+      "crc32": "a32b665c",
+      "sha256": "f3ee95d8f602890e5755b2d99f49a24b0226c86e7d45e89025ccc16df254c8ef"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/actual.legacy.foreground.u8.gz",
+      "bytes": 1439,
+      "compressed_bytes": 1391,
+      "crc32": "3f9627ac",
+      "sha256": "5f9e19a9e3f12cfa68d156b41f09faeb4bafe1c43c67dad31ed2c3e45cd27fe2"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/actual.modern.canonical.u16be.gz",
+      "bytes": 1806,
+      "compressed_bytes": 1670,
+      "crc32": "c6ecb369",
+      "sha256": "8f6a8a317d6b657604824426305a545b381d9c716785c3d530c227be7328e0b2"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/actual.modern.foreground.u8.gz",
+      "bytes": 1439,
+      "compressed_bytes": 1391,
+      "crc32": "3f9627ac",
+      "sha256": "5f9e19a9e3f12cfa68d156b41f09faeb4bafe1c43c67dad31ed2c3e45cd27fe2"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/actual.modern.labels.u16be.gz",
+      "bytes": 1806,
+      "compressed_bytes": 1664,
+      "crc32": "e42de9dd",
+      "sha256": "4d738bbe8709602f2382b98496009ddeb5c9d17009dc484a4156c6d2aa770d54"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/actual.modern.polygons.gz",
+      "bytes": 13646,
+      "compressed_bytes": 13620,
+      "crc32": "9e7096a1",
+      "sha256": "6b47b998a494500a7b2a74e64706d8494ca62300585c949a116b9992eb0f00dd"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/case.json",
+      "bytes": 6358,
+      "compressed_bytes": 2227,
+      "crc32": "b0327033",
+      "sha256": "42d71ed31642f117836b0fda53346ba2b45a41066fa2c565d1c4748ede42f6cc"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/geometry.log",
+      "bytes": 3041,
+      "compressed_bytes": 1336,
+      "crc32": "1256f327",
+      "sha256": "8e010784add4c5c13f634974f65bec1c0bbda6791ce0105d2c3eef3ec5a9735b"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/outliers.json",
+      "bytes": 1601,
+      "compressed_bytes": 605,
+      "crc32": "e9ec929c",
+      "sha256": "0c78f4e3571b831d3b46d4bd0536edee3de48acba5964a4a29c16c7cc38daadd"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_11/worker.log",
+      "bytes": 1153,
+      "compressed_bytes": 535,
+      "crc32": "5f39168c",
+      "sha256": "47166ccbab2a89fdb4436a081ce29d19850f5de33d3ce0a39791fe889865084d"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/actual.geometry.json",
+      "bytes": 345906,
+      "compressed_bytes": 50731,
+      "crc32": "9c842a57",
+      "sha256": "ef2d94a166317682ab2f1e9b93d55632103f0f903d7a7216d9b83e425f2e9427"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/actual.legacy.foreground.u8.gz",
+      "bytes": 9360,
+      "compressed_bytes": 9077,
+      "crc32": "464904b0",
+      "sha256": "a2617825a32ebfe32c6d345e98a25d53c6540eca1f7ef463cfe28f38dffd0725"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/actual.modern.canonical.u16be.gz",
+      "bytes": 11703,
+      "compressed_bytes": 10896,
+      "crc32": "21c97ea9",
+      "sha256": "9dde480861e7c1a58afef3df12707957b7a4a3bc7cde1d056e24ef48cf73d00b"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/actual.modern.foreground.u8.gz",
+      "bytes": 9360,
+      "compressed_bytes": 9077,
+      "crc32": "464904b0",
+      "sha256": "a2617825a32ebfe32c6d345e98a25d53c6540eca1f7ef463cfe28f38dffd0725"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/actual.modern.labels.u16be.gz",
+      "bytes": 11705,
+      "compressed_bytes": 10904,
+      "crc32": "2ed5ecd3",
+      "sha256": "c5899eca1d40e181fc00e8dcc4b864c1ef8bbd1a14d3fab1e2143e34cbc2f426"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/actual.modern.polygons.gz",
+      "bytes": 73100,
+      "compressed_bytes": 73058,
+      "crc32": "2add4c32",
+      "sha256": "94d878f6d582a8cf0bdf186cc10d4a1004e782d860a622fd758e14ab55104992"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/case.json",
+      "bytes": 6365,
+      "compressed_bytes": 2233,
+      "crc32": "a0b0151c",
+      "sha256": "51b656a722655266c37655298a7276ce0d855af9df9025b985dd10e1a03f34df"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/geometry.log",
+      "bytes": 3045,
+      "compressed_bytes": 1338,
+      "crc32": "e9d9c5ef",
+      "sha256": "8e7b3cd4c1b22286a5cd2ed5897c639d5235fbd94dd232d330d0d469eaa5378f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/outliers.json",
+      "bytes": 4041,
+      "compressed_bytes": 779,
+      "crc32": "26a37373",
+      "sha256": "dd9afa12042e1e5fc326b0168f56b73fa474a4fae9ae8546a56aa295def33336"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_2/worker.log",
+      "bytes": 1151,
+      "compressed_bytes": 536,
+      "crc32": "5ca017db",
+      "sha256": "8d8b67b62b3c41fe7c94afa38b6ed0a8a0eed2f922bc0bca3dfa3dd52ddd6d44"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/actual.geometry.json",
+      "bytes": 1126624,
+      "compressed_bytes": 166815,
+      "crc32": "04d1ca30",
+      "sha256": "a6a6323d1b2269ee649739311e105eb397a0bc5f4a1b0035379cbbcf645282d4"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/actual.legacy.canonical.u16be.gz",
+      "bytes": 35340,
+      "compressed_bytes": 32702,
+      "crc32": "eab9fca0",
+      "sha256": "5de005e986b5a2dac480c4eefb9d81d5c4e8cb6c3cf6993db69e4b51b77864cc"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/actual.legacy.foreground.u8.gz",
+      "bytes": 27483,
+      "compressed_bytes": 27456,
+      "crc32": "1e21e6a0",
+      "sha256": "fff572c0b62bf81305994d54bab005959aef7b1e43736c8be197fc7d0c45b883"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/actual.legacy.labels.u16be.gz",
+      "bytes": 35518,
+      "compressed_bytes": 33278,
+      "crc32": "982c5d33",
+      "sha256": "6b0eb628a59173b7a3b5f4b7eb9455d5166a32bbede3fa877bf195a8ba413843"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/actual.modern.canonical.u16be.gz",
+      "bytes": 35340,
+      "compressed_bytes": 32702,
+      "crc32": "eab9fca0",
+      "sha256": "5de005e986b5a2dac480c4eefb9d81d5c4e8cb6c3cf6993db69e4b51b77864cc"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/actual.modern.foreground.u8.gz",
+      "bytes": 27483,
+      "compressed_bytes": 27456,
+      "crc32": "1e21e6a0",
+      "sha256": "fff572c0b62bf81305994d54bab005959aef7b1e43736c8be197fc7d0c45b883"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/actual.modern.labels.u16be.gz",
+      "bytes": 35518,
+      "compressed_bytes": 33314,
+      "crc32": "55eac285",
+      "sha256": "5df4a8af894e838332c84905a35ad6eb1f837aef4202f561f15eb45a5fcaf156"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/actual.modern.polygons.gz",
+      "bytes": 201858,
+      "compressed_bytes": 201783,
+      "crc32": "65c67f9d",
+      "sha256": "3ee1e6717e1a04151dc60b96e82fbab925154483653c44ed131b93ee2a22eea6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/case.json",
+      "bytes": 6442,
+      "compressed_bytes": 2275,
+      "crc32": "8918d0cd",
+      "sha256": "4046b487a75833631e0de98a38755a33da170147ae3d7c8f83d2cfe588e9488d"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/geometry.log",
+      "bytes": 3324,
+      "compressed_bytes": 1429,
+      "crc32": "a2f8ad9c",
+      "sha256": "bc2e6f70968ddad8f9cc45b3b71326251c1b94ddbfba74d6efd567b2a8cbb28b"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/outliers.json",
+      "bytes": 13786,
+      "compressed_bytes": 1301,
+      "crc32": "fede6e08",
+      "sha256": "9b2924368bd7eabd21837145f97c6bcb33cf90ee31432458f304f0d6f9ca3cd6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_3/worker.log",
+      "bytes": 1155,
+      "compressed_bytes": 540,
+      "crc32": "f2d7640e",
+      "sha256": "1bd19ac55039a7ba424a07954078bdfb765be5768f790f7918dcbeb5806c2706"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/actual.geometry.json",
+      "bytes": 691951,
+      "compressed_bytes": 100433,
+      "crc32": "e6ca6642",
+      "sha256": "2858c11ca5daf0f7012c894b20e81435a62852519c0403ff756d7f86d29199f1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/actual.legacy.foreground.u8.gz",
+      "bytes": 23991,
+      "compressed_bytes": 23959,
+      "crc32": "88cde540",
+      "sha256": "6e97747df1d9cdd8cd798539d21920c8cb695fb268db33e87f9c3e123240034c"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/actual.modern.canonical.u16be.gz",
+      "bytes": 29492,
+      "compressed_bytes": 27155,
+      "crc32": "04b58e0b",
+      "sha256": "e2af547064283ded499ceb652c989881a084da62d9875cd5f78caacfaf434749"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/actual.modern.foreground.u8.gz",
+      "bytes": 23991,
+      "compressed_bytes": 23959,
+      "crc32": "88cde540",
+      "sha256": "6e97747df1d9cdd8cd798539d21920c8cb695fb268db33e87f9c3e123240034c"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/actual.modern.labels.u16be.gz",
+      "bytes": 29492,
+      "compressed_bytes": 27191,
+      "crc32": "060b40aa",
+      "sha256": "c9dd4f5147fb75a8d919bd17e8499e87fd4f331efc78f772a5e8a584a1dd85b7"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/actual.modern.polygons.gz",
+      "bytes": 148449,
+      "compressed_bytes": 148377,
+      "crc32": "1f24f17c",
+      "sha256": "7c7c4b4c26ba67aa835d8e76c8715d3571ce6ef7693274d079842753c2e43704"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/case.json",
+      "bytes": 6376,
+      "compressed_bytes": 2244,
+      "crc32": "20fc6845",
+      "sha256": "9da9b78616cda7d929d91c64be18de75c6213374ca12864b3f95d8fb57bffd1d"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/geometry.log",
+      "bytes": 3052,
+      "compressed_bytes": 1346,
+      "crc32": "816cbb14",
+      "sha256": "958fb1d782b4b8bcd33c9b7519f6990b5862a02f429b5650e620a54959eaab18"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/outliers.json",
+      "bytes": 16221,
+      "compressed_bytes": 1430,
+      "crc32": "abd301e5",
+      "sha256": "d5e7448349f6ab52f5376e8fd037bfdc29d13862cf047436ffd3c022e96c39bb"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_4/worker.log",
+      "bytes": 1153,
+      "compressed_bytes": 539,
+      "crc32": "55ecbd83",
+      "sha256": "22c8b49cf2749f30f8a2f7f1ffb1aa6e98cc8ba947a39e20b8bd4e350d1ed216"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/actual.geometry.json",
+      "bytes": 476900,
+      "compressed_bytes": 69470,
+      "crc32": "7d2af147",
+      "sha256": "0bec57f688bb8b9c496de59de819cadf8745af85993f25683b6dd662974ffb19"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/actual.legacy.foreground.u8.gz",
+      "bytes": 18014,
+      "compressed_bytes": 17824,
+      "crc32": "45d88f24",
+      "sha256": "8f8421b736572249c7b2d73a0c6cb65464e30ef4659a94121ed9a5b585a76ca4"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/actual.modern.canonical.u16be.gz",
+      "bytes": 22314,
+      "compressed_bytes": 19974,
+      "crc32": "6f225e5f",
+      "sha256": "285b1bf02bc24554ad6d4e8a40bb2c0e0e81ac9e057194e8cf967e3bb0193c00"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/actual.modern.foreground.u8.gz",
+      "bytes": 18014,
+      "compressed_bytes": 17824,
+      "crc32": "45d88f24",
+      "sha256": "8f8421b736572249c7b2d73a0c6cb65464e30ef4659a94121ed9a5b585a76ca4"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/actual.modern.labels.u16be.gz",
+      "bytes": 22301,
+      "compressed_bytes": 19920,
+      "crc32": "fb5961dd",
+      "sha256": "62b2b68f1776c5afffdc9baecd365d528feb88510e4c553c02983e0b36544584"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/actual.modern.polygons.gz",
+      "bytes": 101394,
+      "compressed_bytes": 101343,
+      "crc32": "cfcf755a",
+      "sha256": "2804dc769a439feea7f33c523a99388d4acc6510e878ffa043268b32339300c2"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/case.json",
+      "bytes": 6374,
+      "compressed_bytes": 2243,
+      "crc32": "4363b041",
+      "sha256": "44bbd94ed0527e83f9dddeb1fb49884b30608d783470d5a025adf2b31ff0a798"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/geometry.log",
+      "bytes": 3050,
+      "compressed_bytes": 1341,
+      "crc32": "349c0ac1",
+      "sha256": "65fbafbadbca02d1db3eeea3e868d1dd14a252990a51831334f8055cc198ebe1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/outliers.json",
+      "bytes": 8925,
+      "compressed_bytes": 1063,
+      "crc32": "43b63afc",
+      "sha256": "c144cf18f50489614547e677984f370f6e39a0a6554f9296e399db1948a87808"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_5/worker.log",
+      "bytes": 1155,
+      "compressed_bytes": 537,
+      "crc32": "ae0b42e9",
+      "sha256": "0b1305d07def222ed81c5afe9cf51b16bea4718223b057cfba91e746a46cbf82"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/actual.geometry.json",
+      "bytes": 552697,
+      "compressed_bytes": 79627,
+      "crc32": "31587be9",
+      "sha256": "a0d217b86532fc686ffbe9b53cdbb254f934c5db89a241a9043b913259fa3df2"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/actual.legacy.foreground.u8.gz",
+      "bytes": 14834,
+      "compressed_bytes": 14253,
+      "crc32": "26e57b13",
+      "sha256": "33c8de43227770a9322060e6a2bb643aae812048b32bc390f0f88a61ca8da36f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/actual.modern.canonical.u16be.gz",
+      "bytes": 19738,
+      "compressed_bytes": 17969,
+      "crc32": "73af32ef",
+      "sha256": "5a6a703213ac5c55276ca1fe2390a5d9d23d74b7374432fa0d53edd10d522ea6"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/actual.modern.foreground.u8.gz",
+      "bytes": 14834,
+      "compressed_bytes": 14253,
+      "crc32": "26e57b13",
+      "sha256": "33c8de43227770a9322060e6a2bb643aae812048b32bc390f0f88a61ca8da36f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/actual.modern.labels.u16be.gz",
+      "bytes": 19698,
+      "compressed_bytes": 17975,
+      "crc32": "ec9386af",
+      "sha256": "d7f7e42f9e58ff735472ca48550a57027be02c6b16d2f050a9b48bed1678ca89"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/actual.modern.polygons.gz",
+      "bytes": 119252,
+      "compressed_bytes": 119205,
+      "crc32": "06f3a7b2",
+      "sha256": "183b1700f3c894ecfb82465ebb58fb0a95ad8dca5c0b3ffa1c84d13e90a3e152"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/case.json",
+      "bytes": 6374,
+      "compressed_bytes": 2282,
+      "crc32": "17af742b",
+      "sha256": "142ee2f48ff6db625b30884667b34c02d869ad145ddb4c59b9fc9634ffaeaf82"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/geometry.log",
+      "bytes": 3050,
+      "compressed_bytes": 1341,
+      "crc32": "87c564ff",
+      "sha256": "10d2e8a3c65d1acc9d5df1a2a49e44fa67c5b4b53bdaed519009f9ff5d28ff40"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/outliers.json",
+      "bytes": 5256,
+      "compressed_bytes": 848,
+      "crc32": "23aca75a",
+      "sha256": "806deedd012635bca9f8263d95ddffcbf95b7efa74ec64df8789b0c2c1041274"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_6/worker.log",
+      "bytes": 1152,
+      "compressed_bytes": 537,
+      "crc32": "72784e4f",
+      "sha256": "9f28c2f6f0300424946d6478e4596b70fdeefe84e40282eaca8ab0a70c955e56"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/actual.geometry.json",
+      "bytes": 558938,
+      "compressed_bytes": 80759,
+      "crc32": "5b1ed7b7",
+      "sha256": "964ed04af1ca7cf96aa4ab0c816d769d7468864752151c6b3300cde84c682ca8"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/actual.legacy.foreground.u8.gz",
+      "bytes": 17587,
+      "compressed_bytes": 17588,
+      "crc32": "0a831231",
+      "sha256": "9c2160c21cb7a3c94f01d1525efc5aa356106d1fc3902f762e26f8704eb49a23"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/actual.modern.canonical.u16be.gz",
+      "bytes": 22228,
+      "compressed_bytes": 20822,
+      "crc32": "c6ca6ca7",
+      "sha256": "938e164e8c8396a318aef5708c901abb15112048393b47996b4753f3fbde25cc"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/actual.modern.foreground.u8.gz",
+      "bytes": 17587,
+      "compressed_bytes": 17588,
+      "crc32": "0a831231",
+      "sha256": "9c2160c21cb7a3c94f01d1525efc5aa356106d1fc3902f762e26f8704eb49a23"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/actual.modern.labels.u16be.gz",
+      "bytes": 22200,
+      "compressed_bytes": 20781,
+      "crc32": "7d29b34d",
+      "sha256": "36a3f93286b66e619c355ecdf41b700d9c5b9398ba04193bfc66c1070dd66064"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/actual.modern.polygons.gz",
+      "bytes": 121946,
+      "compressed_bytes": 121900,
+      "crc32": "6acf6ac5",
+      "sha256": "d858543d9d17262d87cdc2a55999888a45ea07382abe66644bcba62eeacd9ad7"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/case.json",
+      "bytes": 6414,
+      "compressed_bytes": 2258,
+      "crc32": "d5979688",
+      "sha256": "705d316c37aa9e4a07f25ef0886b4583349475412b1cba8330ce0742c1b7c48e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/geometry.log",
+      "bytes": 3058,
+      "compressed_bytes": 1353,
+      "crc32": "81339cf0",
+      "sha256": "3dfc8b626cd9798f7c0680bb75aa76e306fc0a25071bb61cc2bcc08474228f3e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/outliers.json",
+      "bytes": 16227,
+      "compressed_bytes": 1456,
+      "crc32": "370fa434",
+      "sha256": "1b27967bae02066cfba066f0e4a2ca61231a2d89b4758f87a83469729d60a00e"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_7/worker.log",
+      "bytes": 1152,
+      "compressed_bytes": 541,
+      "crc32": "f1ce24b4",
+      "sha256": "635cca90fa602a18798f0b56f3378739ba57b9ee3fdc073cf4c704db50be0517"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/actual.geometry.json",
+      "bytes": 643368,
+      "compressed_bytes": 93110,
+      "crc32": "ce7e0eb8",
+      "sha256": "2bf86bd12941423f08dff2117fa7ee910e441c61daea14c82651a3637f997374"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/actual.legacy.foreground.u8.gz",
+      "bytes": 20335,
+      "compressed_bytes": 20345,
+      "crc32": "ec6ef9ce",
+      "sha256": "3d72ddfdb8e65c8dce25a900a656c4c0f32876a4dfffa2f3bd76d5c13ccf4bd9"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/actual.modern.canonical.u16be.gz",
+      "bytes": 25332,
+      "compressed_bytes": 23510,
+      "crc32": "1dd908c7",
+      "sha256": "b6502b97c5f5ff6fd009547d65990a14a2798b08e72bee48720b6d114dbbb5e8"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/actual.modern.foreground.u8.gz",
+      "bytes": 20335,
+      "compressed_bytes": 20345,
+      "crc32": "ec6ef9ce",
+      "sha256": "3d72ddfdb8e65c8dce25a900a656c4c0f32876a4dfffa2f3bd76d5c13ccf4bd9"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/actual.modern.labels.u16be.gz",
+      "bytes": 25376,
+      "compressed_bytes": 23571,
+      "crc32": "f373505f",
+      "sha256": "baf1b92c65b1be03102fd0c2134817872f02c02a8328c71005e9c058c4b7ebb4"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/actual.modern.polygons.gz",
+      "bytes": 138725,
+      "compressed_bytes": 138669,
+      "crc32": "2e03f3d0",
+      "sha256": "1ec786258cde36f1f02cf77a821b99faa1b5328a95a8390b202096f683f80fb9"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/case.json",
+      "bytes": 6372,
+      "compressed_bytes": 2243,
+      "crc32": "83cef71b",
+      "sha256": "cdf8ebdeae6ca3d9ec702c7ded616f931ec25de8c936f3da781f5d9277f21f38"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/geometry.log",
+      "bytes": 3050,
+      "compressed_bytes": 1341,
+      "crc32": "1ab2e18a",
+      "sha256": "81b0f9cf9c26f6cd95d359400369420747020e01b6394db5f812837cc02b1682"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/outliers.json",
+      "bytes": 10123,
+      "compressed_bytes": 1119,
+      "crc32": "da1be76b",
+      "sha256": "3cbef78e5711b37eea62cca0d100a0828c2b67bb88a847cb2137ae773bc6e881"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_8/worker.log",
+      "bytes": 1154,
+      "compressed_bytes": 538,
+      "crc32": "2704a2cf",
+      "sha256": "9212cab866a0285bf1c583c45c41dad5f1827b2e99171cf9249149f8935a9067"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/actual.geometry.json",
+      "bytes": 467335,
+      "compressed_bytes": 68334,
+      "crc32": "a06cff55",
+      "sha256": "ef337c37958dc8ad838c55903847ae9d84b234aeabfc48cc455b30110597f3bd"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/actual.legacy.foreground.u8.gz",
+      "bytes": 16082,
+      "compressed_bytes": 16037,
+      "crc32": "e9392608",
+      "sha256": "3d7da4710f053377d01edae1ed6fd73e2d27f9a4d5a185adfab95f43d928e78c"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/actual.modern.canonical.u16be.gz",
+      "bytes": 19809,
+      "compressed_bytes": 18340,
+      "crc32": "4c4a5707",
+      "sha256": "a07ef19d0e9c9eeccf13644f69bb942409d5f876f1da8bac8d6b1d205bd17ce7"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/actual.modern.foreground.u8.gz",
+      "bytes": 16082,
+      "compressed_bytes": 16037,
+      "crc32": "5b7422e8",
+      "sha256": "20b61345ce4895bff84d9ebde6bcfaf377e90edfb47ffb3d55f914020e5c602f"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/actual.modern.labels.u16be.gz",
+      "bytes": 19785,
+      "compressed_bytes": 18298,
+      "crc32": "392a986e",
+      "sha256": "b79ea047e1d47ef0eb20bfd9227f2dc38bcf0d95f2d93e02e0fdc240a970db58"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/actual.modern.polygons.gz",
+      "bytes": 101102,
+      "compressed_bytes": 101069,
+      "crc32": "d3ae1c57",
+      "sha256": "7ce7a04c3b80db34e5861bee71de40bb24bcd9c1c6f5f74caba55e3eb74453bb"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/case.json",
+      "bytes": 6415,
+      "compressed_bytes": 2434,
+      "crc32": "7b708651",
+      "sha256": "73662967444978e058836b72d609296b7f3766b3dc2abf9abca54a61d40712fb"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/geometry.log",
+      "bytes": 3084,
+      "compressed_bytes": 1449,
+      "crc32": "3ed6544a",
+      "sha256": "129782f37b6f7eb6c026c0845484fdc700745ace8f3334b7389db157f31d1554"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/outliers.json",
+      "bytes": 6545,
+      "compressed_bytes": 991,
+      "crc32": "78fbe4f4",
+      "sha256": "867184991cfa4ed86c76608615f218d891edd4d95011a0072d23ef82d007a5c1"
+    },
+    {
+      "path": "target/mac-corpus-results/neuron_test_widefield_9/worker.log",
+      "bytes": 1152,
+      "compressed_bytes": 539,
+      "crc32": "88a56ce6",
+      "sha256": "437b53a61724210e590c8aa0c8fc072b9339e602374e87d3f7f33ad99b443c7d"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/actual.geometry.json",
+      "bytes": 44232,
+      "compressed_bytes": 4735,
+      "crc32": "948c0896",
+      "sha256": "e28a2c629e299c384facaaef85c2ff944c70bf29cb27a8f0fdcbbcc1132ecf4c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/actual.legacy.foreground.u8.gz",
+      "bytes": 1724,
+      "compressed_bytes": 1650,
+      "crc32": "c2524b75",
+      "sha256": "c64b1f6051689e0000dc49472ca831f7cccc67002fee9310914a37aceb45e975"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/actual.modern.canonical.u16be.gz",
+      "bytes": 2189,
+      "compressed_bytes": 1896,
+      "crc32": "128f3be1",
+      "sha256": "908bf1620e5b037e9c81addee9d1d4c9176117dcd42308ed03dbead758a848b9"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/actual.modern.foreground.u8.gz",
+      "bytes": 1724,
+      "compressed_bytes": 1650,
+      "crc32": "c2524b75",
+      "sha256": "c64b1f6051689e0000dc49472ca831f7cccc67002fee9310914a37aceb45e975"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/actual.modern.labels.u16be.gz",
+      "bytes": 2189,
+      "compressed_bytes": 1898,
+      "crc32": "62e5d2f1",
+      "sha256": "a3333a6920ab689c7c58e32ada6b948fe7082fbcfff53ae8a9ac02070ebb204e"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/actual.modern.polygons.gz",
+      "bytes": 8931,
+      "compressed_bytes": 8936,
+      "crc32": "0ecd124a",
+      "sha256": "ffb6c6ed34bd48e0d7898bff511f1aff5893a39a76ac19d9cd4a39b36acc43ef"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/case.json",
+      "bytes": 6326,
+      "compressed_bytes": 2160,
+      "crc32": "499aee2d",
+      "sha256": "6780054812ae396abea02a876283f5e0e346da8aa86f573793dc7278e52298e0"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/geometry.log",
+      "bytes": 2982,
+      "compressed_bytes": 1257,
+      "crc32": "a257c891",
+      "sha256": "cc391f422fd50e25e98e9df8a8fff7e0f2504e23f04126594bdf7a4c76dddfb4"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/outliers.json",
+      "bytes": 387,
+      "compressed_bytes": 232,
+      "crc32": "917dafbe",
+      "sha256": "e7569613c5ab0dddf794c08eb0a8f60cbf8e70d31a5426667422865edd2d783c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal/worker.log",
+      "bytes": 1156,
+      "compressed_bytes": 537,
+      "crc32": "bb9c0912",
+      "sha256": "318974678d5671bb37062496565b0abe98ec21b7f0ff23b11bca25d37edbaf60"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/actual.geometry.json",
+      "bytes": 41720,
+      "compressed_bytes": 4569,
+      "crc32": "e977bb82",
+      "sha256": "70b3c30012c7bb887192231a9fe0aed1b49fb112769ef1aac94d7fbeb495bd48"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/actual.legacy.foreground.u8.gz",
+      "bytes": 2039,
+      "compressed_bytes": 1942,
+      "crc32": "afea4265",
+      "sha256": "0a7cb703ed9884723684576fa74d4df6435635bf22ea6bed24ae3e79fbcfc80f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/actual.modern.canonical.u16be.gz",
+      "bytes": 2464,
+      "compressed_bytes": 2075,
+      "crc32": "5962c5e2",
+      "sha256": "4db153373ee3e66bf15b4aeb735088e381b85cac9aad71272171f1876cdc83c1"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/actual.modern.foreground.u8.gz",
+      "bytes": 2039,
+      "compressed_bytes": 1942,
+      "crc32": "afea4265",
+      "sha256": "0a7cb703ed9884723684576fa74d4df6435635bf22ea6bed24ae3e79fbcfc80f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/actual.modern.labels.u16be.gz",
+      "bytes": 2463,
+      "compressed_bytes": 2072,
+      "crc32": "07e3a77c",
+      "sha256": "93c142d2385849d63627cad4f7f494d4a066ba2f4f103afe4987b60b10a2567e"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/actual.modern.polygons.gz",
+      "bytes": 8321,
+      "compressed_bytes": 8326,
+      "crc32": "dc74a87d",
+      "sha256": "c6f26be1e8806786fccbdab33698c4540994efd555946f42a8df87905930a965"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/case.json",
+      "bytes": 6343,
+      "compressed_bytes": 2178,
+      "crc32": "6431a61c",
+      "sha256": "9fd94e0f635e82df5967b4ce85b85f86a889246d92f1f481963df596c5b33baa"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/geometry.log",
+      "bytes": 2983,
+      "compressed_bytes": 1260,
+      "crc32": "3954f79b",
+      "sha256": "5f6045536d4173b0accfc76979e5110c703d0843dc74d0951e70dd04ce38f030"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/outliers.json",
+      "bytes": 387,
+      "compressed_bytes": 232,
+      "crc32": "917dafbe",
+      "sha256": "e7569613c5ab0dddf794c08eb0a8f60cbf8e70d31a5426667422865edd2d783c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__CalR_confocal_1/worker.log",
+      "bytes": 1160,
+      "compressed_bytes": 539,
+      "crc32": "3fc1efcc",
+      "sha256": "9ea77164a7beabe01eeacb565ec0ff464bdfd5e1b6f07d0c946dae9b16865a0f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/actual.geometry.json",
+      "bytes": 57322,
+      "compressed_bytes": 6007,
+      "crc32": "bf9c36b2",
+      "sha256": "8cf14510bb9b128d93a53baecec3d069720d3bddbfbf9a4f021e26d0c4b5eb4d"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/actual.legacy.foreground.u8.gz",
+      "bytes": 1845,
+      "compressed_bytes": 1825,
+      "crc32": "44152650",
+      "sha256": "5bd711b70181042903268449635d178afe6bed6c94f8e5f84489e293a7a7176f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/actual.modern.canonical.u16be.gz",
+      "bytes": 2218,
+      "compressed_bytes": 2168,
+      "crc32": "0fa816ae",
+      "sha256": "cb21c0635ff361f63a43c1e6b15c55c935cc3afa04c4e01a68b2db0125af94de"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/actual.modern.foreground.u8.gz",
+      "bytes": 1845,
+      "compressed_bytes": 1825,
+      "crc32": "44152650",
+      "sha256": "5bd711b70181042903268449635d178afe6bed6c94f8e5f84489e293a7a7176f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/actual.modern.labels.u16be.gz",
+      "bytes": 2218,
+      "compressed_bytes": 2169,
+      "crc32": "359e7f07",
+      "sha256": "c0243133a287461790be2d1fed55cca908e03831ce096d74b78e402ff2a80064"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/actual.modern.polygons.gz",
+      "bytes": 11514,
+      "compressed_bytes": 11517,
+      "crc32": "73fbe5f1",
+      "sha256": "637d9a6cfca11af69190599ea3deaca9274c56bcd2a514151c3a008e8bf5fa43"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/case.json",
+      "bytes": 6384,
+      "compressed_bytes": 2238,
+      "crc32": "3bea0544",
+      "sha256": "8642d45dab03b538434ac91cf7048dac8843531ffcd1193bfdad5f664fb17216"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/geometry.log",
+      "bytes": 3049,
+      "compressed_bytes": 1340,
+      "crc32": "23b8e3ec",
+      "sha256": "9bb14369f1d7bc8d47769f362477c190d8e8be7fa103fcc480a875353d0fd07e"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/outliers.json",
+      "bytes": 2832,
+      "compressed_bytes": 705,
+      "crc32": "f6fcf693",
+      "sha256": "883e40f7f5778d6e09fcf1aea3ec1085f3a3ab1a27b32347a6fd750dc4fcbe2f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal/worker.log",
+      "bytes": 1158,
+      "compressed_bytes": 539,
+      "crc32": "2c5f14c1",
+      "sha256": "935712e4cf0667c5456b6c99f6d765dd823355afccb46e86a1a639040dcb58db"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/actual.geometry.json",
+      "bytes": 21130,
+      "compressed_bytes": 2997,
+      "crc32": "c14aa39f",
+      "sha256": "bf829d467fccec0a5dff34a6238cb5968b2d3ebf11fe433fd126cd00b3bbc3ce"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/actual.legacy.foreground.u8.gz",
+      "bytes": 1173,
+      "compressed_bytes": 1005,
+      "crc32": "a9ae5dc9",
+      "sha256": "b19017e806d8216a71c614029179b5d3fd66507af0852a0573463ccc99aa8792"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/actual.modern.canonical.u16be.gz",
+      "bytes": 1495,
+      "compressed_bytes": 1069,
+      "crc32": "896812ad",
+      "sha256": "2d42d35b463688c6e04e0ad45a29cda3f7fcc3c45ec07157076a614457281897"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/actual.modern.foreground.u8.gz",
+      "bytes": 1173,
+      "compressed_bytes": 1005,
+      "crc32": "a9ae5dc9",
+      "sha256": "b19017e806d8216a71c614029179b5d3fd66507af0852a0573463ccc99aa8792"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/actual.modern.labels.u16be.gz",
+      "bytes": 1496,
+      "compressed_bytes": 1081,
+      "crc32": "ef8453f3",
+      "sha256": "01e079fdb914abca61afb72b42045f8efe148ac7c422cc10c5bd0f4b75f52a3f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/actual.modern.polygons.gz",
+      "bytes": 4066,
+      "compressed_bytes": 4071,
+      "crc32": "76cd83ab",
+      "sha256": "5a12bc74e977f5ed39885694693bc43f078be1675f6a543d2318eb623dedcfba"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/case.json",
+      "bytes": 6331,
+      "compressed_bytes": 2167,
+      "crc32": "83dd9531",
+      "sha256": "45dfec18afe24ade182b930652a7e55bc3eeaae406e3caa061a0bf82ee75c250"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/geometry.log",
+      "bytes": 2974,
+      "compressed_bytes": 1254,
+      "crc32": "7425b7fd",
+      "sha256": "511377e96b3042b347de8bb7a17cbd636b046fdc7bebc646733e2f78b95a552f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/outliers.json",
+      "bytes": 387,
+      "compressed_bytes": 232,
+      "crc32": "917dafbe",
+      "sha256": "e7569613c5ab0dddf794c08eb0a8f60cbf8e70d31a5426667422865edd2d783c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_confocal_1/worker.log",
+      "bytes": 1162,
+      "compressed_bytes": 539,
+      "crc32": "ac7667b6",
+      "sha256": "cdc6400ea8b918fcdd9a947dbf83260a6c90eeaafd18d8f8c9a05d0a938064a8"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/actual.geometry.json",
+      "bytes": 30943,
+      "compressed_bytes": 3395,
+      "crc32": "415d1d4b",
+      "sha256": "9360a344a3b3a5b0c2e6a64d1afb7ce6f783cb3b49189f7c8a406e3f4dc06e00"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/actual.legacy.canonical.u16be.gz",
+      "bytes": 1391,
+      "compressed_bytes": 1264,
+      "crc32": "321f5417",
+      "sha256": "f96966e27d084ca5aae96c220407de4b83f416f5f8462ec51a367dd6700c29ca"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/actual.legacy.foreground.u8.gz",
+      "bytes": 1166,
+      "compressed_bytes": 1127,
+      "crc32": "ac9a86a2",
+      "sha256": "1012b79aaa011d5015ab564bead8e3042bd1e3d61fe18945775e6da4bd318523"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/actual.legacy.labels.u16be.gz",
+      "bytes": 1391,
+      "compressed_bytes": 1264,
+      "crc32": "8e675284",
+      "sha256": "ed8e5ad23f9c470ab8b9bc5085e1eadeb5ffd72627b51e13cf15074741e1d7d7"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/actual.modern.canonical.u16be.gz",
+      "bytes": 1391,
+      "compressed_bytes": 1264,
+      "crc32": "321f5417",
+      "sha256": "f96966e27d084ca5aae96c220407de4b83f416f5f8462ec51a367dd6700c29ca"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/actual.modern.foreground.u8.gz",
+      "bytes": 1166,
+      "compressed_bytes": 1127,
+      "crc32": "ac9a86a2",
+      "sha256": "1012b79aaa011d5015ab564bead8e3042bd1e3d61fe18945775e6da4bd318523"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/actual.modern.labels.u16be.gz",
+      "bytes": 1391,
+      "compressed_bytes": 1264,
+      "crc32": "8e675284",
+      "sha256": "ed8e5ad23f9c470ab8b9bc5085e1eadeb5ffd72627b51e13cf15074741e1d7d7"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/actual.modern.polygons.gz",
+      "bytes": 5141,
+      "compressed_bytes": 5146,
+      "crc32": "dc39ee44",
+      "sha256": "fb606529259ecf1a2048ad6ee895216893b1ff44bd7318f330b789984b9ec90e"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/case.json",
+      "bytes": 6374,
+      "compressed_bytes": 2094,
+      "crc32": "7fc13a7b",
+      "sha256": "579219065d37b57e9d5f540d1af4c502d0f22ba5eef834837cc4d394ecefdf91"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/geometry.log",
+      "bytes": 3235,
+      "compressed_bytes": 1293,
+      "crc32": "2c8bc4c3",
+      "sha256": "00049a79044c2d0bb3594b3d4df643828c34b67546bbe2451637d7e92b4d2702"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/outliers.json",
+      "bytes": 387,
+      "compressed_bytes": 232,
+      "crc32": "917dafbe",
+      "sha256": "e7569613c5ab0dddf794c08eb0a8f60cbf8e70d31a5426667422865edd2d783c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Calb_widefield/worker.log",
+      "bytes": 1160,
+      "compressed_bytes": 536,
+      "crc32": "de2d7124",
+      "sha256": "74b311662c2a61b23f3fb938ba718b1b2f9a0ef9bb7a0329ba465d3727ea4135"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/actual.geometry.json",
+      "bytes": 70246,
+      "compressed_bytes": 6965,
+      "crc32": "83cb1ca9",
+      "sha256": "08e0759b077c59e25be83b0de920e677868a8fe6a879bf8c5ad1718b2f81aef9"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/actual.legacy.foreground.u8.gz",
+      "bytes": 3179,
+      "compressed_bytes": 3160,
+      "crc32": "cb2d846e",
+      "sha256": "a98523dce2f61fd44a7b27c6e9cebee57167624f58656c7a7c2b93c8a3486e45"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/actual.modern.canonical.u16be.gz",
+      "bytes": 3622,
+      "compressed_bytes": 3483,
+      "crc32": "7ef188e8",
+      "sha256": "e4a78bf7163ba01afa9b6c72915b8ad0efb071b5d48fd797a0b05d62317e7d95"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/actual.modern.foreground.u8.gz",
+      "bytes": 3179,
+      "compressed_bytes": 3160,
+      "crc32": "cb2d846e",
+      "sha256": "a98523dce2f61fd44a7b27c6e9cebee57167624f58656c7a7c2b93c8a3486e45"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/actual.modern.labels.u16be.gz",
+      "bytes": 3623,
+      "compressed_bytes": 3489,
+      "crc32": "996b5fdc",
+      "sha256": "f21ec796bd3f1ba5edc60c2b64b4a07702caa992b403258804aeb5840e8542d9"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/actual.modern.polygons.gz",
+      "bytes": 14385,
+      "compressed_bytes": 14377,
+      "crc32": "30fa3524",
+      "sha256": "8664d52efe92b12aaa93ef27b6cdad6012edf8093bae3b33ca57fdfbfb182dfa"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/case.json",
+      "bytes": 6313,
+      "compressed_bytes": 2161,
+      "crc32": "7b80772d",
+      "sha256": "5f677f6330ea422b7e01c0fbcf2583483f30754270c1c944fdcd8d17043a9c2a"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/geometry.log",
+      "bytes": 2983,
+      "compressed_bytes": 1255,
+      "crc32": "54a0652c",
+      "sha256": "db45a0b655ca2ff28cd9650b9f8522cd79201a7c31952298ff7bf3f09d0a4f5f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/outliers.json",
+      "bytes": 387,
+      "compressed_bytes": 232,
+      "crc32": "917dafbe",
+      "sha256": "e7569613c5ab0dddf794c08eb0a8f60cbf8e70d31a5426667422865edd2d783c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal/worker.log",
+      "bytes": 1158,
+      "compressed_bytes": 535,
+      "crc32": "078c203d",
+      "sha256": "acfd0df4e11d6bd5f07f8467e754218cbafb57436f8b0f0a744ed50bb3a944a7"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/actual.geometry.json",
+      "bytes": 52122,
+      "compressed_bytes": 5553,
+      "crc32": "3941eb95",
+      "sha256": "87bdac3f957938c29e34330bd950b11d3c5f0240d04bdea01d6a57bb789827ec"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/actual.legacy.foreground.u8.gz",
+      "bytes": 1881,
+      "compressed_bytes": 1850,
+      "crc32": "ddb8fd55",
+      "sha256": "0e6a55b68d8517ebe14de2ffd06eefc33628b0a0e4d99dae5437303823a83324"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/actual.modern.canonical.u16be.gz",
+      "bytes": 2303,
+      "compressed_bytes": 2210,
+      "crc32": "3ffa66d7",
+      "sha256": "8f1aabe7df5b4ada80c0cdc225900db7b13d1b2643db904ffdd2e2716975fef7"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/actual.modern.foreground.u8.gz",
+      "bytes": 1881,
+      "compressed_bytes": 1850,
+      "crc32": "ddb8fd55",
+      "sha256": "0e6a55b68d8517ebe14de2ffd06eefc33628b0a0e4d99dae5437303823a83324"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/actual.modern.labels.u16be.gz",
+      "bytes": 2303,
+      "compressed_bytes": 2204,
+      "crc32": "cf49e689",
+      "sha256": "3bc13f3eb9b5fedeb5a4d76b8f101e1bb42ff18939de1ad0dcd5784ffb99c43a"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/actual.modern.polygons.gz",
+      "bytes": 10569,
+      "compressed_bytes": 10563,
+      "crc32": "231518a2",
+      "sha256": "a64f70318b094eeb21780bba2f9197fda541db6c1ae0ead593984d14b40c5ce1"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/case.json",
+      "bytes": 6386,
+      "compressed_bytes": 2239,
+      "crc32": "b0ca5d3b",
+      "sha256": "a102c9ae480955c363ec345fe03c8c46c6a38256613c8bc9ee2f5e00656faace"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/geometry.log",
+      "bytes": 3049,
+      "compressed_bytes": 1342,
+      "crc32": "1a00d2a6",
+      "sha256": "b17bd6571851bedf44f67643893b7fe3becb0c0adf69456c6f444f1ccb733f99"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/outliers.json",
+      "bytes": 1611,
+      "compressed_bytes": 610,
+      "crc32": "232239cd",
+      "sha256": "32011d065960078eb79bd2153982a5fe611668d50e4ae0fb46154a1baf2b3576"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_1/worker.log",
+      "bytes": 1160,
+      "compressed_bytes": 538,
+      "crc32": "1e8c5a25",
+      "sha256": "6b301fe57c759d85f9ed9dcfaeba890387965cc9a9aeeb8dc38c8456a1551a9a"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/actual.geometry.json",
+      "bytes": 136959,
+      "compressed_bytes": 11907,
+      "crc32": "adee4b31",
+      "sha256": "cee167f845310a897caa511ecd39c7e449521e60de0b66101f31132a7724b91f"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/actual.legacy.foreground.u8.gz",
+      "bytes": 3950,
+      "compressed_bytes": 3877,
+      "crc32": "f9030fb3",
+      "sha256": "93144a9001a5a81a8e6ce3b4f9481d1a8abd6e00e7692bf8f50bc885dc42fe11"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/actual.modern.canonical.u16be.gz",
+      "bytes": 4857,
+      "compressed_bytes": 4470,
+      "crc32": "1f9405a2",
+      "sha256": "ca34df4b93a8033884c7dbc52e16a33f1e18fbc7c037c04c63c6d1c0eaacb9ab"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/actual.modern.foreground.u8.gz",
+      "bytes": 3950,
+      "compressed_bytes": 3877,
+      "crc32": "f9030fb3",
+      "sha256": "93144a9001a5a81a8e6ce3b4f9481d1a8abd6e00e7692bf8f50bc885dc42fe11"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/actual.modern.labels.u16be.gz",
+      "bytes": 4856,
+      "compressed_bytes": 4484,
+      "crc32": "57fbe215",
+      "sha256": "961d97e288c873f6b6820efaa75049e01758101be43b9ed6478adc8c67945b78"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/actual.modern.polygons.gz",
+      "bytes": 28760,
+      "compressed_bytes": 28755,
+      "crc32": "31237d0d",
+      "sha256": "548952a4086849506a6144de9f3e27d1ae62a306aaf49fbf7bb8b74ac8245c66"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/case.json",
+      "bytes": 6391,
+      "compressed_bytes": 2237,
+      "crc32": "4471813c",
+      "sha256": "16eea57965c80f566daea12291a7df1dc507724fe12d1201e8c4219e4a545a00"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/geometry.log",
+      "bytes": 3041,
+      "compressed_bytes": 1335,
+      "crc32": "9e7c981f",
+      "sha256": "f96d377f95fe61789cb97a0c4d2abc58224afab68d7d6b59c67453f3d7fe34cf"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/outliers.json",
+      "bytes": 2818,
+      "compressed_bytes": 684,
+      "crc32": "72b52168",
+      "sha256": "18a3948f0fca625fd4370a55adea0eed10e969070857fd67f92f0d10fc092ba8"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__Chat_confocal_2/worker.log",
+      "bytes": 1160,
+      "compressed_bytes": 539,
+      "crc32": "c7a75f14",
+      "sha256": "6f908a05fa7b92438810e663c55c604db1f502de8b43fcae647a6eb8336e59a2"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/actual.geometry.json",
+      "bytes": 34139,
+      "compressed_bytes": 4057,
+      "crc32": "9b11122d",
+      "sha256": "b1744dd54f77ce76a41278e8d722b998488147701f8196d17aab41751094dcbe"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/actual.legacy.foreground.u8.gz",
+      "bytes": 1364,
+      "compressed_bytes": 1252,
+      "crc32": "02f88347",
+      "sha256": "77829c62bf9f94997c83632fc1c06027a7f1d2a339de5492633f1a694411b8e4"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/actual.modern.canonical.u16be.gz",
+      "bytes": 1754,
+      "compressed_bytes": 1381,
+      "crc32": "ce3fffb5",
+      "sha256": "70d46dd563b79369846ed9f358066b5cf878ac519d039be7918071cbef444dbd"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/actual.modern.foreground.u8.gz",
+      "bytes": 1364,
+      "compressed_bytes": 1252,
+      "crc32": "02f88347",
+      "sha256": "77829c62bf9f94997c83632fc1c06027a7f1d2a339de5492633f1a694411b8e4"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/actual.modern.labels.u16be.gz",
+      "bytes": 1754,
+      "compressed_bytes": 1382,
+      "crc32": "e6209407",
+      "sha256": "d5eb0af71c8eeafbf6e32c9c9ed04a0b1d2fa2e17fedd1eafe327c29d4659127"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/actual.modern.polygons.gz",
+      "bytes": 6641,
+      "compressed_bytes": 6646,
+      "crc32": "d9255b8c",
+      "sha256": "d2bc318747463a0fd0892532d89184c847cc400135eef5274d0214ddcf923062"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/case.json",
+      "bytes": 6392,
+      "compressed_bytes": 2247,
+      "crc32": "d2055303",
+      "sha256": "d435939c5142e58827ce599854a2fccbb43f310f1c92bbfa2d78cd535ea9be51"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/geometry.log",
+      "bytes": 3046,
+      "compressed_bytes": 1343,
+      "crc32": "caabd69a",
+      "sha256": "800ea218041acc4dc7819ef00f6e2177b9c2791a6a2faafed258b391e4bbb6a0"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/outliers.json",
+      "bytes": 1615,
+      "compressed_bytes": 610,
+      "crc32": "995fb53b",
+      "sha256": "3a1dc3f81b4b22df4a18de398889029b6dbc48943971892a2fcb6e56ceef477b"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_confocal/worker.log",
+      "bytes": 1155,
+      "compressed_bytes": 537,
+      "crc32": "a542348f",
+      "sha256": "f43c99100f94c50c3671112341e7f9bb70dfe0940abb4e464022c63efba3918c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/actual.geometry.json",
+      "bytes": 28815,
+      "compressed_bytes": 3527,
+      "crc32": "99739070",
+      "sha256": "4d796b19baf80a100c809b83c42f04d53cbb6709dd918da5604f2b6b62a2aa67"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/actual.legacy.foreground.u8.gz",
+      "bytes": 1449,
+      "compressed_bytes": 1310,
+      "crc32": "f7221ca2",
+      "sha256": "9e6d0d7a94405d0f55fba736afbf781a9596e076b4ad2176d8f62f1e850d5584"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/actual.modern.canonical.u16be.gz",
+      "bytes": 1794,
+      "compressed_bytes": 1370,
+      "crc32": "6b664eee",
+      "sha256": "46a7f26fd4465b1bb3d5b57b12141092e1faae76a480a68c3b632a85971f7067"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/actual.modern.foreground.u8.gz",
+      "bytes": 1449,
+      "compressed_bytes": 1310,
+      "crc32": "f7221ca2",
+      "sha256": "9e6d0d7a94405d0f55fba736afbf781a9596e076b4ad2176d8f62f1e850d5584"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/actual.modern.labels.u16be.gz",
+      "bytes": 1795,
+      "compressed_bytes": 1371,
+      "crc32": "916e3e0d",
+      "sha256": "ca875eabd618f775350d67619bb2491f384e20aba18c694298b541f7421e15ff"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/actual.modern.polygons.gz",
+      "bytes": 5657,
+      "compressed_bytes": 5662,
+      "crc32": "881ace99",
+      "sha256": "e06304ecd3c8cef70531e4aaedbce1908a56710dd81ae3624d34c3be98b2e2cd"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/case.json",
+      "bytes": 6330,
+      "compressed_bytes": 2165,
+      "crc32": "9ca9962d",
+      "sha256": "c9d1188df001a426188f42fd6feb5ad929c4f09756a2318bbbae431655719c99"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/geometry.log",
+      "bytes": 2982,
+      "compressed_bytes": 1254,
+      "crc32": "ccc69a88",
+      "sha256": "1d01478b827bafa63bfbca83373aa6a6561dbe3a6aeda34e294db7debc1ae152"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/outliers.json",
+      "bytes": 387,
+      "compressed_bytes": 232,
+      "crc32": "917dafbe",
+      "sha256": "e7569613c5ab0dddf794c08eb0a8f60cbf8e70d31a5426667422865edd2d783c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NFM_widefield/worker.log",
+      "bytes": 1156,
+      "compressed_bytes": 538,
+      "crc32": "0a5a8961",
+      "sha256": "2364ea76487c259182093ff7045eeaea9b5420acec4cb5a43ccc5d2fb2ee14e2"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/actual.geometry.json",
+      "bytes": 103725,
+      "compressed_bytes": 9500,
+      "crc32": "998ea128",
+      "sha256": "1c144a4a56295c02e93ec09ccc1bba6c21223b7d3b36e764248b77df16e14c14"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/actual.legacy.foreground.u8.gz",
+      "bytes": 3903,
+      "compressed_bytes": 3736,
+      "crc32": "543e553d",
+      "sha256": "036131a027a59eae1256d4737ebc4be23a66428e90a2fc822b5c3aa9da745f08"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/actual.modern.canonical.u16be.gz",
+      "bytes": 4755,
+      "compressed_bytes": 4284,
+      "crc32": "4cd5a725",
+      "sha256": "f1c4208db875b6e8497c2290f025e8d9d678c83d9f9296d65e075aa4bfe3dc9a"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/actual.modern.foreground.u8.gz",
+      "bytes": 3903,
+      "compressed_bytes": 3736,
+      "crc32": "543e553d",
+      "sha256": "036131a027a59eae1256d4737ebc4be23a66428e90a2fc822b5c3aa9da745f08"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/actual.modern.labels.u16be.gz",
+      "bytes": 4732,
+      "compressed_bytes": 4270,
+      "crc32": "ced453ab",
+      "sha256": "8777c798db25db7e06b4fe0556d799ad701514f46507c0ba936c2aa1c79c65ba"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/actual.modern.polygons.gz",
+      "bytes": 21831,
+      "compressed_bytes": 21837,
+      "crc32": "2c67e16f",
+      "sha256": "660a76d4ea902a2ec26a90432f57cf6d9724d638e87d34a360323e3af5277334"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/case.json",
+      "bytes": 6375,
+      "compressed_bytes": 2240,
+      "crc32": "bb02dcd7",
+      "sha256": "859c15dd874bb7be44a254237ed5616aec21db92d8a12a8cc4e9af61cd97215a"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/geometry.log",
+      "bytes": 3039,
+      "compressed_bytes": 1340,
+      "crc32": "ea94bf40",
+      "sha256": "db77cc548f30339e62dcd18134d9bf7d1dcac1a32985c84ef158e799c0242755"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/outliers.json",
+      "bytes": 4039,
+      "compressed_bytes": 773,
+      "crc32": "e4921f46",
+      "sha256": "8b107bff85dcfbc5f0dbffba0f5c24ab1e8846e2558571cf4e1211a9dd7bc30e"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal/worker.log",
+      "bytes": 1154,
+      "compressed_bytes": 538,
+      "crc32": "4de34e23",
+      "sha256": "21b1ac242b5c8e5979bf852217c12368c41218453dfc3d0ab2c391af8eea5ef6"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/actual.geometry.json",
+      "bytes": 80383,
+      "compressed_bytes": 7691,
+      "crc32": "0d264574",
+      "sha256": "c60205e480216b5b1daab136d7291cb798cfa62e43b8f6ff79c4c066a8b7ad5d"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/actual.legacy.foreground.u8.gz",
+      "bytes": 3277,
+      "compressed_bytes": 3157,
+      "crc32": "6ab8a60d",
+      "sha256": "69ef9ca9f3fd62f511a965d3913de1d19fba73720de439bf152eaf1d77d02a76"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/actual.modern.canonical.u16be.gz",
+      "bytes": 4057,
+      "compressed_bytes": 3570,
+      "crc32": "9400ec49",
+      "sha256": "b67846623a3984781264a02edca5a7b89739cba976b51785cad1e4103214e695"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/actual.modern.foreground.u8.gz",
+      "bytes": 3277,
+      "compressed_bytes": 3157,
+      "crc32": "6ab8a60d",
+      "sha256": "69ef9ca9f3fd62f511a965d3913de1d19fba73720de439bf152eaf1d77d02a76"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/actual.modern.labels.u16be.gz",
+      "bytes": 4055,
+      "compressed_bytes": 3574,
+      "crc32": "d8080b95",
+      "sha256": "b95c22efb77b6088c79ab672a5ed6a8b868c8d6f41d0ad154bde3900aba5bb76"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/actual.modern.polygons.gz",
+      "bytes": 17290,
+      "compressed_bytes": 17295,
+      "crc32": "416c24b7",
+      "sha256": "85d03a65298b27ba8fbe16dc85366fb1852cba130385cfc1180f42ae61ca72a7"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/case.json",
+      "bytes": 6327,
+      "compressed_bytes": 2174,
+      "crc32": "e5ad720d",
+      "sha256": "8cb04b5e755656f84df855707079a6798934bf3b497f1e007249bc6797986bd9"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/geometry.log",
+      "bytes": 2983,
+      "compressed_bytes": 1264,
+      "crc32": "d045c0af",
+      "sha256": "da9314b3fc680fc0939f6a2ae8ef50228d5a66cf6ccac3eb43e6e26556012857"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/outliers.json",
+      "bytes": 387,
+      "compressed_bytes": 232,
+      "crc32": "917dafbe",
+      "sha256": "e7569613c5ab0dddf794c08eb0a8f60cbf8e70d31a5426667422865edd2d783c"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_confocal_1/worker.log",
+      "bytes": 1157,
+      "compressed_bytes": 536,
+      "crc32": "a37ac13d",
+      "sha256": "436b9b266c8d5a3bb009038d88eba686cf201be0231d7b5d87ff8ff0dba9fab7"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/actual.geometry.json",
+      "bytes": 209729,
+      "compressed_bytes": 32302,
+      "crc32": "a85532ac",
+      "sha256": "6f861cc032f1a2c37d63fedcbfca33f482b01ed635361cb1fc9686e17c8f8261"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/actual.legacy.foreground.u8.gz",
+      "bytes": 9147,
+      "compressed_bytes": 8983,
+      "crc32": "512324a9",
+      "sha256": "c12969dc30d7750fd622c81312a69675c013a3da34b6abcbccd49f79c1abb4f0"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/actual.modern.canonical.u16be.gz",
+      "bytes": 11365,
+      "compressed_bytes": 10222,
+      "crc32": "f882abfc",
+      "sha256": "cc3e252f33852b7cc608adde349049b698988dad070cd39ecbbd0597bf0081d0"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/actual.modern.foreground.u8.gz",
+      "bytes": 9147,
+      "compressed_bytes": 8983,
+      "crc32": "512324a9",
+      "sha256": "c12969dc30d7750fd622c81312a69675c013a3da34b6abcbccd49f79c1abb4f0"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/actual.modern.labels.u16be.gz",
+      "bytes": 11386,
+      "compressed_bytes": 10231,
+      "crc32": "a6f723f2",
+      "sha256": "f228c6c9e39d0120badd6b8b9a5f6aff5b5114b6e035728f4cd218ca576691e4"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/actual.modern.polygons.gz",
+      "bytes": 45831,
+      "compressed_bytes": 45809,
+      "crc32": "f635d5b7",
+      "sha256": "28221b204c0d0cdbef0cadc4ad547de1b185e8674a4d928455ae790b09340416"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/case.json",
+      "bytes": 6386,
+      "compressed_bytes": 2245,
+      "crc32": "e53da023",
+      "sha256": "163f91b1850833c79e33eb5d7dfc720b51ed4dedfabddf8aece9f1875facc30a"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/geometry.log",
+      "bytes": 3041,
+      "compressed_bytes": 1339,
+      "crc32": "93250bd9",
+      "sha256": "8c2b7d4f1e0d15f2fe3e97e0007bfc328a583dd003447bd484b372c3eb59f28d"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/outliers.json",
+      "bytes": 2823,
+      "compressed_bytes": 690,
+      "crc32": "c6a740a6",
+      "sha256": "3e8eb3ba0bbb0f680dc718f96380eb30158a822af53c96157fd6a3eedade6a76"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield/worker.log",
+      "bytes": 1159,
+      "compressed_bytes": 537,
+      "crc32": "6c3df741",
+      "sha256": "4351ffc5106e16d48f8029bde85810b6e81241f68f86f6af04afc7ab44ccc3eb"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/actual.geometry.json",
+      "bytes": 95777,
+      "compressed_bytes": 8815,
+      "crc32": "e9a1764d",
+      "sha256": "725891937115f5e05f99573a378c491a627c4e2e16b03cd7f4bb72e19ca9bdc0"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/actual.legacy.foreground.u8.gz",
+      "bytes": 3564,
+      "compressed_bytes": 3473,
+      "crc32": "5ab007d7",
+      "sha256": "9f7fe6ebbf1fbca7302c62979026b20587409a6bf93e3e24a5967e78b5a1355b"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/actual.modern.canonical.u16be.gz",
+      "bytes": 4370,
+      "compressed_bytes": 4014,
+      "crc32": "6b40e8d0",
+      "sha256": "082930265f466e80f2295f00fbbf4ea6d44f015eeb9c39fa1cb588d6e10e9c63"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/actual.modern.foreground.u8.gz",
+      "bytes": 3564,
+      "compressed_bytes": 3473,
+      "crc32": "5ab007d7",
+      "sha256": "9f7fe6ebbf1fbca7302c62979026b20587409a6bf93e3e24a5967e78b5a1355b"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/actual.modern.labels.u16be.gz",
+      "bytes": 4362,
+      "compressed_bytes": 3978,
+      "crc32": "7f8d8422",
+      "sha256": "4ecf608d2640fc32b02a0b2cd85fc6b3961ecaf570abae871c1998536a130cc5"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/actual.modern.polygons.gz",
+      "bytes": 20174,
+      "compressed_bytes": 20169,
+      "crc32": "4f99bc9c",
+      "sha256": "0c312a64054314889fb0a6e93ae5f76b9f3f65bab26c053366aa45955a73e2fb"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/case.json",
+      "bytes": 6392,
+      "compressed_bytes": 2237,
+      "crc32": "4fdeb79a",
+      "sha256": "16ef3261df72ffeac45a8b780fb973a873ccf68227270e8ad20a284eac8b1f6d"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/geometry.log",
+      "bytes": 3041,
+      "compressed_bytes": 1336,
+      "crc32": "3a69d1c6",
+      "sha256": "7cab22ae46730409bcbaaf1ffea6f42991885e6d66e6751cd98d0622e97a2abc"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/outliers.json",
+      "bytes": 1602,
+      "compressed_bytes": 606,
+      "crc32": "4ea48898",
+      "sha256": "2565fb06a851563ff481151aab610479602378c209133f2d354dfd7f7ac408b0"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_1/worker.log",
+      "bytes": 1160,
+      "compressed_bytes": 538,
+      "crc32": "2eed36b6",
+      "sha256": "4e91d0289c68ae1708eeabf293fa3072ef96c9415609abd05e102a17c0735ebb"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/actual.geometry.json",
+      "bytes": 44400,
+      "compressed_bytes": 4873,
+      "crc32": "19ffcc32",
+      "sha256": "52d998d5f585800ba4b8169ff16edda9d404f6504e88d4bb4c52d2f9a09bdd05"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/actual.legacy.foreground.u8.gz",
+      "bytes": 1382,
+      "compressed_bytes": 1255,
+      "crc32": "387e6aae",
+      "sha256": "f9d97d99640b69058193afb6a0a0afc11425161dbab1d72567a632c20a0a83e9"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/actual.modern.canonical.u16be.gz",
+      "bytes": 1842,
+      "compressed_bytes": 1433,
+      "crc32": "ab59617a",
+      "sha256": "afd8c695468c477032e52e461acd57824473352221658aa79dc1b42c5078a812"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/actual.modern.foreground.u8.gz",
+      "bytes": 1382,
+      "compressed_bytes": 1255,
+      "crc32": "387e6aae",
+      "sha256": "f9d97d99640b69058193afb6a0a0afc11425161dbab1d72567a632c20a0a83e9"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/actual.modern.labels.u16be.gz",
+      "bytes": 1842,
+      "compressed_bytes": 1451,
+      "crc32": "eb9aeb19",
+      "sha256": "a452674088f84853853754bed8c693d21c93811be2e8347846c5f9317188eefc"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/actual.modern.polygons.gz",
+      "bytes": 8754,
+      "compressed_bytes": 8759,
+      "crc32": "1731774f",
+      "sha256": "63fe2f6054254b01923fd1a02479dea2704036c5196b6c803a49d40d83e87113"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/case.json",
+      "bytes": 6385,
+      "compressed_bytes": 2233,
+      "crc32": "077591f2",
+      "sha256": "e5f513bbbbf5660936fa22e79e23b3308b7c087dfa5919706f7f975d013a731a"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/geometry.log",
+      "bytes": 3033,
+      "compressed_bytes": 1334,
+      "crc32": "df08ac1d",
+      "sha256": "3c509af1d21c2bb7979351bf15bb4c872a6605a3980ed996b2ec2d942a790a94"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/outliers.json",
+      "bytes": 2814,
+      "compressed_bytes": 683,
+      "crc32": "2e744e40",
+      "sha256": "01f5fceb3013cb11e8aef0a6a180efa7aac15e426e554815c4a8b67c9cc7048d"
+    },
+    {
+      "path": "target/mac-corpus-results/subtype_test__NOS_widefield_2/worker.log",
+      "bytes": 1160,
+      "compressed_bytes": 541,
+      "crc32": "70579d79",
+      "sha256": "7663e0da191acab46debab3a6ad8cde74f81e88a343221f00d848e7f027d11d2"
+    },
+    {
+      "path": "target/mac-corpus-results/summary.json",
+      "bytes": 286222,
+      "compressed_bytes": 39603,
+      "crc32": "0a00e6b4",
+      "sha256": "c138179fd1bddc816c097694b08128852e3910fa62576f26295522944f530e41"
+    }
+  ]
+}

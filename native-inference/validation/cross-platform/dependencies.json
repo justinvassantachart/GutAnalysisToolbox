@@ -1,0 +1,47 @@
+[
+  {
+    "file": "Candidates.java",
+    "url": "https://raw.githubusercontent.com/stardist/stardist-imagej/aff59dbd3cdf88dfa567d4dd562eab943bf4f99b/src/main/java/de/csbdresden/stardist/Candidates.java",
+    "sha256": "596f683bf2744e44cf8ac8556d572b9ee30a7559866fe329301e300b8a8e9a25"
+  },
+  {
+    "file": "Point2D.java",
+    "url": "https://raw.githubusercontent.com/stardist/stardist-imagej/aff59dbd3cdf88dfa567d4dd562eab943bf4f99b/src/main/java/de/csbdresden/stardist/Point2D.java",
+    "sha256": "d024013a86de124182523dab21a11fd884bd8e7db2ef471d24954809ed80d53d"
+  },
+  {
+    "file": "Box2D.java",
+    "url": "https://raw.githubusercontent.com/stardist/stardist-imagej/aff59dbd3cdf88dfa567d4dd562eab943bf4f99b/src/main/java/de/csbdresden/stardist/Box2D.java",
+    "sha256": "d9823d33ba624d7a9e104ab8c3da1a61ddf7b88549e1f03c7782bf1c6c42d3d9"
+  },
+  {
+    "file": "Utils.java",
+    "url": "https://raw.githubusercontent.com/stardist/stardist-imagej/aff59dbd3cdf88dfa567d4dd562eab943bf4f99b/src/main/java/de/csbdresden/stardist/Utils.java",
+    "sha256": "7d8bb4782e88e368dbba9add1153747c7434f1623e453391e8cc356f8822b8bf"
+  },
+  {
+    "file": "Clipper-6.4.2.jar",
+    "url": "https://raw.githubusercontent.com/stardist/stardist-imagej/aff59dbd3cdf88dfa567d4dd562eab943bf4f99b/lib/Clipper-6.4.2.jar",
+    "sha256": "df1020524cc2cad78d57a6928cf94d00e8558397ccf8d227d2c8f4af1023b970"
+  },
+  {
+    "file": "ij-1.54p.jar",
+    "url": "https://repo.maven.apache.org/maven2/net/imagej/ij/1.54p/ij-1.54p.jar",
+    "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+  },
+  {
+    "file": "imglib2-7.1.5.jar",
+    "url": "https://repo.maven.apache.org/maven2/net/imglib2/imglib2/7.1.5/imglib2-7.1.5.jar",
+    "sha256": "b575a8e705647583950a2fb3aefdf13d5baabe4b3b7849e21bc536e9d278c3e3"
+  },
+  {
+    "file": "imagej-common-2.1.1.jar",
+    "url": "https://maven.scijava.org/content/groups/public/net/imagej/imagej-common/2.1.1/imagej-common-2.1.1.jar",
+    "sha256": "aa0292e424d960378525837f7c4f30ed8adc6528655eafb87c6f2a8a995cc426"
+  },
+  {
+    "file": "scijava-common-2.100.1.jar",
+    "url": "https://repo.maven.apache.org/maven2/org/scijava/scijava-common/2.100.1/scijava-common-2.100.1.jar",
+    "sha256": "af53bb31087dd46bfe15645c8b7cc69fe837795516816c60f5be78b9ff0ce6a3"
+  }
+]

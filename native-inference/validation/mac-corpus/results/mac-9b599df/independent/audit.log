@@ -1,0 +1,57 @@
+PASS neuron_test_widefield_11
+PASS neuron_test_confocal_9
+PASS neuron_test_confocal
+PASS neuron_test_confocal_12
+PASS neuron_test_confocal_2
+PASS neuron_test_confocal_3
+PASS neuron_test_confocal_4
+PASS neuron_test_confocal_5
+PASS neuron_test_confocal_6
+PASS neuron_test_confocal_7
+PASS neuron_test_confocal_8
+PASS neuron_test_widefield_2
+PASS neuron_test_widefield
+PASS neuron_test_widefield_10
+PASS neuron_test_widefield_6
+PASS neuron_test_widefield_7
+PASS neuron_test_widefield_8
+PASS neuron_test_widefield_9
+PASS neuron_test_confocal_1
+PASS neuron_test_confocal_10
+PASS neuron_test_confocal_11
+PASS neuron_test_widefield_1
+PASS neuron_test_widefield_3
+PASS neuron_test_widefield_4
+PASS neuron_test_widefield_5
+PASS subtype_test__Calb_confocal
+PASS subtype_test__Calb_widefield
+PASS subtype_test__Chat_confocal
+PASS subtype_test__Chat_confocal_1
+PASS subtype_test__CalR_confocal
+PASS subtype_test__CalR_confocal_1
+PASS subtype_test__Calb_confocal_1
+PASS subtype_test__Chat_confocal_2
+PASS subtype_test__NFM_confocal
+PASS subtype_test__NFM_widefield
+PASS subtype_test__NOS_widefield_2
+PASS subtype_test__NOS_widefield_1
+PASS subtype_test__NOS_confocal
+PASS subtype_test__NOS_confocal_1
+PASS subtype_test__NOS_widefield
+{
+  "case_count": 40,
+  "object_count": 4472,
+  "unique_input_count": 39,
+  "test_cases_with_train_overlap": 1,
+  "input_pixels": 26030351,
+  "raw_label_equal_cases": 37,
+  "canonical_equal_cases": 39,
+  "measurement_equal_cases": 39,
+  "winning_center_equal_cases": 40,
+  "strict_quantized_outline_equal_cases": 8,
+  "foreground_equal_cases": 39,
+  "foreground_difference_pixels": 1,
+  "retained_legacy_order_cases": 2,
+  "compact_files_hashed": 404,
+  "zip_members_crc_checked": 413
+}

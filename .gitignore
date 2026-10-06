@@ -1,6 +1,13 @@
 gat.txt
+
+# Maven build output
+target/
+dist/
+.attach_pid*
+__pycache__/
 Sample Images/Analysis/
 Models/*
 in_progress/*
 QuPath_workflow/qupath_project/*
 Sample Images/2D_enteric_neuron_IF/Analysis/*
+docs/HANDOFF.md

@@ -1,0 +1,78 @@
+{
+  "source_record": "https://zenodo.org/records/15314214",
+  "date_utc": "2026-10-05",
+  "legacy_runtime": "TensorFlow 1.15.0",
+  "modern_runtime": "TensorFlow Java 1.2.0 / TensorFlow 2.21.0",
+  "test_platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "normalization": "identical shared CSBDeep Fiji preprocessing; nearest rank1/99.8; lower-only clamp",
+  "tiles": 4,
+  "model_hashes": {
+    "2D_enteric_neuron_subtype_v4.zip": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8",
+    "2D_enteric_neuron_v4_1.zip": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276"
+  },
+  "archives": {
+    "neuron.zip": {
+      "md5": "9936b4632d93ead585f77be018aa0e58",
+      "sha256": "204c548accd48a93c704246bbcc9fb1970869c4d12671dd4104579795a842072",
+      "bytes": 84714819
+    },
+    "subtype.zip": {
+      "md5": "2e6bfb6bc253816dedc918efd2270b1a",
+      "sha256": "e642d0c9376cbae5f653c6d7bd073484522ea749df4a56ef161b7745f03a7892",
+      "bytes": 27876735
+    }
+  },
+  "production_inference_bytecode": {
+    "CsbdeepNormalizer": {
+      "linux_sha256": "b5182b171441c21b3e1c91d819012ddd65a3b2ba172fe10d19c354a8dec082b7",
+      "release_sha256": "b5182b171441c21b3e1c91d819012ddd65a3b2ba172fe10d19c354a8dec082b7",
+      "identical": true
+    },
+    "CsbdeepTiling": {
+      "linux_sha256": "2bcb792a68ea0f08e22496ed814da37dbf459498f31b016b686b49d7c2789906",
+      "release_sha256": "2bcb792a68ea0f08e22496ed814da37dbf459498f31b016b686b49d7c2789906",
+      "identical": true
+    },
+    "TensorFlowPredictor": {
+      "linux_sha256": "33fa789f6addf6a754b42e577d03c1ca2ee626b356984d0375081ec13b86f9fc",
+      "release_sha256": "33fa789f6addf6a754b42e577d03c1ca2ee626b356984d0375081ec13b86f9fc",
+      "identical": true
+    },
+    "TensorProtocol": {
+      "linux_sha256": "6c1fd32a9c46fbd22ad05978264934a07dfe688d56eae9679f32d3f33b8608be",
+      "release_sha256": "6c1fd32a9c46fbd22ad05978264934a07dfe688d56eae9679f32d3f33b8608be",
+      "identical": true
+    },
+    "ImageTensor": {
+      "linux_sha256": "428e291f9da8d33c31a54e1a8116bfb581b424113b55589785d84f2025b53bd0",
+      "release_sha256": "428e291f9da8d33c31a54e1a8116bfb581b424113b55589785d84f2025b53bd0",
+      "identical": true
+    },
+    "ModelArchive": {
+      "linux_sha256": "42767f4fc320f739d38043a547d90af8784307434c38e5ab5e0517f8a52e6db4",
+      "release_sha256": "42767f4fc320f739d38043a547d90af8784307434c38e5ab5e0517f8a52e6db4",
+      "identical": true
+    },
+    "TilePredictor": {
+      "linux_sha256": "4ccc77448f6c36f998582b9283d0bfda1ca82b0d758e03d66c9f9d64346d2e09",
+      "release_sha256": "4ccc77448f6c36f998582b9283d0bfda1ca82b0d758e03d66c9f9d64346d2e09",
+      "identical": true
+    }
+  },
+  "repo_source_commit": "61d57c4e4bcfe82aa0369100c0a3b0739b70affa",
+  "prepared_input_integrity_check": {
+    "manifest_cases": 191,
+    "mismatched_case_ids": [],
+    "all_prepared_inputs_match": true
+  },
+  "production_source_commit": "366c8339e18563105ba41f82ea9d0ac6b6650077",
+  "fork_url": "https://github.com/simplecoreorg-cyber/GutAnalysisToolbox",
+  "release_tag": "apple-silicon-preview-1",
+  "release_zip_sha256": "014c88bf6a52951a5e842a0eeef0d1f154238cac3f0a20e497414b17d27c1abc",
+  "final_input_integrity_check": {
+    "time_utc": "2026-10-05T17:47:07.318147+00:00",
+    "manifest_cases": 191,
+    "mismatched_case_ids": [],
+    "all_inputs_unchanged": true
+  }
+}

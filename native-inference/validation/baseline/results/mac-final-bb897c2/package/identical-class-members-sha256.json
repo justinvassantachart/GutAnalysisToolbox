@@ -1,0 +1,1184 @@
+{
+  "plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.3.jar": {
+    "Analysis/CalciumAnalysis.class": {
+      "sha256": "d640126e1a5b69e69a25953b5914d2720313c633033e801d2b01a309199c0cc0",
+      "bytes": 9930
+    },
+    "Analysis/ConvertROIToLabels.class": {
+      "sha256": "66af117ecbdae69ea5a61c4978053a90907f87fd16323ad387ca7c361166d9f0",
+      "bytes": 1719
+    },
+    "Analysis/SingleCellTypeAnalysis.class": {
+      "sha256": "776684179942204a878e1101b7f32b004f8c98c5303ee70545d20255b4704b4a",
+      "bytes": 3438
+    },
+    "Analysis/SpatialSingleCellType.class": {
+      "sha256": "7e8cecebfef3772079c4e8ad3f9526928ae28a17c351019bc8761fdc6626cd73",
+      "bytes": 4339
+    },
+    "Analysis/SpatialTwoCellType.class": {
+      "sha256": "332d750ee7a7fb899d721550604bdfdd5de4a4ae27cb369e05149ed04715dd12",
+      "bytes": 8071
+    },
+    "Analysis/TemporalColorCoder$TemporalColorOutput.class": {
+      "sha256": "45b7b782ebe94c53ddc77f4a628fdd4c63cba05a226da154212722a22a599a12",
+      "bytes": 595
+    },
+    "Analysis/TemporalColorCoder.class": {
+      "sha256": "ca8afad66ad4ebc0161864731d4e2c68c8f49ba65986ae49f9f800774831be8b",
+      "bytes": 6365
+    },
+    "Analysis/TwoCellTypeAnalysis.class": {
+      "sha256": "9dcb3fb5649552cdc2fbef37968872c3d6a412c136f192bc8cab13c8e16ab27f",
+      "bytes": 3832
+    },
+    "Features/AnalyseWorkflows/GangliaOps$1.class": {
+      "sha256": "f52b8fef70b82a87be9aa880377f1129de5d51e23cef7752f84d69413950a071",
+      "bytes": 905
+    },
+    "Features/AnalyseWorkflows/GangliaOps$Result.class": {
+      "sha256": "15459012deaa77af9ed61b573443192fea545438aa25dc861b0d8ea5081437d5",
+      "bytes": 616
+    },
+    "Features/AnalyseWorkflows/GangliaOps.class": {
+      "sha256": "17a0a2c94b6348a97f898b5e71198bb790cf8eaf71f01807dbd80e5c1f7341cd",
+      "bytes": 8397
+    },
+    "Features/AnalyseWorkflows/NeuronsHuPipeline$HuResult.class": {
+      "sha256": "cc8c8738d958cab7c48c55ab4fb99e1bc64a41b09c83a5b053e074b30509d56d",
+      "bytes": 1218
+    },
+    "Features/AnalyseWorkflows/NeuronsHuPipeline.class": {
+      "sha256": "546e2e1f441a558a241937e57f54e2e81bd9cf0d95f82d16e445ef3eb7c3aa01",
+      "bytes": 14338
+    },
+    "Features/AnalyseWorkflows/NeuronsMultiNoHuPipeline$MarkerSpec.class": {
+      "sha256": "5deb920d663a3b99ef70035be2c8d6f5fa6d142275598f2620cf52cbe823927e",
+      "bytes": 1127
+    },
+    "Features/AnalyseWorkflows/NeuronsMultiNoHuPipeline$MultiParams.class": {
+      "sha256": "a66e62ed73afd7bbba2b30bafeb6c208e375a621ba8e936b1b06fd02b8e053b4",
+      "bytes": 1019
+    },
+    "Features/AnalyseWorkflows/NeuronsMultiNoHuPipeline$NoHuResult.class": {
+      "sha256": "9d477fb820729656cd51c90f60a636a280c0b1054efc4d13b507b0f68d11d6a1",
+      "bytes": 1574
+    },
+    "Features/AnalyseWorkflows/NeuronsMultiNoHuPipeline.class": {
+      "sha256": "611b09b39ffa849853108b1166419e46c363fa131e65cbc5063a58fa1f36a8da",
+      "bytes": 17095
+    },
+    "Features/AnalyseWorkflows/NeuronsMultiPipeline$MarkerSpec.class": {
+      "sha256": "4e3e84b4166f4d2752873d27f0d3180925bef51e98056da34ba6c168943ce552",
+      "bytes": 1328
+    },
+    "Features/AnalyseWorkflows/NeuronsMultiPipeline$MultiParams.class": {
+      "sha256": "e087eb099d21d4a5c71cd5e11574fef3c0a1810b175351aea64db8f05675b7e7",
+      "bytes": 1790
+    },
+    "Features/AnalyseWorkflows/NeuronsMultiPipeline$MultiResult.class": {
+      "sha256": "63e4e33058c3e0eec4be44aad3b6a5b98b289618c7219a91f98de704ca250741",
+      "bytes": 1765
+    },
+    "Features/AnalyseWorkflows/NeuronsMultiPipeline.class": {
+      "sha256": "cd4bb1d7594bb909196467f60ec852bcd21c958436aefa932f9f5449317f4858",
+      "bytes": 16511
+    },
+    "Features/Core/Params$GangliaMode.class": {
+      "sha256": "a9a77d5d72bacb1d37e12a0038fed1871b42a11d0b971be0bd03428d1cec4a44",
+      "bytes": 1308
+    },
+    "Features/Core/Params.class": {
+      "sha256": "869150511e72a2517ff09792458476931536fa2480d7214fbcc0b7fdd13ab70c",
+      "bytes": 3913
+    },
+    "Features/Core/PluginCalls$GangliaPrep.class": {
+      "sha256": "1fb9155cb82a0502d18ac5260db288076d47a1e7ddd597469419ced9355b4cf7",
+      "bytes": 559
+    },
+    "Features/Core/PluginCalls.class": {
+      "sha256": "f94ab374374005ac923e84160bda7c82088039cba63394ed7cb562fb07a53993",
+      "bytes": 23278
+    },
+    "Features/Inference/InferenceBackend.class": {
+      "sha256": "6a9fb185e45614a4961bbffe57c6e8a02dddac6ee1405caf67a8e4b55f1e19b2",
+      "bytes": 6210
+    },
+    "Features/Inference/NativeAlignmentClient.class": {
+      "sha256": "b4437551a68c8687ae6b0929114becbc2a61ed3c4078c7d67f8f85dcc2e0355d",
+      "bytes": 13511
+    },
+    "Features/Inference/NativeInferenceClient$BoundedDiagnostics.class": {
+      "sha256": "cf53a2118f3e54d286106203101508121e9ae8b368f76ffff14634eb822db778",
+      "bytes": 2892
+    },
+    "Features/Inference/NativeInferenceClient$Prediction.class": {
+      "sha256": "bc4520c55fc4d592dc8768c71e357f8edf1c5ee448d6bd5b60df5935fd2e5312",
+      "bytes": 611
+    },
+    "Features/Inference/NativeInferenceClient.class": {
+      "sha256": "09f99fb247afb0c7713da9919ce5cf5c74a54b57ae85bc8345a4f829f5bf90cf",
+      "bytes": 11576
+    },
+    "Features/Inference/NativeStarDist.class": {
+      "sha256": "a8f4d6f2ac779b94e1f86c9a3a7405e059b3aa68c495195e115eda44e9b071e2",
+      "bytes": 6011
+    },
+    "Features/Tools/AlignStack$AlignResult.class": {
+      "sha256": "7ff9c41e01dd640f87bde984b2a99af3ae8e32eb6de32042b23ad01adcd3efaa",
+      "bytes": 577
+    },
+    "Features/Tools/AlignStack$TemplateMotion.class": {
+      "sha256": "2724699752cf602d3cfca3420264bd691aea54f4ba5c13633772fd4a3df85748",
+      "bytes": 520
+    },
+    "Features/Tools/AlignStack.class": {
+      "sha256": "8fe893017646bd809c3d8c461b7dad4a7a8cb32b36e34c6dd29cd4562642e766",
+      "bytes": 16983
+    },
+    "Features/Tools/AlignStackBatch.class": {
+      "sha256": "8e346e8bdecdf9dd7e9933978b6c379fb4e041a080f2e829c46df009cde6671f",
+      "bytes": 5444
+    },
+    "Features/Tools/ImageOps.class": {
+      "sha256": "86aff869353bffabde2fe924baba023332f384184b9857bf2b32963711936563",
+      "bytes": 3576
+    },
+    "Features/Tools/LabelOps.class": {
+      "sha256": "135e284469d9583df72ae670502d9cafa79a5bcc51f59c11d9b8037419390309",
+      "bytes": 2408
+    },
+    "Features/Tools/OutputIO.class": {
+      "sha256": "6389a93d033f66156028ab62a9da737067cdb4cb13836a35872ca864d39bbd4e",
+      "bytes": 10307
+    },
+    "Features/Tools/ProgressUI.class": {
+      "sha256": "365ab7f5f3cd714ffdf91c6e3c811d4b4bf142aa17428ad8bb7a4fa1e2672eb7",
+      "bytes": 4642
+    },
+    "Features/Tools/RoiManagerHelper$RmHandle.class": {
+      "sha256": "9143981fa0d6f71a4d8000b9ad4fc8e9f776e69e6bdbe8f2d390269e8f921045",
+      "bytes": 571
+    },
+    "Features/Tools/RoiManagerHelper.class": {
+      "sha256": "80513aba83abbcc3c0d78348a125686c5b080b4b7928b129c9e1c5e27debfa4f",
+      "bytes": 1457
+    },
+    "Features/Tools/SegCommon$SegResult.class": {
+      "sha256": "d617636d8bf4d1168d8bc8d739f131fc357c2e89314d8e78483faab4aa2f3698",
+      "bytes": 965
+    },
+    "Features/Tools/SegCommon.class": {
+      "sha256": "145c9a2bf7217b701245656ee88a74285f7574f7c561b3cace6816befea0f9ae",
+      "bytes": 9054
+    },
+    "Features/Tools/SegOne.class": {
+      "sha256": "56f90fdca6731bb97d270a962731162853d344438174cc726aca31c6ce9d682e",
+      "bytes": 4837
+    },
+    "Features/Tools/SilentRun.class": {
+      "sha256": "3993e6e1a973a4929bd58a439fee30d96ef48e1c4b25007b80b8326bd762198a",
+      "bytes": 1122
+    },
+    "UI/GatPluginUI$1.class": {
+      "sha256": "c1902d71bbacb35073c0d0bdacfb74da7499fabba7f33eae5a35beefd9d98593",
+      "bytes": 1170
+    },
+    "UI/GatPluginUI.class": {
+      "sha256": "78e42d4f5111af4dfbb0c5cf3e97e686a7f6fda7c9e25ac9177f5c6c8e02e6a1",
+      "bytes": 7198
+    },
+    "UI/Handlers/AnalysisWindow$1.class": {
+      "sha256": "9f52304595f635d9f7f1cdc24eb9e14292ff2cc020ea5e53ca8e463e1e58b9e5",
+      "bytes": 1415
+    },
+    "UI/Handlers/AnalysisWindow.class": {
+      "sha256": "26c6f4eb59af581337e84233276f6a00c1975c59fb8405bcbcde1e1a4417d4f6",
+      "bytes": 2418
+    },
+    "UI/Handlers/Navigator.class": {
+      "sha256": "4c7750bccf8f56e825d5fc91aaae6356650c67f2e5e014916787d37d224b3d92",
+      "bytes": 150
+    },
+    "UI/Preflight$PluginSpec.class": {
+      "sha256": "7cad10b737d563c85a09bdcbff803f152bcb9b3bfc922fbf454e9c6405a4a4f0",
+      "bytes": 760
+    },
+    "UI/Preflight.class": {
+      "sha256": "175eae67f41bb27c744abdbab2e5d2c12c1b19728ca8a7f7931b37acbca8105f",
+      "bytes": 18010
+    },
+    "UI/panes/HomePane$1.class": {
+      "sha256": "baaee68a10773bfc2fd84abd73f1d805f8425354e27d3095d71626d64cbc6935",
+      "bytes": 1502
+    },
+    "UI/panes/HomePane$2.class": {
+      "sha256": "612e6379b90b75cd77dc1d0c6563ab909a22beafff612e5c17ef4e111d4b0e8c",
+      "bytes": 737
+    },
+    "UI/panes/HomePane$3.class": {
+      "sha256": "eb9c94d3b9cd5ac6c8772985e4117036f8ee7b7a043e83f928ccd9925721b9a0",
+      "bytes": 1384
+    },
+    "UI/panes/HomePane$4.class": {
+      "sha256": "eaa7dcb7b6c9498f496d140a7845ce8259fa3e3aae0fade090437590b78f1a08",
+      "bytes": 1122
+    },
+    "UI/panes/HomePane$DashBorder.class": {
+      "sha256": "28d3ef5dd73b4e115e98e17b2d504808d626cc0711b0bf9f2b604e61d52074a0",
+      "bytes": 1579
+    },
+    "UI/panes/HomePane.class": {
+      "sha256": "f81ff504aad1898f430f05c789cf0ccb2e23c757fdb27c66f9220dee7bd1825e",
+      "bytes": 15817
+    },
+    "UI/panes/Results/ResultsMultiNoHuUI$1.class": {
+      "sha256": "0277baa471fd2fe72106d1b9f57fa640f1344b16c765336d4591fbfe8393c14b",
+      "bytes": 1895
+    },
+    "UI/panes/Results/ResultsMultiNoHuUI$2.class": {
+      "sha256": "ac571aa8f470583fa7123b7c8b5c2c442f617f2425f07c8faa6402112709c06b",
+      "bytes": 1691
+    },
+    "UI/panes/Results/ResultsMultiNoHuUI$3.class": {
+      "sha256": "271dd9a6dc1f2e5399740e0b90573b2ac66c0635c296bf037bc05dcb66586320",
+      "bytes": 721
+    },
+    "UI/panes/Results/ResultsMultiNoHuUI$SpatialData.class": {
+      "sha256": "20b96724b3dfda4c012be3da5f9f16f211eb475ea11bf67cb7447526288a14de",
+      "bytes": 584
+    },
+    "UI/panes/Results/ResultsMultiNoHuUI$Stats.class": {
+      "sha256": "fdb567754d4d3fc76221448426c97dd64da2c5f2c8e31e05fd236b5abe5e6ec4",
+      "bytes": 693
+    },
+    "UI/panes/Results/ResultsMultiNoHuUI.class": {
+      "sha256": "f71124f94a3c0ae895b2367e2512453fb1d3557079ea1a3a7beff7f325efa987",
+      "bytes": 29824
+    },
+    "UI/panes/Results/ResultsMultiUI$1.class": {
+      "sha256": "6aabd41488cf9e444c2b5e71ccbb3469cfa4dc96d907d8b37930333c2400819c",
+      "bytes": 883
+    },
+    "UI/panes/Results/ResultsMultiUI$2.class": {
+      "sha256": "108c76f2ae2d0d97cc1533addc39b09592c7f33f0d19e436cc15b8940fc1773a",
+      "bytes": 1858
+    },
+    "UI/panes/Results/ResultsMultiUI$3.class": {
+      "sha256": "7da630a562f7f15c1236235ad6622469fdd9f116304c4c27281e89c781c1ced5",
+      "bytes": 1666
+    },
+    "UI/panes/Results/ResultsMultiUI$4.class": {
+      "sha256": "995c4c5808c65bea1bffc2f82e68106140dad028b47f38025827f6df40a67ea1",
+      "bytes": 705
+    },
+    "UI/panes/Results/ResultsMultiUI$SpatialDataset.class": {
+      "sha256": "1384e3e2e62d4b3ce7fca9fb8b421964448cdc24cb364f8688a96b8ab7a314f6",
+      "bytes": 577
+    },
+    "UI/panes/Results/ResultsMultiUI$Stats.class": {
+      "sha256": "a3d00c15351985dcb6328f0a431ccb8d1d2ab0198cfb18125bbdd64b397e7101",
+      "bytes": 677
+    },
+    "UI/panes/Results/ResultsMultiUI.class": {
+      "sha256": "a79278c7811f66b4b618525e5c2c36c5482706edd448dd0957530d0b6605e988",
+      "bytes": 32621
+    },
+    "UI/panes/Results/ResultsUI$1.class": {
+      "sha256": "39829bb231285c40b97232d8cb1704eeaa4f92f1d12da062ba04b085b1cf29b9",
+      "bytes": 1796
+    },
+    "UI/panes/Results/ResultsUI$2.class": {
+      "sha256": "d359b590858ce8ede961ecde5ef85e0b617778a6b10d9725fb3cf93b0408cdb3",
+      "bytes": 1628
+    },
+    "UI/panes/Results/ResultsUI$3.class": {
+      "sha256": "02fe058d944605e6f6d23d8a3e7d7321e5e07fdece5cd549c00b48459a92aa10",
+      "bytes": 845
+    },
+    "UI/panes/Results/ResultsUI$4.class": {
+      "sha256": "909c159b9bfacf43d71564c01825fe8abd334d0fdb9aac4dd41c906d38183711",
+      "bytes": 676
+    },
+    "UI/panes/Results/ResultsUI$Stats.class": {
+      "sha256": "c624d7b8dc86522a19adcb80e19213f1a552ebeb577b64f7e82b4d6fc5dd63de",
+      "bytes": 657
+    },
+    "UI/panes/Results/ResultsUI.class": {
+      "sha256": "cd34373ef25814ceb8108127c3f144ff00388c3e9a6e7ff0f34e77d6bb54ba3c",
+      "bytes": 24208
+    },
+    "UI/panes/SettingPanes/MultiChannelNoHuPane$1.class": {
+      "sha256": "0f6259c8b0291f2231c76f769d4e100dc93c0344233137b1f8cc3420e61f47e5",
+      "bytes": 2590
+    },
+    "UI/panes/SettingPanes/MultiChannelNoHuPane$2.class": {
+      "sha256": "de864cc9e7b632263a3d101e4897bd9c46e56279c73d05590fcae6568291f439",
+      "bytes": 2959
+    },
+    "UI/panes/SettingPanes/MultiChannelNoHuPane$MarkerRow.class": {
+      "sha256": "28231c40204c55f9584c2fb846d2e2c6c37e7b76e179c768e78a4bb64f5caa58",
+      "bytes": 6395
+    },
+    "UI/panes/SettingPanes/MultiChannelNoHuPane.class": {
+      "sha256": "a42456c4b456d3e4527c3a8c18fa0ebc375175bd16a54e60dbf89fe7843633b7",
+      "bytes": 22810
+    },
+    "UI/panes/SettingPanes/MultichannelPane$1.class": {
+      "sha256": "07b1129ccb78ec3b74a63cd52623c15b6dc75da08b2b930823b6605e80f01f35",
+      "bytes": 3227
+    },
+    "UI/panes/SettingPanes/MultichannelPane$2.class": {
+      "sha256": "f89b86923e2c8b6f924954d98f7fa8914f1eec143dba57ed5909603e891ce927",
+      "bytes": 2931
+    },
+    "UI/panes/SettingPanes/MultichannelPane$3.class": {
+      "sha256": "0bf028cec1d8f13bc310842a6e0bb9d1bc44069fc2d78ca640fe83aab339f90f",
+      "bytes": 813
+    },
+    "UI/panes/SettingPanes/MultichannelPane$MarkerRow.class": {
+      "sha256": "54f0a083fca08084a48b91599ca7929a74889a83227c3ba3f1c016f85561e5af",
+      "bytes": 6169
+    },
+    "UI/panes/SettingPanes/MultichannelPane.class": {
+      "sha256": "d80342c1f73b5e23fddb184aa719d804f64b894fcc2fc7f533ca0a467c5dcbfd",
+      "bytes": 27253
+    },
+    "UI/panes/SettingPanes/NeuronWorkflowPane$1.class": {
+      "sha256": "dc2872b5286db1aac8c331a3d2b9e67e3791dacaf995cb704bf8dc8d93e2fc59",
+      "bytes": 1091
+    },
+    "UI/panes/SettingPanes/NeuronWorkflowPane$2.class": {
+      "sha256": "e920c9d1795e796d25adc39b15d48f32993b17c85287d6f610c357c1cb176d62",
+      "bytes": 3572
+    },
+    "UI/panes/SettingPanes/NeuronWorkflowPane$3.class": {
+      "sha256": "1b6387a41fbab526f44f476ae84eaf9a34b96077d05ae7beb9af8c7876f73eb5",
+      "bytes": 2945
+    },
+    "UI/panes/SettingPanes/NeuronWorkflowPane$4.class": {
+      "sha256": "8b0a861d8c17687d309957fea7acbda3b63af407eec5b6586a5b9c67ea884260",
+      "bytes": 921
+    },
+    "UI/panes/SettingPanes/NeuronWorkflowPane.class": {
+      "sha256": "0e3f2bb2c65d55519c3538baecf2a38cd8dec11aa45e3d770d64a04691f66e3b",
+      "bytes": 22787
+    },
+    "UI/panes/SettingPanes/TemporalColorPane$1.class": {
+      "sha256": "cf037315325fe199697b99c02cee82bb52d9181836b0cd7fe378515aa96f215e",
+      "bytes": 2433
+    },
+    "UI/panes/SettingPanes/TemporalColorPane.class": {
+      "sha256": "7783aeb10019df57385799d1a80078ed5156e1aa29b05b9430f94fbef4da0f33",
+      "bytes": 10118
+    },
+    "UI/panes/SettingPanes/alignStackPane$1.class": {
+      "sha256": "169a35c7203d8b8f8d7979047261309a45291e54369ef54e0c3a42625303b24b",
+      "bytes": 5119
+    },
+    "UI/panes/SettingPanes/alignStackPane$2.class": {
+      "sha256": "463079f18d4d74515faaae78df9433be25b20bd6b04c51e3a77a9dc6728db120",
+      "bytes": 2905
+    },
+    "UI/panes/SettingPanes/alignStackPane.class": {
+      "sha256": "ca2017748604ad4e4fbcdf837241cdd469889dd39237b946cbfee3996cbbc424",
+      "bytes": 13731
+    },
+    "UI/panes/SettingPanes/calciumImagingAnalysisPane.class": {
+      "sha256": "fa35b2bc8b532d8952c18fb487a41ce14bfc7e5390ceca75c821b2f8f2c84056",
+      "bytes": 8206
+    },
+    "UI/panes/Tools/AnalyseNeuronsPane$OptionPanel$1.class": {
+      "sha256": "d016a05afae477c34060b7f8b16ad35ff5db6fea2182ea948f8e91ae76d84561",
+      "bytes": 970
+    },
+    "UI/panes/Tools/AnalyseNeuronsPane$OptionPanel.class": {
+      "sha256": "b1022242f698654bdbbbde3f3ac529e18d6aa327759d2cea0d73b2dfa233c366",
+      "bytes": 3184
+    },
+    "UI/panes/Tools/AnalyseNeuronsPane.class": {
+      "sha256": "93678632670485297e69fc7118886bc536a3015ae319b8e9477d03041afb6d0b",
+      "bytes": 4556
+    },
+    "UI/panes/Tools/AnalysisPane$1.class": {
+      "sha256": "baca47e00dd15a78d4eebb54036be64aecf36f6b73a58fca4e0ec69498c9b92a",
+      "bytes": 2510
+    },
+    "UI/panes/Tools/AnalysisPane$2.class": {
+      "sha256": "1d1cf8c56b84bc9a18fb4122ca5959086bf644bdd648b9704496c5fc7db9c0fb",
+      "bytes": 2675
+    },
+    "UI/panes/Tools/AnalysisPane.class": {
+      "sha256": "16a7601b2bfcef019928dca044cb6cf58d7ab31ba045856f5889a528475e8ac0",
+      "bytes": 7839
+    },
+    "UI/panes/Tools/CalciumImagingPane$OptionPanel$1.class": {
+      "sha256": "c2c542608afe48d5222ee8299a123b302c3f47b4c1d08090666e66dab42b6fd0",
+      "bytes": 970
+    },
+    "UI/panes/Tools/CalciumImagingPane$OptionPanel.class": {
+      "sha256": "784b43d73f1c2aaa05023ee290ca3708a0c3c286bc240ab58fd9b6244528784b",
+      "bytes": 3184
+    },
+    "UI/panes/Tools/CalciumImagingPane.class": {
+      "sha256": "406399704ddfb0c1456c87c5eca92af305cc84b5bb775bc3965011ca32cd62c7",
+      "bytes": 4592
+    },
+    "UI/panes/Tools/HelpAndSupportPane$LinkItem.class": {
+      "sha256": "dc984bf7a6509b2e1f6b5df6d0409fe839ed5cd276e6f761f0c4bc872b7ed811",
+      "bytes": 570
+    },
+    "UI/panes/Tools/HelpAndSupportPane.class": {
+      "sha256": "f2d4568b70aa3c8b0efa22e0e9881ac06292580bbfc7b535903fef35e240d9f7",
+      "bytes": 6861
+    },
+    "UI/panes/Tools/MultiplexPane$1.class": {
+      "sha256": "9fab9dfab110bb13e11ade8d962ccfd00ced4c1407b7953a04692170e8fb76f8",
+      "bytes": 3980
+    },
+    "UI/panes/Tools/MultiplexPane$LinkItem.class": {
+      "sha256": "64df0dab8c1520120fc51a2095a44bf0b64d9f376c1618c58ee01ce2a04102d4",
+      "bytes": 550
+    },
+    "UI/panes/Tools/MultiplexPane.class": {
+      "sha256": "70d2dee068aec1635c6f8402e7444dd9f4a678ab6ed58e7e92ccef767031f3cc",
+      "bytes": 12422
+    },
+    "UI/panes/Tools/ReviewUI.class": {
+      "sha256": "b66615434d956fee38cd4a47ad8e572ed902879c0c9dcfdd112ba70a8f3f4d99",
+      "bytes": 3512
+    },
+    "UI/panes/Tools/SpatialAnalysisPane$1.class": {
+      "sha256": "9a8ca521c078b32da4c65afb3b4f8f02e248aaaae7910b3a499e34ae3ccfa5c5",
+      "bytes": 2276
+    },
+    "UI/panes/Tools/SpatialAnalysisPane.class": {
+      "sha256": "08f39bb285679272ece95f2b63a6d672d4296ce5914b9e7c903e4e19c2b70316",
+      "bytes": 14928
+    },
+    "UI/panes/Tools/ToolsPane$1.class": {
+      "sha256": "080a8d6da94c9895b0cbd709968b1ecb24389e51be7f33ede5cdf818c34bbefb",
+      "bytes": 2759
+    },
+    "UI/panes/Tools/ToolsPane.class": {
+      "sha256": "0c3fd86aa6a9f4bbc01c1a26d4e4e258785bb151fd97972436b4d001a213f193",
+      "bytes": 10462
+    },
+    "UI/panes/Tools/TuningTools$1$1.class": {
+      "sha256": "84b1c1b6d0d0e36a47e72beaa8620136766eb092ccf0f3513f831986c7516adc",
+      "bytes": 1001
+    },
+    "UI/panes/Tools/TuningTools$1.class": {
+      "sha256": "0f83212828c44329099c242b4a0ee811a47855ad5751d827bb936f6b9075072e",
+      "bytes": 8207
+    },
+    "UI/panes/Tools/TuningTools$2.class": {
+      "sha256": "80693ed2ed82a1899b6f41dc932ca4963be41a35958b4d99e9cdf7137bbac529",
+      "bytes": 1982
+    },
+    "UI/panes/Tools/TuningTools$3.class": {
+      "sha256": "4a1b2834182e59351c35fd1eb342604cbb0427f589ade784662937d1ebd81540",
+      "bytes": 3074
+    },
+    "UI/panes/Tools/TuningTools$Row.class": {
+      "sha256": "c9eb35acb312fcef1cfd4e2262e50b14c9ae9ad79a9c02f9ac26958cc149e44a",
+      "bytes": 996
+    },
+    "UI/panes/Tools/TuningTools.class": {
+      "sha256": "be4dbc59f6b37739ad39ae94bed2ad3e2f761e3414f61b216488d9f6eb9c8cb7",
+      "bytes": 19850
+    },
+    "UI/panes/Tools/dialogs/GangliaExpansionDialog$Config.class": {
+      "sha256": "7b5032712ddb9e8a7e8eeff98ae8d66b51844b3a268b7065240c97145518aa95",
+      "bytes": 677
+    },
+    "UI/panes/Tools/dialogs/GangliaExpansionDialog.class": {
+      "sha256": "22fe3cd630b63f3d8c3cb6180cd0aa79176e6420c4fa02a4189d9dc39df0ad06",
+      "bytes": 9695
+    },
+    "UI/panes/Tools/dialogs/ProbabilityDialog$Config.class": {
+      "sha256": "451ca26d400bfb1dae5ebec2ca682e42d5cf71a6c4d0cca1e589b7997847a09d",
+      "bytes": 966
+    },
+    "UI/panes/Tools/dialogs/ProbabilityDialog$Mode.class": {
+      "sha256": "199ddab1c7342befb8b8fca10c8402cc9fab3ab2c0780848717c90b29723242b",
+      "bytes": 1297
+    },
+    "UI/panes/Tools/dialogs/ProbabilityDialog.class": {
+      "sha256": "a4f3553ae22368760bf9ed901ff7b8f92d00b9896ac79ca14a97bca1f2d3fc95",
+      "bytes": 12053
+    },
+    "UI/panes/Tools/dialogs/RescaleHuDialog$Config.class": {
+      "sha256": "9cce6766402bc62aa2af3579d5cc3b8dbd235c29141103c148696bb3d452faf2",
+      "bytes": 954
+    },
+    "UI/panes/Tools/dialogs/RescaleHuDialog$Mode.class": {
+      "sha256": "97c0f8598e2933cd01cb4153578852075dd31b25163be4a4741b1f33064a073a",
+      "bytes": 1281
+    },
+    "UI/panes/Tools/dialogs/RescaleHuDialog.class": {
+      "sha256": "922517ccef41720e5da1ce4d15d4224c24837eb6746a897b65de35d4dec952fb",
+      "bytes": 13645
+    },
+    "UI/panes/WorkflowDashboards/AlignStackDashboard.class": {
+      "sha256": "2fe46692fda50f6c06fd1ad776637648b396a8f9199d75b2390c5ccb0f4f5acb",
+      "bytes": 8039
+    },
+    "UI/panes/WorkflowDashboards/CalciumImagingAnalysisDashboard.class": {
+      "sha256": "87e107001195827efeb5dea8831d8c1d13fb8906c8bb1ca62935bed13357c6f9",
+      "bytes": 9024
+    },
+    "UI/panes/WorkflowDashboards/TemporalColourDashboardPane$1.class": {
+      "sha256": "918cd5f913ddf9a861f179d1537916ae2d1987772d16d26f92e1ff38f48cd40c",
+      "bytes": 2114
+    },
+    "UI/panes/WorkflowDashboards/TemporalColourDashboardPane.class": {
+      "sha256": "2760d6f021b6fcaae175456ff9a8eab627fa13bee4b2d2a3cbcb38a8036c2fad",
+      "bytes": 6305
+    },
+    "UI/util/ConfigIO.class": {
+      "sha256": "007423fa203b7b95e70518e8308f68ce131adc8bdd79e2c472d0937a30f688e2",
+      "bytes": 8069
+    },
+    "UI/util/FormUI$MiniInfoIcon.class": {
+      "sha256": "8f7e0a2759f0c73a10e3917b2b6a97fd78214bdb06eec0a1d0ef2a9dc0bc7b84",
+      "bytes": 2027
+    },
+    "UI/util/FormUI.class": {
+      "sha256": "79f0e1368d8c0d7f9dcc5cda973826489df370255df23ea6ae6765638321f5ca",
+      "bytes": 7548
+    },
+    "UI/util/GatSettings.class": {
+      "sha256": "79424cfe70a4c4f33f2e7bf2ce75a331ef0ecfb0ccceb98af229de0595887fc6",
+      "bytes": 4949
+    },
+    "UI/util/InputValidation.class": {
+      "sha256": "51206bf3dfb1d0609016713a2a1156490e4c1871792589d953227a025e092245",
+      "bytes": 4255
+    },
+    "jiconfont/DefaultIconCode.class": {
+      "sha256": "e7f11ae543ee3ab9c2e3d6fff9a741326a54bd993233de269e86e43b3de1360d",
+      "bytes": 925
+    },
+    "jiconfont/IconCode.class": {
+      "sha256": "905ab677e68ccb773e126f3e6b348546b1d687bdc2f92459f46ec77871616a47",
+      "bytes": 196
+    },
+    "jiconfont/IconFont.class": {
+      "sha256": "3cd8fb2730d58e4b51adb6dde5d533b10c417cacbcb629318b95d4b1458e9ded",
+      "bytes": 209
+    },
+    "jiconfont/swing/IconFontSwing.class": {
+      "sha256": "07f3f292713161244a34bd2aa2e2aaa2716bd9d171e6b4418c15b76c244a2224",
+      "bytes": 4679
+    },
+    "mdlaf/MaterialLookAndFeel.class": {
+      "sha256": "a2c92149819cfe54f3410afbabfef399aafe66b5461c992eb597821ee8f58705",
+      "bytes": 42919
+    },
+    "mdlaf/MaterialLookAndFeelInfo.class": {
+      "sha256": "8078f674081abbace3772e67a63e6d7072711571b4ac1612c39fcbcc7ec12c9a",
+      "bytes": 800
+    },
+    "mdlaf/animation/MaterialMouseHover.class": {
+      "sha256": "6d5aa2a4f8c18b32bc800ae82bd7008bb95225ce03d0c7d1113fec1c55cd54aa",
+      "bytes": 237
+    },
+    "mdlaf/animation/MaterialUIMovement.class": {
+      "sha256": "0ea60783f043afb99d59c228d02b592ca5517e8bb4aba3f82e23ceb8b106ecf5",
+      "bytes": 1795
+    },
+    "mdlaf/animation/MaterialUIStaticMovement.class": {
+      "sha256": "8722205727e5b39ec4c5f1b6f1259570f407fcc3cafb4c7da822f3c6ce521d2f",
+      "bytes": 2106
+    },
+    "mdlaf/animation/MaterialUITimer.class": {
+      "sha256": "f8dff54720ea9007c714efe6b7812bf44c83d6f125075ffa7d42933cc8dca864",
+      "bytes": 4445
+    },
+    "mdlaf/components/button/MaterialButtonUI$MaterialListenerButtonEvent.class": {
+      "sha256": "e67ecddedf2c8f1e69572ce5e4c472475a7b1ade7177c5fb47455c1a2906b4ce",
+      "bytes": 2279
+    },
+    "mdlaf/components/button/MaterialButtonUI.class": {
+      "sha256": "d1e63981a0d2ec314cc77f65e28cbcdee823f4045bc35bb0dc3e6c112b5aca41",
+      "bytes": 9667
+    },
+    "mdlaf/components/button/MaterialButtonsComponentsUI.class": {
+      "sha256": "5a248e5cc4447b311a08146fb1a6e97f02c720f6e3f2c253f9ffaa62d1c6c5f8",
+      "bytes": 1257
+    },
+    "mdlaf/components/checkbox/MaterialCheckBoxUI$MaterialCheckBoxIcon.class": {
+      "sha256": "58814e3d2a7feff2ad1f4733d6e254e982942b392876f859506f633751bcdf23",
+      "bytes": 1990
+    },
+    "mdlaf/components/checkbox/MaterialCheckBoxUI$MouseHoverEvent.class": {
+      "sha256": "1ebf9dcf8b0f72e93180acfbaf5bc3fc3e2ce079d73e35da9cbff2dcc57d625a",
+      "bytes": 1538
+    },
+    "mdlaf/components/checkbox/MaterialCheckBoxUI.class": {
+      "sha256": "5ff1ac275db3404ff44114ec172da88b5d50fcaa6c34007dc15eefb194aced23",
+      "bytes": 3688
+    },
+    "mdlaf/components/checkboxmenuitem/MaterialCheckBoxMenuItemUI.class": {
+      "sha256": "d006ac34d4acbee3f0691269dd76018b870d139034efaf6fb8663fd5ff2750d7",
+      "bytes": 1997
+    },
+    "mdlaf/components/colorchooser/MaterialColorChooser.class": {
+      "sha256": "f8aff115f814e4a3cd239cf3fc3faf8a0700361bc12e02e353b3c4e3152f4870",
+      "bytes": 769
+    },
+    "mdlaf/components/combobox/MaterialComboBoxEditor.class": {
+      "sha256": "cf7807701f498e2d47a84b4e4de35254133fd0777ea6df58acd6450cc0863145",
+      "bytes": 743
+    },
+    "mdlaf/components/combobox/MaterialComboBoxRenderer.class": {
+      "sha256": "f4db476e3d037bddc068b99fb6f406c2859f3745edaed27c1f2004e38cc198d3",
+      "bytes": 902
+    },
+    "mdlaf/components/combobox/MaterialComboBoxUI$ArrowButtonComboBox$ArrowButtonComboboxBoxUI.class": {
+      "sha256": "f9d639736a52c9e9480000928df687b3a347f6ea94b899178d7d06cdaf8299c2",
+      "bytes": 2522
+    },
+    "mdlaf/components/combobox/MaterialComboBoxUI$ArrowButtonComboBox$ArrowIcon.class": {
+      "sha256": "1f971c2c6b013494850cc4d2e50857917f01c62617d4edd879f8351ee5656f56",
+      "bytes": 2212
+    },
+    "mdlaf/components/combobox/MaterialComboBoxUI$ArrowButtonComboBox.class": {
+      "sha256": "06357523eba15ae10c4e346948994b992202236818a306f18b34cb6be5ceef83",
+      "bytes": 1067
+    },
+    "mdlaf/components/combobox/MaterialComboBoxUI$FocusListenerColor.class": {
+      "sha256": "95d94229d817acb0f2eed8c9aadc0022580081642f19811c249fd58655f8856f",
+      "bytes": 1717
+    },
+    "mdlaf/components/combobox/MaterialComboBoxUI$MaterialComboBoxPopup.class": {
+      "sha256": "e7b68f2e52a6758e1c8cd178823375034f4a495d3d3bc22c0aa1d6de10665d26",
+      "bytes": 1589
+    },
+    "mdlaf/components/combobox/MaterialComboBoxUI.class": {
+      "sha256": "220afa9073cde5778e1c1dc6f7b9e471ac29cc9ca7f1771d4c473af57ab3ed68",
+      "bytes": 6585
+    },
+    "mdlaf/components/editorpane/MaterialEditorPaneUI.class": {
+      "sha256": "aa0734797e3f3582d61ae3cc317d2b6b3acc0884d218b869fed2969a72292f89",
+      "bytes": 535
+    },
+    "mdlaf/components/filechooser/MaterialFileChooserUI$MaterialFileChooserEvents.class": {
+      "sha256": "52092a42924a9fcbb5dbe5b47d3115e2b407cbaa824d2fa9de0ac7e79a23a851",
+      "bytes": 1380
+    },
+    "mdlaf/components/filechooser/MaterialFileChooserUI.class": {
+      "sha256": "bfdec040061a6d74831268cb346a03df8db4e2c972982b932617818004faa401",
+      "bytes": 3171
+    },
+    "mdlaf/components/formattertextfield/MaterialFormattedTextFieldUI.class": {
+      "sha256": "f0deb28a3777b70f888dde379563c3083d74b61360077cf81cd51ebe46d4046c",
+      "bytes": 1437
+    },
+    "mdlaf/components/internalframe/MaterialInternalFrameTitlePane$ButtonTitlePane.class": {
+      "sha256": "ae7fb8bd57af50f72cead3297eb2285c8d719acefe6f204d377b366cbc1af7ce",
+      "bytes": 1055
+    },
+    "mdlaf/components/internalframe/MaterialInternalFrameTitlePane.class": {
+      "sha256": "d26b020b066b10250f3bb47fda16bbb9bfc0f16f589a15f77bac1d300cf123ed",
+      "bytes": 1374
+    },
+    "mdlaf/components/internalframe/MaterialInternalFrameUI.class": {
+      "sha256": "35d531dd4cdef122bc65a23c744683ba8fa4e09a84c237a6347c28922f3eb04c",
+      "bytes": 1795
+    },
+    "mdlaf/components/label/MaterialLabelUI.class": {
+      "sha256": "9eaf66b2114777c186ab8dbca47d9eb1407153647dcb7288bdf57cb9a3b15103",
+      "bytes": 1742
+    },
+    "mdlaf/components/list/MaterialListCellRenderer.class": {
+      "sha256": "1da3366815238a159a73f5eadbb1d2095d8d50d003ea7aab70e8bd48e7937b25",
+      "bytes": 1166
+    },
+    "mdlaf/components/list/MaterialListUI.class": {
+      "sha256": "341507e155ca4dcf0457690beeefd7d14cf45dbf2e6e6a025c17010612a1d404",
+      "bytes": 991
+    },
+    "mdlaf/components/menu/MaterialMenuArrowIcon.class": {
+      "sha256": "5b62d8fb291c46e793d10285625a723bae9b3655680a172f7b0ea7dc26bd337f",
+      "bytes": 1723
+    },
+    "mdlaf/components/menu/MaterialMenuUI$1.class": {
+      "sha256": "67cca9bd2917373c762893639e9ad620a5071c5433f39f32555394a6faf4bc69",
+      "bytes": 234
+    },
+    "mdlaf/components/menu/MaterialMenuUI$MouseHover.class": {
+      "sha256": "5a798168646feb15e68fcf1fdf5c288deaf2bcafbb7222701ba1da6898255777",
+      "bytes": 1663
+    },
+    "mdlaf/components/menu/MaterialMenuUI.class": {
+      "sha256": "53ec1d481867d57089487cfc227828def12433038ef780e038a0768b839dc28c",
+      "bytes": 2233
+    },
+    "mdlaf/components/menubar/MaterialMenuBarUI.class": {
+      "sha256": "c235ac581407d6b7698c57c40a61c4ed4fe77662e5c18966df6e5f240b87bb33",
+      "bytes": 1040
+    },
+    "mdlaf/components/menuitem/MaterialMenuItemUI.class": {
+      "sha256": "64a175db347e5df854324c4026c87af9182d06129c0df235b7cc0a3e3169d790",
+      "bytes": 1355
+    },
+    "mdlaf/components/optionpane/MaterialOptionPaneUI.class": {
+      "sha256": "f643286d34c5f4244f922a48fd0bc9f1a7bb1cc09cfb9314c82b9a55b6540c8c",
+      "bytes": 1016
+    },
+    "mdlaf/components/panel/MaterialPanelUI.class": {
+      "sha256": "398b1bd64f987e762a22d5a6e7dc9a569dcbf4c867a2e853b64cc4811cd0d90a",
+      "bytes": 913
+    },
+    "mdlaf/components/password/MaterialPasswordFieldUI$1.class": {
+      "sha256": "5051c9252cc56badb2dad91a6b09722176a5b677954058f0baafb9746aad5aac",
+      "bytes": 269
+    },
+    "mdlaf/components/password/MaterialPasswordFieldUI$MaterialPasswordView.class": {
+      "sha256": "7cc6fd24cb331fe4d306d1614514d3e57aa7dc7f1ade85a2137319fc7824d4b0",
+      "bytes": 2082
+    },
+    "mdlaf/components/password/MaterialPasswordFieldUI.class": {
+      "sha256": "d4e57766018e7ee93da283a1e39c1890b5a96f174d5580cba312043a5291d050",
+      "bytes": 3941
+    },
+    "mdlaf/components/popupmenu/MaterialPopupMenuUI.class": {
+      "sha256": "47b4d01ea7bfb526e4d66da0b22091eae625e6d327ee3d865da60df1a7a34389",
+      "bytes": 937
+    },
+    "mdlaf/components/progressbar/MaterialProgressBarUI.class": {
+      "sha256": "27b15a47fffb3d2ba52da3f1c8e8c6a8578e2de59e8a1e85a90d114b5fb21e9e",
+      "bytes": 769
+    },
+    "mdlaf/components/radiobutton/MaterialRadioButtonUI$AnimatedIconAdapter.class": {
+      "sha256": "d5bfaf9e7f8ff02ca461e27c5d454d86832bd2e5f618e3b6130b6453079809aa",
+      "bytes": 1794
+    },
+    "mdlaf/components/radiobutton/MaterialRadioButtonUI$MaterialRadioButtonIcon.class": {
+      "sha256": "6a84f3439dfd244a421316c827e3d88d5899d88892fa81751304d2974bd1b351",
+      "bytes": 2041
+    },
+    "mdlaf/components/radiobutton/MaterialRadioButtonUI$MouseHoverEvent.class": {
+      "sha256": "8636ea8137d916066c9fa60a01301ac7ce9be99c978f22d601023184a8751918",
+      "bytes": 1580
+    },
+    "mdlaf/components/radiobutton/MaterialRadioButtonUI.class": {
+      "sha256": "ded8e6129804464137bfadaab220f8c5b5d0fb828dc125d2a400ab07d8f420a3",
+      "bytes": 3664
+    },
+    "mdlaf/components/radiobuttonmenuitem/MaterialRadioButtonMenuItemUI.class": {
+      "sha256": "aff9b02a65758843a647604f39b290c35b960b1c5d0201c7fd5ee2a916af9438",
+      "bytes": 2134
+    },
+    "mdlaf/components/rootpane/MaterialRootPaneUI$MaterialHandler.class": {
+      "sha256": "2baa80802f0c10faa1fc2a4c409ac6319208e3ce93ea0d6ece98e154c93bfe2b",
+      "bytes": 11588
+    },
+    "mdlaf/components/rootpane/MaterialRootPaneUI$MaterialLayout.class": {
+      "sha256": "1cec2bd6644219b1e0b886c0dec96bdfc160c92af22dd5a780c90f3cf5d1abab",
+      "bytes": 5302
+    },
+    "mdlaf/components/rootpane/MaterialRootPaneUI.class": {
+      "sha256": "c2b80169510c9056ce87b64370f1b27295d3f65a4b6e2d5aa4d81d818ff46985",
+      "bytes": 10727
+    },
+    "mdlaf/components/scrollbar/MaterialScrollBarUI.class": {
+      "sha256": "00e517c3ace84dd82c627d6d78b82d77349259be8921d003a68887465c4a9131",
+      "bytes": 4386
+    },
+    "mdlaf/components/separator/MaterialSeparatorUI.class": {
+      "sha256": "4b4f462c5652d702729ec4313db00f31e0587d534d51acd39e4cf983fc46b0ce",
+      "bytes": 709
+    },
+    "mdlaf/components/slider/MaterialSliderUI$Line.class": {
+      "sha256": "31b74604de508c6327861577c9ca676d6e00376707c38aef66ec72e3a2f07d0d",
+      "bytes": 602
+    },
+    "mdlaf/components/slider/MaterialSliderUI.class": {
+      "sha256": "d734d3080374d06ffb7de13c263e9bbb19f7959921888d0bd48f908a0ebb26ea",
+      "bytes": 4077
+    },
+    "mdlaf/components/spinner/MaterialSpinnerUI$ArrowButtonSpinner$SpinnerButtonUI.class": {
+      "sha256": "113d22f490783c543c6274e0fa4de26d218aaeef5a79669d949574be34f7514f",
+      "bytes": 2900
+    },
+    "mdlaf/components/spinner/MaterialSpinnerUI$ArrowButtonSpinner.class": {
+      "sha256": "7dc297aa0376707b764801c2f7ddac9ae833f3f6dad0cfa4b2f61d9ba9cab4d1",
+      "bytes": 1034
+    },
+    "mdlaf/components/spinner/MaterialSpinnerUI.class": {
+      "sha256": "74fae01d19aee17ca52c3047b7673c3d2c074950bf8bba4b186da9a11bf78365",
+      "bytes": 2499
+    },
+    "mdlaf/components/splitpane/MaterialSplitPaneUI$MaterialSplitPaneDivider.class": {
+      "sha256": "c7027b7b120c3c263dcec817edd700d02226336ab35381f255f1ce0cf686c712",
+      "bytes": 969
+    },
+    "mdlaf/components/splitpane/MaterialSplitPaneUI.class": {
+      "sha256": "b2260642357eab439a91181da2713e3d9c05123b7712e696acecc3e34afe0b88",
+      "bytes": 1637
+    },
+    "mdlaf/components/tabbedpane/MaterialTabbedPaneUI$ArrowButtonTabbedPane$ArrowButtonTabbedPaneUI.class": {
+      "sha256": "2bb5534cea241850357700b594e2a40270d0348c8124d07a2e298a4221dc1c86",
+      "bytes": 2369
+    },
+    "mdlaf/components/tabbedpane/MaterialTabbedPaneUI$ArrowButtonTabbedPane.class": {
+      "sha256": "3272f7a92d67640e21a7a82a81534520aafe1a5cedc0ec461bfc027b8d630b42",
+      "bytes": 2225
+    },
+    "mdlaf/components/tabbedpane/MaterialTabbedPaneUI$MaterialMouseHoverOnTab.class": {
+      "sha256": "3f42fb9053aa7158982993eaa4ff63f61f53ce9d2a6eee877281695e43c3b890",
+      "bytes": 2304
+    },
+    "mdlaf/components/tabbedpane/MaterialTabbedPaneUI$MaterialTabbedPaneLayout.class": {
+      "sha256": "0ff72cd22c789c45a3cc584e496abc2f578ff44741ddc7730d69889ab6faa89f",
+      "bytes": 2025
+    },
+    "mdlaf/components/tabbedpane/MaterialTabbedPaneUI.class": {
+      "sha256": "a7c530c49253b0c66052d07cde1798da774641f74e9fc9acf81cf997d73b1611",
+      "bytes": 9773
+    },
+    "mdlaf/components/table/MaterialTableCellEditor.class": {
+      "sha256": "315890a4b4d2942015b7d6f86aa74351c95e680be2b6920acc63f673b0dbd5f6",
+      "bytes": 1661
+    },
+    "mdlaf/components/table/MaterialTableCellRenderer.class": {
+      "sha256": "c10d4e9b57fec6dd3c73373339cdbc7a556c00222a5ed3f548fe5652d339c25a",
+      "bytes": 2050
+    },
+    "mdlaf/components/table/MaterialTableCellRendererCheckBox.class": {
+      "sha256": "e8ed48e290726a2f43c700779a446b7064c9967dcb05d38623a944865f3eaf48",
+      "bytes": 2369
+    },
+    "mdlaf/components/table/MaterialTableHeaderCellRenderer.class": {
+      "sha256": "2a07f6bcf0c7831b021f828763d81536bb896a0da54b139bb7ee9ad1fc9a9d94",
+      "bytes": 1412
+    },
+    "mdlaf/components/table/MaterialTableHeaderUI.class": {
+      "sha256": "c88f87b98edf3fb4b1e0594b07d4a6d0d455007ca49d033be875e417bd10657d",
+      "bytes": 1938
+    },
+    "mdlaf/components/table/MaterialTableUI.class": {
+      "sha256": "41d8413cde3ab31b40ac90652ac67d60e521085769507d4fcc653d28bb6acfbe",
+      "bytes": 3778
+    },
+    "mdlaf/components/taskpane/MaterialTaskPaneUI$MaterialPaneBorder.class": {
+      "sha256": "e21e33a2f1c1d6f06d59b4734668f1f93f100deb03bbcd78cf1fab7a382793e6",
+      "bytes": 3002
+    },
+    "mdlaf/components/taskpane/MaterialTaskPaneUI.class": {
+      "sha256": "b9d32398ccd962f68b386cf1fd2a7c6f71219fc31894b7f35d4505062c195a4f",
+      "bytes": 3443
+    },
+    "mdlaf/components/textarea/MaterialTextAreaUI.class": {
+      "sha256": "7a01713f912f7a74b7bec50ae25b0030f74ba0f75c2fc73c1172a9e9f7ff8a24",
+      "bytes": 1515
+    },
+    "mdlaf/components/textfield/MaterialComponentField$FocusListenerColorLine.class": {
+      "sha256": "c1d8f2604815a7625a487874292839b2c7a752166296f3b028a3a7ce19679789",
+      "bytes": 1474
+    },
+    "mdlaf/components/textfield/MaterialComponentField$MaterialPropertyChangeListener.class": {
+      "sha256": "8430d6f031749ed6204f9126849c151e371fc728345f038c12f7973b6916feb7",
+      "bytes": 2073
+    },
+    "mdlaf/components/textfield/MaterialComponentField.class": {
+      "sha256": "ecdcfaa21012ec8697290a009a88ed50ac6338d713b9c461e8fde45d31ebb4e1",
+      "bytes": 6536
+    },
+    "mdlaf/components/textfield/MaterialTextFieldUI.class": {
+      "sha256": "0a246bd2d8b49cce5773fd50a946a3e78456b9b6cdebaef073ef5cff8b3dc164",
+      "bytes": 2615
+    },
+    "mdlaf/components/textpane/MaterialTextPaneUI.class": {
+      "sha256": "6e47d433bb316afaed7dd22014620948b9c879af30daae0f29b0cb9b5278addd",
+      "bytes": 751
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$1.class": {
+      "sha256": "a385e253767d6e27943106a46707ee61b7eb4c6493b637fb0b53736bbffba3f0",
+      "bytes": 259
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$CloseAction.class": {
+      "sha256": "baadb2ec2d4d9d31de0ccfd85f092c3fd7e9bc49614f1afddc115ae3f1ba7bac",
+      "bytes": 1025
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$IconifyAction.class": {
+      "sha256": "cc855f4c0d5d649d581e3094b97e5bd1bfa10ecbbede84270c2bd27f9c067245",
+      "bytes": 1035
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$JButtonNoMouseHoverNative$JButtonNoMouseHoverUI.class": {
+      "sha256": "0fd7607f648badb89cd425849867a9c975135256ce5e237eacf34b81d31fedc9",
+      "bytes": 1762
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$JButtonNoMouseHoverNative.class": {
+      "sha256": "408f64bd7e4d2df18d601b4d92977ea3560ec0097b4532ea3eeff009a9187bd7",
+      "bytes": 1487
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$MaximizeAction.class": {
+      "sha256": "612b6e02efff2c44071c4a2e7c085361ef670abdf8bfa58b4983ed7bc9c41632",
+      "bytes": 1040
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$PropertyChangeHandler.class": {
+      "sha256": "11b82371217e504d805462505bbf7270ad443393de7420711b66b9568dc5eb9c",
+      "bytes": 1676
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$RestoreAction.class": {
+      "sha256": "7057a284a70270be3e4d8aee19e896cac2ed03817bdd77746af5352406a0b8a6",
+      "bytes": 1035
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$TitlePaneLayout.class": {
+      "sha256": "098dfa4fb494421afabef743e1ae739e453f436e03a937772acbc1e7be97cdb8",
+      "bytes": 3725
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI$WindowHandler.class": {
+      "sha256": "4ed2ab942d11db5a693a76e340cae16a483bfe4f211110dd95fcb82f07fb6f4c",
+      "bytes": 1228
+    },
+    "mdlaf/components/titlepane/MaterialTitlePaneUI.class": {
+      "sha256": "164d14f8a93def81c94fc4a262414a6ef9407b37f7ce91e08da4980388a9f4ef",
+      "bytes": 15839
+    },
+    "mdlaf/components/togglebutton/MaterialToggleButtonUI$MaterialToggleButtonIcon.class": {
+      "sha256": "f3e5ca6189cd481a4f9ecb0393574293210cd18017fe91e3a9e39a67c55ce0cb",
+      "bytes": 2058
+    },
+    "mdlaf/components/togglebutton/MaterialToggleButtonUI.class": {
+      "sha256": "ef96dea4137f460d1a20e1b1e13090fee38a85bd7b5be04c7a1a36827beb650b",
+      "bytes": 5154
+    },
+    "mdlaf/components/toolbar/MaterialToolBarUI$1.class": {
+      "sha256": "9a016ccdf71532c47775b360a877bf57ff4f862a743e9a7f7c43f282da2fac15",
+      "bytes": 1395
+    },
+    "mdlaf/components/toolbar/MaterialToolBarUI.class": {
+      "sha256": "d1fed1886279caf30d559a62d8d29ab04ec83b2b5100d4dbf3970b90f826e32e",
+      "bytes": 2162
+    },
+    "mdlaf/components/tooltip/MaterialToolTipUI.class": {
+      "sha256": "43c397add71a2227b85e998f40a3ca6f1665c029554486f55053e2b501b2230f",
+      "bytes": 517
+    },
+    "mdlaf/components/tree/MaterialTreeCellEditor$1.class": {
+      "sha256": "0479a4c4e2bc4c2c1d3a4f4e36718f33c77ff4be2f7cff966c2de0e7feadcf77",
+      "bytes": 891
+    },
+    "mdlaf/components/tree/MaterialTreeCellEditor.class": {
+      "sha256": "34403fc48cd715874c13576b15f97304a570a4de1cf10d6806d543d5d049082c",
+      "bytes": 1880
+    },
+    "mdlaf/components/tree/MaterialTreeCellRenderer.class": {
+      "sha256": "882de4069e9b061272b2d81815d2294f62d895610385b6e6b16e98ea94911d6c",
+      "bytes": 2042
+    },
+    "mdlaf/components/tree/MaterialTreeUI.class": {
+      "sha256": "2b3e3b4e6a28e280dff2a793fa919bb58613b7e3cc0ce6cf09359d97857d7fa0",
+      "bytes": 2318
+    },
+    "mdlaf/shadows/DropShadowBorder$Position.class": {
+      "sha256": "bc6d8bcdccb7c5b7d0ec87fee31ea756fbf42c15554133f30e2ca5fbc1b90bf7",
+      "bytes": 1471
+    },
+    "mdlaf/shadows/DropShadowBorder.class": {
+      "sha256": "eb1f7259a149daf8bd4c601caabe084a2413810792f7c9d3622a970058a82fcb",
+      "bytes": 8886
+    },
+    "mdlaf/shadows/RoundedCornerBorder.class": {
+      "sha256": "f46a678d7e2618f48ae4a05319942b019732cdfe65819ef65a662655fa26d67b",
+      "bytes": 3117
+    },
+    "mdlaf/themes/AbstractMaterialTheme.class": {
+      "sha256": "6251fe247c397829de52da6a695466e50e352abcd4aacdbffdd3976611f18913",
+      "bytes": 50635
+    },
+    "mdlaf/themes/JMarsDarkTheme.class": {
+      "sha256": "6325492ec0f268688464b8106b23a57c1b7e64c3e01fbb3e2ef0f093801d657e",
+      "bytes": 6623
+    },
+    "mdlaf/themes/MaterialLiteTheme.class": {
+      "sha256": "b5bb95f030c3a81504b9f1273921577360b1a3e977cfd0b27bcac81eaa9b8654",
+      "bytes": 5077
+    },
+    "mdlaf/themes/MaterialOceanicTheme.class": {
+      "sha256": "ccd2b5d393d43f2ee06fb1b618bbc09d4cf690a3951be5725fe476a4ffa33ec7",
+      "bytes": 7058
+    },
+    "mdlaf/themes/MaterialTheme.class": {
+      "sha256": "858e9511caed9afb20538092e2630f8688bc93591b616b51392c6502a6b4e565",
+      "bytes": 14341
+    },
+    "mdlaf/themes/exceptions/MaterialChangeThemeException.class": {
+      "sha256": "3d39c6b9204a42ff77b75d48c4b0039ae50714a68160c4fc26bb3d6632bd8386",
+      "bytes": 1011
+    },
+    "mdlaf/utils/MaterialBorders.class": {
+      "sha256": "64e223c5d496fcb43c16578fca9dcff402a75b55393d241e3fb64b64af66efe7",
+      "bytes": 1825
+    },
+    "mdlaf/utils/MaterialColors.class": {
+      "sha256": "d163d75ea14b26b8954563ef738054d02b2dbafb2c77af6aade1c87092d21401",
+      "bytes": 15974
+    },
+    "mdlaf/utils/MaterialDrawingUtils.class": {
+      "sha256": "d44f4cb83d988655ac883c4cbf5d10283322c10fa219688c04cc2216a0fd660c",
+      "bytes": 3243
+    },
+    "mdlaf/utils/MaterialFontFactory$MaterialTypeFont.class": {
+      "sha256": "65f47c762fb7a292073062ffa12043ee398fe466698ae8dcbc8696469d13175d",
+      "bytes": 1532
+    },
+    "mdlaf/utils/MaterialFontFactory.class": {
+      "sha256": "4a21dd1acafba22fd9da23a2ed90f02aaa29883cdae2c8a3c5a2d83bdc779445",
+      "bytes": 6027
+    },
+    "mdlaf/utils/MaterialImageFactory.class": {
+      "sha256": "02c320c3a3557df88b7bc4727f11205eec3a56f91b9a81cef39e5f47725bd153",
+      "bytes": 5533
+    },
+    "mdlaf/utils/MaterialManagerListener.class": {
+      "sha256": "495588728fd565ec658eb2e7ce19aaa6e8df68caefc80a5355d1d86709e08164",
+      "bytes": 1029
+    },
+    "mdlaf/utils/Utils.class": {
+      "sha256": "d4b777b61268d9eaa9fcd32825a1559221e040cea3be7e0ddcc4bc3289447b2c",
+      "bytes": 527
+    },
+    "mdlaf/utils/WrapperSwingUtilities.class": {
+      "sha256": "bd2a70d152591d994e0fccaf9e85837b2d7ed9e5f57436932d3a0386b059aa38",
+      "bytes": 2372
+    },
+    "mdlaf/utils/icons/IMaterialIconCode.class": {
+      "sha256": "e2cb18f945970ce32457e90420e82fdfec3b201fc29eb1fbf2d7a68b39062ea8",
+      "bytes": 159
+    },
+    "mdlaf/utils/icons/MaterialIconFont$1.class": {
+      "sha256": "7ab05badebb874813a1cd5afd2ff98d607511bd31dda93818acb539b75ec6d5d",
+      "bytes": 889
+    },
+    "mdlaf/utils/icons/MaterialIconFont.class": {
+      "sha256": "6f424a7d7105974ea176aa21fcbb80ec191531020c13c3ed7d28e33f7c25df9d",
+      "bytes": 67862
+    },
+    "services/merge/CsvMerger.class": {
+      "sha256": "5d2d5fb03a6c11f0427aa7d3738b88cb50f4bb4fada3ae8c0b6e7e4814f785f6",
+      "bytes": 10358
+    },
+    "services/merge/DefaultLabelStrategy.class": {
+      "sha256": "a1edce9dba957f78b7f72b64642760bc8356019682d7ba455d3680cb97680d67",
+      "bytes": 1068
+    },
+    "services/merge/DirectoryUtils$1.class": {
+      "sha256": "29ae7e2860e7c9fa3f8b7e7c612a324861ad5b3b61746963bf66b33c6ca87f22",
+      "bytes": 1053
+    },
+    "services/merge/DirectoryUtils$2.class": {
+      "sha256": "b14c6af7f0196ce4a1f1111960d216d5105c22c603894b4d18efaad72e1654f1",
+      "bytes": 1045
+    },
+    "services/merge/DirectoryUtils$3.class": {
+      "sha256": "7254545a9af4bf1dbbe23be91d22b1e523a8edae65172df73596aa673f8105da",
+      "bytes": 1032
+    },
+    "services/merge/DirectoryUtils$4.class": {
+      "sha256": "1def36974f273571511b0561f6fc5a8506394c973a12fb603e2219e8b40f1abe",
+      "bytes": 919
+    },
+    "services/merge/DirectoryUtils.class": {
+      "sha256": "7e9ab3061cf35d10ea8bf79ff15801b130ae70c181f1b487911f30223bcf5e7a",
+      "bytes": 5428
+    },
+    "services/merge/FileExtension.class": {
+      "sha256": "09a2f5c7066fc51768a017dc24d7bc74bf099541d1bb7e6a5f920796c4f65996",
+      "bytes": 2235
+    },
+    "services/merge/LabelStrategy.class": {
+      "sha256": "ff7d0847ac78c258bf891e88b654811ac2e3379ac8eb1bd79ff7ea8d0912c0a2",
+      "bytes": 278
+    },
+    "services/merge/MergeException.class": {
+      "sha256": "89c6efa128fb138205786a0244cc59e9b272ad1737df84d04c8e5c40b9f024c3",
+      "bytes": 530
+    },
+    "services/merge/MergeSwingTest.class": {
+      "sha256": "121d918619f1bc07a82844721b1d62d6f4a4987969b63863d3fda878d3a1c192",
+      "bytes": 4205
+    },
+    "services/multiplex/config/MultiplexConfig$Builder.class": {
+      "sha256": "792a872a4331060158a27a314dcc362457ce4c61ea2562631e70abe635c94df9",
+      "bytes": 2252
+    },
+    "services/multiplex/config/MultiplexConfig.class": {
+      "sha256": "a10b5acbe8a7c970afcca2e4dee3c7a207031aa5218457b952171665a6c59eae",
+      "bytes": 1858
+    },
+    "services/multiplex/core/FeatureMatching.class": {
+      "sha256": "fbf4bbf5d7489a17ef221500af9d1265d68dc0eb10b728445a04d42e97f128c5",
+      "bytes": 4156
+    },
+    "services/multiplex/core/MultiplexRegistrationService.class": {
+      "sha256": "3b384c885230de810efbfa40742e5a7afe95f127ffef633001606e9f1bc701c4",
+      "bytes": 14137
+    },
+    "services/multiplex/util/IJUtils.class": {
+      "sha256": "aad0a94270bfa22de7aa3a93218b5c6e3a874552cc6e1b837d06ea19ec875e38",
+      "bytes": 1194
+    },
+    "services/multiplex/util/NamingUtils.class": {
+      "sha256": "b3171b6ef291e389cbf26ab40401c01003243181bbaea72482ead187f906469f",
+      "bytes": 1348
+    }
+  },
+  "gat-native-inference/gat-native-inference.jar": {
+    "org/gatanalysis/inference/CsbdeepNormalizer.class": {
+      "sha256": "b5182b171441c21b3e1c91d819012ddd65a3b2ba172fe10d19c354a8dec082b7",
+      "bytes": 1333
+    },
+    "org/gatanalysis/inference/CsbdeepTiling.class": {
+      "sha256": "2bcb792a68ea0f08e22496ed814da37dbf459498f31b016b686b49d7c2789906",
+      "bytes": 4029
+    },
+    "org/gatanalysis/inference/ImageTensor.class": {
+      "sha256": "428e291f9da8d33c31a54e1a8116bfb581b424113b55589785d84f2025b53bd0",
+      "bytes": 1365
+    },
+    "org/gatanalysis/inference/ModelArchive.class": {
+      "sha256": "f97a62587067699805cc7ddebac49802997b3369398c68fd915cdd3a7b204a70",
+      "bytes": 6274
+    },
+    "org/gatanalysis/inference/NativeInferenceMain.class": {
+      "sha256": "d741ff77b7f2b99e925f8e4c84d2a17669d4b74329266e9bfbccbf6c1f0d8531",
+      "bytes": 5524
+    },
+    "org/gatanalysis/inference/TensorFlowPredictor.class": {
+      "sha256": "a996e37b0e12e7769b4b75e54191f1695d12e38ead859134e7642f76891a6fc8",
+      "bytes": 7680
+    },
+    "org/gatanalysis/inference/TensorProtocol.class": {
+      "sha256": "6e674db0a80dab136bb301568f144d0c9e1cbc24d3d4aedccb880c70f6e9f16a",
+      "bytes": 4991
+    },
+    "org/gatanalysis/inference/TilePredictor.class": {
+      "sha256": "4ccc77448f6c36f998582b9283d0bfda1ca82b0d758e03d66c9f9d64346d2e09",
+      "bytes": 335
+    }
+  },
+  "gat-native-alignment/gat-native-alignment.jar": {
+    "TemplateMatching/Align_slices.class": {
+      "sha256": "f9d4a25501a380e0cdff606896952162a281a57197a6da60799e5eed281949f9",
+      "bytes": 8659
+    },
+    "TemplateMatching/NativeAlignmentMain$Input.class": {
+      "sha256": "32f9460dab878a246c02aff4d91ff70ae449b914b1576b8ecfb8cee62c30a961",
+      "bytes": 556
+    },
+    "TemplateMatching/NativeAlignmentMain.class": {
+      "sha256": "a3cd3d245c0cc7f3dfb3b1a275bcf73a0fd661df87e40248c66b196098946149",
+      "bytes": 8209
+    },
+    "TemplateMatching/cvMatch_Template.class": {
+      "sha256": "a9bb15dbcbeb360c2693f36aec60be16fc6bd9c68795a4f9b55365c84d451ba2",
+      "bytes": 11641
+    }
+  }
+}

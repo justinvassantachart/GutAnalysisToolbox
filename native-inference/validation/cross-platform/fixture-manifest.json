@@ -1,0 +1,59 @@
+{
+  "format_version": 1,
+  "date_utc": "2026-10-05",
+  "reference_runtime": "TensorFlow Java 1.15.0 / TensorFlow 1.15.0, Linux x86-64",
+  "candidate_runtime": "TensorFlow Java 1.2.0 / TensorFlow 2.21.0",
+  "source": {
+    "url": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/DYM_22_7_Pr_Hu_crop.tif",
+    "sha256": "55251741add488f9a08cf5b33a4ee8ec3fd3023e25ffb0fc18800f80953948d7",
+    "shape": [
+      175,
+      175
+    ],
+    "dtype": "uint8",
+    "conversion": "Original unrescaled row-major grayscale pixels converted to big-endian float32 GATI v1; no crop or resize"
+  },
+  "model_source_base": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Models/",
+  "nms_source_commit": "aff59dbd3cdf88dfa567d4dd562eab943bf4f99b",
+  "probability_atol": 0.0001,
+  "probability_rtol": 0.0001,
+  "exact_gates": [
+    "raw 16-bit label raster",
+    "NMS count and candidate count",
+    "winner centers and label IDs",
+    "per-label uncalibrated raster area/centroid and raw-Hu integrated/mean intensity"
+  ],
+  "cases": [
+    {
+      "name": "neuron-hu-1",
+      "model": "2D_enteric_neuron_v4_1.zip",
+      "model_sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276",
+      "tiles": 1,
+      "probability_threshold": 0.5,
+      "nms_threshold": 0.3,
+      "exclude_boundary": 2,
+      "legacy_gato_sha256": "f9345945259ba56e493caeae80de2b58a947e622f9f4a3d2ddab0735fb80e175",
+      "interpretation": "technical runtime consistency on Hu marker"
+    },
+    {
+      "name": "subtype-hu-4",
+      "model": "2D_enteric_neuron_subtype_v4.zip",
+      "model_sha256": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8",
+      "tiles": 4,
+      "probability_threshold": 0.4,
+      "nms_threshold": 0.3,
+      "exclude_boundary": 2,
+      "legacy_gato_sha256": "3c28d72546b7bddbffb2cb3ff71243a2254fd62003bf8c9cd8c8aa880505e8cf",
+      "interpretation": "technical smoke only; Hu is not representative subtype input"
+    }
+  ],
+  "files": {
+    "hu-input.gati": "ffb3935d3cd50156eff66fb4ab961c65733591beb08cddc0af567a4eca58232b",
+    "neuron-hu-1.labels.u16be": "0fe525b3b13e0f69c2f5593c7f227324ff748044906874006095b3b37cb67b95",
+    "neuron-hu-1.probability.f32be": "be117e8853b97980ca798f2a17e37c28301ed55bce4aeb0a79676de24355388d",
+    "neuron-hu-1.summary.json": "1bb78e04764a2d65ab6478eb4e48f74acea10b5c7dc26a4bbf3923d0c4e71964",
+    "subtype-hu-4.labels.u16be": "a7a320e07bad81edccbcddfe4f3741c25c8e4007b264aacd0174abb0ce33f8fd",
+    "subtype-hu-4.probability.f32be": "f8c3131135f6436094dd2c5337739f2bb644e86e7a4ec1e0222f313ef25f26e9",
+    "subtype-hu-4.summary.json": "79beffec874f013f268d2599c3b973bcd927cd53932123f62933277fa3369335"
+  }
+}

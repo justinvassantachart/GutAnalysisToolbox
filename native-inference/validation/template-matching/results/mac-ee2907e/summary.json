@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "source_commit": "ee2907e371b12b1951a507141f797afedb460aef",
+  "run_id": 37369827047,
+  "job_id": 111963931249,
+  "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37369827047/job/111963931249",
+  "job_conclusion": "success",
+  "artifact_id": 11370540242,
+  "artifact_sha256": "37eff7ef0c97df86cee2f5d3caeedd76e2cd36f5fc3462f6c0119cd1b7c29639",
+  "cases": 6,
+  "frame_outputs_per_mode": 300,
+  "distinct_public_calcium_frames": 142,
+  "comparison_modes": [
+    "api_port",
+    "actual_adapter"
+  ],
+  "frame_count_note": "The same cases run through two paths. Reference1/reference71 reuse the same142 public frames; do not claim600 independent images.",
+  "independent_checks": [
+    {
+      "mode": "api_port",
+      "case": "synthetic8",
+      "frames": 4,
+      "exact_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "api_port",
+      "case": "synthetic16",
+      "frames": 4,
+      "exact_pixel_sha256": "34478886ae16a589baa4da2357cbbeecc02a57b48c931ffc2ea65747cbdcc96b",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "api_port",
+      "case": "synthetic8-ref3",
+      "frames": 4,
+      "exact_pixel_sha256": "bcabbd3dc052c93f1e45ddacfb0171a175a929d0890705c8341105a5f57ce28d",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "api_port",
+      "case": "synthetic16-ref2",
+      "frames": 4,
+      "exact_pixel_sha256": "5998703d2abfa924ea8ba118fd4c9514c320f7541b2cb01709ad4087dda5bf53",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "api_port",
+      "case": "public-calcium",
+      "frames": 142,
+      "exact_pixel_sha256": "b3cbd98e450bc74ac7c0a0f3ff646d477e946e45fbd1bae3053f28f13a982748",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "api_port",
+      "case": "public-calcium-ref71",
+      "frames": 142,
+      "exact_pixel_sha256": "c87c82a86e0b345efe7ec6572764d1acc175cbc02551ce8e0e1de1b7956a177d",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "actual_adapter",
+      "case": "synthetic8",
+      "frames": 4,
+      "exact_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "actual_adapter",
+      "case": "synthetic16",
+      "frames": 4,
+      "exact_pixel_sha256": "34478886ae16a589baa4da2357cbbeecc02a57b48c931ffc2ea65747cbdcc96b",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "actual_adapter",
+      "case": "synthetic8-ref3",
+      "frames": 4,
+      "exact_pixel_sha256": "bcabbd3dc052c93f1e45ddacfb0171a175a929d0890705c8341105a5f57ce28d",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "actual_adapter",
+      "case": "synthetic16-ref2",
+      "frames": 4,
+      "exact_pixel_sha256": "5998703d2abfa924ea8ba118fd4c9514c320f7541b2cb01709ad4087dda5bf53",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "actual_adapter",
+      "case": "public-calcium",
+      "frames": 142,
+      "exact_pixel_sha256": "b3cbd98e450bc74ac7c0a0f3ff646d477e946e45fbd1bae3053f28f13a982748",
+      "all_shifts_exact": true
+    },
+    {
+      "mode": "actual_adapter",
+      "case": "public-calcium-ref71",
+      "frames": 142,
+      "exact_pixel_sha256": "c87c82a86e0b345efe7ec6572764d1acc175cbc02551ce8e0e1de1b7956a177d",
+      "all_shifts_exact": true
+    }
+  ],
+  "csv_rows_verified": 300,
+  "csv_files_verified": 6,
+  "original_reference_sha256": "fa5cbcb330667911af446d7e85f84d8bae1eeffed6fea25282946e2612a978fa",
+  "port_comparison": {
+    "checks": [
+      {
+        "case": "synthetic8",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "frames": 4,
+        "aligned_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+        "milliseconds": 829
+      },
+      {
+        "case": "synthetic16",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "frames": 4,
+        "aligned_pixel_sha256": "34478886ae16a589baa4da2357cbbeecc02a57b48c931ffc2ea65747cbdcc96b",
+        "milliseconds": 52
+      },
+      {
+        "case": "synthetic8-ref3",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "frames": 4,
+        "aligned_pixel_sha256": "bcabbd3dc052c93f1e45ddacfb0171a175a929d0890705c8341105a5f57ce28d",
+        "milliseconds": 80
+      },
+      {
+        "case": "synthetic16-ref2",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "frames": 4,
+        "aligned_pixel_sha256": "5998703d2abfa924ea8ba118fd4c9514c320f7541b2cb01709ad4087dda5bf53",
+        "milliseconds": 26
+      },
+      {
+        "case": "public-calcium",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "frames": 142,
+        "aligned_pixel_sha256": "b3cbd98e450bc74ac7c0a0f3ff646d477e946e45fbd1bae3053f28f13a982748",
+        "milliseconds": 3166
+      },
+      {
+        "case": "public-calcium-ref71",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "frames": 142,
+        "aligned_pixel_sha256": "c87c82a86e0b345efe7ec6572764d1acc175cbc02551ce8e0e1de1b7956a177d",
+        "milliseconds": 2528
+      }
+    ],
+    "requested_platform": "macosx-arm64",
+    "engine": "modern",
+    "java": "21.0.12.1",
+    "arch": "aarch64",
+    "cold_process_wall_seconds": 8.132444917000015,
+    "author_commit": "e64b9816cb24403542d45457d915f9861f24fa12",
+    "input_sha256": "3ff6e4eb82a1ee4cd128c079a97c7d99be2be51168cbe4c9a0fe6e77e13f91af",
+    "legacy_reference_sha256": "fa5cbcb330667911af446d7e85f84d8bae1eeffed6fea25282946e2612a978fa",
+    "port_source_sha256": "2698cfdcbd00dc2852e7d100aa1da1ad9ed9c0fa324a5ba52fc3c2f99d29549d",
+    "dependency_artifacts": [
+      {
+        "filename": "ij-1.54p.jar",
+        "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+      },
+      {
+        "filename": "javacv-1.5.12.jar",
+        "sha256": "79ddd361c82f9f6d3e05424470639ba7faf0a66764a0b18a139c881e046a905b"
+      },
+      {
+        "filename": "javacpp-1.5.12.jar",
+        "sha256": "898f636c1fcb092c3810587ed847b033946799bb56eefec9d4c088a780bf36fe"
+      },
+      {
+        "filename": "javacpp-1.5.12-macosx-arm64.jar",
+        "sha256": "7fad9210bdbd88ca3666a6d0991d202849587985273b648ffe6bc59be1869fe5"
+      },
+      {
+        "filename": "opencv-4.11.0-1.5.12.jar",
+        "sha256": "c50b3ee9780c4a0fbb1335317e7bb99ca32c40162a55680828e01bc98e1e2382"
+      },
+      {
+        "filename": "openblas-0.3.30-1.5.12.jar",
+        "sha256": "802ca4bb29b76b11dff644174352a34efc8eb76bca3325cbd38b3a1f2ef69ea6"
+      },
+      {
+        "filename": "opencv-4.11.0-1.5.12-macosx-arm64.jar",
+        "sha256": "41bbadd0187788ad5789188cbba476b9bb1ed36ab9b8edac518cd2641655f36c"
+      },
+      {
+        "filename": "openblas-0.3.30-1.5.12-macosx-arm64.jar",
+        "sha256": "5fbd3dcaf764b242c1088a3cf896337ed30ad14b6f84b9ceb87f7c08144c4aa7"
+      }
+    ],
+    "scope": "Original alignment algorithm and ImageJ translation with API-only OpenCV port; not GAT GUI/process integration"
+  },
+  "adapter_comparison": {
+    "checks": [
+      {
+        "case": "synthetic8",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "adapter_seconds": 1.921233042
+      },
+      {
+        "case": "synthetic16",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "adapter_seconds": 0.782039875
+      },
+      {
+        "case": "synthetic8-ref3",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "adapter_seconds": 1.859245416
+      },
+      {
+        "case": "synthetic16-ref2",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "adapter_seconds": 0.730915792
+      },
+      {
+        "case": "public-calcium",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "adapter_seconds": 3.505634042
+      },
+      {
+        "case": "public-calcium-ref71",
+        "status": "PASS",
+        "mismatched_fields": [],
+        "adapter_seconds": 3.80032575
+      }
+    ],
+    "scope": "Actual GAT alignTemplateMatching \u2192 isolated process \u2192 translated pixels and verified motion CSV; fixed public/synthetic controls",
+    "reference_sha256": "fa5cbcb330667911af446d7e85f84d8bae1eeffed6fea25282946e2612a978fa",
+    "input_sha256": "3ff6e4eb82a1ee4cd128c079a97c7d99be2be51168cbe4c9a0fe6e77e13f91af"
+  },
+  "scope": "Exact technical shift/pixel/CSV regression against unchanged old Linux algorithm; no biological accuracy or complete GUI claim."
+}

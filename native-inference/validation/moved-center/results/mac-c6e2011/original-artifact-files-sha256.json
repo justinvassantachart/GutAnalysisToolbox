@@ -1,0 +1,14 @@
+{
+  "actual.nms.json": {
+    "sha256": "8ebc387ba7a85058e997263324414877c49387f8b3abe36a6a6af0a17b7951de",
+    "bytes": 2159
+  },
+  "actual.polygons.gz": {
+    "sha256": "b440c0f5fecd1a11d3ab54c81399dc4e1eaf8dfd918a78fd604ab203d1e4583e",
+    "bytes": 86600
+  },
+  "report.json": {
+    "sha256": "9be62739588468e51c39abb32b1e70a1b585060d4213ce2353eccb5346cba3fd",
+    "bytes": 157746
+  }
+}

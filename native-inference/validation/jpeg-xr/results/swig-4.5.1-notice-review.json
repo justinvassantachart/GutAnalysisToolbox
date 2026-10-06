@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-10-05T20:40:00Z",
+  "scope": "Optional JPEG-XR packaging generator notices/version gate only; no codec, JNI ABI, checker, production or shared-workflow changes",
+  "status": "official_notices_verified_and_34_local_tests_passed_native_packaging_rerun_required",
+  "official_release_listing": "https://www.swig.org/download.html",
+  "official_release_tag_url": "https://api.github.com/repos/swig/swig/git/ref/tags/v4.5.1",
+  "official_tag_object_url": "https://api.github.com/repos/swig/swig/git/tags/41bd518180a539188a60061eb40e501734d86e04",
+  "official_tag_signature_status": "unsigned; provenance verified by official repository/tag/commit retrieval, not a signature claim",
+  "generator": {
+    "version": "4.5.1",
+    "upstream_commit": "88649f559942c29a228fa783dd01581e217bcb20",
+    "source_url": "https://github.com/swig/swig/tree/88649f559942c29a228fa783dd01581e217bcb20",
+    "notice_sha256": {
+      "LICENSE": "f53abaeed775018d519a1b9615f0ca17894772bd9ca21c2a156bf340ac41c13e",
+      "COPYRIGHT": "0ecb0b7b8363a337f1dc42d4b735983c08b1b65a462e778419d8b4fa5e541961",
+      "LICENSE-UNIVERSITIES": "7f50d942373a871211c5efee03f3db2f9efd1cff1002b0ef8e3748baa611a5c2",
+      "LICENSE-GPL": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    }
+  },
+  "generator_notice_git_blob_sha": {
+    "LICENSE": "d7a422fda118372a434ecdd3b3d870e71963578e",
+    "COPYRIGHT": "bfe284a6a4ba06e3f3849974d9a2391ee24ec72f",
+    "LICENSE-UNIVERSITIES": "44fcaa13f6e514c1cbb9e302cb21ec0c3236f9ec",
+    "LICENSE-GPL": "94a9ed024d3859793618152ea559a168bbcbb5e2"
+  },
+  "notice_comparison": "LICENSE, COPYRIGHT, LICENSE-UNIVERSITIES and LICENSE-GPL are byte-identical between official 4.5.0 commit d598176759f5d199e288cf78413cfaa3bf84449f and official 4.5.1 commit 88649f559942c29a228fa783dd01581e217bcb20. Shared SWIG-GPL-3.0.txt also matches exactly.",
+  "upstream_license_preserved": "Glencoe wrapper GPL-2.0-or-later; Microsoft codec BSD-style source/binary notices; SWIG library/output permissions and complete copyright/university notices. Upstream BSD-only POM is not treated as wrapper relicensing.",
+  "prior_native_failure_evidence": {
+    "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37369827047/job/111963931328",
+    "artifact_id": 11370160857,
+    "artifact_sha256": "d8d08968c89edb926df6f7e17274cb32358655cb65174942eeb804dd4d0208cb",
+    "swig_version": "4.5.1",
+    "fixtures_passed": 13,
+    "published_jni_signatures_matched": 59,
+    "exact_linux_reference": true,
+    "native_library_sha256": "19777cc4c6f2bb4f3f65851514324e304c0c6956c96299c85384222a4a5e543a",
+    "failure": "Packaging rejected SWIG 4.5.1 because only 4.5.0 generator notices had been reviewed; no completed overlay artifact from this run",
+    "evidence_sha256": {
+      "report.json": "d18bc26a5087c79bfde01e0171d8526e48f86c4ae4727e58efb9cb3f0e11cd88",
+      "swig-version.log": "fa7d7253caa844c577cb9dc30220f38b020d38b049d7119264087cc5bf5c568d",
+      "ci-job.log": "33ba8ecce04b32a0429710c674ae9c72a7702d3e08dfa5b4f42d0c5cfc12cdd2"
+    }
+  },
+  "validation": {
+    "host": "Linux x86_64",
+    "unit_test_command": "python3 -m unittest discover -s native-inference/validation/jpeg-xr -p 'test_*.py' -v",
+    "unit_tests_passed": 34,
+    "unit_tests_previous": 20,
+    "unit_tests_added": 14,
+    "unit_log": "swig-4.5.1-package-tests.log",
+    "unit_log_sha256": "fa891942068501fa54ea7dd2430a4718a3a977877930c28a3a36339e6fe9a749",
+    "syntax_commands": [
+      "sh -n native-inference/validation/jpeg-xr/overlay/rebuild.sh",
+      "python3 -m py_compile native-inference/validation/jpeg-xr/package-overlay.py native-inference/validation/jpeg-xr/test_package_overlay.py",
+      "git diff --check"
+    ],
+    "prior_native_report_and_real_swig_log_accepted": true,
+    "native_package_rerun": "NOT RUN by this local review; required on native macOS ARM64 with exact same reviewed SWIG generator, byte-identical regenerated JNI and final 13-fixture resource-JAR decode. Unit tests include mocked generation/build commands and do not establish native success."
+  },
+  "gates_retained_or_strengthened": [
+    "Only exact releases 4.5.0 and 4.5.1 accepted; unknown, suffix and ambiguous version logs rejected",
+    "Selected generator notices must match hardcoded reviewed hashes and commit-pinned source URLs; missing notices and manifest overrides rejected",
+    "Per-archive SWIG_VERSION and generator provenance recorded; source regeneration and offline rebuild require that exact reviewed version",
+    "Original source/native/hash/Mach-O/dependency/JNI/golden/provenance gates retained; old SWIG3 vector typemap unchanged"
+  ]
+}

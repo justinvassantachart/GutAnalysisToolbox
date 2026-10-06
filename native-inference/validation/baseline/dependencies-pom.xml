@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.gatanalysis.validation</groupId>
+  <artifactId>unchanged-baseline-dependencies</artifactId>
+  <version>1.0</version>
+  <properties>
+    <!-- The old plugin site distributes Intel Mac natives, not ARM64 natives. -->
+    <baseline.opencv.platform>macosx-x86_64</baseline.opencv.platform>
+  </properties>
+  <dependencyManagement><dependencies><dependency>
+    <groupId>org.scijava</groupId><artifactId>pom-scijava</artifactId><version>45.1.0</version><type>pom</type><scope>import</scope>
+  </dependency></dependencies></dependencyManagement>
+  <repositories><repository><id>scijava.public</id><url>https://maven.scijava.org/content/groups/public</url></repository></repositories>
+  <dependencies>
+    <!-- Same ImageJ foundation as the original GAT POM, with actual legacy menus. -->
+    <dependency><groupId>net.imagej</groupId><artifactId>imagej</artifactId><version>2.18.0</version></dependency>
+    <dependency><groupId>net.imagej</groupId><artifactId>ij</artifactId><version>1.54p</version></dependency>
+    <dependency><groupId>net.imagej</groupId><artifactId>imagej-legacy</artifactId><version>2.0.3</version></dependency>
+    <dependency><groupId>net.imagej</groupId><artifactId>imagej-ui-swing</artifactId><version>1.2.2</version></dependency>
+    <dependency><groupId>org.tensorflow</groupId><artifactId>tensorflow</artifactId><version>1.15.0</version></dependency>
+    <dependency><groupId>org.tensorflow</groupId><artifactId>libtensorflow</artifactId><version>1.15.0</version></dependency>
+    <dependency><groupId>org.tensorflow</groupId><artifactId>libtensorflow_jni</artifactId><version>1.15.0</version></dependency>
+    <dependency><groupId>org.tensorflow</groupId><artifactId>proto</artifactId><version>1.15.0</version></dependency>
+    <dependency><groupId>com.google.protobuf</groupId><artifactId>protobuf-java</artifactId><version>3.11.4</version></dependency>
+    <dependency><groupId>org.scijava</groupId><artifactId>scijava-io-http</artifactId><version>0.3.0</version></dependency>
+    <dependency><groupId>commons-codec</groupId><artifactId>commons-codec</artifactId><version>1.17.1</version></dependency>
+    <dependency><groupId>org.apache.commons</groupId><artifactId>commons-compress</artifactId><version>1.27.1</version></dependency>
+    <dependency><groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId><version>3.17.0</version></dependency>
+    <dependency><groupId>org.apache.commons</groupId><artifactId>commons-text</artifactId><version>1.6</version></dependency>
+    <dependency><groupId>com.google.code.gson</groupId><artifactId>gson</artifactId><version>2.11.0</version></dependency>
+    <dependency><groupId>org.bytedeco</groupId><artifactId>javacv</artifactId><version>1.4.4</version><exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions></dependency>
+    <dependency><groupId>org.bytedeco</groupId><artifactId>javacpp</artifactId><version>1.4.4</version></dependency>
+    <dependency><groupId>org.bytedeco.javacpp-presets</groupId><artifactId>opencv</artifactId><version>4.0.1-1.4.4</version></dependency>
+    <dependency><groupId>org.bytedeco.javacpp-presets</groupId><artifactId>opencv</artifactId><version>4.0.1-1.4.4</version><classifier>${baseline.opencv.platform}</classifier></dependency>
+  </dependencies>
+  <build><plugins><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId><version>3.8.1</version></plugin></plugins></build>
+</project>

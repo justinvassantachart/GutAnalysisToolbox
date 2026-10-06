@@ -1,0 +1,44 @@
+{
+  "source": "https://sites.imagej.net/CSBDeep/db.xml.gz",
+  "retrieved_utc_date": "2026-10-05",
+  "database_sha256": "a0e39765e2bf2e1c4a57a893fa1e3ca3d3a9a4dec8de383313624afcd7abe7c9",
+  "description": "Existing CSBDeep update-site dependency choices. Plugin files are downloaded from pinned timestamp URLs; TensorFlow 1.15.0 runtime artifacts are official Maven releases at the same versions. Update-site checksums use the ImageJ updater scheme; they are not claimed to be ordinary file SHA-1.",
+  "selected_records": [
+    {
+      "file": "jars/imagej-tensorflow-1.1.6.jar",
+      "checksum": "ab428dada65ddf59570706d3227cabbe65a7096a",
+      "timestamp": "20200706021812",
+      "filesize": "54120"
+    },
+    {
+      "file": "jars/libtensorflow-1.15.0.jar",
+      "checksum": "8c89a16d011b893b8e9800071b69c5352127a366",
+      "timestamp": "20200625011259",
+      "filesize": "2103016"
+    },
+    {
+      "file": "jars/libtensorflow_jni-1.15.0.jar",
+      "checksum": "61fb104c7a34afcb8a380396a6b069d8f964b7de",
+      "timestamp": "20200625011259",
+      "filesize": "141714774"
+    },
+    {
+      "file": "jars/proto-1.15.0.jar",
+      "checksum": "2f0b7ce4b72690cd3d13d2235db3e85f13134149",
+      "timestamp": "20200808215936",
+      "filesize": "2882802"
+    },
+    {
+      "file": "jars/tensorflow-1.15.0.jar",
+      "checksum": "24ba2cfdac6f78811648d559c07a75c4f310897f",
+      "timestamp": "20200625011259",
+      "filesize": "1825"
+    },
+    {
+      "file": "jars/csbdeep-0.6.0.jar",
+      "checksum": "95982ea62932563101b26d45cac22caa6efc677d",
+      "timestamp": "20200808215936",
+      "filesize": "142482"
+    }
+  ]
+}

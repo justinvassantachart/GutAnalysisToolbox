@@ -1,0 +1,55 @@
+{
+  "shape": [
+    175,
+    175,
+    97
+  ],
+  "probability_threshold": 0.4,
+  "nms_threshold": 0.3,
+  "boundary": 2,
+  "candidates": 36,
+  "count": 3,
+  "winner_centers": [
+    [
+      90.5,
+      44.5
+    ],
+    [
+      138.5,
+      2.5
+    ],
+    [
+      172.5,
+      154.5
+    ]
+  ],
+  "raster_object_count": 3,
+  "measurements": [
+    {
+      "label": 1,
+      "area_pixels": 408,
+      "integrated_intensity": 38854.0,
+      "centroid_x_pixels": 91.6470588235294,
+      "centroid_y_pixels": 45.345588235294116,
+      "mean_intensity": 95.23039215686275
+    },
+    {
+      "label": 2,
+      "area_pixels": 313,
+      "integrated_intensity": 22398.0,
+      "centroid_x_pixels": 146.34984025559106,
+      "centroid_y_pixels": 4.857827476038339,
+      "mean_intensity": 71.5591054313099
+    },
+    {
+      "label": 3,
+      "area_pixels": 225,
+      "integrated_intensity": 27948.0,
+      "centroid_x_pixels": 170.1888888888889,
+      "centroid_y_pixels": 155.35333333333332,
+      "mean_intensity": 124.21333333333334
+    }
+  ],
+  "raw_label_sha256": "a7a320e07bad81edccbcddfe4f3741c25c8e4007b264aacd0174abb0ce33f8fd",
+  "canonical_shape_sha256": "09f79acdc5f6ef6866fba4d089b76baf11e382ae047d4062d0486dd6dc9a934c"
+}

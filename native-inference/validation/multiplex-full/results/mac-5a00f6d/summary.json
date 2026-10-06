@@ -1,0 +1,656 @@
+{
+  "schema_version": 1,
+  "suite": "multiplex-full",
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+    "java": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+    },
+    "java_properties": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Property settings:\n    file.encoding = UTF-8\n    file.separator = /\n    ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16\n    http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16\n    java.class.path = \n    java.class.version = 65.0\n    java.home = <RUNNER_HOME>/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-101.0/arm64/Contents/Home\n    java.io.tmpdir = <RUNNER_TEMP>/\n    java.library.path = <RUNNER_HOME>/Library/Java/Extensions\n        /Library/Java/Extensions\n        /Network/Library/Java/Extensions\n        /System/Library/Java/Extensions\n        /usr/lib/java\n        .\n    java.runtime.name = OpenJDK Runtime Environment\n    java.runtime.version = 21.0.12.1+1-LTS\n    java.specification.name = Java Platform API Specification\n    java.specification.vendor = Oracle Corporation\n    java.specification.version = 21\n    java.vendor = Eclipse Adoptium\n    java.vendor.url = https://adoptium.net/\n    java.vendor.url.bug = https://github.com/adoptium/adoptium-support/issues\n    java.vendor.version = Temurin-21.0.12.1+1\n    java.version = 21.0.12.1\n    java.version.date = 2026-08-18\n    java.vm.compressedOopsMode = Zero based\n    java.vm.info = mixed mode, sharing\n    java.vm.name = OpenJDK 64-Bit Server VM\n    java.vm.specification.name = Java Virtual Machine Specification\n    java.vm.specification.vendor = Oracle Corporation\n    java.vm.specification.version = 21\n    java.vm.vendor = Eclipse Adoptium\n    java.vm.version = 21.0.12.1+1-LTS\n    jdk.debug = release\n    line.separator = \\n \n    native.encoding = UTF-8\n    os.arch = aarch64\n    os.name = Mac OS X\n    os.version = 15.7.9\n    path.separator = :\n    socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16\n    stderr.encoding = UTF-8\n    stdout.encoding = UTF-8\n    sun.arch.data.model = 64\n    sun.boot.library.path = <RUNNER_HOME>/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-101.0/arm64/Contents/Home/lib\n    sun.cpu.endian = little\n    sun.io.unicode.encoding = UnicodeBig\n    sun.java.launcher = SUN_STANDARD\n    sun.jnu.encoding = UTF-8\n    sun.management.compiler = HotSpot 64-Bit Tiered Compilers\n    user.country = US\n    user.dir = <RUNNER_CHECKOUT>\n    user.home = <RUNNER_HOME>\n    user.language = en\n    user.name = <RUNNER_USER>\n\nopenjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+    },
+    "git_revision": {
+      "exit_code": 0,
+      "stdout": "5a00f6d6a414f5bd59e0b5dc461eb469afda907c",
+      "stderr": ""
+    },
+    "git_dirty": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "github_actions": true,
+    "github_run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37375259755",
+    "hardware_scope": "Actual recorded runner, never inferred to be the user's physical M1",
+    "chip": {
+      "exit_code": 0,
+      "stdout": "Apple M1 (Virtual)",
+      "stderr": ""
+    },
+    "model": {
+      "exit_code": 0,
+      "stdout": "VirtualMac2,1",
+      "stderr": ""
+    },
+    "root_classpath": [
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imagej/ij/1.54p/ij-1.54p.jar",
+        "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/haesleinhuepf/clij_/1.9.0.1/clij_-1.9.0.1.jar",
+        "sha256": "8212a1bbbc4f199fd17615f351b7baa92fa54a841283d6f8b3c67743fbab4cb4"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/haesleinhuepf/clij-coremem/2.3.0.4/clij-coremem-2.3.0.4.jar",
+        "sha256": "307975b65c2ff68ba0d5b8d3be45b16998616d0bf352384d78432c63ba46c5d2"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/nativelibs4java/bridj/0.7.0/bridj-0.7.0.jar",
+        "sha256": "101bcd9b6637e6bc16e56deb3daefba62b1f5e8e9e37e1b3e56e3b5860d659cf"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/java/dev/jna/jna/5.14.0/jna-5.14.0.jar",
+        "sha256": "34ed1e1f27fa896bca50dbc4e99cf3732967cec387a7a0d5e3486c09673fe8c6"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/java/dev/jna/jna-platform/5.14.0/jna-platform-5.14.0.jar",
+        "sha256": "ae4caceb3840730c2537f9b7fb55a01baba580286b4122951488bcee558c2449"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imagej/imagej-common/2.1.1/imagej-common-2.1.1.jar",
+        "sha256": "aa0292e424d960378525837f7c4f30ed8adc6528655eafb87c6f2a8a995cc426"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scijava-table/1.0.3/scijava-table-1.0.3.jar",
+        "sha256": "b18f303bf087f3bdd8cb0a7311105798249e826b15cbdb94c24a6d861d72fbe3"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scijava-optional/1.0.2/scijava-optional-1.0.2.jar",
+        "sha256": "9f41b9bd4410b593177aa541a710f867118f0817038022c374b5774a779d19b7"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/edu/ucar/udunits/4.3.18/udunits-4.3.18.jar",
+        "sha256": "e392cd6b1829b5726da183f4060b54931bd384ce02ada37517c8b740fa4c41df"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imagej/imagej-legacy/2.0.3/imagej-legacy-2.0.3.jar",
+        "sha256": "109baf731a325f028c6f3e831db4414143d5deb77f2440523a1c4796407594d8"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/io/scif/scifio/0.49.0/scifio-0.49.0.jar",
+        "sha256": "057e7e5233e472168ed3e21c29b27e7b1e40ece28becc81b1baa5f2c7e628e58"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/io/scif/scifio-jai-imageio/1.1.1/scifio-jai-imageio-1.1.1.jar",
+        "sha256": "c7f7e4f714bfdc362112e0e457807fb06e5cf0d58c1af31ea12a5b0c95f89f19"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scijava-desktop/1.0.0/scijava-desktop-1.0.0.jar",
+        "sha256": "bbcd46627a71e182f48ef47d2856deac62102262983b8f40f16627517bf4c20e"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imagej/ij1-patcher/2.0.0/ij1-patcher-2.0.0.jar",
+        "sha256": "b68810263f9521ddb34bac272816613ebb71607775c1fc337079a0476c2b581a"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/io/github/classgraph/classgraph/4.8.181/classgraph-4.8.181.jar",
+        "sha256": "62a6436d69710ef5fab6ec243781ce4c5b299047ed1841b5f92746ae852ce545"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/javassist/javassist/3.30.2-GA/javassist-3.30.2-GA.jar",
+        "sha256": "eba37290994b5e4868f3af98ff113f6244a6b099385d9ad46881307d3cb01aaf"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imagej/imagej-deprecated/0.2.0/imagej-deprecated-0.2.0.jar",
+        "sha256": "629cda90503c0367348c6ee425c7d0128618de32ed15570f7fe9676784909768"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scijava-search/3.0.1/scijava-search-3.0.1.jar",
+        "sha256": "73d5e060f57e5856de77598f41052100477ef1b7b51c829c221f81481cbda8d3"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar",
+        "sha256": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/google/errorprone/error_prone_annotations/2.41.0/error_prone_annotations-2.41.0.jar",
+        "sha256": "a56e782b5b50811ac204073a355a21d915a2107fce13ec711331ad036f660fcc"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ocpsoft/prettytime/prettytime/4.0.1.Final/prettytime-4.0.1.Final.jar",
+        "sha256": "ef7098d973ae78b57d1a22dc37d3b8a771bf030301300e24055d676b6cdc5e75"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scijava-ui-awt/0.1.7/scijava-ui-awt-0.1.7.jar",
+        "sha256": "b103b8ea0be62a3d12d11db53c1ab49e34a70d2ff55ab7e8cc57ca41a7fd7fc2"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scijava-ui-swing/1.0.3/scijava-ui-swing-1.0.3.jar",
+        "sha256": "d9c1a641805af507460076592d0ce643c34fde782f9e240aa5a3c8667bc7c9c1"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scijava-plot/0.2.0/scijava-plot-0.2.0.jar",
+        "sha256": "3432f559ea20f7d5da20e38577dbc610ae1a992681a91f52c06b41dbe5e07f3b"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/swing-checkbox-tree/1.0.2/swing-checkbox-tree-1.0.2.jar",
+        "sha256": "79694c92031253a585fac2fe7ebd4cfe6b740e436aab2c58e6b334f5c0a4e60d"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/jfree/jfreechart/1.5.6/jfreechart-1.5.6.jar",
+        "sha256": "be7ae6310ca005ac98eceb74fa514af88cad098c808845786f762ca08a5b4bb3"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/jfree/jfreesvg/3.4.4/jfreesvg-3.4.4.jar",
+        "sha256": "2c02ebf810ed164a3e51c1bfd2705827aeb6816d71ce3ed54f21bb0ba60d2305"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/github/sbridges/object-inspector/object-inspector/0.1/object-inspector-0.1.jar",
+        "sha256": "a3a40398ee86a602a88cd5d5c702973443ebce48c22630f7aa850e9a9a3b17b8"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/sourceforge/jdatepicker/jdatepicker/1.3.2/jdatepicker-1.3.2.jar",
+        "sha256": "e2b8f768f0ee996083d01d192bf6f239122d7e2e8c2c44f0d15dcd13a53474d5"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/miglayout/miglayout-swing/5.3/miglayout-swing-5.3.jar",
+        "sha256": "ae384b680242234170de6b939bebf56effa40dd483477e13cd898104ba1e1de1"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/miglayout/miglayout-core/5.3/miglayout-core-5.3.jar",
+        "sha256": "cf3cb12d94b76c2f80c113977d0372d037784002943e566fcdac6b92d076935e"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.jar",
+        "sha256": "3c8616203d61a12a7e3487e8b34f3c198c2b5ba9e90da0c7ea32d99cd4958012"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imglib2/imglib2/8.0.0/imglib2-8.0.0.jar",
+        "sha256": "8a3c272f243e4fffa143fa20f4806b79aae3ae351ba0512b50a3d3d97a4fd258"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imglib2/imglib2-ij/2.0.3/imglib2-ij-2.0.3.jar",
+        "sha256": "80ba903bbc58ce6a428fc96f0146276483266be465fe33d4550fc093b4db684f"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imglib2/imglib2-cache/1.0.0-beta-20/imglib2-cache-1.0.0-beta-20.jar",
+        "sha256": "81e27d849b77690bf7a0394c70c38f1aa0cea02ff8b89672d1cafc4dfa1c6487"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/github/ben-manes/caffeine/caffeine/2.9.3/caffeine-2.9.3.jar",
+        "sha256": "1e0a7bbef1dd791653143f3f05d0e489934bf5481e58a87c9e619cd46b68729b"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/checkerframework/checker-qual/3.50.0/checker-qual-3.50.0.jar",
+        "sha256": "e268d1d5cb6029f06cfdff8fb638383ff22556039da25386a00c287da6a52dbe"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imglib2/imglib2-realtransform/4.0.5/imglib2-realtransform-4.0.5.jar",
+        "sha256": "c0395feade4e05f69f4dfca97b4671a48cff8993bd657680dca8cd71cf6fc1ad"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/gov/nist/math/jama/1.0.3/jama-1.0.3.jar",
+        "sha256": "c7325ee29be1aac1287ddac690f73671f1cd911ca9eca7c619990e86310556fd"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/jitk/jitk-tps/3.0.4/jitk-tps-3.0.4.jar",
+        "sha256": "929058aaf12151f563a25470f1bb218c736ee994ec676bb298746e10b91b3930"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-all/0.41/ejml-all-0.41.jar",
+        "sha256": "75172c94331a214677d12dd6fbd1ff8bf24120f383da8eea4926e7739b62e50a"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-core/0.41/ejml-core-0.41.jar",
+        "sha256": "8d36469e8414d79c875defc0af3b980525d384761c9471d15a4f365b936dd1d5"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-fdense/0.41/ejml-fdense-0.41.jar",
+        "sha256": "0ec25b3bcd950c2ce1c7d5389f958e5507ebf9f4c7a209a2b4236a73740aa98e"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-ddense/0.41/ejml-ddense-0.41.jar",
+        "sha256": "355347e9cac7e96d5d724d331a9b04bb14a8a02e1d111f1ac51c79f25d937123"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-cdense/0.41/ejml-cdense-0.41.jar",
+        "sha256": "ad06ef87a0e1b4b8152ebcbf8fa204a17a394b7cb0625c9b36f78181590ff907"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-zdense/0.41/ejml-zdense-0.41.jar",
+        "sha256": "5d44c52c24e2d6e702c2f5f775707f62a71055fdbc655da21389beca4427c3f9"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-dsparse/0.41/ejml-dsparse-0.41.jar",
+        "sha256": "278dbe323a3218697d687243da1a2ff0c88800825ebba02388274542519641ed"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-simple/0.41/ejml-simple-0.41.jar",
+        "sha256": "f8989a6df897b32789d2bc590c7ddc020c8e269180150322c1e812522fce96a7"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ejml/ejml-fsparse/0.41/ejml-fsparse-0.41.jar",
+        "sha256": "8ddb3bfa0de174c16e57b7b08b60d0f324a4f99e574033c4fc77508e2516ce41"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+        "sha256": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imglib2/imglib2-roi/0.15.2/imglib2-roi-0.15.2.jar",
+        "sha256": "3cccfa047c049eeb7170ef621926b320b1f57208a586cb3f9867d30ac05ef81f"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scijava-common/2.100.1/scijava-common-2.100.1.jar",
+        "sha256": "af53bb31087dd46bfe15645c8b7cc69fe837795516816c60f5be78b9ff0ce6a3"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/parsington/3.1.0/parsington-3.1.0.jar",
+        "sha256": "7943c91a1e62918ea47d0a08f6b5989a8b388e019216441002236528f769c72a"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/script-editor/1.2.0/script-editor-1.2.0.jar",
+        "sha256": "376d338b4530023a3cadbc28a2f05b43f23455ed386e3137178f7ece39632f0f"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scripting-java/1.0.1/scripting-java-1.0.1.jar",
+        "sha256": "0752117c03335c1eff2fbe052b0dd396ed7bcd4afd33e533db1135377d680907"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/minimaven/2.2.3/minimaven-2.2.3.jar",
+        "sha256": "cf4c81c4a27f5c4c45a8b90c60b45f92bcf2e966e1eeec07088572d4f6245237"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/batch-processor/0.4.2/batch-processor-0.4.2.jar",
+        "sha256": "5865ffb7b7760cacd24f01377cadb5cc4dabaf14e46ed3f3feecbc88c3b2364e"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar",
+        "sha256": "df90bba0fe3cb586b7f164e78fe8f8f4da3f2dd5c27fa645f888100ccc25dd72"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/formdev/flatlaf/3.6.1/flatlaf-3.6.1.jar",
+        "sha256": "687be33e1e3eface1681fd194732d16e008126a47b6116b4301e7070c918c4c9"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/sc/fiji/fiji-lib/2.1.3/fiji-lib-2.1.3.jar",
+        "sha256": "35eeb0174b29db972b826c82e93482a88ea13f0a931597ab1ddc7222b36707c3"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/fifesoft/languagesupport/3.3.0/languagesupport-3.3.0.jar",
+        "sha256": "939c332d88e11b9d8364a6dbdd791de26a467e70e01ffd5f420f4909e76f7608"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/mozilla/rhino/1.7.14/rhino-1.7.14.jar",
+        "sha256": "c9290b0d801bf0dbbbc44338e0f769b7650a0c5d04e6bb1aeb85775c0211b003"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar",
+        "sha256": "1e56d7b058d28b65abd256b8458e3885b674c1d588fa43cd7d1cbb9c7ef2b308"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/fifesoft/rsyntaxtextarea/3.6.0/rsyntaxtextarea-3.6.0.jar",
+        "sha256": "bf00ec1015798edd433c3dfadf0c34a12a395b8c010f8f9fd8ec6ff4f44eb94c"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/fifesoft/autocomplete/3.3.2/autocomplete-3.3.2.jar",
+        "sha256": "6e7fb86d3f55f69f13a200a4daa6a04e1b753f8fd369da057b4d792adc694350"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/haesleinhuepf/clij2_/2.5.3.1/clij2_-2.5.3.1.jar",
+        "sha256": "b9f19f9c1d97c5f25128b266f5d71f74e26eb99e060ef016dd587d9e84101307"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/haesleinhuepf/clij-core/1.8.1.1/clij-core-1.8.1.1.jar",
+        "sha256": "488cdf19bb5b0f94388335a8be9c8e5118af9a1b9c432d6291d3685432043e93"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imagej/imagej-ops/2.2.0/imagej-ops-2.2.0.jar",
+        "sha256": "3f98a7a7defc127715829936bcf3fc898ddc68530795588cfe360546991e5b13"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imagej/imagej-mesh/0.8.2/imagej-mesh-0.8.2.jar",
+        "sha256": "e13327c7c64310ce01fee612ffe1ae144e10729adcce570614aff67b124f2f8e"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imglib2/imglib2-algorithm/0.18.3/imglib2-algorithm-0.18.3.jar",
+        "sha256": "ecfcd3fed8ba8783995378491c2bebb58288e86c87d8c91e3c1ed8956a0351fa"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/imglib2/imglib2-algorithm-fft/0.2.1/imglib2-algorithm-fft-0.2.1.jar",
+        "sha256": "42aa56c680d9f579b781dbba4a9175118ca255cf7abf558acf74c6366f22d672"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/edu/mines/mines-jtk/20151125/mines-jtk-20151125.jar",
+        "sha256": "21c7c16001b2360d42b8332775a5b621b8c66cafbc30f93a988864da8f059841"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/scripting-javascript/1.0.0/scripting-javascript-1.0.0.jar",
+        "sha256": "6c8bd0d014c1ac0bdb82b12b20d33ac2ad6e18aa1b5255faaa5a113fc2cd7183"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/joml/joml/1.10.8/joml-1.10.8.jar",
+        "sha256": "bf19510145178df82cd3bd37edd514c13f411531ec5545299fd3abcbc98fe7c2"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/ojalgo/ojalgo/45.1.1/ojalgo-45.1.1.jar",
+        "sha256": "c7f075bae9585283eb6408cfc9fe724edc8013d28772b803dbd7a5a3488665f8"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/haesleinhuepf/clij-clearcl/2.5.0.1/clij-clearcl-2.5.0.1.jar",
+        "sha256": "ddd38510d0a51b4522549f7dbfc31bec727e3dfb0994672152d319ae9e7e527b"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.jar",
+        "sha256": "4eeeae8d20c078abb64b015ec158add383ac581571cddc45c68f0c9ae0230720"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/jocl/jocl/2.0.5/jocl-2.0.5.jar",
+        "sha256": "88e425bda01a3edb15777f7831eaa364bde3d19c6a833b51a018a5ffac3ad667"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/scijava/vecmath/1.6.0-scijava-2/vecmath-1.6.0-scijava-2.jar",
+        "sha256": "9ff4ede53f0fd6e25dc32f8139640a14f7222bebaae45fc4bced6f51d797b8fd"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/io/github/vincenzopalazzo/material-ui-swing/1.1.2/material-ui-swing-1.1.2.jar",
+        "sha256": "815676b976e630b7267fa180d029409d5757cd93291ea7b569e2f4a410f8d56a"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/swinglabs/swingx/1.6.1/swingx-1.6.1.jar",
+        "sha256": "ad9e3577517e8b4d08ca58f637338ebed79ef8bd955b734600d95c8ad182840f"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/jhlabs/filters/2.0.235/filters-2.0.235.jar",
+        "sha256": "be6a1d54ebb043495e31e25e72b440f69156a5624cdd7e1c55c47e30d4fae308"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/swinglabs/swing-worker/1.1/swing-worker-1.1.jar",
+        "sha256": "8367bc401d38d96ec987ef72502a310599552210dd60cb9e494b58a7c23be1ca"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/github/jiconfont/jiconfont-swing/1.0.1/jiconfont-swing-1.0.1.jar",
+        "sha256": "544608f97ed179c113cf647569d13cef4b1c7b885eb6fded55b897dcd9cc5c29"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/com/github/jiconfont/jiconfont/1.0.0/jiconfont-1.0.0.jar",
+        "sha256": "00751efc320f92f34c87efc24a568499eb60aa021569357319edd437cb59d4ef"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.13.4/junit-jupiter-api-5.13.4.jar",
+        "sha256": "d1bb81abfd9e03418306b4e6a3390c8db52c58372e749c2980ac29f0c08278f1"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar",
+        "sha256": "48e2df636cab6563ced64dcdff8abb2355627cb236ef0bf37598682ddf742f1b"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/junit/platform/junit-platform-commons/1.13.4/junit-platform-commons-1.13.4.jar",
+        "sha256": "1c25ca641ebaae44ff3ad21ca1b2ef68d0dd84bfeb07c4805ba7840899b77408"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar",
+        "sha256": "b509448ac506d607319f182537f0b35d71007582ec741832a1f111e5b5b70b38"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.4/junit-jupiter-engine-5.13.4.jar",
+        "sha256": "027404a92fe618b72465792a257951495c503a7d5751e2791e0f51c87f67f5bc"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/junit/platform/junit-platform-engine/1.13.4/junit-platform-engine-1.13.4.jar",
+        "sha256": "390c5f77b84283a64b644f88251b397e0b0debb80bdcc50f899881aecff43a5a"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/mockito/mockito-core/5.20.0/mockito-core-5.20.0.jar",
+        "sha256": "d1a96d252128d3a4247cfd8a2e76412efa3cc103977be17933c942117a24f374"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/bytebuddy/byte-buddy/1.17.7/byte-buddy-1.17.7.jar",
+        "sha256": "3575dcb8a98faf943d3c1595c47a16047c4fce8a83ebbb26262f1a2f67546357"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.7/byte-buddy-agent-1.17.7.jar",
+        "sha256": "a9ba887dca252ad61b7d5153294f34e6f3bdf4b2736b04373d13615a695fc0ff"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/objenesis/objenesis/3.4/objenesis-3.4.jar",
+        "sha256": "95488102feaf2e2858adf6b299353677dac6c15294006f8ed1c5556f8e3cd251"
+      },
+      {
+        "path": "<RUNNER_HOME>/.m2/repository/org/mockito/mockito-junit-jupiter/5.20.0/mockito-junit-jupiter-5.20.0.jar",
+        "sha256": "fd6c703c2b00b914f3adbc27b18077a708f3d6992f19242c444e737c6cce024e"
+      }
+    ],
+    "production_classes": {
+      "services/multiplex/config/MultiplexConfig$Builder.class": "792a872a4331060158a27a314dcc362457ce4c61ea2562631e70abe635c94df9",
+      "services/multiplex/config/MultiplexConfig.class": "a10b5acbe8a7c970afcca2e4dee3c7a207031aa5218457b952171665a6c59eae",
+      "services/multiplex/core/FeatureMatching.class": "b0012e8fc81cdd0853c8e2517fe8f0a7f8b23b325bca558451ed9bbe01491295",
+      "services/multiplex/core/MultiplexRegistrationService.class": "7f5f73b0db4ebd50c37ab4ebe7c0853fd2cf24f250e2367bcd8e170bba667e3b",
+      "services/multiplex/util/IJUtils.class": "4c208c381613c1a9a69b17b5350be93e27fa7e602da714858a3254a55354d8ab",
+      "services/multiplex/util/NamingUtils.class": "b3171b6ef291e389cbf26ab40401c01003243181bbaea72482ead187f906469f"
+    },
+    "production_sources": {
+      "src/main/java/services/multiplex/config/MultiplexConfig.java": "a6369b51615b1ffb3198c04f4f7bf8a335152d592739a4fa1a475114ff55d489",
+      "src/main/java/services/multiplex/core/FeatureMatching.java": "2a6528ed10014995c94343a5b959c347d1f3de469863e9e59eaef9ee7f2d3ee9",
+      "src/main/java/services/multiplex/core/MultiplexRegistrationService.java": "3a781474bf729b7d82f96d68b996ee942e37f20f7d722623f5ac2603a61a5297",
+      "src/main/java/services/multiplex/util/IJUtils.java": "1f77cd1efb35735c2123b57296e9f79ceaa8911bebdb606c44a42ab77baece9d",
+      "src/main/java/services/multiplex/util/NamingUtils.java": "76a34b1b3e2f195c5a6a6bf0666f573863e22240c375f5f4fab03be6aab5ff1c"
+    },
+    "harness_sources": {
+      "native-inference/validation/multiplex-full/MultiplexFullProbe.java": "d943d6b34e1db1aafeb4f0d33ee71c5bd31d8b7a9b3118ad92c1f5c27482696b",
+      "native-inference/validation/multiplex-full/dependencies.json": "cbec4df65c59bab889a85b1edd42423ad658847e008feed4560b436282b058e3",
+      "native-inference/validation/multiplex-full/provenance.json": "84c2e3e3fa11a3b10ed5be7632a3a679b3345c0547cfc951fede4fa5ae69ca7c",
+      "native-inference/validation/multiplex-full/run.py": "e23097b894e292f663bb0cdb9976d30ea66ab91c7249aa9410f7e37138d08725",
+      "native-inference/validation/multiplex-full/test_runner.py": "eb4d97a8c0dd77865ad4b2e6eb5f40f59fe923bd435702c46aecc82da380e0c5"
+    }
+  },
+  "cases": [
+    {
+      "case": "controls",
+      "status": "PASS",
+      "check_counts": {
+        "PASS": 4,
+        "NOT_RUN": 1
+      },
+      "execution": {
+        "exit_code": 0,
+        "cold_process_wall_seconds": 2.839602541999966,
+        "observed_peak_process_tree_rss_kib": 132992,
+        "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+        "rss_ceiling_kib": 3145728,
+        "timeout_seconds": 60,
+        "resource_stop_reason": null,
+        "log": "execution.log"
+      },
+      "phase": "complete",
+      "report": "controls/report.json"
+    },
+    {
+      "case": "display-probe",
+      "status": "PASS",
+      "check_counts": {
+        "PASS": 1
+      },
+      "execution": {
+        "exit_code": 0,
+        "cold_process_wall_seconds": 1.1414317080000274,
+        "observed_peak_process_tree_rss_kib": 118768,
+        "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+        "rss_ceiling_kib": 3145728,
+        "timeout_seconds": 45,
+        "resource_stop_reason": null,
+        "log": "execution.log"
+      },
+      "phase": "complete",
+      "report": "display-probe/report.json"
+    },
+    {
+      "case": "full-sift",
+      "status": "FAIL_ASSERTION",
+      "check_counts": {
+        "PASS": 6,
+        "FAIL": 3,
+        "NOT_RUN": 2
+      },
+      "execution": {
+        "exit_code": 1,
+        "cold_process_wall_seconds": 3.194886832999998,
+        "observed_peak_process_tree_rss_kib": 231792,
+        "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+        "rss_ceiling_kib": 3145728,
+        "timeout_seconds": 360,
+        "resource_stop_reason": null,
+        "log": "execution.log"
+      },
+      "phase": "complete",
+      "report": "full-sift/report.json"
+    },
+    {
+      "case": "full-mops",
+      "status": "FAIL_ASSERTION",
+      "check_counts": {
+        "PASS": 6,
+        "FAIL": 3,
+        "NOT_RUN": 2
+      },
+      "execution": {
+        "exit_code": 1,
+        "cold_process_wall_seconds": 10.690038500000014,
+        "observed_peak_process_tree_rss_kib": 360480,
+        "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+        "rss_ceiling_kib": 3145728,
+        "timeout_seconds": 360,
+        "resource_stop_reason": null,
+        "log": "execution.log"
+      },
+      "phase": "complete",
+      "report": "full-mops/report.json"
+    },
+    {
+      "case": "no-files",
+      "status": "PASS",
+      "check_counts": {
+        "PASS": 1
+      },
+      "execution": {
+        "exit_code": 0,
+        "cold_process_wall_seconds": 1.0015651250000133,
+        "observed_peak_process_tree_rss_kib": 163680,
+        "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+        "rss_ceiling_kib": 3145728,
+        "timeout_seconds": 360,
+        "resource_stop_reason": null,
+        "log": "execution.log"
+      },
+      "phase": "complete",
+      "report": "no-files/report.json"
+    },
+    {
+      "case": "missing-marker",
+      "status": "PASS",
+      "check_counts": {
+        "PASS": 1
+      },
+      "execution": {
+        "exit_code": 0,
+        "cold_process_wall_seconds": 1.1142067090000296,
+        "observed_peak_process_tree_rss_kib": 142896,
+        "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+        "rss_ceiling_kib": 3145728,
+        "timeout_seconds": 360,
+        "resource_stop_reason": null,
+        "log": "execution.log"
+      },
+      "phase": "complete",
+      "report": "missing-marker/report.json"
+    },
+    {
+      "case": "missing-round",
+      "status": "PASS",
+      "check_counts": {
+        "PASS": 1
+      },
+      "execution": {
+        "exit_code": 0,
+        "cold_process_wall_seconds": 1.7082130419999544,
+        "observed_peak_process_tree_rss_kib": 213872,
+        "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+        "rss_ceiling_kib": 3145728,
+        "timeout_seconds": 360,
+        "resource_stop_reason": null,
+        "log": "execution.log"
+      },
+      "phase": "complete",
+      "report": "missing-round/report.json"
+    }
+  ],
+  "scope": "Existing full service on deterministic synthetic 3-round 3-marker TIFFs; no GUI-pane/biological/batch-cancellation blanket claim",
+  "coverage_limits": [
+    "No computation cancellation API in current service",
+    "Block Matching command absent in pinned mpicbg manifest",
+    "MOPS uses allowed steps=31 boundary, not a naturally occurring SIFT failure"
+  ],
+  "requested_cases": [
+    "controls",
+    "full-sift",
+    "full-mops",
+    "no-files",
+    "missing-marker",
+    "missing-round"
+  ],
+  "unrequested_cases": [],
+  "dependencies": [
+    {
+      "filename": "mpicbg-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/jars/mpicbg-1.6.6.jar-20260716221137",
+      "sha256": "43605b945958c6e675f3b0ec2090fd3f4e328ba6fffef9aacfc96fc1ebfee3d8",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "mpicbg_-1.6.6.jar",
+      "url": "https://sites.imagej.net/Fiji/plugins/mpicbg_-1.6.6.jar-20260716221137",
+      "sha256": "a18fc250b1fd464f6b79855c425e1b23d765974e0b0d2e9fdb03ce2f137406bb",
+      "groups": [
+        "registration"
+      ]
+    },
+    {
+      "filename": "jama-1.0.3.jar",
+      "url": "https://repo1.maven.org/maven2/gov/nist/math/jama/1.0.3/jama-1.0.3.jar",
+      "sha256": "c7325ee29be1aac1287ddac690f73671f1cd911ca9eca7c619990e86310556fd",
+      "groups": [
+        "registration"
+      ]
+    }
+  ],
+  "official_command_audit": {
+    "required": {
+      "Extract SIFT Correspondences": "SIFT_ExtractPointRoi",
+      "Extract MOPS Correspondences": "MOPS_ExtractPointRoi",
+      "Landmark Correspondences": "Transform_Roi"
+    },
+    "plugin_manifest_sha256": "6c131158744a326b895ec287a53cb1ae8968f7ea53fa010834308a75c83f59fb",
+    "block_matching_command_present": false
+  },
+  "compile": {
+    "exit_code": 0,
+    "cold_process_wall_seconds": 1.1466380839999601,
+    "observed_peak_process_tree_rss_kib": 153440,
+    "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+    "rss_ceiling_kib": 3145728,
+    "timeout_seconds": 90,
+    "resource_stop_reason": null,
+    "log": "compile.log"
+  },
+  "status": "FAIL",
+  "full_service_acceptance_passed": false
+}

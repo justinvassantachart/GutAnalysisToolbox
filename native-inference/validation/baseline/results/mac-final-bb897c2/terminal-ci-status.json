@@ -1,0 +1,187 @@
+{
+  "provenance": "Decoded read-only connector results; not raw HTTP bytes",
+  "run_id": 37382657593,
+  "source_commit": "bb897c237732cf8569a1515eb8d7ed69feb2ab31",
+  "jobs": {
+    "jobs": [
+      {
+        "id": 112008228097,
+        "name": "Unchanged pre-fork versus repaired GAT on one native Mac",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 37382657593,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/setup-java@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Record the one shared native host and both revisions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Build original source without modifying its POM",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Build repaired source and its isolated native workers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Verify packaging safety and produce matched install artifacts",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Preserve matched install artifacts (test outcomes are recorded separately)",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Verify baseline isolation harness",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Require live passive TensorFlow-error dialog controls on this Mac",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Observe original helper, SIFT, calcium and ganglia behavior",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Run identical controls against repaired source on this same host",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Observe original StarDist and Template Matching call paths",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Run the same native-call probes against repaired GAT",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Confirm original production sources remain unchanged",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Preserve observations, not dependency caches or source images",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/setup-java@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 32
+          },
+          {
+            "name": "Post Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33
+          },
+          {
+            "name": "Post Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "artifacts": [
+      {
+        "id": 11375352270,
+        "name": "gat-matched-original-and-fork-install-artifacts",
+        "size_in_bytes": 206660395,
+        "url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/artifacts/11375352270",
+        "archive_download_url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/artifacts/11375352270/zip",
+        "expired": false,
+        "created_at": "2026-10-05T22:29:55Z",
+        "expires_at": "2027-01-03T22:28:06Z",
+        "updated_at": "2026-10-05T22:29:55Z",
+        "digest": "sha256:ff8a14a251b8ee7e9959f3c2f4ee93efd484c192299b0f2dd3621a388010099c",
+        "workflow_run": {
+          "id": 37382657593,
+          "repository_id": 1405990278,
+          "head_repository_id": 1405990278,
+          "head_branch": "feat/apple-silicon-stardist",
+          "head_sha": "bb897c237732cf8569a1515eb8d7ed69feb2ab31"
+        }
+      },
+      {
+        "id": 11375297949,
+        "name": "gat-unchanged-original-versus-fork-native-mac",
+        "size_in_bytes": 156912,
+        "url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/artifacts/11375297949",
+        "archive_download_url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/artifacts/11375297949/zip",
+        "expired": false,
+        "created_at": "2026-10-05T22:33:31Z",
+        "expires_at": "2027-01-03T22:28:06Z",
+        "updated_at": "2026-10-05T22:33:31Z",
+        "digest": "sha256:e45eaacb5cec7e2ec03a5c71a02dff13fcb65fb3f76c5cf20363a869cc88cdeb",
+        "workflow_run": {
+          "id": 37382657593,
+          "repository_id": 1405990278,
+          "head_repository_id": 1405990278,
+          "head_branch": "feat/apple-silicon-stardist",
+          "head_sha": "bb897c237732cf8569a1515eb8d7ed69feb2ab31"
+        }
+      }
+    ]
+  }
+}

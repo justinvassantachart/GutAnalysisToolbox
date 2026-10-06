@@ -1,0 +1,195 @@
+name: apple-silicon-workflows
+
+on:
+  push:
+    branches: [main, feat/apple-silicon-stardist]
+    paths:
+      - '.github/workflows/apple-silicon-workflows.yml'
+      - 'pom.xml'
+      - 'src/**'
+      - 'native-alignment/**'
+      - 'native-inference/validation/workflows/**'
+      - 'native-inference/validation/template-matching/**'
+      - 'native-inference/validation/jpeg-xr/**'
+      - '!native-inference/validation/**/results/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gat-native-workflows-${{ github.ref }}
+  # Do not discard an acquired Mac runner when publishing follow-up evidence.
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  native-jpeg-xr:
+    name: Native Mac JPEG-XR golden fixture decode
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Verify native host and install official SWIG if absent
+        run: |
+          test "$(uname -m)" = arm64
+          command -v swig || brew install swig
+      - name: Exercise source-built JNI through Bio-Formats codec
+        run: >-
+          python3 native-inference/validation/jpeg-xr/check.py
+          --mode native --expect-platform osx_arm64 --output target/jpeg-xr-mac
+      - name: Check source and license packaging gates
+        run: python3 -m unittest discover -s native-inference/validation/jpeg-xr -p 'test_*.py' -v
+      - name: Revalidate and package the optional resource-only codec overlay
+        run: >-
+          python3 native-inference/validation/jpeg-xr/package-overlay.py
+          --check-output target/jpeg-xr-mac --output target/jpeg-xr-overlay
+      - name: Preserve only successfully revalidated codec and corresponding source
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-jpeg-xr-test-overlay
+          path: |
+            target/jpeg-xr-overlay/*.zip
+            target/jpeg-xr-overlay/*.sha256
+            target/jpeg-xr-overlay/package-report.json
+            target/jpeg-xr-overlay/final-overlay-*.log
+            target/jpeg-xr-overlay/final-overlay-actual.tsv
+            target/jpeg-xr-overlay/source-regeneration.log
+          if-no-files-found: error
+      - name: Preserve diagnostics only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-jpeg-xr-diagnostics
+          path: |
+            target/jpeg-xr-mac/*.json
+            target/jpeg-xr-mac/*.tsv
+            target/jpeg-xr-mac/*.log
+          if-no-files-found: error
+  native-template-matching:
+    name: Native Mac Template Matching API-port comparison
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Verify native architecture
+        run: test "$(uname -m)" = arm64
+      - name: Compare native OpenCV port to original plugin references
+        run: >-
+          python3 native-inference/validation/template-matching/check.py
+          --platform macosx-arm64 --output validation-artifacts/template-matching-mac
+      - name: Build the actual GAT adapter and native alignment worker
+        run: |
+          mvn -B -ntp -DskipTests clean compile dependency:build-classpath -Dmdep.outputFile=target/workflow-classpath.txt
+          mvn -B -ntp -f native-alignment/pom.xml clean package
+      - name: Compare actual subprocess adapter and motion CSV across all reference frames
+        run: >-
+          python3 native-inference/validation/template-matching/check_adapter.py
+          --root-classpath target/workflow-classpath.txt
+          --worker-directory native-alignment/target
+          --output target/alignment-adapter-mac
+      - name: Preserve exact shifts, hashes and comparison report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-template-matching-diagnostics
+          path: |
+            validation-artifacts/template-matching-mac/actual.json
+            validation-artifacts/template-matching-mac/comparison.json
+            target/alignment-adapter-mac/*.json
+            target/alignment-adapter-mac/*.log
+            target/alignment-adapter-mac/**/*.csv
+          if-no-files-found: warn
+  native-workflows:
+    name: Native Mac GAT workflow and engine tests
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Verify native architecture
+        run: test "$(uname -m)" = arm64
+      - name: Build production classes and resolve their runtime classpath
+        run: >-
+          mvn -B -ntp -DskipTests package dependency:build-classpath
+          -Dmdep.outputFile=target/workflow-classpath.txt
+      - name: Test report failure and partial-result classification
+        run: python3 -m unittest discover -s native-inference/validation/workflows -p 'test_*.py' -v
+      - name: Exercise actual GAT helpers, commands and native ganglia engine
+        run: >-
+          python3 native-inference/validation/workflows/run_workflows.py
+          --root-classpath target/workflow-classpath.txt --output target/workflow-results
+          --only helpers registration calcium ganglia-djl ganglia-jdll ganglia-contract ganglia-command
+      - name: Preserve results and small public or synthetic outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-full-workflow-diagnostics
+          path: |
+            target/workflow-results/**/*.json
+            target/workflow-results/**/*.log
+            target/workflow-results/**/*.csv
+            target/workflow-results/**/*.tif
+            target/workflow-results/**/*.zip
+            target/workflow-results/**/*.npy
+            target/workflow-results/**/*.f32le
+            target/workflow-classpath.txt
+          if-no-files-found: error
+  native-opencl:
+    name: Native Mac OpenCL and GAT spatial components
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Record native runner and operating-system OpenCL capability
+        run: |
+          mkdir -p target/workflow-validation
+          test "$(uname -m)" = arm64
+          java -XshowSettings:properties -version 2>&1 | tee target/workflow-validation/java.txt
+          python3 native-inference/validation/workflows/system-opencl.py --output target/workflow-validation/system-opencl.json
+      - name: Build unchanged production classes and resolve their runtime classpath
+        run: >-
+          mvn -B -ntp -DskipTests package dependency:build-classpath
+          -Dmdep.outputFile=target/workflow-classpath.txt
+      - name: Compile validation-only OpenCL probe
+        run: |
+          mkdir -p target/workflow-validation/classes
+          javac --release 11 -cp "target/classes:$(cat target/workflow-classpath.txt)" \
+            -d target/workflow-validation/classes native-inference/validation/workflows/OpenClWorkflowSmoke.java
+      - name: Run actual bindings, transfers, kernels and GAT spatial code
+        run: |
+          java -Djava.awt.headless=true -cp "target/workflow-validation/classes:target/classes:$(cat target/workflow-classpath.txt)" \
+            OpenClWorkflowSmoke target/workflow-validation/opencl 2>&1 | tee target/workflow-validation/opencl.log
+      - name: Save capability and component diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-native-mac-workflow-diagnostics
+          path: |
+            target/workflow-validation/**/*.json
+            target/workflow-validation/**/*.log
+            target/workflow-validation/**/*.txt
+            target/workflow-validation/**/*.csv
+            target/workflow-classpath.txt
+          if-no-files-found: error

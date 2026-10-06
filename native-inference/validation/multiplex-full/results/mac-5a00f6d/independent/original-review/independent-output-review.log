@@ -1,0 +1,22 @@
+full-sift dimensions=[256, 256, 7, 1, 1] calibration=w=1.0, h=1.0, d=1.0, unit=pixel, f=20, nc=null, table=null, vunit=Gray Value, bd=8
+Layer1_Hu.tif output_equals_unwarped_input=true
+Layer1_MarkerA.tif output_equals_unwarped_input=true
+Layer1_MarkerB.tif output_equals_unwarped_input=true
+Layer2_MarkerA.tif output_equals_unwarped_input=true
+Layer2_MarkerB.tif output_equals_unwarped_input=true
+Layer3_MarkerA.tif output_equals_unwarped_input=true
+Layer3_MarkerB.tif output_equals_unwarped_input=true
+input_calibration=w=0.5, h=0.7500001875000468, d=1.0, unit=µm, f=20, nc=null, table=null, vunit=Gray Value, bd=8 qc_calibration=w=1.0, h=1.0, d=1.0, unit=pixel, f=20, nc=null, table=null, vunit=Gray Value, bd=8
+pair=1 reference_points=62 target_points=62 mean_dx=0.0 mean_dy=0.0 max_pair_displacement=0.0
+pair=2 reference_points=80 target_points=80 mean_dx=0.0 mean_dy=0.0 max_pair_displacement=0.0
+full-mops dimensions=[256, 256, 7, 1, 1] calibration=w=1.0, h=1.0, d=1.0, unit=pixel, f=20, nc=null, table=null, vunit=Gray Value, bd=8
+Layer1_Hu.tif output_equals_unwarped_input=true
+Layer1_MarkerA.tif output_equals_unwarped_input=true
+Layer1_MarkerB.tif output_equals_unwarped_input=true
+Layer2_MarkerA.tif output_equals_unwarped_input=true
+Layer2_MarkerB.tif output_equals_unwarped_input=true
+Layer3_MarkerA.tif output_equals_unwarped_input=true
+Layer3_MarkerB.tif output_equals_unwarped_input=true
+input_calibration=w=0.5, h=0.7500001875000468, d=1.0, unit=µm, f=20, nc=null, table=null, vunit=Gray Value, bd=8 qc_calibration=w=1.0, h=1.0, d=1.0, unit=pixel, f=20, nc=null, table=null, vunit=Gray Value, bd=8
+pair=1 reference_points=1040 target_points=1040 mean_dx=0.0 mean_dy=0.0 max_pair_displacement=0.0
+pair=2 reference_points=1483 target_points=1483 mean_dx=0.0 mean_dy=0.0 max_pair_displacement=0.0

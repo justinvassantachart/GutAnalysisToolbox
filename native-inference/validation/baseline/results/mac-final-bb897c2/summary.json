@@ -1,0 +1,740 @@
+{
+  "schema_version": 1,
+  "scope": "Retention-only final release3 native-Mac build/result evidence; no new application/model/test execution",
+  "source": {
+    "fork_commit": "bb897c237732cf8569a1515eb8d7ed69feb2ab31",
+    "fork_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/commit/bb897c237732cf8569a1515eb8d7ed69feb2ab31",
+    "original_commit": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+    "original_url": "https://github.com/pr4deepr/GutAnalysisToolbox/commit/1870d9e16e16fd6daeac0bd05122e851029ddedc"
+  },
+  "ci": {
+    "run_id": 37382657593,
+    "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593",
+    "job_id": 112008228097,
+    "job_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593/job/112008228097",
+    "conclusion": "success",
+    "status_provenance": "terminal-ci-status.json: separately preserved decoded read-only job/artifact connector evidence, not original ZIP content or raw HTTP bytes"
+  },
+  "report_artifact": {
+    "retained_as": "original-ci-diagnostics.zip",
+    "sha256": "e45eaacb5cec7e2ec03a5c71a02dff13fcb65fb3f76c5cf20363a869cc88cdeb",
+    "bytes": 156912,
+    "members": 79,
+    "crc": "PASS",
+    "all_extracted_members_verified": true,
+    "id": 11375297949,
+    "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593/artifacts/11375297949"
+  },
+  "host_log_member": "shared-host.log",
+  "host": {
+    "chip": "Apple M1 (Virtual)",
+    "os": "macOS 15.7.9",
+    "build": "24G830",
+    "architecture": "arm64",
+    "jvm": "Temurin 21.0.12.1 aarch64"
+  },
+  "live_dialog_controls": {
+    "count": 3,
+    "skipped": 0,
+    "status": "PASS",
+    "member": "live-dialog-controls.log",
+    "qualification": "Synthetic observer controls, distinct from actual GAT observations"
+  },
+  "original_provenance": {
+    "revision": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+    "tracked_source_changes": false,
+    "fork_inference_classes_present": false,
+    "fixture_and_probe_source": "Current validation harness only; production classes from unchanged baseline",
+    "after_run": {
+      "revision": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+      "tracked_source_changes": false,
+      "fork_inference_classes_present": false,
+      "fixture_and_probe_source": "Current validation harness only; production classes from unchanged baseline"
+    },
+    "workflow_comparator_exit_code": 1,
+    "interpretation": "Actual observed checks, not expected-failure assertions. A baseline PASS remains PASS; FAIL, BLOCKED, NOT_RUN and process resource limits remain distinct. A successful evidence job does not imply old GAT passed."
+  },
+  "final_original_status_log": {
+    "member": "original-final-status.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "native_observations": {
+    "original": {
+      "native_evidence_complete": true,
+      "component_evidence_complete": true,
+      "bootstrap": "url-system",
+      "observations": [
+        {
+          "probe": "stardist",
+          "status": "workflow_failure",
+          "stage": "observed_CSBDeep_TensorFlow_load_failure_dialog",
+          "actual_gat_method_invoked": true,
+          "system_classloader": "BaselineUrlClassLoader",
+          "probe_classloader": "BaselineUrlClassLoader",
+          "thread_context_classloader": "BaselineUrlClassLoader",
+          "fork_inference_classes_present": false,
+          "modern_tensorflow_classes_present": false,
+          "requested_tiles": 4,
+          "probability_threshold": 0.5,
+          "nms_threshold": 0.3,
+          "execution": {
+            "exit_code": 2,
+            "cold_process_wall_seconds": 5.891162333000011,
+            "observed_peak_process_tree_rss_kib": 393072,
+            "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+            "rss_ceiling_kib": 3145728,
+            "timeout_seconds": 600,
+            "resource_stop_reason": null,
+            "log": "stardist.log",
+            "timed_out": false
+          },
+          "report_member": "original-native/stardist.json",
+          "native_load_failure_dialog": {
+            "signature": "CSBDeep TensorFlowNetwork.loadLibrary error dialog",
+            "observed_at_utc": "2026-10-05T22:32:38.988328Z",
+            "probe": "stardist",
+            "actual_gat_method_invoked": true,
+            "stage_at_observation": "calling_actual_GAT_StarDist",
+            "title": "Loading TensorFlow failed",
+            "message": "<html>Could not load TensorFlow.<br/>Opening the TensorFlow Library Management tool.</html>",
+            "message_type": 0,
+            "message_type_name": "ERROR_MESSAGE",
+            "dialog_class": "javax.swing.JDialog",
+            "option_pane_class": "javax.swing.JOptionPane",
+            "dialog_showing": true,
+            "option_pane_showing": true,
+            "modal": true,
+            "modality_type": "APPLICATION_MODAL",
+            "option_type": -1,
+            "selected_value": "JOptionPane.UNINITIALIZED_VALUE",
+            "initial_value": null,
+            "preexisting_window": false,
+            "observer_thread": "AWT-EventQueue-0",
+            "action": "record_only_then_exit_isolated_probe_without_dismissing_dialog"
+          }
+        },
+        {
+          "probe": "alignment",
+          "status": "workflow_failure",
+          "stage": "calling_actual_GAT_alignment",
+          "actual_gat_method_invoked": true,
+          "system_classloader": "BaselineUrlClassLoader",
+          "probe_classloader": "BaselineUrlClassLoader",
+          "thread_context_classloader": "BaselineUrlClassLoader",
+          "fork_inference_classes_present": false,
+          "modern_tensorflow_classes_present": false,
+          "aligned_pixel_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+          "expected_aligned_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+          "unchanged_input": true,
+          "execution": {
+            "exit_code": 2,
+            "cold_process_wall_seconds": 2.9175357080000026,
+            "observed_peak_process_tree_rss_kib": 316864,
+            "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+            "rss_ceiling_kib": 3145728,
+            "timeout_seconds": 600,
+            "resource_stop_reason": null,
+            "log": "alignment.log",
+            "timed_out": false
+          },
+          "report_member": "original-native/alignment.json"
+        }
+      ],
+      "component_outcomes": [
+        {
+          "probe": "tensorflow-jni",
+          "status": "native_component_failure",
+          "actual_gat_method_invoked": false,
+          "exit_code": 2
+        },
+        {
+          "probe": "opencv-jni",
+          "status": "native_component_failure",
+          "actual_gat_method_invoked": false,
+          "exit_code": 2
+        },
+        {
+          "probe": "template-plugin-direct",
+          "status": "plugin_component_failure",
+          "actual_gat_method_invoked": false,
+          "exit_code": 2
+        }
+      ]
+    },
+    "fork": {
+      "native_evidence_complete": true,
+      "component_evidence_complete": true,
+      "bootstrap": "url-system",
+      "observations": [
+        {
+          "probe": "stardist",
+          "status": "success",
+          "stage": "calling_actual_GAT_StarDist",
+          "actual_gat_method_invoked": true,
+          "system_classloader": "BaselineUrlClassLoader",
+          "probe_classloader": "BaselineUrlClassLoader",
+          "thread_context_classloader": "BaselineUrlClassLoader",
+          "fork_inference_classes_present": true,
+          "modern_tensorflow_classes_present": false,
+          "requested_tiles": 4,
+          "probability_threshold": 0.5,
+          "nms_threshold": 0.3,
+          "object_count": 39,
+          "raw_label_sha256": "ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+          "execution": {
+            "exit_code": 0,
+            "cold_process_wall_seconds": 20.63444520799999,
+            "observed_peak_process_tree_rss_kib": 965632,
+            "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+            "rss_ceiling_kib": 3145728,
+            "timeout_seconds": 600,
+            "resource_stop_reason": null,
+            "log": "stardist.log",
+            "timed_out": false
+          },
+          "report_member": "fork-native/stardist.json"
+        },
+        {
+          "probe": "alignment",
+          "status": "success",
+          "stage": "calling_actual_GAT_alignment",
+          "actual_gat_method_invoked": true,
+          "system_classloader": "BaselineUrlClassLoader",
+          "probe_classloader": "BaselineUrlClassLoader",
+          "thread_context_classloader": "BaselineUrlClassLoader",
+          "fork_inference_classes_present": true,
+          "modern_tensorflow_classes_present": false,
+          "aligned_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+          "expected_aligned_pixel_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+          "unchanged_input": false,
+          "execution": {
+            "exit_code": 0,
+            "cold_process_wall_seconds": 6.627527874999998,
+            "observed_peak_process_tree_rss_kib": 518048,
+            "rss_sampling_note": "sampled aggregate RSS; shared pages may be counted per process",
+            "rss_ceiling_kib": 3145728,
+            "timeout_seconds": 600,
+            "resource_stop_reason": null,
+            "log": "alignment.log",
+            "timed_out": false
+          },
+          "report_member": "fork-native/alignment.json"
+        }
+      ],
+      "component_outcomes": [
+        {
+          "probe": "tensorflow-jni",
+          "status": "native_component_failure",
+          "actual_gat_method_invoked": false,
+          "exit_code": 2
+        },
+        {
+          "probe": "opencv-jni",
+          "status": "native_component_failure",
+          "actual_gat_method_invoked": false,
+          "exit_code": 2
+        },
+        {
+          "probe": "template-plugin-direct",
+          "status": "plugin_component_failure",
+          "actual_gat_method_invoked": false,
+          "exit_code": 2
+        }
+      ]
+    }
+  },
+  "workflow_observations": {
+    "original": {
+      "status": "FAIL",
+      "check_status_counts": {
+        "PASS": 15,
+        "NOT_RUN": 8,
+        "FAIL": 4,
+        "BLOCKED": 1
+      },
+      "suites": [
+        {
+          "report_member": "original-workflows/helpers/workflow-smoke.json",
+          "status": "PARTIAL",
+          "checks": [
+            {
+              "id": "hu_marker_overlap",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "ganglia_count_area",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "temporal_color_8bit",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "csv_merge_and_overwrite",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "counts_csv",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "label_tiff_roundtrip",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "multiplex_naming",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "neuron_subtype_full_gui",
+              "status": "NOT_RUN",
+              "reason_or_error": "Covered separately by inference fixtures; this helper run does not automate complete segmentation/review GUI"
+            },
+            {
+              "id": "calcium_auto_stardist",
+              "status": "NOT_RUN",
+              "reason_or_error": "Existing production method is a disabled stub; not counted as a compatibility pass"
+            }
+          ]
+        },
+        {
+          "report_member": "original-workflows/registration/registration-morphology.json",
+          "status": "FAIL",
+          "checks": [
+            {
+              "id": "morpholibj_library_control",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "sift_library_fixture_control",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "morpholibj_size_gat",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "morpholibj_border_gat",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "sift_gat_helper",
+              "status": "FAIL",
+              "reason_or_error": "java.lang.AssertionError: SIFT result lost calibration/timing"
+            },
+            {
+              "id": "sift_gat_saved_workflow",
+              "status": "FAIL",
+              "reason_or_error": "java.lang.AssertionError: Alignment did not reduce MSE by at least 85%: before=4727.119059726331, after=4727.119059726331"
+            },
+            {
+              "id": "sift_gat_batch_channel1",
+              "status": "FAIL",
+              "reason_or_error": "java.lang.AssertionError: Missing batch aligned output"
+            },
+            {
+              "id": "stackreg_turboreg_gat_helper",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "stackreg_gat_batch",
+              "status": "BLOCKED",
+              "reason_or_error": "GAT explicitly throws UnsupportedOperationException for StackReg batch registration; direct plugin/helper success does not implement or validate batch mode."
+            },
+            {
+              "id": "multiplex_gat_feature_matching",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "multiplex_full_export",
+              "status": "NOT_RUN",
+              "reason_or_error": "Focused real landmark test above does not cover every round/channel warp, naming combination, and exported hyperstack."
+            },
+            {
+              "id": "multiplex_mops_block_fallbacks",
+              "status": "NOT_RUN",
+              "reason_or_error": "The translated fixture targets the first-choice SIFT route; MOPS and Block Matching are not claimed tested."
+            }
+          ]
+        },
+        {
+          "report_member": "original-workflows/calcium/calcium-report.json",
+          "status": "PARTIAL",
+          "checks": [
+            {
+              "id": "calcium_ff0_measure_export",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "calcium_zero_baseline",
+              "status": "NOT_RUN",
+              "reason_or_error": "First smoke covers nonzero known baseline only"
+            },
+            {
+              "id": "calcium_auto_stardist",
+              "status": "NOT_RUN",
+              "reason_or_error": "Automatic StarDist method remains disabled; no generated-ROI claim"
+            }
+          ]
+        },
+        {
+          "report_member": "original-workflows/ganglia-contract/ganglia-contract-report.json",
+          "status": "FAIL",
+          "checks": [
+            {
+              "id": "actual_gat_deepimagej_rdf_input",
+              "status": "FAIL",
+              "reason_or_error": "java.lang.AssertionError: GAT/DeepImageJ changed raw intensity channel 0: 1.0"
+            },
+            {
+              "id": "full_gat_ganglia_command",
+              "status": "NOT_RUN",
+              "reason_or_error": "This suite proves the reached input contract only; use a separate native AWT command test"
+            }
+          ]
+        },
+        {
+          "report_member": "original-workflows/ganglia-command/ganglia-command-report.json",
+          "status": "PARTIAL",
+          "checks": [
+            {
+              "id": "gat_ganglia_command",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "ganglia_manual_paint_review",
+              "status": "NOT_RUN",
+              "reason_or_error": "Requires a person choosing biologically correct edits"
+            }
+          ]
+        }
+      ],
+      "calcium": {
+        "id": "calcium_ff0_measure_export",
+        "scope": "Actual GAT command workflow; no dashboard clicks",
+        "algorithm": "CalciumAnalysis open/projection/normalize/ROI/measure/save",
+        "status": "PASS",
+        "metrics": {
+          "dialog_accepted_values": {
+            "Select Max Projection Frames": 0,
+            "Select Baseline Frames": 0
+          },
+          "baseline_frames": [
+            1,
+            2
+          ],
+          "max_projection_frames": [
+            1,
+            3
+          ],
+          "expected_ff0": [
+            1.0,
+            1.0,
+            2.0
+          ],
+          "measured_ff0": [
+            1.0,
+            1.0,
+            2.0
+          ],
+          "roi_count": 1,
+          "csv": "RESULTS/calcium-fixture/RESULTS_calcium-fixture.tif.csv",
+          "roi_zip": "RESULTS/calcium-fixture/ROIS_calcium-fixture.tif_CELLS.zip",
+          "scope_note": "Invoked production methods and controlled only their own known dialogs; not a manual dashboard/navigation test"
+        },
+        "elapsed_seconds": 3.045100583
+      },
+      "ganglia": {
+        "id": "gat_ganglia_command",
+        "scope": "Actual production GAT call through DeepImageJ Run and morphological cleanup",
+        "algorithm": "PluginCalls.runDeepImageJForGanglia",
+        "status": "PASS",
+        "metrics": {
+          "input": "Public supplied test-input.npy channels 0=Hu and 1=ganglia; GAT builds R=Hu,G=ganglia,B=Hu",
+          "width": 1024,
+          "height": 1024,
+          "foreground_pixels": 167430,
+          "command_seconds_including_model_load": 30.761481708,
+          "rdf_threshold": 0.6,
+          "gat_threshold": 0.6,
+          "open_iterations": 1,
+          "minimum_area_um2": 1.0,
+          "source_unchanged": true,
+          "evidence": "gat-ganglia-mask.tif",
+          "scope_note": "Actual command, model inference and cleanup; interactive painting/dashboard navigation excluded. Scientific correction, not legacy-mask parity."
+        },
+        "elapsed_seconds": 31.895763
+      }
+    },
+    "fork": {
+      "status": "PARTIAL",
+      "check_status_counts": {
+        "PASS": 19,
+        "NOT_RUN": 8,
+        "BLOCKED": 1
+      },
+      "suites": [
+        {
+          "report_member": "fork-workflows/helpers/workflow-smoke.json",
+          "status": "PARTIAL",
+          "checks": [
+            {
+              "id": "hu_marker_overlap",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "ganglia_count_area",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "temporal_color_8bit",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "csv_merge_and_overwrite",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "counts_csv",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "label_tiff_roundtrip",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "multiplex_naming",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "neuron_subtype_full_gui",
+              "status": "NOT_RUN",
+              "reason_or_error": "Covered separately by inference fixtures; this helper run does not automate complete segmentation/review GUI"
+            },
+            {
+              "id": "calcium_auto_stardist",
+              "status": "NOT_RUN",
+              "reason_or_error": "Existing production method is a disabled stub; not counted as a compatibility pass"
+            }
+          ]
+        },
+        {
+          "report_member": "fork-workflows/registration/registration-morphology.json",
+          "status": "PARTIAL",
+          "checks": [
+            {
+              "id": "morpholibj_library_control",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "sift_library_fixture_control",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "morpholibj_size_gat",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "morpholibj_border_gat",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "sift_gat_helper",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "sift_gat_saved_workflow",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "sift_gat_batch_channel1",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "stackreg_turboreg_gat_helper",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "stackreg_gat_batch",
+              "status": "BLOCKED",
+              "reason_or_error": "GAT explicitly throws UnsupportedOperationException for StackReg batch registration; direct plugin/helper success does not implement or validate batch mode."
+            },
+            {
+              "id": "multiplex_gat_feature_matching",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "multiplex_full_export",
+              "status": "NOT_RUN",
+              "reason_or_error": "Focused real landmark test above does not cover every round/channel warp, naming combination, and exported hyperstack."
+            },
+            {
+              "id": "multiplex_mops_block_fallbacks",
+              "status": "NOT_RUN",
+              "reason_or_error": "The translated fixture targets the first-choice SIFT route; MOPS and Block Matching are not claimed tested."
+            }
+          ]
+        },
+        {
+          "report_member": "fork-workflows/calcium/calcium-report.json",
+          "status": "PARTIAL",
+          "checks": [
+            {
+              "id": "calcium_ff0_measure_export",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "calcium_zero_baseline",
+              "status": "NOT_RUN",
+              "reason_or_error": "First smoke covers nonzero known baseline only"
+            },
+            {
+              "id": "calcium_auto_stardist",
+              "status": "NOT_RUN",
+              "reason_or_error": "Automatic StarDist method remains disabled; no generated-ROI claim"
+            }
+          ]
+        },
+        {
+          "report_member": "fork-workflows/ganglia-contract/ganglia-contract-report.json",
+          "status": "PARTIAL",
+          "checks": [
+            {
+              "id": "actual_gat_deepimagej_rdf_input",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "full_gat_ganglia_command",
+              "status": "NOT_RUN",
+              "reason_or_error": "This suite proves the reached input contract only; use a separate native AWT command test"
+            }
+          ]
+        },
+        {
+          "report_member": "fork-workflows/ganglia-command/ganglia-command-report.json",
+          "status": "PARTIAL",
+          "checks": [
+            {
+              "id": "gat_ganglia_command",
+              "status": "PASS",
+              "reason_or_error": null
+            },
+            {
+              "id": "ganglia_manual_paint_review",
+              "status": "NOT_RUN",
+              "reason_or_error": "Requires a person choosing biologically correct edits"
+            }
+          ]
+        }
+      ],
+      "calcium": {
+        "id": "calcium_ff0_measure_export",
+        "scope": "Actual GAT command workflow; no dashboard clicks",
+        "algorithm": "CalciumAnalysis open/projection/normalize/ROI/measure/save",
+        "status": "PASS",
+        "metrics": {
+          "dialog_accepted_values": {
+            "Select Max Projection Frames": 0,
+            "Select Baseline Frames": 0
+          },
+          "baseline_frames": [
+            1,
+            2
+          ],
+          "max_projection_frames": [
+            1,
+            3
+          ],
+          "expected_ff0": [
+            1.0,
+            1.0,
+            2.0
+          ],
+          "measured_ff0": [
+            1.0,
+            1.0,
+            2.0
+          ],
+          "roi_count": 1,
+          "csv": "RESULTS/calcium-fixture/RESULTS_calcium-fixture.tif.csv",
+          "roi_zip": "RESULTS/calcium-fixture/ROIS_calcium-fixture.tif_CELLS.zip",
+          "scope_note": "Invoked production methods and controlled only their own known dialogs; not a manual dashboard/navigation test"
+        },
+        "elapsed_seconds": 3.308608625
+      },
+      "ganglia": {
+        "id": "gat_ganglia_command",
+        "scope": "Actual production GAT call through DeepImageJ Run and morphological cleanup",
+        "algorithm": "PluginCalls.runDeepImageJForGanglia",
+        "status": "PASS",
+        "metrics": {
+          "input": "Public supplied test-input.npy channels 0=Hu and 1=ganglia; GAT builds R=Hu,G=ganglia,B=Hu",
+          "width": 1024,
+          "height": 1024,
+          "foreground_pixels": 72236,
+          "command_seconds_including_model_load": 28.338630834,
+          "rdf_threshold": 0.6,
+          "gat_threshold": 0.6,
+          "open_iterations": 1,
+          "minimum_area_um2": 1.0,
+          "source_unchanged": true,
+          "evidence": "gat-ganglia-mask.tif",
+          "scope_note": "Actual command, model inference and cleanup; interactive painting/dashboard navigation excluded. Scientific correction, not legacy-mask parity."
+        },
+        "elapsed_seconds": 29.483362625
+      }
+    }
+  },
+  "package_audit": "package/verification.json",
+  "published_release_snapshot": "package/published-release-identities.json",
+  "related_evidence": {
+    "deeper_paired_interpretation": "../mac-ab046cb/REPORT.md",
+    "corrected_full_multiplex": "../../../multiplex-full/results/mac-ab046cb/README.md",
+    "native_official40": "../../../mac-corpus/results/mac-9b599df/REPORT.md",
+    "earlier_installed_fiji": "../../../../../validation/fiji-install/results/mac-mask-retention-5e2e0f4/REPORT.md"
+  },
+  "qualifications": [
+    "Green means completed observations and passing repaired gates, not original compatibility.",
+    "The url-system diagnostic BaselineUrlClassLoader lane is distinct from the earlier real installed-Fiji AppClassLoader lane; no new installed-Fiji run is claimed.",
+    "Original StarDist displays an observed native-load modal and halts with exit 2 without answering it; this is not a completed prediction.",
+    "Original workflow failures and unsupported/unrun states remain unchanged.",
+    "Both ganglia commands execute; 167430 versus 72236 reflects the documented input-contract correction, not legacy-mask parity or biological superiority.",
+    "Separate full-multiplex and 40-case native corpus results retain their own source, scope and exactness qualifications.",
+    "Full classpaths, component trees and thread evidence remain in the raw report ZIP; derived summaries omit them.",
+    "No distribution payloads, full GUI, physical-Mac first-open, every-chip, GPU, biological or broad performance acceptance is supplied by packet preparation."
+  ]
+}

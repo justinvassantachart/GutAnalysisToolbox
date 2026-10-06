@@ -1,0 +1,95 @@
+{
+  "provenance": "Decoded read-only connector results; not raw HTTP response bytes",
+  "run_id": 37374110712,
+  "source_commit": "3ef9d824d34e9800b961725a87c1236f829c0c9c",
+  "jobs": {
+    "jobs": [
+      {
+        "id": 111978206214,
+        "name": "native-mac-multiplex",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "run_id": 37374110712,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-java@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Require actual native arm64 host",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Build unchanged production classes and runtime classpath",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Test reporting and immutable dependency/fixture pins",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Invoke every selected real-service case in fresh native JVMs",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 7
+          },
+          {
+            "name": "Preserve independent scope gate",
+            "status": "pending",
+            "conclusion": null,
+            "number": 8
+          },
+          {
+            "name": "Preserve outputs, source hashes, logs and native host provenance",
+            "status": "pending",
+            "conclusion": null,
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/setup-java@v5",
+            "status": "pending",
+            "conclusion": null,
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/checkout@v5",
+            "status": "pending",
+            "conclusion": null,
+            "number": 18
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "artifacts": []
+  },
+  "terminal_log_lookup": {
+    "error": "GitHub API error 404: ﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.\nRequestId:f3db1282-701e-0042-7414-55195c000000\nTime:2026-10-05T21:57:25.0102979Z</Message></Error>",
+    "error_code": "NOT_FOUND",
+    "error_data": {
+      "error_str": "GitHub API error 404: ﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.\nRequestId:f3db1282-701e-0042-7414-55195c000000\nTime:2026-10-05T21:57:25.0102979Z</Message></Error>"
+    }
+  }
+}

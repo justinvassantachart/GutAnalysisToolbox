@@ -1,0 +1,47 @@
+2026-10-05T20:52:51.1609870Z ##[group]Run python3 -m unittest discover -s native-inference/validation/jpeg-xr -p 'test_*.py' -v
+2026-10-05T20:52:51.1610540Z [36;1mpython3 -m unittest discover -s native-inference/validation/jpeg-xr -p 'test_*.py' -v[0m
+2026-10-05T20:52:51.1795790Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-05T20:52:51.1796270Z env:
+2026-10-05T20:52:51.1796800Z   JAVA_HOME: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-101.0/arm64/Contents/Home
+2026-10-05T20:52:51.1797390Z   JAVA_HOME_21_ARM64: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-101.0/arm64/Contents/Home
+2026-10-05T20:52:51.1797850Z   MAVEN_ARGS: -ntp
+2026-10-05T20:52:51.1798100Z ##[endgroup]
+2026-10-05T20:52:52.6450940Z test_ambiguous_or_suffixed_swig_versions_rejected (test_package_overlay.PackagingTests.test_ambiguous_or_suffixed_swig_versions_rejected) ... ok
+2026-10-05T20:52:52.6452050Z test_build_install_id_is_not_a_dependency (test_package_overlay.PackagingTests.test_build_install_id_is_not_a_dependency) ... ok
+2026-10-05T20:52:52.6495120Z test_changed_upstream_source_rejected (test_package_overlay.PackagingTests.test_changed_upstream_source_rejected) ... ok
+2026-10-05T20:52:52.6620860Z test_complete_build_inputs_and_no_fixture_redistribution (test_package_overlay.PackagingTests.test_complete_build_inputs_and_no_fixture_redistribution) ... ok
+2026-10-05T20:52:52.6621900Z test_custom_rpath_rejected (test_package_overlay.PackagingTests.test_custom_rpath_rejected) ... ok
+2026-10-05T20:52:52.6689640Z test_duplicate_license_records_rejected (test_package_overlay.PackagingTests.test_duplicate_license_records_rejected) ... ok
+2026-10-05T20:52:52.6690730Z test_exact_reviewed_swig_versions_accepted (test_package_overlay.PackagingTests.test_exact_reviewed_swig_versions_accepted) ... ok
+2026-10-05T20:52:52.6691680Z test_failed_or_wrong_platform_reports_rejected (test_package_overlay.PackagingTests.test_failed_or_wrong_platform_reports_rejected) ... ok
+2026-10-05T20:52:52.6723930Z test_license_assets_cover_gpl_and_bsd_and_both_swig_sources (test_package_overlay.PackagingTests.test_license_assets_cover_gpl_and_bsd_and_both_swig_sources) ... ok
+2026-10-05T20:52:52.6762100Z test_missing_generated_wrapper_rejected (test_package_overlay.PackagingTests.test_missing_generated_wrapper_rejected) ... ok
+2026-10-05T20:52:52.7144820Z test_missing_generator_notices_rejected_even_if_manifest_omits_them (test_package_overlay.PackagingTests.test_missing_generator_notices_rejected_even_if_manifest_omits_them) ... ok
+2026-10-05T20:52:52.7146260Z test_non_system_dependency_is_rejected (test_package_overlay.PackagingTests.test_non_system_dependency_is_rejected) ... ok
+2026-10-05T20:52:53.3016470Z test_offline_rebuild_exact_version_gate (test_package_overlay.PackagingTests.test_offline_rebuild_exact_version_gate) ... ok
+2026-10-05T20:52:53.3601140Z test_regeneration_accepts_only_matching_recorded_swig (test_package_overlay.PackagingTests.test_regeneration_accepts_only_matching_recorded_swig) ... ok
+2026-10-05T20:52:53.3798710Z test_regeneration_rejects_different_available_swig (test_package_overlay.PackagingTests.test_regeneration_rejects_different_available_swig) ... ok
+2026-10-05T20:52:53.3807620Z test_regeneration_rejects_wrong_archive_swig_version (test_package_overlay.PackagingTests.test_regeneration_rejects_wrong_archive_swig_version) ... ok
+2026-10-05T20:52:53.4139470Z test_regeneration_still_rejects_changed_generated_source (test_package_overlay.PackagingTests.test_regeneration_still_rejects_changed_generated_source) ... ok
+2026-10-05T20:52:53.4141080Z test_resource_only_deterministic_archive (test_package_overlay.PackagingTests.test_resource_only_deterministic_archive) ... ok
+2026-10-05T20:52:53.4411470Z test_reviewed_notice_hash_cannot_be_overridden_by_manifest (test_package_overlay.PackagingTests.test_reviewed_notice_hash_cannot_be_overridden_by_manifest) ... ok
+2026-10-05T20:52:53.4691990Z test_source_archive_records_exact_generator_and_provenance (test_package_overlay.PackagingTests.test_source_archive_records_exact_generator_and_provenance) ... ok
+2026-10-05T20:52:53.4704530Z test_symlink_source_rejected (test_package_overlay.PackagingTests.test_symlink_source_rejected) ... ok
+2026-10-05T20:52:53.4793760Z test_tampered_license_rejected (test_package_overlay.PackagingTests.test_tampered_license_rejected) ... ok
+2026-10-05T20:52:53.4859080Z test_truncated_commands_rejected (test_package_overlay.PackagingTests.test_truncated_commands_rejected) ... ok
+2026-10-05T20:52:53.4861710Z test_trusted_root_accepts_ancestor_alias_but_not_internal_links (test_package_overlay.PackagingTests.test_trusted_root_accepts_ancestor_alias_but_not_internal_links) ... ok
+2026-10-05T20:52:53.4865140Z test_unknown_swig_versions_rejected (test_package_overlay.PackagingTests.test_unknown_swig_versions_rejected) ... ok
+2026-10-05T20:52:53.4935630Z test_unpinned_generator_notice_provenance_rejected (test_package_overlay.PackagingTests.test_unpinned_generator_notice_provenance_rejected) ... ok
+2026-10-05T20:52:53.4958760Z test_unreviewed_license_version_rejected (test_package_overlay.PackagingTests.test_unreviewed_license_version_rejected) ... ok
+2026-10-05T20:52:53.4961970Z test_unsafe_paths_rejected (test_package_overlay.PackagingTests.test_unsafe_paths_rejected) ... ok
+2026-10-05T20:52:53.4963930Z test_x86_64_rejected (test_package_overlay.PackagingTests.test_x86_64_rejected) ... ok
+2026-10-05T20:52:53.4965990Z test_cached_hash_mismatch_is_rejected_without_network (test_runner.ValidationTests.test_cached_hash_mismatch_is_rejected_without_network) ... ok
+2026-10-05T20:52:53.5040990Z test_exact_cached_hash_is_accepted_without_network (test_runner.ValidationTests.test_exact_cached_hash_is_accepted_without_network) ... ok
+2026-10-05T20:52:53.5171260Z test_golden_manifest_matches_recorded_reference (test_runner.ValidationTests.test_golden_manifest_matches_recorded_reference) ... ok
+2026-10-05T20:52:53.5269580Z test_path_traversal_archive_rejected (test_runner.ValidationTests.test_path_traversal_archive_rejected) ... ok
+2026-10-05T20:52:53.5272090Z test_source_tree_never_reused (test_runner.ValidationTests.test_source_tree_never_reused) ... ok
+2026-10-05T20:52:53.5273540Z 
+2026-10-05T20:52:53.5273910Z ----------------------------------------------------------------------
+2026-10-05T20:52:53.5274460Z Ran 34 tests in 0.882s
+2026-10-05T20:52:53.5275050Z 
+2026-10-05T20:52:53.5275310Z OK

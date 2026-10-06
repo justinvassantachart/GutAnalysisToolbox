@@ -1,0 +1,94 @@
+# REVIEW-ONLY: this file is intentionally outside .github/workflows.
+# Publish only after repository ownership/transfer is resolved and the owner approves.
+# No workflow-run results are claimed for this new lane.
+name: native-mac-fresh-fiji
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gat-fresh-fiji-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -e -o pipefail {0}
+
+jobs:
+  paired-installed-fiji:
+    name: Fresh native Fiji startup and bounded paired GAT checks
+    runs-on: macos-14
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: fork
+          persist-credentials: false
+      - uses: actions/checkout@v5
+        with:
+          repository: pr4deepr/GutAnalysisToolbox
+          ref: 1870d9e16e16fd6daeac0bd05122e851029ddedc
+          path: original
+          persist-credentials: false
+      # CI build tools only. Runtime validation explicitly uses Fiji's bundled Java.
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Confirm native host and immutable original source
+        run: |
+          mkdir -p fresh-fiji-results
+          test "$(uname -m)" = arm64
+          test "$(git -C original rev-parse HEAD)" = 1870d9e16e16fd6daeac0bd05122e851029ddedc
+          test -z "$(git -C original status --porcelain --untracked-files=no)"
+          {
+            uname -a
+            sw_vers
+            sysctl -n machdep.cpu.brand_string
+            echo "Original: $(git -C original rev-parse HEAD)"
+            echo "Fork: $(git -C fork rev-parse HEAD)"
+          } | tee fresh-fiji-results/source-and-host.log
+      - name: Build unchanged original plugin
+        run: |
+          mvn -B -ntp -s fork/native-inference/validation/baseline/scijava-settings.xml \
+            -f original/pom.xml -DskipTests -Dlicense.skipAddLicense=true -Dlicense.skip=true \
+            clean package | tee fresh-fiji-results/original-build.log
+          test -z "$(git -C original status --porcelain --untracked-files=no)"
+      - name: Build fork and isolated arm64 workers
+        run: |
+          mvn -B -ntp -f fork/pom.xml -DskipTests clean package | tee fresh-fiji-results/fork-build.log
+          mvn -B -ntp -f fork/native-inference/pom.xml clean package | tee fresh-fiji-results/inference-build.log
+          mvn -B -ntp -f fork/native-alignment/pom.xml clean package | tee fresh-fiji-results/alignment-build.log
+          python fork/scripts/package-apple-silicon-preview.py --output "$PWD/fresh-fiji-install-artifacts"
+      - name: Test harness safeguards
+        run: python -m unittest discover -s fork/validation/fiji-install -p 'test_*.py' -v
+      - name: Fresh official Fiji download, updater setup, native launch, and paired probes
+        run: |
+          shopt -s nullglob
+          archives=(fresh-fiji-install-artifacts/GAT-*-macos-arm64-preview.zip)
+          test "${#archives[@]}" = 1
+          python fork/validation/fiji-install/run_fresh_fiji.py \
+            --original-jar "$PWD/original/target/GutAnalysisToolbox_-2.0.0.jar" \
+            --fork-archive "$PWD/${archives[0]}" \
+            --original-commit "$(git -C original rev-parse HEAD)" \
+            --fork-commit "$(git -C fork rev-parse HEAD)" \
+            --output "$PWD/fresh-fiji-results"
+      - name: Confirm original source stayed unchanged
+        if: always()
+        run: test -z "$(git -C original status --porcelain --untracked-files=no)"
+      - name: Preserve diagnostic evidence, never a full Fiji binary redistribution
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-fresh-native-fiji-paired-evidence
+          path: |
+            fresh-fiji-results/**/*.json
+            fresh-fiji-results/**/*.log
+            fresh-fiji-results/**/*.xml.gz
+          if-no-files-found: error

@@ -1,0 +1,58 @@
+{
+  "github_install_artifact": 11375352270,
+  "source_commit": "bb897c237732cf8569a1515eb8d7ed69feb2ab31",
+  "outer_sha256": "ff8a14a251b8ee7e9959f3c2f4ee93efd484c192299b0f2dd3621a388010099c",
+  "fork_package_bytes": 203286850,
+  "fork_package_sha256": "5c746a31c65727779566ed9b9a1bfdd4966167504bce7ee95bd4878ed2159d03",
+  "build_info": {
+    "version": "2.0.1-apple-silicon.3",
+    "source_commit": "bb897c237732cf8569a1515eb8d7ed69feb2ab31",
+    "source_worktree_modified": false,
+    "target": "macos-arm64",
+    "minimum_macos": "14",
+    "minimum_java": "11",
+    "experimental": true,
+    "install_root": "ImageJ data root containing jars and plugins; current Fiji Latest uses outer Fiji/, not inner Fiji.app/",
+    "plugin_classes_match_tested_classes": true,
+    "plugin_classes_compared": 156,
+    "plugin_sha256": "0bb1c33b452fcd607f13291532e103199223d947eeec605a91dcac03dc047792",
+    "inference_bundle_sha256": "0fab4ea2529b083b762686073628d0980f66e70dda1d2e906f70e4ec125b6e79",
+    "alignment_bundle_sha256": "b12d42b9e00ab1c9c17bd572521a40c8cfef2ff355b9010cc1e3e412459d94a1",
+    "validation_note": "See APPLE_SILICON.md and workflow matrix. Packaging is not a Fiji GUI or physical-Mac test."
+  },
+  "class_continuity_to_passing_ab046cb": {
+    "plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.3.jar": {
+      "class_count": 282,
+      "all_byte_identical_to_tested_ab046cb": true,
+      "jar_sha256": "0bb1c33b452fcd607f13291532e103199223d947eeec605a91dcac03dc047792"
+    },
+    "gat-native-inference/gat-native-inference.jar": {
+      "class_count": 8,
+      "all_byte_identical_to_tested_ab046cb": true,
+      "jar_sha256": "1e24e30805e01ebb838684c913d317e3d3f09cfaa7cd66f02d8c3a6d57247b04"
+    },
+    "gat-native-alignment/gat-native-alignment.jar": {
+      "class_count": 4,
+      "all_byte_identical_to_tested_ab046cb": true,
+      "jar_sha256": "2ebec1639dfd3c4ed321783c03e7079bab7f36b46f0a3af8e4da9ad34924a204"
+    }
+  },
+  "dependency_jars_identical_to_audited_ab046cb": [
+    "gat-native-inference/lib/tensorflow-core-native-1.2.0-macosx-arm64.jar",
+    "gat-native-inference/lib/tensorflow-ndarray-1.2.0.jar",
+    "gat-native-inference/lib/protobuf-java-4.31.1.jar",
+    "gat-native-inference/lib/tensorflow-core-native-1.2.0.jar",
+    "gat-native-inference/lib/javacpp-1.5.12.jar",
+    "gat-native-inference/lib/tensorflow-core-api-1.2.0.jar",
+    "gat-native-alignment/lib/opencv-4.11.0-1.5.12.jar",
+    "gat-native-alignment/lib/javacpp-1.5.12-macosx-arm64.jar",
+    "gat-native-alignment/lib/ij-1.54p.jar",
+    "gat-native-alignment/lib/openblas-0.3.30-1.5.12-macosx-arm64.jar",
+    "gat-native-alignment/lib/openblas-0.3.30-1.5.12.jar",
+    "gat-native-alignment/lib/javacpp-1.5.12.jar",
+    "gat-native-alignment/lib/opencv-4.11.0-1.5.12-macosx-arm64.jar",
+    "gat-native-alignment/lib/javacv-1.5.12.jar"
+  ],
+  "bundled_guides_and_license_match_source": true,
+  "status": "PASS_BOUNDED_PACKAGING_REVIEW"
+}

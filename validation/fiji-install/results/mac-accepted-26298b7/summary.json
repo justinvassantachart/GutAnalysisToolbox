@@ -1,0 +1,3426 @@
+{
+  "schema_version": 1,
+  "scope": "GREEN bounded real installed-Fiji acceptance, not complete workflow support",
+  "provenance": {
+    "repository": "https://github.com/justinvassantachart/GutAnalysisToolbox",
+    "run_id": 37374804775,
+    "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37374804775",
+    "job_id": 111980603286,
+    "job_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37374804775/job/111980603286",
+    "source_commit": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+    "source_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/commit/26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+    "original_commit": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+    "original_source_url": "https://github.com/pr4deepr/GutAnalysisToolbox/commit/1870d9e16e16fd6daeac0bd05122e851029ddedc",
+    "artifact_id": 11372260331,
+    "artifact_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37374804775/artifacts/11372260331",
+    "artifact_name": "gat-fresh-native-fiji-paired-evidence",
+    "preserved_zip": "gat-fresh-fiji-corrected-26298b7.zip",
+    "zip_bytes": 1380683,
+    "zip_sha256": "86d82644e2bf03cf35b7174010e5a634b27bfe038b294fb00cdaf81a6c6763d3",
+    "zip_crc_status": "PASS",
+    "members": 85,
+    "extracted_members_verified_byte_for_byte": true,
+    "ci_job_evidence": {
+      "file": "job-step-status.json",
+      "original_zip_member": false,
+      "source": "GitHub Actions jobs API via read-only connector",
+      "api_url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/runs/37374804775/jobs",
+      "retrieved_at_utc": "2026-10-05T21:31:00Z",
+      "job_status": "completed",
+      "job_conclusion": "success",
+      "retrieval_timestamp_precision": "Approximate, supplied with structured connector evidence; not a raw HTTP response timestamp",
+      "representation": "Structured connector evidence, not raw HTTP-response bytes"
+    }
+  },
+  "acceptance_gate": {
+    "status": "PASS",
+    "required_stage_count": 17,
+    "required_stages": [
+      "native_host",
+      "archive_download",
+      "archive_integrity",
+      "archive_extraction",
+      "bundled_java",
+      "pristine_startup",
+      "official_updater",
+      "installed_inventory",
+      "paired_overlays",
+      "original_startup",
+      "fork_startup",
+      "fork_dashboard",
+      "fork_neuron",
+      "fork_alignment",
+      "ganglia_engine_setup",
+      "official_engine_inference",
+      "fork_ganglia"
+    ],
+    "method": "Recomputed directly from exact tested run_fresh_fiji.py required list and raw fresh-fiji-report.json statuses; not a replacement for raw per-stage statuses."
+  },
+  "raw_status_policy": "No raw artifact status is rewritten. Original neuron/alignment are genuine observed FAILs; OpenCL/full interactive workflows remain BLOCKED.",
+  "portable_transformation": {
+    "path_substitutions": {
+      "$WORK_ROOT": "/Users/runner/work/_temp/gat-fresh-fiji-lqn2ezdz",
+      "$CHECKOUT": "/Users/runner/work/GutAnalysisToolbox/GutAnalysisToolbox"
+    },
+    "omitted_large_fields": [
+      "java.class.path",
+      "registered_commands"
+    ],
+    "retained": "All named stage reports, errors, class sources, runtime, dialogs, metrics, exact source excerpts and engine/model hashes. Whole raw classpaths and menu maps stay unchanged in the ZIP; derived hashes/counts and relevant exact command mappings appear below."
+  },
+  "host": {
+    "source_and_host_log": "Darwin sjc20-bb714-e793631d-8ac2-459a-ab9b-963861c1377c-9AA03FEF3732.local 24.6.0 Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:34 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_VMAPPLE arm64\nProductName:\t\tmacOS\nProductVersion:\t\t15.7.9\nBuildVersion:\t\t24G830\nApple M1 (Virtual)\nOriginal: 1870d9e16e16fd6daeac0bd05122e851029ddedc\nFork: 26298b73ea3fcb4c1410ad4bcd268233040c5ace\n",
+    "native_binaries_log": "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64:                                                     Mach-O 64-bit executable arm64\n$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home/bin/java: Mach-O 64-bit executable arm64\n",
+    "bundled_java_log": "Property settings:\n    file.encoding = UTF-8\n    file.separator = /\n    ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16\n    http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16\n    java.class.path = \n    java.class.version = 65.0\n    java.home = $WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home\n    java.io.tmpdir = /var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/\n    java.library.path = $WORK_ROOT/home/Library/Java/Extensions\n        /Library/Java/Extensions\n        /Network/Library/Java/Extensions\n        /System/Library/Java/Extensions\n        /usr/lib/java\n        .\n    java.runtime.name = OpenJDK Runtime Environment\n    java.runtime.version = 21.0.7+6-LTS\n    java.specification.name = Java Platform API Specification\n    java.specification.vendor = Oracle Corporation\n    java.specification.version = 21\n    java.vendor = Azul Systems, Inc.\n    java.vendor.url = http://www.azul.com/\n    java.vendor.url.bug = http://www.azul.com/support/\n    java.vendor.version = Zulu21.42+19-CA\n    java.version = 21.0.7\n    java.version.date = 2025-04-15\n    java.vm.compressedOopsMode = Zero based\n    java.vm.info = mixed mode, sharing\n    java.vm.name = OpenJDK 64-Bit Server VM\n    java.vm.specification.name = Java Virtual Machine Specification\n    java.vm.specification.vendor = Oracle Corporation\n    java.vm.specification.version = 21\n    java.vm.vendor = Azul Systems, Inc.\n    java.vm.version = 21.0.7+6-LTS\n    jdk.debug = release\n    line.separator = \\n \n    native.encoding = UTF-8\n    os.arch = aarch64\n    os.name = Mac OS X\n    os.version = 15.7.9\n    path.separator = :\n    socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16\n    stderr.encoding = UTF-8\n    stdout.encoding = UTF-8\n    sun.arch.data.model = 64\n    sun.boot.library.path = $WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home/lib\n    sun.cpu.endian = little\n    sun.io.unicode.encoding = UnicodeBig\n    sun.java.launcher = SUN_STANDARD\n    sun.jnu.encoding = UTF-8\n    sun.management.compiler = HotSpot 64-Bit Tiered Compilers\n    user.country = US\n    user.dir = $CHECKOUT\n    user.home = /Users/runner\n    user.language = en\n    user.name = runner\n\nopenjdk version \"21.0.7\" 2025-04-15 LTS\nOpenJDK Runtime Environment Zulu21.42+19-CA (build 21.0.7+6-LTS)\nOpenJDK 64-Bit Server VM Zulu21.42+19-CA (build 21.0.7+6-LTS, mixed mode, sharing)\n"
+  },
+  "recorded_report": {
+    "schema_version": 1,
+    "scope": "Paired bounded installed-Fiji validation, not all GAT workflows",
+    "prepared_manifest_sha256": "47c8d7d9bcc658664462ac8c08e2bf9d66b16a132330b1dd6bd5390e14fd7c86",
+    "work_root": "$WORK_ROOT",
+    "stages": {
+      "native_host": {
+        "status": "PASS",
+        "evidence": "host.log"
+      },
+      "archive_download": {
+        "status": "PASS",
+        "url": "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip",
+        "sha256": "26af2159ca1d770de2c6b4fd99b98292891c50abdeaa00d1c66a425cd3de45b0",
+        "bytes": 669037040,
+        "execution": {
+          "command": [
+            "curl",
+            "--fail",
+            "--location",
+            "--silent",
+            "--show-error",
+            "--proto",
+            "=https",
+            "--proto-redir",
+            "=https",
+            "--retry",
+            "2",
+            "--connect-timeout",
+            "30",
+            "--max-time",
+            "1185",
+            "--output",
+            "$WORK_ROOT/fiji.zip",
+            "https://downloads.imagej.net/fiji/archive/latest/20261004-2017/fiji-latest-macos-arm64-jdk.zip"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 13.45038762499999,
+          "log": "download.log"
+        }
+      },
+      "archive_integrity": {
+        "status": "PASS",
+        "sha256": "26af2159ca1d770de2c6b4fd99b98292891c50abdeaa00d1c66a425cd3de45b0",
+        "expanded_bytes": 859133844
+      },
+      "archive_extraction": {
+        "status": "PASS",
+        "root": "$WORK_ROOT/official/Fiji",
+        "no_quarantine_or_security_changes": true
+      },
+      "bundled_java": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home/bin/java",
+            "-XshowSettings:properties",
+            "-version"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 0.1337045840000144,
+          "log": "bundled-java.log"
+        }
+      },
+      "pristine_startup": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-official",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/official/Fiji",
+            "-Dgat.validation.mode=startup",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/pristine_startup.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "--run",
+            "$WORK_ROOT/pristine_startup.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 18.026742958,
+          "log": "pristine_startup.log"
+        },
+        "evidence": "pristine_startup.json"
+      },
+      "official_updater": {
+        "status": "PASS",
+        "site_database_snapshots": [
+          {
+            "url": "https://sites.imagej.net/Tboudier/db.xml.gz",
+            "sha256": "bcceba9ce211d7d0a1100669795c5d1d187ff316610f8ba58469a08e32200d6c",
+            "bytes": 8762,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-00.xml.gz",
+                "https://sites.imagej.net/Tboudier/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.2042469579999988,
+              "log": "site-db-00.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/BIG-EPFL/db.xml.gz",
+            "sha256": "e7067f2627941f98c155f88cb6eae9dbe525c1e1ea00a0a464e08030842f0896",
+            "bytes": 3001,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-01.xml.gz",
+                "https://sites.imagej.net/BIG-EPFL/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.2844165000000203,
+              "log": "site-db-01.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/CSBDeep/db.xml.gz",
+            "sha256": "a0e39765e2bf2e1c4a57a893fa1e3ca3d3a9a4dec8de383313624afcd7abe7c9",
+            "bytes": 6904,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-02.xml.gz",
+                "https://sites.imagej.net/CSBDeep/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.23027312499999653,
+              "log": "site-db-02.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/clij/db.xml.gz",
+            "sha256": "922381b2a545e6f4e775310e262ef03a14fa74ea97d5628744044046da6ab2d1",
+            "bytes": 12331,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-03.xml.gz",
+                "https://sites.imagej.net/clij/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.22665904099997647,
+              "log": "site-db-03.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/clij2/db.xml.gz",
+            "sha256": "faeda6e120ddcaf0494206df76aafca0476db9c6e9ad11e8a8e292946979c2cb",
+            "bytes": 12916,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-04.xml.gz",
+                "https://sites.imagej.net/clij2/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.25322424999998816,
+              "log": "site-db-04.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/DeepImageJ/db.xml.gz",
+            "sha256": "9adda7fa48b1008df50da9e2745fac063d66892b50cc4d1ef35b08f47c062970",
+            "bytes": 11423,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-05.xml.gz",
+                "https://sites.imagej.net/DeepImageJ/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.27303604100001166,
+              "log": "site-db-05.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/GutAnalysisToolbox/db.xml.gz",
+            "sha256": "47a253d1a883157534fcac792fc21fa974c5b0232f19c65fcebcb3bf573c389c",
+            "bytes": 19915,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-06.xml.gz",
+                "https://sites.imagej.net/GutAnalysisToolbox/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.2621079580000014,
+              "log": "site-db-06.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/IJPB-plugins/db.xml.gz",
+            "sha256": "f401e36e7d07630a1ab281af8f69db227d5d2b219e874f0a47a9f0328d4ded5c",
+            "bytes": 2034,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-07.xml.gz",
+                "https://sites.imagej.net/IJPB-plugins/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.22139975000001755,
+              "log": "site-db-07.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/StarDist/db.xml.gz",
+            "sha256": "2eecf5138dfa21c95498c06a6bf8bc105c819c276fbb37b9da7afc185514c1d4",
+            "bytes": 1436,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-08.xml.gz",
+                "https://sites.imagej.net/StarDist/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.884324792000001,
+              "log": "site-db-08.log"
+            }
+          },
+          {
+            "url": "https://biop.epfl.ch/Fiji-Update/db.xml.gz",
+            "sha256": "a28820ad7a2e75ef14a82bf5be4f8579f90a7d9cef88ac62fe86be94974971ae",
+            "bytes": 35398,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-09.xml.gz",
+                "https://biop.epfl.ch/Fiji-Update/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.8567212089999998,
+              "log": "site-db-09.log"
+            }
+          },
+          {
+            "url": "https://sites.imagej.net/Template_Matching/db.xml.gz",
+            "sha256": "418c48155f23b5def85bb46c2c2dae6f7f479711cd1465c114af5aba86bcf39c",
+            "bytes": 1768,
+            "execution": {
+              "command": [
+                "curl",
+                "--fail",
+                "--location",
+                "--silent",
+                "--show-error",
+                "--proto",
+                "=https",
+                "--proto-redir",
+                "=https",
+                "--retry",
+                "2",
+                "--connect-timeout",
+                "30",
+                "--max-time",
+                "105",
+                "--output",
+                "$CHECKOUT/fresh-fiji-results/updater-databases/site-10.xml.gz",
+                "https://sites.imagej.net/Template_Matching/db.xml.gz"
+              ],
+              "exit_code": 0,
+              "timeout": false,
+              "seconds": 0.2197002500000167,
+              "log": "site-db-10.log"
+            }
+          }
+        ],
+        "note": "Supported updater resolution; live sites are inventory-locked, not a replayable historical snapshot"
+      },
+      "installed_inventory": {
+        "status": "PASS",
+        "evidence": "installed-inventory.json",
+        "pin_comparison": "pin-comparison.json",
+        "pin_conflicts": []
+      },
+      "paired_overlays": {
+        "status": "PASS",
+        "overlays": {
+          "original": {
+            "source_commit": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+            "overlay_sha256": "f60cc71f2990c66062a133924c6ad0c0f7c76f60dc405158265bca4f1b7ec145",
+            "displaced_GAT_only": [
+              {
+                "path": "plugins/GutAnalysisToolbox_-2.0.0.jar",
+                "sha256": "d684812ed735e4ed3ac66ed6e9d791978ae7ebccdefd6575e7ba72d1fd235752"
+              }
+            ],
+            "runtime_dependency_jars_changed": false
+          },
+          "fork": {
+            "source_commit": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+            "overlay_sha256": "9c9eff62101f4eef529455633cc1cfbc33b817c9a1a6567110a928db215b2d3e",
+            "displaced_GAT_only": [
+              {
+                "path": "plugins/GutAnalysisToolbox_-2.0.0.jar",
+                "sha256": "d684812ed735e4ed3ac66ed6e9d791978ae7ebccdefd6575e7ba72d1fd235752"
+              }
+            ],
+            "runtime_dependency_jars_changed": false
+          }
+        }
+      },
+      "original_startup": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-original",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/original/Fiji",
+            "-Dgat.validation.mode=startup",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/original_startup.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "--run",
+            "$WORK_ROOT/original_startup.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 18.212267208000014,
+          "log": "original_startup.log"
+        },
+        "evidence": "original_startup.json"
+      },
+      "original_dashboard": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-original",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/original/Fiji",
+            "-Dgat.validation.mode=dashboard",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/original_dashboard.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "--run",
+            "$WORK_ROOT/original_dashboard.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 18.02939412500001,
+          "log": "original_dashboard.log"
+        },
+        "evidence": "original_dashboard.json"
+      },
+      "original_neuron": {
+        "status": "FAIL",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-original",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/original/Fiji",
+            "-Dgat.validation.mode=neuron",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/original_neuron.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "-Dgat.validation.fixture=$WORK_ROOT/public-Hu.tif",
+            "--run",
+            "$WORK_ROOT/original_neuron.ijm"
+          ],
+          "exit_code": 2,
+          "timeout": false,
+          "seconds": 19.19622233299998,
+          "log": "original_neuron.log"
+        },
+        "evidence": "original_neuron.json"
+      },
+      "original_alignment": {
+        "status": "FAIL",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-original",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/original/Fiji",
+            "-Dgat.validation.mode=alignment",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/original_alignment.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "-Dgat.validation.fixture=$WORK_ROOT/public-Hu.tif",
+            "--run",
+            "$WORK_ROOT/original_alignment.ijm"
+          ],
+          "exit_code": 2,
+          "timeout": false,
+          "seconds": 21.46756441699995,
+          "log": "original_alignment.log"
+        },
+        "evidence": "original_alignment.json"
+      },
+      "fork_startup": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-fork",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/fork/Fiji",
+            "-Dgat.validation.mode=startup",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/fork_startup.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "--run",
+            "$WORK_ROOT/fork_startup.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 17.209588625000038,
+          "log": "fork_startup.log"
+        },
+        "evidence": "fork_startup.json"
+      },
+      "fork_dashboard": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-fork",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/fork/Fiji",
+            "-Dgat.validation.mode=dashboard",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/fork_dashboard.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "--run",
+            "$WORK_ROOT/fork_dashboard.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 17.861298625000074,
+          "log": "fork_dashboard.log"
+        },
+        "evidence": "fork_dashboard.json"
+      },
+      "fork_neuron": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-fork",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/fork/Fiji",
+            "-Dgat.validation.mode=neuron",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/fork_neuron.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "-Dgat.validation.fixture=$WORK_ROOT/public-Hu.tif",
+            "--run",
+            "$WORK_ROOT/fork_neuron.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 26.166015416999926,
+          "log": "fork_neuron.log"
+        },
+        "evidence": "fork_neuron.json"
+      },
+      "fork_alignment": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-fork",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/fork/Fiji",
+            "-Dgat.validation.mode=alignment",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/fork_alignment.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "-Dgat.validation.fixture=$WORK_ROOT/public-Hu.tif",
+            "--run",
+            "$WORK_ROOT/fork_alignment.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 20.47148245799997,
+          "log": "fork_alignment.log"
+        },
+        "evidence": "fork_alignment.json"
+      },
+      "official_engine_install": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-official",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/official/Fiji",
+            "-Dgat.validation.mode=engine_install",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/official_engine_install.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "--run",
+            "$WORK_ROOT/official_engine_install.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 17.101047041000015,
+          "log": "official_engine_install.log"
+        },
+        "evidence": "official_engine_install.json"
+      },
+      "official_engine_inference": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-official",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/official/Fiji",
+            "-Dgat.validation.mode=engine_inference",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/official_engine_inference.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "--run",
+            "$WORK_ROOT/official_engine_inference.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 41.446832290999964,
+          "log": "official_engine_inference.log"
+        },
+        "evidence": "official_engine_inference.json"
+      },
+      "ganglia_engine_setup": {
+        "status": "PASS",
+        "installer": "official_engine_install.json",
+        "inference": "official_engine_inference.json",
+        "model_and_installed_runtime_pins": [
+          {
+            "path": "jars/dl-modelrunner-0.6.2-SNAPSHOT.jar",
+            "sha256": "b8d4821fa5fd8d7f9135e3e673b92b8aeb3317f69dd8d8e05bc60aa981e3f757"
+          },
+          {
+            "path": "plugins/DeepImageJ-3.2.0-SNAPSHOT.jar",
+            "sha256": "ce07bfa791c83034538ef858bce17b03fb414e18082aa78b1e63594d3829b5c6"
+          },
+          {
+            "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/best_model_torchscript.pt",
+            "sha256": "1c59382b776acc2beed84bc2309e29f474aa69ff6356ec2248a04854d4feca7b"
+          },
+          {
+            "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml",
+            "sha256": "1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c"
+          },
+          {
+            "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-input.npy",
+            "sha256": "986cfd751c0e2cfd3367cfc39b5583c10e55da2f1a7772d73845c6395eefd681"
+          },
+          {
+            "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-output.npy",
+            "sha256": "c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9"
+          },
+          {
+            "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/binarize.ijm",
+            "sha256": "5a428f3a710dc1212c1a86830978f4707932b251c37b912fad15578ef6a1fce1"
+          },
+          {
+            "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/im_preprocessing.ijm",
+            "sha256": "cd950ddbcbadcb5cbc016bb71ee33d2ee7b730b3ca6bbc0ea17dc54c4b2167ec"
+          }
+        ],
+        "installer_files": [
+          {
+            "path": "api-0.22.1.jar",
+            "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+          },
+          {
+            "path": "pytorch-engine-0.22.1.jar",
+            "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+          },
+          {
+            "path": "pytorch-jni-2.0.0-0.22.1.jar",
+            "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+          },
+          {
+            "path": "dl-modelrunner-pytorch-0.4.4.jar",
+            "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+          },
+          {
+            "path": "jna-5.13.0.jar",
+            "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+          },
+          {
+            "path": "commons-compress-1.22.jar",
+            "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+          },
+          {
+            "path": "slf4j-api-2.0.6.jar",
+            "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+          }
+        ],
+        "verified_engine_files": [
+          {
+            "path": "api-0.22.1.jar",
+            "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+          },
+          {
+            "path": "pytorch-engine-0.22.1.jar",
+            "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+          },
+          {
+            "path": "pytorch-jni-2.0.0-0.22.1.jar",
+            "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+          },
+          {
+            "path": "dl-modelrunner-pytorch-0.4.4.jar",
+            "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+          },
+          {
+            "path": "jna-5.13.0.jar",
+            "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+          },
+          {
+            "path": "commons-compress-1.22.jar",
+            "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+          },
+          {
+            "path": "slf4j-api-2.0.6.jar",
+            "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+          },
+          {
+            "path": "pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+            "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995"
+          }
+        ],
+        "native_cpu_download": {
+          "url": "https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-native-cpu/2.0.0/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+          "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995",
+          "bytes": 34791618,
+          "execution": {
+            "command": [
+              "curl",
+              "--fail",
+              "--location",
+              "--silent",
+              "--show-error",
+              "--proto",
+              "=https",
+              "--proto-redir",
+              "=https",
+              "--retry",
+              "2",
+              "--connect-timeout",
+              "30",
+              "--max-time",
+              "285",
+              "--output",
+              "$WORK_ROOT/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+              "https://repo1.maven.org/maven2/ai/djl/pytorch/pytorch-native-cpu/2.0.0/pytorch-native-cpu-2.0.0-osx-aarch64.jar"
+            ],
+            "exit_code": 0,
+            "timeout": false,
+            "seconds": 0.4398100419999764,
+            "log": "ganglia-native-download.log"
+          }
+        },
+        "note": "Shipped JDLL installer plus exact pinned official native CPU jar; completed full model inference before copying either installation"
+      },
+      "original_ganglia": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-original",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/original/Fiji",
+            "-Dgat.validation.mode=ganglia",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/original_ganglia.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "-Dgat.validation.fixture=$WORK_ROOT/public-Hu.tif",
+            "--run",
+            "$WORK_ROOT/original_ganglia.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 39.85221637500001,
+          "log": "original_ganglia.log"
+        },
+        "evidence": "original_ganglia.json"
+      },
+      "fork_ganglia": {
+        "status": "PASS",
+        "execution": {
+          "command": [
+            "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+            "--java-home=$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+            "--allow-multiple",
+            "--no-splash",
+            "--heap=1536m",
+            "-Duser.home=$WORK_ROOT/home-fork",
+            "-XX:ActiveProcessorCount=2",
+            "-Dai.djl.pytorch.num_threads=1",
+            "-Dai.djl.pytorch.num_interop_threads=1",
+            "-Dgat.validation.root=$WORK_ROOT/fork/Fiji",
+            "-Dgat.validation.mode=ganglia",
+            "-Dgat.validation.report=$CHECKOUT/fresh-fiji-results/fork_ganglia.json",
+            "-Dgat.validation.expectedLabels=ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+            "-Dgat.validation.fixture=$WORK_ROOT/public-Hu.tif",
+            "--run",
+            "$WORK_ROOT/fork_ganglia.ijm"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "seconds": 40.381272999999965,
+          "log": "fork_ganglia.log"
+        },
+        "evidence": "fork_ganglia.json"
+      },
+      "ganglia_command": {
+        "status": "PASS",
+        "evidence": "fork_ganglia.json",
+        "note": "Real installed-Fiji GAT command; original observation is separately recorded in original_ganglia.json"
+      },
+      "opencl_workflows": {
+        "status": "BLOCKED",
+        "reason": "Native virtual M1 runner has no exposed OpenCL devices; requires a physical-device lane"
+      },
+      "full_interactive_workflows": {
+        "status": "BLOCKED",
+        "reason": "Biological review, parameter UI, every workflow, and physical-Mac Finder/Gatekeeper first-open are outside this bounded lane"
+      }
+    },
+    "fixture": {
+      "url": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/DYM_22_7_Pr_Hu_crop.tif",
+      "sha256": "55251741add488f9a08cf5b33a4ee8ec3fd3023e25ffb0fc18800f80953948d7",
+      "bytes": 33169,
+      "execution": {
+        "command": [
+          "curl",
+          "--fail",
+          "--location",
+          "--silent",
+          "--show-error",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--retry",
+          "2",
+          "--connect-timeout",
+          "30",
+          "--max-time",
+          "105",
+          "--output",
+          "$WORK_ROOT/public-Hu.tif",
+          "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/DYM_22_7_Pr_Hu_crop.tif"
+        ],
+        "exit_code": 0,
+        "timeout": false,
+        "seconds": 0.1790576660000056,
+        "log": "fixture-download.log"
+      }
+    },
+    "complete_workflow_support": false,
+    "no_existing_installation_modified": true,
+    "interpretation": "PASS applies only to a named completed stage. Original failures are observations, not automatically a successful before/after claim. No all-workflow PASS is possible in this lane."
+  },
+  "stage_reports": {
+    "pristine_startup": {
+      "schema_version": 1,
+      "mode": "startup",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/official/Fiji",
+      "java_home": "$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "unavailable": "java.lang.ClassNotFoundException: UI.GatPluginUI"
+        },
+        "UI.Preflight": {
+          "unavailable": "java.lang.ClassNotFoundException: UI.Preflight"
+        },
+        "Features.Core.PluginCalls": {
+          "unavailable": "java.lang.ClassNotFoundException: Features.Core.PluginCalls"
+        },
+        "Features.Tools.AlignStack": {
+          "unavailable": "java.lang.ClassNotFoundException: Features.Tools.AlignStack"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "unavailable": "java.lang.ClassNotFoundException: de.csbdresden.CommandFromMacro"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "unavailable": "java.lang.ClassNotFoundException: de.csbdresden.stardist.StarDist2D"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "unavailable": "java.lang.ClassNotFoundException: net.imagej.tensorflow.DefaultTensorFlowService"
+        },
+        "org.tensorflow.TensorFlow": {
+          "unavailable": "java.lang.ClassNotFoundException: org.tensorflow.TensorFlow"
+        },
+        "TemplateMatching.Align_slices": {
+          "unavailable": "java.lang.ClassNotFoundException: TemplateMatching.Align_slices"
+        },
+        "DeepImageJ_Run": {
+          "unavailable": "java.lang.ClassNotFoundException: DeepImageJ_Run"
+        }
+      },
+      "errors": [],
+      "text_windows": [],
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "1d2030dad328dd6356fe9dde8a6bb6247b2d5b0fb9f4524c58d2f28715c4a36a",
+        "entry_count": 663,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 947,
+        "relevant_exact_mappings": {},
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "official_engine_install": {
+      "schema_version": 1,
+      "mode": "engine_install",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/official/Fiji",
+      "java_home": "$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "action": "Shipped JDLL EngineInstall.installEngineWithArgsInDir(pytorch,2.0.0,true,false,engines)",
+      "model_declared_version": "2.4.1+cpu",
+      "catalog_resolved_version": "2.0.0",
+      "note": "Installer return alone is not proof: Python verifies all hashes, adds the pinned official native CPU jar, then a separate launcher process must load/run the full model before copying installations",
+      "text_windows": [],
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "7ebeb013d6ad67cf8cad5eba32fc7d3273df6389d344f54c27bbcbb89977d642",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "official_engine_inference": {
+      "schema_version": 1,
+      "mode": "engine_inference",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/official/Fiji",
+      "java_home": "$WORK_ROOT/official/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/official/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/official/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "action": "Actual full-model JDLL inference in installed Fiji",
+      "metrics": {
+        "engine_framework": "pytorch",
+        "engine_version": "2.0.0",
+        "engine_java_version": "2.0.0",
+        "engine_cpu": true,
+        "model_declared_version": "2.4.1+cpu",
+        "catalog_resolved_version": "2.0.0",
+        "input_shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "output_shape": [
+          1,
+          1,
+          1024,
+          1024
+        ],
+        "output_axes": "bcyx",
+        "finite_values": 1048576,
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "seconds": 25.4235465,
+        "scope": "Actual shipped JDLL model loading, RDF preprocessing, tiling, inference and postprocessing inside installed Fiji; not a scientific reference-parity claim"
+      },
+      "text_windows": [],
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "7ebeb013d6ad67cf8cad5eba32fc7d3273df6389d344f54c27bbcbb89977d642",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "original_startup": {
+      "schema_version": 1,
+      "mode": "startup",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/original/Fiji",
+      "java_home": "$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "text_windows": [],
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "a371bcdeb3a244e340601aa24333e43d9aa1e529ea0147bb7596222e73ef4955",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "original_dashboard": {
+      "schema_version": 1,
+      "mode": "dashboard",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/original/Fiji",
+      "java_home": "$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "action": "IJ.run(\"GATV2\") using the real installed menu mapping",
+      "dashboard_visible": true,
+      "text_windows": [
+        {
+          "title": "Log",
+          "text": "===============================================\nGAT – Environment check\n===============================================\nDeepImageJ already initialized.\n****** System Config ******\nDate: 2026/10/05 21:21:50\nJVM memory (GB): max=1.6  total=0.2  free=0.0\nNote: Fiji JVM has < ~20 GB max heap. For large images, consider 32 GB+.\nCLIJ2 GPU info not available: Index 0 out of bounds for length 0\n***************************\n****** Checking models in: $WORK_ROOT/original/Fiji/models ******\nNeuron model OK: 2D_enteric_neuron_v4_1.zip\nSubtype model OK: 2D_enteric_neuron_subtype_v4.zip\nGanglia Model OK: 2D_Ganglia_RGB_v3.bioimage.io.model\n****** Checking required plugins/commands ******\nDeepImageJ Run ... OK!\nCommand From Macro ... OK!\nArea Opening ... OK!\nSize Opening 2D/3D ... OK!\nCLIJ Macro Extensions ... OK!\nCLIJ2 Macro Extensions ... OK!\nStackReg ... OK!\nLabel Map to ROIs ... OK!\nAlign slices in stack... ... OK!\n***********************************************\n****** Checking plugin versions (informational) ******\nDeepImageJ: detected version 3.2.0-SNAPSHOT\nStarDist: detected version 0.3.0\nCSBDeep: version not detected among installed jars.\n***********************************************\n****** Checking TensorFlow (informational) ******\nTensorFlow: detected version 1.15.0\nTensorFlow 1.15.0 ... OK!\n***********************************************\n****** DONE – environment looks good. ******\n"
+        }
+      ],
+      "dialogs": [
+        {
+          "title": "GAT – First time",
+          "text": "Thanks for installing GAT.\nWe're going to verify DeepImageJ and required components.\nnull\n",
+          "action": "Dismissed informational first-run notice; GAT itself creates its sentinel"
+        }
+      ],
+      "imagej_log": "===============================================\nGAT – Environment check\n===============================================\nDeepImageJ already initialized.\n****** System Config ******\nDate: 2026/10/05 21:21:50\nJVM memory (GB): max=1.6  total=0.2  free=0.0\nNote: Fiji JVM has < ~20 GB max heap. For large images, consider 32 GB+.\nCLIJ2 GPU info not available: Index 0 out of bounds for length 0\n***************************\n****** Checking models in: $WORK_ROOT/original/Fiji/models ******\nNeuron model OK: 2D_enteric_neuron_v4_1.zip\nSubtype model OK: 2D_enteric_neuron_subtype_v4.zip\nGanglia Model OK: 2D_Ganglia_RGB_v3.bioimage.io.model\n****** Checking required plugins/commands ******\nDeepImageJ Run ... OK!\nCommand From Macro ... OK!\nArea Opening ... OK!\nSize Opening 2D/3D ... OK!\nCLIJ Macro Extensions ... OK!\nCLIJ2 Macro Extensions ... OK!\nStackReg ... OK!\nLabel Map to ROIs ... OK!\nAlign slices in stack... ... OK!\n***********************************************\n****** Checking plugin versions (informational) ******\nDeepImageJ: detected version 3.2.0-SNAPSHOT\nStarDist: detected version 0.3.0\nCSBDeep: version not detected among installed jars.\n***********************************************\n****** Checking TensorFlow (informational) ******\nTensorFlow: detected version 1.15.0\nTensorFlow 1.15.0 ... OK!\n***********************************************\n****** DONE – environment looks good. ******\n",
+      "classpath_review": {
+        "raw_utf8_sha256": "a371bcdeb3a244e340601aa24333e43d9aa1e529ea0147bb7596222e73ef4955",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "original_neuron": {
+      "schema_version": 1,
+      "mode": "neuron",
+      "status": "FAIL",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/original/Fiji",
+      "java_home": "$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [
+        "java.lang.AssertionError: Null/unchanged-input fallback is not a segmentation result\n\tat Fresh_Fiji_Probe.require(Fresh_Fiji_Probe.java:179)\n\tat Fresh_Fiji_Probe.neuron(Fresh_Fiji_Probe.java:147)\n\tat Fresh_Fiji_Probe.run(Fresh_Fiji_Probe.java:39)\n\tat ij.IJ.runUserPlugIn(IJ.java:244)\n\tat ij.IJ.runPlugIn(IJ.java:210)\n\tat ij.Executer.runCommand(Executer.java:152)\n\tat ij.Executer.run(Executer.java:70)\n\tat ij.IJ.run(IJ.java:326)\n\tat ij.IJ.run(IJ.java:337)\n\tat ij.macro.Functions.doRun(Functions.java:703)\n\tat ij.macro.Functions.doFunction(Functions.java:99)\n\tat ij.macro.Interpreter.doStatement(Interpreter.java:280)\n\tat ij.macro.Interpreter.doStatements(Interpreter.java:266)\n\tat ij.macro.Interpreter.run(Interpreter.java:162)\n\tat ij.macro.Interpreter.run(Interpreter.java:92)\n\tat ij.macro.Interpreter.run(Interpreter.java:106)\n\tat ij.plugin.Macro_Runner.runMacro(Macro_Runner.java:164)\n\tat ij.IJ.runMacro(IJ.java:165)\n\tat ij.IJ.runMacro(IJ.java:154)\n\tat net.imagej.legacy.IJ1Helper$2.call(IJ1Helper.java:1190)\n\tat net.imagej.legacy.IJ1Helper$2.call(IJ1Helper.java:1186)\n\tat net.imagej.legacy.IJ1Helper.runMacroFriendly(IJ1Helper.java:1137)\n\tat net.imagej.legacy.IJ1Helper.runMacro(IJ1Helper.java:1186)\n\tat net.imagej.legacy.plugin.IJ1MacroEngine.eval(IJ1MacroEngine.java:145)\n\tat org.scijava.script.ScriptModule.run(ScriptModule.java:173)\n\tat org.scijava.module.ModuleRunner.run(ModuleRunner.java:165)\n\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:125)\n\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:64)\n\tat org.scijava.thread.DefaultThreadService.lambda$wrap$2(DefaultThreadService.java:247)\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\n"
+      ],
+      "action": "Features.Core.PluginCalls.runStarDist2DLabel, invoked inside installed Fiji",
+      "requested_tiles": 4,
+      "probability_threshold": 0.5,
+      "nms_threshold": 0.3,
+      "text_windows": [],
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "a371bcdeb3a244e340601aa24333e43d9aa1e529ea0147bb7596222e73ef4955",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "original_alignment": {
+      "schema_version": 1,
+      "mode": "alignment",
+      "status": "FAIL",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/original/Fiji",
+      "java_home": "$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [
+        "(Fiji Is Just) ImageJ 2.18.0/1.54p; Java 21.0.7 [64-bit]; Mac OS X 15.7.9; 75MB of 1536MB (4%)\n \njava.lang.UnsatisfiedLinkError: no jniopencv_core in java.library.path: $WORK_ROOT/original/Fiji/lib/macos-arm64\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2063)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1043)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:935)\n\tat org.bytedeco.javacpp.opencv_core.<clinit>(opencv_core.java:10)\n\tat java.base/java.lang.Class.forName0(Native Method)\n\tat java.base/java.lang.Class.forName(Class.java:534)\n\tat java.base/java.lang.Class.forName(Class.java:513)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:994)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:951)\n\tat TemplateMatching.cvMatch_Template.doMatch(cvMatch_Template.java:232)\n\tat TemplateMatching.Align_slices.alignSlices(Align_slices.java:155)\n\tat TemplateMatching.Align_slices.run(Align_slices.java:107)\n\tat ij.plugin.filter.PlugInFilterRunner.processOneImage(PlugInFilterRunner.java:266)\n\tat ij.plugin.filter.PlugInFilterRunner.<init>(PlugInFilterRunner.java:114)\n\tat ij.IJ.runUserPlugIn(IJ.java:246)\n\tat ij.IJ.runPlugIn(IJ.java:210)\n\tat ij.Executer.runCommand(Executer.java:152)\n\tat ij.Executer.run(Executer.java:70)\n\tat ij.IJ.run(IJ.java:326)\n\tat ij.IJ.run(IJ.java:416)\n\tat Features.Tools.AlignStack.alignTemplateMatching(AlignStack.java:177)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat Fresh_Fiji_Probe.alignment(Fresh_Fiji_Probe.java:164)\n\tat Fresh_Fiji_Probe.run(Fresh_Fiji_Probe.java:40)\n\tat ij.IJ.runUserPlugIn(IJ.java:244)\n\tat ij.IJ.runPlugIn(IJ.java:210)\n\tat ij.Executer.runCommand(Executer.java:152)\n\tat ij.Executer.run(Executer.java:70)\n\tat ij.IJ.run(IJ.java:326)\n\tat ij.IJ.run(IJ.java:337)\n\tat ij.macro.Functions.doRun(Functions.java:703)\n\tat ij.macro.Functions.doFunction(Functions.java:99)\n\tat ij.macro.Interpreter.doStatement(Interpreter.java:280)\n\tat ij.macro.Interpreter.doStatements(Interpreter.java:266)\n\tat ij.macro.Interpreter.run(Interpreter.java:162)\n\tat ij.macro.Interpreter.run(Interpreter.java:92)\n\tat ij.macro.Interpreter.run(Interpreter.java:106)\n\tat ij.plugin.Macro_Runner.runMacro(Macro_Runner.java:164)\n\tat ij.IJ.runMacro(IJ.java:165)\n\tat ij.IJ.runMacro(IJ.java:154)\n\tat net.imagej.legacy.IJ1Helper$2.call(IJ1Helper.java:1190)\n\tat net.imagej.legacy.IJ1Helper$2.call(IJ1Helper.java:1186)\n\tat net.imagej.legacy.IJ1Helper.runMacroFriendly(IJ1Helper.java:1137)\n\tat net.imagej.legacy.IJ1Helper.runMacro(IJ1Helper.java:1186)\n\tat net.imagej.legacy.plugin.IJ1MacroEngine.eval(IJ1MacroEngine.java:145)\n\tat org.scijava.script.ScriptModule.run(ScriptModule.java:173)\n\tat org.scijava.module.ModuleRunner.run(ModuleRunner.java:165)\n\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:125)\n\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:64)\n\tat org.scijava.thread.DefaultThreadService.lambda$wrap$2(DefaultThreadService.java:247)\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\nCaused by: java.lang.UnsatisfiedLinkError: no opencv_imgproc in java.library.path: $WORK_ROOT/original/Fiji/lib/macos-arm64\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2063)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1021)\n\t... 53 more\n",
+        "java.lang.AssertionError: Alignment left shifted input unchanged\n\tat Fresh_Fiji_Probe.require(Fresh_Fiji_Probe.java:179)\n\tat Fresh_Fiji_Probe.alignment(Fresh_Fiji_Probe.java:166)\n\tat Fresh_Fiji_Probe.run(Fresh_Fiji_Probe.java:40)\n\tat ij.IJ.runUserPlugIn(IJ.java:244)\n\tat ij.IJ.runPlugIn(IJ.java:210)\n\tat ij.Executer.runCommand(Executer.java:152)\n\tat ij.Executer.run(Executer.java:70)\n\tat ij.IJ.run(IJ.java:326)\n\tat ij.IJ.run(IJ.java:337)\n\tat ij.macro.Functions.doRun(Functions.java:703)\n\tat ij.macro.Functions.doFunction(Functions.java:99)\n\tat ij.macro.Interpreter.doStatement(Interpreter.java:280)\n\tat ij.macro.Interpreter.doStatements(Interpreter.java:266)\n\tat ij.macro.Interpreter.run(Interpreter.java:162)\n\tat ij.macro.Interpreter.run(Interpreter.java:92)\n\tat ij.macro.Interpreter.run(Interpreter.java:106)\n\tat ij.plugin.Macro_Runner.runMacro(Macro_Runner.java:164)\n\tat ij.IJ.runMacro(IJ.java:165)\n\tat ij.IJ.runMacro(IJ.java:154)\n\tat net.imagej.legacy.IJ1Helper$2.call(IJ1Helper.java:1190)\n\tat net.imagej.legacy.IJ1Helper$2.call(IJ1Helper.java:1186)\n\tat net.imagej.legacy.IJ1Helper.runMacroFriendly(IJ1Helper.java:1137)\n\tat net.imagej.legacy.IJ1Helper.runMacro(IJ1Helper.java:1186)\n\tat net.imagej.legacy.plugin.IJ1MacroEngine.eval(IJ1MacroEngine.java:145)\n\tat org.scijava.script.ScriptModule.run(ScriptModule.java:173)\n\tat org.scijava.module.ModuleRunner.run(ModuleRunner.java:165)\n\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:125)\n\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:64)\n\tat org.scijava.thread.DefaultThreadService.lambda$wrap$2(DefaultThreadService.java:247)\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\n"
+      ],
+      "action": "Features.Tools.AlignStack.alignTemplateMatching, invoked inside installed Fiji",
+      "text_windows": [
+        {
+          "title": "Exception",
+          "text": "(Fiji Is Just) ImageJ 2.18.0/1.54p; Java 21.0.7 [64-bit]; Mac OS X 15.7.9; 75MB of 1536MB (4%)\n \njava.lang.UnsatisfiedLinkError: no jniopencv_core in java.library.path: $WORK_ROOT/original/Fiji/lib/macos-arm64\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2063)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1043)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:935)\n\tat org.bytedeco.javacpp.opencv_core.<clinit>(opencv_core.java:10)\n\tat java.base/java.lang.Class.forName0(Native Method)\n\tat java.base/java.lang.Class.forName(Class.java:534)\n\tat java.base/java.lang.Class.forName(Class.java:513)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:994)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:951)\n\tat TemplateMatching.cvMatch_Template.doMatch(cvMatch_Template.java:232)\n\tat TemplateMatching.Align_slices.alignSlices(Align_slices.java:155)\n\tat TemplateMatching.Align_slices.run(Align_slices.java:107)\n\tat ij.plugin.filter.PlugInFilterRunner.processOneImage(PlugInFilterRunner.java:266)\n\tat ij.plugin.filter.PlugInFilterRunner.<init>(PlugInFilterRunner.java:114)\n\tat ij.IJ.runUserPlugIn(IJ.java:246)\n\tat ij.IJ.runPlugIn(IJ.java:210)\n\tat ij.Executer.runCommand(Executer.java:152)\n\tat ij.Executer.run(Executer.java:70)\n\tat ij.IJ.run(IJ.java:326)\n\tat ij.IJ.run(IJ.java:416)\n\tat Features.Tools.AlignStack.alignTemplateMatching(AlignStack.java:177)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat Fresh_Fiji_Probe.alignment(Fresh_Fiji_Probe.java:164)\n\tat Fresh_Fiji_Probe.run(Fresh_Fiji_Probe.java:40)\n\tat ij.IJ.runUserPlugIn(IJ.java:244)\n\tat ij.IJ.runPlugIn(IJ.java:210)\n\tat ij.Executer.runCommand(Executer.java:152)\n\tat ij.Executer.run(Executer.java:70)\n\tat ij.IJ.run(IJ.java:326)\n\tat ij.IJ.run(IJ.java:337)\n\tat ij.macro.Functions.doRun(Functions.java:703)\n\tat ij.macro.Functions.doFunction(Functions.java:99)\n\tat ij.macro.Interpreter.doStatement(Interpreter.java:280)\n\tat ij.macro.Interpreter.doStatements(Interpreter.java:266)\n\tat ij.macro.Interpreter.run(Interpreter.java:162)\n\tat ij.macro.Interpreter.run(Interpreter.java:92)\n\tat ij.macro.Interpreter.run(Interpreter.java:106)\n\tat ij.plugin.Macro_Runner.runMacro(Macro_Runner.java:164)\n\tat ij.IJ.runMacro(IJ.java:165)\n\tat ij.IJ.runMacro(IJ.java:154)\n\tat net.imagej.legacy.IJ1Helper$2.call(IJ1Helper.java:1190)\n\tat net.imagej.legacy.IJ1Helper$2.call(IJ1Helper.java:1186)\n\tat net.imagej.legacy.IJ1Helper.runMacroFriendly(IJ1Helper.java:1137)\n\tat net.imagej.legacy.IJ1Helper.runMacro(IJ1Helper.java:1186)\n\tat net.imagej.legacy.plugin.IJ1MacroEngine.eval(IJ1MacroEngine.java:145)\n\tat org.scijava.script.ScriptModule.run(ScriptModule.java:173)\n\tat org.scijava.module.ModuleRunner.run(ModuleRunner.java:165)\n\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:125)\n\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:64)\n\tat org.scijava.thread.DefaultThreadService.lambda$wrap$2(DefaultThreadService.java:247)\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\nCaused by: java.lang.UnsatisfiedLinkError: no opencv_imgproc in java.library.path: $WORK_ROOT/original/Fiji/lib/macos-arm64\n\tat java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2458)\n\tat java.base/java.lang.Runtime.loadLibrary0(Runtime.java:916)\n\tat java.base/java.lang.System.loadLibrary(System.java:2063)\n\tat org.bytedeco.javacpp.Loader.loadLibrary(Loader.java:1302)\n\tat org.bytedeco.javacpp.Loader.load(Loader.java:1021)\n\t... 53 more\n"
+        }
+      ],
+      "input_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+      "aligned_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "a371bcdeb3a244e340601aa24333e43d9aa1e529ea0147bb7596222e73ef4955",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "original_ganglia": {
+      "schema_version": 1,
+      "mode": "ganglia",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/original/Fiji",
+      "java_home": "$WORK_ROOT/original/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/original/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/GutAnalysisToolbox_-2.0.0.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/original/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "action": "Actual GAT DeepImageJ ganglia command in installed Fiji",
+      "metrics": {
+        "width": 1024,
+        "height": 1024,
+        "foreground_pixels": 167430,
+        "seconds": 21.104650666,
+        "source_unchanged": true,
+        "calibration_preserved": true,
+        "mask_file": "original_ganglia-mask.tif",
+        "input_contract": "Supplied test-input.npy channel 0=Hu/channel 1=ganglia; actual GAT builds R=Hu,G=ganglia,B=Hu",
+        "rdf_threshold": 0.6,
+        "gat_threshold": 0.6,
+        "open_iterations": 1,
+        "minimum_area_um2": 1.0,
+        "scope": "Actual GAT->registered DeepImageJ Run->model->MorphoLibJ cleanup; biological and manual-paint review excluded"
+      },
+      "text_windows": [],
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "a371bcdeb3a244e340601aa24333e43d9aa1e529ea0147bb7596222e73ef4955",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "fork_startup": {
+      "schema_version": 1,
+      "mode": "startup",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/fork/Fiji",
+      "java_home": "$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "text_windows": [],
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "96aa2ba114bdfb16a7ca1161a4626638dce5460f18a1ce288a2d2fa373189925",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "fork_dashboard": {
+      "schema_version": 1,
+      "mode": "dashboard",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/fork/Fiji",
+      "java_home": "$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "action": "IJ.run(\"GATV2\") using the real installed menu mapping",
+      "dashboard_visible": true,
+      "text_windows": [
+        {
+          "title": "Log",
+          "text": "===============================================\nGAT – Environment check\n===============================================\nStarDist backend: isolated native TensorFlow worker (experimental).\nDeepImageJ already initialized.\n****** System Config ******\nDate: 2026/10/05 21:23:48\nJVM memory (GB): max=1.6  total=0.2  free=0.1\nNote: Fiji JVM has < ~20 GB max heap. For large images, consider 32 GB+.\nCLIJ2 GPU info not available: Index 0 out of bounds for length 0\n***************************\n****** Checking models in: $WORK_ROOT/fork/Fiji/models ******\nNeuron model OK: 2D_enteric_neuron_v4_1.zip\nSubtype model OK: 2D_enteric_neuron_subtype_v4.zip\nGanglia Model OK: 2D_Ganglia_RGB_v3.bioimage.io.model\n****** Checking required plugins/commands ******\nDeepImageJ Run ... OK!\nCommand From Macro ... OK!\nStarDist 2D NMS ... OK!\nArea Opening ... OK!\nSize Opening 2D/3D ... OK!\nCLIJ Macro Extensions ... OK!\nCLIJ2 Macro Extensions ... OK!\nStackReg ... OK!\nLabel Map to ROIs ... OK!\n***********************************************\n****** Checking plugin versions (informational) ******\nDeepImageJ: detected version 3.2.0-SNAPSHOT\nStarDist: detected version 0.3.0\nCSBDeep: version not detected among installed jars.\n***********************************************\n****** DONE – environment looks good. ******\n"
+        }
+      ],
+      "dialogs": [
+        {
+          "title": "GAT – First time",
+          "text": "Thanks for installing GAT.\nWe're going to verify DeepImageJ and required components.\nnull\n",
+          "action": "Dismissed informational first-run notice; GAT itself creates its sentinel"
+        }
+      ],
+      "imagej_log": "===============================================\nGAT – Environment check\n===============================================\nStarDist backend: isolated native TensorFlow worker (experimental).\nDeepImageJ already initialized.\n****** System Config ******\nDate: 2026/10/05 21:23:48\nJVM memory (GB): max=1.6  total=0.2  free=0.1\nNote: Fiji JVM has < ~20 GB max heap. For large images, consider 32 GB+.\nCLIJ2 GPU info not available: Index 0 out of bounds for length 0\n***************************\n****** Checking models in: $WORK_ROOT/fork/Fiji/models ******\nNeuron model OK: 2D_enteric_neuron_v4_1.zip\nSubtype model OK: 2D_enteric_neuron_subtype_v4.zip\nGanglia Model OK: 2D_Ganglia_RGB_v3.bioimage.io.model\n****** Checking required plugins/commands ******\nDeepImageJ Run ... OK!\nCommand From Macro ... OK!\nStarDist 2D NMS ... OK!\nArea Opening ... OK!\nSize Opening 2D/3D ... OK!\nCLIJ Macro Extensions ... OK!\nCLIJ2 Macro Extensions ... OK!\nStackReg ... OK!\nLabel Map to ROIs ... OK!\n***********************************************\n****** Checking plugin versions (informational) ******\nDeepImageJ: detected version 3.2.0-SNAPSHOT\nStarDist: detected version 0.3.0\nCSBDeep: version not detected among installed jars.\n***********************************************\n****** DONE – environment looks good. ******\n",
+      "classpath_review": {
+        "raw_utf8_sha256": "96aa2ba114bdfb16a7ca1161a4626638dce5460f18a1ce288a2d2fa373189925",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "fork_neuron": {
+      "schema_version": 1,
+      "mode": "neuron",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/fork/Fiji",
+      "java_home": "$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "action": "Features.Core.PluginCalls.runStarDist2DLabel, invoked inside installed Fiji",
+      "requested_tiles": 4,
+      "probability_threshold": 0.5,
+      "nms_threshold": 0.3,
+      "text_windows": [],
+      "label_sha256": "ea1767df58491cc03927e121943d955708450d091f3416b2493e1c93e51cd443",
+      "object_count": 39,
+      "source_unchanged": true,
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "96aa2ba114bdfb16a7ca1161a4626638dce5460f18a1ce288a2d2fa373189925",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "fork_alignment": {
+      "schema_version": 1,
+      "mode": "alignment",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/fork/Fiji",
+      "java_home": "$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "action": "Features.Tools.AlignStack.alignTemplateMatching, invoked inside installed Fiji",
+      "text_windows": [
+        {
+          "title": "Log",
+          "text": "Template Matching backend: isolated native OpenCV worker; original method5/integer shifts\n"
+        }
+      ],
+      "input_sha256": "f5bcf95db86f3329cd2e83439aba5bd694778c63fd57e73187f358c509d21e23",
+      "aligned_sha256": "8be9c6ad7c4c28d68b07f0b45c562deb9d29e4febf030b0ad24dcb198ea7fa9c",
+      "dialogs": [],
+      "imagej_log": "Template Matching backend: isolated native OpenCV worker; original method5/integer shifts\n",
+      "classpath_review": {
+        "raw_utf8_sha256": "96aa2ba114bdfb16a7ca1161a4626638dce5460f18a1ce288a2d2fa373189925",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    },
+    "fork_ganglia": {
+      "schema_version": 1,
+      "mode": "ganglia",
+      "status": "PASS",
+      "scope": "Real installed Fiji launcher/classloader; named stage only, not all workflows",
+      "imagej_root": "$WORK_ROOT/fork/Fiji",
+      "java_home": "$WORK_ROOT/fork/Fiji/java/macos-arm64/zulu21.42.19-ca-jdk21.0.7-macosx_aarch64/zulu-21.jdk/Contents/Home",
+      "java.version": "21.0.7",
+      "java.vendor": "Azul Systems, Inc.",
+      "os.name": "Mac OS X",
+      "os.version": "15.7.9",
+      "os.arch": "aarch64",
+      "sun.java.command": null,
+      "fiji.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "ij.executable": "$WORK_ROOT/fork/Fiji/Fiji.app/Contents/MacOS/fiji-macos-arm64",
+      "system_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "plugin_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "probe_classloader": "jdk.internal.loader.ClassLoaders$AppClassLoader",
+      "class_sources": {
+        "UI.GatPluginUI": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "UI.Preflight": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Core.PluginCalls": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "Features.Tools.AlignStack": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.2.jar"
+        },
+        "ij.IJ": {
+          "unavailable": "java.lang.NullPointerException: Cannot invoke \"java.net.URL.toString()\" because the return value of \"java.security.CodeSource.getLocation()\" is null"
+        },
+        "net.imagej.Main": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-2.18.0.jar"
+        },
+        "de.csbdresden.CommandFromMacro": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "de.csbdresden.stardist.StarDist2D": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/StarDist_-0.3.0.jar"
+        },
+        "net.imagej.tensorflow.DefaultTensorFlowService": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/imagej-tensorflow-1.1.6.jar"
+        },
+        "org.tensorflow.TensorFlow": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/jars/libtensorflow-1.15.0.jar"
+        },
+        "TemplateMatching.Align_slices": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/Template_Matching.jar"
+        },
+        "DeepImageJ_Run": {
+          "loader": "jdk.internal.loader.ClassLoaders$AppClassLoader@37a71e93",
+          "source": "file:$WORK_ROOT/fork/Fiji/plugins/DeepImageJ-3.2.0-SNAPSHOT.jar"
+        }
+      },
+      "errors": [],
+      "action": "Actual GAT DeepImageJ ganglia command in installed Fiji",
+      "metrics": {
+        "width": 1024,
+        "height": 1024,
+        "foreground_pixels": 72236,
+        "seconds": 22.696484916,
+        "source_unchanged": true,
+        "calibration_preserved": true,
+        "mask_file": "fork_ganglia-mask.tif",
+        "input_contract": "Supplied test-input.npy channel 0=Hu/channel 1=ganglia; actual GAT builds R=Hu,G=ganglia,B=Hu",
+        "rdf_threshold": 0.6,
+        "gat_threshold": 0.6,
+        "open_iterations": 1,
+        "minimum_area_um2": 1.0,
+        "scope": "Actual GAT->registered DeepImageJ Run->model->MorphoLibJ cleanup; biological and manual-paint review excluded"
+      },
+      "text_windows": [],
+      "dialogs": [],
+      "imagej_log": null,
+      "classpath_review": {
+        "raw_utf8_sha256": "96aa2ba114bdfb16a7ca1161a4626638dce5460f18a1ce288a2d2fa373189925",
+        "entry_count": 771,
+        "isolated_worker_entries": [],
+        "method": "Colon-split java.class.path; searched each entry for /gat-native-inference/ and /gat-native-alignment/; whole raw value retained in original artifact"
+      },
+      "registered_commands_review": {
+        "count": 2032,
+        "relevant_exact_mappings": {
+          "Align slices in stack...": "TemplateMatching.Align_slices(\"\")",
+          "Command From Macro": "command:de.csbdresden.CommandFromMacro",
+          "DeepImageJ Run": "DeepImageJ_Run",
+          "GATV2": "UI.GatPluginUI",
+          "Size Opening 2D/3D": "inra.ijpb.plugins.SizeOpeningPlugin"
+        },
+        "whole_map": "Retained unchanged in original artifact"
+      }
+    }
+  },
+  "original_neuron_failure_evidence": {
+    "member": "original_neuron.log",
+    "line_start": 2345,
+    "line_end": 2373,
+    "lines": [
+      {
+        "line": 2345,
+        "text": "java.util.concurrent.ExecutionException: java.lang.ClassCastException: class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader 'bootstrap')"
+      },
+      {
+        "line": 2346,
+        "text": "\tat java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)"
+      },
+      {
+        "line": 2347,
+        "text": "\tat java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)"
+      },
+      {
+        "line": 2348,
+        "text": "\tat de.csbdresden.csbdeep.commands.GenericCoreNetwork.run(GenericCoreNetwork.java:420)"
+      },
+      {
+        "line": 2349,
+        "text": "\tat org.scijava.command.CommandModule.run(CommandModule.java:196)"
+      },
+      {
+        "line": 2350,
+        "text": "\tat org.scijava.module.ModuleRunner.run(ModuleRunner.java:165)"
+      },
+      {
+        "line": 2351,
+        "text": "\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:125)"
+      },
+      {
+        "line": 2352,
+        "text": "\tat org.scijava.module.ModuleRunner.call(ModuleRunner.java:64)"
+      },
+      {
+        "line": 2353,
+        "text": "\tat org.scijava.thread.DefaultThreadService.lambda$wrap$2(DefaultThreadService.java:247)"
+      },
+      {
+        "line": 2354,
+        "text": "\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)"
+      },
+      {
+        "line": 2355,
+        "text": "\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)"
+      },
+      {
+        "line": 2356,
+        "text": "\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)"
+      },
+      {
+        "line": 2357,
+        "text": "\tat java.base/java.lang.Thread.run(Thread.java:1583)"
+      },
+      {
+        "line": 2358,
+        "text": "Caused by: java.lang.ClassCastException: class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader 'bootstrap')"
+      },
+      {
+        "line": 2359,
+        "text": "\tat net.imagej.tensorflow.util.TensorFlowUtil.getTensorFlowJARVersion(TensorFlowUtil.java:79)"
+      },
+      {
+        "line": 2360,
+        "text": "\tat net.imagej.tensorflow.util.TensorFlowUtil.versionFromClassPathJAR(TensorFlowUtil.java:94)"
+      },
+      {
+        "line": 2361,
+        "text": "\tat net.imagej.tensorflow.DefaultTensorFlowService.getJarVersion(DefaultTensorFlowService.java:427)"
+      },
+      {
+        "line": 2362,
+        "text": "\tat net.imagej.tensorflow.DefaultTensorFlowService.loadFromJAR(DefaultTensorFlowService.java:292)"
+      },
+      {
+        "line": 2363,
+        "text": "\tat net.imagej.tensorflow.DefaultTensorFlowService.loadLibrary(DefaultTensorFlowService.java:238)"
+      },
+      {
+        "line": 2364,
+        "text": "\tat de.csbdresden.csbdeep.network.model.tensorflow.TensorFlowNetwork.loadLibrary(TensorFlowNetwork.java:110)"
+      },
+      {
+        "line": 2365,
+        "text": "\tat de.csbdresden.csbdeep.commands.GenericCoreNetwork.initNetwork(GenericCoreNetwork.java:338)"
+      },
+      {
+        "line": 2366,
+        "text": "\tat de.csbdresden.csbdeep.commands.GenericCoreNetwork.initialize(GenericCoreNetwork.java:316)"
+      },
+      {
+        "line": 2367,
+        "text": "\tat de.csbdresden.csbdeep.commands.GenericCoreNetwork.tryToInitialize(GenericCoreNetwork.java:330)"
+      },
+      {
+        "line": 2368,
+        "text": "\tat de.csbdresden.csbdeep.commands.GenericCoreNetwork.mainThread(GenericCoreNetwork.java:438)"
+      },
+      {
+        "line": 2369,
+        "text": "\tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)"
+      },
+      {
+        "line": 2370,
+        "text": "\t... 4 more"
+      },
+      {
+        "line": 2371,
+        "text": "CSBDeep plugin exit (took 47 milliseconds)"
+      },
+      {
+        "line": 2372,
+        "text": "[ERROR] Command errored: StarDist 2D"
+      },
+      {
+        "line": 2373,
+        "text": "java.lang.NullPointerException: Cannot invoke \"net.imagej.Dataset.getImgPlus()\" because \"prediction\" is null"
+      }
+    ]
+  },
+  "inventory_review": {
+    "file": "inventory-comparison.json",
+    "counts": {
+      "installed": 847,
+      "engine-ready": 855,
+      "original-final": 855,
+      "fork-final": 887
+    },
+    "shared_original_and_fork_files": 854,
+    "shared_files_byte_identical": true,
+    "engine_jars": [
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/api-0.22.1.jar",
+        "bytes": 831237,
+        "sha256": "1aa9e0719fa134e5690796c705c35a01641f12925c22725756c7eb7f35cb84eb"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/commons-compress-1.22.jar",
+        "bytes": 1039712,
+        "sha256": "53d04a0efc7223baecaa303bd5d298eb0600e6b82b4076f9cecd558b97ba760b"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/dl-modelrunner-pytorch-0.4.4.jar",
+        "bytes": 31502,
+        "sha256": "004633ad168ae3438b2e53a0834c29ca8c2637d4c63c55ad6550b9e068c17933"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/jna-5.13.0.jar",
+        "bytes": 1879325,
+        "sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-engine-0.22.1.jar",
+        "bytes": 89668,
+        "sha256": "ffd646505386188ac085ef07ab24cd24da817fd760ed306b885a9dbce515e627"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-jni-2.0.0-0.22.1.jar",
+        "bytes": 5134206,
+        "sha256": "ccebb78ddeedb9a4b136164caf8bac2d61d0875f40708114b15c0457b1aa57c6"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/pytorch-native-cpu-2.0.0-osx-aarch64.jar",
+        "bytes": 34791618,
+        "sha256": "5d986c6872872b798838e477569d063519c58210563187a76974bbe8deae6995"
+      },
+      {
+        "path": "engines/pytorch-2.0.0-2.0.0-macosx-arm64-cpu/slf4j-api-2.0.6.jar",
+        "bytes": 62531,
+        "sha256": "2f2a92d410b268139d7d63b75ed25e21995cfe4100c19bf23577cfdbc8077bda"
+      }
+    ],
+    "model_files": [
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/README.md",
+        "bytes": 355,
+        "sha256": "741ca56647fc1814e28712c93ac357613eccc62887622893c38eed1ffcbfeb5d"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/best_model_torchscript.pt",
+        "bytes": 181605085,
+        "sha256": "1c59382b776acc2beed84bc2309e29f474aa69ff6356ec2248a04854d4feca7b"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/binarize.ijm",
+        "bytes": 735,
+        "sha256": "5a428f3a710dc1212c1a86830978f4707932b251c37b912fad15578ef6a1fce1"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/cover.png",
+        "bytes": 3145894,
+        "sha256": "bc3a57a13bb401507003d38ef453770f18456680e29008b2119439631129d375"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/doc.md",
+        "bytes": 10,
+        "sha256": "5db0bcc3a59b899f282f3bab27c0397a82685fa131a64525ef741c8d23ad4190"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/im_preprocessing.ijm",
+        "bytes": 604,
+        "sha256": "cd950ddbcbadcb5cbc016bb71ee33d2ee7b730b3ca6bbc0ea17dc54c4b2167ec"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/rdf.yaml",
+        "bytes": 2511,
+        "sha256": "1d519a60a3a5cd59cc8d746d9adab399201cd7b550e0d11599ff7e9019b9bb7c"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/sample_input_0.tif",
+        "bytes": 3146493,
+        "sha256": "c991490991c180ce3b5bba38ff0f9f0acc58f4c4cca578c2755330e903db024b"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/sample_output_0.tif",
+        "bytes": 2359648,
+        "sha256": "2d5e99db60aac9a3a8546dbb2466c8140f247c194472c7a104dd99771331e5c5"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-input.npy",
+        "bytes": 3145856,
+        "sha256": "986cfd751c0e2cfd3367cfc39b5583c10e55da2f1a7772d73845c6395eefd681"
+      },
+      {
+        "path": "models/2D_Ganglia_RGB_v3.bioimage.io.model/test-output.npy",
+        "bytes": 2359424,
+        "sha256": "c6ca99486a9cdb6c6a8f273e17e5e35ccb8a19832fb5097625f4951c44cb72c9"
+      },
+      {
+        "path": "models/2D_enteric_neuron_subtype_v4.zip",
+        "bytes": 15832489,
+        "sha256": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8"
+      },
+      {
+        "path": "models/2D_enteric_neuron_v4_1.zip",
+        "bytes": 37145743,
+        "sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276"
+      }
+    ],
+    "comparison_summaries": {
+      "installed_to_engine-ready": {
+        "before": "installed-inventory.json",
+        "after": "engine-ready-inventory.json",
+        "before_count": 847,
+        "after_count": 855,
+        "common_paths": 847,
+        "byte_identical_common_files": 846
+      },
+      "engine-ready_to_original-final": {
+        "before": "engine-ready-inventory.json",
+        "after": "original-final-inventory.json",
+        "before_count": 855,
+        "after_count": 855,
+        "common_paths": 855,
+        "byte_identical_common_files": 854
+      },
+      "engine-ready_to_fork-final": {
+        "before": "engine-ready-inventory.json",
+        "after": "fork-final-inventory.json",
+        "before_count": 855,
+        "after_count": 887,
+        "common_paths": 854,
+        "byte_identical_common_files": 854
+      },
+      "original-final_to_fork-final": {
+        "before": "original-final-inventory.json",
+        "after": "fork-final-inventory.json",
+        "before_count": 855,
+        "after_count": 887,
+        "common_paths": 854,
+        "byte_identical_common_files": 854
+      }
+    }
+  },
+  "pin_comparison": [
+    {
+      "file": "StarDist_-0.3.0.jar",
+      "expected_sha256": "fff483154961e60cb6305e4ef73ef9e662298e1e65a077858e018717eb30d2bd",
+      "status": "MATCH",
+      "installed": [
+        {
+          "path": "plugins/StarDist_-0.3.0.jar",
+          "bytes": 16180976,
+          "sha256": "fff483154961e60cb6305e4ef73ef9e662298e1e65a077858e018717eb30d2bd"
+        }
+      ]
+    },
+    {
+      "file": "csbdeep-0.6.0.jar",
+      "expected_sha256": "13bfb85d179bedf1d5e6542b0e200cb250ab8e030e88d5e645e6e6b486b22894",
+      "status": "MATCH",
+      "installed": [
+        {
+          "path": "jars/csbdeep-0.6.0.jar",
+          "bytes": 142482,
+          "sha256": "13bfb85d179bedf1d5e6542b0e200cb250ab8e030e88d5e645e6e6b486b22894"
+        }
+      ]
+    },
+    {
+      "file": "imagej-tensorflow-1.1.6.jar",
+      "expected_sha256": "e6ae932922325818278c87999f2fb57b5426f383e27455a978ae849f1f1cb0a4",
+      "status": "MATCH",
+      "installed": [
+        {
+          "path": "jars/imagej-tensorflow-1.1.6.jar",
+          "bytes": 54120,
+          "sha256": "e6ae932922325818278c87999f2fb57b5426f383e27455a978ae849f1f1cb0a4"
+        }
+      ]
+    },
+    {
+      "file": "Template_Matching.jar",
+      "expected_sha256": "cdc4ac16d70486c7420b9704e56c26b90084b54a1b558405451fd22cc8aa823c",
+      "status": "MATCH",
+      "installed": [
+        {
+          "path": "plugins/Template_Matching.jar",
+          "bytes": 10695,
+          "sha256": "cdc4ac16d70486c7420b9704e56c26b90084b54a1b558405451fd22cc8aa823c"
+        }
+      ]
+    },
+    {
+      "file": "Clipper-6.4.2.jar",
+      "expected_sha256": "df1020524cc2cad78d57a6928cf94d00e8558397ccf8d227d2c8f4af1023b970",
+      "status": "MATCH",
+      "installed": [
+        {
+          "path": "jars/Clipper-6.4.2.jar",
+          "bytes": 70822,
+          "sha256": "df1020524cc2cad78d57a6928cf94d00e8558397ccf8d227d2c8f4af1023b970"
+        }
+      ]
+    },
+    {
+      "file": "2D_enteric_neuron_v4_1.zip",
+      "expected_sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276",
+      "status": "MATCH",
+      "installed": [
+        {
+          "path": "models/2D_enteric_neuron_v4_1.zip",
+          "bytes": 37145743,
+          "sha256": "114585480a0f0138749f9b23f8fd7150f80b5788105b4f23bc1f22ab74c79276"
+        }
+      ]
+    },
+    {
+      "file": "2D_enteric_neuron_subtype_v4.zip",
+      "expected_sha256": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8",
+      "status": "MATCH",
+      "installed": [
+        {
+          "path": "models/2D_enteric_neuron_subtype_v4.zip",
+          "bytes": 15832489,
+          "sha256": "49283bb2423bd9efcd4c88cae4011fd50ff1f5b519d5c71e9d24afa28f3641b8"
+        }
+      ]
+    }
+  ],
+  "source_evidence": {
+    "corrected_ganglia_probe": {
+      "commit": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+      "path": "validation/fiji-install/Fresh_Ganglia_Probe.java",
+      "file_sha256": "941595f16879f0b97525fd8821be885caeeb5f4cabd839220873c9474fa1afc0",
+      "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/26298b73ea3fcb4c1410ad4bcd268233040c5ace/validation/fiji-install/Fresh_Ganglia_Probe.java#L54-L90",
+      "line_start": 54,
+      "line_end": 90,
+      "lines": [
+        {
+          "line": 54,
+          "text": "    private static Map<String,Object> command(Path model,Path root,Path evidence)throws Exception{"
+        },
+        {
+          "line": 55,
+          "text": "        check(IJ.getInstance()!=null,\"Real Fiji UI not running\");"
+        },
+        {
+          "line": 56,
+          "text": "        check(ij.Menus.getCommands().containsKey(\"DeepImageJ Run\"),\"Real DeepImageJ command absent\");"
+        },
+        {
+          "line": 57,
+          "text": "        check(ij.Menus.getCommands().containsKey(\"Size Opening 2D/3D\"),\"Real MorphoLibJ command absent\");"
+        },
+        {
+          "line": 58,
+          "text": "        ClassLoader loader=IJ.getClassLoader();"
+        },
+        {
+          "line": 59,
+          "text": "        Class<?> constants=Class.forName(\"deepimagej.Constants\",true,loader);"
+        },
+        {
+          "line": 60,
+          "text": "        check(Paths.get(String.valueOf(constants.getField(\"FIJI_FOLDER\").get(null))).toRealPath().equals(root),\"DeepImageJ escaped the fresh Fiji root\");"
+        },
+        {
+          "line": 61,
+          "text": "        RandomAccessibleInterval<UnsignedByteType> raw=DecodeNumpy.loadNpy(model.resolve(\"test-input.npy\").toString());"
+        },
+        {
+          "line": 62,
+          "text": "        int h=(int)raw.dimension(2),w=(int)raw.dimension(3);byte[] hu=new byte[w*h],ganglia=new byte[w*h];"
+        },
+        {
+          "line": 63,
+          "text": "        net.imglib2.RandomAccess<UnsignedByteType> a=raw.randomAccess();"
+        },
+        {
+          "line": 64,
+          "text": "        for(int y=0;y<h;y++)for(int x=0;x<w;x++){a.setPosition(new long[]{0,0,y,x});hu[y*w+x]=(byte)a.get().get();a.setPosition(1,1);ganglia[y*w+x]=(byte)a.get().get();}"
+        },
+        {
+          "line": 65,
+          "text": "        ImageStack stack=new ImageStack(w,h);stack.addSlice(new ByteProcessor(w,h,hu,null));stack.addSlice(new ByteProcessor(w,h,ganglia,null));"
+        },
+        {
+          "line": 66,
+          "text": "        ImagePlus source=new ImagePlus(\"fresh_ganglia_public_two_channel\",stack);source.setDimensions(2,1,1);source.setOpenAsHyperStack(true);"
+        },
+        {
+          "line": 67,
+          "text": "        source.getCalibration().pixelWidth=.378;source.getCalibration().pixelHeight=.378;source.getCalibration().setUnit(\"um\");"
+        },
+        {
+          "line": 68,
+          "text": "        byte[] originalHu=hu.clone(),originalGanglia=ganglia.clone();"
+        },
+        {
+          "line": 69,
+          "text": "        ImagePlus unrelated=new ImagePlus(\"unrelated-existing-image\",new ByteProcessor(w,h));unrelated.show();"
+        },
+        {
+          "line": 70,
+          "text": "        Class<?> paramsType=Class.forName(\"Features.Core.Params\",true,loader);Object params=paramsType.getDeclaredConstructor().newInstance();"
+        },
+        {
+          "line": 71,
+          "text": "        Fresh_Ganglia_Params.configure(params);"
+        },
+        {
+          "line": 72,
+          "text": "        Class<?> calls=Class.forName(\"Features.Core.PluginCalls\",true,loader);"
+        },
+        {
+          "line": 73,
+          "text": "        Method method=Arrays.stream(calls.getMethods()).filter(m->m.getName().equals(\"runDeepImageJForGanglia\") && m.getParameterCount()==7).findFirst().orElseThrow(()->new NoSuchMethodException(\"GAT ganglia call\"));"
+        },
+        {
+          "line": 74,
+          "text": "        long start=System.nanoTime();"
+        },
+        {
+          "line": 75,
+          "text": "        ImagePlus mask=(ImagePlus)method.invoke(null,source,2,1,model.getFileName().toString(),1.0,params,null);"
+        },
+        {
+          "line": 76,
+          "text": "        check(mask!=null && mask!=source && mask!=unrelated,\"GAT returned old/input image instead of mask\");"
+        },
+        {
+          "line": 77,
+          "text": "        check(mask.getWidth()==w && mask.getHeight()==h && mask.getStackSize()==1 && mask.getBitDepth()==8,\"Wrong mask geometry/type\");"
+        },
+        {
+          "line": 78,
+          "text": "        long foreground=0;for(int i=0;i<w*h;i++){int value=mask.getProcessor().get(i);check(value==0||value==255,\"Nonbinary mask\");if(value==255)foreground++;}"
+        },
+        {
+          "line": 79,
+          "text": "        check(foreground>0 && foreground<(long)w*h,\"Empty/full public-fixture mask\");"
+        },
+        {
+          "line": 80,
+          "text": "        check(Arrays.equals((byte[])source.getStack().getProcessor(1).getPixels(),originalHu)"
+        },
+        {
+          "line": 81,
+          "text": "                &&Arrays.equals((byte[])source.getStack().getProcessor(2).getPixels(),originalGanglia),\"Source pixels changed\");"
+        },
+        {
+          "line": 82,
+          "text": "        check(mask.getCalibration().pixelWidth==.378 && mask.getCalibration().pixelHeight==.378,\"Calibration lost\");"
+        },
+        {
+          "line": 83,
+          "text": "        Path saved=evidence.resolveSibling(evidence.getFileName().toString().replace(\".json\",\"-mask.tif\"));"
+        },
+        {
+          "line": 84,
+          "text": "        check(new ij.io.FileSaver(mask).saveAsTiff(saved.toString()),\"Cannot persist mask\");"
+        },
+        {
+          "line": 85,
+          "text": "        return map(\"width\",w,\"height\",h,\"foreground_pixels\",foreground,\"seconds\",(System.nanoTime()-start)/1e9,"
+        },
+        {
+          "line": 86,
+          "text": "                \"source_unchanged\",true,\"calibration_preserved\",true,\"mask_file\",saved.getFileName().toString(),"
+        },
+        {
+          "line": 87,
+          "text": "                \"input_contract\",\"Supplied test-input.npy channel 0=Hu/channel 1=ganglia; actual GAT builds R=Hu,G=ganglia,B=Hu\","
+        },
+        {
+          "line": 88,
+          "text": "                \"rdf_threshold\",.6,\"gat_threshold\",.6,\"open_iterations\",1,\"minimum_area_um2\",1.0,"
+        },
+        {
+          "line": 89,
+          "text": "                \"scope\",\"Actual GAT->registered DeepImageJ Run->model->MorphoLibJ cleanup; biological and manual-paint review excluded\");"
+        },
+        {
+          "line": 90,
+          "text": "    }"
+        }
+      ]
+    },
+    "boxed_params_helper": {
+      "commit": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+      "path": "validation/fiji-install/Fresh_Ganglia_Params.java",
+      "file_sha256": "cab0a6fee3b42ad47e0051fc1184737dc80ec45927d48f2f0fbbae0caf5051e9",
+      "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/26298b73ea3fcb4c1410ad4bcd268233040c5ace/validation/fiji-install/Fresh_Ganglia_Params.java#L1-L13",
+      "line_start": 1,
+      "line_end": 13,
+      "lines": [
+        {
+          "line": 1,
+          "text": "/** Reflection setup shared by the installed-Fiji probe and its actual-Params contract test. */"
+        },
+        {
+          "line": 2,
+          "text": "public final class Fresh_Ganglia_Params {"
+        },
+        {
+          "line": 3,
+          "text": "    private Fresh_Ganglia_Params() {}"
+        },
+        {
+          "line": 4,
+          "text": "    public static void configure(Object params) throws ReflectiveOperationException {"
+        },
+        {
+          "line": 5,
+          "text": "        Class<?> type = params.getClass();"
+        },
+        {
+          "line": 6,
+          "text": "        type.getField(\"gangliaInteractiveReview\").setBoolean(params, false);"
+        },
+        {
+          "line": 7,
+          "text": "        // Params deliberately uses nullable boxed Double fields. Field.setDouble"
+        },
+        {
+          "line": 8,
+          "text": "        // accepts a primitive double field, but cannot assign a java.lang.Double."
+        },
+        {
+          "line": 9,
+          "text": "        type.getField(\"gangliaProbThresh01\").set(params, Double.valueOf(0.6));"
+        },
+        {
+          "line": 10,
+          "text": "        type.getField(\"gangliaOpenIterations\").setInt(params, 1);"
+        },
+        {
+          "line": 11,
+          "text": "        type.getField(\"gangliaMinAreaUm2\").set(params, Double.valueOf(1.0));"
+        },
+        {
+          "line": 12,
+          "text": "    }"
+        },
+        {
+          "line": 13,
+          "text": "}"
+        }
+      ]
+    },
+    "fork_input_scaling": {
+      "commit": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+      "path": "src/main/java/Features/Core/PluginCalls.java",
+      "file_sha256": "5a820a1672243685d89f67e5fe5c204eac40ad8a918e5fce054e61b480387181",
+      "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/26298b73ea3fcb4c1410ad4bcd268233040c5ace/src/main/java/Features/Core/PluginCalls.java#L392-L437",
+      "line_start": 392,
+      "line_end": 437,
+      "lines": [
+        {
+          "line": 392,
+          "text": "    public static GangliaPrep prepareGangliaInputs(ImagePlus maxProj, int gangliaCh1, int huCh1) {"
+        },
+        {
+          "line": 393,
+          "text": "        // Extract the two source channels (grayscale, no UI)"
+        },
+        {
+          "line": 394,
+          "text": "        ImagePlus g  = Features.Tools.ImageOps.extractChannel(maxProj, gangliaCh1); // ganglia marker"
+        },
+        {
+          "line": 395,
+          "text": "        ImagePlus hu = Features.Tools.ImageOps.extractChannel(maxProj, huCh1);      // Hu (cells)"
+        },
+        {
+          "line": 396,
+          "text": "        IJ.resetMinAndMax(g);  IJ.resetMinAndMax(hu);  // define display ranges"
+        },
+        {
+          "line": 397,
+          "text": ""
+        },
+        {
+          "line": 398,
+          "text": "        final int w = maxProj.getWidth(), h = maxProj.getHeight();"
+        },
+        {
+          "line": 399,
+          "text": ""
+        },
+        {
+          "line": 400,
+          "text": "        // Build the review RGB image: R=Hu, G=Ganglia, B=Hu  → Hu appears magenta, ganglia green"
+        },
+        {
+          "line": 401,
+          "text": "        //    Use convertToByte(true) so display range is respected."
+        },
+        {
+          "line": 402,
+          "text": "        ij.process.ByteProcessor r8 = (ij.process.ByteProcessor) hu.getProcessor().convertToByte(true);"
+        },
+        {
+          "line": 403,
+          "text": "        ij.process.ByteProcessor g8 = (ij.process.ByteProcessor) g .getProcessor().convertToByte(true);"
+        },
+        {
+          "line": 404,
+          "text": "        ij.process.ByteProcessor b8 = (ij.process.ByteProcessor) hu.getProcessor().convertToByte(true);"
+        },
+        {
+          "line": 405,
+          "text": ""
+        },
+        {
+          "line": 406,
+          "text": "        ij.process.ColorProcessor cp = new ij.process.ColorProcessor(w, h);"
+        },
+        {
+          "line": 407,
+          "text": "        cp.setRGB((byte[]) r8.getPixels(), (byte[]) g8.getPixels(), (byte[]) b8.getPixels());"
+        },
+        {
+          "line": 408,
+          "text": ""
+        },
+        {
+          "line": 409,
+          "text": "        ImagePlus rgb = new ImagePlus(\"ganglia_rgb\", cp);"
+        },
+        {
+          "line": 410,
+          "text": "        rgb.setCalibration(maxProj.getCalibration());"
+        },
+        {
+          "line": 411,
+          "text": "        rgb.hide();"
+        },
+        {
+          "line": 412,
+          "text": ""
+        },
+        {
+          "line": 413,
+          "text": "        // keep a hidden copy with the old helper name if any code still expects it."
+        },
+        {
+          "line": 414,
+          "text": "        ImagePlus rgb2 = new ImagePlus(\"ganglia_rgb_2\", (ij.process.ColorProcessor) cp.duplicate());"
+        },
+        {
+          "line": 415,
+          "text": "        rgb2.setCalibration(maxProj.getCalibration());"
+        },
+        {
+          "line": 416,
+          "text": "        rgb2.hide();"
+        },
+        {
+          "line": 417,
+          "text": ""
+        },
+        {
+          "line": 418,
+          "text": "        // Preserve image intensities. The supplied ganglia RDF already applies"
+        },
+        {
+          "line": 419,
+          "text": "        // scale_linear(1/255), followed by its ImageNet mean/std normalization."
+        },
+        {
+          "line": 420,
+          "text": "        // Dividing here as well would change a white pixel from 255 to 1 before"
+        },
+        {
+          "line": 421,
+          "text": "        // that model-owned preprocessing and materially alter predictions."
+        },
+        {
+          "line": 422,
+          "text": "        ij.process.FloatProcessor rf = r8.convertToFloatProcessor();"
+        },
+        {
+          "line": 423,
+          "text": "        ij.process.FloatProcessor gf = g8.convertToFloatProcessor();"
+        },
+        {
+          "line": 424,
+          "text": "        ij.process.FloatProcessor bf = b8.convertToFloatProcessor();"
+        },
+        {
+          "line": 425,
+          "text": ""
+        },
+        {
+          "line": 426,
+          "text": "        ImageStack st = new ImageStack(w, h);"
+        },
+        {
+          "line": 427,
+          "text": "        st.addSlice(\"R\", rf); st.addSlice(\"G\", gf); st.addSlice(\"B\", bf);"
+        },
+        {
+          "line": 428,
+          "text": ""
+        },
+        {
+          "line": 429,
+          "text": "        ImagePlus dij = new ImagePlus(\"ganglia_rgb\", st);   // title kept stable for DIJ"
+        },
+        {
+          "line": 430,
+          "text": "        dij.setDimensions(3, 1, 1);                         // C=3"
+        },
+        {
+          "line": 431,
+          "text": "        dij.setOpenAsHyperStack(true);"
+        },
+        {
+          "line": 432,
+          "text": "        dij.setCalibration(maxProj.getCalibration());"
+        },
+        {
+          "line": 433,
+          "text": "        dij.hide();"
+        },
+        {
+          "line": 434,
+          "text": ""
+        },
+        {
+          "line": 435,
+          "text": "        // Tidy temps"
+        },
+        {
+          "line": 436,
+          "text": "        g.changes = false;  g.close();"
+        },
+        {
+          "line": 437,
+          "text": "        hu.changes = false; hu.close();"
+        }
+      ]
+    },
+    "original_input_scaling": {
+      "commit": "1870d9e16e16fd6daeac0bd05122e851029ddedc",
+      "path": "src/main/java/Features/Core/PluginCalls.java",
+      "file_sha256": "b6812859989b17d2f329805add0f94db513bb622c1c267f656afe630473964db",
+      "url": "https://github.com/pr4deepr/GutAnalysisToolbox/blob/1870d9e16e16fd6daeac0bd05122e851029ddedc/src/main/java/Features/Core/PluginCalls.java#L386-L423",
+      "line_start": 386,
+      "line_end": 423,
+      "lines": [
+        {
+          "line": 386,
+          "text": "    public static GangliaPrep prepareGangliaInputs(ImagePlus maxProj, int gangliaCh1, int huCh1) {"
+        },
+        {
+          "line": 387,
+          "text": "        // Extract the two source channels (grayscale, no UI)"
+        },
+        {
+          "line": 388,
+          "text": "        ImagePlus g  = Features.Tools.ImageOps.extractChannel(maxProj, gangliaCh1); // ganglia marker"
+        },
+        {
+          "line": 389,
+          "text": "        ImagePlus hu = Features.Tools.ImageOps.extractChannel(maxProj, huCh1);      // Hu (cells)"
+        },
+        {
+          "line": 390,
+          "text": "        IJ.resetMinAndMax(g);  IJ.resetMinAndMax(hu);  // define display ranges"
+        },
+        {
+          "line": 391,
+          "text": ""
+        },
+        {
+          "line": 392,
+          "text": "        final int w = maxProj.getWidth(), h = maxProj.getHeight();"
+        },
+        {
+          "line": 393,
+          "text": ""
+        },
+        {
+          "line": 394,
+          "text": "        // Build the review RGB image: R=Hu, G=Ganglia, B=Hu  → Hu appears magenta, ganglia green"
+        },
+        {
+          "line": 395,
+          "text": "        //    Use convertToByte(true) so display range is respected."
+        },
+        {
+          "line": 396,
+          "text": "        ij.process.ByteProcessor r8 = (ij.process.ByteProcessor) hu.getProcessor().convertToByte(true);"
+        },
+        {
+          "line": 397,
+          "text": "        ij.process.ByteProcessor g8 = (ij.process.ByteProcessor) g .getProcessor().convertToByte(true);"
+        },
+        {
+          "line": 398,
+          "text": "        ij.process.ByteProcessor b8 = (ij.process.ByteProcessor) hu.getProcessor().convertToByte(true);"
+        },
+        {
+          "line": 399,
+          "text": ""
+        },
+        {
+          "line": 400,
+          "text": "        ij.process.ColorProcessor cp = new ij.process.ColorProcessor(w, h);"
+        },
+        {
+          "line": 401,
+          "text": "        cp.setRGB((byte[]) r8.getPixels(), (byte[]) g8.getPixels(), (byte[]) b8.getPixels());"
+        },
+        {
+          "line": 402,
+          "text": ""
+        },
+        {
+          "line": 403,
+          "text": "        ImagePlus rgb = new ImagePlus(\"ganglia_rgb\", cp);"
+        },
+        {
+          "line": 404,
+          "text": "        rgb.setCalibration(maxProj.getCalibration());"
+        },
+        {
+          "line": 405,
+          "text": "        rgb.hide();"
+        },
+        {
+          "line": 406,
+          "text": ""
+        },
+        {
+          "line": 407,
+          "text": "        // keep a hidden copy with the old helper name if any code still expects it."
+        },
+        {
+          "line": 408,
+          "text": "        ImagePlus rgb2 = new ImagePlus(\"ganglia_rgb_2\", (ij.process.ColorProcessor) cp.duplicate());"
+        },
+        {
+          "line": 409,
+          "text": "        rgb2.setCalibration(maxProj.getCalibration());"
+        },
+        {
+          "line": 410,
+          "text": "        rgb2.hide();"
+        },
+        {
+          "line": 411,
+          "text": ""
+        },
+        {
+          "line": 412,
+          "text": "        // Build DeepImageJ input: 3 slices of float 0..1, exposed as C=3 hyperstack"
+        },
+        {
+          "line": 413,
+          "text": "        ij.process.FloatProcessor rf = r8.convertToFloatProcessor(); rf.multiply(1.0/255.0);"
+        },
+        {
+          "line": 414,
+          "text": "        ij.process.FloatProcessor gf = g8.convertToFloatProcessor(); gf.multiply(1.0/255.0);"
+        },
+        {
+          "line": 415,
+          "text": "        ij.process.FloatProcessor bf = b8.convertToFloatProcessor(); bf.multiply(1.0/255.0);"
+        },
+        {
+          "line": 416,
+          "text": ""
+        },
+        {
+          "line": 417,
+          "text": "        ImageStack st = new ImageStack(w, h);"
+        },
+        {
+          "line": 418,
+          "text": "        st.addSlice(\"R\", rf); st.addSlice(\"G\", gf); st.addSlice(\"B\", bf);"
+        },
+        {
+          "line": 419,
+          "text": ""
+        },
+        {
+          "line": 420,
+          "text": "        ImagePlus dij = new ImagePlus(\"ganglia_rgb\", st);   // title kept stable for DIJ"
+        },
+        {
+          "line": 421,
+          "text": "        dij.setDimensions(3, 1, 1);                         // C=3"
+        },
+        {
+          "line": 422,
+          "text": "        dij.setOpenAsHyperStack(true);"
+        },
+        {
+          "line": 423,
+          "text": "        dij.setCalibration(maxProj.getCalibration());"
+        }
+      ]
+    },
+    "prior_documented_ganglia_difference": {
+      "commit": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+      "path": "docs/M1-CHATGPT-HANDOFF.md",
+      "file_sha256": "d0c89f4411df1d2f2d1db9d6e877c3d61913bde6c360b8f0ca868f16aec6aeb2",
+      "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/26298b73ea3fcb4c1410ad4bcd268233040c5ace/docs/M1-CHATGPT-HANDOFF.md#L95-L103",
+      "line_start": 95,
+      "line_end": 103,
+      "lines": [
+        {
+          "line": 95,
+          "text": "The ganglia fixture produced 167,430 foreground pixels with the original and"
+        },
+        {
+          "line": 96,
+          "text": "72,236 with the corrected fork. This is the expected consequence of correcting"
+        },
+        {
+          "line": 97,
+          "text": "a reached double-scaling contract, **not legacy-mask parity or proof of superior"
+        },
+        {
+          "line": 98,
+          "text": "biological accuracy**. Weights, RDF mean/std and thresholds were not changed."
+        },
+        {
+          "line": 99,
+          "text": ""
+        },
+        {
+          "line": 100,
+          "text": "The first original StarDist command failed at a Java 21 classloader cast before"
+        },
+        {
+          "line": 101,
+          "text": "an ARM JNI error was observed. Later standalone direct JNI controls separately"
+        },
+        {
+          "line": 102,
+          "text": "show the old TensorFlow/OpenCV native components fail. Do not merge these into a"
+        },
+        {
+          "line": 103,
+          "text": "fictional single traceback. The fork's direct probes of those same old native"
+        }
+      ]
+    },
+    "workflow_source_clean_check_and_upload_scope": {
+      "commit": "26298b73ea3fcb4c1410ad4bcd268233040c5ace",
+      "path": ".github/workflows/native-mac-fresh-fiji.yml",
+      "file_sha256": "78d71a67763b82f309c0fff368c5b164d99720bdb6dd3afe0a323dc85c3755b5",
+      "url": "https://github.com/justinvassantachart/GutAnalysisToolbox/blob/26298b73ea3fcb4c1410ad4bcd268233040c5ace/.github/workflows/native-mac-fresh-fiji.yml#L84-L96",
+      "line_start": 84,
+      "line_end": 96,
+      "lines": [
+        {
+          "line": 84,
+          "text": "      - name: Confirm original source stayed unchanged"
+        },
+        {
+          "line": 85,
+          "text": "        if: always()"
+        },
+        {
+          "line": 86,
+          "text": "        run: test -z \"$(git -C original status --porcelain --untracked-files=no)\""
+        },
+        {
+          "line": 87,
+          "text": "      - name: Preserve diagnostic evidence, never a full Fiji binary redistribution"
+        },
+        {
+          "line": 88,
+          "text": "        if: always()"
+        },
+        {
+          "line": 89,
+          "text": "        uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 90,
+          "text": "        with:"
+        },
+        {
+          "line": 91,
+          "text": "          name: gat-fresh-native-fiji-paired-evidence"
+        },
+        {
+          "line": 92,
+          "text": "          path: |"
+        },
+        {
+          "line": 93,
+          "text": "            fresh-fiji-results/**/*.json"
+        },
+        {
+          "line": 94,
+          "text": "            fresh-fiji-results/**/*.log"
+        },
+        {
+          "line": 95,
+          "text": "            fresh-fiji-results/**/*.xml.gz"
+        },
+        {
+          "line": 96,
+          "text": "          if-no-files-found: error"
+        }
+      ]
+    },
+    "correction_changed_paths": [
+      "validation/fiji-install/Fresh_Ganglia_Params.java",
+      "validation/fiji-install/Fresh_Ganglia_Probe.java",
+      "validation/fiji-install/GangliaParamsContractTest.java",
+      "validation/fiji-install/PREPARATION_RESULTS.json",
+      "validation/fiji-install/README.md",
+      "validation/fiji-install/run_fresh_fiji.py",
+      "validation/fiji-install/test_fresh_fiji.py"
+    ],
+    "production_files_changed_by_correction": false,
+    "correction_diff_sha256": "b0bbd8041e84e97dcce034b3df50ce3e91406c990156b8a130c54c29c7a2fca8"
+  },
+  "ganglia_qualification": {
+    "original_status": "PASS",
+    "fork_status": "PASS",
+    "original_foreground_pixels": 167430,
+    "fork_foreground_pixels": 72236,
+    "input": "The supplied full test-input.npy first two channels are presented as Hu/ganglia; actual GAT constructs R=Hu,G=ganglia,B=Hu.",
+    "interpretation": "The already documented fork input-contract correction preserves byte-range values before RDF scale_linear(1/255) and ImageNet normalization; original divides by 255 first. Output difference is not parity or biological superiority.",
+    "checks": "Both report nonempty/nonfull 1024x1024 single-slice 8-bit binary masks, unchanged source pixels and preserved 0.378 um pixel width/height; exact assertions are in corrected_ganglia_probe source excerpt.",
+    "mask_files_present_in_artifact": false,
+    "reported_mask_files": [
+      "original_ganglia-mask.tif",
+      "fork_ganglia-mask.tif"
+    ],
+    "independent_raster_parity_or_reconstruction": "NOT_AVAILABLE_FROM_THIS_PACKET"
+  },
+  "limits": [
+    "GREEN applies only to the 17 named required installed-Fiji gate stages; raw original neuron/alignment remain FAIL and both excluded workflow stages remain BLOCKED.",
+    "Host is Apple M1 (Virtual), macOS 15.7.9, bundled Java 21.0.7 aarch64. No claim for physical M1, all Apple chips, or Finder/Gatekeeper first-open.",
+    "Fiji Latest/Java 21 is the explicit compatibility deviation from the upstream Stable recommendation.",
+    "Full interactive workflows, biological review, manual painting/ROI decisions and OpenCL/EDF/spatial GPU workflows are not established.",
+    "Ganglia foreground counts are recorded command metrics; mask TIFFs named by the JSON reports are absent from the artifact. This packet does not permit independent pixel-raster reconstruction or parity checks for ganglia.",
+    "Ganglia difference follows the already documented input-contract scaling correction; no legacy-mask parity, biological superiority or complete scientific reference parity is claimed.",
+    "Updaters are live; retained database snapshots and inventories record this resolution rather than provide a replayable historical updater service.",
+    "Raw ij.IJ code-source location is unavailable and sun.java.command is null; these gaps remain explicit.",
+    "Original tracked-source-clean CI evidence is external to the raw diagnostics ZIP; installation inventories do not demonstrate source-checkout cleanliness.",
+    "No Fiji distribution, runtime dependency binaries, model weights or fixture pixels are duplicated in this evidence packet."
+  ],
+  "original_source_cleanliness": {
+    "status": "PASS",
+    "basis": "Separate read-only GitHub Actions jobs API observation and exact tested workflow source, not installation inventory",
+    "step": {
+      "name": "Confirm original source stayed unchanged",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11
+    },
+    "checked_scope": "Tracked original source only; --untracked-files=no intentionally excludes build outputs",
+    "dedicated_git_status_file_in_original_zip": false
+  }
+}

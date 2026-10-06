@@ -1,0 +1,22 @@
+full-sift calibration PASS 0.5,0.7500001875000468,1.25,µm
+Layer1_Hu.tif exact_R1=true
+Layer1_MarkerA.tif exact_R1=true
+Layer1_MarkerB.tif exact_R1=true
+Layer2_MarkerA.tif before_mse=3030.62287352071 after_mse=0.0 reduction=1.0
+Layer2_MarkerB.tif before_mse=2751.3859791050295 after_mse=0.0 reduction=1.0
+Layer3_MarkerA.tif before_mse=4031.473372781065 after_mse=0.0 reduction=1.0
+Layer3_MarkerB.tif before_mse=4313.435465976331 after_mse=0.0 reduction=1.0
+pair=1 points=62 mean_dx=7.0 mean_dy=-5.000000215345813 mean_error=5.229826896421371E-7
+pair=2 points=80 mean_dx=-6.000000047683716 mean_dy=7.999999952316284 mean_error=1.9073486328125E-7
+full-sift independent_saved_output_PASS
+full-mops calibration PASS 0.5,0.7500001875000468,1.25,µm
+Layer1_Hu.tif exact_R1=true
+Layer1_MarkerA.tif exact_R1=true
+Layer1_MarkerB.tif exact_R1=true
+Layer2_MarkerA.tif before_mse=3030.62287352071 after_mse=0.1910364275147929 reduction=0.9999369646321936
+Layer2_MarkerB.tif before_mse=2751.3859791050295 after_mse=0.17954881656804733 reduction=0.9999347424105772
+Layer3_MarkerA.tif before_mse=4031.473372781065 after_mse=0.324426775147929 reduction=0.9999195264993344
+Layer3_MarkerB.tif before_mse=4313.435465976331 after_mse=0.35972170857988167 reduction=0.9999166043606269
+pair=1 points=1040 mean_dx=7.027450935657208 mean_dy=-5.019607762190012 mean_error=0.03373452549289706
+pair=2 points=1483 mean_dx=-6.023529237295756 mean_dy=8.031372408567854 mean_error=0.0392154692758565
+full-mops independent_saved_output_PASS

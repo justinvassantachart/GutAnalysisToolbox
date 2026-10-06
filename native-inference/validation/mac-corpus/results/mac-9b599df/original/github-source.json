@@ -1,0 +1,138 @@
+{
+  "repository": "justinvassantachart/GutAnalysisToolbox",
+  "run_id": 37381573321,
+  "job_id": 112004603172,
+  "source_commit": "9b599df1b8c67977228bc50104f44280047c4154",
+  "run_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37381573321",
+  "job_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37381573321/job/112004603172",
+  "source_url": "https://github.com/justinvassantachart/GutAnalysisToolbox/commit/9b599df1b8c67977228bc50104f44280047c4154",
+  "jobs": [
+    {
+      "id": 112004603172,
+      "name": "all40-source-labeled-tests",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 37381573321,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-java@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Require real native ARM hardware and Java",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Build and test only the unchanged isolated modern worker",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Install public image decoder with fixed version",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Test immutable scope, hashes and reporting",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Prepare only 40 source-labeled official test inputs and archived references",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Run all 40 serial cold native inferences and unchanged StarDist NMS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Check execution coverage only, not scientific equivalence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Preserve every case status, compact geometry, logs and hardware provenance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Post Run actions/setup-java@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 11375896651,
+      "name": "gat-native-mac-official40-corpus",
+      "size_in_bytes": 6171926,
+      "url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/artifacts/11375896651",
+      "archive_download_url": "https://api.github.com/repos/justinvassantachart/GutAnalysisToolbox/actions/artifacts/11375896651/zip",
+      "expired": false,
+      "created_at": "2026-10-05T22:28:13Z",
+      "expires_at": "2027-01-03T22:18:07Z",
+      "updated_at": "2026-10-05T22:28:13Z",
+      "digest": "sha256:678f2f005f2975e8269cdb16d8eb853de05efc401f0d3aada8472f500808d95d",
+      "workflow_run": {
+        "id": 37381573321,
+        "repository_id": 1405990278,
+        "head_repository_id": 1405990278,
+        "head_branch": "feat/apple-silicon-stardist",
+        "head_sha": "9b599df1b8c67977228bc50104f44280047c4154"
+      }
+    }
+  ]
+}

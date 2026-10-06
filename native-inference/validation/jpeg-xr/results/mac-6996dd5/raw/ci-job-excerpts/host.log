@@ -1,0 +1,11 @@
+2026-10-05T20:52:02.7017410Z ##[group]Operating System
+2026-10-05T20:52:02.7017800Z macOS
+2026-10-05T20:52:02.7018300Z 15.7.9
+2026-10-05T20:52:02.7018720Z 24G830
+2026-10-05T20:52:02.7019060Z ##[endgroup]
+2026-10-05T20:52:02.7019410Z ##[group]Runner Image
+2026-10-05T20:52:02.7019790Z Image: macos-15-arm64
+2026-10-05T20:52:02.7020160Z Version: 20260907.0337.1
+2026-10-05T20:52:02.7021010Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+2026-10-05T20:52:02.7022040Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+2026-10-05T20:52:02.7022750Z ##[endgroup]
