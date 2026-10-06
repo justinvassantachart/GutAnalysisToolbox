@@ -99,6 +99,7 @@ def main():
     destination = args.output / ('GAT-' + version + '-macos-arm64-preview.zip')
     metadata = {
         'version': version, 'source_commit': source_commit, 'source_worktree_modified': dirty,
+        'alignment_protocol_version': 2,
         'target': 'macos-arm64', 'minimum_macos': '14', 'minimum_java': '11', 'experimental': True,
         'install_root': 'ImageJ data root containing jars and plugins; current Fiji Latest uses outer Fiji/, not inner Fiji.app/',
         'plugin_classes_match_compiled_classes': True, 'plugin_classes_compared': class_count,
@@ -113,8 +114,8 @@ def main():
         copy_bundle(alignment, output, 'gat-native-alignment')
         output.write(root / 'docs/apple-silicon.md', 'APPLE_SILICON.md')
         output.write(root / 'docs/apple-silicon-workflow-matrix.md', 'apple-silicon-workflow-matrix.md')
-        output.write(root / 'docs/preview-4-setup.md', 'PREVIEW_4_SETUP.md')
-        output.write(root / 'docs/M1-CHATGPT-HANDOFF.md', 'M1-CHATGPT-HANDOFF-v6.md')
+        output.write(root / 'docs/preview-5-setup.md', 'PREVIEW_5_SETUP.md')
+        output.write(root / 'docs/validation/maintainer-review-2026-10-06.md', 'MAINTAINER_REVIEW_2026-10-06.md')
         output.write(root / 'docs/validation/fork-hardening-2026-10-06.md', 'FORK_HARDENING_2026-10-06.md')
         output.write(root / 'LICENSE', 'GAT_LICENSE')
         output.writestr('BUILD_INFO.json', json.dumps(metadata, indent=2) + '\n')

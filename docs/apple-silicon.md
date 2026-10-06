@@ -1,4 +1,4 @@
-# Experimental Apple Silicon GAT v2: hardening preview 4
+# Experimental Apple Silicon GAT v2: reviewed preview 5
 
 This fork targets **native arm64 Fiji on macOS 14 Sonoma or newer, Java 11+**
 (Fiji's bundled Java 21 recommended). It is a test build. The current native
@@ -9,24 +9,27 @@ separate workflows and are not redirected by this plugin.
 
 ## What has actually run
 
-This guide accompanies **2.0.1-apple-silicon.4**. Use the matching
-[preview 4 release](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-4),
-verify its checksum and `BUILD_INFO.json`, and follow `PREVIEW_4_SETUP.md` plus
-`M1-CHATGPT-HANDOFF-v6.md`. If the release is not listed, it is not yet published.
-The release adds Intel missing-OID CPU detection and calcium input/load/cancel
-safeguards to the retained preview 3 multiplex repair. Calcium accepts only
-single-channel grayscale stacks with one time axis (ordinary C1/Zn/T1 stacks
-interpreted as time, or C1/Z1/Tn series); split channels and choose
-any scientific Z preprocessing explicitly. RGB, multiple channels and combined
-Z/T are rejected. Numerical projection/F/F0 remains ImageJ's operation.
+This guide accompanies **2.0.1-apple-silicon.5**. Use the matching
+[preview 5 release](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-5),
+verify its checksum and `BUILD_INFO.json`, and read `PREVIEW_5_SETUP.md`.
+If the release is not listed, it is not yet published. Preview 5 preserves the
+base palette and display range across the Template Matching process boundary;
+its plugin and protocol-v2 alignment worker must be installed together.
+The matching algorithm itself is unchanged.
 
-[6 October hardening verification](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/apple-silicon-preview-4/docs/validation/fork-hardening-2026-10-06.md)
-records 97 local Java tests and fresh hosted native-Mac command/service checks.
-Release-specific build/paired-run outcomes are linked on the release page.
-Older scientific/fresh-Fiji reports below retain their original source and
-coverage; they are not fresh full-corpus runs of preview 4.
-**Preview 2 lacks the multiplex correction and must not be used for quantitative
-multiplex-registration exports.** Older release bytes are preserved.
+[Independent review and verification](validation/maintainer-review-2026-10-06.md)
+records 106 local Java tests and fresh hosted root/native-Mac checks. The release
+page records the exact release-source build. Preview 4's CPU/calcium safeguards
+and preview 3's multiplex repair remain. Calcium accepts one-channel grayscale
+stacks with one time axis; RGB, multiple channels and combined Z/T are rejected.
+Projection and F/F0 still use ImageJ's numerical operations.
+
+Older scientific and fresh-Fiji reports below retain their original source and
+coverage; they are not fresh full-corpus runs of preview 5. The
+[preview 4 hardening report](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/apple-silicon-preview-4/docs/validation/fork-hardening-2026-10-06.md)
+remains historical evidence. **Preview 2 lacks the multiplex correction and must
+not be used for quantitative multiplex-registration exports.** Older release
+bytes are preserved.
 
 Same-host native M1 Virtual comparisons on Sonoma 14.8.9 and Sequoia 15.7.9
 confirm fork StarDist and Template Matching output success, original native
@@ -152,14 +155,13 @@ not evidence that ARM SIFT or MOPS numerics themselves were broken.
 
 ## Install an experimental overlay
 
-For a computer with no Fiji or development tools, use the clean-Mac handoff
-asset beside the matching package on the [release page](https://github.com/justinvassantachart/GutAnalysisToolbox/releases).
-It covers official Fiji,
-update sites, models, engine initialization, paired installations and reporting.
-Do not substitute preview 1 for a newer workflow-fix package: **preview 1 is
-immutable and contains only the earlier neuron backend**, not these later fixes.
+Use the matching [preview 5 package notes](preview-5-setup.md) for this
+release. A prebuilt overlay needs no developer tools. Fiji update sites, models
+and DeepImageJ engines remain separate prerequisites; the repository README and
+official GAT documentation describe them. Earlier setup handoffs are historical
+and name older packages, so do not use their download names for preview 5.
 Use an asset only when its `BUILD_INFO.json`, source commit and checksum match
-the handoff being followed.
+the selected release.
 
 1. Install a separate native arm64 Fiji with bundled Java on macOS 14+.
    Preserve any working installation and use copies of images

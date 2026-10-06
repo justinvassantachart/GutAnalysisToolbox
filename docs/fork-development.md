@@ -1,6 +1,6 @@
 # Developing the GAT v2 fork
 
-The preview 4 release version is `2.0.1-apple-silicon.4`.
+The preview 5 release version is `2.0.1-apple-silicon.5`.
 Published preview tags and release assets are immutable;
 new source changes do not update an installed preview. This work concerns Java
 GAT v2, not the original `.ijm` menus or QuPath workflows.

@@ -3,17 +3,17 @@
 **Updated 2026-10-06. Scope: Java GATV2 in this fork.** Native evidence comes
 from hosted Apple M1 (Virtual), macOS 14.8.9 and 15.7.9, arm64 Java 17/21. It is not a
 physical-M1 installation, GPU or complete interactive dashboard certification.
-This matrix accompanies hardening **2.0.1-apple-silicon.4**. Use the matching
-ZIP and clean-Mac handoff asset from the [release index](https://github.com/justinvassantachart/GutAnalysisToolbox/releases).
+This matrix accompanies reviewed **2.0.1-apple-silicon.5**. Use its complete
+matching ZIP from the [release index](https://github.com/justinvassantachart/GutAnalysisToolbox/releases).
 Verify the version/source/checksum before installing; an unlisted preview is
 not yet published. Preview 2 does not contain the multiplex correction.
 
-The [6 October hardening report](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/apple-silicon-preview-4/docs/validation/fork-hardening-2026-10-06.md)
-distinguishes current CPU/calcium regression and command checks from historical
-scientific evidence. Preview 4 retains the multiplex repair and rejects
-ambiguous calcium input (RGB, C>1 or combined Z/T) before analysis. Final
-release-build checks are recorded on the release page. Historical sources below
-are deliberately retained, not relabelled as a fresh full-corpus run.
+The [independent review report](validation/maintainer-review-2026-10-06.md)
+records the display-range/LUT alignment fix, 106 local Java tests and fresh hosted
+checks. Template Matching's protocol is version 2; install the matching plugin
+and alignment worker together. Preview 4's CPU/calcium safeguards and earlier
+multiplex repair remain. Final release-build checks are recorded on the release
+page. Historical sources below retain their original scope and dates.
 
 ## Evidence keys
 

@@ -1,37 +1,38 @@
 # Gut Analysis Toolbox
 
-## Apple Silicon TEST preview 4
+## Apple Silicon TEST preview 5
 
-[Download preview 4](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-4)
-for native arm64 Fiji on macOS 14+. Start with the
-[preview 4 setup and upgrade instructions](docs/preview-4-setup.md), then the
-[complete clean-Mac guide](docs/M1-CHATGPT-HANDOFF.md) for Fiji, bundled Java,
-models and engines. No developer tools are required to use the packages.
+[Download preview 5](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-5)
+for native arm64 Fiji on macOS 14+. See the short
+[package notes](docs/preview-5-setup.md) and
+[independent review and verification](docs/validation/maintainer-review-2026-10-06.md).
+No developer tools are required to use the package. An unlisted release is not
+published yet.
 
-Preview 4 includes preview 3's multiplex repair plus stricter Intel CPU
-probe handling and calcium input/load/cancel safeguards. It rejects RGB,
-multichannel and simultaneous Z/T calcium input instead of silently processing
-ambiguous data. Supported single-channel stacks retain ImageJ's projection
-and F/F0 operations. [Hardening evidence and limitations](docs/validation/fork-hardening-2026-10-06.md).
+Preview 5 preserves adjusted image contrast and LUTs in native Template
+Matching, so the isolated worker sees the same rendered pixels as the original
+algorithm. It also prepares CI for `main` and corrects build-evidence wording.
+Preview 4's CPU/calcium safeguards and preview 3's multiplex correction remain.
+**Install the matching plugin and both complete worker folders together:** the
+alignment protocol is now version 2; mixed versions fail explicitly.
 
-**Do not use preview 2 multiplex exports for quantitative work.** Preview 3
-first corrected later-round alignment/calibration handling; preview 4 retains
-that correction. All earlier releases and historical evidence remain unchanged.
+**Do not use preview 2 multiplex exports for quantitative work.** All earlier
+release bytes and historical evidence remain unchanged. Legacy macros, models,
+QuPath files and sample data remain in the source distribution; this native
+compatibility work covers Java GATV2, not those separate legacy workflows.
 
-This experimental fork provides isolated native neuron/subtype inference and
-Template Matching. Hosted native-Mac tests cover the recorded command/service
-paths, not every desktop interaction or biological dataset. Physical OpenCL/GPU,
-complete interactive workflows and biological acceptance remain open. The
-[workflow matrix](docs/apple-silicon-workflow-matrix.md) preserves the limits,
-including small mask/outline differences in prior runtime comparisons. Existing
-Intel installations keep their legacy inference backend; this download's native
-workers are ARM64 only.
+Hosted checks cover recorded command/service paths, not every desktop workflow
+or biological dataset. Physical OpenCL/GPU, complete interactive workflows and
+biological acceptance remain open. The
+[workflow matrix](docs/apple-silicon-workflow-matrix.md) preserves these limits,
+including prior small mask/outline differences. Existing Intel installations
+keep their legacy inference backend; this download's native workers are ARM64.
 
 Clone the release tag for its exact source; ongoing development on `main` may
 include changes beyond a published preview:
 
 ```sh
-git clone --branch apple-silicon-preview-4 https://github.com/justinvassantachart/GutAnalysisToolbox.git
+git clone --branch apple-silicon-preview-5 https://github.com/justinvassantachart/GutAnalysisToolbox.git
 ```
 
 Use the release's `FORK_BUILD_INFO.json` and SHA-256 files to verify the exact

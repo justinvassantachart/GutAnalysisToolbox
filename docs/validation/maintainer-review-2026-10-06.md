@@ -64,8 +64,31 @@ the constrained container. They are not production runtime defaults.
 ## Remaining verification boundaries
 
 These local results do not establish native-Mac execution, physical OpenCL,
-complete interactive workflows or biological equivalence. Hosted checks for the
-new revision must be assessed separately before release. The prior
+complete interactive workflows or biological equivalence. Hosted outcomes for
+the reviewed revision are recorded below; final release-source checks must still
+be assessed separately. The prior
 [hardening report](fork-hardening-2026-10-06.md) and
 [workflow matrix](../apple-silicon-workflow-matrix.md) retain their original,
 qualified results; a hosted Mac with no OpenCL device is not a passing GPU test.
+
+## Hosted verification of the reviewed correction
+
+Exact production/test revision: `5b22f8843c2c5de8e1f21718145e942047c62c92`.
+The later preview-5 version/documentation preparation does not change runtime
+source or test cases.
+
+- [Root platform matrix](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37513896861):
+  Linux, hosted Intel macOS and native ARM macOS all completed successfully
+- [Native Template Matching](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37513937943/job/112441910879):
+  port/reference comparison, clean worker build/tests and actual subprocess
+  adapter/motion-CSV checks all completed successfully
+- [Native GAT workflow/engine checks](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37513937943/job/112441911003)
+  and [JPEG-XR package checks](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37513937943/job/112441912504)
+  completed successfully, retaining their bounded scope
+- [OpenCL job](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37513937943/job/112441910326):
+  failed at the real bindings/transfers/kernels/GAT spatial-code step. This is
+  not a passing GPU check. Previous runs exposed no usable hosted OpenCL device;
+  the new job's precise failure must be read from its own diagnostic log
+
+Final release-source packaging and any later exact-merge checks are recorded on
+the release page, separately from the reviewed production revision above.

@@ -18,7 +18,7 @@
 
     <groupId>io.github.pr4deepr</groupId>
     <artifactId>GutAnalysisToolbox_</artifactId>
-    <version>2.0.1-apple-silicon.4</version>
+    <version>2.0.1-apple-silicon.5</version>
 
     <!-- Project metadata used by the SciJava build and license plugins. -->
     <name>Gut Analysis Toolbox</name>
