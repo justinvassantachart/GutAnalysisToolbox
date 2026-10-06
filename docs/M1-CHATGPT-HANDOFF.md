@@ -1,6 +1,6 @@
 # Clean Mac Fiji and GAT TEST release handoff
 
-Prepared 5 October 2026. Instruction revision 5, updated 22:38 UTC. Corrective core TEST release 3 contains the multiplex repair. This is a self-contained instruction document for the computer assistant the owner chooses to use on their physical M1 Mac. No Fiji, Java, Homebrew, Git, Maven, Python, command-line developer tools, plugins, or models are assumed to be installed.
+Prepared 6 October 2026. Instruction revision 6 for TEST preview 4 adds CPU/calcium hardening and retains the preview 3 multiplex repair. This is a self-contained instruction document for the computer assistant the owner chooses to use on their physical M1 Mac. No Fiji, Java, Homebrew, Git, Maven, Python, command-line developer tools, plugins, or models are assumed to be installed.
 
 **This is an experimental TEST release, not an all-workflow compatibility
 certificate.** Native hosted-Mac checks pass the fork's actual neuron/registration
@@ -14,9 +14,26 @@ package safely in the two separate Fiji copies below.
 
 **Do not use preview 2 multiplex exports for quantitative work:** its saved
 later-round channels can remain unaligned and physical calibration is lost.
-The corrective preview 3 below fixes this reached result-handling defect.
+Preview 3 corrected this reached result-handling defect; preview 4 retains that correction.
 Preview 1 also lacks the newer workflow changes. If a download or checksum is unavailable, stop that
 specific step, retain evidence and report it rather than fabricating success.
+
+## Preview 4 update boundary
+
+For installation into an existing preview test copy, read the release asset
+`PREVIEW_4_SETUP.md` first. Quit Fiji, back up the old GAT JAR and both entire
+worker directories outside Fiji, then install the new complete overlay. Do not
+leave .3 or SNAPSHOT JARs on the classpath or merge old/new worker libraries.
+Models, engines and unrelated Fiji dependencies should not be replaced merely
+for this overlay update. Keep the original comparison copy unchanged.
+
+The release adds missing-OID Intel CPU handling plus calcium input/load/cancel
+safeguards. Calcium supports a single-channel grayscale stack with one time
+axis; RGB, C>1 and simultaneous Z/T are rejected before processing. Choose
+channels and any Z projection explicitly before retrying. The source's hardening
+report and release page distinguish fresh checks from the older scientific and
+fresh-Fiji evidence retained below. Hosted OpenCL remains a separate check, and
+physical GUI/GPU/biological acceptance is still required.
 
 ## Paste this prompt into the computer assistant
 
@@ -32,7 +49,7 @@ Use the downloadable, checksum-verified packages and Fiji's bundled Java for the
 
 ## Exact TEST release packages
 
-Verify every downloaded archive against the hashes below. These packages were built on native macOS and their plugin class contents matched the tested classes. The source commit and whole-package hashes pin this test; a moving branch is not a replacement.
+Verify every downloaded archive against its matching release checksum (historical unchanged packages also retain their hashes below). These packages were built on native macOS and their plugin class contents matched the tested classes. The source commit and whole-package hashes pin this test; a moving branch is not a replacement.
 
 | Item | Exact value required before running |
 | --- | --- |
@@ -40,28 +57,28 @@ Verify every downloaded archive against the hashes below. These packages were bu
 | Original source link | https://github.com/pr4deepr/GutAnalysisToolbox/tree/1870d9e16e16fd6daeac0bd05122e851029ddedc |
 | Unchanged baseline install bundle | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-2.0.0-unchanged-1870d9e-baseline.zip |
 | Baseline ZIP SHA-256 and contained GAT JAR SHA-256 | `3c7f3289f714f3789b9dad47dd4f9e7032812b8886c43705a97853888d50ce86` / `df6df75b143e50f279e3a27b2bf502515b9e6e534c160f04067893d597494949` |
-| Corrected fork source commit | `bb897c237732cf8569a1515eb8d7ed69feb2ab31` |
-| Corrected fork release page and install ZIP | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-3 / https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-2.0.1-apple-silicon.3-macos-arm64-preview.zip |
-| Fork ZIP and GAT JAR SHA-256 | `5c746a31c65727779566ed9b9a1bfdd4966167504bce7ee95bd4878ed2159d03` / `0bb1c33b452fcd607f13291532e103199223d947eeec605a91dcac03dc047792` |
+| Corrected fork source commit | Exact commit in preview 4 `FORK_BUILD_INFO.json`, matching the immutable `apple-silicon-preview-4` tag; require version `2.0.1-apple-silicon.4` and `source_worktree_modified: false` |
+| Corrected fork release page and install ZIP | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-4 / https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-4/GAT-2.0.1-apple-silicon.4-macos-arm64-preview.zip |
+| Fork ZIP and GAT JAR SHA-256 | Use preview 4 `GAT-2.0.1-apple-silicon.4-macos-arm64-preview.zip.sha256` and `FORK_BUILD_INFO.json` `plugin_sha256`; do not reuse preview 3 hashes |
 | Companion worker/alignment bundle inventory | Both `gat-native-inference/` and `gat-native-alignment/`, already in the core ZIP; preserve complete directories and BUILD_INFO.json |
 | Public fixtures, validation scripts, references and dependency manifest | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-M1-test-kit-preview-2.1.zip / `979d818165e677215824808834391ad80b70866c86ead5da2ae8830e022a2d55` |
 | Corrected multiplex manual inputs and native saved references | https://github.com/justinvassantachart/GutAnalysisToolbox/releases/download/apple-silicon-preview-3/GAT-multiplex-manual-fixtures.zip / SHA-256 `31e15feb164b38c5ab42f9ff6cdceee5507c4563cea648a2b85ae9f38524a04c`, 231,740 bytes |
 | Optional pinned ganglia engine/model data pack | No separate engine pack is required; use the supported official installation instructions in section 5 (the exact native clean-install/model/command checks now pass) |
-| Native paired baseline/fork CI run and report archive | [Exact final source build and paired controls](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593); [earlier same-code corrective build evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/bb897c237732cf8569a1515eb8d7ed69feb2ab31/native-inference/validation/baseline/results/mac-ab046cb/REPORT.md). Historical Sonoma/Sequoia reports remain in the general test kit |
+| Native paired baseline/fork CI run and report archive | Final preview 4 build/paired controls are linked on its release page; [historical preview 3 final build](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37382657593); [earlier same-code corrective build evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/bb897c237732cf8569a1515eb8d7ed69feb2ab31/native-inference/validation/baseline/results/mac-ab046cb/REPORT.md). Historical Sonoma/Sequoia reports remain in the general test kit |
 | Final package's recorded Fiji/dependency inventory | `native-inference/validation/workflows/dependencies.json` at the pinned source; record actual updater-resolved versions and hashes as well |
 
 Fork repository: https://github.com/justinvassantachart/GutAnalysisToolbox
 
-Verified public repository default branch: `main`. Do not substitute its moving HEAD for `bb897c237732cf8569a1515eb8d7ed69feb2ab31`. The public repository/default branch was independently verified through GitHub's API.
+Verified public repository default branch: `main`. Do not substitute its moving HEAD for the immutable `apple-silicon-preview-4` tag. The public repository/default branch was independently verified through GitHub's API.
 
-The baseline ZIP includes the unchanged original JAR; there is no need to build it or install developer tools. The fork ZIP is 203,286,850 bytes; the baseline ZIP is 1,664,352 bytes. Dependencies and models are installed separately as described below. A missing optional test or unavailable GitHub check does not become an all-workflow pass.
+The baseline ZIP includes the unchanged original JAR; there is no need to build it or install developer tools. The fork ZIP size/digest are recorded on the preview 4 release page; the unchanged baseline ZIP remains 1,664,352 bytes. Dependencies and models are installed separately as described below. A missing optional test or unavailable GitHub check does not become an all-workflow pass.
 
 ## Current before and after evidence
 
 The unchanged original source is `1870d9e16e16fd6daeac0bd05122e851029ddedc`.
 Native paired controls have now run on hosted **Apple M1 Virtual** machines with
-Sonoma 14.8.9 and Sequoia 15.7.9. The final TEST package comes from fork commit
-`bb897c237732cf8569a1515eb8d7ed69feb2ab31`; original production source remained
+Sonoma 14.8.9 and Sequoia 15.7.9. The final TEST package comes from the immutable
+`apple-silicon-preview-4` tag (exact commit in `FORK_BUILD_INFO.json`); original production source remained
 unchanged and isolated from the fork's modern runtimes. Hosted virtual hardware
 is not the owner's physical M1 and does not expose a usable OpenCL device here.
 
@@ -458,7 +475,7 @@ The fork's neuron module requires this arrangement:
 ```text
 Fork/Fiji/
   Fiji.app/
-  plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.3.jar
+  plugins/GutAnalysisToolbox_-2.0.1-apple-silicon.4.jar
   gat-native-inference/gat-native-inference.jar
   gat-native-inference/lib/<complete pinned worker dependencies>
   models/<verified model files>
@@ -467,7 +484,7 @@ Fork/Fiji/
   gat-native-alignment/lib/<complete pinned alignment dependencies>
 ```
 
-Keep worker JAR and `lib` together. Never place worker TensorFlow dependencies in Fiji's `jars` or `plugins`. This release includes `gat-native-alignment/`: keep its worker JAR, full `lib` directory, GPL-3.0 license and original source/notices together, outside Fiji's global classpath. The archive BUILD_INFO records inference-bundle SHA `0fab4ea2529b083b762686073628d0980f66e70dda1d2e906f70e4ec125b6e79` and alignment-bundle SHA `b12d42b9e00ab1c9c17bd572521a40c8cfef2ff355b9010cc1e3e412459d94a1`. Those identify the constituent build archives, not a hash of an extracted directory.
+Keep worker JAR and `lib` together. Never place worker TensorFlow dependencies in Fiji's `jars` or `plugins`. This release includes `gat-native-alignment/`: keep its worker JAR, full `lib` directory, GPL-3.0 license and original source/notices together, outside Fiji's global classpath. The matching archive BUILD_INFO records `inference_bundle_sha256` and `alignment_bundle_sha256` for preview 4. Those identify the constituent build archives, not a hash of an extracted directory.
 
 The unchanged original copy must not contain the fork's adapter/plugin or silently gain its worker as a substitute. A failure in the original is valid evidence when the dependency/input environment is otherwise matched. Preserve logs before closing a failed baseline process.
 
@@ -495,8 +512,8 @@ It extracts to `GAT-M1-test-kit/`. Read its README, `manifest.json`,
 fixtures open directly in Fiji; the optional `developer-validation/` sources are
 not prerequisites for the manual tests. The kit retains its historical preview-2
 title and evidence. Its input/reference bytes also serve these unchanged core
-controls in preview 3. Follow **this v5 handoff** for current installation/status,
-not the kit's older first-install status; use the pinned preview-3 repository
+controls in preview 4. Follow **this v6 handoff** for current installation/status,
+not the kit's older first-install status; use the pinned preview-4 repository
 source for new developer builds. The separate multiplex add-on supplies the
 newly corrected workflow's exact native inputs and references.
 

@@ -1,39 +1,42 @@
 # Gut Analysis Toolbox
 
-Development branch: [build, input limits and update boundaries](docs/fork-development.md). Published preview 3 remains unchanged.
+## Apple Silicon TEST preview 4
 
-## Corrective Apple Silicon test preview 3
+[Download preview 4](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-4)
+for native arm64 Fiji on macOS 14+. Start with the
+[preview 4 setup and upgrade instructions](docs/preview-4-setup.md), then the
+[complete clean-Mac guide](docs/M1-CHATGPT-HANDOFF.md) for Fiji, bundled Java,
+models and engines. No developer tools are required to use the packages.
 
-[Preview 3 and the unchanged original comparison package](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-3)
-are available for native arm64 Fiji on macOS 14+. Start with the
-[complete bare-Mac instructions](docs/M1-CHATGPT-HANDOFF.md), including the
-bundled-Java Fiji setup, model/engine installation, general kit 2.1 and new
-multiplex manual fixtures. No developer tools are needed to use the packages.
+Preview 4 includes preview 3's multiplex repair plus stricter Intel CPU
+probe handling and calcium input/load/cancel safeguards. It rejects RGB,
+multichannel and simultaneous Z/T calcium input instead of silently processing
+ambiguous data. Supported single-channel stacks retain ImageJ's projection
+and F/F0 operations. [Hardening evidence and limitations](docs/validation/fork-hardening-2026-10-06.md).
 
-**Do not use preview 2 multiplex exports for quantitative work.** Its
-pre-existing result/landmark-handling defect left later-round channels
-unaligned and reset calibration. Preview 3 fixes that path, with independently
-verified saved TIFFs/ROIs from unchanged native SIFT and forced-MOPS acceptance
-tests. [Before/after multiplex evidence](native-inference/validation/multiplex-full/results/mac-ab046cb/README.md).
-Older release bytes remain unchanged.
+**Do not use preview 2 multiplex exports for quantitative work.** Preview 3
+first corrected later-round alignment/calibration handling; preview 4 retains
+that correction. All earlier releases and historical evidence remain unchanged.
 
-This branch supplies isolated native neuron/subtype inference and Template
-Matching, plus verified result-handling fixes. The
-[40-image native-Mac report](native-inference/validation/mac-corpus/results/mac-9b599df/REPORT.md)
-preserves equal counts/centers and the small mask/outline differences; these
-are runtime-consistency checks rather than biological ground truth.
-See the [workflow matrix and remaining limitations](docs/apple-silicon-workflow-matrix.md).
-Physical GPU/OpenCL access and complete interactive workflows remain to be tested;
-this is not an all-workflow or all-M-series support claim. Existing Intel
-installations keep their legacy inference backend. Clone this feature branch
-explicitly; the unchanged default `main` does not contain these changes:
+This experimental fork provides isolated native neuron/subtype inference and
+Template Matching. Hosted native-Mac tests cover the recorded command/service
+paths, not every desktop interaction or biological dataset. Physical OpenCL/GPU,
+complete interactive workflows and biological acceptance remain open. The
+[workflow matrix](docs/apple-silicon-workflow-matrix.md) preserves the limits,
+including small mask/outline differences in prior runtime comparisons. Existing
+Intel installations keep their legacy inference backend; this download's native
+workers are ARM64 only.
+
+Clone the release tag for its exact source; the unchanged default `main` does
+not contain these changes:
 
 ```sh
-git clone --branch feat/apple-silicon-stardist https://github.com/justinvassantachart/GutAnalysisToolbox.git
+git clone --branch apple-silicon-preview-4 https://github.com/justinvassantachart/GutAnalysisToolbox.git
 ```
 
-For the immutable tested package source, use tag `apple-silicon-preview-3`
-(`bb897c237732cf8569a1515eb8d7ed69feb2ab31`). No upstream pull request has been opened.
+Use the release's `FORK_BUILD_INFO.json` and SHA-256 files to verify the exact
+commit and bytes. [Development and input limits](docs/fork-development.md).
+No upstream pull request has been opened.
 
 [![DOI:10.1101/2024.01.17.576140](http://img.shields.io/badge/DOI-10.1101/2024.01.17.576140-B31B1B.svg)](https://doi.org/10.1242/jcs.261950)
 

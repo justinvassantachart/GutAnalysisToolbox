@@ -1,4 +1,4 @@
-# Experimental Apple Silicon GAT v2: corrective preview 3
+# Experimental Apple Silicon GAT v2: hardening preview 4
 
 This fork targets **native arm64 Fiji on macOS 14 Sonoma or newer, Java 11+**
 (Fiji's bundled Java 21 recommended). It is a test build. The current native
@@ -9,14 +9,23 @@ separate workflows and are not redirected by this plugin.
 
 ## What has actually run
 
-This guide accompanies **2.0.1-apple-silicon.3**, which includes the corrected
-multiplex result/landmark handling. Select that version from the
-[verified repository releases](https://github.com/justinvassantachart/GutAnalysisToolbox/releases), and use the clean-Mac handoff asset
-published beside the matching ZIP. Verify the ZIP checksum and its
-`BUILD_INFO.json`; if preview 3 is not listed, it has not been published yet.
-**Preview 2 lacks this multiplex correction and should not be used for
-quantitative multiplex-registration exports.** Earlier release bytes are
-preserved; passing new-source tests do not repair an older installation.
+This guide accompanies **2.0.1-apple-silicon.4**. Use the matching
+[preview 4 release](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-4),
+verify its checksum and `BUILD_INFO.json`, and follow `PREVIEW_4_SETUP.md` plus
+`M1-CHATGPT-HANDOFF-v6.md`. If the release is not listed, it is not yet published.
+The release adds Intel missing-OID CPU detection and calcium input/load/cancel
+safeguards to the retained preview 3 multiplex repair. Calcium accepts only
+single-channel grayscale stacks with one time axis; split channels and choose
+any scientific Z preprocessing explicitly. RGB, multiple channels and combined
+Z/T are rejected. Numerical projection/F/F0 remains ImageJ's operation.
+
+[6 October hardening verification](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/apple-silicon-preview-4/docs/validation/fork-hardening-2026-10-06.md)
+records 97 local Java tests and fresh hosted native-Mac command/service checks.
+Release-specific build/paired-run outcomes are linked on the release page.
+Older scientific/fresh-Fiji reports below retain their original source and
+coverage; they are not fresh full-corpus runs of preview 4.
+**Preview 2 lacks the multiplex correction and must not be used for quantitative
+multiplex-registration exports.** Older release bytes are preserved.
 
 Same-host native M1 Virtual comparisons on Sonoma 14.8.9 and Sequoia 15.7.9
 confirm fork StarDist and Template Matching output success, original native
@@ -159,7 +168,9 @@ the handoff being followed.
    and `models`. Current Fiji Latest places these in outer `Fiji/`, beside
    inner `Fiji.app/`; older bundles may put them in `Fiji.app/`. Confirm with
    `IJ.getDirectory("imagej")` rather than assuming the app is the data root
-4. Move the existing GAT JAR to a backup outside Fiji. Leave only one GAT JAR.
+4. Quit Fiji and move existing GAT JARs and BOTH old worker directories to a
+   dated backup outside Fiji. Install both complete new worker directories; do
+   not merge their `lib` contents with an older version. Leave only one GAT JAR.
    Extract the verified overlay into that data root:
 
    ```text
