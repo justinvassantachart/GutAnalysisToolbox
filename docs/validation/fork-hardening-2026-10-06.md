@@ -71,13 +71,42 @@ runtime and `MALLOC_ARENA_MAX=2`. Model weights, tiling, oneDNN and production
 numerical settings were unchanged. These test-environment limits are not new
 production defaults.
 
+## Hosted CI after publication
+
+The following runs target the exact production/test commit
+`cad2da658141cd281c6717408eb6f1a2ae6b0efd`. Any later change that only updates this
+report is evidence maintenance, not a new tested production revision.
+
+- [Root platform matrix](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37506388212):
+  Linux and hosted native ARM Mac were verified successful. The last verified
+  Intel Mac snapshot was still running at 17:49:58 UTC; its final result and raw
+  sysctl diagnostics were not verified when this report was written. Do not
+  infer that Intel passed or failed; the linked run is the authoritative record
+- [Native multiplex](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37506388233):
+  completed successfully
+- [Native workflow checks](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37506388283):
+  workflow/engine, Template Matching and JPEG-XR jobs completed successfully.
+  The separate OpenCL job failed: the virtual Mac exposed no devices and
+  `clGetDeviceIDs` returned `-30`. This gate is left visibly failed; it is not a
+  passing GPU check or proof of a defect on a physical Mac
+- [Same-host unchanged Java-v2 baseline comparison](https://github.com/justinvassantachart/GutAnalysisToolbox/actions/runs/37506388426):
+  completed successfully. This compares upstream Java GAT v2 with the fork;
+  it does not validate the legacy `.ijm` workflows
+
+The downloaded calcium report confirms the production open/projection/F/F0/
+ROI/measurement/save path on hosted Apple M1 (Virtual), macOS 15.7.9, Java 21.
+The controlled baseline and projection dialogs produced measured F/F0
+`[1, 1, 2]`, one ROI and saved CSV/ROI outputs. It is a bounded command test,
+not dashboard navigation or a manual physical-Mac trial. The broader report
+remains explicitly partial: unsupported, blocked and unrun checks retain
+those labels rather than becoming a blanket full-workflow pass.
+
 ## Remaining gates
 
-The new hosted Intel/ARM checks need to run after publication. Rosetta outcomes
-above are simulated probe regressions, not a physical translated-JVM test.
-A separate Linux GUI smoke was attempted on an isolated Xorg display, but the
-sandbox forbids the required Unix socket; the elevated execution wrapper also
-failed before starting the test. Its GUI numerical checks are **not run**.
+Rosetta outcomes above are simulated probe regressions, not a physical
+translated-JVM test. The separate local Linux GUI attempt was blocked before
+Java started by unavailable display sockets; the hosted Mac calcium command
+result above is the fresh, bounded numerical check that subsequently ran.
 Physical OpenCL/GPU, complete interactive workflows and biological acceptance
 remain open. Earlier native/paired scientific evidence retains its original
-scope and qualifications; it is not a fresh run of this development commit.
+scope and qualifications; it is not a fresh full corpus run of this revision.
