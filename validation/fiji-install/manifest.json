@@ -234,5 +234,44 @@
         "sha256": "cd950ddbcbadcb5cbc016bb71ee33d2ee7b730b3ca6bbc0ea17dc54c4b2167ec"
       }
     ]
-  }
+  },
+  "historical_runtime": {
+    "mode": "historical-test-only",
+    "default_enabled": false,
+    "scope": "Explicit disposable CI fixture experiment only; exactly two official historical dependencies; no production installation or model/macro substitutions",
+    "artifacts": [
+      {
+        "path": "jars/dl-modelrunner-0.6.4.jar",
+        "url": "https://sites.imagej.net/DeepImageJ/jars/dl-modelrunner-0.6.4.jar-20261006095051",
+        "sha256": "376d94bc2a921923c942b735fa4088ca7fb16e1a18c1dc09441401a606af2ce4",
+        "bytes": 1044312
+      },
+      {
+        "path": "plugins/DeepImageJ-3.2.1-SNAPSHOT.jar",
+        "url": "https://sites.imagej.net/DeepImageJ/plugins/DeepImageJ-3.2.1-SNAPSHOT.jar-20261006085316",
+        "sha256": "139ec702a1e29e5845d031f1886fe4c3811efac841b429fc83b8f1cf43b80302",
+        "bytes": 98489
+      }
+    ]
+  },
+  "parity_samples": [
+    {
+      "file": "distal-hu-gfap.tif",
+      "url": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/181107_ms_distal_colon_nNOS_GFAP_Hu_40X.tif",
+      "sha256": "60b020552733c5170fc606a8db682058303d7c81c26937c2a3960c9ed53f356c",
+      "bytes": 6294498
+    },
+    {
+      "file": "proximal-hu-chat.tif",
+      "url": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/DYM_22_7_Pr_Chat_BYFP_DIN_GFP-g_nNOS-m_VIP-r_Hu-b.tif",
+      "sha256": "86d130e62f06ce613d830f9126910f4c5c897594ce702e7341bef20c2142a586",
+      "bytes": 2379696
+    },
+    {
+      "file": "distal-neuron-rois.zip",
+      "url": "https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/Analysis/181107_ms_distal_col_1/Neuron_ROIs_181107_ms_distal_col_1.zip",
+      "sha256": "83ccffc774522829a3cd1372708359b1487d9109bd6dcea65d2e119b03f82b5f",
+      "bytes": 26386
+    }
+  ]
 }

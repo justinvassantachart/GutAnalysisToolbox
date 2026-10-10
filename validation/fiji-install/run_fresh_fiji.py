@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Review-only paired native-Mac fresh Fiji validation. Never touches an existing Fiji."""
+"""Review-only matched native-Mac fresh Fiji validation. Never touches an existing Fiji."""
 import argparse
 import gzip
 import hashlib
@@ -13,6 +13,7 @@ import shutil
 import signal
 import stat
 import subprocess
+import sys
 import tempfile
 import time
 import zipfile
@@ -25,7 +26,7 @@ OVERLAY_DOCUMENTS = ('BUILD_INFO.json', 'APPLE_SILICON.md',
                      'PREVIEW_5_SETUP.md', 'MAINTAINER_REVIEW_2026-10-06.md',
                      'FORK_HARDENING_2026-10-06.md')
 STAGES = ['native_host', 'archive_download', 'archive_integrity', 'archive_extraction',
-          'bundled_java', 'pristine_startup', 'official_updater', 'installed_inventory',
+          'bundled_java', 'pristine_startup', 'official_updater', 'installed_inventory', 'historical_runtime',
           'paired_overlays', 'original_startup', 'original_dashboard', 'original_neuron',
           'original_alignment', 'fork_startup', 'fork_dashboard', 'fork_neuron', 'fork_alignment',
           'official_engine_install', 'official_engine_inference', 'ganglia_engine_setup',
@@ -149,7 +150,7 @@ def compare_pins(records):
 
 
 def verify_required_assets(root, records):
-    """Never replace updater-installed model, descriptor, macro or JDLL files to meet pins."""
+    """Read-only strict verifier, including after the separate explicit CI runtime preparation."""
     verified = []
     for record in records:
         path = root / record['path']
@@ -223,27 +224,250 @@ def validate_gat_jar(jar):
         raise ValueError('Isolated worker runtime leaked into GAT plugin')
 
 
-def main():
+# No caller-supplied installation can enter the historical test path. These
+# identities are populated only by this process's fresh-allocation/extraction flow.
+_FRESH_WORKSPACES = {}
+_FRESH_INSTALLATIONS = {}
+HISTORICAL_URLS = {
+    'jars/dl-modelrunner-0.6.4.jar': 'https://sites.imagej.net/DeepImageJ/jars/dl-modelrunner-0.6.4.jar-20261006095051',
+    'plugins/DeepImageJ-3.2.1-SNAPSHOT.jar': 'https://sites.imagej.net/DeepImageJ/plugins/DeepImageJ-3.2.1-SNAPSHOT.jar-20261006085316',
+}
+
+
+def file_identity(path):
+    st = path.lstat()
+    return st.st_dev, st.st_ino
+
+
+def create_work_root():
+    parent = Path(os.environ.get('RUNNER_TEMP') or tempfile.gettempdir()).resolve(strict=True)
+    work = Path(tempfile.mkdtemp(prefix='gat-fresh-fiji-', dir=parent))
+    _FRESH_WORKSPACES[work] = file_identity(work)
+    return work
+
+
+def safe_fixture_path(path, ancestor):
+    """Require literal, non-symlink paths beneath a trusted newly allocated root."""
+    if not path.is_absolute() or '..' in path.parts or not path.is_relative_to(ancestor):
+        raise ValueError('Path is outside the fresh temporary fixture: ' + str(path))
+    current = path
+    while True:
+        if current.is_symlink():
+            raise ValueError('Symlink forbidden in historical runtime target: ' + str(current))
+        if current == ancestor:
+            break
+        current = current.parent
+    if path.resolve() != path:
+        raise ValueError('Historical runtime path is not canonical: ' + str(path))
+
+
+def register_fresh_installation(root, work, archive_record):
+    """Called only after the pinned distribution has been safely unpacked."""
+    if (work not in _FRESH_WORKSPACES or file_identity(work) != _FRESH_WORKSPACES[work]
+            or root != work / 'official' / 'Fiji'):
+        raise ValueError('Historical runtime requires this process\'s fresh Fiji workspace')
+    safe_fixture_path(root, work)
+    if (archive_record['sha256'] != MANIFEST['fiji']['sha256']
+            or archive_record['bytes'] != MANIFEST['fiji']['bytes']):
+        raise ValueError('Cannot register an unverified Fiji extraction')
+    _FRESH_INSTALLATIONS[root] = file_identity(root)
+
+
+def historical_artifacts():
+    """Exactly two official timestamped URLs, retaining the original ganglia pins."""
+    records = MANIFEST['historical_runtime']['artifacts']
+    if len(records) != 2 or {r['path'] for r in records} != set(HISTORICAL_URLS):
+        raise ValueError('Historical runtime target allowlist must contain exactly the two dependency jars')
+    pins = MANIFEST['ganglia_engine']['required_updater_assets']
+    for record in records:
+        matching = [p for p in pins if p['path'] == record['path']]
+        if (record['url'] != HISTORICAL_URLS[record['path']] or len(matching) != 1
+                or record['sha256'] != matching[0]['sha256']
+                or not re.fullmatch('[0-9a-f]{64}', record['sha256'])
+                or not isinstance(record['bytes'], int) or record['bytes'] <= 0):
+            raise ValueError('Historical runtime URL/hash/length conflicts with the fixed allowlist')
+    return records
+
+
+def full_inventory(root):
+    """All regular files and symlink targets, including files outside jars/models."""
+    records = []
+    for path in sorted(root.rglob('*')):
+        relative = path.relative_to(root).as_posix()
+        if path.is_symlink():
+            if not path.resolve().is_relative_to(root):
+                raise ValueError('Installed symlink escaped fresh fixture: ' + relative)
+            records.append({'path': relative, 'symlink': os.readlink(path)})
+        elif path.is_file():
+            records.append({'path': relative, 'bytes': path.stat().st_size, 'sha256': sha256(path)})
+        elif not path.is_dir():
+            raise ValueError('Special file in fresh fixture: ' + relative)
+    return records
+
+
+def historical_inventory_delta(before, after, artifacts):
+    def index(records):
+        rows = {r['path']: r for r in records}
+        if len(rows) != len(records):
+            raise ValueError('Duplicate inventory path')
+        return rows
+    old, new = index(before), index(after)
+    if set(old) != set(new):
+        raise ValueError('Historical runtime added or removed an installed file')
+    allowed = {a['path']: a for a in artifacts}
+    expected = {p for p, a in allowed.items() if old[p].get('sha256') != a['sha256']}
+    changed = {p for p in old if old[p] != new[p]}
+    if changed != expected:
+        raise ValueError('Historical runtime inventory changed outside the exact expected dependency delta')
+    for path, artifact in allowed.items():
+        if new[path].get('sha256') != artifact['sha256'] or new[path].get('bytes') != artifact['bytes']:
+            raise ValueError('Historical runtime final dependency hash/length mismatch: ' + path)
+    return [{'path': p, 'before': old[p], 'after': new[p]} for p in sorted(changed)]
+
+
+def validate_historical_targets(root, work, artifacts):
+    if (work not in _FRESH_WORKSPACES or file_identity(work) != _FRESH_WORKSPACES[work]
+            or root != work / 'official' / 'Fiji' or root not in _FRESH_INSTALLATIONS
+            or file_identity(root) != _FRESH_INSTALLATIONS[root]):
+        raise ValueError('Historical runtime only accepts the freshly unpacked temporary CI Fiji')
+    safe_fixture_path(root, work)
+    for artifact in artifacts:
+        target = root / artifact['path']
+        safe_fixture_path(target, work)
+        if not target.is_file() or target.stat().st_nlink != 1:
+            raise ValueError('Historical runtime requires one existing regular, unlinked jar: ' + artifact['path'])
+        # Reject alternate versions/nested copies that could shadow the pinned jar.
+        family = 'dl-modelrunner-[0-9]*.jar' if target.name.startswith('dl-modelrunner-') else 'DeepImageJ-*.jar'
+        matches = sorted(p for folder in ('jars', 'plugins') for p in (root / folder).rglob(family))
+        if matches != [target]:
+            raise ValueError('Duplicate or shadowing historical runtime jar: ' + artifact['path'])
+
+
+def configure_runtime(root, work_root, evidence, env, historical=False):
+    if not historical:
+        return {'mode': 'official-updater', 'status': 'SKIPPED',
+                'reason': 'Explicit --historical-runtime was not supplied; updater dependencies unchanged'}
+    return apply_historical_runtime(root, work_root, evidence, env)
+
+
+def apply_historical_runtime(root, work_root, evidence, env):
+    """Explicit CI-only experiment; never repairs the default official-updater lane."""
+    if os.environ.get('GITHUB_ACTIONS') != 'true':
+        raise ValueError('--historical-runtime is restricted to disposable GitHub Actions CI')
+    artifacts = historical_artifacts()
+    validate_historical_targets(root, work_root, artifacts)
+    if evidence.resolve().is_relative_to(work_root) or evidence.is_symlink():
+        raise ValueError('Historical runtime evidence must be outside the temporary runtime workspace')
+    staging = work_root / 'historical-runtime'
+    staging.mkdir()  # No reuse, cached binaries or pre-existing symlink destinations.
+    downloads = staging / 'downloads'; downloads.mkdir()
+    backups = staging / 'displaced'; backups.mkdir()
+    audit_path = evidence / 'historical-runtime-audit.json'
+    for name in ('historical-runtime-audit.json', 'historical-runtime-before.json', 'historical-runtime-after.json'):
+        if (evidence / name).exists() or (evidence / name).is_symlink():
+            raise ValueError('Historical runtime evidence already exists: ' + name)
+    audit = {'mode': 'historical-test-only', 'status': 'RUNNING',
+             'scope': 'Two official historical dependencies in a disposable freshly unpacked CI Fiji only',
+             'root': str(root), 'backup_root': str(backups), 'artifacts': [],
+             'before_inventory': 'historical-runtime-before.json',
+             'after_inventory': 'historical-runtime-after.json'}
+    def save():
+        audit_path.write_text(json.dumps(audit, indent=2) + '\n')
+    before = full_inventory(root)
+    (evidence / audit['before_inventory']).write_text(json.dumps(before, indent=2) + '\n')
+    save()
+    try:
+        # Verify *both* downloads before displacing either installed jar.
+        for index, artifact in enumerate(artifacts):
+            source = downloads / Path(artifact['path']).name
+            record = {**artifact, 'status': 'DOWNLOADING'}
+            audit['artifacts'].append(record); save()
+            fetched = download(artifact['url'], source, env,
+                               evidence / ('historical-runtime-download-%d.log' % index),
+                               expected_sha=artifact['sha256'], expected_size=artifact['bytes'], timeout=180)
+            if (source.is_symlink() or not source.is_file() or sha256(source) != artifact['sha256']
+                    or source.stat().st_size != artifact['bytes']):
+                raise ValueError('Historical runtime downloaded hash/length mismatch: ' + artifact['path'])
+            record['download'] = fetched
+            record['status'] = 'VERIFIED'
+            save()
+        validate_historical_targets(root, work_root, artifacts)
+        if full_inventory(root) != before:
+            raise ValueError('Fresh Fiji changed while historical dependencies were downloading')
+        for artifact in audit['artifacts']:
+            target = root / artifact['path']
+            artifact['displaced_sha256'] = sha256(target)
+            artifact['replaced'] = artifact['displaced_sha256'] != artifact['sha256']
+            if artifact['replaced']:
+                backup = backups / artifact['path']; backup.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(target, backup)
+                if sha256(backup) != artifact['displaced_sha256']:
+                    raise ValueError('Historical runtime backup hash mismatch')
+                artifact['backup'] = str(backup)
+                # Replace the pathname, never modify an existing jar inode in place.
+                os.replace(downloads / target.name, target)
+            save()
+        after = full_inventory(root)
+        (evidence / audit['after_inventory']).write_text(json.dumps(after, indent=2) + '\n')
+        audit['inventory_delta'] = historical_inventory_delta(before, after, artifacts)
+        audit['status'] = 'PASS'
+        save()
+        return audit
+    except Exception as exc:
+        audit['status'] = 'FAIL'; audit['reason'] = str(exc)
+        for record in audit['artifacts']:
+            source = downloads / Path(record['path']).name
+            if source.is_file() and not source.is_symlink():
+                record['observed_download_sha256'] = sha256(source)
+                record['observed_download_bytes'] = source.stat().st_size
+        try:
+            (evidence / audit['after_inventory']).write_text(json.dumps(full_inventory(root), indent=2) + '\n')
+        except Exception as inventory_error:
+            audit['after_inventory_error'] = str(inventory_error)
+        save()
+        raise
+
+
+def build_parser():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--original-jar', required=True, type=Path)
     parser.add_argument('--fork-archive', required=True, type=Path)
     parser.add_argument('--original-commit', default='1870d9e16e16fd6daeac0bd05122e851029ddedc')
     parser.add_argument('--fork-commit', required=True)
+    parser.add_argument('--historical-runtime', action='store_true',
+                        help='CI-only: replace exactly two dependency jars with pinned official historical bytes')
+    parser.add_argument('--control-jar', type=Path, help='Optional immutable preview-5 control plugin')
+    parser.add_argument('--control-commit', help='Full immutable SHA paired with --control-jar')
+    return parser
+
+
+def main():
+    parser = build_parser()
     args = parser.parse_args()
-    if any(not re.fullmatch('[0-9a-f]{40}', s) for s in (args.original_commit, args.fork_commit)):
+    if (args.control_jar is None) != (args.control_commit is None):
+        parser.error('--control-jar and --control-commit must be provided together')
+    commits = [args.original_commit, args.fork_commit] + ([args.control_commit] if args.control_commit else [])
+    if any(not re.fullmatch('[0-9a-f]{40}', s) for s in commits):
         parser.error('Provide full immutable commit SHAs')
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
     report_path = args.output / 'fresh-fiji-report.json'
     if report_path.exists():
         parser.error('Output already contains a report; choose a new evidence directory')
-    work = Path(tempfile.mkdtemp(prefix='gat-fresh-fiji-', dir=os.environ.get('RUNNER_TEMP')))
+    work = create_work_root()
+    variants = ('original', 'control', 'fork') if args.control_jar else ('original', 'fork')
     home = work / 'home'; home.mkdir()
     env = clean_env(home)
-    report = {'schema_version': 1, 'scope': 'Paired bounded installed-Fiji validation, not all GAT workflows',
+    report = {'schema_version': 1, 'scope': 'Matched bounded installed-Fiji validation, not all GAT workflows',
               'prepared_manifest_sha256': sha256(HERE / 'manifest.json'), 'work_root': str(work),
+              'runtime_mode': 'historical-test-only' if args.historical_runtime else 'official-updater',
+              'control_commit': args.control_commit,
               'stages': {stage: {'status': 'BLOCKED', 'reason': 'Not reached'} for stage in STAGES}}
+    if args.control_jar:
+        for name in ('control_startup', 'control_ganglia', 'original_parity', 'control_parity', 'fork_parity',
+                     'parity_samples', 'ganglia_parity'):
+            report['stages'][name] = {'status': 'BLOCKED', 'reason': 'Not reached'}
     def save():
         report_path.write_text(json.dumps(report, indent=2) + '\n')
     def stage(name, status, **data):
@@ -276,11 +500,16 @@ def main():
         classes = work / 'ganglia-probe-classes'; classes.mkdir()
         jars = sorted((root / 'jars').rglob('*.jar')) + sorted((root / 'plugins').rglob('*.jar'))
         cp = os.pathsep.join(str(p) for p in jars)
+        sources = [HERE / 'Fresh_Ganglia_Probe.java', HERE / 'Fresh_Ganglia_Params.java',
+                   HERE / 'Fresh_Ganglia_Evidence.java']
+        if (HERE / 'Fresh_Ganglia_Parity.java').is_file():
+            sources.append(HERE / 'Fresh_Ganglia_Parity.java')
         command([root / MANIFEST['fiji']['java_home'] / 'bin/javac', '--release', '11', '-cp', cp,
-                 '-d', classes, HERE / 'Fresh_Ganglia_Probe.java', HERE / 'Fresh_Ganglia_Params.java', HERE / 'Fresh_Ganglia_Evidence.java'], 'ganglia-probe-compile.log')
+                 '-d', classes] + sources, 'ganglia-probe-compile.log')
         with zipfile.ZipFile(root / 'plugins' / 'Fresh_Fiji_Probe.jar', 'a') as z:
             for path in classes.glob('*.class'):
                 z.write(path, path.name)
+    parity_samples = work / 'parity-samples'
     def probe(root, variant, mode, fixture=None):
         name = variant + '_' + mode
         target = args.output / (name + '.json')
@@ -289,10 +518,12 @@ def main():
         cmd = launch(root) + ['-Dgat.validation.root=' + str(root), '-Dgat.validation.mode=' + mode,
                              '-Dgat.validation.report=' + str(target),
                              '-Dgat.validation.expectedLabels=' + MANIFEST['expected_neuron_label_sha256']]
+        if mode == 'parity':
+            cmd += ['-Dgat.validation.paritySamples=' + str(parity_samples)]
         if fixture:
             cmd += ['-Dgat.validation.fixture=' + str(fixture)]
         cmd += ['--run', str(macro)]
-        execution = execute(cmd, args.output / (name + '.log'), clean_env(runtime_home(root)), 900 if mode == 'engine_install' else 300, root)
+        execution = execute(cmd, args.output / (name + '.log'), clean_env(runtime_home(root)), 1200 if mode == 'parity' else 900 if mode == 'engine_install' else 300, root)
         if target.exists():
             result = json.loads(target.read_text())
             status = result.get('status')
@@ -307,11 +538,14 @@ def main():
     current = 'native_host'
     try:
         save()
+        if args.historical_runtime and os.environ.get('GITHUB_ACTIONS') != 'true':
+            raise ValueError('--historical-runtime is restricted to disposable GitHub Actions CI')
         if platform.system() != 'Darwin' or platform.machine() != 'arm64':
             stage(current, 'BLOCKED', reason='This lane requires a native macOS arm64 GUI runner; no emulation or Linux substitution')
             return 3
-        if shutil.disk_usage(work).free < 12 * 1024**3:
-            raise RuntimeError('Need at least 12 GiB free for one archive and three isolated installations')
+        minimum_gib = 16 if args.control_jar else 12
+        if shutil.disk_usage(work).free < minimum_gib * 1024**3:
+            raise RuntimeError('Need at least %d GiB free for the isolated installations' % minimum_gib)
         command(['sh', '-c', 'uname -a; sw_vers; sysctl -n machdep.cpu.brand_string'], 'host.log')
         stage(current, 'PASS', evidence='host.log')
         current = 'archive_download'; archive = work / 'fiji.zip'
@@ -328,6 +562,7 @@ def main():
         for path in base.rglob('*'):
             if path.is_symlink() and not path.resolve().is_relative_to(base.resolve()):
                 raise ValueError('Extracted symlink escaped Fiji')
+        register_fresh_installation(base, work, record)
         stage(current, 'PASS', root=str(base), no_quarantine_or_security_changes=True)
         current = 'bundled_java'; java = base / MANIFEST['fiji']['java_home'] / 'bin/java'
         command(['/usr/bin/file', base / MANIFEST['fiji']['launcher'], java], 'native-binaries.log')
@@ -353,7 +588,7 @@ def main():
         command(launch(base) + ['--update', 'update'], 'updater-install.log', 1800, base)
         text=(args.output / 'updater-install.log').read_text(errors='replace')
         if re.search(r'\[ERROR\]|Could not update due to conflicts|Error updating|IO error downloading|Skipping obsolete, but modified', text):
-            raise RuntimeError('Updater reported errors/conflicts; no force or hand-swapping fallback is allowed')
+            raise RuntimeError('Updater reported errors/conflicts; historical mode never bypasses an updater failure')
         command(launch(base) + ['--update', 'list-update-sites'], 'sites-after.log', 240, base)
         command(launch(base) + ['--update', 'list-current'], 'updater-current.log', 240, base)
         command(launch(base) + ['--update', 'list-shadowed'], 'updater-shadowed.log', 240, base)
@@ -367,9 +602,27 @@ def main():
         (args.output / 'pin-comparison.json').write_text(json.dumps(pins, indent=2)+'\n')
         stage(current, 'PASS', evidence='installed-inventory.json', pin_comparison='pin-comparison.json',
               pin_conflicts=[p for p in pins if p['status'] != 'MATCH'])
+        current = 'historical_runtime'
+        audit = configure_runtime(base, work, args.output, env, historical=args.historical_runtime)
+        if args.historical_runtime:
+            stage(current, 'PASS', mode='historical-test-only', evidence='historical-runtime-audit.json',
+                  changed_paths=[r['path'] for r in audit['inventory_delta']])
+        else:
+            stage(current, 'SKIPPED', mode='official-updater', reason='Explicit --historical-runtime was not supplied; updater dependencies unchanged')
         fixture = work / 'public-Hu.tif'
         report['fixture'] = download(MANIFEST['fixture']['url'], fixture, env, args.output / 'fixture-download.log',
                                      expected_sha=MANIFEST['fixture']['sha256'], timeout=120)
+        if args.control_jar:
+            current = 'parity_samples'
+            parity_samples.mkdir()
+            samples = []
+            for index, sample in enumerate(MANIFEST['parity_samples']):
+                if sample['file'] != Path(sample['file']).name or sample['file'] in ('.', '..'):
+                    raise ValueError('Unsafe parity sample filename')
+                samples.append(download(sample['url'], parity_samples / sample['file'], env,
+                                        args.output / ('parity-sample-%d.log' % index),
+                                        expected_sha=sample['sha256'], expected_size=sample['bytes'], timeout=180))
+            stage(current, 'PASS', samples=samples)
         # Complete real DeepImageJ/JDLL engine setup before copying the matched installations.
         current = 'ganglia_engine_setup'
         config = MANIFEST['ganglia_engine']
@@ -398,32 +651,45 @@ def main():
               verified_engine_files=final_engine_files, native_cpu_download=native_download,
               note='Shipped JDLL installer plus exact pinned official native CPU jar; completed full model inference before copying either installation')
         (args.output / 'engine-ready-inventory.json').write_text(json.dumps(inventory(base), indent=2)+'\n')
-        # Both source revisions use byte-identical updater output on the same native host.
+        # All source revisions use the same audited dependency bytes on the same native host.
         current = 'paired_overlays'; overlays = {}
-        for variant in ('original','fork'):
+        for variant in variants:
             root = work / variant / 'Fiji'
             shutil.copytree(base, root, symlinks=True)
             evidence = args.output / variant; evidence.mkdir()
-            overlays[variant] = overlay(root, plugin=args.original_jar.resolve() if variant=='original' else None,
+            plugin = args.original_jar if variant == 'original' else args.control_jar if variant == 'control' else None
+            commit = args.original_commit if variant == 'original' else args.control_commit if variant == 'control' else args.fork_commit
+            overlays[variant] = overlay(root, plugin=plugin.resolve() if plugin else None,
                                       archive=args.fork_archive.resolve() if variant=='fork' else None,
-                                      source_commit=args.original_commit if variant=='original' else args.fork_commit,
+                                      source_commit=commit,
                                       evidence=evidence)
         stage(current, 'PASS', overlays=overlays)
-        for variant in ('original','fork'):
+        for variant in variants:
             root = work / variant / 'Fiji'
             current = variant + '_startup'
             if probe(root, variant, 'startup') != 'PASS':
                 continue
-            current = variant + '_dashboard'
-            probe(root, variant, 'dashboard')
+            if variant != 'control':
+                current = variant + '_dashboard'
+                probe(root, variant, 'dashboard')
             # A blocked dashboard remains blocked; the named API smokes are separate evidence.
-            for mode in ('neuron','alignment','ganglia'):
+            modes = ('ganglia', 'parity') if variant == 'control' else (
+                ('neuron', 'alignment', 'ganglia', 'parity') if args.control_jar else ('neuron', 'alignment', 'ganglia'))
+            for mode in modes:
                 current = variant + '_' + mode
                 if mode=='neuron' and any(p['status']!='MATCH' for p in pins if p['file']=='2D_enteric_neuron_v4_1.zip'):
                     stage(variant+'_neuron','BLOCKED',reason='Updater-installed neuron model differs from pinned reference; no substitution')
                 else:
                     probe(root, variant, mode, fixture)
             (args.output / (variant+'-final-inventory.json')).write_text(json.dumps(inventory(root),indent=2)+'\n')
+        if args.control_jar:
+            current = 'ganglia_parity'
+            comparison = command([sys.executable, HERE / 'compare_ganglia_parity.py', '--directory', args.output],
+                                 'ganglia-parity-comparison.log', 180)
+            summary = json.loads((args.output / 'ganglia-parity-summary.json').read_text())
+            if summary.get('status') != 'PASS':
+                raise ValueError('Three-way ganglia parity summary did not report PASS')
+            stage(current, 'PASS', evidence='ganglia-parity-summary.json', execution=comparison)
         stage('ganglia_command', report['stages']['fork_ganglia']['status'], evidence='fork_ganglia.json',
               note='Real installed-Fiji GAT command; original observation is separately recorded in original_ganglia.json')
         stage('opencl_workflows','BLOCKED',reason='Native virtual M1 runner has no exposed OpenCL devices; requires a physical-device lane')
@@ -440,6 +706,11 @@ def main():
                 'pristine_startup','official_updater','installed_inventory','paired_overlays',
                 'original_startup','fork_startup','fork_dashboard','fork_neuron','fork_alignment',
                 'ganglia_engine_setup','official_engine_inference','fork_ganglia']
+    if args.historical_runtime:
+        required.append('historical_runtime')
+    if args.control_jar:
+        required += ['control_startup', 'control_ganglia',
+                     'original_parity', 'control_parity', 'fork_parity', 'parity_samples', 'ganglia_parity']
     states = [report['stages'][s]['status'] for s in required]
     return 0 if all(s == 'PASS' for s in states) else 2 if 'FAIL' in states else 3
 

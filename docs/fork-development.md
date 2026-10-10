@@ -39,6 +39,18 @@ retain their diagnostics and distinguish skipped, failed and passed steps.
 
 ## Supported input boundaries
 
+- Ganglia input preparation follows upstream Java GAT v2 commit
+  `1870d9e16e16fd6daeac0bd05122e851029ddedc`: reset each selected channel's
+  display range, convert to 8-bit, then multiply each float channel by
+  `1.0/255.0`. DeepImageJ receives a `[0,1]` float hyperstack with
+  `R=Hu, G=Ganglia, B=Hu`; the RGB review image remains byte-valued.
+  Keep the supplied model preprocessing unchanged. The model RDF's own
+  scaling is not a reason to remove the upstream input scaling when testing
+  V2 behavioral parity. `GangliaInputContractTest` covers all 256 byte values,
+  16-bit and float conversion, channel mapping, unchanged source pixels and
+  overlays, calibration, and retained output-selection safeguards. Input
+  preparation tests alone do not establish end-to-end model or mask parity;
+  use the same-host original/fork ganglia validation for those results
 - Native StarDist accepts one 2D grayscale plane and full-resolution,
   single-channel SavedModels with probability plus radial-distance outputs.
   The validated models are GAT's existing neuron and subtype ZIPs; arbitrary

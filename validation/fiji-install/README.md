@@ -36,7 +36,9 @@ The end-user GUI installation instructions remain separate.
    hashes, add the exact pinned official native macOS ARM CPU jar, then load and
    execute the whole supplied model through JDLL inside installed Fiji. The real
    model, descriptor, preprocessing/postprocessing macros and JDLL/DeepImageJ
-   jars must match their pins; conflicts fail without changing those files
+   jars must match their pins. The default lane fails on conflicts without changing
+   those files. The separately selected historical test-only mode below permits
+   exactly two audited dependency replacements before this verification
 6. Copy that one engine-ready installation into two independent trees on one runner.
    Install the original immutable GAT plugin in one, and the exact clean fork
    preview in the other. Only identified GAT plugin jars are displaced; worker
@@ -86,8 +88,10 @@ pass the initialization stage.
   resolution; they do not turn it into a reproducible historical updater server
 - Expected versions/hashes from existing baseline/fixture manifests are compared
   to updater output. Differences are retained in `pin-comparison.json`, never
-  repaired by swapping runtime jars or downgrading dependencies. A changed neuron
-  model blocks the exact-reference neuron test
+  repaired in the default official-updater lane. The explicit historical test-only
+  mode below records its two allowlisted substitutions separately; every model,
+  descriptor and macro pin remains strict. A changed neuron model blocks the
+  exact-reference neuron test
 - The old and fork GAT inputs share byte-identical freshly resolved dependencies.
   Errors in the original are recorded, not assumed. Before/after claims require
   reading both stage results and the class-source/error evidence
@@ -108,8 +112,8 @@ python3 validation/fiji-install/run_fresh_fiji.py \
 
 The harness never accepts an existing Fiji path. It allocates a new isolated
 runner-temp directory, a private test home and new per-variant installations.
-Allow at least 12 GiB free; all installations remain for diagnosis until the
-runner is discarded. It does not use cached installed plugins/models/engines.
+Allow at least 12 GiB free (16 GiB with the extra control); all installations
+remain for diagnosis until the runner is discarded. It does not use cached installed plugins/models/engines.
 The source build toolchain is not represented as an end-user prerequisite.
 
 The acceptance gate requires fresh download/updater/runtime setup plus fork
@@ -120,12 +124,96 @@ baseline observations. The separate all-workflow exclusions never disappear.
 Exit codes: 0 = this bounded acceptance gate passed; 2 = a required stage failed;
 3 = a required stage is blocked (including running on a non-Mac host).
 
+
+## Explicit historical runtime experiment
+
+The official update site changed the bytes of `dl-modelrunner-0.6.4.jar` and
+`DeepImageJ-3.2.1-SNAPSHOT.jar` without changing their installed filenames. An
+explicit `--historical-runtime` option permits reproducing the already-pinned
+runtime for this CI experiment. It defaults to false. This is not a supported
+end-user installation recipe, a repair of a live Fiji, or a claim that the live
+updater resolved historical bytes. The original required hashes remain unchanged.
+
+The option requires GitHub Actions and only accepts the exact Fiji root allocated
+and registered after verified fresh archive extraction by the current process.
+There is no existing-installation CLI argument. It runs only after a successful
+normal updater pass, and before the engine installer, model inference or matched
+installation copies. Updater failures are never bypassed.
+
+The only replacement sources are the exact official timestamped files:
+
+- [JDLL historical artifact](https://sites.imagej.net/DeepImageJ/jars/dl-modelrunner-0.6.4.jar-20261006095051),
+  SHA-256 `376d94bc2a921923c942b735fa4088ca7fb16e1a18c1dc09441401a606af2ce4`
+- [DeepImageJ historical artifact](https://sites.imagej.net/DeepImageJ/plugins/DeepImageJ-3.2.1-SNAPSHOT.jar-20261006085316),
+  SHA-256 `139ec702a1e29e5845d031f1886fe4c3811efac841b429fc83b8f1cf43b80302`
+
+Both downloads must match their SHA-256 and byte-length pins before either
+installed file is displaced. Only their exact `jars/` and `plugins/` paths can
+change. Duplicate versions, missing targets, symlink paths, hardlinked targets,
+unregistered roots and reused staging/evidence locations fail closed. Displaced
+jars are backed up under a separate runner-temp directory outside every Fiji
+classpath. Full installation inventories before/after the operation must differ
+only at the expected subset of those two paths; any dependency already matching its pin remains
+untouched. No models, RDF descriptors, preprocessing/postprocessing macros,
+thresholds, other dependencies or updater metadata are edited.
+
+The report labels `runtime_mode` as `historical-test-only` or `official-updater`.
+`historical-runtime-audit.json` records sources, expected/actual hashes, displaced
+hashes, backup paths and exact inventory delta. The raw updater inventory is
+preserved before replacements. Failure at any safety check fails the stage; a
+partially modified disposable fixture is retained only for diagnosis.
+
+## Three-way ganglia parity option
+
+`--control-jar /absolute/path/preview-5.jar --control-commit FULL_40_CHARACTER_SHA`
+adds a third isolated installation containing the unchanged preview-5 GAT plugin.
+The two arguments are an optional pair. The CI workflow pins the control to the
+immutable preview-5 source revision. The control runs startup, ganglia and parity
+checks only; it has no isolated native neuron/alignment workers. Original, control
+and current fork then use
+identical engine-ready dependency bytes. Add `--historical-runtime` only when the
+explicit historical-runtime experiment is intended.
+
+With the control enabled, the harness downloads the two pinned public repository
+TIFFs and the matching distal-image historical neuron ROI archive listed in
+`manifest.json`, each from immutable upstream source
+`61d57c4e4bcfe82aa0369100c0a3b0739b70affa`:
+
+- `distal-hu-gfap.tif`: [181107_ms_distal_colon_nNOS_GFAP_Hu_40X.tif](https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/181107_ms_distal_colon_nNOS_GFAP_Hu_40X.tif),
+  SHA-256 `60b020552733c5170fc606a8db682058303d7c81c26937c2a3960c9ed53f356c`
+- `proximal-hu-chat.tif`: [DYM_22_7_Pr_Chat_BYFP_DIN_GFP-g_nNOS-m_VIP-r_Hu-b.tif](https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/DYM_22_7_Pr_Chat_BYFP_DIN_GFP-g_nNOS-m_VIP-r_Hu-b.tif),
+  SHA-256 `86d130e62f06ce613d830f9126910f4c5c897594ce702e7341bef20c2142a586`
+- `distal-neuron-rois.zip`: [Neuron_ROIs_181107_ms_distal_col_1.zip](https://raw.githubusercontent.com/pr4deepr/GutAnalysisToolbox/61d57c4e4bcfe82aa0369100c0a3b0739b70affa/Sample%20Images/2D_enteric_neuron_IF/Analysis/181107_ms_distal_col_1/Neuron_ROIs_181107_ms_distal_col_1.zip),
+  SHA-256 `83ccffc774522829a3cd1372708359b1487d9109bd6dcea65d2e119b03f82b5f`
+
+These are additional samples beyond the supplied model NPY. Credit:
+[Sorensen et al. (2024), *Gut Analysis Toolbox – automating quantitative analysis
+of enteric neurons*](https://doi.org/10.1242/jcs.261950), and Pradeep Rajasekhar
+as curator of the upstream sample images. The distal image comes from the INM
+Lab, Monash University. The proximal crop comes from file 100 in
+[Howard, M. (2021), *3D imaging of enteric neurons in mouse*](https://doi.org/10.26275/9FFG-482D),
+SPARC Consortium. The [sample dataset](https://zenodo.org/records/10989097) is
+CC BY 4.0; the repository code is BSD-3-Clause (see `LICENSE`). Retain attribution
+when sharing derived figures. The lane redistributes only derived validation
+evidence, not Fiji, dependency jars or model binaries.
+It runs the parity probe in all three variants, then executes
+`compare_ganglia_parity.py --directory OUTPUT` and requires the comparison to
+pass. Each probe has its own JSON/log, and `ganglia-parity-summary.json` records
+the comparisons. Historical neuron ROIs provide a fixed assignment input, not
+biological ground truth. This option extends the bounded evidence; it does not
+remove the scientific, manual-review or all-workflow exclusions above.
+
 ## Evidence
 
 - `fresh-fiji-report.json`: explicit PASS / FAIL / BLOCKED stages and command logs
 - `installed-inventory.json`, `engine-ready-inventory.json`, `*-final-inventory.json`: installed file hashes,
   including models and worker libraries
 - `pin-comparison.json`: exact prior validation pin matches/conflicts
+- `historical-runtime-audit.json`, `historical-runtime-before.json`,
+  `historical-runtime-after.json`: only for the explicit historical runtime option;
+  complete file inventories, allowlisted delta and download/displacement audit
+- `control_*.json`, `*_parity.json`, `ganglia-parity-summary.json`: only with the
+  explicit preview-5 control; three-way inputs, mask/metric comparisons and gate
 - `updater-databases/`: observed official update databases and installed database
 - `pristine_startup.json`, `original_*.json`, `fork_*.json`: actual runtime,
   command menu, class source, exception window, preflight dialog, and result evidence
@@ -172,7 +260,11 @@ original failure status.
 The accepted 26298b7 run recorded successful saves and command metrics but did
 not retain its ganglia TIFFs in the diagnostic archive. That historical gap is
 not relabelled as raster evidence. Subsequent runs record both the raw row-major
-uint8 pixel SHA-256 and the TIFF-file SHA-256, and upload only the two specifically
-named public-fixture mask TIFFs. They do not upload a full Fiji install, model
-weights, arbitrary user images or native caches. The raw-pixel convention has
-a known-byte regression test.
+uint8 pixel SHA-256 and the TIFF-file SHA-256. The default lane uploads the two
+specifically named original/fork public-fixture mask TIFFs. With the explicit
+three-way parity control, the workflow additionally retains the specifically
+scoped control mask, per-variant parity evidence arrays/TIFFs, derived comparison
+PNGs and JSON metrics. These files are derived from the pinned public samples
+above. No full Fiji installation, dependency jars, model weights, arbitrary user
+images or native caches are uploaded. The raw-pixel convention has a known-byte
+regression test.

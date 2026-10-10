@@ -22,6 +22,7 @@ public final class Fresh_Ganglia_Probe {
         Path engines=root.resolve("engines");
         if(mode.equals("engine_inference"))return infer(model,engines);
         if(mode.equals("ganglia"))return command(model,root,evidence);
+        if(mode.equals("parity"))return Fresh_Ganglia_Parity.run(model,root,evidence);
         throw new IllegalArgumentException(mode);
     }
     private static Map<String,Object> infer(Path model,Path engines)throws Exception{

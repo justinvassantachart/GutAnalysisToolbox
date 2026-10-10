@@ -363,13 +363,13 @@ public final class PluginCalls {
     /**
      * Container object for ganglia segmentation prep.
      *
-     * dijInput3C: a hidden 3-channel float hyperstack (C=3,Z=1,T=1) retaining [0..255]
+     * dijInput3C: a hidden 3-channel float hyperstack (C=3,Z=1,T=1) normalized to [0..1]
      *             ready to feed DeepImageJ.
      * rgbForOverlay: an RGB visualization where Hu is magenta and ganglia channel is green,
      *                used for overlay review / saving pretty figures.
      */
     public static final class GangliaPrep {
-        public final ImagePlus dijInput3C;   // 3-channel, 32-bit hyperstack (C=3,Z=1,T=1), 0..255
+        public final ImagePlus dijInput3C;   // 3-channel, 32-bit hyperstack (C=3,Z=1,T=1), 0..1
         public final ImagePlus rgbForOverlay; // RGB Color image for painting overlay
         GangliaPrep(ImagePlus d, ImagePlus r) { dijInput3C=d; rgbForOverlay=r; }
     }
@@ -378,7 +378,7 @@ public final class PluginCalls {
      * Prepare inputs for ganglia segmentation.
      *
      * Produces:
-     *   - a 3-channel float hyperstack (R=Hu, G=Ganglia, B=Hu) retaining 0..255 image values for DeepImageJ,
+     *   - a 3-channel float hyperstack (R=Hu, G=Ganglia, B=Hu) normalized to [0..1] for DeepImageJ,
      *   - an RGB preview image for overlay/QA, with calibration copied.
      *
      * This mirrors the macro's "build RGB preview and DIJ input" steps,
@@ -415,13 +415,10 @@ public final class PluginCalls {
         rgb2.setCalibration(maxProj.getCalibration());
         rgb2.hide();
 
-        // Preserve image intensities. The supplied ganglia RDF already applies
-        // scale_linear(1/255), followed by its ImageNet mean/std normalization.
-        // Dividing here as well would change a white pixel from 255 to 1 before
-        // that model-owned preprocessing and materially alter predictions.
-        ij.process.FloatProcessor rf = r8.convertToFloatProcessor();
-        ij.process.FloatProcessor gf = g8.convertToFloatProcessor();
-        ij.process.FloatProcessor bf = b8.convertToFloatProcessor();
+        // Build DeepImageJ input: 3 slices of float 0..1, exposed as C=3 hyperstack
+        ij.process.FloatProcessor rf = r8.convertToFloatProcessor(); rf.multiply(1.0/255.0);
+        ij.process.FloatProcessor gf = g8.convertToFloatProcessor(); gf.multiply(1.0/255.0);
+        ij.process.FloatProcessor bf = b8.convertToFloatProcessor(); bf.multiply(1.0/255.0);
 
         ImageStack st = new ImageStack(w, h);
         st.addSlice("R", rf); st.addSlice("G", gf); st.addSlice("B", bf);

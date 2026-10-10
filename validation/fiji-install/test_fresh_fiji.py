@@ -259,4 +259,252 @@ class ArchiveSafetyTests(unittest.TestCase):
         self.assertEqual(str(self.root),env['HOME'])
 
 
+class HistoricalRuntimeTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.parent = Path(self.temp.name).resolve()
+        self.env_patch = patch.dict(fresh.os.environ, {'RUNNER_TEMP': str(self.parent), 'GITHUB_ACTIONS': 'true'})
+        self.env_patch.start()
+        self.work = fresh.create_work_root()
+        self.root = self.work / 'official' / 'Fiji'
+        self.evidence = self.parent / 'evidence'; self.evidence.mkdir()
+        self.original_manifest = fresh.MANIFEST
+        self.manifest = json.loads(json.dumps(fresh.MANIFEST))
+        self.payloads = {}
+        for artifact in self.manifest['historical_runtime']['artifacts']:
+            target = self.root / artifact['path']; target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(b'live-updater-' + target.name.encode())
+            payload = b'historical-' + target.name.encode()
+            self.payloads[artifact['url']] = payload
+            artifact['sha256'] = fresh.hashlib.sha256(payload).hexdigest()
+            artifact['bytes'] = len(payload)
+            for pin in self.manifest['ganglia_engine']['required_updater_assets']:
+                if pin['path'] == artifact['path']:
+                    pin['sha256'] = artifact['sha256']
+        (self.root / 'models').mkdir()
+        (self.root / 'models' / 'model.pt').write_bytes(b'unchanged model')
+        (self.root / 'config.txt').write_bytes(b'unchanged launcher setting')
+        self.manifest_patch = patch.object(fresh, 'MANIFEST', self.manifest)
+        self.manifest_patch.start()
+        fresh.register_fresh_installation(self.root, self.work, self.manifest['fiji'])
+        self.before = fresh.full_inventory(self.root)
+
+    def tearDown(self):
+        fresh._FRESH_INSTALLATIONS.pop(self.root, None)
+        fresh._FRESH_WORKSPACES.pop(self.work, None)
+        self.manifest_patch.stop()
+        self.env_patch.stop()
+        self.temp.cleanup()
+
+    def fake_download(self, url, path, env, log, **kwargs):
+        path.write_bytes(self.payloads[url])
+        return {'url': url, 'sha256': fresh.sha256(path), 'bytes': path.stat().st_size}
+
+    def apply(self, **kwargs):
+        with patch.object(fresh, 'download', side_effect=self.fake_download):
+            return fresh.apply_historical_runtime(kwargs.get('root', self.root),
+                                                  kwargs.get('work', self.work),
+                                                  kwargs.get('evidence', self.evidence), {})
+
+    def test_opt_in_cli_and_default_never_downloads_or_changes_runtime(self):
+        parser = fresh.build_parser()
+        argv = ['--output', 'out', '--original-jar', 'original.jar', '--fork-archive', 'fork.zip',
+                '--fork-commit', '1' * 40]
+        self.assertFalse(parser.parse_args(argv).historical_runtime)
+        self.assertTrue(parser.parse_args(argv + ['--historical-runtime']).historical_runtime)
+        with patch.object(fresh, 'apply_historical_runtime') as replacement:
+            result = fresh.configure_runtime(self.root, self.work, self.evidence, {})
+            replacement.assert_not_called()
+        self.assertEqual('official-updater', result['mode'])
+        self.assertEqual(self.before, fresh.full_inventory(self.root))
+        self.assertEqual([], list(self.evidence.iterdir()))
+
+    def test_control_arguments_must_be_paired(self):
+        for extra in (['--control-jar', 'control.jar'], ['--control-commit', '2' * 40]):
+            with self.subTest(extra=extra), patch('sys.argv', ['fresh', '--output', str(self.evidence),
+                    '--original-jar', 'original.jar', '--fork-archive', 'fork.zip', '--fork-commit', '1' * 40] + extra):
+                with self.assertRaises(SystemExit) as error:
+                    fresh.main()
+                self.assertEqual(2, error.exception.code)
+
+    def test_manifest_keeps_exact_original_hashes_and_official_urls(self):
+        original = self.original_manifest
+        self.assertFalse(original['historical_runtime']['default_enabled'])
+        expected = {p['path']: p['sha256'] for p in original['ganglia_engine']['required_updater_assets'][:2]}
+        self.assertEqual(expected, {a['path']: a['sha256'] for a in original['historical_runtime']['artifacts']})
+        self.assertEqual(fresh.HISTORICAL_URLS,
+                         {a['path']: a['url'] for a in original['historical_runtime']['artifacts']})
+
+    def test_success_backs_up_only_two_displaced_jars_outside_classpath(self):
+        result = self.apply()
+        self.assertEqual('PASS', result['status'])
+        self.assertEqual('historical-test-only', result['mode'])
+        self.assertEqual(set(fresh.HISTORICAL_URLS), {r['path'] for r in result['inventory_delta']})
+        for artifact in result['artifacts']:
+            target = self.root / artifact['path']
+            backup = Path(artifact['backup'])
+            self.assertFalse(backup.is_relative_to(self.root))
+            self.assertTrue(backup.is_relative_to(self.work / 'historical-runtime' / 'displaced'))
+            self.assertEqual(artifact['displaced_sha256'], fresh.sha256(backup))
+            self.assertEqual(artifact['sha256'], fresh.sha256(target))
+            self.assertEqual(fresh.HISTORICAL_URLS[artifact['path']], artifact['download']['url'])
+        self.assertEqual(b'unchanged model', (self.root / 'models/model.pt').read_bytes())
+        self.assertEqual('PASS', json.loads((self.evidence / 'historical-runtime-audit.json').read_text())['status'])
+        self.assertTrue((self.evidence / 'historical-runtime-before.json').is_file())
+        self.assertTrue((self.evidence / 'historical-runtime-after.json').is_file())
+
+    def test_already_pinned_dependencies_remain_unchanged(self):
+        for artifact in fresh.historical_artifacts():
+            (self.root / artifact['path']).write_bytes(self.payloads[artifact['url']])
+        before = fresh.full_inventory(self.root)
+        result = self.apply()
+        self.assertEqual([], result['inventory_delta'])
+        self.assertEqual(before, fresh.full_inventory(self.root))
+        self.assertTrue(all(not a['replaced'] and 'backup' not in a for a in result['artifacts']))
+
+    def test_non_ci_execution_is_rejected_before_download_or_mutation(self):
+        with patch.dict(fresh.os.environ, {'GITHUB_ACTIONS': 'false'}):
+            with self.assertRaisesRegex(ValueError, 'disposable GitHub Actions'):
+                self.apply()
+        self.assertEqual(self.before, fresh.full_inventory(self.root))
+
+    def test_wrong_or_traversing_root_is_rejected(self):
+        for root in (self.parent, self.work / 'fork/Fiji', self.work / 'official/../official/Fiji'):
+            with self.subTest(root=root), self.assertRaises(ValueError):
+                self.apply(root=root)
+        self.assertEqual(self.before, fresh.full_inventory(self.root))
+
+    def test_unregistered_workspace_or_extraction_is_rejected(self):
+        for registry, key in ((fresh._FRESH_WORKSPACES, self.work),
+                              (fresh._FRESH_INSTALLATIONS, self.root)):
+            value = registry.pop(key)
+            try:
+                with self.assertRaisesRegex(ValueError, 'freshly unpacked'):
+                    self.apply()
+            finally:
+                registry[key] = value
+
+    def test_unpinned_archive_cannot_register_historical_installation(self):
+        with self.assertRaisesRegex(ValueError, 'unverified Fiji'):
+            fresh.register_fresh_installation(self.root, self.work, {'sha256': '0' * 64, 'bytes': 1})
+
+    def test_symlink_root_is_rejected(self):
+        other = self.root.with_name('real-Fiji')
+        self.root.rename(other); self.root.symlink_to(other, target_is_directory=True)
+        with self.assertRaises(ValueError):
+            self.apply()
+
+    def test_symlink_target_and_symlink_target_parent_are_rejected(self):
+        target = self.root / 'jars/dl-modelrunner-0.6.4.jar'
+        actual = target.with_suffix('.backup'); target.rename(actual); target.symlink_to(actual)
+        with self.assertRaisesRegex(ValueError, 'Symlink forbidden'):
+            self.apply()
+        target.unlink(); actual.rename(target)
+        directory = target.parent; actual_directory = directory.with_name('real-jars')
+        directory.rename(actual_directory); directory.symlink_to(actual_directory, target_is_directory=True)
+        with self.assertRaisesRegex(ValueError, 'Symlink forbidden'):
+            self.apply()
+
+    def test_hardlinked_target_is_rejected(self):
+        target = self.root / 'jars/dl-modelrunner-0.6.4.jar'
+        fresh.os.link(target, self.parent / 'external.jar')
+        with self.assertRaisesRegex(ValueError, 'unlinked jar'):
+            self.apply()
+        self.assertEqual(self.before, fresh.full_inventory(self.root))
+
+    def test_missing_target_is_not_silently_added(self):
+        (self.root / 'jars/dl-modelrunner-0.6.4.jar').unlink()
+        with self.assertRaisesRegex(ValueError, 'existing regular'):
+            self.apply()
+
+    def test_target_traversal_absolute_backslash_and_extra_target_are_rejected(self):
+        artifacts = self.manifest['historical_runtime']['artifacts']
+        path = artifacts[0]['path']
+        for unsafe in ('../jars/dl-modelrunner-0.6.4.jar', '/tmp/evil.jar', 'jars\\evil.jar'):
+            artifacts[0]['path'] = unsafe
+            with self.subTest(path=unsafe), self.assertRaisesRegex(ValueError, 'allowlist'):
+                self.apply()
+        artifacts[0]['path'] = path
+        artifacts.append(dict(artifacts[0]))
+        with self.assertRaisesRegex(ValueError, 'allowlist'):
+            self.apply()
+        self.assertEqual(self.before, fresh.full_inventory(self.root))
+
+    def test_wrong_url_or_weakened_hash_is_rejected(self):
+        artifact = self.manifest['historical_runtime']['artifacts'][0]
+        for field, unsafe in (('url', 'https://example.com/arbitrary.jar'), ('sha256', '0' * 64)):
+            old = artifact[field]; artifact[field] = unsafe
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'allowlist'):
+                self.apply()
+            artifact[field] = old
+        self.assertEqual(self.before, fresh.full_inventory(self.root))
+
+    def test_download_hash_or_size_failure_leaves_both_jars_untouched(self):
+        for wrong in (b'wrong hash', b''):
+            with self.subTest(wrong=wrong):
+                artifact = self.manifest['historical_runtime']['artifacts'][1]
+                self.payloads[artifact['url']] = wrong
+                with self.assertRaisesRegex(ValueError, 'hash/length mismatch'):
+                    self.apply()
+                self.assertEqual(self.before, fresh.full_inventory(self.root))
+                audit = json.loads((self.evidence / 'historical-runtime-audit.json').read_text())
+                self.assertEqual('FAIL', audit['status'])
+                shutil.rmtree(self.work / 'historical-runtime')
+                for path in self.evidence.iterdir():
+                    path.unlink()
+
+    def test_duplicate_or_alternate_version_jar_is_rejected(self):
+        for relative in ('plugins/nested/dl-modelrunner-0.6.4.jar', 'jars/dl-modelrunner-0.6.3.jar',
+                         'jars/DeepImageJ-3.2.1-SNAPSHOT.jar', 'plugins/DeepImageJ-3.2.0.jar'):
+            duplicate = self.root / relative; duplicate.parent.mkdir(parents=True, exist_ok=True)
+            duplicate.write_bytes(b'duplicate')
+            with self.subTest(path=relative), self.assertRaisesRegex(ValueError, 'Duplicate or shadowing'):
+                self.apply()
+            duplicate.unlink()
+
+    def test_evidence_inside_runtime_and_reused_staging_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'outside the temporary runtime'):
+            self.apply(evidence=self.root)
+        (self.work / 'historical-runtime').mkdir()
+        with self.assertRaises(FileExistsError):
+            self.apply()
+
+    def test_existing_evidence_is_not_overwritten(self):
+        (self.evidence / 'historical-runtime-audit.json').write_text('existing evidence')
+        with self.assertRaisesRegex(ValueError, 'evidence already exists'):
+            self.apply()
+        self.assertEqual('existing evidence', (self.evidence / 'historical-runtime-audit.json').read_text())
+        self.assertEqual(self.before, fresh.full_inventory(self.root))
+
+    def test_full_inventory_rejects_extra_diff_outside_runtime_jars(self):
+        replace = fresh.os.replace
+        def unsafe_replace(source, target):
+            replace(source, target)
+            (self.root / 'config.txt').write_bytes(b'unexpected extra mutation')
+        with patch.object(fresh.os, 'replace', side_effect=unsafe_replace):
+            with self.assertRaisesRegex(ValueError, 'exact expected dependency delta'):
+                self.apply()
+        audit = json.loads((self.evidence / 'historical-runtime-audit.json').read_text())
+        self.assertEqual('FAIL', audit['status'])
+        self.assertTrue((self.evidence / 'historical-runtime-after.json').exists())
+
+    def test_inventory_rejects_added_removed_and_duplicate_paths(self):
+        for after in (self.before + [{'path': 'extra.txt', 'bytes': 1, 'sha256': 'a' * 64}],
+                      self.before[1:], self.before + [self.before[0]]):
+            with self.subTest(after=after), self.assertRaises(ValueError):
+                fresh.historical_inventory_delta(self.before, after, fresh.historical_artifacts())
+
+    def test_download_time_runtime_change_is_detected_before_replacement(self):
+        def changing_download(*args, **kwargs):
+            result = self.fake_download(*args, **kwargs)
+            (self.root / 'models/model.pt').write_bytes(b'concurrent modification')
+            return result
+        with patch.object(fresh, 'download', side_effect=changing_download):
+            with self.assertRaisesRegex(ValueError, 'changed while historical'):
+                fresh.apply_historical_runtime(self.root, self.work, self.evidence, {})
+        for artifact in fresh.historical_artifacts():
+            self.assertEqual(b'live-updater-' + Path(artifact['path']).name.encode(),
+                             (self.root / artifact['path']).read_bytes())
+
+
 if __name__=='__main__':unittest.main()

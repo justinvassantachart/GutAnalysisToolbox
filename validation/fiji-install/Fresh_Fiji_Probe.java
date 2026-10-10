@@ -39,7 +39,7 @@ public final class Fresh_Fiji_Probe implements PlugIn {
             else if(mode.equals("neuron")) neuron();
             else if(mode.equals("alignment")) alignment();
             else if(mode.equals("engine_install")) engineInstall();
-            else if(mode.equals("engine_inference") || mode.equals("ganglia")) {
+            else if(mode.equals("engine_inference") || mode.equals("ganglia") || mode.equals("parity")) {
                 report.put("action", mode.equals("engine_inference") ? "Actual full-model JDLL inference in installed Fiji" : "Actual GAT DeepImageJ ganglia command in installed Fiji");snapshot();
                 Object metrics=Class.forName("Fresh_Ganglia_Probe",true,IJ.getClassLoader()).getMethod("run",String.class,Path.class).invoke(null,mode,output);
                 report.put("metrics",metrics);
