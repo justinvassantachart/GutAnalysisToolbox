@@ -2,12 +2,21 @@ name: native-mac-fresh-fiji
 
 on:
   push:
-    branches: [main, feat/apple-silicon-stardist]
+    branches: [main, feat/apple-silicon-stardist, test-restore-v2-ganglia-parity]
     paths:
       - '.github/workflows/native-mac-fresh-fiji.yml'
       - 'validation/fiji-install/**'
       - '!validation/fiji-install/results/**'
   workflow_dispatch:
+    inputs:
+      historical_runtime:
+        description: 'Test-only exact historical DeepImageJ/JDLL runtime in temporary Fiji'
+        type: boolean
+        default: false
+      compare_v2:
+        description: 'Run strict original V2 / preview-5 / corrected three-sample ganglia comparison'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -24,7 +33,11 @@ jobs:
   paired-installed-fiji:
     name: Fresh native Fiji startup and bounded paired GAT checks
     runs-on: macos-15
-    timeout-minutes: 90
+    timeout-minutes: 120
+    env:
+      # This exact experiment branch explicitly opts in. Main/other branches stay unchanged.
+      GAT_HISTORICAL_RUNTIME: ${{ github.ref == 'refs/heads/test-restore-v2-ganglia-parity' || inputs.historical_runtime == true }}
+      GAT_COMPARE_V2: ${{ github.ref == 'refs/heads/test-restore-v2-ganglia-parity' || inputs.compare_v2 == true }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -36,6 +49,12 @@ jobs:
           ref: 1870d9e16e16fd6daeac0bd05122e851029ddedc
           path: original
           persist-credentials: false
+      - uses: actions/checkout@v5
+        if: env.GAT_COMPARE_V2 == 'true'
+        with:
+          ref: ab1865cc745a8cb589f8a0034968d85b99843cf2
+          path: control
+          persist-credentials: false
       # CI build tools only. Runtime validation explicitly uses Fiji's bundled Java.
       - uses: actions/setup-java@v5
         with:
@@ -44,6 +63,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - name: Install pinned comparison-only Python dependencies
+        run: python -m pip install numpy==2.2.6 tifffile==2025.5.10 Pillow==11.2.1
       - name: Confirm native host and immutable original source
         run: |
           mkdir -p fresh-fiji-results
@@ -57,12 +78,24 @@ jobs:
             echo "Original: $(git -C original rev-parse HEAD)"
             echo "Fork: $(git -C fork rev-parse HEAD)"
           } | tee fresh-fiji-results/source-and-host.log
+      - name: Verify exact V2 scientific source contract
+        if: env.GAT_COMPARE_V2 == 'true'
+        run: |
+          python fork/validation/fiji-install/verify_v2_sources.py \
+            --original "$PWD/original" --control "$PWD/control" --fork "$PWD/fork" \
+            --output "$PWD/fresh-fiji-results/parity-source-audit.json"
       - name: Build unchanged original plugin
         run: |
           mvn -B -ntp -s fork/native-inference/validation/baseline/scijava-settings.xml \
             -f original/pom.xml -DskipTests -Dlicense.skipAddLicense=true -Dlicense.skip=true \
             clean package | tee fresh-fiji-results/original-build.log
           test -z "$(git -C original status --porcelain --untracked-files=no)"
+      - name: Build unchanged preview-5 control plugin
+        if: env.GAT_COMPARE_V2 == 'true'
+        run: |
+          test "$(git -C control rev-parse HEAD)" = ab1865cc745a8cb589f8a0034968d85b99843cf2
+          mvn -B -ntp -f control/pom.xml -DskipTests clean package | tee fresh-fiji-results/control-build.log
+          test -z "$(git -C control status --porcelain --untracked-files=no)"
       - name: Build fork and isolated arm64 workers
         run: |
           mvn -B -ntp -f fork/pom.xml -DskipTests clean package | tee fresh-fiji-results/fork-build.log
@@ -76,7 +109,13 @@ jobs:
           shopt -s nullglob
           archives=(fresh-fiji-install-artifacts/GAT-*-macos-arm64-preview.zip)
           test "${#archives[@]}" = 1
-          python fork/validation/fiji-install/run_fresh_fiji.py \
+          options=()
+          if [ "$GAT_HISTORICAL_RUNTIME" = true ]; then options+=(--historical-runtime); fi
+          if [ "$GAT_COMPARE_V2" = true ]; then
+            options+=(--control-jar "$PWD/control/target/GutAnalysisToolbox_-2.0.1-apple-silicon.5.jar"
+                      --control-commit "$(git -C control rev-parse HEAD)")
+          fi
+          python fork/validation/fiji-install/run_fresh_fiji.py "${options[@]}" \
             --original-jar "$PWD/original/target/GutAnalysisToolbox_-2.0.0.jar" \
             --fork-archive "$PWD/${archives[0]}" \
             --original-commit "$(git -C original rev-parse HEAD)" \
@@ -96,4 +135,9 @@ jobs:
             fresh-fiji-results/**/*.xml.gz
             fresh-fiji-results/original_ganglia-mask.tif
             fresh-fiji-results/fork_ganglia-mask.tif
+            fresh-fiji-results/control_ganglia-mask.tif
+            fresh-fiji-results/*_parity-*.tif
+            fresh-fiji-results/*_parity-*.png
+            fresh-fiji-results/*_parity-*.f32be.gz
+            fresh-fiji-results/parity-*.png
           if-no-files-found: error
