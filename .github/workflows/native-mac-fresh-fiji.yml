@@ -124,6 +124,15 @@ jobs:
       - name: Confirm original source stayed unchanged
         if: always()
         run: test -z "$(git -C original status --porcelain --untracked-files=no)"
+      - name: Preserve the exact parity-tested GAT preview
+        if: success() && env.GAT_COMPARE_V2 == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: gat-v2-parity-verified-preview
+          path: |
+            fresh-fiji-install-artifacts/GAT-*-macos-arm64-preview.zip
+            fresh-fiji-install-artifacts/GAT-*-macos-arm64-preview.zip.sha256
+          if-no-files-found: error
       - name: Preserve diagnostic evidence, never a full Fiji binary redistribution
         if: always()
         uses: actions/upload-artifact@v4
