@@ -23,7 +23,8 @@ HERE = Path(__file__).resolve().parent
 MANIFEST = json.loads((HERE / 'manifest.json').read_text())
 OVERLAY_DOCUMENTS = ('BUILD_INFO.json', 'APPLE_SILICON.md',
                      'apple-silicon-workflow-matrix.md', 'GAT_LICENSE',
-                     'PREVIEW_5_SETUP.md', 'MAINTAINER_REVIEW_2026-10-06.md',
+                     'PREVIEW_6_SETUP.md', 'PREVIEW_6_RELEASE_NOTES.md',
+                     'MAINTAINER_REVIEW_2026-10-06.md',
                      'FORK_HARDENING_2026-10-06.md')
 STAGES = ['native_host', 'archive_download', 'archive_integrity', 'archive_extraction',
           'bundled_java', 'pristine_startup', 'official_updater', 'installed_inventory', 'historical_runtime',

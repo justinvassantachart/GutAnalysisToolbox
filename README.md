@@ -1,20 +1,26 @@
 # Gut Analysis Toolbox
 
-## Apple Silicon TEST preview 5
+## Apple Silicon TEST preview 6
 
-[Download preview 5](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-5)
+[Download preview 6](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-6)
 for native arm64 Fiji on macOS 14+. See the short
-[package notes](docs/preview-5-setup.md) and
-[independent review and verification](docs/validation/maintainer-review-2026-10-06.md).
+[package notes](docs/preview-6-setup.md) and
+[bounded parity evidence](docs/preview-6-release-notes.md).
 No developer tools are required to use the package. An unlisted release is not
 published yet.
 
-Preview 5 preserves adjusted image contrast and LUTs in native Template
-Matching, so the isolated worker sees the same rendered pixels as the original
-algorithm. It also prepares CI for `main` and corrects build-evidence wording.
-Preview 4's CPU/calcium safeguards and preview 3's multiplex correction remain.
+Preview 6 restores upstream Java V2 ganglia input scaling: all three float
+channels are multiplied by `1/255` before DeepImageJ. The output-selection
+safeguards remain. Native same-host comparisons match original V2 exactly on
+three public samples, including masks, labels, counts and areas; all 83 fixed
+historical neuron-ROI assignments in the distal sample also match. This is
+bounded behavioral parity, not biological accuracy. See the
+[release notes and runtime limits](docs/preview-6-release-notes.md).
+
+Preview 5's display-range/LUT alignment repair, preview 4's CPU/calcium
+safeguards and preview 3's multiplex correction remain.
 **Install the matching plugin and both complete worker folders together:** the
-alignment protocol is now version 2; mixed versions fail explicitly.
+alignment protocol remains version 2; mixed versions fail explicitly.
 
 **Do not use preview 2 multiplex exports for quantitative work.** All earlier
 release bytes and historical evidence remain unchanged. Legacy macros, models,
@@ -32,7 +38,7 @@ Clone the release tag for its exact source; ongoing development on `main` may
 include changes beyond a published preview:
 
 ```sh
-git clone --branch apple-silicon-preview-5 https://github.com/justinvassantachart/GutAnalysisToolbox.git
+git clone --branch apple-silicon-preview-6 https://github.com/justinvassantachart/GutAnalysisToolbox.git
 ```
 
 Use the release's `FORK_BUILD_INFO.json` and SHA-256 files to verify the exact

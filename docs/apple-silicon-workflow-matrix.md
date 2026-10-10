@@ -1,19 +1,22 @@
 # Apple Silicon workflow coverage
 
-**Updated 2026-10-06. Scope: Java GATV2 in this fork.** Native evidence comes
+**Updated 2026-10-10. Scope: Java GATV2 in this fork.** Native evidence comes
 from hosted Apple M1 (Virtual), macOS 14.8.9 and 15.7.9, arm64 Java 17/21. It is not a
 physical-M1 installation, GPU or complete interactive dashboard certification.
-This matrix accompanies reviewed **2.0.1-apple-silicon.5**. Use its complete
+This matrix accompanies **2.0.1-apple-silicon.6**. Use its complete
 matching ZIP from the [release index](https://github.com/justinvassantachart/GutAnalysisToolbox/releases).
 Verify the version/source/checksum before installing; an unlisted preview is
 not yet published. Preview 2 does not contain the multiplex correction.
 
-The [independent review report](validation/maintainer-review-2026-10-06.md)
-records the display-range/LUT alignment fix, 106 local Java tests and fresh hosted
-checks. Template Matching's protocol is version 2; install the matching plugin
-and alignment worker together. Preview 4's CPU/calcium safeguards and earlier
-multiplex repair remain. Final release-build checks are recorded on the release
-page. Historical sources below retain their original scope and dates.
+Preview 6 restores upstream V2 ganglia input scaling. The
+[three-sample native comparison](preview-6-release-notes.md) reports exact
+input, mask, label, count and area parity; all 83 fixed distal neuron-ROI
+assignments match. It uses an explicit historical-runtime CI option, not a
+changed user installation or proof for the current live-updater runtime.
+Preview 5's display-range/LUT repair, protocol 2, prior CPU/calcium safeguards
+and multiplex repair remain. Install matching plugin and complete workers.
+Final release-source build checks are on the release page. Historical sources
+below retain their original scope and dates.
 
 ## Evidence keys
 
@@ -21,10 +24,14 @@ page. Historical sources below retain their original scope and dates.
   untested surrounding UI, modes and scientific assumptions remain separate
 - **Blocked:** the environment or missing implementation prevented execution
 - **Pending:** a test/control must still complete reliably
-- **Intentional output change:** correctness repair; old-mask equality is not
-  its acceptance criterion
+- **Bounded parity:** exact equality for the named original/fork fixtures and
+  runtime only; it does not establish biological accuracy
 
 Primary evidence:
+
+- [Preview 6 V2 ganglia parity](preview-6-release-notes.md): same-host native Mac,
+  three public samples, strict saved pixel/input checks and preview-5 divergence
+  control; a pinned historical runtime was used only in disposable CI
 
 - [Corrected native full-service multiplex exports](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/multiplex-full/results/mac-ab046cb/README.md): unchanged synthetic inputs/assertions, independently reopened aligned/QC TIFFs and landmark ROI archives
 - [Actual retained ganglia-mask TIFFs](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/validation/fiji-install/results/mac-mask-retention-5e2e0f4/REPORT.md): exact binary masks, raw/file hashes and calibrated reopen controls
@@ -50,8 +57,8 @@ Primary evidence:
 | Subtype inference | Native real SavedModel fixture passes; Linux corpus includes Calbindin, Calretinin, ChAT, NFM and nNOS | Native multi-marker runs with and without Hu gating, all combinations and review/export; Hu-only subtype fixture is technical smoke |
 | Hu/subtype label overlap and ganglia counts/areas | Java helper controls pass on native Mac and Linux | Complete multichannel workflow and biological validation |
 | Imported/manual ROIs and morphology | Actual native border/size-filter/label command controls pass | Interactive edits, cancel/repeat behavior, ROI ownership and full export round trip |
-| Ganglia, deep-learning RGB model | Actual native GAT → DeepImageJ → JDLL → PyTorch command passes, source unchanged, binary output geometry/calibration and saved TIFF checked | Interactive painting; official supplied reference has unresolved 768² versus 1024² shape mismatch; no biological accuracy claim |
-| Ganglia input normalization | Real reached RDF contract fails in original and passes in fork | **Intentional output change:** old GAT double-normalizes; preserve fixed raw-range RGB input and model metadata |
+| Ganglia, deep-learning RGB model | Actual native GAT → DeepImageJ → JDLL → PyTorch command passes; three public samples match original V2 masks, labels, counts and calibrated areas exactly; 83 fixed distal neuron assignments match | Historical-runtime CI only; current live-updater compatibility, interactive painting and biological accuracy remain unestablished; small inputs can still exceed the model's 1024-pixel tile/image-size bound; supplied reference has unresolved 768² versus 1024² shape mismatch |
+| Ganglia input normalization | Upstream V2 three-channel `1/255` scaling restored; original/fork float input bytes match on all three samples; preview 5 diverges as expected | Preserve unchanged model/RDF preprocessing; parity is not a biological correctness claim |
 | Ganglia expansion/import/manual modes | Native Java helpers/morphology tested | Full UI mode combinations and calibrated parameter review |
 | MIP | Direct operation and accepted-dialog GAT calcium max projection pass on both original/fork and both native OS versions | More ranges, cancelled selections and full dashboard behavior |
 | EDF | **Blocked on hosted Mac:** system OpenCL and JOCL load, but no usable OpenCL device | Physical-M1 push/pull and variance-fusion kernels plus paired numerical reference |
@@ -80,9 +87,11 @@ Original StarDist's first failure is a Java 21 loader class cast before JNI;
 its fallback returns the original 8-bit input, which the test correctly rejects.
 The fork returns a new 16-bit 39-object label image. Original Template Matching
 leaves the synthetic shifts unchanged; the fork matches the known translated
-pixels exactly. Original ganglia command execution **passes**, although its
-input-contract test shows double normalization. Unaffected original helper
-passes are retained. Not every old workflow is expected to fail.
+pixels exactly. Original ganglia command execution **passes**. Earlier fork
+reports used different input scaling; preview 6 restores V2 scaling and exact
+three-sample parity. Those historical reports are preserved, not reclassified.
+Unaffected original helper passes are retained. Not every old workflow is
+expected to fail.
 
 The first paired job's calcium automation did not reliably accept its dialog.
 That ambiguity is now resolved: corrected accepted-dialog controls pass on BOTH

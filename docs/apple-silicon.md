@@ -1,4 +1,4 @@
-# Experimental Apple Silicon GAT v2: reviewed preview 5
+# Experimental Apple Silicon GAT v2: preview 6
 
 This fork targets **native arm64 Fiji on macOS 14 Sonoma or newer, Java 11+**
 (Fiji's bundled Java 21 recommended). It is a test build. The current native
@@ -9,25 +9,35 @@ separate workflows and are not redirected by this plugin.
 
 ## What has actually run
 
-This guide accompanies **2.0.1-apple-silicon.5**. Use the matching
-[preview 5 release](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-5),
-verify its checksum and `BUILD_INFO.json`, and read `PREVIEW_5_SETUP.md`.
-If the release is not listed, it is not yet published. Preview 5 preserves the
-base palette and display range across the Template Matching process boundary;
-its plugin and protocol-v2 alignment worker must be installed together.
-The matching algorithm itself is unchanged.
+This guide accompanies **2.0.1-apple-silicon.6**. Use the matching
+[preview 6 release](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-6),
+verify its checksum and `BUILD_INFO.json`, and read `PREVIEW_6_SETUP.md`.
+If the release is not listed, it is not yet published.
 
-[Independent review and verification](validation/maintainer-review-2026-10-06.md)
-records 106 local Java tests and fresh hosted root/native-Mac checks. The release
-page records the exact release-source build. Preview 4's CPU/calcium safeguards
-and preview 3's multiplex repair remain. Calcium accepts one-channel grayscale
-stacks with one time axis; RGB, multiple channels and combined Z/T are rejected.
-Projection and F/F0 still use ImageJ's numerical operations.
+Preview 6 restores upstream Java V2's three `1/255` ganglia input scalings and
+retains the new-output selection guards. The [release notes](preview-6-release-notes.md)
+record exact original/fork input, mask, label, count and area equality on three
+public samples in native Mac CI. All 83 fixed historical neuron-ROI assignments
+also match on the distal sample. This is bounded behavioral parity, not
+biological validation or a claim about every dataset/runtime.
+
+That comparison uses two exact historical DeepImageJ/JDLL JARs in disposable CI
+Fiji copies through an explicit test-only option. It does not change an existing
+installation or certify the current live-updater runtime. Models, descriptors,
+macros and engine pins remain unchanged. The final release page records its
+exact source build, tests and checksums.
+
+Preview 5's display-range/LUT alignment repair and protocol 2 remain. Install
+preview 6's matching plugin and both complete workers together. Preview 4's CPU/calcium
+safeguards and preview 3's multiplex repair remain. Calcium accepts one-channel
+grayscale stacks with one time axis; RGB, multiple channels and combined Z/T
+are rejected. Projection and F/F0 still use ImageJ's numerical operations.
 
 Older scientific and fresh-Fiji reports below retain their original source and
-coverage; they are not fresh full-corpus runs of preview 5. The
+coverage; they are not fresh full-corpus runs of preview 6. The
+[independent preview 5 review](validation/maintainer-review-2026-10-06.md) and
 [preview 4 hardening report](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/apple-silicon-preview-4/docs/validation/fork-hardening-2026-10-06.md)
-remains historical evidence. **Preview 2 lacks the multiplex correction and must
+remain historical evidence. **Preview 2 lacks the multiplex correction and must
 not be used for quantitative multiplex-registration exports.** Older release
 bytes are preserved.
 
@@ -43,8 +53,8 @@ These are distinct observed failure paths, not an assumption of one cause.
 **Both original and fork calcium pass** accepted-dialog projection, F/F0
 `[1,1,2]`, ROI measurement and CSV/ROI export controls on both OS versions.
 The earlier ambiguous calcium control was resolved; no old numerical defect is
-claimed. Both ganglia commands run, with intentional output changes from the
-RDF input-scaling correction described below. [Qualified paired evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md).
+claimed. Both historical ganglia commands ran, but those earlier fork revisions
+used different input scaling. Preview 6 restores V2 scaling as described above. [Qualified paired evidence](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/native-inference/validation/baseline/results/mac-sequoia-fe5fd7b/REPORT.md).
 
 The [complete bounded official-Fiji install](https://github.com/justinvassantachart/GutAnalysisToolbox/blob/f5b814b4a8f784246d60df88032cee037ca8fd29/validation/fiji-install/results/mac-accepted-26298b7/REPORT.md)
 now passes real engine installation/model inference, both dashboards, fork
@@ -143,10 +153,13 @@ not evidence that ARM SIFT or MOPS numerics themselves were broken.
 - Motion CSVs contain only verified algorithm-owned Template Matching shifts
   with real frame IDs. Unavailable SIFT transforms are not fabricated as zeros.
   A combined SIFT-plus-Template-Matching CSV describes the refinement only
-- Ganglia RGB input retains byte-range float values so the shipped RDF applies
-  its `1/255` normalization once. This fixes reached double normalization and
-  **intentionally changes scientific outputs** compared with the old GAT path.
-  The model weights, RDF, channel order and threshold are unchanged
+- Ganglia float input restores the upstream V2 `1/255` multiplication on each
+  of `R=Hu, G=Ganglia, B=Hu`. The shipped model's RDF preprocessing remains
+  unchanged. This reverses the input-scaling change in previews through 5 and
+  restores exact V2 results on the three tested public samples. The model
+  weights, RDF, channel order, threshold and byte-valued RGB review image are
+  unchanged. Do not combine ganglia results across preview versions without
+  checking the input-scaling and runtime provenance
 - Ganglia output selection requires the newly produced, correctly shaped image;
   an unrelated current image is not accepted as a successful result
 - Calcium projection/division consume ImageJ's returned objects directly.
@@ -155,11 +168,11 @@ not evidence that ARM SIFT or MOPS numerics themselves were broken.
 
 ## Install an experimental overlay
 
-Use the matching [preview 5 package notes](preview-5-setup.md) for this
+Use the matching [preview 6 package notes](preview-6-setup.md) for this
 release. A prebuilt overlay needs no developer tools. Fiji update sites, models
 and DeepImageJ engines remain separate prerequisites; the repository README and
 official GAT documentation describe them. Earlier setup handoffs are historical
-and name older packages, so do not use their download names for preview 5.
+and name older packages, so do not use their download names for preview 6.
 Use an asset only when its `BUILD_INFO.json`, source commit and checksum match
 the selected release.
 

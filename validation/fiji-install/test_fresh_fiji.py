@@ -62,6 +62,22 @@ class ArchiveSafetyTests(unittest.TestCase):
         self.assertIn('"mask_tiff_sha256"', probe)
         self.assertIn("HERE / 'Fresh_Ganglia_Evidence.java'", (here / 'run_fresh_fiji.py').read_text())
 
+    def test_release_artifact_is_only_the_successfully_parity_tested_overlay(self):
+        repository = Path(__file__).resolve().parents[2]
+        workflow = (repository / '.github/workflows/native-mac-fresh-fiji.yml').read_text()
+        heading = '      - name: Preserve the exact parity-tested GAT preview\n'
+        self.assertEqual(workflow.count(heading), 1)
+        step = workflow.split(heading, 1)[1].split('      - name:', 1)[0]
+        self.assertIn("        if: success() && env.GAT_COMPARE_V2 == 'true'\n", step)
+        self.assertIn('        uses: actions/upload-artifact@v4\n', step)
+        self.assertIn('          name: gat-v2-parity-verified-preview\n', step)
+        self.assertIn('          if-no-files-found: error\n', step)
+        paths = step.split('          path: |\n', 1)[1].split('          if-no-files-found:', 1)[0]
+        self.assertEqual([line.strip() for line in paths.splitlines() if line.strip()], [
+            'fresh-fiji-install-artifacts/GAT-*-macos-arm64-preview.zip',
+            'fresh-fiji-install-artifacts/GAT-*-macos-arm64-preview.zip.sha256',
+        ])
+
     def test_actual_gat_reference_uses_four_tiles(self):
         reference = fresh.MANIFEST['neuron_reference']
         self.assertEqual(reference['tiles'], 4)
@@ -160,7 +176,8 @@ class ArchiveSafetyTests(unittest.TestCase):
                 for name in members:
                     archive.writestr('gat-native-' + worker + '/' + name, b'packaging fixture')
         for name in ['LICENSE', 'docs/apple-silicon.md', 'docs/apple-silicon-workflow-matrix.md',
-                     'docs/preview-5-setup.md', 'docs/validation/maintainer-review-2026-10-06.md',
+                     'docs/preview-6-setup.md', 'docs/preview-6-release-notes.md',
+                     'docs/validation/maintainer-review-2026-10-06.md',
                      'docs/validation/fork-hardening-2026-10-06.md']:
             destination = build / name
             destination.parent.mkdir(parents=True, exist_ok=True)
@@ -186,7 +203,8 @@ class ArchiveSafetyTests(unittest.TestCase):
         fiji = self.root / 'Fiji'
         (fiji / 'plugins').mkdir(parents=True)
         (fiji / 'jars').mkdir()
-        for name in ['PREVIEW_6_SETUP.md', 'PREVIEW_5_SETUP.md/run.sh',
+        for name in ['PREVIEW_7_SETUP.md', 'PREVIEW_6_SETUP.md/run.sh',
+                     'PREVIEW_6_RELEASE_NOTES.md/run.sh',
                      'BUILD_INFO.json/run.sh', 'install.sh', 'plugins/extra.sh']:
             with self.subTest(path=name):
                 self.archive([('BUILD_INFO.json', json.dumps({'source_commit': '1' * 40,
