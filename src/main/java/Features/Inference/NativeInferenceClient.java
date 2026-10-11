@@ -11,7 +11,7 @@ public final class NativeInferenceClient {
     static final int INPUT_MAGIC = 0x47415449;
     static final int OUTPUT_MAGIC = 0x4741544f;
     static final int VERSION = 1;
-    static final long MAX_PREDICTION_FLOATS = 268_435_456L;
+    static final long MAX_PREDICTION_FLOATS = Integer.MAX_VALUE - 8L;
     public static final String WORKER_DIRECTORY_PROPERTY = "gat.inference.directory";
     private NativeInferenceClient() { }
 
@@ -112,9 +112,10 @@ public final class NativeInferenceClient {
             int width = in.readInt(), height = in.readInt(), channels = in.readInt();
             if (width != expectedWidth || height != expectedHeight || channels < 4 || channels > 1024)
                 throw new IOException("Invalid native-inference output dimensions/channels.");
-            long pixels = (long) width * height, values = pixels * channels;
-            if (pixels < 1 || pixels > Integer.MAX_VALUE || values > MAX_PREDICTION_FLOATS
-                    || Files.size(source) != 20L + 4L * values) throw new IOException("Invalid or incomplete native-inference output length.");
+            long values = predictionElements(width, height, channels);
+            long pixels = (long) width * height;
+            if (Files.size(source) != 20L + 4L * values)
+                throw new IOException("Invalid or incomplete native-inference output length.");
             float[][] planes = new float[channels][(int) pixels];
             for (int p = 0; p < pixels; p++) for (int c = 0; c < channels; c++) {
                 float value = in.readFloat();
@@ -123,6 +124,16 @@ public final class NativeInferenceClient {
             }
             return new Prediction(width, height, planes);
         }
+    }
+
+    /** Validate without allocating, including ordinary full-resolution 96-ray models. */
+    static long predictionElements(int width, int height, int channels) throws IOException {
+        if (width < 1 || height < 1 || channels < 4 || channels > 1024)
+            throw new IOException("Invalid native-inference output dimensions/channels.");
+        long pixels = (long) width * height;
+        if (pixels > MAX_PREDICTION_FLOATS / channels)
+            throw new IOException("Native-inference output exceeds Java array indexing limits. Use a smaller crop.");
+        return pixels * channels;
     }
 
     /** Drain continuously even after the limit, retaining only the last 8 KiB. */
