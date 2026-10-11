@@ -511,6 +511,39 @@ def main():
             for path in classes.glob('*.class'):
                 z.write(path, path.name)
     parity_samples = work / 'parity-samples'
+    def install_nohu_probe(root):
+        classes = work / ('nohu-probe-classes-' + root.parent.name); classes.mkdir()
+        imagej = list((root / 'jars').glob('ij-*.jar'))
+        gat = list((root / 'plugins').rglob('GutAnalysisToolbox_*.jar'))
+        if len(imagej) != 1 or len(gat) != 1:
+            raise ValueError('Expected one installed ImageJ core and one GAT plugin for no-Hu probe')
+        cp = os.pathsep.join(str(p) for p in imagej + gat)
+        source = HERE.parent / 'all-workflows' / 'NoHuImportedRoiProbe.java'
+        command([root / MANIFEST['fiji']['java_home'] / 'bin/javac', '-proc:none', '-J-Xmx256m', '--release', '11', '-cp', cp,
+                 '-d', classes, source], 'nohu-probe-compile-' + root.parent.name + '.log')
+        with zipfile.ZipFile(root / 'plugins' / 'NoHuImportedRoiProbe.jar', 'w') as archive:
+            for path in classes.glob('*.class'):
+                archive.write(path, path.name)
+            archive.writestr('plugins.config', 'Plugins>GAT Validation, "GAT NoHu Imported ROI Probe", NoHuImportedRoiProbe\n')
+
+    def probe_nohu(root, variant, scenario):
+        name = variant + '_nohu_' + scenario
+        directory = args.output / name
+        model = root / 'models' / '2D_enteric_neuron_subtype_v4.zip'
+        macro = work / (name + '.ijm')
+        argument = str(directory) + '\n' + str(model) + '\n' + scenario
+        macro.write_text('run("GAT NoHu Imported ROI Probe", ' + json.dumps(argument) + ');\n')
+        execution = execute(launch(root) + ['--run', str(macro)], args.output / (name + '.log'),
+                            clean_env(runtime_home(root)), 300, root)
+        target = directory / 'report.json'
+        result = json.loads(target.read_text()) if target.exists() else {}
+        raw_status = result.get('status', 'FAIL')
+        status = {'PASS_IMPORTED_ROI_SCOPE': 'PASS', 'BLOCKED_SETUP': 'BLOCKED'}.get(raw_status, raw_status)
+        if status not in ('PASS', 'FAIL', 'BLOCKED') or status == 'PASS' and (execution['exit_code'] or execution['timeout']):
+            status = 'FAIL'
+        stage(name, status, probe_status=raw_status, execution=execution, evidence=str(target.relative_to(args.output)),
+              scope='Actual no-Hu imported-ROI review/export; automatic inference, ganglia, spatial and cancellation excluded')
+
     def probe(root, variant, mode, fixture=None):
         name = variant + '_' + mode
         target = args.output / (name + '.json')
@@ -667,6 +700,8 @@ def main():
         stage(current, 'PASS', overlays=overlays)
         for variant in variants:
             root = work / variant / 'Fiji'
+            if variant != 'control':
+                install_nohu_probe(root)
             current = variant + '_startup'
             if probe(root, variant, 'startup') != 'PASS':
                 continue
@@ -682,6 +717,10 @@ def main():
                     stage(variant+'_neuron','BLOCKED',reason='Updater-installed neuron model differs from pinned reference; no substitution')
                 else:
                     probe(root, variant, mode, fixture)
+            if variant != 'control':
+                for scenario in ('unchanged', 'delete-one', 'delete-all'):
+                    current = variant + '_nohu_' + scenario
+                    probe_nohu(root, variant, scenario)
             (args.output / (variant+'-final-inventory.json')).write_text(json.dumps(inventory(root),indent=2)+'\n')
         if args.control_jar:
             current = 'ganglia_parity'
@@ -707,12 +746,14 @@ def main():
                 'pristine_startup','official_updater','installed_inventory','paired_overlays',
                 'original_startup','fork_startup','fork_dashboard','fork_neuron','fork_alignment',
                 'ganglia_engine_setup','official_engine_inference','fork_ganglia']
+    required += ['original_nohu_unchanged', 'original_nohu_delete-one',
+                 'fork_nohu_unchanged', 'fork_nohu_delete-one', 'fork_nohu_delete-all']
     if args.historical_runtime:
         required.append('historical_runtime')
     if args.control_jar:
         required += ['control_startup', 'control_ganglia',
                      'original_parity', 'control_parity', 'fork_parity', 'parity_samples', 'ganglia_parity']
-    states = [report['stages'][s]['status'] for s in required]
+    states = [report['stages'].get(s, {}).get('status', 'NOT_RUN') for s in required]
     return 0 if all(s == 'PASS' for s in states) else 2 if 'FAIL' in states else 3
 
 
