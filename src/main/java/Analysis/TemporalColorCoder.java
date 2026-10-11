@@ -41,6 +41,7 @@ public class TemporalColorCoder {
     public static TemporalColorOutput run(ImagePlus imp, Params p) throws Exception {
         if (imp == null) throw new IllegalArgumentException("Input stack cannot be null.");
         if (imp.getNChannels() > 1) throw new IllegalArgumentException("Multi-channel stacks are not supported.");
+        if (imp.getBitDepth() == 24) throw new IllegalArgumentException("Select a grayscale movie, not an RGB image.");
 
         int width = imp.getWidth();
         int height = imp.getHeight();
@@ -48,17 +49,18 @@ public class TemporalColorCoder {
         int frames = imp.getNFrames();
 
         // Adjust dimensions if stack is interpreted differently
-        if (slices > 1 && frames == 1) {
+        boolean plainStack = slices > 1 && frames == 1;
+        if (plainStack) {
             int tmp = slices;
             slices = frames;
             frames = tmp;
-            imp.setDimensions(1, slices, frames);
         }
 
         // Determine frame range for processing
         int startFrame = Math.max(1, p.referenceFrame);
         int endFrame = Math.min(frames, p.referenceFrameEnd > 0 ? p.referenceFrameEnd : frames);
         int totalFrames = endFrame - startFrame + 1;
+        if (totalFrames < 1) throw new IllegalArgumentException("Selected temporal frame range is empty.");
 
         ImageStack rgbStack = new ImageStack(width, height);
 
@@ -72,8 +74,15 @@ public class TemporalColorCoder {
         // Loop through frames and slices to apply temporal color coding
         for (int t = startFrame; t <= endFrame; t++) {
             for (int z = 1; z <= slices; z++) {
-                imp.setPosition(1, z, t);
-                ImageProcessor ip = imp.getProcessor();
+                ImageProcessor ip = imp.getStack().getProcessor(plainStack ? t : imp.getStackIndex(1, z, t));
+                // Preserve the established byte workflow. Wider grayscale data
+                // must be display-scaled before RGB packing; float getPixel()
+                // returns IEEE bits and raw 16-bit values can overflow channels.
+                if (imp.getBitDepth() != 8) {
+                    ip = ip.duplicate();
+                    ip.setMinAndMax(imp.getDisplayRangeMin(), imp.getDisplayRangeMax());
+                    ip = ip.convertToByte(true);
+                }
 
                 ColorProcessor cp = new ColorProcessor(width, height);
 
@@ -99,19 +108,33 @@ public class TemporalColorCoder {
         }
 
         ImagePlus rgbImp = new ImagePlus("TemporalColor_" + imp.getTitle(), rgbStack);
+        rgbImp.setDimensions(1, slices, totalFrames);
+        rgbImp.setOpenAsHyperStack(totalFrames > 1);
+        rgbImp.setCalibration(imp.getCalibration().copy());
 
         // Apply optional Z-projection
         if (p.projectionMethod != null && !p.projectionMethod.isEmpty()) {
-            ZProjector zp = new ZProjector(rgbImp);
+            int projection;
             switch (p.projectionMethod) {
-                case "Max Intensity": zp.setMethod(ZProjector.MAX_METHOD); break;
-                case "Average Intensity": zp.setMethod(ZProjector.AVG_METHOD); break;
-                case "Min Intensity": zp.setMethod(ZProjector.MIN_METHOD); break;
-                default: zp.setMethod(ZProjector.MAX_METHOD); break;
+                case "Average Intensity": projection = ZProjector.AVG_METHOD; break;
+                case "Min Intensity": projection = ZProjector.MIN_METHOD; break;
+                default: projection = ZProjector.MAX_METHOD; break;
             }
-            zp.doProjection();
-            rgbImp = zp.getProjection();
-            rgbImp.setTitle("TemporalColor_" + imp.getTitle() + "_Proj");
+            // Like the legacy temporal macro, project TIME independently at
+            // every Z. A flat stack projection mixes distinct optical planes.
+            ImageStack projected = new ImageStack(width, height);
+            for (int z = 1; z <= slices; z++) {
+                ImageStack time = new ImageStack(width, height);
+                for (int t = 0; t < totalFrames; t++)
+                    time.addSlice(rgbStack.getProcessor(t * slices + z));
+                ZProjector zp = new ZProjector(new ImagePlus("temporal plane", time));
+                zp.setMethod(projection);
+                zp.doProjection();
+                projected.addSlice(zp.getProjection().getProcessor());
+            }
+            rgbImp = new ImagePlus("TemporalColor_" + imp.getTitle() + "_Proj", projected);
+            rgbImp.setDimensions(1, slices, 1);
+            rgbImp.setCalibration(imp.getCalibration().copy());
         }
 
         // Generate a color scale image if requested
@@ -175,7 +198,8 @@ public class TemporalColorCoder {
 
         // Map each horizontal pixel to the corresponding LUT color
         for (int x = 0; x < width; x++) {
-            int frameIndex = (int) Math.floor((lutSize / (double) totalFrames) * x);
+            int lastColor = (int) Math.floor((lutSize / (double) totalFrames) * (totalFrames - 1));
+            int frameIndex = (int) Math.floor(lastColor * x / (double) (width - 1));
             frameIndex = Math.min(frameIndex, lutSize - 1);
             int r = rLUT[frameIndex];
             int g = gLUT[frameIndex];
