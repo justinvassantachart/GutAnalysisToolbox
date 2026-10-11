@@ -11,6 +11,8 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import java.nio.file.StandardOpenOption;
 
 /**
  * Streams many delimited text files (typically CSV) into one or more merged outputs.
@@ -24,7 +26,7 @@ import java.util.stream.Stream;
  * - Extension-aware APIs using FileExtension (default CSV).
  *
  * Notes
- * - Lines are copied verbatim; the merger does not parse/modify column delimiters.
+ * - CSV records are copied without changing their field delimiters, including quoted newlines.
  * - Empty lines are skipped.
  */
 public class CsvMerger {
@@ -122,10 +124,8 @@ public class CsvMerger {
             throw new MergeException("Root is not a directory: " + root);
         }
 
-        Path first = DirectoryUtils.firstSubdirectory(root).get();
-        if (first == null) {
-            throw new MergeException("No subdirectories under: " + root);
-        }
+        Path first = DirectoryUtils.firstSubdirectory(root)
+                .orElseThrow(() -> new MergeException("No subdirectories under: " + root));
 
         Set<String> bases = DirectoryUtils.collectBaseNames(first, ext);
         if (bases.isEmpty()) {
@@ -173,35 +173,30 @@ public class CsvMerger {
             throws IOException, MergeException {
 
         final String[] headerHolder = { null };
-        boolean wroteAnyRow = false;
-
-        try (BufferedWriter writer = Files.newBufferedWriter(out, charset)) {
-            try (Stream<Path> s = Files.walk(root)) {
-                Iterator<Path> it = s.filter(fileMatch).iterator();
-                while (it.hasNext()) {
-                    Path p = it.next();
-                    appendCsvFile(root, p, headerHolder, writer); // may throw IOException or MergeException
-                    wroteAnyRow = true;
-                }
-            } catch (UncheckedIOException uioe) {
-                // Best-effort cleanup of partial file
-                try { Files.deleteIfExists(out); } catch (IOException ignore) {}
-                Throwable cause = uioe.getCause();
-                if (cause instanceof IOException) throw (IOException) cause;
-                throw uioe;
-            } catch (RuntimeException re) {
-                // In case something else unexpected bubbles up
-                try { Files.deleteIfExists(out); } catch (IOException ignore) {}
-                throw re;
+        // Snapshot before creating output: otherwise its pattern-matching name
+        // can be read while it is being written and recursively duplicate rows.
+        final List<Path> inputs;
+        try (Stream<Path> paths = Files.walk(root)) {
+            inputs = paths.filter(fileMatch)
+                    .filter(p -> !p.toAbsolutePath().normalize().equals(out.toAbsolutePath().normalize()))
+                    .sorted().collect(Collectors.toList());
+        } catch (UncheckedIOException error) { throw error.getCause(); }
+        if (inputs.isEmpty()) throw new MergeException("No matching files found under: " + root);
+        boolean created = false;
+        try {
+            BufferedWriter opened = Files.newBufferedWriter(out, charset, StandardOpenOption.CREATE_NEW);
+            created = true;
+            try (BufferedWriter writer = opened) {
+                for (Path input : inputs) appendCsvFile(root, input, headerHolder, writer);
+                if (headerHolder[0] == null) throw new MergeException("Matching files contain no CSV header: " + root);
             }
+        } catch (IOException | MergeException | RuntimeException error) {
+            if (created) {
+                try { Files.deleteIfExists(out); }
+                catch (IOException cleanup) { error.addSuppressed(cleanup); }
+            }
+            throw error;
         }
-
-        if (!wroteAnyRow) {
-            // No matches: remove the empty file and report
-            Files.deleteIfExists(out);
-            throw new MergeException("No matching files found under: " + root);
-        }
-
         return out;
     }
 
@@ -221,7 +216,7 @@ public class CsvMerger {
             String line;
             boolean firstLine = true;
 
-            while ((line = br.readLine()) != null) {
+            while ((line = readRecord(br, csvFile)) != null) {
                 if (line.isEmpty()) continue;
 
                 // Strip UTF-8 BOM if it's at the start of the line
@@ -255,6 +250,25 @@ public class CsvMerger {
         }
     }
 
+    /** Keep one experiment label per logical record, including quoted line breaks. */
+    private static String readRecord(BufferedReader reader, Path source) throws IOException, MergeException {
+        String line = reader.readLine();
+        if (line == null) return null;
+        StringBuilder record = new StringBuilder(line);
+        boolean quoted = false;
+        while (true) {
+            for (int i = 0; i < line.length(); i++) {
+                if (line.charAt(i) != '"') continue;
+                if (quoted && i + 1 < line.length() && line.charAt(i + 1) == '"') i++;
+                else quoted = !quoted;
+            }
+            if (!quoted) return record.toString();
+            line = reader.readLine();
+            if (line == null) throw new MergeException("Unclosed quoted CSV field in: " + source);
+            record.append('\n').append(line);
+        }
+    }
+
     /* -------------------------------------------------------------
      * Helpers
      * ------------------------------------------------------------- */
@@ -262,7 +276,7 @@ public class CsvMerger {
     private String formatLabel(String raw) {
         if (raw == null) return "";
         String s = raw;
-        if (quoteLabelIfComma && (s.indexOf(',') >= 0 || s.indexOf('"') >= 0)) {
+        if (quoteLabelIfComma && (s.indexOf(',') >= 0 || s.indexOf('"') >= 0 || s.indexOf('\n') >= 0 || s.indexOf('\r') >= 0)) {
             // CSV quoting: wrap in quotes and escape internal quotes by doubling them
             s = s.replace("\"", "\"\"");
             s = "\"" + s + "\"";
