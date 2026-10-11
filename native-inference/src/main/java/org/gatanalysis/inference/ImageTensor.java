@@ -2,8 +2,10 @@ package org.gatanalysis.inference;
 
 /** Dense row-major, channel-interleaved float image. */
 final class ImageTensor {
-    // Keep Java array indexing and protocol lengths bounded; actual available RAM may be lower.
-    static final int MAX_ELEMENTS = 268_435_456;
+    // Bound by Java array indexing, not an arbitrary 1 GiB payload ceiling.
+    // A normal 2048x2048 image with 96 rays needs 406,847,488 floats.
+    // Available heap still limits allocation; tiling reduces model working memory.
+    static final int MAX_ELEMENTS = Integer.MAX_VALUE - 8;
     final int width;
     final int height;
     final int channels;

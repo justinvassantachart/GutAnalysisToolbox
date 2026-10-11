@@ -107,28 +107,33 @@ final class CsbdeepTiling {
                     throw new IllegalArgumentException("Unsupported model output: expected full-resolution probability + distance channels");
                 if (merged == null) {
                     channels = result.channels;
-                    merged = new float[ImageTensor.elements(expandedWidth, expandedHeight, channels)];
+                    // Stitch directly into the final image. The previous expanded
+                    // image plus final crop doubled the largest prediction buffer.
+                    merged = new float[ImageTensor.elements(width, height, channels)];
                 } else if (channels != result.channels) {
                     throw new IllegalArgumentException("Model changed its output channel count between tiles");
                 }
                 for (int y = 0; y < tileHeight; y++) {
+                    int outputY = ty * tileHeight + y;
+                    int outputX = tx * tileWidth;
+                    if (outputY >= height || outputX >= width) continue;
                     int from = ((y + overlapY) * result.width + overlapX) * channels;
-                    int to = ((ty * tileHeight + y) * expandedWidth + tx * tileWidth) * channels;
-                    System.arraycopy(result.values, from, merged, to, tileWidth * channels);
+                    int to = (outputY * width + outputX) * channels;
+                    System.arraycopy(result.values, from, merged, to, Math.min(tileWidth, width - outputX) * channels);
                 }
             }
         }
-        float[] output = new float[ImageTensor.elements(width, height, channels)];
-        // Usually a crop; upstream can shrink by a pixel due to integer division,
-        // so match its final MirrorDouble expansion in that case too.
+        // Upstream can shrink due to integer division. Match its final
+        // MirrorDouble expansion using the already-stitched interior pixels.
         for (int y = 0; y < height; y++) {
             int sy = mirrorDouble(y, expandedHeight);
             for (int x = 0; x < width; x++) {
+                if (x < expandedWidth && y < expandedHeight) continue;
                 int sx = mirrorDouble(x, expandedWidth);
-                System.arraycopy(merged, (sy * expandedWidth + sx) * channels,
-                        output, (y * width + x) * channels, channels);
+                System.arraycopy(merged, (sy * width + sx) * channels,
+                        merged, (y * width + x) * channels, channels);
             }
         }
-        return new ImageTensor(width, height, channels, output);
+        return new ImageTensor(width, height, channels, merged);
     }
 }
