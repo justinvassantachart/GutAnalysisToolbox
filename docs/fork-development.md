@@ -55,13 +55,12 @@ retain their diagnostics and distinguish skipped, failed and passed steps.
   single-channel SavedModels with probability plus radial-distance outputs.
   The validated models are GAT's existing neuron and subtype ZIPs; arbitrary
   custom models are not automatically compatible
-- The worker/protocol cap is 268,435,456 float values per image/tensor. The
-  supplied 97-output-channel models have a theoretical full-output ceiling of
-  2,767,375 pixels before block padding. A 2048 × 2048 result exceeds it.
-  Extra tiles reduce individual inference work, but do not remove the merged
-  full-output allocation. Several arrays, TensorFlow and Fiji coexist; actual
-  available memory may impose a smaller limit. Crop large inputs and validate
-  representative workloads rather than treating this cap as a RAM guarantee
+- Worker/protocol shapes are checked against Java array indexing limits
+  (2,147,483,639 floats). The former 1 GiB ceiling rejected ordinary 2048²×97
+  predictions and has been removed. Direct tile stitching avoids a second
+  full-image allocation; numerical padding/reflection behavior is unchanged.
+  Full predictions still consume substantial heap (about 1.52 GiB at 2048²×97).
+  Tiling reduces model working memory, not that final prediction allocation
 - Calcium analysis supports a single-channel grayscale stack whose one stack
   axis represents time: an ordinary ImageJ stack or C=1, Z=1 time series.
   RGB, multiple channels and simultaneous Z/T stacks are rejected before

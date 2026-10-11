@@ -218,12 +218,15 @@ Both workers use CPU. No paired GPU implementation has been benchmarked, so
 there is no justified CPU-to-GPU speed multiplier. Hosted virtual-Mac cold
 process timings are not predictions of physical M1 performance.
 
-The neuron protocol caps full output at 268,435,456 floats. The supplied models
-have 97 output channels, so the padded merged image must fit about 2.77 million
-spatial pixels. Start with ≤1024×1024 crops; roughly 1600×1600 is a conservative
-square bound after padding. A 2048×2048 result is too large. Increasing tiles
-does not remove this full-output cap. Use disclosed crops/rescaling, not silent
-loss of the original image area.
+The neuron worker and protocol are bounded by Java array indexing (2,147,483,639
+floats), rather than the former 268,435,456-float ceiling. A 2048×2048 result with
+97 channels is permitted and contains 406,847,488 floats (about 1.52 GiB).
+The worker now stitches tiles directly into one final prediction buffer, avoiding
+a second full-size padded/cropped allocation. This is not a memory guarantee:
+Fiji, TensorFlow, one tile and the prediction still coexist, and the Fiji-side
+probability/ray planes also need sufficient heap. More tiles reduce per-tile
+model memory, not the complete output size. Use disclosed crops/rescaling when
+memory is insufficient; never silently discard image area.
 
 Optional Java properties: `gat.stardist.backend=auto|native|legacy`,
 `gat.inference.directory`, `gat.inference.timeoutSeconds`,
