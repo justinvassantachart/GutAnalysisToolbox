@@ -10,6 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class NativeInferenceClientTest {
     @TempDir Path temporary;
 
+    @Test void ordinary2048ImageWith96RaysDoesNotHitArtificialPayloadCeiling() throws Exception {
+        assertEquals(406847488L, NativeInferenceClient.predictionElements(2048, 2048, 97));
+        assertThrows(IOException.class, () -> NativeInferenceClient.predictionElements(Integer.MAX_VALUE, Integer.MAX_VALUE, 1024));
+        assertThrows(IOException.class, () -> NativeInferenceClient.predictionElements(0, 2048, 97));
+    }
+
+
     @Test void noisyWorkerIsDrainedWithoutUnboundedStorage() throws Exception {
         byte[] noisy = new byte[200000];
         java.util.Arrays.fill(noisy, (byte) 'x');
