@@ -37,26 +37,26 @@ public final class GangliaInputContractSmoke {
             source.getCalibration().pixelWidth=.5;source.getCalibration().pixelHeight=.75;
             PluginCalls.GangliaPrep prep=PluginCalls.prepareGangliaInputs(source,2,1);
             ModelDescriptor descriptor=ModelDescriptorFactory.readFromLocalFile(Paths.get(args[1],"rdf.yaml").toString());
-            List<Tensor<FloatType>> corrected=convert(prep.dijInput3C,descriptor);
+            List<Tensor<FloatType>> restored=convert(prep.dijInput3C,descriptor);
             double[] raw=new double[3], actual=new double[3], old=new double[3], expected=new double[3];
             double[] means={.485,.456,.406}, std={.229,.224,.225};
-            for(int c=0;c<3;c++){raw[c]=value(corrected,c);WorkflowReport.check(raw[c]==(c==1?128:255),"GAT/DeepImageJ changed raw intensity channel "+c+": "+raw[c]);}
+            for(int c=0;c<3;c++){raw[c]=value(restored,c);WorkflowReport.check(raw[c]==(float)((c==1?128:255)*(1.0/255.0)),"GAT/DeepImageJ changed restored V2 intensity channel "+c+": "+raw[c]);}
             ImagePlus oldInput=prep.dijInput3C.duplicate();
-            for(int c=1;c<=3;c++)oldInput.getStack().getProcessor(c).multiply(1.0/255.0);
+            for(int c=1;c<=3;c++)oldInput.getStack().getProcessor(c).multiply(255.0);
             List<Tensor<FloatType>> previous=convert(oldInput,descriptor);
-            Processing.init(descriptor).preprocess(corrected,true);
+            Processing.init(descriptor).preprocess(restored,true);
             Processing.init(descriptor).preprocess(previous,true);
             for(int c=0;c<3;c++) {
-                actual[c]=value(corrected,c);old[c]=value(previous,c);
+                actual[c]=value(restored,c);old[c]=value(previous,c);
                 expected[c]=(raw[c]*.00392156862-means[c])/(std[c]+1e-6);
                 WorkflowReport.check(Math.abs(actual[c]-expected[c])<2e-6,"RDF normalization mismatch channel "+c);
-                WorkflowReport.check(Math.abs(actual[c]-old[c])>2,"Former double-scaled control unexpectedly matches corrected contract");
+                WorkflowReport.check(Math.abs(actual[c]-old[c])>2,"Preview5 raw-input control unexpectedly matches restored V2 contract");
             }
             WorkflowReport.check(source.getStack().getProcessor(1).get(0)==255,"Source modified");
-            return WorkflowReport.values("source", "Synthetic 8x8 two-channel uint8", "tensor_axes",corrected.get(0).getAxesOrderString(),
-                "tensor_shape",corrected.get(0).getShape(),"raw_rgb_pixel",raw,"corrected_model_input_pixel",actual,
-                "former_double_scaled_control_pixel",old,"expected_rdf_only_normalization",expected,
-                "scientific_change", "Correcting a reached double 1/255 scaling bug changes predictions; legacy output parity is not expected",
+            return WorkflowReport.values("source", "Synthetic 8x8 two-channel uint8", "tensor_axes",restored.get(0).getAxesOrderString(),
+                "tensor_shape",restored.get(0).getShape(),"v2_scaled_rgb_pixel",raw,"restored_v2_model_input_pixel",actual,
+                "preview5_raw_input_control_pixel",old,"expected_v2_plus_rdf_normalization",expected,
+                "scientific_contract", "Preview6 restores original Java V2 scaling before unchanged RDF preprocessing; Preview5 raw-input control intentionally diverges",
                 "unchanged", "Weights, RDF mean/std/epsilon/scale, RDF threshold, GAT RGB order and display-range conversion");
         });
         report.notRun("full_gat_ganglia_command", "DeepImageJ command and morphological cleanup", "This suite proves the reached input contract only; use a separate native AWT command test");
