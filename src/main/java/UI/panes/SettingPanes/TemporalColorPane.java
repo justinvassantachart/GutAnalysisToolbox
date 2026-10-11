@@ -166,7 +166,8 @@ public class TemporalColorPane extends JPanel {
             p.createColorScale = cbColorScale.isSelected();
             p.batchMode = cbBatchMode.isSelected();
 
-            int nFrames = selectedImage.getStackSize();
+            int nFrames = selectedImage.getNFrames() > 1
+                    ? selectedImage.getNFrames() : selectedImage.getNSlices();
             if (p.referenceFrame < 1 || p.referenceFrameEnd > nFrames || p.referenceFrame > p.referenceFrameEnd) {
                 IJ.error("Frame range invalid. Stack has " + nFrames + " frames.");
                 return;
@@ -179,13 +180,15 @@ public class TemporalColorPane extends JPanel {
             dashboard.setOutputs(output.rgbStack, output.colorScale, p);
 
             // Color strip panel
-            Color[] colours = new Color[output.colorScale.getWidth()];
-            for (int x = 0; x < colours.length; x++) {
-                int rgb = output.colorScale.getProcessor().getPixel(x,0);
-                colours[x] = new Color(rgb);
+            if (output.colorScale != null) {
+                Color[] colours = new Color[output.colorScale.getWidth()];
+                for (int x = 0; x < colours.length; x++) {
+                    int rgb = output.colorScale.getProcessor().getPixel(x,0);
+                    colours[x] = new Color(rgb);
+                }
+                JPanel colorStrip = createColorScalePanel(500, 25, colours, selectedImage, p.referenceFrame, p.referenceFrameEnd);
+                dashboard.add(colorStrip, BorderLayout.NORTH);
             }
-            JPanel colorStrip = createColorScalePanel(500, 25, colours, selectedImage, p.referenceFrame, p.referenceFrameEnd);
-            dashboard.add(colorStrip, BorderLayout.NORTH);
 
             // Parameter summary panel (bottom)
             JTextArea paramSummary = new JTextArea();

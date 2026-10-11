@@ -294,13 +294,14 @@ public class NeuronWorkflowPane extends JPanel {
 
         spHuDilationMicron       = new JSpinner(new SpinnerNumberModel(12.0, 0.0, 1000.0, 0.5));
         spGangliaProbThresh01    = new JSpinner(new SpinnerNumberModel(0.35, 0.0, 1.0, 0.01));
+        spGangliaProbThresh01.setToolTipText("Post-model mask threshold. The supplied ganglia model already binarizes at 0.6; changing this control does not relax that model boundary.");
         spGangliaMinAreaUm2      = new JSpinner(new SpinnerNumberModel(200.0, 0.0, 100000.0, 5.0));
         spGangliaOpenIterations  = new JSpinner(new SpinnerNumberModel(3, 0, 50, 1));
         cbGangliaInteractiveReview = new JCheckBox("Interactive review overlay");
 
         p.add(box("Ganglia post-processing", grid2(
                 new JLabel("Hu dilation (µm):"),      spHuDilationMicron,
-                new JLabel("Prob threshold (0–1):"),  spGangliaProbThresh01,
+                new JLabel("Post-model threshold (0–1):"),  spGangliaProbThresh01,
                 new JLabel("Min area (µm²):"),        spGangliaMinAreaUm2,
                 new JLabel("Open iterations:"),       spGangliaOpenIterations
         )));
