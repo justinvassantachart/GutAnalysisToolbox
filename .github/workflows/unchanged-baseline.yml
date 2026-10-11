@@ -2,7 +2,7 @@ name: unchanged-baseline
 
 on:
   push:
-    branches: [main, feat/apple-silicon-stardist]
+    branches: [main, feat/apple-silicon-stardist, fix/all-workflow-parity]
     paths:
       - '.github/workflows/unchanged-baseline.yml'
       - 'native-inference/validation/baseline/**'

@@ -1,7 +1,7 @@
 name: native-mac-multiplex-full
 on:
   push:
-    branches: [main, feat/apple-silicon-stardist]
+    branches: [main, feat/apple-silicon-stardist, fix/all-workflow-parity]
     paths:
       - '.github/workflows/native-mac-multiplex.yml'
       - 'native-inference/validation/multiplex-full/**'

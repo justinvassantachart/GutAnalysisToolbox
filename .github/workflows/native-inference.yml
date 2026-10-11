@@ -2,7 +2,7 @@ name: native-inference
 
 on:
   push:
-    branches: [main, feat/apple-silicon-stardist]
+    branches: [main, feat/apple-silicon-stardist, fix/all-workflow-parity]
     # Publishing immutable reports must not restart expensive native runners.
     paths:
       - '.github/workflows/native-inference.yml'

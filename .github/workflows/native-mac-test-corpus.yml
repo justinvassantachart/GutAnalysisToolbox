@@ -1,7 +1,7 @@
 name: native-mac-official-test-corpus
 on:
   push:
-    branches: [main, feat/apple-silicon-stardist]
+    branches: [main, feat/apple-silicon-stardist, fix/all-workflow-parity]
     paths:
       - '.github/workflows/native-mac-test-corpus.yml'
       - 'native-inference/validation/mac-corpus/**'

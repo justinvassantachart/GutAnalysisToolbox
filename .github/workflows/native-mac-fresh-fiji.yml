@@ -2,10 +2,11 @@ name: native-mac-fresh-fiji
 
 on:
   push:
-    branches: [main, feat/apple-silicon-stardist, test-restore-v2-ganglia-parity]
+    branches: [main, feat/apple-silicon-stardist, test-restore-v2-ganglia-parity, fix/all-workflow-parity]
     paths:
       - '.github/workflows/native-mac-fresh-fiji.yml'
       - 'validation/fiji-install/**'
+      - 'validation/all-workflows/**'
       - '!validation/fiji-install/results/**'
   workflow_dispatch:
     inputs:
@@ -36,8 +37,8 @@ jobs:
     timeout-minutes: 120
     env:
       # This exact experiment branch explicitly opts in. Main/other branches stay unchanged.
-      GAT_HISTORICAL_RUNTIME: ${{ github.ref == 'refs/heads/test-restore-v2-ganglia-parity' || inputs.historical_runtime == true }}
-      GAT_COMPARE_V2: ${{ github.ref == 'refs/heads/test-restore-v2-ganglia-parity' || inputs.compare_v2 == true }}
+      GAT_HISTORICAL_RUNTIME: ${{ github.ref == 'refs/heads/test-restore-v2-ganglia-parity' || github.ref == 'refs/heads/fix/all-workflow-parity' || inputs.historical_runtime == true }}
+      GAT_COMPARE_V2: ${{ github.ref == 'refs/heads/test-restore-v2-ganglia-parity' || github.ref == 'refs/heads/fix/all-workflow-parity' || inputs.compare_v2 == true }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -149,4 +150,7 @@ jobs:
             fresh-fiji-results/*_parity-*.png
             fresh-fiji-results/*_parity-*.f32be.gz
             fresh-fiji-results/parity-*.png
+            fresh-fiji-results/*_nohu_*/**/*.tif
+            fresh-fiji-results/*_nohu_*/**/*.csv
+            fresh-fiji-results/*_nohu_*/**/*.zip
           if-no-files-found: error
