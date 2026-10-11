@@ -26,14 +26,35 @@ public final class ImageOps {
      *            with calibration copied and title "MAX_<srcTitle>".
      */
     public static ImagePlus mip(ImagePlus src) {
-        ZProjector zp = new ZProjector(src);
-        zp.setMethod(ZProjector.MAX_METHOD);
-        zp.setStartSlice(1);
-        zp.setStopSlice(src.getNSlices());
-        zp.doProjection();
-        ImagePlus out = zp.getProjection();
-        out.setCalibration(src.getCalibration());
-        out.setTitle("MAX_" + src.getTitle());
+        if (src == null || src.getStackSize() < 1)
+            throw new IllegalArgumentException("Select an image to project.");
+        // ZProjector.doProjection treats a hyperstack as a flat stack. Split
+        // by C/T explicitly so it cannot combine channels or time points.
+        ij.ImageStack projected = new ij.ImageStack(src.getWidth(), src.getHeight());
+        for (int t = 1; t <= src.getNFrames(); t++) {
+            for (int c = 1; c <= src.getNChannels(); c++) {
+                ij.ImageStack planes = new ij.ImageStack(src.getWidth(), src.getHeight());
+                for (int z = 1; z <= src.getNSlices(); z++)
+                    planes.addSlice(src.getStack().getProcessor(src.getStackIndex(c, z, t)));
+                ImagePlus channel = new ImagePlus("projection channel", planes);
+                ZProjector zp = new ZProjector(channel);
+                zp.setMethod(ZProjector.MAX_METHOD);
+                zp.setStartSlice(1);
+                zp.setStopSlice(planes.size());
+                if (src.getBitDepth() == 24) zp.doRGBProjection();
+                else zp.doProjection();
+                projected.addSlice(zp.getProjection().getProcessor());
+            }
+        }
+        ImagePlus out = new ImagePlus("MAX_" + src.getTitle(), projected);
+        out.setDimensions(src.getNChannels(), 1, src.getNFrames());
+        out.setOpenAsHyperStack(src.getNChannels() > 1 || src.getNFrames() > 1);
+        if (src instanceof ij.CompositeImage) {
+            ij.CompositeImage composite = new ij.CompositeImage(out, ((ij.CompositeImage) src).getMode());
+            composite.setLuts(((ij.CompositeImage) src).getLuts());
+            out = composite;
+        }
+        out.setCalibration(src.getCalibration().copy());
         return out;
     }
 

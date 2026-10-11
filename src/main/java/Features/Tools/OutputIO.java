@@ -232,7 +232,7 @@ public final class OutputIO {
             Integer nGangliaOrNull,                       // may be null
             LinkedHashMap<String,Integer> totals,         // marker & combo totals
             LinkedHashMap<String,int[]> perGanglia,       // marker & combo per ganglion counts (optional)
-            double[] gangliaAreaUm2                       // optional (length = #ganglia)
+            double[] gangliaAreaUm2                       // optional, indexed 1..G; index 0 is background
     ) {
         try (java.io.PrintWriter pw = new java.io.PrintWriter(new java.io.FileWriter(csv))) {
             // Header
@@ -275,11 +275,11 @@ public final class OutputIO {
                     // per-ganglia columns
                     for (String name : perGanglia.keySet()) {
                         int[] vec = perGanglia.get(name);
-                        int v = (vec != null && r < vec.length) ? vec[r] : 0;
+                        int v = (vec != null && r + 1 < vec.length) ? vec[r + 1] : 0;
                         cells.add(Integer.toString(v));
                     }
                     // area column
-                    double a = (gangliaAreaUm2 != null && r < gangliaAreaUm2.length) ? gangliaAreaUm2[r] : 0.0;
+                    double a = (gangliaAreaUm2 != null && r + 1 < gangliaAreaUm2.length) ? gangliaAreaUm2[r + 1] : 0.0;
                     cells.add(String.format(java.util.Locale.US, "%.6f", a));
                 }
 
@@ -320,16 +320,16 @@ public final class OutputIO {
     ) {
         try (java.io.PrintWriter pw = new java.io.PrintWriter(new java.io.FileWriter(csv))) {
 
-            // determine #ganglia from inputs (if any)
+            // Arrays use labels 1..G; index 0 is background, never a ganglion.
             int nGanglia = 0;
             if (perGangliaOrNull != null) {
                 for (Map.Entry<String,int[]> e : perGangliaOrNull.entrySet()) {
                     int[] v = e.getValue();
-                    if (v != null) nGanglia = Math.max(nGanglia, v.length);
+                    if (v != null) nGanglia = Math.max(nGanglia, v.length - 1);
                 }
             }
             if (gangliaAreaUm2OrNull != null) {
-                nGanglia = Math.max(nGanglia, gangliaAreaUm2OrNull.length);
+                nGanglia = Math.max(nGanglia, gangliaAreaUm2OrNull.length - 1);
             }
             boolean hasGanglia = nGanglia > 0;
 
@@ -372,11 +372,11 @@ public final class OutputIO {
                 if (hasGanglia && perGangliaOrNull != null && !perGangliaOrNull.isEmpty()) {
                     for (String name : perGangliaOrNull.keySet()) {
                         int[] vec = perGangliaOrNull.get(name);
-                        int v = (vec != null && r < vec.length) ? vec[r] : 0;
+                        int v = (vec != null && r + 1 < vec.length) ? vec[r + 1] : 0;
                         cells.add(Integer.toString(v));
                     }
-                    double a = (gangliaAreaUm2OrNull != null && r < gangliaAreaUm2OrNull.length)
-                            ? gangliaAreaUm2OrNull[r] : 0.0;
+                    double a = (gangliaAreaUm2OrNull != null && r + 1 < gangliaAreaUm2OrNull.length)
+                            ? gangliaAreaUm2OrNull[r + 1] : 0.0;
                     cells.add(String.format(java.util.Locale.US, "%.6f", a));
                 }
 
