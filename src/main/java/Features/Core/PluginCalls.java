@@ -701,6 +701,27 @@ public final class PluginCalls {
      * @throws IllegalStateException if labeling didn't produce an output.
      */
     public static ImagePlus binaryToLabels(ImagePlus binary) {
+        if (binary == null) throw new IllegalArgumentException("Binary mask cannot be null.");
+        // ImageJ's automatic Convert to Mask can turn a uniform zero image
+        // into foreground. An empty reviewed mask must remain zero labels,
+        // independent of display range, LUT or global threshold preferences.
+        boolean foreground = false;
+        for (int plane = 1; plane <= binary.getStackSize() && !foreground; plane++) {
+            ij.process.ImageProcessor ip = binary.getStack().getProcessor(plane);
+            for (int i = 0; i < ip.getPixelCount(); i++) {
+                if (ip.getf(i) != 0) { foreground = true; break; }
+            }
+        }
+        if (!foreground) {
+            ImageStack empty = new ImageStack(binary.getWidth(), binary.getHeight());
+            for (int plane = 1; plane <= binary.getStackSize(); plane++)
+                empty.addSlice(new ij.process.ShortProcessor(binary.getWidth(), binary.getHeight()));
+            ImagePlus labels = new ImagePlus(binary.getTitle() + "-labels", empty);
+            labels.setDimensions(binary.getNChannels(), binary.getNSlices(), binary.getNFrames());
+            labels.setCalibration(binary.getCalibration().copy());
+            labels.setOpenAsHyperStack(binary.getOpenAsHyperStack());
+            return labels;
+        }
         SilentRun.on(binary, "Convert to Mask", "");
         int[] before = ij.WindowManager.getIDList();
         SilentRun.on(binary, "Connected Components Labeling", "connectivity=8");
