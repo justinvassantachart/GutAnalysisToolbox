@@ -1,0 +1,102 @@
+name: legacy-macro-delegate-focused
+
+# A focused original/delegate modal-error experiment. No model, native worker,
+# capacity movie, private fixture or production algorithm change is involved.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -e -o pipefail {0}
+
+env:
+  OMP_NUM_THREADS: '1'
+  OPENBLAS_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  delegate-boundary:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          architecture: x64
+          cache: maven
+          cache-dependency-path: |
+            pom.xml
+            native-inference/validation/baseline/dependencies-pom.xml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Record exact source and native host
+        run: |
+          mkdir -p delegate-results target/modal-state-tests
+          test "$(uname -m)" = x86_64
+          command -v xvfb-run
+          { git rev-parse HEAD; uname -a; java -version 2>&1; } > delegate-results/host.log
+      - name: Pure modal readiness regression without AWT or plugins
+        run: |
+          javac -J-Xmx256m -J-XX:ActiveProcessorCount=1 -proc:none \
+            -d target/modal-state-tests \
+            validation/legacy-macros/LegacyMacroModalState.java \
+            validation/legacy-macros/LegacyMacroModalStateTest.java
+          java -Xmx256m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true \
+            -cp target/modal-state-tests LegacyMacroModalStateTest \
+            | tee delegate-results/modal-state-tests.log
+          python3 -m unittest discover -s validation/legacy-macros -p test_alignment.py -v \
+            2>&1 | tee delegate-results/python-tests.log
+      - name: Build the current adapter and isolated pinned original dependencies
+        run: |
+          mvn -B -ntp -DskipTests clean package | tee delegate-results/production-build.log
+          mvn -B -ntp -f native-inference/validation/baseline/dependencies-pom.xml \
+            dependency:build-classpath -Dbaseline.opencv.platform=linux-x86_64 \
+            -Dmdep.outputFile="$PWD/target/alignment-dependencies-classpath.txt" \
+            | tee delegate-results/dependencies.log
+          python3 validation/legacy-macros/alignment_runtime.py \
+            --dependencies-classpath target/alignment-dependencies-classpath.txt \
+            --cache target/alignment-public-cache --output target/alignment-runtime
+      - name: Actual original seven controls with immediate dialog evidence
+        run: >-
+          xvfb-run -a -s '-screen 0 1280x1024x24'
+          python3 validation/legacy-macros/run_alignment_probe.py
+          --variant original --runtime-classpath target/alignment-runtime/runtime-classpath.txt
+          --output target/alignment-original
+          --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Actual delegated seven controls even after an original failure
+        if: ${{ !cancelled() }}
+        run: >-
+          xvfb-run -a -s '-screen 0 1280x1024x24'
+          python3 validation/legacy-macros/run_alignment_probe.py
+          --variant legacy-delegate --production-classes target/classes
+          --runtime-classpath target/alignment-runtime/runtime-classpath.txt
+          --output target/alignment-delegate
+          --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Strict paired scientific outputs and actual error continuation
+        if: ${{ !cancelled() }}
+        run: >-
+          python3 validation/legacy-macros/compare_alignment.py
+          --original target/alignment-original --native target/alignment-delegate
+          --native-variant legacy-delegate --output delegate-results/paired.json
+      - name: Preserve all observations, including incomplete or unexpected dialogs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-delegate-focused-${{ github.sha }}
+          path: |
+            delegate-results/
+            target/alignment-original/
+            target/alignment-delegate/
+            target/alignment-runtime/runtime-provenance.json
+          if-no-files-found: error
+          retention-days: 30

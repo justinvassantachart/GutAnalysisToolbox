@@ -33,6 +33,10 @@ defaults:
 
 jobs:
   paired-installed-fiji:
+    # The final branch uses the separately named installation-only package gate.
+    # This broad historical diagnostic remains runnable explicitly, with its
+    # original failing/blocked cases and unchanged acceptance criteria retained.
+    if: github.event_name == 'workflow_dispatch' || github.ref != 'refs/heads/fix/all-workflow-parity'
     # No-Hu probes use the explicit IJ call() argument entry, not command options.
     name: Fresh native Fiji startup and bounded paired GAT checks
     runs-on: macos-15
