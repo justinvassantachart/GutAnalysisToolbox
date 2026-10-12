@@ -168,7 +168,7 @@ jobs:
               command -v xauth
             fi
           } > alignment-ci-results/native-host.log
-      - name: Build unchanged production adapter and isolated platform worker
+      - name: Build production adapter and isolated platform worker
         run: |
           mvn -B -ntp -DskipTests clean package \
             | tee alignment-ci-results/production-build.log
@@ -206,6 +206,17 @@ jobs:
             --runtime-classpath target/alignment-runtime/runtime-classpath.txt \
             --output target/alignment-native \
             --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Exercise the real non-Apple legacy-delegation branch
+        # The static call must preserve original abort behavior too. Keep this
+        # independent of the native result so both failures remain visible.
+        if: ${{ !cancelled() && matrix.platform == 'linux-x86_64' }}
+        run: >-
+          xvfb-run -a -s '-screen 0 1280x1024x24'
+          python3 validation/legacy-macros/run_alignment_probe.py
+          --variant legacy-delegate --production-classes target/classes
+          --runtime-classpath target/alignment-runtime/runtime-classpath.txt
+          --output target/alignment-legacy-delegate
+          --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
       - name: Retrieve only this workflow run's exact original reference
         if: ${{ !cancelled() }}
         uses: actions/download-artifact@v4
@@ -220,6 +231,13 @@ jobs:
           python3 validation/legacy-macros/compare_alignment.py
           --original target/alignment-reference --native target/alignment-native
           --output alignment-ci-results/paired-alignment.json
+      - name: Require exact legacy-delegation pixels and error continuation
+        if: ${{ !cancelled() && matrix.platform == 'linux-x86_64' }}
+        run: >-
+          python3 validation/legacy-macros/compare_alignment.py
+          --original target/alignment-reference --native target/alignment-legacy-delegate
+          --native-variant legacy-delegate
+          --output alignment-ci-results/paired-legacy-delegate.json
       - name: Preserve every raw result, difference and failure
         if: always()
         uses: actions/upload-artifact@v4
@@ -228,6 +246,7 @@ jobs:
           path: |
             alignment-ci-results/
             target/alignment-native/
+            target/alignment-legacy-delegate/
             target/alignment-runtime/runtime-provenance.json
             native-alignment/target/surefire-reports/
           if-no-files-found: error
