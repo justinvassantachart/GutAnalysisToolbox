@@ -81,15 +81,15 @@ class ArchiveSafetyTests(unittest.TestCase):
         self.assertIn('"mask_tiff_sha256"', probe)
         self.assertIn("HERE / 'Fresh_Ganglia_Evidence.java'", (here / 'run_fresh_fiji.py').read_text())
 
-    def test_release_artifact_is_only_the_successfully_parity_tested_overlay(self):
+    def test_unreleased_artifact_contains_only_overlay_and_checksum(self):
         repository = Path(__file__).resolve().parents[2]
         workflow = (repository / '.github/workflows/native-mac-fresh-fiji.yml').read_text()
-        heading = '      - name: Preserve the exact parity-tested GAT preview\n'
+        heading = '      - name: Preserve the exact unreleased candidate build separately from diagnostic outcome\n'
         self.assertEqual(workflow.count(heading), 1)
         step = workflow.split(heading, 1)[1].split('      - name:', 1)[0]
-        self.assertIn("        if: success() && env.GAT_COMPARE_V2 == 'true'\n", step)
+        self.assertIn("        if: ${{ !cancelled() && hashFiles('fresh-fiji-install-artifacts/GAT-*-macos-arm64-preview.zip') != '' }}\n", step)
         self.assertIn('        uses: actions/upload-artifact@v4\n', step)
-        self.assertIn('          name: gat-v2-parity-verified-preview\n', step)
+        self.assertIn('          name: gat-unreleased-candidate-${{ github.sha }}\n', step)
         self.assertIn('          if-no-files-found: error\n', step)
         paths = step.split('          path: |\n', 1)[1].split('          if-no-files-found:', 1)[0]
         self.assertEqual([line.strip() for line in paths.splitlines() if line.strip()], [
@@ -199,7 +199,7 @@ class ArchiveSafetyTests(unittest.TestCase):
                 for name in members:
                     archive.writestr('gat-native-' + worker + '/' + name, b'packaging fixture')
         for name in ['LICENSE', 'docs/apple-silicon.md', 'docs/apple-silicon-workflow-matrix.md',
-                     'docs/preview-6-setup.md', 'docs/preview-6-release-notes.md',
+                     'docs/preview-7-setup.md', 'docs/preview-7-release-notes.md',
                      'docs/validation/maintainer-review-2026-10-06.md',
                      'docs/validation/fork-hardening-2026-10-06.md']:
             destination = build / name
@@ -227,8 +227,13 @@ class ArchiveSafetyTests(unittest.TestCase):
         self.assertEqual(b'original settings and script', original_macro.read_bytes())
         for name, data in macro_files.items():
             self.assertEqual(data, (fiji / name).read_bytes())
-        for name in fresh.OVERLAY_DOCUMENTS:
+        # The reader also accepts historical Preview 6 documents; the current
+        # package must install its version 7 guide instead, not stale guides.
+        current_docs = set(fresh.OVERLAY_DOCUMENTS) - {'PREVIEW_6_SETUP.md', 'PREVIEW_6_RELEASE_NOTES.md'}
+        for name in current_docs:
             self.assertTrue((fiji / name).is_file(), name)
+        self.assertFalse((fiji / 'PREVIEW_6_SETUP.md').exists())
+        self.assertFalse((fiji / 'PREVIEW_6_RELEASE_NOTES.md').exists())
 
     def test_macro_overlay_requires_exact_source_generated_bytes_and_revision(self):
         expected = {'MACROFORK_BUILD_INFO.json': b'manifest',

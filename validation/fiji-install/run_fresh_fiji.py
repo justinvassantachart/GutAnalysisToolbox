@@ -25,6 +25,7 @@ MANIFEST = json.loads((HERE / 'manifest.json').read_text())
 OVERLAY_DOCUMENTS = ('BUILD_INFO.json', 'APPLE_SILICON.md',
                      'apple-silicon-workflow-matrix.md', 'GAT_LICENSE',
                      'PREVIEW_6_SETUP.md', 'PREVIEW_6_RELEASE_NOTES.md',
+                     'START_HERE_PREVIEW_7.md', 'PREVIEW_7_RELEASE_NOTES.md',
                      'MAINTAINER_REVIEW_2026-10-06.md',
                      'FORK_HARDENING_2026-10-06.md')
 STAGES = ['native_host', 'archive_download', 'archive_integrity', 'archive_extraction',
