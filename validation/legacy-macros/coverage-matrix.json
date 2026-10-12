@@ -1,0 +1,1102 @@
+{
+  "schema_version": 1,
+  "source_revision": "f2098636d5f42f73c3e724286af0b212fe3ea5c0",
+  "purpose": "Finite release-gate matrix. Planned cases are not passed evidence. No arbitrary all-settings claim.",
+  "layers": {
+    "source": {
+      "scripts": 47,
+      "scope": "exact bytes + independent allowlist"
+    },
+    "postprocessing": {
+      "cases": 720,
+      "probability": [
+        0,
+        0.3,
+        0.5,
+        0.8,
+        1
+      ],
+      "nms": [
+        0,
+        0.3,
+        0.7,
+        1
+      ],
+      "output": [
+        "Both",
+        "Label Image",
+        "ROI Manager"
+      ],
+      "roi_placement": [
+        "Automatic",
+        "Stack",
+        "Hyperstack"
+      ],
+      "shapes": [
+        [
+          33,
+          29
+        ],
+        [
+          32,
+          30
+        ]
+      ],
+      "input_axes": [
+        "XY",
+        "XYCT (singleton C/T)"
+      ],
+      "runtime": "Actual original StarDist2DNMS and adapter in one disposable AWT JVM",
+      "inference": false
+    },
+    "inference": {
+      "cases": [
+        {
+          "id": "neuron-01",
+          "model": "neuron",
+          "dtype": 8,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 0.5,
+          "tiles": 1,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-02",
+          "model": "neuron",
+          "dtype": 16,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 0.5,
+          "tiles": 2,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-03",
+          "model": "neuron",
+          "dtype": 32,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 0.5,
+          "tiles": 4,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-04",
+          "model": "neuron",
+          "dtype": 8,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 0.5,
+          "tiles": 5,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-05",
+          "model": "neuron",
+          "dtype": 16,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 0.5,
+          "tiles": 8,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-06",
+          "model": "neuron",
+          "dtype": 32,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 1,
+          "tiles": 1,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-07",
+          "model": "neuron",
+          "dtype": 8,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1,
+          "tiles": 2,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-08",
+          "model": "neuron",
+          "dtype": 16,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1,
+          "tiles": 4,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-09",
+          "model": "neuron",
+          "dtype": 32,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1,
+          "tiles": 5,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-10",
+          "model": "neuron",
+          "dtype": 8,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 1,
+          "tiles": 8,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-11",
+          "model": "neuron",
+          "dtype": 16,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 1.5,
+          "tiles": 1,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-12",
+          "model": "neuron",
+          "dtype": 32,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 1.5,
+          "tiles": 2,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-13",
+          "model": "neuron",
+          "dtype": 8,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1.5,
+          "tiles": 4,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-14",
+          "model": "neuron",
+          "dtype": 16,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1.5,
+          "tiles": 5,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "neuron-15",
+          "model": "neuron",
+          "dtype": 32,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1.5,
+          "tiles": 8,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-01",
+          "model": "subtype",
+          "dtype": 8,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 0.5,
+          "tiles": 1,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-02",
+          "model": "subtype",
+          "dtype": 16,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 0.5,
+          "tiles": 2,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-03",
+          "model": "subtype",
+          "dtype": 32,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 0.5,
+          "tiles": 4,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-04",
+          "model": "subtype",
+          "dtype": 8,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 0.5,
+          "tiles": 5,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-05",
+          "model": "subtype",
+          "dtype": 16,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 0.5,
+          "tiles": 8,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-06",
+          "model": "subtype",
+          "dtype": 32,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 1,
+          "tiles": 1,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-07",
+          "model": "subtype",
+          "dtype": 8,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1,
+          "tiles": 2,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-08",
+          "model": "subtype",
+          "dtype": 16,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1,
+          "tiles": 4,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-09",
+          "model": "subtype",
+          "dtype": 32,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1,
+          "tiles": 5,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-10",
+          "model": "subtype",
+          "dtype": 8,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 1,
+          "tiles": 8,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-11",
+          "model": "subtype",
+          "dtype": 16,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 1.5,
+          "tiles": 1,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-12",
+          "model": "subtype",
+          "dtype": 32,
+          "shape": [
+            96,
+            82
+          ],
+          "scale": 1.5,
+          "tiles": 2,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-13",
+          "model": "subtype",
+          "dtype": 8,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1.5,
+          "tiles": 4,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-14",
+          "model": "subtype",
+          "dtype": 16,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1.5,
+          "tiles": 5,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "subtype-15",
+          "model": "subtype",
+          "dtype": 32,
+          "shape": [
+            95,
+            81
+          ],
+          "scale": 1.5,
+          "tiles": 8,
+          "probability": 0.5,
+          "nms": 0.3,
+          "status": "NOT_RUN"
+        }
+      ],
+      "required": "Separate processes with actual original TF1 and forced native worker; record input/model/worker/runtime hashes and exact unrounded settings. Compare tensors, labels, ROI geometry, counts and areas. This schedule is coverage of levels, not every interaction.",
+      "reuse_rule": "A single genuine inference tensor may feed all probability/NMS/output/ROI-placement variants at fixed model/input/scale/tiles. Never reuse across input/model/rescale/tile changes."
+    },
+    "workflow": {
+      "cases": [
+        {
+          "id": "single-default",
+          "priority": 0,
+          "workflow": "single-neuron",
+          "settings": {
+            "source": "public Hu TIFF",
+            "automatic": true
+          },
+          "required_observations": [
+            "real registered script command and parameter capture",
+            "neuron raw/final labels and original/reviewed ROI archives",
+            "counts/areas/calibration/export reopening"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "single-custom-roi",
+          "priority": 0,
+          "workflow": "single-neuron",
+          "settings": {
+            "custom_neuron_roi": true,
+            "review": [
+              "unchanged",
+              "delete one",
+              "delete all",
+              "add ROI"
+            ]
+          },
+          "required_observations": [
+            "seeded ROI geometry survives import",
+            "edits reach all downstream counts and exports"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "hu-one-marker",
+          "priority": 0,
+          "workflow": "hu-plus-marker",
+          "settings": {
+            "markers": 1,
+            "Hu": "automatic",
+            "marker": "automatic"
+          },
+          "required_observations": [
+            "Hu gating and marker overlaps",
+            "per-ganglion and total counts"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "hu-three-markers-mixed",
+          "priority": 0,
+          "workflow": "hu-plus-marker",
+          "settings": {
+            "markers": 3,
+            "Hu": "import",
+            "marker_sources": [
+              "automatic",
+              "import",
+              "automatic"
+            ]
+          },
+          "required_observations": [
+            "all nonempty combinations",
+            "marker order/channel identity",
+            "mixed imports do not bypass required automatic inference"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "hu-review-change",
+          "priority": 0,
+          "workflow": "hu-plus-marker",
+          "settings": {
+            "review": "delete overlapping marker ROI"
+          },
+          "required_observations": [
+            "combinations/counts/export behavior after actual review"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "no-hu-one",
+          "priority": 0,
+          "workflow": "no-Hu-marker",
+          "settings": {
+            "markers": 1,
+            "source": "automatic"
+          },
+          "required_observations": [
+            "ungated model result and area filtering"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "no-hu-three",
+          "priority": 0,
+          "workflow": "no-Hu-marker",
+          "settings": {
+            "markers": 3,
+            "sources": [
+              "automatic",
+              "import",
+              "automatic"
+            ]
+          },
+          "required_observations": [
+            "all combinations including triple overlap",
+            "no accidental Hu gating"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "no-hu-empty",
+          "priority": 0,
+          "workflow": "no-Hu-marker",
+          "settings": {
+            "markers": 2,
+            "one_marker": "empty/import or delete-all"
+          },
+          "required_observations": [
+            "empty labels/ROI archive/count behavior",
+            "remaining marker unchanged"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "glia-auto",
+          "priority": 0,
+          "workflow": "glia",
+          "settings": {
+            "model": "real explicitly selected Sox10 model"
+          },
+          "required_observations": [
+            "real model identity",
+            "automatic cell label/ROI/count parity"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + actual researcher-selected glia model; do not substitute neuron model"
+        },
+        {
+          "id": "glia-ganglia",
+          "priority": 0,
+          "workflow": "glia",
+          "settings": {
+            "ganglia": [
+              false,
+              "DeepImageJ",
+              "manual"
+            ]
+          },
+          "required_observations": [
+            "same supported dialog paths",
+            "cell/ganglion assignments"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "ganglia-deepimagej",
+          "priority": 0,
+          "workflow": "ganglia",
+          "settings": {
+            "method": "DeepImageJ"
+          },
+          "required_observations": [
+            "each supported macro family",
+            "exact ganglia labels/areas/IDs and per-ganglion counts"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "ganglia-define-ganglia-using-hu",
+          "priority": 0,
+          "workflow": "ganglia",
+          "settings": {
+            "method": "Define ganglia using Hu"
+          },
+          "required_observations": [
+            "each supported macro family",
+            "exact ganglia labels/areas/IDs and per-ganglion counts"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "ganglia-manually-draw-ganglia",
+          "priority": 0,
+          "workflow": "ganglia",
+          "settings": {
+            "method": "Manually draw ganglia"
+          },
+          "required_observations": [
+            "each supported macro family",
+            "exact ganglia labels/areas/IDs and per-ganglion counts"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "ganglia-import-custom-roi",
+          "priority": 0,
+          "workflow": "ganglia",
+          "settings": {
+            "method": "Import custom ROI"
+          },
+          "required_observations": [
+            "each supported macro family",
+            "exact ganglia labels/areas/IDs and per-ganglion counts"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "ganglia-rgb-stretch",
+          "priority": 0,
+          "workflow": "ganglia",
+          "settings": {
+            "input_bits": [
+              8,
+              16,
+              32
+            ],
+            "display_range": [
+              "default",
+              "explicit custom"
+            ],
+            "channels": "swapped distinguishable signals"
+          },
+          "required_observations": [
+            "legacy Merge Channels -> RGB Color display stretching",
+            "actual model input planes before inference",
+            "prediction and final outline"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "ganglia-float-open",
+          "priority": 0,
+          "workflow": "ganglia",
+          "settings": {
+            "prediction": "original float probabilities",
+            "Open": "iterations=3 count=2 black"
+          },
+          "required_observations": [
+            "actual original float Open behavior",
+            "size opening threshold and order; never cast to binary early"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "ganglia-overlap-assignment",
+          "priority": 0,
+          "workflow": "ganglia",
+          "settings": {
+            "neuron": "crosses two ganglia; centroid disagrees with overlap"
+          },
+          "required_observations": [
+            "actual CLIJ label-overlap assignment",
+            "not centroid proxy",
+            "sparse IDs and empty ganglion rows"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "ganglia-missing-neuron-repair",
+          "priority": 0,
+          "workflow": "ganglia",
+          "settings": {
+            "neuron": "one outside ganglia; one touching border"
+          },
+          "required_observations": [
+            "actual ganglia_fix_missing_neurons macro",
+            "repaired IDs/counts/geometry"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "calcium-stardist",
+          "priority": 0,
+          "workflow": "calcium",
+          "settings": {
+            "use_stardist": true,
+            "probability": 0.5,
+            "overlap": 0.3,
+            "n_tiles": 4
+          },
+          "required_observations": [
+            "calibrated max input",
+            "automatic ROIs and per-frame trace extraction"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "calcium-normalization",
+          "priority": 0,
+          "workflow": "calcium",
+          "settings": {
+            "Use_F_F0": [
+              false,
+              true
+            ],
+            "baseline": "non-default valid frame interval"
+          },
+          "required_observations": [
+            "raw and normalized traces",
+            "zero baseline behavior preserved",
+            "saved CSV dimensions/time units"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "calcium-import-roi",
+          "priority": 0,
+          "workflow": "calcium",
+          "settings": {
+            "celltypes": 2,
+            "source": "real ROI ZIP"
+          },
+          "required_observations": [
+            "per-cell ROI order/names and traces",
+            "manual/add/delete review"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "alignment-reference-1",
+          "priority": 0,
+          "workflow": "alignment",
+          "settings": {
+            "reference_slice": 1,
+            "bits": [
+              8,
+              16
+            ],
+            "frames": 5
+          },
+          "required_observations": [
+            "original plugin vs native worker full shifted pixels",
+            "reference slice selected and template ROI remains",
+            "Results row order: pre-reference descending, post-reference ascending",
+            "calibration/LUT/display range/save/reopen"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "alignment-reference-3",
+          "priority": 0,
+          "workflow": "alignment",
+          "settings": {
+            "reference_slice": 3,
+            "bits": [
+              8,
+              16
+            ],
+            "frames": 5
+          },
+          "required_observations": [
+            "original plugin vs native worker full shifted pixels",
+            "reference slice selected and template ROI remains",
+            "Results row order: pre-reference descending, post-reference ascending",
+            "calibration/LUT/display range/save/reopen"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "alignment-batch",
+          "priority": 0,
+          "workflow": "alignment",
+          "settings": {
+            "files": 2,
+            "channels": 2
+          },
+          "required_observations": [
+            "both registered batch calls",
+            "file isolation",
+            "saved stacks and ordered results"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "batch-custom-settings",
+          "priority": 0,
+          "workflow": "batch",
+          "settings": {
+            "probability": 0.8,
+            "overlap": 0.7,
+            "scale": 0.5,
+            "spatial": true,
+            "ganglia": "Define ganglia using Hu",
+            "cell_expansion": 9
+          },
+          "required_observations": [
+            "exact eight positional batch values consumed",
+            "no defaults silently substituted",
+            "namespaced generated menu resolution"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "batch-repeat-output",
+          "priority": 0,
+          "workflow": "batch",
+          "settings": {
+            "files": 2,
+            "repeat": true
+          },
+          "required_observations": [
+            "output collision and rerun behavior",
+            "no original export overwritten unexpectedly"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "roi-geometry",
+          "priority": 0,
+          "workflow": "ROI-import-export",
+          "settings": {
+            "fixtures": [
+              "subpixel polygon",
+              "positioned ROI",
+              "noncontiguous names",
+              "empty archive",
+              "overlapping ROIs"
+            ]
+          },
+          "required_observations": [
+            "decoded archive geometry/order/positions",
+            "full label raster and foreground",
+            "source immutability"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "exports",
+          "priority": 0,
+          "workflow": "exports",
+          "settings": {
+            "exports": [
+              "CSV",
+              "ROI ZIP",
+              "TIFF labels",
+              "MAX TIFF",
+              "overlay TIFF",
+              "centroids",
+              "contribution masks"
+            ]
+          },
+          "required_observations": [
+            "reopen each requested artifact",
+            "CSV rows/IDs/areas/counts not total-only",
+            "TIFF C/Z/T bit-depth calibration and labels",
+            "no stale/unrelated image selected"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "calibration",
+          "priority": 0,
+          "workflow": "calibration",
+          "settings": {
+            "units": [
+              "microns",
+              "micron",
+              "um",
+              "uncalibrated"
+            ],
+            "pixel_width": [
+              0.568,
+              0.7
+            ],
+            "anisotropy": true
+          },
+          "required_observations": [
+            "original dialogs/acceptance/error behavior",
+            "rescaling and area thresholds",
+            "preserved output metadata"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "projection-max",
+          "priority": 0,
+          "workflow": "projection",
+          "settings": {
+            "C": 3,
+            "Z": 4,
+            "T": 2,
+            "z_range": [
+              "full",
+              "2..3"
+            ]
+          },
+          "required_observations": [
+            "actual macro dimension interpretation",
+            "per-channel/time pixels",
+            "no Java-V2 repair substituted for legacy behavior"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "projection-edf",
+          "priority": 1,
+          "workflow": "projection",
+          "settings": {
+            "method": "EDF",
+            "z_range": "subset"
+          },
+          "required_observations": [
+            "real EDF plugin call/settings",
+            "result image identity/pixels/calibration"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "spatial-one",
+          "priority": 0,
+          "workflow": "spatial",
+          "settings": {
+            "celltypes": 1,
+            "dilation_um": [
+              0,
+              6.5,
+              20
+            ],
+            "save_parametric": [
+              false,
+              true
+            ]
+          },
+          "required_observations": [
+            "actual CLIJ touching-neighbor counts",
+            "calibration conversion",
+            "parametric pixels/CSV"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "spatial-two",
+          "priority": 0,
+          "workflow": "spatial",
+          "settings": {
+            "celltypes": 2,
+            "ganglia_restrict": [
+              false,
+              true
+            ]
+          },
+          "required_observations": [
+            "actual overlap-count-map route",
+            "ordered marker/reference identity",
+            "boundary and disconnected labels"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "settings-persistence",
+          "priority": 0,
+          "workflow": "settings",
+          "settings": {
+            "custom_settings": "existing full table",
+            "rerun": "restart Fiji"
+          },
+          "required_observations": [
+            "all 15 legacy settings rows byte-preserved",
+            "model paths and all thresholds preserved",
+            "original/MacroFork isolated menu/helper names"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        },
+        {
+          "id": "dialog-lifecycle",
+          "priority": 1,
+          "workflow": "UI",
+          "settings": {
+            "actions": [
+              "cancel initial file dialog",
+              "dismiss review",
+              "repeat command after close"
+            ]
+          },
+          "required_observations": [
+            "record actual original/fork behavior; do not define cancellation by killing process",
+            "no stale output mistaken for success"
+          ],
+          "status": "NOT_RUN",
+          "runtime": "AWT Fiji + pinned original macro installation and MacroFork; serial paired run"
+        }
+      ],
+      "comparison": "Original and MacroFork actual registered macro commands, same supported host/runtime and fixture. Record every script-parameter/dialog value. Keep original and candidate installations separate."
+    }
+  },
+  "release_gate": "Do not call legacy workflows equivalent until required P0 cases pass or every remaining limitation is explicitly accepted. Source checks, synthetic NMS, Java V2 tests and Linux legacy-backend fallback are not whole-macro/native acceptance."
+}
