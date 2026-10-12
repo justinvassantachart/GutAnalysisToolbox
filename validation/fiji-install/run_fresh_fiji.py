@@ -3,6 +3,7 @@
 import argparse
 import gzip
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -172,6 +173,34 @@ def verify_engine_files(directory, artifacts, include_native=False):
     return verify_required_assets(directory, [{'path': a['filename'], 'sha256': a['sha256']} for a in required])
 
 
+def expected_macro_overlay():
+    """Exact generated public assets from this source checkout, never arbitrary scripts."""
+    root = HERE.parents[1]
+    spec = importlib.util.spec_from_file_location('gat_fresh_macro_overlay', root / 'legacy-macros/build_overlay.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.generated_files(root=root)
+
+
+def verify_macro_overlay(archive, source_commit, package_info=None):
+    names = set(archive.namelist())
+    if 'MACROFORK_BUILD_INFO.json' not in names:
+        if package_info and package_info.get('legacy_macro_overlay'):
+            raise ValueError('Declared MacroFork overlay is missing its manifest')
+        return set()
+    if package_info is not None:
+        actual_hash = hashlib.sha256(archive.read('MACROFORK_BUILD_INFO.json')).hexdigest()
+        if package_info.get('legacy_macro_overlay') is not True or package_info.get('legacy_macro_manifest_sha256') != actual_hash:
+            raise ValueError('MacroFork manifest does not match package provenance')
+    expected, metadata = expected_macro_overlay()
+    if metadata['source_commit'] != source_commit:
+        raise ValueError('Macro validation source differs from requested overlay revision')
+    for name, data in expected.items():
+        if name not in names or archive.read(name) != data:
+            raise ValueError('Macro overlay differs from exact source-generated asset: ' + name)
+    return set(expected)
+
+
 def overlay(root, plugin=None, archive=None, source_commit=None, evidence=None):
     if (plugin is None) == (archive is None):
         raise ValueError('Exactly one explicit GAT plugin or preview archive is required')
@@ -181,6 +210,7 @@ def overlay(root, plugin=None, archive=None, source_commit=None, evidence=None):
             info = json.loads(z.read('BUILD_INFO.json'))
             if info['source_commit'] != source_commit or info['source_worktree_modified']:
                 raise ValueError('Fork BUILD_INFO must match a clean requested source commit')
+            macro_paths = verify_macro_overlay(z, source_commit, info)
             files = [n for n in z.namelist() if n.startswith('plugins/') and n.endswith('.jar')]
             if len(files) != 1:
                 raise ValueError('Fork overlay must contain exactly one GAT plugin')
@@ -189,7 +219,8 @@ def overlay(root, plugin=None, archive=None, source_commit=None, evidence=None):
                 # Documentation is allowed only at these exact root paths, not
                 # as a directory prefix that could admit an unrelated payload.
                 if (p.parts[0] not in ('gat-native-inference', 'gat-native-alignment')
-                        and name not in OVERLAY_DOCUMENTS and name not in (files[0], 'plugins/')):
+                        and name not in OVERLAY_DOCUMENTS and name not in macro_paths
+                        and name not in (files[0], 'plugins/')):
                     raise ValueError('Unexpected overlay path: ' + name)
             import io
             with zipfile.ZipFile(io.BytesIO(z.read(files[0]))) as jar:

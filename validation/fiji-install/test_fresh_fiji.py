@@ -151,11 +151,15 @@ class ArchiveSafetyTests(unittest.TestCase):
         build = self.root / 'build'
         (build / 'target/classes/Features/Inference').mkdir(parents=True)
         (build / 'target/classes/UI').mkdir()
+        (build / 'target/classes/Features/Macros').mkdir()
         (build / 'pom.xml').write_text('<project xmlns="http://maven.apache.org/POM/4.0.0"><version>test</version></project>')
         classes = ['UI/GatPluginUI.class', 'Features/Inference/NativeStarDist.class',
-                   'Features/Inference/NativeAlignmentClient.class']
+                   'Features/Inference/NativeAlignmentClient.class',
+                   'Features/Macros/LegacyMacroStarDist.class', 'Features/Macros/LegacyTemplateMatching.class']
         with zipfile.ZipFile(build / 'target/GutAnalysisToolbox_-test.jar', 'w') as jar:
             jar.writestr('plugins.config', 'fixture registration')
+            jar.writestr('META-INF/json/org.scijava.plugin.Plugin', json.dumps({
+                'class': 'Features.Macros.LegacyMacroStarDist', 'values': {'type': 'org.scijava.command.Command'}}))
             for name in classes:
                 (build / 'target/classes' / name).write_bytes(b'compiled fixture')
                 jar.writestr(name, b'compiled fixture')
@@ -183,17 +187,58 @@ class ArchiveSafetyTests(unittest.TestCase):
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(repository / name, destination)
         output = self.root / 'packages'
-        with patch.object(package, '__file__', str(build / 'scripts/package-apple-silicon-preview.py')), \
+        macro_metadata = {'source_commit': '1' * 40, 'files': [{'destination': 'scripts/GAT MacroFork/Test [MacroFork].ijm'}]}
+        macro_files = {'MACROFORK_BUILD_INFO.json': json.dumps(macro_metadata).encode(),
+                       'MACROFORK_README.md': b'fixture readme', 'MACROFORK_LICENSE': b'fixture license',
+                       'scripts/GAT MacroFork/Test [MacroFork].ijm': b'print(1);'}
+        with patch.object(package, 'macro_overlay', return_value=(macro_files, macro_metadata)), \
+                patch.object(package, '__file__', str(build / 'scripts/package-apple-silicon-preview.py')), \
                 patch('sys.argv', ['package-preview', '--output', str(output)]), \
                 patch.object(package.subprocess, 'check_output', side_effect=['1' * 40, '']):
             package.main()
         fiji = self.root / 'Fiji'
         (fiji / 'plugins').mkdir(parents=True)
         (fiji / 'jars').mkdir()
-        fresh.overlay(fiji, archive=output / 'GAT-test-macos-arm64-preview.zip',
-                      source_commit='1' * 40, evidence=self.root / 'evidence')
+        original_macro = fiji / 'scripts/GAT/Test.ijm'
+        original_macro.parent.mkdir(parents=True)
+        original_macro.write_bytes(b'original settings and script')
+        with patch.object(fresh, 'expected_macro_overlay', return_value=(macro_files, macro_metadata)):
+            fresh.overlay(fiji, archive=output / 'GAT-test-macos-arm64-preview.zip',
+                          source_commit='1' * 40, evidence=self.root / 'evidence')
+        self.assertEqual(b'original settings and script', original_macro.read_bytes())
+        for name, data in macro_files.items():
+            self.assertEqual(data, (fiji / name).read_bytes())
         for name in fresh.OVERLAY_DOCUMENTS:
             self.assertTrue((fiji / name).is_file(), name)
+
+    def test_macro_overlay_requires_exact_source_generated_bytes_and_revision(self):
+        expected = {'MACROFORK_BUILD_INFO.json': b'manifest',
+                    'scripts/GAT MacroFork/Test [MacroFork].ijm': b'print(1);'}
+        metadata = {'source_commit': '1' * 40}
+        for mutation in ('none', 'changed', 'missing', 'wrong-revision'):
+            members = dict(expected)
+            if mutation == 'changed': members['scripts/GAT MacroFork/Test [MacroFork].ijm'] = b'other code'
+            if mutation == 'missing': del members['scripts/GAT MacroFork/Test [MacroFork].ijm']
+            self.archive(list(members.items()))
+            with self.subTest(mutation=mutation), zipfile.ZipFile(self.path) as z, \
+                    patch.object(fresh, 'expected_macro_overlay', return_value=(expected, metadata)):
+                if mutation == 'none':
+                    self.assertEqual(set(expected), fresh.verify_macro_overlay(z, '1' * 40))
+                else:
+                    with self.assertRaises(ValueError):
+                        fresh.verify_macro_overlay(z, '2' * 40 if mutation == 'wrong-revision' else '1' * 40)
+
+    def test_declared_macro_overlay_requires_its_matching_manifest(self):
+        self.archive([('BUILD_INFO.json', '{}')])
+        with zipfile.ZipFile(self.path) as z:
+            self.assertEqual(set(), fresh.verify_macro_overlay(z, '1' * 40, {}))
+            with self.assertRaisesRegex(ValueError, 'missing its manifest'):
+                fresh.verify_macro_overlay(z, '1' * 40, {'legacy_macro_overlay': True})
+        self.archive([('MACROFORK_BUILD_INFO.json', 'manifest')])
+        with zipfile.ZipFile(self.path) as z:
+            for info in ({}, {'legacy_macro_overlay': True, 'legacy_macro_manifest_sha256': 'wrong'}):
+                with self.subTest(info=info), self.assertRaisesRegex(ValueError, 'package provenance'):
+                    fresh.verify_macro_overlay(z, '1' * 40, info)
 
     def test_overlay_rejects_unknown_docs_and_executable_paths_before_mutation(self):
         plugin = io.BytesIO()
@@ -205,7 +250,8 @@ class ArchiveSafetyTests(unittest.TestCase):
         (fiji / 'jars').mkdir()
         for name in ['PREVIEW_7_SETUP.md', 'PREVIEW_6_SETUP.md/run.sh',
                      'PREVIEW_6_RELEASE_NOTES.md/run.sh',
-                     'BUILD_INFO.json/run.sh', 'install.sh', 'plugins/extra.sh']:
+                     'BUILD_INFO.json/run.sh', 'install.sh', 'plugins/extra.sh',
+                     'scripts/GAT/overwrite-original.ijm', 'scripts/GAT MacroFork/unlisted.ijm']:
             with self.subTest(path=name):
                 self.archive([('BUILD_INFO.json', json.dumps({'source_commit': '1' * 40,
                                                              'source_worktree_modified': False})),
