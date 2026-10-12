@@ -54,6 +54,13 @@ public final class NoHuImportedRoiProbe implements PlugIn {
         System.exit(result);
     }
 
+    /** IJ1 run(command, options) does not pass options to PlugIn.run(arg).
+     * Use a real macro call() boundary for the explicit three-line argument. */
+    public static String runMacro(String argument) {
+        new NoHuImportedRoiProbe().run(argument);
+        return "unreachable-after-disposable-process-exit";
+    }
+
     /** Dedicated disposable Fiji process only: exits the process after reporting.
      * IJ.runPlugIn("NoHuImportedRoiProbe", output + "\n" + model + "\n" + scenario). */
     @Override public void run(String argument) {
