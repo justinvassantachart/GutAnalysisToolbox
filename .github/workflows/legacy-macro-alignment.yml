@@ -75,7 +75,7 @@ jobs:
       - name: Test strict comparator and dependency-isolation failure paths
         run: >-
           python3 -m unittest discover -s validation/legacy-macros
-          -p 'test_alignment.py' -v
+          -p 'test_alignment*.py' -v
           2>&1 | tee alignment-ci-results/python-tests.log
       - name: Resolve and verify isolated original ImageJ and OpenCV runtime
         run: |
@@ -94,6 +94,23 @@ jobs:
           --runtime-classpath target/alignment-runtime/runtime-classpath.txt
           --output target/alignment-original
           --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Execute the original 257-frame above-old-cap capacity control
+        if: ${{ !cancelled() }}
+        run: >-
+          xvfb-run -a -s '-screen 0 1280x1024x24'
+          python3 validation/legacy-macros/run_alignment_capacity.py
+          --variant original
+          --runtime-classpath target/alignment-runtime/runtime-classpath.txt
+          --output target/alignment-capacity-original
+          --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Preserve original capacity evidence separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-alignment-capacity-original-${{ github.sha }}
+          path: target/alignment-capacity-original/
+          if-no-files-found: error
+          retention-days: 30
       - name: Preserve original raw evidence even on a failed control
         if: always()
         uses: actions/upload-artifact@v4
@@ -181,7 +198,7 @@ jobs:
       - name: Test strict evidence gate on the native host
         run: >-
           python3 -m unittest discover -s validation/legacy-macros
-          -p 'test_alignment.py' -v
+          -p 'test_alignment*.py' -v
           2>&1 | tee alignment-ci-results/python-tests.log
       - name: Prepare the identical pinned parent command runtime
         run: |
@@ -217,6 +234,31 @@ jobs:
           --runtime-classpath target/alignment-runtime/runtime-classpath.txt
           --output target/alignment-legacy-delegate
           --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Execute actual native 257-frame above-old-cap capacity control
+        if: ${{ !cancelled() }}
+        run: |
+          display=()
+          if [ '${{ matrix.platform }}' = linux-x86_64 ]; then
+            display=(xvfb-run -a -s '-screen 0 1280x1024x24')
+          fi
+          "${display[@]}" python3 validation/legacy-macros/run_alignment_capacity.py \
+            --variant native --production-classes target/classes \
+            --native-worker native-alignment/target \
+            --runtime-classpath target/alignment-runtime/runtime-classpath.txt \
+            --output target/alignment-capacity-native \
+            --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Retrieve only this workflow run's original capacity reference
+        if: ${{ !cancelled() }}
+        uses: actions/download-artifact@v4
+        with:
+          name: macro-alignment-capacity-original-${{ github.sha }}
+          path: target/alignment-capacity-reference
+      - name: Require exact capacity pixels, motion CSV and bounded observed RSS
+        if: ${{ !cancelled() }}
+        run: >-
+          python3 validation/legacy-macros/compare_alignment_capacity.py
+          --original target/alignment-capacity-reference --native target/alignment-capacity-native
+          --output alignment-ci-results/paired-capacity.json
       - name: Retrieve only this workflow run's exact original reference
         if: ${{ !cancelled() }}
         uses: actions/download-artifact@v4
@@ -246,6 +288,7 @@ jobs:
           path: |
             alignment-ci-results/
             target/alignment-native/
+            target/alignment-capacity-native/
             target/alignment-legacy-delegate/
             target/alignment-runtime/runtime-provenance.json
             native-alignment/target/surefire-reports/

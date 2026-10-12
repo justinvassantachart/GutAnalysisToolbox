@@ -1,3 +1,4 @@
+# Preview7 final-source gate includes bounded alignment admission regression tests.
 name: tests
 on:
   push:
