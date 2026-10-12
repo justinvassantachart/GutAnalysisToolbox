@@ -1,0 +1,274 @@
+name: legacy-macro-compatibility
+
+on:
+  push:
+    branches: [main, fix/all-workflow-parity]
+    paths:
+      - '.github/workflows/legacy-macro-compatibility.yml'
+      - 'legacy-macros/**'
+      - 'validation/legacy-macros/**'
+      - 'src/main/java/Features/Macros/**'
+      - 'src/main/java/Features/Inference/**'
+      - 'src/test/java/Features/Macros/**'
+      - 'native-inference/src/**'
+      - 'native-inference/pom.xml'
+      - 'native-inference/validation/baseline/**'
+      - 'native-inference/validation/cross-platform/fixture-manifest.json'
+      - 'native-inference/validation/workflows/run_workflows.py'
+      - 'pom.xml'
+      - '!validation/legacy-macros/results/**'
+      - '!legacy-macros/results/**'
+  workflow_dispatch:
+    inputs:
+      preset:
+        description: 'Finite public inference coverage; matrix=30, smoke=7'
+        type: choice
+        options: [matrix, smoke]
+        default: matrix
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gat-legacy-macro-compatibility-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -e -o pipefail {0}
+
+env:
+  MACRO_PRESET: ${{ inputs.preset || 'matrix' }}
+  OMP_NUM_THREADS: '1'
+  OPENBLAS_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+  TF_NUM_INTRAOP_THREADS: '1'
+  TF_NUM_INTEROP_THREADS: '1'
+
+jobs:
+  original-reference:
+    name: Original legacy macro command, TensorFlow1.15, public settings matrix
+    # Standard hosted runners only. No larger, self-hosted or paid runner labels.
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          architecture: x64
+          cache: maven
+          cache-dependency-path: native-inference/validation/baseline/dependencies-pom.xml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Record exact source and real reference host
+        run: |
+          mkdir -p macro-ci-results target
+          test "$(uname -m)" = x86_64
+          {
+            git rev-parse HEAD
+            uname -a
+            java -XshowSettings:properties -version 2>&1
+            echo "Requested public inference preset: $MACRO_PRESET"
+          } > macro-ci-results/reference-host.log
+      - name: Check source preservation and evidence failure paths
+        run: |
+          python3 -m unittest discover -s legacy-macros/tests -p 'test_*.py' -v
+          python3 -m unittest discover -s validation/legacy-macros -p 'test_*.py' -v
+          python3 legacy-macros/build_overlay.py --output macro-ci-results/MacroFork-source-overlay.zip
+          python3 validation/legacy-macros/audit_sources.py \
+            --overlay macro-ci-results/MacroFork-source-overlay.zip \
+            --output macro-ci-results/source-audit.json
+      - name: Resolve pinned original command dependencies without any fork classes
+        run: |
+          mvn -B -ntp -f native-inference/validation/baseline/dependencies-pom.xml \
+            dependency:build-classpath -Dbaseline.opencv.platform=linux-x86_64 \
+            -Dmdep.outputFile="$PWD/target/macro-dependencies-classpath.txt" \
+            | tee macro-ci-results/dependencies.log
+          python3 legacy-macros/prepare_ci_runtime.py \
+            --dependencies-classpath target/macro-dependencies-classpath.txt \
+            --cache target/macro-public-cache --output target/macro-runtime
+      - name: Require an actual AWT display
+        run: |
+          command -v xvfb-run
+          command -v xauth
+      - name: Execute all selected original macro inference settings serially
+        run: >-
+          xvfb-run -a -s '-screen 0 1280x1024x24'
+          python3 validation/legacy-macros/run_inference_probe.py
+          --runtime-classpath target/macro-runtime/runtime-classpath.txt
+          --variant original
+          --fixture target/macro-public-cache/fixtures/public-Hu.tif
+          --model-directory target/macro-public-cache/models
+          --output target/macro-original
+          --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+          --preset "$MACRO_PRESET" --timeout 600
+      - name: Preserve complete original evidence for same-run pairing
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-original-reference-${{ github.sha }}
+          path: target/macro-original/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve original setup/source provenance without models or dependency caches
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-original-provenance-${{ github.sha }}
+          path: |
+            macro-ci-results/*.json
+            macro-ci-results/*.log
+            macro-ci-results/*.zip
+            target/macro-runtime/runtime-provenance.json
+          if-no-files-found: error
+          retention-days: 30
+
+  native-candidates:
+    name: MacroFork native ${{ matrix.platform }} against original TF1 reference
+    needs: original-reference
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            platform: linux-x86_64
+            architecture: x64
+            baseline-platform: linux-x86_64
+          - os: macos-15
+            platform: macosx-arm64
+            architecture: aarch64
+            baseline-platform: macosx-x86_64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          architecture: ${{ matrix.architecture }}
+          cache: maven
+          cache-dependency-path: |
+            pom.xml
+            native-inference/pom.xml
+            native-inference/validation/baseline/dependencies-pom.xml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require and record actual native host and JDK architecture
+        run: |
+          mkdir -p macro-ci-results target
+          {
+            git rev-parse HEAD
+            uname -a
+            java -XshowSettings:properties -version 2>&1
+            if [ '${{ matrix.platform }}' = macosx-arm64 ]; then
+              test "$(uname -m)" = arm64
+              java -XshowSettings:properties -version 2>&1 | grep 'os.arch = aarch64'
+              sw_vers
+              sysctl -n machdep.cpu.brand_string
+              sysctl -n hw.model
+            else
+              test "$(uname -m)" = x86_64
+              command -v xvfb-run
+              command -v xauth
+            fi
+            echo "Requested public inference preset: $MACRO_PRESET"
+          } > macro-ci-results/native-host.log
+      - name: Build actual production adapters and the isolated native worker
+        run: |
+          mvn -B -ntp -DskipTests clean package \
+            | tee macro-ci-results/production-build.log
+          mvn -B -ntp -f native-inference/pom.xml clean package \
+            -Dtensorflow.platform=${{ matrix.platform }} \
+            | tee macro-ci-results/worker-build.log
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          index = Path('target/classes/META-INF/json/org.scijava.plugin.Plugin').read_text()
+          decoder = json.JSONDecoder(); entries = []
+          while index.strip():
+              index = index.lstrip(); entry, end = decoder.raw_decode(index)
+              entries.append(entry); index = index[end:]
+          matches = [x for x in entries if x.get('class') == 'Features.Macros.LegacyMacroStarDist'
+                     and x.get('values', {}).get('type') == 'org.scijava.command.Command']
+          assert len(matches) == 1, 'Actual generated SciJava adapter registration is required'
+          PY
+      - name: Resolve the same pinned parent command runtime and public assets
+        run: |
+          mkdir -p macro-ci-results target
+          mvn -B -ntp -f native-inference/validation/baseline/dependencies-pom.xml \
+            dependency:build-classpath -Dbaseline.opencv.platform=${{ matrix.baseline-platform }} \
+            -Dmdep.outputFile="$PWD/target/macro-dependencies-classpath.txt" \
+            | tee macro-ci-results/dependencies.log
+          python3 legacy-macros/prepare_ci_runtime.py \
+            --dependencies-classpath target/macro-dependencies-classpath.txt \
+            --cache target/macro-public-cache --output target/macro-runtime
+      - name: Run the 720 actual original NMS and adapter pairs with real ROI Manager
+        run: |
+          display=()
+          if [ '${{ matrix.platform }}' = linux-x86_64 ]; then
+            display=(xvfb-run -a -s '-screen 0 1280x1024x24')
+          fi
+          "${display[@]}" python3 validation/legacy-macros/run_nms_probe.py \
+            --java-home "$JAVA_HOME" \
+            --classpath-file target/macro-runtime/runtime-classpath.txt \
+            --production-classes target/classes --output target/macro-nms --timeout 300
+          python3 validation/legacy-macros/check_nms_report.py \
+            target/macro-nms/result/report.json --output target/macro-nms/independent-check.json
+      - name: Execute every selected actual macro command through the forced native worker
+        # Keep independent model observations even if a no-model NMS check failed.
+        if: ${{ !cancelled() && hashFiles('target/macro-runtime/runtime-classpath.txt') != '' }}
+        run: |
+          display=()
+          if [ '${{ matrix.platform }}' = linux-x86_64 ]; then
+            display=(xvfb-run -a -s '-screen 0 1280x1024x24')
+          fi
+          "${display[@]}" python3 validation/legacy-macros/run_inference_probe.py \
+            --runtime-classpath target/macro-runtime/runtime-classpath.txt \
+            --production-classes target/classes --variant native \
+            --native-worker native-inference/target \
+            --fixture target/macro-public-cache/fixtures/public-Hu.tif \
+            --model-directory target/macro-public-cache/models \
+            --output target/macro-native \
+            --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac" \
+            --preset "$MACRO_PRESET" --timeout 600
+      - name: Retrieve the exact same-run original reference
+        if: ${{ !cancelled() }}
+        uses: actions/download-artifact@v4
+        with:
+          name: macro-original-reference-${{ github.sha }}
+          path: target/macro-reference
+      - name: Compare exact labels, metadata, ROI geometry/order/placement and settings
+        if: ${{ !cancelled() && hashFiles('target/macro-native/summary.json') != '' }}
+        run: >-
+          python3 validation/legacy-macros/compare_inference.py
+          --original target/macro-reference --native target/macro-native
+          --output macro-ci-results/paired-inference-comparison.json
+      - name: Preserve all outcomes and differences without input/model caches
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-native-${{ matrix.platform }}-${{ github.sha }}
+          path: |
+            macro-ci-results/
+            target/macro-nms/
+            target/macro-native/
+            target/macro-runtime/runtime-provenance.json
+            macro-ci-results/production-build.log
+            macro-ci-results/worker-build.log
+            native-inference/target/surefire-reports/
+          if-no-files-found: error
+          retention-days: 30
