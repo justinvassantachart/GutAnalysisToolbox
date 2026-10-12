@@ -1,8 +1,22 @@
-# GAT MacroFork native-Mac compatibility candidate
+# GAT MacroFork: Apple Silicon preview 7 compatibility
 
-MacroFork is a separate **legacy macro** route. It does not call the GATV2
-Java workflow. The original macros remain untouched. This candidate is not a
-validated release until the runtime/settings matrix has passed.
+Preview 7 provides the **GAT MacroFork** legacy-macro route, with commands ending
+in **[MacroFork]**. The original macro menus remain available. GATV2 is a
+separate Java workflow.
+
+## Start with the ready-made package
+
+Use the matching preview-7 package and its bundled **START_HERE_PREVIEW_7.md**
+guide. No development tools are needed for normal installation. The source
+checkout also includes the [installation and settings guide](../docs/preview-7-setup.md)
+and [compatibility evidence and limits](../docs/preview-7-release-notes.md).
+Install the matched plugin, both complete native-worker folders, and the macro
+overlay together; preserve your existing settings as described below.
+
+Compatibility evidence is scoped to the documented platforms, models,
+settings and executed workflows. Source/menu audits cover additional unchanged
+routes; they do not mean every one of the 47 macros was executed. Model
+suitability and biological interpretation still require research validation.
 
 ## Architecture boundary
 
@@ -47,7 +61,7 @@ The original RGB display-range preparation, DeepImageJ command, float-image
 measurement, export and settings code stay in the generated macros. DeepImageJ
 is not replaced by the Java V2 ganglia implementation.
 
-## Build and installation route
+## Optional developer build route
 
 1. Build a GAT plugin containing the two new adapter classes and its generated
    SciJava plugin index. Keep both native workers outside `plugins/` and `jars/`
@@ -99,8 +113,8 @@ values without their actual settings file. The optional `--settings` generator
 argument above provides the same byte-preserving copy for automated packaging.
 
 The script overlay alone is insufficient: it requires the plugin with the new
-adapters and the matching native workers. This candidate currently has no
-installer that automatically merges an existing Fiji or replaces its plugin.
+adapters and the matching native workers. The package does not automatically merge an existing Fiji installation or
+replace its settings; follow the start-here copy and backup instructions.
 
 ## Evidence and limits
 
