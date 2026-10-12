@@ -16,6 +16,16 @@ SPEC.loader.exec_module(fresh)
 
 
 class ArchiveSafetyTests(unittest.TestCase):
+    def test_failed_diagnostics_preserve_only_explicit_unreleased_artifact(self):
+        root = Path(__file__).resolve().parents[2]
+        workflow = (root / '.github/workflows/native-mac-fresh-fiji.yml').read_text()
+        self.assertIn("!cancelled() && hashFiles('fresh-fiji-install-artifacts/GAT-*-macos-arm64-preview.zip') != ''", workflow)
+        self.assertIn('name: gat-unreleased-candidate-${{ github.sha }}', workflow)
+        self.assertNotIn('name: gat-v2-parity-verified-preview', workflow)
+        self.assertIn('contents: read', workflow)
+        self.assertNotIn('contents: write', workflow)
+        self.assertNotIn('gh release create', workflow)
+
     def test_nohu_launcher_passes_explicit_argument_not_command_options(self):
         here = Path(__file__).resolve().parent
         runner = (here / 'run_fresh_fiji.py').read_text()
