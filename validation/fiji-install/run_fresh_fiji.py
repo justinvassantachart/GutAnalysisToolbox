@@ -19,6 +19,7 @@ import tempfile
 import time
 import zipfile
 import xml.etree.ElementTree as ET
+from urllib.parse import urlsplit, unquote
 
 HERE = Path(__file__).resolve().parent
 MANIFEST = json.loads((HERE / 'manifest.json').read_text())
@@ -461,10 +462,61 @@ def apply_historical_runtime(root, work_root, evidence, env):
         raise
 
 
+INSTALLATION_REQUIRED = ('native_host', 'archive_download', 'archive_integrity',
+                         'archive_extraction', 'bundled_java', 'pristine_startup',
+                         'official_updater', 'installed_inventory', 'paired_overlays',
+                         'fork_startup', 'fork_registration')
+
+
+def stage_exit_code(report, required):
+    states = [report['stages'].get(s, {}).get('status', 'NOT_RUN') for s in required]
+    return 0 if all(s == 'PASS' for s in states) else 2 if 'FAIL' in states else 3
+
+
+def verify_installed_registration(startup, archive):
+    """Actual Fiji bindings for every packaged macro, without claiming execution."""
+    if (startup.get('status') != 'PASS' or startup.get('mode') != 'startup'
+            or startup.get('errors') != [] or startup.get('os.arch') not in ('aarch64', 'arm64')
+            or not str(startup.get('os.name', '')).startswith('Mac')):
+        raise ValueError('Successful error-free actual native Fiji startup is required')
+    root = Path(startup.get('imagej_root', ''))
+    if not root.is_absolute():
+        raise ValueError('Actual fresh ImageJ root must be absolute')
+    commands = startup.get('registered_commands', {})
+    if 'GATV2' not in commands:
+        raise ValueError('Original GATV2 entry point is missing')
+    with zipfile.ZipFile(archive) as z:
+        info = json.loads(z.read('MACROFORK_BUILD_INFO.json'))
+        expected = [n for n in z.namelist() if n.startswith('scripts/GAT MacroFork/')
+                    and n.endswith(('.ijm', '.py'))]
+        if len(expected) != 47:
+            raise ValueError('Expected all 47 audited MacroFork script bindings')
+        rows = []
+        for name in expected:
+            binding = 'script:' + name[len('scripts/'):]
+            matches = [k for k, v in commands.items() if v == binding]
+            if len(matches) != 1 or '[MacroFork]' not in matches[0]:
+                raise ValueError('Missing, duplicate or incorrectly namespaced binding: ' + name)
+            rows.append({'script': name, 'command': matches[0], 'binding': binding})
+        plugin = [n for n in z.namelist() if n.startswith('plugins/') and n.endswith('.jar')]
+        if len(plugin) != 1:
+            raise ValueError('Expected exactly one installed GAT plugin')
+        for cls in ('UI.GatPluginUI', 'Features.Macros.LegacyMacroStarDist',
+                    'Features.Macros.LegacyTemplateMatching', 'Features.Inference.NativeAlignmentClient'):
+            source = startup.get('class_sources', {}).get(cls, {}).get('source', '')
+            parsed = urlsplit(source)
+            if parsed.scheme != 'file' or parsed.netloc or Path(unquote(parsed.path)) != root / plugin[0]:
+                raise ValueError('Installed class did not resolve from the packaged plugin: ' + cls)
+    return {'source_commit': info['source_commit'], 'macro_count': len(rows), 'bindings': rows,
+            'scope': 'Actual native startup, class provenance and registration only; no scientific workflow claim'}
+
+
 def build_parser():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', required=True, type=Path)
-    parser.add_argument('--original-jar', required=True, type=Path)
+    parser.add_argument('--original-jar', type=Path)
+    parser.add_argument('--installation-only', action='store_true',
+                        help='Final package identity/install/startup/registration gate only; no workflow reruns')
     parser.add_argument('--fork-archive', required=True, type=Path)
     parser.add_argument('--original-commit', default='1870d9e16e16fd6daeac0bd05122e851029ddedc')
     parser.add_argument('--fork-commit', required=True)
@@ -478,6 +530,10 @@ def build_parser():
 def main():
     parser = build_parser()
     args = parser.parse_args()
+    if not args.installation_only and args.original_jar is None:
+        parser.error('--original-jar is required for the paired diagnostic')
+    if args.installation_only and (args.control_jar or args.historical_runtime):
+        parser.error('--installation-only cannot request a paired or historical-runtime diagnostic')
     if (args.control_jar is None) != (args.control_commit is None):
         parser.error('--control-jar and --control-commit must be provided together')
     commits = [args.original_commit, args.fork_commit] + ([args.control_commit] if args.control_commit else [])
@@ -489,7 +545,7 @@ def main():
     if report_path.exists():
         parser.error('Output already contains a report; choose a new evidence directory')
     work = create_work_root()
-    variants = ('original', 'control', 'fork') if args.control_jar else ('original', 'fork')
+    variants = ('fork',) if args.installation_only else (('original', 'control', 'fork') if args.control_jar else ('original', 'fork'))
     home = work / 'home'; home.mkdir()
     env = clean_env(home)
     report = {'schema_version': 1, 'scope': 'Matched bounded installed-Fiji validation, not all GAT workflows',
@@ -497,6 +553,11 @@ def main():
               'runtime_mode': 'historical-test-only' if args.historical_runtime else 'official-updater',
               'control_commit': args.control_commit,
               'stages': {stage: {'status': 'BLOCKED', 'reason': 'Not reached'} for stage in STAGES}}
+    if args.installation_only:
+        report['scope'] = 'Final exact-package native install/startup/registration only; scientific gates are separate'
+        report['required_stages'] = list(INSTALLATION_REQUIRED)
+        for name in set(STAGES) - set(INSTALLATION_REQUIRED):
+            report['stages'][name] = {'status': 'NOT_IN_SCOPE', 'reason': 'Explicit installation-only gate; prior diagnostics retained separately'}
     if args.control_jar:
         for name in ('control_startup', 'control_ganglia', 'original_parity', 'control_parity', 'fork_parity',
                      'parity_samples', 'ganglia_parity'):
@@ -675,48 +736,49 @@ def main():
                   changed_paths=[r['path'] for r in audit['inventory_delta']])
         else:
             stage(current, 'SKIPPED', mode='official-updater', reason='Explicit --historical-runtime was not supplied; updater dependencies unchanged')
-        fixture = work / 'public-Hu.tif'
-        report['fixture'] = download(MANIFEST['fixture']['url'], fixture, env, args.output / 'fixture-download.log',
-                                     expected_sha=MANIFEST['fixture']['sha256'], timeout=120)
-        if args.control_jar:
-            current = 'parity_samples'
-            parity_samples.mkdir()
-            samples = []
-            for index, sample in enumerate(MANIFEST['parity_samples']):
-                if sample['file'] != Path(sample['file']).name or sample['file'] in ('.', '..'):
-                    raise ValueError('Unsafe parity sample filename')
-                samples.append(download(sample['url'], parity_samples / sample['file'], env,
-                                        args.output / ('parity-sample-%d.log' % index),
-                                        expected_sha=sample['sha256'], expected_size=sample['bytes'], timeout=180))
-            stage(current, 'PASS', samples=samples)
-        # Complete real DeepImageJ/JDLL engine setup before copying the matched installations.
-        current = 'ganglia_engine_setup'
-        config = MANIFEST['ganglia_engine']
-        validated_assets = verify_required_assets(base, config['required_updater_assets'])
-        if probe(base, 'official', 'engine_install') != 'PASS':
-            raise RuntimeError('The supported JDLL installer failed; inspect official_engine_install evidence')
-        current = 'ganglia_engine_setup'
-        engine_dir = base / 'engines' / config['directory']
-        installer_files = verify_engine_files(engine_dir, config['artifacts'])
-        native = [a for a in config['artifacts'] if a.get('platform') == 'macosx-arm64']
-        if len(native) != 1:
-            raise ValueError('Exactly one pinned native CPU jar is required')
-        native = native[0]
-        native_stage = work / native['filename']
-        native_download = download(native['url'], native_stage, env, args.output / 'ganglia-native-download.log',
-                                   expected_sha=native['sha256'], timeout=300)
-        # The supported installer has already created a real verified engine here.
-        # Add its exact official native CPU binary; never fabricate readiness with an empty directory.
-        shutil.copy2(native_stage, engine_dir / native['filename'])
-        final_engine_files = verify_engine_files(engine_dir, config['artifacts'], include_native=True)
-        install_ganglia_probe(base)
-        if probe(base, 'official', 'engine_inference') != 'PASS':
-            raise RuntimeError('Real full-model JDLL load/inference failed; engine setup is not validated')
-        stage(current, 'PASS', installer='official_engine_install.json', inference='official_engine_inference.json',
-              model_and_installed_runtime_pins=validated_assets, installer_files=installer_files,
-              verified_engine_files=final_engine_files, native_cpu_download=native_download,
-              note='Shipped JDLL installer plus exact pinned official native CPU jar; completed full model inference before copying either installation')
-        (args.output / 'engine-ready-inventory.json').write_text(json.dumps(inventory(base), indent=2)+'\n')
+        if not args.installation_only:
+            fixture = work / 'public-Hu.tif'
+            report['fixture'] = download(MANIFEST['fixture']['url'], fixture, env, args.output / 'fixture-download.log',
+                                         expected_sha=MANIFEST['fixture']['sha256'], timeout=120)
+            if args.control_jar:
+                current = 'parity_samples'
+                parity_samples.mkdir()
+                samples = []
+                for index, sample in enumerate(MANIFEST['parity_samples']):
+                    if sample['file'] != Path(sample['file']).name or sample['file'] in ('.', '..'):
+                        raise ValueError('Unsafe parity sample filename')
+                    samples.append(download(sample['url'], parity_samples / sample['file'], env,
+                                            args.output / ('parity-sample-%d.log' % index),
+                                            expected_sha=sample['sha256'], expected_size=sample['bytes'], timeout=180))
+                stage(current, 'PASS', samples=samples)
+            # Complete real DeepImageJ/JDLL engine setup before copying the matched installations.
+            current = 'ganglia_engine_setup'
+            config = MANIFEST['ganglia_engine']
+            validated_assets = verify_required_assets(base, config['required_updater_assets'])
+            if probe(base, 'official', 'engine_install') != 'PASS':
+                raise RuntimeError('The supported JDLL installer failed; inspect official_engine_install evidence')
+            current = 'ganglia_engine_setup'
+            engine_dir = base / 'engines' / config['directory']
+            installer_files = verify_engine_files(engine_dir, config['artifacts'])
+            native = [a for a in config['artifacts'] if a.get('platform') == 'macosx-arm64']
+            if len(native) != 1:
+                raise ValueError('Exactly one pinned native CPU jar is required')
+            native = native[0]
+            native_stage = work / native['filename']
+            native_download = download(native['url'], native_stage, env, args.output / 'ganglia-native-download.log',
+                                       expected_sha=native['sha256'], timeout=300)
+            # The supported installer has already created a real verified engine here.
+            # Add its exact official native CPU binary; never fabricate readiness with an empty directory.
+            shutil.copy2(native_stage, engine_dir / native['filename'])
+            final_engine_files = verify_engine_files(engine_dir, config['artifacts'], include_native=True)
+            install_ganglia_probe(base)
+            if probe(base, 'official', 'engine_inference') != 'PASS':
+                raise RuntimeError('Real full-model JDLL load/inference failed; engine setup is not validated')
+            stage(current, 'PASS', installer='official_engine_install.json', inference='official_engine_inference.json',
+                  model_and_installed_runtime_pins=validated_assets, installer_files=installer_files,
+                  verified_engine_files=final_engine_files, native_cpu_download=native_download,
+                  note='Shipped JDLL installer plus exact pinned official native CPU jar; completed full model inference before copying either installation')
+            (args.output / 'engine-ready-inventory.json').write_text(json.dumps(inventory(base), indent=2)+'\n')
         # All source revisions use the same audited dependency bytes on the same native host.
         current = 'paired_overlays'; overlays = {}
         for variant in variants:
@@ -732,10 +794,17 @@ def main():
         stage(current, 'PASS', overlays=overlays)
         for variant in variants:
             root = work / variant / 'Fiji'
-            if variant != 'control':
+            if variant != 'control' and not args.installation_only:
                 install_nohu_probe(root)
             current = variant + '_startup'
             if probe(root, variant, 'startup') != 'PASS':
+                continue
+            if args.installation_only:
+                current = 'fork_registration'
+                registration = verify_installed_registration(
+                    json.loads((args.output / 'fork_startup.json').read_text()), args.fork_archive)
+                stage(current, 'PASS', **registration)
+                (args.output / 'fork-final-inventory.json').write_text(json.dumps(inventory(root), indent=2)+'\n')
                 continue
             if variant != 'control':
                 current = variant + '_dashboard'
@@ -762,10 +831,11 @@ def main():
             if summary.get('status') != 'PASS':
                 raise ValueError('Three-way ganglia parity summary did not report PASS')
             stage(current, 'PASS', evidence='ganglia-parity-summary.json', execution=comparison)
-        stage('ganglia_command', report['stages']['fork_ganglia']['status'], evidence='fork_ganglia.json',
-              note='Real installed-Fiji GAT command; original observation is separately recorded in original_ganglia.json')
-        stage('opencl_workflows','BLOCKED',reason='Native virtual M1 runner has no exposed OpenCL devices; requires a physical-device lane')
-        stage('full_interactive_workflows','BLOCKED',reason='Biological review, parameter UI, every workflow, and physical-Mac Finder/Gatekeeper first-open are outside this bounded lane')
+        if not args.installation_only:
+            stage('ganglia_command', report['stages']['fork_ganglia']['status'], evidence='fork_ganglia.json',
+                  note='Real installed-Fiji GAT command; original observation is separately recorded in original_ganglia.json')
+            stage('opencl_workflows','BLOCKED',reason='Native virtual M1 runner has no exposed OpenCL devices; requires a physical-device lane')
+            stage('full_interactive_workflows','BLOCKED',reason='Biological review, parameter UI, every workflow, and physical-Mac Finder/Gatekeeper first-open are outside this bounded lane')
     except Exception as exc:
         stage(current, 'FAIL', reason=str(exc))
     finally:
@@ -773,6 +843,8 @@ def main():
         report['no_existing_installation_modified'] = True
         report['interpretation'] = 'PASS applies only to a named completed stage. Original failures are observations, not automatically a successful before/after claim. No all-workflow PASS is possible in this lane.'
         save()
+    if args.installation_only:
+        return stage_exit_code(report, INSTALLATION_REQUIRED)
     # Expected original API failures do not fail the paired smoke acceptance gate.
     required = ['native_host','archive_download','archive_integrity','archive_extraction','bundled_java',
                 'pristine_startup','official_updater','installed_inventory','paired_overlays',
@@ -785,8 +857,7 @@ def main():
     if args.control_jar:
         required += ['control_startup', 'control_ganglia',
                      'original_parity', 'control_parity', 'fork_parity', 'parity_samples', 'ganglia_parity']
-    states = [report['stages'].get(s, {}).get('status', 'NOT_RUN') for s in required]
-    return 0 if all(s == 'PASS' for s in states) else 2 if 'FAIL' in states else 3
+    return stage_exit_code(report, required)
 
 
 if __name__ == '__main__':

@@ -75,7 +75,7 @@ public final class Fresh_Fiji_Probe implements PlugIn {
         for(Object k:Menus.getCommands().keySet())commands.put(String.valueOf(k),String.valueOf(Menus.getCommands().get(k)));
         report.put("registered_commands",commands);
         Map<String,Object> sources=new LinkedHashMap<>();
-        for(String name:new String[]{"UI.GatPluginUI","UI.Preflight","Features.Core.PluginCalls","Features.Tools.AlignStack","ij.IJ","net.imagej.Main","de.csbdresden.CommandFromMacro","de.csbdresden.stardist.StarDist2D","net.imagej.tensorflow.DefaultTensorFlowService","org.tensorflow.TensorFlow","TemplateMatching.Align_slices","DeepImageJ_Run"}){
+        for(String name:new String[]{"UI.GatPluginUI","UI.Preflight","Features.Core.PluginCalls","Features.Tools.AlignStack","Features.Macros.LegacyMacroStarDist","Features.Macros.LegacyTemplateMatching","Features.Inference.NativeAlignmentClient","ij.IJ","net.imagej.Main","de.csbdresden.CommandFromMacro","de.csbdresden.stardist.StarDist2D","net.imagej.tensorflow.DefaultTensorFlowService","org.tensorflow.TensorFlow","TemplateMatching.Align_slices","DeepImageJ_Run"}){
             try{Class<?> type=Class.forName(name,false,IJ.getClassLoader());java.security.CodeSource s=type.getProtectionDomain().getCodeSource();sources.put(name,map("loader",String.valueOf(type.getClassLoader()),"source",s==null?String.valueOf(type.getResource("/"+name.replace('.','/')+".class")):s.getLocation().toString()));}
             catch(Throwable t){sources.put(name,map("unavailable",t.toString()));}
         }
