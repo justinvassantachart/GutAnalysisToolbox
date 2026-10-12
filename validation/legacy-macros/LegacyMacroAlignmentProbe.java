@@ -100,6 +100,8 @@ public final class LegacyMacroAlignmentProbe {
                 List<String> dialogs = Collections.synchronizedList(new ArrayList<>());
                 List<String> guardDialogs = Collections.synchronizedList(new ArrayList<>());
                 Set<java.awt.Window> acknowledged = Collections.newSetFromMap(new IdentityHashMap<>());
+                Set<java.awt.Window> observedDialogs = Collections.newSetFromMap(new IdentityHashMap<>());
+                Thread macroThread = Thread.currentThread();
                 watching = true;
                 Thread observer = new Thread(() -> {
                     while (watching) {
@@ -110,7 +112,10 @@ public final class LegacyMacroAlignmentProbe {
                                 if (!dialog.getTitle().equals("Macro Error")) continue;
                                 try {
                                     String message = dialogMessage(dialog);
+                                    if (observedDialogs.add(dialog)) recordDialog(output, name, "observed", dialog, message, macroThread);
                                     if (!message.trim().replaceAll("\\s+", " ").startsWith(ORIGINAL_TYPE_ERROR + " in line ")) continue;
+                                    if (!LegacyMacroModalState.ready(macroThread.getState(), macroThread.getStackTrace())) continue;
+                                    recordDialog(output, name, "acknowledging-ready-modal", dialog, message, macroThread);
                                     acknowledged.add(candidate); dialogs.add(message);
                                     java.awt.EventQueue.invokeLater(() -> {
                                         java.awt.Button okay = dialog.getButtons()[0];
@@ -129,10 +134,13 @@ public final class LegacyMacroAlignmentProbe {
                                     java.lang.reflect.Field label = ij.gui.MessageDialog.class.getDeclaredField("label");
                                     label.setAccessible(true);
                                     String message = componentText((java.awt.Component) label.get(dialog));
+                                    if (observedDialogs.add(dialog)) recordDialog(output, name, "observed", dialog, message, macroThread);
                                     if (!message.equals(NATIVE_GUARD_MESSAGE)) continue;
                                     java.lang.reflect.Field button = ij.gui.MessageDialog.class.getDeclaredField("button");
                                     button.setAccessible(true);
                                     java.awt.Button okay = (java.awt.Button) button.get(dialog);
+                                    if (!LegacyMacroModalState.ready(macroThread.getState(), macroThread.getStackTrace())) continue;
+                                    recordDialog(output, name, "acknowledging-ready-modal", dialog, message, macroThread);
                                     acknowledged.add(candidate); guardDialogs.add(message);
                                     java.awt.EventQueue.invokeLater(() -> dialog.actionPerformed(new java.awt.event.ActionEvent(okay,
                                             java.awt.event.ActionEvent.ACTION_PERFORMED, okay.getLabel())));
@@ -218,6 +226,19 @@ public final class LegacyMacroAlignmentProbe {
             if (imagej != null) imagej.dispose();
         }
         System.exit(exit);
+    }
+
+    static void recordDialog(Path output, String name, String phase, java.awt.Dialog dialog, String message, Thread caller) throws Exception {
+        Map<String, Object> row = new LinkedHashMap<>();
+        Thread.State state = caller.getState(); StackTraceElement[] trace = caller.getStackTrace();
+        row.put("phase", phase); row.put("class", dialog.getClass().getName()); row.put("title", dialog.getTitle());
+        row.put("message", message); row.put("visible", dialog.isVisible()); row.put("displayable", dialog.isDisplayable());
+        row.put("caller_state", state.toString()); row.put("modal_ready", LegacyMacroModalState.ready(state, trace));
+        List<String> frames = new ArrayList<>();
+        for (StackTraceElement frame : trace) frames.add(frame.getClassName() + "." + frame.getMethodName());
+        row.put("caller_stack", frames);
+        Files.writeString(output.resolve(name + ".dialogs.jsonl"), new Gson().toJson(row) + "\n",
+                java.nio.file.StandardOpenOption.CREATE, java.nio.file.StandardOpenOption.APPEND);
     }
 
     /** Observe the actual rendered diagnostic, not a replacement error handler. */

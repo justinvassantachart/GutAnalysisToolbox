@@ -81,7 +81,7 @@ def main():
     out = args.output.resolve(); out.mkdir(parents=True, exist_ok=False)
     classes = out / 'classes'; classes.mkdir()
     baseline = ROOT / 'native-inference/validation/baseline'
-    sources = [HERE / 'LegacyMacroAlignmentProbe.java', baseline / 'BaselineUrlClassLoader.java', baseline / 'BaselineBootstrap.java']
+    sources = [HERE / 'LegacyMacroAlignmentProbe.java', HERE / 'LegacyMacroModalState.java', baseline / 'BaselineUrlClassLoader.java', baseline / 'BaselineBootstrap.java']
     cp = os.pathsep.join(map(str, entries))
     argfile = out / 'javac.args'
     argfile.write_text('\n'.join('"' + str(x).replace('\\', '\\\\').replace('"', '\\"') + '"'
