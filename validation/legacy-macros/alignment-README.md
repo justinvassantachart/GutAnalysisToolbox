@@ -139,17 +139,16 @@ as artifacts even when a control fails. In particular, a native call that
 continues after an error when the original aborts is a failing result, not a
 permitted exception. The lane has no tolerance or automatic mismatch approval.
 
-## Size-limit follow-up
+## Capacity regression
 
-The inherited production alignment protocol currently rejects more than
-67,108,864 total pixels, even for 8-bit data. For example, a 512×512×257 movie
-contains 67,371,008 pixels and crosses that limit. The original plugin's source
-does not impose that specific limit. No parity claim for that movie follows
-from the small boundary test above. Testing the original on that bounded
-counterexample is a separate queued experiment; neither the cap nor production
-adapters have been changed here.
+The actual original handled a 512×512×257 8-bit movie that crossed the inherited
+67,108,864-total-pixel cap. The separate capacity probe now runs that exact
+fixture on original Linux and native Linux/macOS, with independent pixel/CSV
+checks and measured process-tree RSS. See `alignment-capacity-README.md`.
 
-A possible future remedy needs an independently verified, streamed per-frame
-worker design. Simply removing the cap would not address the current whole-
-stack allocations and would weaken memory safeguards. No such remedy is
-implemented or claimed by this harness.
+The compatibility update changes only admission at both protocol endpoints:
+raw pixels ≤512 MiB and raw bytes +8×plane pixels +64 MiB ≤768 MiB. It retains
+the per-plane limit, 10,000-frame guard, bit depths, reference validation,
+1 GiB worker heap, timeout and protocol. The estimate covers managed heap,
+not all native/off-heap memory. No streaming or algorithm change is introduced.
+All seven ordinary boundary controls still run and must pass independently.

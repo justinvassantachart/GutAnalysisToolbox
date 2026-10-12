@@ -20,7 +20,7 @@ from alignment_runtime import artifacts
 from run_alignment_probe import macro_source, SCOPE
 
 HERE = Path(__file__).resolve().parent
-NATIVE_TYPE_ERROR = 'java.lang.IllegalArgumentException: Native Template Matching requires an 8/16-bit stack, valid reference slice and at most 67,108,864 total pixels'
+NATIVE_TYPE_ERROR = 'java.lang.IllegalArgumentException: Native Template Matching requires an 8/16-bit stack, valid reference slice, at most 67,108,864 pixels per plane and the bounded stack-memory budget (512 MiB raw pixels; 768 MiB estimated Java working set)'
 NATIVE_GUARD_MESSAGE = 'MacroFork alignment failed: GAT_ALIGNMENT_ERROR: ' + NATIVE_TYPE_ERROR
 ORIGINAL_TYPE_ERROR = '"Align slices in stack..." requires an image of type: 8-bit grayscale 16-bit grayscale'
 ERROR_PATTERN = re.compile(r'exception|\[error\]|no such method|unsatisfiedlink', re.I)

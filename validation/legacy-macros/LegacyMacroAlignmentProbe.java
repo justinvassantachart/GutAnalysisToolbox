@@ -30,7 +30,7 @@ public final class LegacyMacroAlignmentProbe {
     private static final List<String> dispatched = Collections.synchronizedList(new ArrayList<>());
     private static final Map<Long, String> workers = Collections.synchronizedMap(new LinkedHashMap<>());
     private static volatile boolean watching;
-    private static final String NATIVE_TYPE_ERROR = "java.lang.IllegalArgumentException: Native Template Matching requires an 8/16-bit stack, valid reference slice and at most 67,108,864 total pixels";
+    private static final String NATIVE_TYPE_ERROR = "java.lang.IllegalArgumentException: Native Template Matching requires an 8/16-bit stack, valid reference slice, at most 67,108,864 pixels per plane and the bounded stack-memory budget (512 MiB raw pixels; 768 MiB estimated Java working set)";
     private static final String NATIVE_GUARD_MESSAGE = "MacroFork alignment failed: GAT_ALIGNMENT_ERROR: " + NATIVE_TYPE_ERROR;
     private static final String ORIGINAL_TYPE_ERROR = "\"Align slices in stack...\" requires an image of type: 8-bit grayscale 16-bit grayscale";
 
