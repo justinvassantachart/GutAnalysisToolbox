@@ -124,8 +124,12 @@ reference ROI, whole-image search, integer peak selection and ImageJ translation
 It does not substitute SIFT. Source, GPL license and build POM accompany the
 worker. Keep this module outside Fiji's normal classpath.
 
-The adapter supports 8/16-bit stacks, up to 67,108,864 total pixels and 10,000
-frames, with explicit validation before modifying the source. Linux tests
+The historical previews limited 8/16-bit stacks to 67,108,864 total pixels.
+Preview 7 keeps 67,108,864 pixels per plane and 10,000 frames, but admits total
+raw pixels by bytes: at most 512 MiB, with raw bytes + 8×plane pixels + 64 MiB
+at most 768 MiB. The 1 GiB worker heap and 900-second default timeout remain.
+This is a managed-heap estimate, not a bound on OpenCV native memory or Fiji's
+separate source/output copies. Validation precedes source modification. Linux tests
 include 300 output frames across synthetic references 1/2/3 and the public
 142-frame calcium movie with references 1/71. The actual native Mac GAT adapter
 passed the paired synthetic control and all six/300-frame port and actual-adapter comparisons on native Mac; interactive single/batch review remains.
