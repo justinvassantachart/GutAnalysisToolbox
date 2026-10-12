@@ -1,3 +1,8 @@
+> Historical Java V2 guidance/evidence. This document describes earlier
+> previews; its download and installation directions are not the current
+> MacroFork instructions. For preview 7 use [the current setup guide](preview-7-setup.md)
+> (`START_HERE_PREVIEW_7.md` in the package) and preview-7 release notes.
+
 # Apple Silicon workflow coverage
 
 **Updated 2026-10-10. Scope: Java GATV2 in this fork.** Native evidence comes
