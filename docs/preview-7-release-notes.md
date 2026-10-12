@@ -45,9 +45,11 @@ clusters, as in the original algorithm. Keep original data and working installs.
   and arbitrary manual edits are not exhaustively covered by hosted tests.
 - The historical Sox10-only route requires its exact historical helpers/model
   and is not established by neuron/subtype tests. No guessed model is substituted.
-- Native alignment currently limits total input pixels to 67,108,864 and
-  planes to 10,000, with a 900-second worker timeout. Unsupported inputs stop;
-  do not assume a long movie fits just because each frame is small.
+- Native alignment admits at most 512 MiB of raw image data and a 768 MiB
+  Java-memory estimate (raw data + eight bytes per frame pixel + 64 MiB).
+  The per-frame limit remains 67,108,864 pixels, with at most 10,000 frames
+  and a 900-second worker timeout. This leaves headroom in the 1 GiB worker
+  heap; native/OpenCV memory is additional. Unsupported inputs stop.
 - Native model output still needs a Java-indexable full tensor in memory even
   with tiling. Custom models must meet the documented worker tensor contract.
 - Java V2's inherited delete-all-review behavior restores fallback labels;
