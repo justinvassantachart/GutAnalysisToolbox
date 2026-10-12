@@ -13,11 +13,33 @@ import java.util.Locale;
 public final class LegacyTemplateMatching {
     private LegacyTemplateMatching() { }
 
-    /** ImageJ macro call() accepts String arguments and a String return value. */
+    /** Only this exact token permits a generated macro to continue downstream. */
+    public static final String SUCCESS_TOKEN = "GAT_ALIGNMENT_OK";
+    public static final String ERROR_PREFIX = "GAT_ALIGNMENT_ERROR: ";
+
+    /**
+     * IJ1 call() can swallow reflective exceptions and continue the macro.
+     * Return an explicit outcome instead; generated callers must check the exact
+     * success token and exit on every other result before saving/processing.
+     */
     public static String run(String options) {
+        try {
+            runWithExceptions(options);
+            return SUCCESS_TOKEN;
+        } catch (RuntimeException failure) {
+            return ERROR_PREFIX + failure.toString();
+        }
+    }
+
+    private static void runWithExceptions(String options) {
         if (!useNativeWorker()) {
-            IJ.run("Align slices in stack...", options);
-            return "legacy";
+            // Use the same interpreter-aware dispatch as IJ1's macro run().
+            // A plugin's IJ.error() must abort that caller, not merely return.
+            ij.macro.Interpreter interpreter = ij.macro.Interpreter.getInstance();
+            IJ.run(interpreter, "Align slices in stack...", options);
+            if (interpreter != null && interpreter.getErrorMessage() != null)
+                throw new IllegalStateException(interpreter.getErrorMessage());
+            return;
         }
         ImagePlus image = IJ.getImage();
         int reference = validateOptions(image, options);
@@ -42,7 +64,7 @@ public final class LegacyTemplateMatching {
                 IJ.log("Slice:" + (int) table.getValue("Slice", row) + " X displacement:"
                         + table.getValue("dX", row) + " Y displacement:" + table.getValue("dY", row));
             if (Boolean.parseBoolean(Macro.getValue(options, "show", "true"))) table.show("Results");
-            return "native";
+            return;
         } catch (InterruptedException error) {
             Thread.currentThread().interrupt();
             throw new IllegalStateException("Legacy macro Template Matching interrupted; input was not changed.", error);
