@@ -142,7 +142,7 @@ def main():
         'plugin_sha256': hashlib.sha256(plugin.read_bytes()).hexdigest(),
         'inference_bundle_sha256': hashlib.sha256(inference.read_bytes()).hexdigest(),
         'alignment_bundle_sha256': hashlib.sha256(alignment.read_bytes()).hexdigest(),
-        'validation_note': 'Class comparison establishes build consistency only. Test execution and outcomes are recorded separately; see APPLE_SILICON.md and workflow matrix.',
+        'validation_note': 'Class comparison establishes build consistency only. Test execution and outcomes are recorded separately; see START_HERE_PREVIEW_7.md and PREVIEW_7_RELEASE_NOTES.md. The older Java V2 workflow matrix is historical context.',
     }
     with zipfile.ZipFile(destination, 'w', compression=zipfile.ZIP_DEFLATED) as output:
         output.write(plugin, 'plugins/' + plugin.name)
@@ -150,10 +150,10 @@ def main():
             output.writestr(name, data)
         copy_bundle(inference, output, 'gat-native-inference')
         copy_bundle(alignment, output, 'gat-native-alignment')
-        output.write(root / 'docs/apple-silicon.md', 'APPLE_SILICON.md')
+        output.write(root / 'docs/preview-7-setup.md', 'APPLE_SILICON.md')
         output.write(root / 'docs/apple-silicon-workflow-matrix.md', 'apple-silicon-workflow-matrix.md')
-        output.write(root / 'docs/preview-6-setup.md', 'PREVIEW_6_SETUP.md')
-        output.write(root / 'docs/preview-6-release-notes.md', 'PREVIEW_6_RELEASE_NOTES.md')
+        output.write(root / 'docs/preview-7-setup.md', 'START_HERE_PREVIEW_7.md')
+        output.write(root / 'docs/preview-7-release-notes.md', 'PREVIEW_7_RELEASE_NOTES.md')
         output.write(root / 'docs/validation/maintainer-review-2026-10-06.md', 'MAINTAINER_REVIEW_2026-10-06.md')
         output.write(root / 'docs/validation/fork-hardening-2026-10-06.md', 'FORK_HARDENING_2026-10-06.md')
         output.write(root / 'LICENSE', 'GAT_LICENSE')
