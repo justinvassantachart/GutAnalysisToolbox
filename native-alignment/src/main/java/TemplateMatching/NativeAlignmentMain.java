@@ -18,21 +18,38 @@ import java.nio.file.Paths;
 /** GPL-3.0 standalone protocol adapter for the original, separately licensed plugin. */
 public final class NativeAlignmentMain {
     static final int INPUT_MAGIC = 0x47415441, OUTPUT_MAGIC = 0x47415453, VERSION = 2;
-    static final long MAX_PIXELS = 67_108_864L;
+    static final long MAX_PIXELS = 67_108_864L; // Per plane, retained from protocol 2.
+    static final long MAX_RAW_BYTES = 512L * 1024 * 1024;
+    static final long JAVA_WORKING_BUDGET = 768L * 1024 * 1024;
+    static final long JAVA_RUNTIME_RESERVE = 64L * 1024 * 1024;
+    static final long PLANE_SCRATCH_BYTES_PER_PIXEL = 8L;
     static final class Input {
         final ImagePlus image;
         final int reference;
         Input(ImagePlus image, int reference) { this.image = image; this.reference = reference; }
+    }
+    /** Admission estimate for managed heap, not a bound on native/OpenCV RSS.
+     * Keep at least 256 MiB of the worker's 1 GiB heap outside the estimate.
+     * Shape checks precede products, file writes and pixel-array allocation. */
+    static long rawBytesForShape(int width, int height, int frames, int bits, int reference) throws IOException {
+        long plane = (long) width * height;
+        if (width < 2 || height < 2 || frames < 2 || frames > 10000 || (bits != 8 && bits != 16)
+                || reference < 1 || reference > frames || plane > MAX_PIXELS)
+            throw new IOException("Native Template Matching requires an 8/16-bit stack, valid reference slice, at most 67,108,864 pixels per plane and the bounded stack-memory budget (512 MiB raw pixels; 768 MiB estimated Java working set)");
+        // With validated bounds all products fit long, even at 10,000 planes.
+        long rawBytes = plane * frames * (bits / 8);
+        long estimatedJavaBytes = rawBytes + PLANE_SCRATCH_BYTES_PER_PIXEL * plane + JAVA_RUNTIME_RESERVE;
+        if (rawBytes > MAX_RAW_BYTES || estimatedJavaBytes > JAVA_WORKING_BUDGET)
+            throw new IOException("Native Template Matching requires an 8/16-bit stack, valid reference slice, at most 67,108,864 pixels per plane and the bounded stack-memory budget (512 MiB raw pixels; 768 MiB estimated Java working set)");
+        return rawBytes;
     }
     static Input readInput(Path path) throws IOException {
         try (DataInputStream in = new DataInputStream(new BufferedInputStream(Files.newInputStream(path)))) {
             if (in.readInt() != INPUT_MAGIC || in.readInt() != VERSION) throw new IOException("Unsupported alignment input protocol; install the matching plugin and alignment worker together");
             int width = in.readInt(), height = in.readInt(), frames = in.readInt(), bits = in.readInt(), reference = in.readInt();
             long plane = (long) width * height;
-            if (width < 2 || height < 2 || frames < 2 || frames > 10000 || (bits != 8 && bits != 16)
-                    || reference < 1 || reference > frames || plane > MAX_PIXELS || plane * frames > MAX_PIXELS)
-                throw new IOException("Unsupported stack dimensions, bit depth or reference slice");
-            long expected = 28L + frames * (16L + 1024L + plane * (bits / 8));
+            long rawBytes = rawBytesForShape(width, height, frames, bits, reference);
+            long expected = 28L + frames * (16L + 1024L) + rawBytes;
             if (Files.size(path) != expected) throw new IOException("Incomplete or extra alignment input bytes");
             ImageStack stack = new ImageStack(width, height);
             int[] firstPalette = null;
