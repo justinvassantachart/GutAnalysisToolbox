@@ -1,0 +1,1411 @@
+{
+  "schema_version": 1,
+  "scope": "macro-user-workflow-impact-only",
+  "not_a_runtime_result": true,
+  "source_revision": "f2098636d5f42f73c3e724286af0b212fe3ea5c0",
+  "instruction": "Test workflows if and only if functionality can be affected by fork changes. Do not fix or expand unrelated inherited behavior.",
+  "change_totals": {
+    "scripts": 47,
+    "stardist_sites": 8,
+    "alignment_sites": 3,
+    "alignment_fail_stop_guards": 3,
+    "settings_option_path_quotes": 7,
+    "unallowlisted_computation_changes": 0
+  },
+  "evidence_contracts": {
+    "exact-source-overlay-audit": "audit_sources.py: exact pre-deletion blobs plus narrow independently reconstructed substitutions",
+    "namespace-installation-audit": "All47 scripts,48 assets and changed helper/menu references present with checked byte identity; actual Fiji discovery where the renamed menu is invoked",
+    "registered-inference-matrix": "30 actual original/native Command From Macro model cases on Linux and native Apple Silicon; exact label and quantified ROI comparisons",
+    "original-nms-roi-matrix": "720 actual original NMS versus native-adapter NMS pairs; real global ROI Manager, outputs and positions",
+    "representative-real-top-menu-flow": "Unchanged installed original/generated macro invoked by actual discovered menu, real dashboard/review, reopened exports",
+    "registered-alignment-paired-probe": "Actual original IJ.run versus generated call() boundary; independent shift/pixel oracle and visible ordered Results/CSV",
+    "alignment-unsupported-input-control": "Same unsupported32 input must stop cleanly with recorded after-call continuation behavior; no unrelated errors accepted",
+    "registered-renamed-neuron-menu": "Actual Fiji Menus registration and successful renamed top-menu dispatch, not synthetic mapping",
+    "batch-command-routing-probe": "Execute original/generated exact batch command with preserved argument values; namespace audit alone is not marked as executed batch coverage"
+  },
+  "explicitly_not_new_standalone_suites": [
+    "unchanged EDF/projection mathematics",
+    "unchanged spatial analysis mathematics",
+    "unchanged CSV merge or export calculations",
+    "unchanged calcium F/F0 and tracing calculations",
+    "inherited bugs outside altered call/namespace boundaries"
+  ],
+  "scripts": [
+    {
+      "source": "Analysis/_Merge_Results.ijm",
+      "source_sha256": "9e58d2efc6322e1f151077e99e61f071fd20998f1a04779f7dd02f2165f7f2b9",
+      "destination": "scripts/GAT MacroFork/Analysis/_Merge_Results [MacroFork].ijm",
+      "destination_sha256": "9e58d2efc6322e1f151077e99e61f071fd20998f1a04779f7dd02f2165f7f2b9",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Analysis/_Merge_Results_multiple_csv.ijm",
+      "source_sha256": "c380de056ab564658755e3bdef8c48eb7ac1d67587c7b1b04298acfbbac2fef5",
+      "destination": "scripts/GAT MacroFork/Analysis/_Merge_Results_multiple_csv [MacroFork].ijm",
+      "destination_sha256": "c380de056ab564658755e3bdef8c48eb7ac1d67587c7b1b04298acfbbac2fef5",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Batch_mode/batch_mode_example.ijm",
+      "source_sha256": "d161fe29aaa05ce8a583a9fac4efafe92ee5dd0155bc97da27a31f3e5c62b5fe",
+      "destination": "scripts/GAT MacroFork/Batch_mode/batch_mode_example [MacroFork].ijm",
+      "destination_sha256": "436e268734fb387697fd8b7787b69af182d23f23ce8991336dd4d9fe4a93ba74",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 3,
+      "batch_executable_dispatch_sites": 1,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-renamed-neuron-menu",
+        "batch-command-routing-probe"
+      ],
+      "impact": "renamed-indirect-neuron-menu-dispatch"
+    },
+    {
+      "source": "Calcium imaging/_Align_stack.ijm",
+      "source_sha256": "fc04bcc2241f3a18ea4bc5e71f28c31e9bcc6e6b8d03d4d945e10195ce36e868",
+      "destination": "scripts/GAT MacroFork/Calcium imaging/_Align_stack [MacroFork].ijm",
+      "destination_sha256": "5fa0ddde0b5855afec680e36fecb0741de6350d9c2e872d631073bbd8bc3a0a8",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 2,
+      "alignment_fail_stop_guards": 2,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-alignment-paired-probe",
+        "alignment-unsupported-input-control"
+      ],
+      "impact": "native-alignment-call-boundary-pixels-ui-and-error-flow"
+    },
+    {
+      "source": "Calcium imaging/_Align_stack_batch.ijm",
+      "source_sha256": "93b4b283c7a5513081aa692eefbea19b83a2d0c8808d31bc73928eeae291e088",
+      "destination": "scripts/GAT MacroFork/Calcium imaging/_Align_stack_batch [MacroFork].ijm",
+      "destination_sha256": "ffb9e3994153da4e6ae82e53d8dfbe4586be4082c1f25edb8fb3256d90348f4e",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 1,
+      "alignment_fail_stop_guards": 1,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-alignment-paired-probe",
+        "alignment-unsupported-input-control"
+      ],
+      "impact": "native-alignment-call-boundary-pixels-ui-and-error-flow"
+    },
+    {
+      "source": "Calcium imaging/_Calcium_imaging_analysis.ijm",
+      "source_sha256": "8813de010e274b7d91fd859ec83a442c68b38fde951769b59496920adc6bc0be",
+      "destination": "scripts/GAT MacroFork/Calcium imaging/_Calcium_imaging_analysis [MacroFork].ijm",
+      "destination_sha256": "2e3bd18e58b2c6c9bf1a2b1e22ecc11099d983a604100d7cfdefa0e0f822e70f",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 1,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/stardist_batch.py"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-inference-matrix",
+        "original-nms-roi-matrix"
+      ],
+      "actual_original_call_contract": {
+        "arguments": {
+          "input": "\"+img_seg+\"",
+          "modelChoice": "Model (.zip) from File",
+          "normalizeInput": "true",
+          "percentileBottom": "1.0",
+          "percentileTop": "99.8",
+          "probThresh": "\"+probability+\"",
+          "nmsThresh": "\"+overlap+\"",
+          "outputType": "Both",
+          "modelFile": "\"+model_file+\"",
+          "nTiles": "\"+n_tiles+\"",
+          "excludeBoundary": "2",
+          "roiPosition": "Automatic",
+          "verbose": "false",
+          "showCsbdeepProgress": "false",
+          "showProbAndDist": "false"
+        },
+        "bridge_process_false": true,
+        "line_sha256": "3915a6a3c4200ecc81d29f7032e2c8e61da1ad52c17ead03636c271e5b649634"
+      },
+      "impact": "native-inference-boundary-and-returned-image-roi-state",
+      "discharge_rule": "Changed calcium StarDist boundary uses the same validated original parameter contract; unchanged F/F0, EDF, tracing and CSV computations do not require standalone retesting."
+    },
+    {
+      "source": "Calcium imaging/_Temporal_Colour_Code (GAT).ijm",
+      "source_sha256": "4d54c3fb6cf30dac8ab2edf6ec91fcfdb7e6d1a0342af87a524dd8a576e9a666",
+      "destination": "scripts/GAT MacroFork/Calcium imaging/_Temporal_Colour_Code (GAT) [MacroFork].ijm",
+      "destination_sha256": "4d54c3fb6cf30dac8ab2edf6ec91fcfdb7e6d1a0342af87a524dd8a576e9a666",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Multiplex/_Multiplex_Registration.ijm",
+      "source_sha256": "d150b9bd65bc09d2231862270006eb048ef220e94e9f19607fd86eaacca1d48c",
+      "destination": "scripts/GAT MacroFork/Multiplex/_Multiplex_Registration [MacroFork].ijm",
+      "destination_sha256": "d150b9bd65bc09d2231862270006eb048ef220e94e9f19607fd86eaacca1d48c",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Spatial Analysis/_Number of neighbours (One celltype).ijm",
+      "source_sha256": "f5df240d50447f7171123b360b9772b1291b9ea61d24aba4e6ccd0a872b4a204",
+      "destination": "scripts/GAT MacroFork/Spatial Analysis/_Number of neighbours (One celltype) [MacroFork].ijm",
+      "destination_sha256": "a3ecc6610b81afe59bfb2536cf459e6cf6ea7ed010f7cbe4b3eb166b12a9d42e",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/spatial_single_celltype.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Spatial Analysis/_Number of neighbours (Two celltype).ijm",
+      "source_sha256": "f7857e7f181b1bede548901c2c0641d213bb3dfc10272ad0190c9908b17f466f",
+      "destination": "scripts/GAT MacroFork/Spatial Analysis/_Number of neighbours (Two celltype) [MacroFork].ijm",
+      "destination_sha256": "f2ca7b40aa4a4484755ee81a926ab55cce0a375b79168101d647c3cb39a3cac6",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/spatial_hu_marker.ijm",
+        "Tools/commands/spatial_two_celltype.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/Data_Curation/_Annotate_cells_2D.ijm",
+      "source_sha256": "54f426889a3223fddaf30d31e204bd91e74980ba68783c181babdc2b172a5078",
+      "destination": "scripts/GAT MacroFork/Tools/Data_Curation/_Annotate_cells_2D [MacroFork].ijm",
+      "destination_sha256": "54f426889a3223fddaf30d31e204bd91e74980ba68783c181babdc2b172a5078",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/Data_Curation/_Annotate_ganglia_2D.ijm",
+      "source_sha256": "70330b0317de2b5217091e2472ed9289bb86969d59bbb9aa426e31bdae0c318f",
+      "destination": "scripts/GAT MacroFork/Tools/Data_Curation/_Annotate_ganglia_2D [MacroFork].ijm",
+      "destination_sha256": "70330b0317de2b5217091e2472ed9289bb86969d59bbb9aa426e31bdae0c318f",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/Data_Curation/_Rescale_image_masks_pixel_size.ijm",
+      "source_sha256": "b1ab52ee3fcbeb487cd36edfd0171a9aab0a32ac3398c0378f5ca71d54d84fce",
+      "destination": "scripts/GAT MacroFork/Tools/Data_Curation/_Rescale_image_masks_pixel_size [MacroFork].ijm",
+      "destination_sha256": "b1ab52ee3fcbeb487cd36edfd0171a9aab0a32ac3398c0378f5ca71d54d84fce",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/Data_Curation/_Rescale_image_masks_resolution.ijm",
+      "source_sha256": "e6ae92e0eec320aa85b63afb9ac0962ad180bc901e56ef1c26d1808e836cf624",
+      "destination": "scripts/GAT MacroFork/Tools/Data_Curation/_Rescale_image_masks_resolution [MacroFork].ijm",
+      "destination_sha256": "e6ae92e0eec320aa85b63afb9ac0962ad180bc901e56ef1c26d1808e836cf624",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/Data_Curation/_Verify_Images_Masks.ijm",
+      "source_sha256": "5dcb39f47d367b45d52f5ac2587f79b88f5b95cce26b5375d52b0cd273e270a5",
+      "destination": "scripts/GAT MacroFork/Tools/Data_Curation/_Verify_Images_Masks [MacroFork].ijm",
+      "destination_sha256": "5dcb39f47d367b45d52f5ac2587f79b88f5b95cce26b5375d52b0cd273e270a5",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/_QC_cell_count_GT_predictions.ijm",
+      "source_sha256": "ab1bf347a14bf4a9f86bd4289c2967033b4e307de12dc9ce0d4a15212554ecff",
+      "destination": "scripts/GAT MacroFork/Tools/_QC_cell_count_GT_predictions [MacroFork].ijm",
+      "destination_sha256": "ab1bf347a14bf4a9f86bd4289c2967033b4e307de12dc9ce0d4a15212554ecff",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/_Save_max_projection.ijm",
+      "source_sha256": "543c0e38c0f57e64d8cd0c84da4c47a3aa32fae1a65e10d825b782a8c6a25580",
+      "destination": "scripts/GAT MacroFork/Tools/_Save_max_projection [MacroFork].ijm",
+      "destination_sha256": "543c0e38c0f57e64d8cd0c84da4c47a3aa32fae1a65e10d825b782a8c6a25580",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/_Test_neuron_probability.ijm",
+      "source_sha256": "9403a007a5616653984553c0d3af33060430ad805fe8b71e4172a74257bb6a04",
+      "destination": "scripts/GAT MacroFork/Tools/_Test_neuron_probability [MacroFork].ijm",
+      "destination_sha256": "e2f70bf77adec55b4942d3c298a4d5e330f25fe335e813091478ca0d2d9a9054",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 1,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 1,
+      "installation_path_changes": 2,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/gat_settings.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-inference-matrix",
+        "original-nms-roi-matrix"
+      ],
+      "actual_original_call_contract": {
+        "arguments": {
+          "input": "\"+new_name+\"",
+          "modelChoice": "Model (.zip) from File",
+          "normalizeInput": "true",
+          "percentileBottom": "1.0",
+          "percentileTop": "99.8",
+          "probThresh": "\"+i+\"",
+          "nmsThresh": "\"+overlap+\"",
+          "outputType": "Both",
+          "modelFile": "\"+model_file+\"",
+          "nTiles": "\"+tiles+\"",
+          "excludeBoundary": "2",
+          "roiPosition": "Automatic",
+          "verbose": "false",
+          "showCsbdeepProgress": "false",
+          "showProbAndDist": "false"
+        },
+        "bridge_process_false": true,
+        "line_sha256": "9f184eef1536e9aa88f09151b78bd80a7af64412306336b25abd1af0902e2415"
+      },
+      "impact": "native-inference-boundary-and-returned-image-roi-state",
+      "discharge_rule": "Probability/scale/tile-dependent adapter behavior is covered by executable inference and NMS matrices; unchanged loop/UI/calibration arithmetic is byte-audited, not reimplemented."
+    },
+    {
+      "source": "Tools/_Test_neuron_rescaling.ijm",
+      "source_sha256": "c457402c30947ada3e92b901e825b0ab10eabda5d0a3f3e67aba6440e911350f",
+      "destination": "scripts/GAT MacroFork/Tools/_Test_neuron_rescaling [MacroFork].ijm",
+      "destination_sha256": "f880fa2a6617c22150f05405b0cc4a168066187c22e7166b817dc0afa83c1a16",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 1,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 1,
+      "installation_path_changes": 2,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/gat_settings.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-inference-matrix",
+        "original-nms-roi-matrix"
+      ],
+      "actual_original_call_contract": {
+        "arguments": {
+          "input": "\"+img_seg+\"",
+          "modelChoice": "Model (.zip) from File",
+          "normalizeInput": "true",
+          "percentileBottom": "1.0",
+          "percentileTop": "99.8",
+          "probThresh": "\"+probability+\"",
+          "nmsThresh": "\"+overlap+\"",
+          "outputType": "Both",
+          "modelFile": "\"+model_file+\"",
+          "nTiles": "\"+tiles+\"",
+          "excludeBoundary": "2",
+          "roiPosition": "Automatic",
+          "verbose": "false",
+          "showCsbdeepProgress": "false",
+          "showProbAndDist": "false"
+        },
+        "bridge_process_false": true,
+        "line_sha256": "198461897a589b2788d1d64da6d590c248d9295542a098dd7551869a583b4425"
+      },
+      "impact": "native-inference-boundary-and-returned-image-roi-state",
+      "discharge_rule": "Probability/scale/tile-dependent adapter behavior is covered by executable inference and NMS matrices; unchanged loop/UI/calibration arithmetic is byte-audited, not reimplemented."
+    },
+    {
+      "source": "Tools/_Test_neuron_rescaling_advanced.ijm",
+      "source_sha256": "dda0ad9d5d8e0297dc894a6768dce62cb9f3dcbbdbed87b696dbb4eb2b0b007f",
+      "destination": "scripts/GAT MacroFork/Tools/_Test_neuron_rescaling_advanced [MacroFork].ijm",
+      "destination_sha256": "df903939a86b536d85dd9a191e4e9e7d73d596dd3dea642687b1d3c7290577c1",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 1,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 1,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/gat_settings.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-inference-matrix",
+        "original-nms-roi-matrix"
+      ],
+      "actual_original_call_contract": {
+        "arguments": {
+          "input": "\"+img_seg+\"",
+          "modelChoice": "Model (.zip) from File",
+          "normalizeInput": "true",
+          "percentileBottom": "1.0",
+          "percentileTop": "99.8",
+          "probThresh": "\"+probability+\"",
+          "nmsThresh": "\"+overlap+\"",
+          "outputType": "Both",
+          "modelFile": "\"+model_file+\"",
+          "nTiles": "\"+tiles+\"",
+          "excludeBoundary": "2",
+          "roiPosition": "Automatic",
+          "verbose": "false",
+          "showCsbdeepProgress": "false",
+          "showProbAndDist": "false"
+        },
+        "bridge_process_false": true,
+        "line_sha256": "fb35d8ccfd497318b7cbc4146b6d59e7d56e074be1e5a9c36678b6ddd4c4d4f2"
+      },
+      "impact": "native-inference-boundary-and-returned-image-roi-state",
+      "discharge_rule": "Probability/scale/tile-dependent adapter behavior is covered by executable inference and NMS matrices; unchanged loop/UI/calibration arithmetic is byte-audited, not reimplemented."
+    },
+    {
+      "source": "Tools/_^Test_ganglia_segmentation_Hu.ijm",
+      "source_sha256": "bfa620625711442bbe25a7e1736f2c0c0c707d398b755b0bd584742c9762825d",
+      "destination": "scripts/GAT MacroFork/Tools/_^Test_ganglia_segmentation_Hu [MacroFork].ijm",
+      "destination_sha256": "fa8c7884787ca05fa97f592d9bc9f8307f60e0d2eb9d90100c8ffc02dec40de4",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Convert_ROI_to_Labels.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/Calculate_Neurons_per_Ganglia.ijm",
+      "source_sha256": "7a88c83b655c4b30cc4b0e459a827a1a6b6c85c8f68fedecf0bb89add9c61107",
+      "destination": "scripts/GAT MacroFork/Tools/commands/Calculate_Neurons_per_Ganglia [MacroFork].ijm",
+      "destination_sha256": "bc0ff94626bab4abce06fe7225e404d37e44ba86c48d325b05647b72450914d8",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Calculate_Neurons_per_Ganglia.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/Calculate_Neurons_per_Ganglia_label.ijm",
+      "source_sha256": "7eb7e7a475b0767538625657e4afb812dcdb6635bcdfce33587aac708f9bacb5",
+      "destination": "scripts/GAT MacroFork/Tools/commands/Calculate_Neurons_per_Ganglia_label [MacroFork].ijm",
+      "destination_sha256": "40f9f34ae34d82ecf4d54069cc8b45e6dee4568ea40bee2564a334ce51c4b0e0",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Calculate_Neurons_per_Ganglia.ijm",
+        "Tools/commands/Calculate_Neurons_per_Ganglia_label.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/Convert_Label_to_ROIs.ijm",
+      "source_sha256": "eae84d992c9ae0f13bf1e701d97d542e5718ee0e5de4d58bb3e01ba0703ad9cf",
+      "destination": "scripts/GAT MacroFork/Tools/commands/Convert_Label_to_ROIs [MacroFork].ijm",
+      "destination_sha256": "036ed4212b27b6b4a0bf9835f811ca43200fbd52fb3986fbd4fd7af8fd5296bc",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Convert_Label_to_ROIs.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/Convert_ROI_to_Labels.ijm",
+      "source_sha256": "dc23dace96a0d5f51cd320b2ea3c184bafee57ca6082d3d183a5ac3b439956e0",
+      "destination": "scripts/GAT MacroFork/Tools/commands/Convert_ROI_to_Labels [MacroFork].ijm",
+      "destination_sha256": "dc23dace96a0d5f51cd320b2ea3c184bafee57ca6082d3d183a5ac3b439956e0",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/commands/Segment_Ganglia.ijm",
+      "source_sha256": "347d66946fc9d93c68dd8e87c98795cca8c1e0ca80e9c19ea3e94d593f2b511c",
+      "destination": "scripts/GAT MacroFork/Tools/commands/Segment_Ganglia [MacroFork].ijm",
+      "destination_sha256": "f0b0b472fc1bb71a44f0cacb293776ac916883cb579dc7eb439176943ff9b2ad",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 2,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Segment_Ganglia.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/check_plugin.ijm",
+      "source_sha256": "9e1679ab3ec5c6c6613b3cc798d57c011a3ebaacac59d44f7892dc290f39a9c4",
+      "destination": "scripts/GAT MacroFork/Tools/commands/check_plugin [MacroFork].ijm",
+      "destination_sha256": "0d4c180aff68f94a9544cd3827c4262a83c4a0fe760a6115707a4a24df3d75e2",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 1,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/gat_init_deepimagej_check.ijm",
+        "Tools/commands/gat_settings.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/find_roi_name.ijm",
+      "source_sha256": "4a1daf9d32bad012a1c01c8dd6a36c509cc610fed06ad46e8edbbd1370738875",
+      "destination": "scripts/GAT MacroFork/Tools/commands/find_roi_name [MacroFork].ijm",
+      "destination_sha256": "4a1daf9d32bad012a1c01c8dd6a36c509cc610fed06ad46e8edbbd1370738875",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/commands/first_time_msg.ijm",
+      "source_sha256": "a2e868a76b301f8202c9ffe2db9c5f4420381922f83c414eeba25ba76c90e083",
+      "destination": "scripts/GAT MacroFork/Tools/commands/first_time_msg [MacroFork].ijm",
+      "destination_sha256": "a2e868a76b301f8202c9ffe2db9c5f4420381922f83c414eeba25ba76c90e083",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/commands/ganglia_custom_roi.ijm",
+      "source_sha256": "61e0063e229085af56b14b99facb2260bc559e5ff6b1d8b2aa278e6ff39f416f",
+      "destination": "scripts/GAT MacroFork/Tools/commands/ganglia_custom_roi [MacroFork].ijm",
+      "destination_sha256": "305e5f7a4648f3f486eff46b8490404d9ec85171f8aeea04c574720108ce6a8d",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/Segment_Ganglia.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/ganglia_fix_missing_neurons.ijm",
+      "source_sha256": "7a4ed639eef0d3d2072d35706bb3d288a82277b578dfc65b2ff40e8cc82ec51f",
+      "destination": "scripts/GAT MacroFork/Tools/commands/ganglia_fix_missing_neurons [MacroFork].ijm",
+      "destination_sha256": "2cbe8d14918a2ae17a57ce86d1ccfdf15da857b0f0d82fa73980420cb09c7596",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Segment_Ganglia.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/ganglia_hu.ijm",
+      "source_sha256": "0332dc4b849cfe3b32ea08b830f98c9b221abe651b7aecb2c30bc75a5a016eab",
+      "destination": "scripts/GAT MacroFork/Tools/commands/ganglia_hu [MacroFork].ijm",
+      "destination_sha256": "b86d8c4f2d39d549d44de64cf8dc481cbfa74119574d8250d177c71a68492035",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Segment_Ganglia.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/gat_init_deepimagej_check.ijm",
+      "source_sha256": "4a40a0afc402fca5f1d64af3f6a3db07d71372992fefe7ccbf065bb3cb7d9cf4",
+      "destination": "scripts/GAT MacroFork/Tools/commands/gat_init_deepimagej_check [MacroFork].ijm",
+      "destination_sha256": "d900caa533094183878a8e274989cbd1a71ca4571f1963db7c405bb540ae6860",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/first_time_msg.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/gat_settings.ijm",
+      "source_sha256": "5b25fa06afaac77ec4dc4781561c2389bc98333e54ee25ccf476d7883733d072",
+      "destination": "scripts/GAT MacroFork/Tools/commands/gat_settings [MacroFork].ijm",
+      "destination_sha256": "5b25fa06afaac77ec4dc4781561c2389bc98333e54ee25ccf476d7883733d072",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/commands/rename_rois.ijm",
+      "source_sha256": "395455b8e7750427fa98abf33e1aceeebf406cac57394823208d8addff429a0c",
+      "destination": "scripts/GAT MacroFork/Tools/commands/rename_rois [MacroFork].ijm",
+      "destination_sha256": "395455b8e7750427fa98abf33e1aceeebf406cac57394823208d8addff429a0c",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/commands/save_centroids.ijm",
+      "source_sha256": "bf0d1e5edc51faddfc884251d0e0e0ce626d0af3fb2487a6f0bf34fa82d80d47",
+      "destination": "scripts/GAT MacroFork/Tools/commands/save_centroids [MacroFork].ijm",
+      "destination_sha256": "bf0d1e5edc51faddfc884251d0e0e0ce626d0af3fb2487a6f0bf34fa82d80d47",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "Tools/commands/save_img_mask.ijm",
+      "source_sha256": "b1cb3899bda509e9a969e6797cf9b6bec6a75096211eb7a531fd7a0ad80cd6ec",
+      "destination": "scripts/GAT MacroFork/Tools/commands/save_img_mask [MacroFork].ijm",
+      "destination_sha256": "26fd4819924ab415b2a62d518fe79a798e07a5d3bbebee1190dfc6a16d70b8c7",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/save_img_mask.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/save_roi_composite_img.ijm",
+      "source_sha256": "6ecaee5b0ce78c81e50d579297cd8c2187acb0768b57ec4017add2c0fdf2e48c",
+      "destination": "scripts/GAT MacroFork/Tools/commands/save_roi_composite_img [MacroFork].ijm",
+      "destination_sha256": "c7f518d500ac2f47bbcd59c6ed7e65b6b11ddb58f7613b63510db55298e42cc8",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/save_roi_composite_img.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/spatial_hu_marker.ijm",
+      "source_sha256": "c99e641b62714d8be3d111990d8b0c77431be27d4256d00fb077d0cd188e196e",
+      "destination": "scripts/GAT MacroFork/Tools/commands/spatial_hu_marker [MacroFork].ijm",
+      "destination_sha256": "fb59cb5d7a781b4469de5fdaae05f7c1b8daa10a5b59e005b34d87e3102b6be8",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/spatial_two_celltype.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/spatial_single_celltype.ijm",
+      "source_sha256": "00ac06962b0de331a5d00c9b2b0619f5f75dea8b532ce39963362e5b580cd0bc",
+      "destination": "scripts/GAT MacroFork/Tools/commands/spatial_single_celltype [MacroFork].ijm",
+      "destination_sha256": "6b9be19925eb7f04d5e17f73b65b0cd4a545c158396c24e3a57f70c874d9c666",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/spatial_single_celltype.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/spatial_two_celltype.ijm",
+      "source_sha256": "53f2d5a93081651f8a9af4556b1d084d0c520d2cce89827caa2cc644c3780225",
+      "destination": "scripts/GAT MacroFork/Tools/commands/spatial_two_celltype [MacroFork].ijm",
+      "destination_sha256": "d4d80c965c3e742a352e65c18aecc627037974344e7c285c1258ab7cbfc48ea6",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/spatial_single_celltype.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "namespace-routing-only",
+      "discharge_rule": "Assert every changed literal resolves to the same exact original/generated helper. The scientific computation bytes are unchanged; representative top-menu execution exercises helper loading."
+    },
+    {
+      "source": "Tools/commands/stardist_batch.py",
+      "source_sha256": "cfd187b66510eadbb37f5363cbb0eecf970825948d150813a2757827e568d107",
+      "destination": "scripts/GAT MacroFork/Tools/commands/stardist_batch [MacroFork].py",
+      "destination_sha256": "cfd187b66510eadbb37f5363cbb0eecf970825948d150813a2757827e568d107",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    },
+    {
+      "source": "_Analyse Glia (Sox10 only).ijm",
+      "source_sha256": "0659c98c2253b2c7509653d8f163e861884b8b01f9b933dda7736dd67fe59c83",
+      "destination": "scripts/GAT MacroFork/_Analyse Glia (Sox10 only) [MacroFork].ijm",
+      "destination_sha256": "24c2dd156a677699395cc5e7e5835783c744232619451564b19a7ff90133e8ee",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 1,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 1,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Calculate_Neurons_per_Ganglia.ijm",
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/Segment_Ganglia.ijm",
+        "Tools/commands/check_plugin.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-inference-matrix",
+        "original-nms-roi-matrix"
+      ],
+      "actual_original_call_contract": {
+        "arguments": {
+          "input": "\"+img_seg+\"",
+          "modelChoice": "Model (.zip) from File",
+          "normalizeInput": "true",
+          "percentileBottom": "1.0",
+          "percentileTop": "99.8",
+          "probThresh": "0.5",
+          "nmsThresh": "0.45",
+          "outputType": "Label Image",
+          "modelFile": "\"+model_file+\"",
+          "nTiles": "\"+n_tiles+\"",
+          "excludeBoundary": "2",
+          "roiPosition": "Automatic",
+          "verbose": "false",
+          "showCsbdeepProgress": "false",
+          "showProbAndDist": "false"
+        },
+        "bridge_process_false": true,
+        "line_sha256": "cb3141adece05002257d4707d5c9633e16815af661405af94884263b0c4e876d"
+      },
+      "impact": "native-inference-boundary-and-returned-image-roi-state",
+      "condition": "Automatic biological-model validation requires an actual researcher-selected Sox10 model; default setting is NA. Do not substitute a neuron model."
+    },
+    {
+      "source": "_Analyse Neuron (Multi-channel - No Hu).ijm",
+      "source_sha256": "5d341f982e62a5d0a841cd1abac9806eac128a27e17f5e63d4ac5d00990d201b",
+      "destination": "scripts/GAT MacroFork/_Analyse Neuron (Multi-channel - No Hu) [MacroFork].ijm",
+      "destination_sha256": "69461118d757a1cfdb1d51df97144ee2ea74a125a78344df2341418b80255557",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 1,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 1,
+      "installation_path_changes": 2,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Calculate_Neurons_per_Ganglia.ijm",
+        "Tools/commands/Calculate_Neurons_per_Ganglia_label.ijm",
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/Segment_Ganglia.ijm",
+        "Tools/commands/check_plugin.ijm",
+        "Tools/commands/ganglia_custom_roi.ijm",
+        "Tools/commands/gat_settings.ijm",
+        "Tools/commands/rename_rois.ijm",
+        "Tools/commands/save_centroids.ijm",
+        "Tools/commands/save_img_mask.ijm",
+        "Tools/commands/save_roi_composite_img.ijm",
+        "Tools/commands/spatial_two_celltype.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-inference-matrix",
+        "original-nms-roi-matrix",
+        "representative-real-top-menu-flow"
+      ],
+      "actual_original_call_contract": {
+        "arguments": {
+          "input": "\"+img_seg+\"",
+          "modelChoice": "Model (.zip) from File",
+          "normalizeInput": "true",
+          "percentileBottom": "1.0",
+          "percentileTop": "99.8",
+          "probThresh": "\"+probability+\"",
+          "nmsThresh": "\"+overlap+\"",
+          "outputType": "Label Image",
+          "modelFile": "\"+model_file+\"",
+          "nTiles": "\"+n_tiles+\"",
+          "excludeBoundary": "2",
+          "roiPosition": "Automatic",
+          "verbose": "false",
+          "showCsbdeepProgress": "false",
+          "showProbAndDist": "false"
+        },
+        "bridge_process_false": true,
+        "line_sha256": "775cb8f1b984360d0fdc7f7d5ddd23264d3c8fd82c574d46b7f01024b95a366c"
+      },
+      "impact": "native-inference-boundary-and-returned-image-roi-state"
+    },
+    {
+      "source": "_Analyse Neuron (Multi-channel).ijm",
+      "source_sha256": "04ebf82aa432764d7c5b34087d0708bbccb6f380a1a7b2837fb45c1347e4c358",
+      "destination": "scripts/GAT MacroFork/_Analyse Neuron (Multi-channel) [MacroFork].ijm",
+      "destination_sha256": "99431e76c4c6f30ea6bc3c910b5521f9a7889ffefb3a8f48931a2c7590f7ad41",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 1,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 1,
+      "installation_path_changes": 2,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Calculate_Neurons_per_Ganglia.ijm",
+        "Tools/commands/Calculate_Neurons_per_Ganglia_label.ijm",
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/Segment_Ganglia.ijm",
+        "Tools/commands/check_plugin.ijm",
+        "Tools/commands/ganglia_custom_roi.ijm",
+        "Tools/commands/ganglia_fix_missing_neurons.ijm",
+        "Tools/commands/ganglia_hu.ijm",
+        "Tools/commands/gat_settings.ijm",
+        "Tools/commands/rename_rois.ijm",
+        "Tools/commands/save_centroids.ijm",
+        "Tools/commands/save_img_mask.ijm",
+        "Tools/commands/save_roi_composite_img.ijm",
+        "Tools/commands/spatial_hu_marker.ijm",
+        "Tools/commands/spatial_single_celltype.ijm",
+        "Tools/commands/spatial_two_celltype.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-inference-matrix",
+        "original-nms-roi-matrix",
+        "representative-real-top-menu-flow"
+      ],
+      "actual_original_call_contract": {
+        "arguments": {
+          "input": "\"+img_seg+\"",
+          "modelChoice": "Model (.zip) from File",
+          "normalizeInput": "true",
+          "percentileBottom": "1.0",
+          "percentileTop": "99.8",
+          "probThresh": "\"+probability+\"",
+          "nmsThresh": "\"+overlap+\"",
+          "outputType": "Label Image",
+          "modelFile": "\"+model_file+\"",
+          "nTiles": "\"+n_tiles+\"",
+          "excludeBoundary": "2",
+          "roiPosition": "Automatic",
+          "verbose": "false",
+          "showCsbdeepProgress": "false",
+          "showProbAndDist": "false"
+        },
+        "bridge_process_false": true,
+        "line_sha256": "775cb8f1b984360d0fdc7f7d5ddd23264d3c8fd82c574d46b7f01024b95a366c"
+      },
+      "impact": "native-inference-boundary-and-returned-image-roi-state"
+    },
+    {
+      "source": "_Analyse Neurons.ijm",
+      "source_sha256": "0f3e83d3ce91d27b1f6c0a6fe5443ea3964acd39d8e319b324813d39f46334fa",
+      "destination": "scripts/GAT MacroFork/_Analyse Neurons [MacroFork].ijm",
+      "destination_sha256": "fc8bcc1c17de54752fe14cfbf2efbe6fcdc8fe0cd38b562f5e28236604ec3c72",
+      "filename_namespace_changed": true,
+      "body_identical": false,
+      "stardist_target_changes": 1,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 1,
+      "installation_path_changes": 2,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [
+        "Tools/commands/Calculate_Neurons_per_Ganglia.ijm",
+        "Tools/commands/Convert_Label_to_ROIs.ijm",
+        "Tools/commands/Convert_ROI_to_Labels.ijm",
+        "Tools/commands/Segment_Ganglia.ijm",
+        "Tools/commands/check_plugin.ijm",
+        "Tools/commands/ganglia_custom_roi.ijm",
+        "Tools/commands/ganglia_fix_missing_neurons.ijm",
+        "Tools/commands/ganglia_hu.ijm",
+        "Tools/commands/gat_settings.ijm",
+        "Tools/commands/rename_rois.ijm",
+        "Tools/commands/save_centroids.ijm",
+        "Tools/commands/save_img_mask.ijm",
+        "Tools/commands/save_roi_composite_img.ijm",
+        "Tools/commands/spatial_single_celltype.ijm"
+      ],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit",
+        "registered-inference-matrix",
+        "original-nms-roi-matrix",
+        "representative-real-top-menu-flow"
+      ],
+      "actual_original_call_contract": {
+        "arguments": {
+          "input": "\"+img_seg+\"",
+          "modelChoice": "Model (.zip) from File",
+          "normalizeInput": "true",
+          "percentileBottom": "1.0",
+          "percentileTop": "99.8",
+          "probThresh": "\"+probability+\"",
+          "nmsThresh": "\"+overlap+\"",
+          "outputType": "Both",
+          "modelFile": "\"+model_file+\"",
+          "nTiles": "\"+n_tiles+\"",
+          "excludeBoundary": "2",
+          "roiPosition": "Automatic",
+          "verbose": "false",
+          "showCsbdeepProgress": "false",
+          "showProbAndDist": "false"
+        },
+        "bridge_process_false": true,
+        "line_sha256": "3915a6a3c4200ecc81d29f7032e2c8e61da1ad52c17ead03636c271e5b649634"
+      },
+      "impact": "native-inference-boundary-and-returned-image-roi-state"
+    },
+    {
+      "source": "_Help_and_Support.ijm",
+      "source_sha256": "7092855b6df6b993cb754c819fd19f484f10e2ad7b08fd9cb93c05a550b0cf14",
+      "destination": "scripts/GAT MacroFork/_Help_and_Support [MacroFork].ijm",
+      "destination_sha256": "7092855b6df6b993cb754c819fd19f484f10e2ad7b08fd9cb93c05a550b0cf14",
+      "filename_namespace_changed": true,
+      "body_identical": true,
+      "stardist_target_changes": 0,
+      "alignment_target_changes": 0,
+      "alignment_fail_stop_guards": 0,
+      "settings_option_path_quotes": 0,
+      "installation_path_changes": 0,
+      "batch_menu_changes": 0,
+      "batch_executable_dispatch_sites": 0,
+      "referenced_script_names": [],
+      "unallowlisted_computation_changes": 0,
+      "required_evidence": [
+        "exact-source-overlay-audit",
+        "namespace-installation-audit"
+      ],
+      "impact": "filename-menu-namespace-only",
+      "discharge_rule": "Verify installation/menu identity; no changed scientific function exists to retest independently."
+    }
+  ]
+}

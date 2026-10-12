@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "scope": "real-top-menu-whole-workflow",
+  "source_revision": "f2098636d5f42f73c3e724286af0b212fe3ea5c0",
+  "not_a_result": true,
+  "cases": [
+    {
+      "id": "neuron-unchanged",
+      "priority": 0,
+      "menu": " Analyse Neurons",
+      "matrix_rows": [
+        "single-default"
+      ],
+      "fixture": "pinned public175x175 Hu, pixel calibration .568 microns",
+      "review": "unchanged",
+      "ganglia": false,
+      "status": "HARNESS_PREPARED_NOT_RUN",
+      "evidence": [
+        "real discovered menu and parameter dashboard",
+        "actual model target module and native worker if applicable",
+        "actual global ROI Manager review before/after",
+        "exact source completion exit",
+        "reopened unmodified/final ROI ZIP, TIFF labels/MAX, JPEG and CSV",
+        "immutable runtime/script hashes before/after"
+      ]
+    },
+    {
+      "id": "neuron-delete-one",
+      "priority": 0,
+      "menu": " Analyse Neurons",
+      "matrix_rows": [
+        "single-default"
+      ],
+      "fixture": "pinned public175x175 Hu, pixel calibration .568 microns",
+      "review": "delete-one",
+      "ganglia": false,
+      "status": "HARNESS_PREPARED_NOT_RUN",
+      "evidence": [
+        "real discovered menu and parameter dashboard",
+        "actual model target module and native worker if applicable",
+        "actual global ROI Manager review before/after",
+        "exact source completion exit",
+        "reopened unmodified/final ROI ZIP, TIFF labels/MAX, JPEG and CSV",
+        "immutable runtime/script hashes before/after"
+      ]
+    },
+    {
+      "id": "neuron-add-one",
+      "priority": 0,
+      "menu": " Analyse Neurons",
+      "matrix_rows": [
+        "single-default"
+      ],
+      "fixture": "pinned public175x175 Hu, pixel calibration .568 microns",
+      "review": "add-one",
+      "ganglia": false,
+      "status": "HARNESS_PREPARED_NOT_RUN",
+      "evidence": [
+        "real discovered menu and parameter dashboard",
+        "actual model target module and native worker if applicable",
+        "actual global ROI Manager review before/after",
+        "exact source completion exit",
+        "reopened unmodified/final ROI ZIP, TIFF labels/MAX, JPEG and CSV",
+        "immutable runtime/script hashes before/after"
+      ]
+    },
+    {
+      "id": "neuron-hu-ganglia",
+      "priority": 2,
+      "menu": " Analyse Neurons",
+      "matrix_rows": [
+        "ganglia-define-ganglia-using-hu",
+        "ganglia-overlap-assignment",
+        "ganglia-missing-neuron-repair"
+      ],
+      "status": "NOT_RUN",
+      "remaining_work": "Only if needed to discharge changed helper routing after Hu, multi-marker and no-Hu representative runs; no new standalone unchanged ganglia computation suite."
+    },
+    {
+      "id": "hu-one-marker",
+      "priority": 1,
+      "menu": " Analyse Neuron (Multi-channel)",
+      "matrix_rows": [
+        "hu-one-marker"
+      ],
+      "status": "NOT_RUN",
+      "remaining_work": "prepare bounded distinguishable public channels; technical compatibility, not biological validity"
+    },
+    {
+      "id": "no-hu-one-marker",
+      "priority": 1,
+      "menu": " Analyse Neuron (Multi-channel - No Hu)",
+      "matrix_rows": [
+        "no-hu-one"
+      ],
+      "status": "NOT_RUN",
+      "remaining_work": "prepare genuine marker dialog and ungated outputs"
+    },
+    {
+      "id": "neuron-batch-dispatch",
+      "priority": 1,
+      "menu": " Analyse Neurons",
+      "status": "NOT_RUN",
+      "matrix_rows": [
+        "batch-mode-example"
+      ],
+      "remaining_work": "Exact original/generated batch example run(command,args); data-only public path/channel overrides, nondefault probability0.3/overlap0.7; actual final ROIs/CSV/labels and original no-review/no-completion-modal semantics."
+    }
+  ],
+  "scope_note": "Affected native StarDist/menu-helper routes only. Unchanged scientific branches are discharged by exact source byte evidence and existing parameter boundary tests."
+}

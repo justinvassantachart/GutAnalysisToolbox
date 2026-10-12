@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "scope": "source-audited-planned-affected-marker-menu-cases",
+  "runtime_verified": false,
+  "fixture": {
+    "source": "pinned public175x175 Hu TIFF",
+    "calibration": ".568 x .568 microns",
+    "construction": "two8-bit channels: unchanged public Hu; same image translated3pixels right with zero padding",
+    "interpretation": "technical compatibility and distinguishable channel routing only, not biological marker accuracy"
+  },
+  "families": [
+    {
+      "id": "hu-one-marker",
+      "script": "_Analyse Neuron (Multi-channel).ijm",
+      "menu": " Analyse Neuron (Multi-channel)",
+      "dashboard": {
+        "text_fields_in_source_order": [
+          "path",
+          "cell_channel",
+          "marker_names_manual",
+          "marker_no_manual",
+          "ganglia_channel"
+        ],
+        "values": [
+          "<prepared_public_tiff>",
+          "1",
+          "Marker",
+          "2",
+          "NA"
+        ],
+        "checkboxes_in_source_order": [
+          "image_already_open",
+          "Enter_channel_details_now",
+          "Cell_counts_per_ganglia",
+          "Perform_Spatial_Analysis",
+          "Finetune_Detection_Parameters",
+          "Contribute_to_GAT"
+        ],
+        "checkbox_values": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "radio_choices": [
+          "DeepImageJ",
+          "Define ganglia using Hu",
+          "Manually draw ganglia",
+          "Import custom ROI"
+        ]
+      },
+      "automatic_calls": [
+        {
+          "model": "2D_enteric_neuron_v4_1.zip",
+          "probability": 0.5
+        },
+        {
+          "model": "2D_enteric_neuron_subtype_v4.zip",
+          "probability": 0.4
+        }
+      ],
+      "reviews": [
+        "Correct Hu ROIs if needed. You can add or delete ROIs using the ROI Manager",
+        "Verify ROIs for Marker. Add or delete ROIs as needed using the ROI Manager."
+      ],
+      "completion": "Multi-channel Neuron analysis complete",
+      "required_exports": [
+        "Hu_unmodified_ROIs_public_neurons_1.zip",
+        "Hu_ROIs_public_neurons_1.zip",
+        "Hu_label_MAX_public_neurons_1.tif",
+        "Marker_unmodified_ROIs_public_neurons_1.zip",
+        "Marker_ROIs_public_neurons_1.zip",
+        "Analysis_public_neurons_1_cell_counts.csv",
+        "MAX_public_neurons_1.tif",
+        "Log.txt"
+      ],
+      "affected_behavior": "real native Hu and subtype inference feed unchanged Hu gating and ROI review/helper routing"
+    },
+    {
+      "id": "no-hu-one-marker",
+      "script": "_Analyse Neuron (Multi-channel - No Hu).ijm",
+      "menu": " Analyse Neuron (Multi-channel - No Hu)",
+      "dashboard": {
+        "text_fields_in_source_order": [
+          "path",
+          "marker_names_manual",
+          "marker_no_manual",
+          "ganglia_channel",
+          "cell_channel"
+        ],
+        "values": [
+          "<prepared_public_tiff>",
+          "Marker",
+          "2",
+          "NA",
+          "NA"
+        ],
+        "checkboxes_in_source_order": [
+          "image_already_open",
+          "Enter_channel_details_now",
+          "Cell_counts_per_ganglia",
+          "Perform_Spatial_Analysis",
+          "Contribute_to_GAT"
+        ],
+        "checkbox_values": [
+          false,
+          true,
+          false,
+          false,
+          false
+        ],
+        "radio_choices": [
+          "DeepImageJ",
+          "Manually draw ganglia",
+          "Import custom ROI"
+        ]
+      },
+      "extra_dialogs": [
+        {
+          "title": "Advanced Parameters",
+          "numeric_fields": [
+            1,
+            0.4,
+            0.3
+          ],
+          "checkboxes": [
+            false
+          ],
+          "meaning": [
+            "scale",
+            "Marker probability",
+            "overlap"
+          ]
+        }
+      ],
+      "automatic_calls": [
+        {
+          "model": "2D_enteric_neuron_subtype_v4.zip",
+          "probability": 0.4
+        }
+      ],
+      "reviews": [
+        "Verify ROIs for Marker. Add or delete ROIs as needed using the ROI Manager."
+      ],
+      "completion": "Multi-channel Neuron analysis complete",
+      "required_exports": [
+        "Marker_unmodified_ROIs_public_neurons_1.zip",
+        "Marker_ROIs_public_neurons_1.zip",
+        "Analysis_public_neurons_1_cell_counts.csv",
+        "MAX_public_neurons_1.tif",
+        "Log.txt"
+      ],
+      "affected_behavior": "real native subtype inference without Hu gate, actual fine-tune defaults and ROI review/helper routing"
+    }
+  ]
+}
