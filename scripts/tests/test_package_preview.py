@@ -20,6 +20,20 @@ class BundleChecks(unittest.TestCase):
         buf.seek(0)
         return zipfile.ZipFile(buf)
 
+    def test_preview7_identity_and_start_here_are_packaged(self):
+        root = Path(__file__).resolve().parents[2]
+        source = (root / 'scripts/package-apple-silicon-preview.py').read_text()
+        self.assertIn("'docs/preview-7-setup.md', 'START_HERE_PREVIEW_7.md'", source)
+        self.assertIn("'docs/preview-7-release-notes.md', 'PREVIEW_7_RELEASE_NOTES.md'", source)
+        self.assertNotIn("'PREVIEW_6_SETUP.md'", source)
+        self.assertIn("'docs/preview-7-setup.md', 'APPLE_SILICON.md'", source)
+        self.assertNotIn("'docs/apple-silicon.md', 'APPLE_SILICON.md'", source)
+        setup = (root / 'docs/preview-7-setup.md').read_text()
+        self.assertIn('2.0.1-apple-silicon.7', setup)
+        self.assertIn('GAT MacroFork', setup)
+        self.assertIn('gat_settings [MacroFork].ijm', setup)
+        self.assertIn('<version>2.0.1-apple-silicon.7</version>', (root / 'pom.xml').read_text())
+
     def test_nested_source_preserved(self):
         with self.archive(['worker/', 'worker/source/src/Main.java', 'worker/lib/runtime.jar']) as z:
             self.assertEqual(len(p.checked_entries(z, 'worker')), 2)
