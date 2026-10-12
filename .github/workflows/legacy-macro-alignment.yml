@@ -1,0 +1,234 @@
+name: legacy-macro-alignment
+
+on:
+  push:
+    branches: [main, fix/all-workflow-parity]
+    paths:
+      - '.github/workflows/legacy-macro-alignment.yml'
+      - 'validation/legacy-macros/*alignment*'
+      - 'validation/legacy-macros/LegacyMacroAlignmentProbe.java'
+      - 'validation/legacy-macros/source-manifest.json'
+      - 'legacy-macros/**'
+      - 'Calcium imaging/_Align_stack.ijm'
+      - 'Calcium imaging/_Align_stack_batch.ijm'
+      - 'src/main/java/Features/Macros/LegacyTemplateMatching.java'
+      - 'src/main/java/Features/Inference/**'
+      - 'native-alignment/**'
+      - 'native-inference/validation/baseline/dependencies-pom.xml'
+      - 'native-inference/validation/baseline/BaselineBootstrap.java'
+      - 'native-inference/validation/baseline/BaselineUrlClassLoader.java'
+      - 'native-inference/validation/workflows/run_workflows.py'
+      - 'pom.xml'
+      - '!validation/legacy-macros/results/**'
+      - '!legacy-macros/results/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gat-legacy-macro-alignment-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -e -o pipefail {0}
+
+env:
+  OMP_NUM_THREADS: '1'
+  OPENBLAS_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+
+jobs:
+  original-reference:
+    name: Original registered alignment command and unsupported-input behavior
+    # Standard public hosted capacity only; no larger or self-hosted runners.
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          architecture: x64
+          cache: maven
+          cache-dependency-path: native-inference/validation/baseline/dependencies-pom.xml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Record exact source, host and actual X11 prerequisites
+        run: |
+          mkdir -p alignment-ci-results target
+          test "$(uname -m)" = x86_64
+          command -v xvfb-run
+          command -v xauth
+          {
+            git rev-parse HEAD
+            uname -a
+            java -XshowSettings:properties -version 2>&1
+          } > alignment-ci-results/original-host.log
+      - name: Test strict comparator and dependency-isolation failure paths
+        run: >-
+          python3 -m unittest discover -s validation/legacy-macros
+          -p 'test_alignment.py' -v
+          2>&1 | tee alignment-ci-results/python-tests.log
+      - name: Resolve and verify isolated original ImageJ and OpenCV runtime
+        run: |
+          mvn -B -ntp -f native-inference/validation/baseline/dependencies-pom.xml \
+            dependency:build-classpath -Dbaseline.opencv.platform=linux-x86_64 \
+            -Dmdep.outputFile="$PWD/target/alignment-dependencies-classpath.txt" \
+            | tee alignment-ci-results/dependencies.log
+          python3 validation/legacy-macros/alignment_runtime.py \
+            --dependencies-classpath target/alignment-dependencies-classpath.txt \
+            --cache target/alignment-public-cache --output target/alignment-runtime
+      - name: Execute six positive cases and the actual 32-bit rejection control
+        run: >-
+          xvfb-run -a -s '-screen 0 1280x1024x24'
+          python3 validation/legacy-macros/run_alignment_probe.py
+          --variant original
+          --runtime-classpath target/alignment-runtime/runtime-classpath.txt
+          --output target/alignment-original
+          --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Preserve original raw evidence even on a failed control
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-alignment-original-${{ github.sha }}
+          path: target/alignment-original/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve original setup and pinned runtime provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-alignment-original-provenance-${{ github.sha }}
+          path: |
+            alignment-ci-results/
+            target/alignment-runtime/runtime-provenance.json
+          if-no-files-found: error
+          retention-days: 30
+
+  native-candidates:
+    name: Native macro alignment ${{ matrix.platform }} against same-run original
+    needs: original-reference
+    # Preserve independent native observations even if the reference failed.
+    # A missing/failed reference still fails the strict comparison below.
+    if: ${{ !cancelled() }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            platform: linux-x86_64
+            architecture: x64
+          - os: macos-15
+            platform: macosx-arm64
+            architecture: aarch64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          architecture: ${{ matrix.architecture }}
+          cache: maven
+          cache-dependency-path: |
+            pom.xml
+            native-alignment/pom.xml
+            native-inference/validation/baseline/dependencies-pom.xml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require and record actual native CPU and JDK architecture
+        run: |
+          mkdir -p alignment-ci-results target
+          {
+            git rev-parse HEAD
+            uname -a
+            java -XshowSettings:properties -version 2>&1
+            if [ '${{ matrix.platform }}' = macosx-arm64 ]; then
+              test "$(uname -m)" = arm64
+              java -XshowSettings:properties -version 2>&1 | grep 'os.arch = aarch64'
+              sw_vers
+              sysctl -n machdep.cpu.brand_string
+            else
+              test "$(uname -m)" = x86_64
+              command -v xvfb-run
+              command -v xauth
+            fi
+          } > alignment-ci-results/native-host.log
+      - name: Build unchanged production adapter and isolated platform worker
+        run: |
+          mvn -B -ntp -DskipTests clean package \
+            | tee alignment-ci-results/production-build.log
+          mvn -B -ntp -f native-alignment/pom.xml clean package \
+            -Dopencv.platform=${{ matrix.platform }} \
+            | tee alignment-ci-results/worker-build.log
+          test -f target/classes/Features/Macros/LegacyTemplateMatching.class
+          test -f native-alignment/target/gat-native-alignment.jar
+          test -d native-alignment/target/lib
+      - name: Test strict evidence gate on the native host
+        run: >-
+          python3 -m unittest discover -s validation/legacy-macros
+          -p 'test_alignment.py' -v
+          2>&1 | tee alignment-ci-results/python-tests.log
+      - name: Prepare the identical pinned parent command runtime
+        run: |
+          # The old Linux JNI stays unexecuted on macOS. Only the separate
+          # arm64 worker may execute alignment in that native candidate.
+          mvn -B -ntp -f native-inference/validation/baseline/dependencies-pom.xml \
+            dependency:build-classpath -Dbaseline.opencv.platform=linux-x86_64 \
+            -Dmdep.outputFile="$PWD/target/alignment-dependencies-classpath.txt" \
+            | tee alignment-ci-results/dependencies.log
+          python3 validation/legacy-macros/alignment_runtime.py \
+            --dependencies-classpath target/alignment-dependencies-classpath.txt \
+            --cache target/alignment-public-cache --output target/alignment-runtime
+      - name: Execute all seven actual macro boundary and error controls
+        run: |
+          display=()
+          if [ '${{ matrix.platform }}' = linux-x86_64 ]; then
+            display=(xvfb-run -a -s '-screen 0 1280x1024x24')
+          fi
+          "${display[@]}" python3 validation/legacy-macros/run_alignment_probe.py \
+            --variant native --production-classes target/classes \
+            --native-worker native-alignment/target \
+            --runtime-classpath target/alignment-runtime/runtime-classpath.txt \
+            --output target/alignment-native \
+            --java "$JAVA_HOME/bin/java" --javac "$JAVA_HOME/bin/javac"
+      - name: Retrieve only this workflow run's exact original reference
+        if: ${{ !cancelled() }}
+        uses: actions/download-artifact@v4
+        with:
+          name: macro-alignment-original-${{ github.sha }}
+          path: target/alignment-reference
+      - name: Require exact paired pixels, metadata, CSV and rejection continuation
+        # No tolerance, continue-on-error, or automatic promotion of a mismatch.
+        # Run even after a failed native probe to retain the failure diagnostic.
+        if: ${{ !cancelled() }}
+        run: >-
+          python3 validation/legacy-macros/compare_alignment.py
+          --original target/alignment-reference --native target/alignment-native
+          --output alignment-ci-results/paired-alignment.json
+      - name: Preserve every raw result, difference and failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-alignment-native-${{ matrix.platform }}-${{ github.sha }}
+          path: |
+            alignment-ci-results/
+            target/alignment-native/
+            target/alignment-runtime/runtime-provenance.json
+            native-alignment/target/surefire-reports/
+          if-no-files-found: error
+          retention-days: 30
