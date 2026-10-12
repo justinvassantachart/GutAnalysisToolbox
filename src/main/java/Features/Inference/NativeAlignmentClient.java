@@ -13,7 +13,11 @@ import java.util.stream.Stream;
 /** Local protocol for a separately licensed/native-classpath Template Matching worker. */
 public final class NativeAlignmentClient {
     static final int INPUT_MAGIC = 0x47415441, OUTPUT_MAGIC = 0x47415453, VERSION = 2;
-    static final long MAX_PIXELS = 67_108_864L;
+    static final long MAX_PIXELS = 67_108_864L; // Per plane, retained from protocol 2.
+    static final long MAX_RAW_BYTES = 512L * 1024 * 1024;
+    static final long JAVA_WORKING_BUDGET = 768L * 1024 * 1024;
+    static final long JAVA_RUNTIME_RESERVE = 64L * 1024 * 1024;
+    static final long PLANE_SCRATCH_BYTES_PER_PIXEL = 8L;
     private NativeAlignmentClient() { }
 
     public static Path workerDirectory(String fijiDirectory) {
@@ -71,13 +75,25 @@ public final class NativeAlignmentClient {
             } catch (IOException e) { temporary.toFile().deleteOnExit(); }
         }
     }
+    /** Admission estimate for managed heap, not a bound on native/OpenCV RSS.
+     * Keep at least 256 MiB of the worker's 1 GiB heap outside the estimate.
+     * Shape checks precede products, file writes and pixel-array allocation. */
+    static long rawBytesForShape(int width, int height, int frames, int bits, int reference) {
+        long plane = (long) width * height;
+        if (width < 2 || height < 2 || frames < 2 || frames > 10000 || (bits != 8 && bits != 16)
+                || reference < 1 || reference > frames || plane > MAX_PIXELS)
+            throw new IllegalArgumentException("Native Template Matching requires an 8/16-bit stack, valid reference slice, at most 67,108,864 pixels per plane and the bounded stack-memory budget (512 MiB raw pixels; 768 MiB estimated Java working set)");
+        // With validated bounds all products fit long, even at 10,000 planes.
+        long rawBytes = plane * frames * (bits / 8);
+        long estimatedJavaBytes = rawBytes + PLANE_SCRATCH_BYTES_PER_PIXEL * plane + JAVA_RUNTIME_RESERVE;
+        if (rawBytes > MAX_RAW_BYTES || estimatedJavaBytes > JAVA_WORKING_BUDGET)
+            throw new IllegalArgumentException("Native Template Matching requires an 8/16-bit stack, valid reference slice, at most 67,108,864 pixels per plane and the bounded stack-memory budget (512 MiB raw pixels; 768 MiB estimated Java working set)");
+        return rawBytes;
+    }
     static void writeInput(Path output, ImagePlus image, int reference) throws IOException {
         if (image == null) throw new IllegalArgumentException("No alignment image");
         int width = image.getWidth(), height = image.getHeight(), frames = image.getStackSize(), bits = image.getBitDepth();
-        long plane = (long) width * height;
-        if (width < 2 || height < 2 || frames < 2 || frames > 10000 || (bits != 8 && bits != 16)
-                || reference < 1 || reference > frames || plane > MAX_PIXELS || plane * frames > MAX_PIXELS)
-            throw new IllegalArgumentException("Native Template Matching requires an 8/16-bit stack, valid reference slice and at most 67,108,864 total pixels");
+        rawBytesForShape(width, height, frames, bits, reference);
         try (DataOutputStream out = new DataOutputStream(new BufferedOutputStream(Files.newOutputStream(output)))) {
             out.writeInt(INPUT_MAGIC);out.writeInt(VERSION);out.writeInt(width);out.writeInt(height);out.writeInt(frames);out.writeInt(bits);out.writeInt(reference);
             for (int z = 1; z <= frames; z++) {
