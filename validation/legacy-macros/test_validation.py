@@ -126,6 +126,24 @@ class SourceAuditTest(unittest.TestCase):
                 actual = audit_sources.audit(audit_sources.ROOT, self.manifest, path)['status']
                 self.assertEqual('FAIL_SOURCE_CONTRACT' if corrupt else 'PASS_SOURCE_CONTRACT', actual)
 
+    def test_unquoted_path_and_missing_alignment_guard_are_rejected(self):
+        mutations = {
+            '_Analyse Neurons.ijm': (b'"open=["+gat_settings_path+"]"', b'"open="+gat_settings_path'),
+            'Calcium imaging/_Align_stack.ijm': (
+                b' if(gat_alignment_status!="GAT_ALIGNMENT_OK") exit("MacroFork alignment failed: "+gat_alignment_status);', b''),
+        }
+        with tempfile.TemporaryDirectory() as temporary:
+            for bad_source, (before, after) in mutations.items():
+                path = Path(temporary) / (Path(bad_source).stem + '.zip')
+                with zipfile.ZipFile(path, 'w') as archive:
+                    for name in self.names:
+                        data = audit_sources.expected_overlay(name, (audit_sources.ROOT / name).read_bytes(), self.names)
+                        if name == bad_source:
+                            self.assertIn(before, data)
+                            data = data.replace(before, after, 1)
+                        archive.writestr(audit_sources.destination(name), data)
+                self.assertEqual('FAIL_SOURCE_CONTRACT', audit_sources.audit(audit_sources.ROOT, self.manifest, path)['status'])
+
     def test_custom_settings_need_explicit_exact_reference(self):
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / 'settings.zip'

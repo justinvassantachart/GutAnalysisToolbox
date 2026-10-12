@@ -32,8 +32,9 @@ def macro_source(variant):
     if len(lines) != 2 or len(set(lines)) != 1 or lines[0].count('ref.slice=3') != 1:
         raise ValueError('Expected the two identical original macro alignment sites')
     line = lines[0]
-    if variant == 'native':
-        line = line.replace('run("Align slices in stack...",', 'call("Features.Macros.LegacyTemplateMatching.run",')
+    if variant != 'original':
+        line = line.replace('run("Align slices in stack...",', 'gat_alignment_status=call("Features.Macros.LegacyTemplateMatching.run",')
+        line += ' if(gat_alignment_status!="GAT_ALIGNMENT_OK") exit("MacroFork alignment failed: "+gat_alignment_status);'
     return line, row
 
 
@@ -50,7 +51,7 @@ def production_hashes(directory):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--runtime-classpath', type=Path, required=True)
-    p.add_argument('--variant', choices=('original', 'native'), required=True)
+    p.add_argument('--variant', choices=('original', 'native', 'legacy-delegate'), required=True)
     p.add_argument('--production-classes', type=Path)
     p.add_argument('--native-worker', type=Path)
     p.add_argument('--fiji-directory', type=Path)
@@ -59,8 +60,9 @@ def main():
     p.add_argument('--compile-only', action='store_true')
     args = p.parse_args()
     native = args.variant == 'native'
-    if native != bool(args.production_classes) or native != bool(args.native_worker):
-        p.error('Native requires classes/worker; original forbids both')
+    adapter = args.variant != 'original'
+    if adapter != bool(args.production_classes) or native != bool(args.native_worker):
+        p.error('Native requires classes/worker; legacy-delegate requires classes only; original forbids both')
     if not native and not args.compile_only and (platform.system(), platform.machine()) != ('Linux', 'x86_64'):
         p.error('Pinned original JNI reference requires Linux x86_64; native worker can run on its built platform')
     raw = args.runtime_classpath.read_text().strip().split(os.pathsep)
@@ -70,11 +72,12 @@ def main():
     parent_entries = list(entries)
     line, macro = macro_source(args.variant)
     hashes = {}
-    if native:
+    if adapter:
         hashes = production_hashes(args.production_classes)
+        entries.insert(0, args.production_classes.resolve())
+    if native:
         if not (args.native_worker / 'gat-native-alignment.jar').is_file() or not (args.native_worker / 'lib').is_dir():
             raise ValueError('Separate native alignment worker is absent')
-        entries.insert(0, args.production_classes.resolve())
     out = args.output.resolve(); out.mkdir(parents=True, exist_ok=False)
     classes = out / 'classes'; classes.mkdir()
     baseline = ROOT / 'native-inference/validation/baseline'
@@ -114,6 +117,8 @@ def main():
                '-Djava.awt.headless=false', '-Djava.system.class.loader=BaselineUrlClassLoader',
                '-Dimagej.updater.disableAutocheck=true', '-Dimagej.dir=' + str(runtime_home), '-Dfiji.dir=' + str(runtime_home),
                '-Dplugins.dir=' + str(empty_plugins), '-Duser.home=' + str(home), '-Djava.util.prefs.userRoot=' + str(out / 'prefs')]
+    if args.variant == 'legacy-delegate':
+        command += ['-Dgat.alignment.backend=legacy']
     if native:
         command += ['-Dgat.alignment.backend=native', '-Dgat.alignment.directory=' + str(args.native_worker.resolve()),
                     '-Dgat.alignment.timeoutSeconds=60']

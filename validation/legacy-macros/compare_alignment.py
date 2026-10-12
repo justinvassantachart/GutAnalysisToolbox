@@ -21,6 +21,7 @@ from run_alignment_probe import macro_source, SCOPE
 
 HERE = Path(__file__).resolve().parent
 NATIVE_TYPE_ERROR = 'java.lang.IllegalArgumentException: Native Template Matching requires an 8/16-bit stack, valid reference slice and at most 67,108,864 total pixels'
+NATIVE_GUARD_MESSAGE = 'MacroFork alignment failed: GAT_ALIGNMENT_ERROR: ' + NATIVE_TYPE_ERROR
 ORIGINAL_TYPE_ERROR = '"Align slices in stack..." requires an image of type: 8-bit grayscale 16-bit grayscale'
 ERROR_PATTERN = re.compile(r'exception|\[error\]|no such method|unsatisfiedlink', re.I)
 
@@ -132,13 +133,17 @@ def load_side(directory, variant):
             raise ValueError('Missing/changed pinned original alignment dependency')
     target = report.get('target_class', {})
     native = variant == 'native'
-    class_name = 'Features.Macros.LegacyTemplateMatching' if native else 'TemplateMatching.Align_slices'
-    expected_hash = launcher.get('production_classes', {}).get('Features/Macros/LegacyTemplateMatching.class') if native else artifacts()[0]['classes_sha256']['TemplateMatching/Align_slices.class']
+    adapter = variant != 'original'
+    class_name = 'Features.Macros.LegacyTemplateMatching' if adapter else 'TemplateMatching.Align_slices'
+    expected_hash = launcher.get('production_classes', {}).get('Features/Macros/LegacyTemplateMatching.class') if adapter else artifacts()[0]['classes_sha256']['TemplateMatching/Align_slices.class']
     if not expected_hash or target.get('name') != class_name or target.get('sha256') != expected_hash:
         raise ValueError('Wrong actual production/original command class')
     if native:
         if report.get('backend') != 'native' or not launcher.get('worker_files', {}).get('gat-native-alignment.jar'):
             raise ValueError('Native worker/backend not established')
+    elif adapter:
+        if report.get('backend') != 'legacy' or launcher.get('worker_files'):
+            raise ValueError('Legacy delegation must explicitly use original in-process command')
     elif report.get('backend') != 'unset' or launcher.get('production_classes') or launcher.get('worker_files'):
         raise ValueError('Original control contaminated by fork')
     if 'TemplateMatching.Align_slices' not in report.get('original_menu', ''):
@@ -176,21 +181,19 @@ def load_side(directory, variant):
             log = row.get('log', '')
             remaining_log = ' '.join(log.replace(marker, '').split())
             exception = row.get('exception_window', '')
-            allowed_thrown = (None, '') if native else (None, '', 'java.lang.RuntimeException: Macro canceled')
+            allowed_thrown = (None, '', 'java.lang.RuntimeException: Macro canceled')
             if row.get('errors') or row.get('macro_thrown') not in allowed_thrown:
                 raise ValueError('Unrelated exception beside unsupported-type diagnostic')
             if type(row.get('continuation_observed')) is not bool or row['continuation_observed'] != (marker in log):
                 raise ValueError('Missing/inconsistent after-call continuation observation')
             if native:
-                lines = exception.splitlines()
-                if (not lines or lines[0] != NATIVE_TYPE_ERROR or any(line.strip() and not line.strip().startswith('at ') for line in lines[1:])
-                        or remaining_log or row.get('ij_error') or row.get('observed_macro_error_dialogs')
-                        or row.get('exception_window_visible') is not True):
-                    raise ValueError('Missing or contaminated native unsupported-type exception window')
+                if (row.get('observed_macro_guard_dialogs') != [NATIVE_GUARD_MESSAGE] or row.get('observed_macro_error_dialogs')
+                        or exception or remaining_log or row.get('ij_error') or row.get('exception_window_visible')):
+                    raise ValueError('Missing or contaminated guarded native failure dialog')
             else:
                 dialogs = row.get('observed_macro_error_dialogs', [])
                 if (len(dialogs) != 1 or not ' '.join(dialogs[0].split()).startswith(ORIGINAL_TYPE_ERROR + ' in line ')
-                        or ERROR_PATTERN.search(dialogs[0]) or remaining_log or row.get('ij_error') or exception
+                        or ERROR_PATTERN.search(dialogs[0]) or row.get('observed_macro_guard_dialogs') or remaining_log or row.get('ij_error') or exception
                         or row.get('exception_window_visible')):
                     raise ValueError('Missing or contaminated original supported-type Macro Error dialog')
             if prefix.with_suffix('.csv').exists():
@@ -198,7 +201,7 @@ def load_side(directory, variant):
         else:
             if row.get('status') != 'PASS_ALIGNMENT_CASE' or row.get('errors') or row.get('macro_thrown') or row.get('ij_error') or row.get('macro_return') == '[aborted]':
                 raise ValueError('Runtime/macro error in positive control')
-            if row.get('observed_macro_error_dialogs') or row.get('exception_window') or ERROR_PATTERN.search(row.get('log', '')) or row.get('continuation_observed') is not True:
+            if row.get('observed_macro_guard_dialogs') or row.get('observed_macro_error_dialogs') or row.get('exception_window') or ERROR_PATTERN.search(row.get('log', '')) or row.get('continuation_observed') is not True:
                 raise ValueError('Positive case recorded exception/log failure or did not continue')
             if row.get('csv_roundtrip') is not True or row.get('results_visible') is not True:
                 raise ValueError('Actual visible Results/export roundtrip absent')
@@ -217,11 +220,13 @@ def load_side(directory, variant):
     return launcher, report, results
 
 
-def compare(original, native):
+def compare(original, native, native_variant='native'):
     result = {'schema_version': 1, 'scope': SCOPE, 'whole_calcium_macro_executed': False,
-              'status': 'FAIL_OR_INCOMPLETE', 'cases': [], 'errors': []}
+              'status': 'FAIL_OR_INCOMPLETE', 'candidate_variant': native_variant, 'cases': [], 'errors': []}
     try:
-        al, ar, a = load_side(original, 'original'); bl, br, b = load_side(native, 'native')
+        if native_variant not in ('native', 'legacy-delegate'):
+            raise ValueError('Invalid candidate variant')
+        al, ar, a = load_side(original, 'original'); bl, br, b = load_side(native, native_variant)
         if al.get('sources') != bl.get('sources') or not al.get('sources'):
             raise ValueError('Different/missing probe/bootstrap source hashes')
         for name in a:
@@ -229,6 +234,8 @@ def compare(original, native):
             if a[name]['case']['expected'] != 'rejected':
                 fields += ['headings', 'rows', 'csv_roundtrip', 'results_visible']
             mismatches = [key for key in fields if a[name].get(key) != b[name].get(key)]
+            if a[name]['case']['expected'] == 'rejected' and (a[name]['continuation_observed'] or b[name]['continuation_observed']):
+                mismatches.append('rejected_input_continues')
             result['cases'].append({'id': name, 'status': 'FAIL' if mismatches else 'PASS_EXACT', 'mismatches': mismatches})
         if any(row['status'] != 'PASS_EXACT' for row in result['cases']):
             raise ValueError('Paired alignment cases differ')
@@ -242,10 +249,11 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--original', type=Path, required=True); p.add_argument('--native', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--native-variant', choices=('native', 'legacy-delegate'), default='native')
     args = p.parse_args()
     if args.output.exists():
         p.error('Existing comparison output is never overwritten')
-    result = compare(args.original, args.native)
+    result = compare(args.original, args.native, args.native_variant)
     args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + '\n')
     print(result['status'], len(result['cases']), 'paired cases')
     return 0 if result['status'] == 'PASS_PAIRED_MACRO_ALIGNMENT_SCOPE' else 1

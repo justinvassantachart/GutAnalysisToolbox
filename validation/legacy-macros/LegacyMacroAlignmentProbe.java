@@ -31,6 +31,7 @@ public final class LegacyMacroAlignmentProbe {
     private static final Map<Long, String> workers = Collections.synchronizedMap(new LinkedHashMap<>());
     private static volatile boolean watching;
     private static final String NATIVE_TYPE_ERROR = "java.lang.IllegalArgumentException: Native Template Matching requires an 8/16-bit stack, valid reference slice and at most 67,108,864 total pixels";
+    private static final String NATIVE_GUARD_MESSAGE = "MacroFork alignment failed: GAT_ALIGNMENT_ERROR: " + NATIVE_TYPE_ERROR;
     private static final String ORIGINAL_TYPE_ERROR = "\"Align slices in stack...\" requires an image of type: 8-bit grayscale 16-bit grayscale";
 
     @SuppressWarnings("unchecked")
@@ -38,7 +39,8 @@ public final class LegacyMacroAlignmentProbe {
         if (args.length != 1) throw new IllegalArgumentException("RUN_CONFIG_JSON");
         Map<String, Object> config = JSON.fromJson(Files.readString(Path.of(args[0])), Map.class);
         String variant = (String) config.get("variant"); boolean nativeMode = variant.equals("native");
-        if (!(nativeMode || variant.equals("original"))) throw new IllegalArgumentException("Invalid variant");
+        boolean adapterMode = !variant.equals("original");
+        if (!(nativeMode || variant.equals("original") || variant.equals("legacy-delegate"))) throw new IllegalArgumentException("Invalid variant");
         Path output = Path.of((String) config.get("output")); Files.createDirectory(output);
         report.put("schema_version", 1); report.put("scope", "registered-legacy-macro-alignment-boundary");
         report.put("whole_calcium_macro_executed", false); report.put("variant", variant);
@@ -51,20 +53,20 @@ public final class LegacyMacroAlignmentProbe {
         try {
             if (java.awt.GraphicsEnvironment.isHeadless()) throw new IllegalStateException("Actual AWT required");
             ClassLoader loader = LegacyMacroAlignmentProbe.class.getClassLoader();
-            if ((loader.getResource("Features/Macros/LegacyTemplateMatching.class") != null) != nativeMode)
-                throw new IllegalStateException("Original/native classpath isolation failed");
-            if (nativeMode && !"native".equals(System.getProperty("gat.alignment.backend")))
-                throw new IllegalStateException("Native worker must be explicitly selected");
+            if ((loader.getResource("Features/Macros/LegacyTemplateMatching.class") != null) != adapterMode)
+                throw new IllegalStateException("Original/adapter classpath isolation failed");
+            if (adapterMode && !(nativeMode ? "native" : "legacy").equals(System.getProperty("gat.alignment.backend")))
+                throw new IllegalStateException("Intended adapter backend must be explicitly selected");
             if (loader.getResource("TemplateMatching/NativeAlignmentMain.class") != null)
                 throw new IllegalStateException("Native worker classes leaked into parent JVM");
             IJ.setExceptionHandler(error -> errors.add(error.toString())); IJ.redirectErrorMessages(true);
             imagej = new net.imagej.ImageJ(); imagej.ui().showUI("legacy");
-            if (!nativeMode && IJ.getClassLoader().getResource("Features/Macros/LegacyTemplateMatching.class") != null)
+            if (!adapterMode && IJ.getClassLoader().getResource("Features/Macros/LegacyTemplateMatching.class") != null)
                 throw new IllegalStateException("Original plugin loader sees fork classes");
             if (!Menus.getCommands().containsKey("Align slices in stack..."))
                 throw new IllegalStateException("Original Template Matching menu command is not installed");
             report.put("original_menu", Menus.getCommands().get("Align slices in stack..."));
-            report.put("target_class", provenance(Class.forName(nativeMode
+            report.put("target_class", provenance(Class.forName(adapterMode
                     ? "Features.Macros.LegacyTemplateMatching" : "TemplateMatching.Align_slices")));
             ij.Executer.addCommandListener(command -> { dispatched.add(command); return command; });
             imagej.log().addLogListener(message -> {
@@ -96,6 +98,7 @@ public final class LegacyMacroAlignmentProbe {
                 IJ.getErrorMessage();
                 String beforeLog = IJ.getLog() == null ? "" : IJ.getLog();
                 List<String> dialogs = Collections.synchronizedList(new ArrayList<>());
+                List<String> guardDialogs = Collections.synchronizedList(new ArrayList<>());
                 Set<java.awt.Window> acknowledged = Collections.newSetFromMap(new IdentityHashMap<>());
                 watching = true;
                 Thread observer = new Thread(() -> {
@@ -117,6 +120,25 @@ public final class LegacyMacroAlignmentProbe {
                                 } catch (Exception failure) { errors.add("Cannot observe expected Macro Error: " + failure); }
                             }
                         }
+                        if (rejected && nativeMode) {
+                            for (java.awt.Window candidate : java.awt.Window.getWindows()) {
+                                if (!(candidate instanceof ij.gui.MessageDialog) || !candidate.isVisible() || acknowledged.contains(candidate)) continue;
+                                ij.gui.MessageDialog dialog = (ij.gui.MessageDialog) candidate;
+                                if (!dialog.getTitle().equals("Macro")) continue;
+                                try {
+                                    java.lang.reflect.Field label = ij.gui.MessageDialog.class.getDeclaredField("label");
+                                    label.setAccessible(true);
+                                    String message = componentText((java.awt.Component) label.get(dialog));
+                                    if (!message.equals(NATIVE_GUARD_MESSAGE)) continue;
+                                    java.lang.reflect.Field button = ij.gui.MessageDialog.class.getDeclaredField("button");
+                                    button.setAccessible(true);
+                                    java.awt.Button okay = (java.awt.Button) button.get(dialog);
+                                    acknowledged.add(candidate); guardDialogs.add(message);
+                                    java.awt.EventQueue.invokeLater(() -> dialog.actionPerformed(new java.awt.event.ActionEvent(okay,
+                                            java.awt.event.ActionEvent.ACTION_PERFORMED, okay.getLabel())));
+                                } catch (Exception failure) { errors.add("Cannot observe expected guarded macro exit: " + failure); }
+                            }
+                        }
                         ProcessHandle.current().descendants().forEach(child -> child.info().commandLine().ifPresent(command -> {
                             if (command.contains("TemplateMatching.NativeAlignmentMain")) workers.put(child.pid(), command);
                         }));
@@ -134,6 +156,7 @@ public final class LegacyMacroAlignmentProbe {
                         ? (TextWindow) WindowManager.getWindow("Exception") : null;
                 String exceptionText = exceptionWindow == null ? "" : exceptionWindow.getTextPanel().getText();
                 row.put("observed_macro_error_dialogs", new ArrayList<>(dialogs));
+                row.put("observed_macro_guard_dialogs", new ArrayList<>(guardDialogs));
                 row.put("exception_window", exceptionText);
                 row.put("exception_window_visible", exceptionWindow != null && exceptionWindow.isVisible());
                 row.put("continuation_observed", logDelta.contains("GAT_ALIGNMENT_AFTER_BOUNDARY_" + name));
@@ -150,12 +173,13 @@ public final class LegacyMacroAlignmentProbe {
                     String expectedMarker = "GAT_ALIGNMENT_AFTER_BOUNDARY_" + name;
                     String remainingLog = logDelta.replace(expectedMarker, "").trim().replaceAll("\\s+", " ");
                     boolean diagnosticMatches = nativeMode
-                            ? exceptionText.lines().findFirst().orElse("").equals(NATIVE_TYPE_ERROR)
-                                && exceptionText.lines().skip(1).allMatch(value -> value.trim().isEmpty() || value.trim().startsWith("at "))
-                                && remainingLog.isEmpty() && (errorMessage == null || errorMessage.isEmpty())
+                            ? guardDialogs.size() == 1 && guardDialogs.get(0).equals(NATIVE_GUARD_MESSAGE)
+                                && dialogs.isEmpty() && exceptionText.isEmpty() && remainingLog.isEmpty()
+                                && (errorMessage == null || errorMessage.isEmpty())
                             : dialogs.size() == 1 && dialogs.get(0).trim().replaceAll("\\s+", " ").startsWith(ORIGINAL_TYPE_ERROR + " in line ")
-                                && remainingLog.isEmpty() && exceptionText.isEmpty() && (errorMessage == null || errorMessage.isEmpty());
-                    diagnosticMatches &= errors.isEmpty() && (thrown == null || !nativeMode && thrown.equals("java.lang.RuntimeException: Macro canceled"));
+                                && guardDialogs.isEmpty() && remainingLog.isEmpty() && exceptionText.isEmpty()
+                                && (errorMessage == null || errorMessage.isEmpty());
+                    diagnosticMatches &= errors.isEmpty() && (thrown == null || thrown.equals("java.lang.RuntimeException: Macro canceled"));
                     row.put("unsupported_type_diagnostic", diagnosticMatches);
                     row.put("input_unchanged", row.get("input").equals(row.get("output")));
                     row.put("results_absent", WindowManager.getWindow("Results") == null);
@@ -164,7 +188,7 @@ public final class LegacyMacroAlignmentProbe {
                         throw new IllegalStateException("Unsupported 32-bit input was not cleanly rejected");
                     row.put("status", "PASS_UNSUPPORTED_TYPE_CONTROL");
                 } else {
-                    if (thrown != null || !dialogs.isEmpty() || !exceptionText.isEmpty() || !Boolean.TRUE.equals(row.get("continuation_observed")) || "[aborted]".equals(returned) || !errors.isEmpty()
+                    if (thrown != null || !guardDialogs.isEmpty() || !dialogs.isEmpty() || !exceptionText.isEmpty() || !Boolean.TRUE.equals(row.get("continuation_observed")) || "[aborted]".equals(returned) || !errors.isEmpty()
                             || errorMessage != null && !errorMessage.isEmpty()
                             || logDelta.matches("(?s).*(?i:exception|\\[error\\]|no such method|unsatisfiedlink).*"))
                         throw new IllegalStateException("Runtime/macro error during positive alignment case");
@@ -198,7 +222,9 @@ public final class LegacyMacroAlignmentProbe {
 
     /** Observe the actual rendered diagnostic, not a replacement error handler. */
     static String dialogMessage(ij.gui.GenericDialog dialog) throws Exception {
-        java.awt.Component component = dialog.getMessage();
+        return componentText(dialog.getMessage());
+    }
+    static String componentText(java.awt.Component component) throws Exception {
         if (component instanceof java.awt.Label) return ((java.awt.Label) component).getText();
         if (component instanceof ij.gui.MultiLineLabel) {
             java.lang.reflect.Field lines = ij.gui.MultiLineLabel.class.getDeclaredField("lines");

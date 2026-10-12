@@ -29,18 +29,19 @@ def fixture(directory, variant):
     schedule = json.loads((compare.HERE / 'alignment-cases.json').read_text())
     _, source = run.macro_source(variant)
     native = variant == 'native'
+    adapter = variant != 'original'
     record = {'schema_version': 1, 'scope': run.SCOPE, 'whole_calcium_macro_executed': False,
               'variant': variant, 'status': 'PASS_ALIGNMENT_BOUNDARY', 'schedule': schedule,
               'macro_source': source}
     launcher = dict(record, sources={'test-probe': 'a' * 64},
                     runtime_artifacts=[{'name': p['file'], 'sha256': p['sha256']} for p in runtime.artifacts()],
-                    production_classes={'Features/Macros/LegacyTemplateMatching.class': 'b' * 64} if native else {},
+                    production_classes={'Features/Macros/LegacyTemplateMatching.class': 'b' * 64} if adapter else {},
                     compilation={'exit_code': 0, 'resource_stop_reason': None}, execution={'exit_code': 0, 'resource_stop_reason': None})
     if native:
         launcher['worker_files'] = {'gat-native-alignment.jar': 'c' * 64}
-    name = 'Features.Macros.LegacyTemplateMatching' if native else 'TemplateMatching.Align_slices'
-    target_hash = 'b' * 64 if native else runtime.artifacts()[0]['classes_sha256']['TemplateMatching/Align_slices.class']
-    report = dict(record, backend='native' if native else 'unset', original_menu='TemplateMatching.Align_slices("")',
+    name = 'Features.Macros.LegacyTemplateMatching' if adapter else 'TemplateMatching.Align_slices'
+    target_hash = 'b' * 64 if adapter else runtime.artifacts()[0]['classes_sha256']['TemplateMatching/Align_slices.class']
+    report = dict(record, backend='native' if native else 'legacy' if adapter else 'unset', original_menu='TemplateMatching.Align_slices("")',
                   target_class={'name': name, 'sha256': target_hash}, cases=[])
     for spec in schedule['cases']:
         rejected = spec['expected'] == 'rejected'; key = spec['id']; planes = compare.synthetic(spec, schedule)
@@ -57,13 +58,12 @@ def fixture(directory, variant):
                'worker_processes': {'123': 'java TemplateMatching.NativeAlignmentMain input output'} if native and not rejected else {},
                'dispatched_commands': [] if native else ['Align slices in stack...'], 'macro_return': '',
                'errors': [], 'macro_thrown': None, 'ij_error': None, 'exception_window': '', 'exception_window_visible': False,
-               'observed_macro_error_dialogs': [], 'continuation_observed': not rejected, 'log': '' if rejected else 'GAT_ALIGNMENT_AFTER_BOUNDARY_' + key + '\n'}
+               'observed_macro_error_dialogs': [], 'observed_macro_guard_dialogs': [], 'continuation_observed': not rejected, 'log': '' if rejected else 'GAT_ALIGNMENT_AFTER_BOUNDARY_' + key + '\n'}
         if rejected:
             row.update(status='PASS_UNSUPPORTED_TYPE_CONTROL', input_unchanged=True, results_absent=True,
                        unsupported_type_diagnostic=True, ij_error=None, log='',
                        observed_macro_error_dialogs=[] if native else [compare.ORIGINAL_TYPE_ERROR + ' in line 7 run( Align slices in stack... )'],
-                       exception_window=compare.NATIVE_TYPE_ERROR + '\n\tat Test.test(Test.java:1)\n' if native else '',
-                       exception_window_visible=native)
+                       observed_macro_guard_dialogs=[compare.NATIVE_GUARD_MESSAGE] if native else [])
         else:
             rows = compare.expected_rows(spec, schedule)
             data = ('Slice,dX,dY\n' + ''.join(','.join(map(str, r)) + '\n' for r in rows)).encode()
@@ -95,6 +95,13 @@ class AlignmentComparisonTests(unittest.TestCase):
         self.assertEqual('PASS_PAIRED_MACRO_ALIGNMENT_SCOPE', result['status'], result)
         self.assertEqual(7, len(result['cases']))
         self.assertFalse(result['whole_calcium_macro_executed'])
+
+    def test_legacy_delegate_compares_as_distinct_actual_backend(self):
+        delegate = self.root / 'delegate'; fixture(delegate, 'legacy-delegate')
+        result = compare.compare(self.original, delegate, 'legacy-delegate')
+        self.assertEqual('PASS_PAIRED_MACRO_ALIGNMENT_SCOPE', result['status'], result)
+        self.assertEqual('legacy-delegate', result['candidate_variant'])
+        self.assertEqual('FAIL_OR_INCOMPLETE', compare.compare(self.original, delegate)['status'])
 
     def test_rejects_partial_passing_report(self):
         self.edit(lambda r: r['cases'].pop()); self.rejected()
@@ -163,7 +170,7 @@ class AlignmentComparisonTests(unittest.TestCase):
         self.edit(lambda r: r['cases'][0].update(results_visible=False)); self.rejected()
 
     def test_rejects_negative_without_actual_diagnostic(self):
-        self.edit(lambda r: r['cases'][-1].update(exception_window='')); self.rejected()
+        self.edit(lambda r: r['cases'][-1].update(observed_macro_guard_dialogs=[])); self.rejected()
 
     def test_rejects_negative_that_invoked_worker(self):
         self.edit(lambda r: r['cases'][-1].update(worker_processes={'1': 'TemplateMatching.NativeAlignmentMain'})); self.rejected()
@@ -195,6 +202,20 @@ class AlignmentComparisonTests(unittest.TestCase):
         self.assertEqual('FAIL_OR_INCOMPLETE', result['status'])
         self.assertEqual(6, sum(r['status'] == 'PASS_EXACT' for r in result['cases']))
         self.assertIn('continuation_observed', result['cases'][-1]['mismatches'])
+
+    def test_rejects_continuation_even_if_both_reports_claim_it(self):
+        for side in ('original', 'native'):
+            self.edit(lambda r: r['cases'][-1].update(continuation_observed=True,
+                      log='GAT_ALIGNMENT_AFTER_BOUNDARY_' + r['cases'][-1]['case']['id'] + '\n'), side=side)
+        result = compare.compare(self.original, self.native)
+        self.assertEqual('FAIL_OR_INCOMPLETE', result['status'])
+        self.assertIn('rejected_input_continues', result['cases'][-1]['mismatches'])
+
+    def test_rejects_changed_guard_success_token(self):
+        p = self.native / 'result/synthetic8-ref1.ijm'
+        p.write_text(p.read_text().replace('GAT_ALIGNMENT_OK', 'wrong-token'))
+        self.edit(lambda r: r['cases'][0].update(invoked_macro_sha256=compare.digest(p.read_bytes())))
+        self.rejected()
 
     def test_rejects_changed_harness_sources(self):
         self.edit(lambda r: r['sources'].update(another='d' * 64), launcher=True); self.rejected()
@@ -270,7 +291,8 @@ class AlignmentRuntimeTests(unittest.TestCase):
     def test_original_macro_pin_and_native_only_transformation(self):
         original, a = run.macro_source('original'); native, b = run.macro_source('native')
         self.assertEqual(a, b)
-        self.assertEqual(original.replace('run("Align slices in stack...",', 'call("Features.Macros.LegacyTemplateMatching.run",'), native)
+        self.assertEqual(original.replace('run("Align slices in stack...",', 'gat_alignment_status=call("Features.Macros.LegacyTemplateMatching.run",')
+                         + ' if(gat_alignment_status!="GAT_ALIGNMENT_OK") exit("MacroFork alignment failed: "+gat_alignment_status);', native)
 
 
 if __name__ == '__main__':

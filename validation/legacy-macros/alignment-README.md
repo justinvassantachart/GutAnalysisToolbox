@@ -8,7 +8,9 @@ whole calcium, batch, SIFT or save/export workflow.
 
 `run_alignment_probe.py` copies the actual pinned alignment line from
 `Calcium imaging/_Align_stack.ijm`. Both occurrences must still be identical.
-The native variant changes only the `run` target to the production macro bridge.
+The native and legacy-delegate variants use the production macro bridge with
+the same explicit `GAT_ALIGNMENT_OK` guard as the generated macros. Every other
+return token exits the macro before downstream processing.
 The probe runs that line through `IJ.runMacro`, in real AWT, with the original
 macro's exact template-size/origin expressions. Reference 3 is the actual macro
 setting; references 1 and 4 are explicitly labeled boundary-extension controls.
@@ -21,9 +23,10 @@ The original plugin's `setup()` supports only 8/16-bit stacks, so that case must
 be rejected, with an actual diagnostic, no worker, no Results window and no
 mutation. A negative control is never counted as a successful float alignment. A marker
 after the actual call records whether the macro continues after rejection; that
-behavior must also match. The native `call()` boundary is observed through the
-real ImageJ Exception window, with an exact expected type-error diagnostic and
-no unrelated errors. The original interpreter's real modal Macro Error is
+behavior must also match. The guarded native `call()` boundary must show the
+real modal Macro exit dialog with the exact expected type-error diagnostic and
+no unrelated errors. Its actual OK action is acknowledged only for that exact
+message. The original interpreter's real modal Macro Error is
 observed and only its matching supported-type error is acknowledged with its
 actual OK action. Unexpected dialogs are not dismissed. A continuation mismatch fails the paired report even when
 all six supported inputs match exactly.
@@ -34,7 +37,10 @@ pixels, exact motion values and traversal order, visible Results, CSV roundtrip,
 ROI, selected slice, display range, calibration, slice labels and an untouched
 unrelated image. A real separate worker must be observed for every supported
 native case. Original cases must invoke the real registered plugin and cannot
-see fork classes. There is no numeric tolerance or fallback success path.
+see fork classes. The separately labeled Linux `legacy-delegate` control forces
+the production bridge's non-Apple branch, invokes that same real plugin, and
+must preserve its six supported outputs and unsupported-input abort. It never
+starts a worker. There is no numeric tolerance or fallback success path.
 
 ## Dependency preparation
 
@@ -88,6 +94,18 @@ python3 validation/legacy-macros/compare_alignment.py \
   --output target/alignment-comparison.json
 ```
 
+The additional Linux-only delegation control uses the same runtime and classes:
+
+```sh
+python3 validation/legacy-macros/run_alignment_probe.py \
+  --variant legacy-delegate --production-classes target/classes \
+  --runtime-classpath target/alignment-runtime/runtime-classpath.txt \
+  --output target/alignment-legacy-delegate
+python3 validation/legacy-macros/compare_alignment.py \
+  --original target/alignment-original --native target/alignment-legacy-delegate \
+  --native-variant legacy-delegate --output target/alignment-delegate-comparison.json
+```
+
 For a full Fiji dependency set, `--fiji-directory /path/to/Fiji` provides its
 runtime root, while an empty, disposable `plugins.dir` prevents implicit plugin
 loads. `--java` and `--javac` select Java 21. Every run uses a new output directory
@@ -111,7 +129,9 @@ reports. Their synthetic reports are never scientific/runtime pass evidence.
 on standard GitHub-hosted runners. The original OpenCV 4.0.1 JNI reference runs
 on Ubuntu x86_64. Native candidates on Ubuntu and macOS 15 arm64 download only
 that same workflow run's reference evidence and apply the strict comparator.
-The real CPU/JDK architecture is recorded and checked. No private image or
+The Linux candidate also runs all seven legacy-delegation controls and compares
+them with the same-run original. The real CPU/JDK architecture is recorded and
+checked. No private image or
 model input is accepted by this workflow.
 
 Raw evidence, process logs, dependency hashes and comparison failures are kept

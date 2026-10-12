@@ -6,6 +6,7 @@ This does not import the overlay generator and is not runtime parity evidence.
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 import zipfile
@@ -24,6 +25,12 @@ STAR_SITES = {
 }
 ALIGN_SITES = {'Calcium imaging/_Align_stack.ijm': 2,
                'Calcium imaging/_Align_stack_batch.ijm': 1}
+SETTINGS_SITES = {
+    '_Analyse Neurons.ijm', '_Analyse Neuron (Multi-channel).ijm',
+    '_Analyse Neuron (Multi-channel - No Hu).ijm',
+    'Tools/_Test_neuron_probability.ijm', 'Tools/_Test_neuron_rescaling.ijm',
+    'Tools/_Test_neuron_rescaling_advanced.ijm', 'Tools/commands/check_plugin.ijm',
+}
 
 
 def sha(data):
@@ -48,12 +55,22 @@ def expected_overlay(name, data, names):
                 line = line.replace(target, b'Features.Macros.LegacyMacroStarDist]')
             target = b'run("Align slices in stack...",'
             if target in line:
-                alignment += line.count(target)
-                line = line.replace(target, b'call("Features.Macros.LegacyTemplateMatching.run",')
+                match = re.fullmatch(rb'(\s*)run\("Align slices in stack\.\.\.",(.*)\);(\r?\n?)', line)
+                if not match or b'gat_alignment_status' in data:
+                    raise ValueError('Unexpected alignment statement or variable collision: ' + name)
+                alignment += 1
+                line = (match[1] + b'gat_alignment_status=call("Features.Macros.LegacyTemplateMatching.run",'
+                        + match[2] + b'); if(gat_alignment_status!="GAT_ALIGNMENT_OK") '
+                        + b'exit("MacroFork alignment failed: "+gat_alignment_status);' + match[3])
         output.append(line)
     if star != STAR_SITES.get(name, 0) or alignment != ALIGN_SITES.get(name, 0):
         raise ValueError('Native command site count changed: ' + name)
-    result = b''.join(output).replace(b'"GAT"', b'"GAT MacroFork"')
+    result = b''.join(output)
+    old = b'run("Results... ", "open="+gat_settings_path);'
+    if result.count(old) != (1 if name in SETTINGS_SITES else 0):
+        raise ValueError('Unexpected settings option path site: ' + name)
+    result = result.replace(old, b'run("Results... ", "open=["+gat_settings_path+"]");')
+    result = result.replace(b'"GAT"', b'"GAT MacroFork"')
     for source in sorted(names):
         old = Path(source).name
         new = Path(destination(source)).name
