@@ -32,6 +32,34 @@ class OverlayContractTest(unittest.TestCase):
         self.assertTrue(all('[MacroFork]' in name for name in destination_names))
         self.assertTrue(set(destination_names).isdisjoint(p.name for p in paths))
 
+    def test_all_seven_settings_imports_quote_renamed_paths(self):
+        output, info = overlay.generated_files()
+        self.assertEqual(7, info['settings_option_path_sites'])
+        sites = [f for f in info['files'] if any(c['kind'] == 'settings-option-path' for c in f['substitutions'])]
+        self.assertEqual(overlay.SETTINGS_SITES, {f['source'] for f in sites})
+        for row in sites:
+            self.assertEqual(1, output[row['destination']].count(overlay.SETTINGS_QUOTED))
+            self.assertNotIn(overlay.SETTINGS_OPEN, output[row['destination']])
+
+    def test_unrecognized_settings_option_site_fails_closed(self):
+        with self.assertRaises(ValueError):
+            overlay.transform(Path('unknown.ijm'), overlay.SETTINGS_OPEN, [])
+
+    def test_all_three_alignment_calls_fail_stop_on_missing_success_token(self):
+        output, info = overlay.generated_files()
+        self.assertEqual(3, info['alignment_fail_stop_guards'])
+        for source, count in overlay.ALIGN_SITES.items():
+            data = output['scripts/GAT MacroFork/' + overlay.destination_path(Path(source)).as_posix()]
+            self.assertEqual(count, data.count(overlay.ALIGN_GUARD))
+            self.assertEqual(count, data.count(overlay.ALIGN_ADAPTER))
+            self.assertNotIn(overlay.ALIGN, data)
+
+    def test_alignment_guard_variable_collision_is_rejected(self):
+        source = Path('Calcium imaging/_Align_stack_batch.ijm')
+        data = (overlay.ROOT / source).read_bytes() + b'\ngat_alignment_status="existing";'
+        with self.assertRaises(ValueError):
+            overlay.transform(source, data, overlay.source_paths())
+
     def test_batch_targets_the_fork_menu(self):
         output, _ = overlay.generated_files()
         data = output['scripts/GAT MacroFork/Batch_mode/batch_mode_example [MacroFork].ijm']
