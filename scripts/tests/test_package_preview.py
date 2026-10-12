@@ -1,5 +1,6 @@
 import importlib.util
 import io
+import json
 import tempfile
 import unittest
 import zipfile
@@ -72,6 +73,22 @@ class BundleChecks(unittest.TestCase):
             (classes / 'Main.class').write_bytes(b'different')
             with self.assertRaises(ValueError):
                 p.verify_compiled_classes(jar, classes)
+
+    def test_macro_command_registration_is_required_and_unambiguous(self):
+        required = {'class': 'Features.Macros.LegacyMacroStarDist',
+                    'values': {'type': 'org.scijava.command.Command'}}
+        for entries in (None, [], [required], [required, required],
+                        [{'class': required['class'], 'values': {'type': 'other'}}]):
+            data = io.BytesIO()
+            with zipfile.ZipFile(data, 'w') as z:
+                if entries is not None:
+                    z.writestr('META-INF/json/org.scijava.plugin.Plugin', ''.join(json.dumps(e) for e in entries))
+            data.seek(0)
+            with self.subTest(entries=entries), zipfile.ZipFile(data) as z:
+                if entries == [required]:
+                    p.verify_macro_registration(z)
+                else:
+                    with self.assertRaises(ValueError): p.verify_macro_registration(z)
 
     def test_valid_arm_distribution(self):
         with tempfile.TemporaryDirectory() as d:
