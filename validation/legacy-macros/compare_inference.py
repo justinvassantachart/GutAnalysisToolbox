@@ -118,6 +118,7 @@ def raster_differences(original, native):
 def compare(original, native, roi_atol=0.0):
     result = {'schema_version': 1, 'scope': 'registered-legacy-macro-inference-boundary',
               'whole_analysis_macro_executed': False, 'roi_vertex_atol_pixels': roi_atol,
+              'roi_tolerance_comparison_slack_pixels': 1e-12 if roi_atol > 0 else 0.0,
               'status': 'FAIL_OR_INCOMPLETE', 'cases': [], 'errors': []}
     try:
         if not math.isfinite(roi_atol) or roi_atol < 0:
@@ -135,7 +136,13 @@ def compare(original, native, roi_atol=0.0):
                 if a[field] != b[field]:
                     mismatches.append(field)
             delta = roi_delta(a['roi_manager'], b['roi_manager'])
-            if delta is None or delta > roi_atol:
+            # A serialized decimal difference such as 64.70 - 64.69 can be
+            # 0.010000000000005116 in binary floating point. This allowance is
+            # solely for an explicitly positive tolerance; exact mode stays
+            # exactly zero. It is many orders below a float ROI coordinate.
+            within_roi_tolerance = delta is not None and (delta <= roi_atol or
+                (roi_atol > 0 and math.isclose(delta, roi_atol, rel_tol=0.0, abs_tol=1e-12)))
+            if not within_roi_tolerance:
                 mismatches.append('roi_geometry_order_names_positions')
             row = {'id': name, 'status': 'PASS_EXACT' if not mismatches and delta == 0 else
                    'PASS_EXPLICIT_ROI_TOLERANCE' if not mismatches else 'FAIL', 'mismatches': mismatches,

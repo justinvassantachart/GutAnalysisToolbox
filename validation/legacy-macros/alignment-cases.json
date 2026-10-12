@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "seed": 8291,
+  "shifts": [
+    [
+      0,
+      0
+    ],
+    [
+      3,
+      -2
+    ],
+    [
+      -4,
+      5
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "cases": [
+    {
+      "id": "synthetic8-ref1",
+      "bits": 8,
+      "reference": 1,
+      "width": 128,
+      "height": 96,
+      "expected": "aligned"
+    },
+    {
+      "id": "synthetic8-ref3",
+      "bits": 8,
+      "reference": 3,
+      "width": 127,
+      "height": 95,
+      "expected": "aligned"
+    },
+    {
+      "id": "synthetic8-ref4",
+      "bits": 8,
+      "reference": 4,
+      "width": 128,
+      "height": 96,
+      "expected": "aligned"
+    },
+    {
+      "id": "synthetic16-ref1",
+      "bits": 16,
+      "reference": 1,
+      "width": 128,
+      "height": 96,
+      "expected": "aligned"
+    },
+    {
+      "id": "synthetic16-ref3",
+      "bits": 16,
+      "reference": 3,
+      "width": 127,
+      "height": 95,
+      "expected": "aligned"
+    },
+    {
+      "id": "synthetic16-ref4",
+      "bits": 16,
+      "reference": 4,
+      "width": 128,
+      "height": 96,
+      "expected": "aligned"
+    },
+    {
+      "id": "unsupported32-ref3",
+      "bits": 32,
+      "reference": 3,
+      "width": 128,
+      "height": 96,
+      "expected": "rejected"
+    }
+  ]
+}

@@ -158,6 +158,38 @@ class ComparisonTests(unittest.TestCase):
         self.change_native(mutate)
         self.assertEqual('FAIL_OR_INCOMPLETE', compare_inference.compare(self.original, self.native, 1)['status'])
 
+    def test_one_quantization_step_handles_decimal_subtraction_only(self):
+        original = json.loads(self.original_report.read_text())
+        original['roi_manager'][0][-1][0][0] = 64.69
+        self.original_report.write_text(json.dumps(original))
+        self.change_native(lambda row: row['roi_manager'][0][-1][0].__setitem__(0, 64.70))
+        self.assertGreater(64.70 - 64.69, .01)
+        self.assertEqual('FAIL_OR_INCOMPLETE', compare_inference.compare(self.original, self.native)['status'])
+        result = compare_inference.compare(self.original, self.native, .01)
+        self.assertEqual('PASS_PAIRED_MACRO_INFERENCE_SCOPE', result['status'])
+        self.assertEqual(1e-12, result['roi_tolerance_comparison_slack_pixels'])
+
+    def test_exact_mode_does_not_receive_numerical_slack(self):
+        self.change_native(lambda row: row['roi_manager'][0][-1][0].__setitem__(0, 1e-14))
+        result = compare_inference.compare(self.original, self.native)
+        self.assertEqual('FAIL_OR_INCOMPLETE', result['status'])
+        self.assertEqual(0, result['roi_tolerance_comparison_slack_pixels'])
+
+    def test_larger_than_one_quantization_step_rejected(self):
+        self.change_native(lambda row: row['roi_manager'][0][-1][0].__setitem__(0, .01000001))
+        self.assertEqual('FAIL_OR_INCOMPLETE', compare_inference.compare(self.original, self.native, .01)['status'])
+        self.change_native(lambda row: row['roi_manager'][0][-1][0].__setitem__(0, .02))
+        self.assertEqual('FAIL_OR_INCOMPLETE', compare_inference.compare(self.original, self.native, .01)['status'])
+
+    def test_vertex_allowance_cannot_hide_label_count_area_or_name_change(self):
+        for field, value in [('object_count', 2), ('areas_by_label_id', {'1': 3})]:
+            old = self.native_report.read_text()
+            self.change_native(lambda row: row['label'].__setitem__(field, value))
+            self.assertEqual('FAIL_OR_INCOMPLETE', compare_inference.compare(self.original, self.native, .01)['status'])
+            self.native_report.write_text(old)
+        self.change_native(lambda row: row['roi_manager'][0].__setitem__(0, 'different-name'))
+        self.assertEqual('FAIL_OR_INCOMPLETE', compare_inference.compare(self.original, self.native, .01)['status'])
+
     def test_raster_quantification(self):
         a = struct.pack('>ffff', 0, 1, 1, 2)
         b = struct.pack('>ffff', 1, 1, 2, 2)

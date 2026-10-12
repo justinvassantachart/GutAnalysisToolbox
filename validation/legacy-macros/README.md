@@ -181,6 +181,38 @@ difference so small numerical differences can be reviewed explicitly. An
 explicit nonzero `--roi-atol` affects vertices only and is disclosed in the
 report; it never weakens label, count, area, ordering or settings gates.
 
+### Strict diagnostics and a one-step ROI acceptance gate
+
+CI preserves a separate zero-tolerance report even when it fails. The following
+acceptance step explicitly uses `--roi-atol 0.01`, while still requiring exact
+label pixels/IDs/counts/areas, metadata, inputs/settings, and ROI order, names and
+positions. This is an inference-boundary acceptance test, not full-workflow or
+biological validation. Private specimen and top-menu/export gates remain separate.
+
+The tolerance is one step of the **original algorithm's coordinate grid**:
+StarDist 0.3.0 defines `S = 100`, rounds each predicted vertex with
+`Math.round(S * coordinate)`, and divides by `S` when exporting a polygon ROI.
+See the immutable upstream [candidate construction](https://github.com/stardist/stardist-imagej/blob/3fe67bfea8e145b458d98987b7256edc312dabab/src/main/java/de/csbdresden/stardist/Candidates.java#L37-L75)
+and [ROI conversion](https://github.com/stardist/stardist-imagej/blob/3fe67bfea8e145b458d98987b7256edc312dabab/src/main/java/de/csbdresden/stardist/Utils.java#L23-L35).
+The same multiplication, rounding and division were verified in the pinned
+runtime JAR bytecode (SHA-256
+`fff483154961e60cb6305e4ef73ef9e662298e1e65a077858e018717eb30d2bd`).
+Small TF1/TF2 numerical changes can therefore straddle a hundredth-pixel rounding
+boundary. This explains a plausible mechanism for the observed one-step changes;
+it does not assert raw inference tensors are identical.
+
+Only positive, explicitly selected tolerances receive `1e-12` pixel arithmetic
+slack, since subtracting JSON decimals `64.70 - 64.69` can produce
+`0.010000000000005116`. Strict mode receives no slack. The chosen tolerance and
+slack, each case's actual maximum delta, all raster differences and per-label
+area deltas are included in the report. Counterexample tests reject larger
+vertex changes and any count, area, name or placement change.
+
+Run 38188678008 remains **failed**: its Linux and native Mac jobs failed only the
+strict ROI comparison. All 30 label rasters and metadata matched on each host;
+five Linux and six Mac cases differed by at most one coordinate-grid step.
+The later explicit acceptance rule does not rewrite that run or its reports.
+
 No full-inference result is claimed merely from compiling this harness. Whole
 workflows and private specimen acceptance remain separate from this public
 technical boundary test.

@@ -1,0 +1,40 @@
+[
+  {
+    "file": "Template_Matching.jar",
+    "url": "https://sites.imagej.net/Template_Matching/plugins/Template_Matching.jar-20200515134627",
+    "sha256": "cdc4ac16d70486c7420b9704e56c26b90084b54a1b558405451fd22cc8aa823c",
+    "bytes": 10695,
+    "classes_sha256": {
+      "TemplateMatching/Align_slices.class": "3b6d5eef7654f6ab6300b72a4ac9522c10c7fa27ea0730512a15ac25a29d1923",
+      "TemplateMatching/cvMatch_Template.class": "581b38b23bd7e8f2c61cf286d79d3c12de8b4322ac351d8f20444194f0a18ed9"
+    }
+  },
+  {
+    "file": "javacv-1.4.4.jar",
+    "url": "https://repo1.maven.org/maven2/org/bytedeco/javacv/1.4.4/javacv-1.4.4.jar",
+    "sha256": "b46c71ff8be781d698f64eb0221d0ea5b59208aae1d6aaf6f2c9ca1140dfc817",
+    "bytes": 406695,
+    "publisher_sha1": "eb475980acf1ceba7d5b68e805df354578de3f2f"
+  },
+  {
+    "file": "javacpp-1.4.4.jar",
+    "url": "https://repo1.maven.org/maven2/org/bytedeco/javacpp/1.4.4/javacpp-1.4.4.jar",
+    "sha256": "3c2209ee2315c4782ccf82b31dcb85b3100d962a97a4b2960ec64eb8680d98a4",
+    "bytes": 386638,
+    "publisher_sha1": "6408ace5ec4fdc5b64ecb67829e0142cd361d64a"
+  },
+  {
+    "file": "opencv-4.0.1-1.4.4.jar",
+    "url": "https://repo1.maven.org/maven2/org/bytedeco/javacpp-presets/opencv/4.0.1-1.4.4/opencv-4.0.1-1.4.4.jar",
+    "sha256": "2797c1e135d7cf4c355c6d0c5d534d1db8b7e609fb7bf641596c2aecf6595e03",
+    "bytes": 1516552,
+    "publisher_sha1": "0c7e05759bdfcb140cb236e5461a83ae3d053c38"
+  },
+  {
+    "file": "opencv-4.0.1-1.4.4-linux-x86_64.jar",
+    "url": "https://repo1.maven.org/maven2/org/bytedeco/javacpp-presets/opencv/4.0.1-1.4.4/opencv-4.0.1-1.4.4-linux-x86_64.jar",
+    "sha256": "663ca6b7ae0d88366563529b139d2d4ad1c88afad3208674071c02314b36ecf2",
+    "bytes": 19319284,
+    "publisher_sha1": "5915cdd59bfa9715154d1162d932d9a16374c60e"
+  }
+]
