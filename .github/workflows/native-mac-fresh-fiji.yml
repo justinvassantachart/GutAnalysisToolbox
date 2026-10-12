@@ -32,6 +32,7 @@ defaults:
 
 jobs:
   paired-installed-fiji:
+    # No-Hu probes use the explicit IJ call() argument entry, not command options.
     name: Fresh native Fiji startup and bounded paired GAT checks
     runs-on: macos-15
     timeout-minutes: 120

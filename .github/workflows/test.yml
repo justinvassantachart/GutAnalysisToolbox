@@ -42,6 +42,11 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Source-preservation tests compare actual historical macro Git blobs.
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
