@@ -2,6 +2,7 @@
 """Assemble the native-Mac test overlay from separately built, pinned artifacts."""
 import argparse
 import hashlib
+import importlib.util
 import json
 from pathlib import Path, PurePosixPath
 import shutil
@@ -62,6 +63,32 @@ def verify_compiled_classes(plugin, classes):
     return len(paths)
 
 
+def verify_macro_registration(archive):
+    """SciJava writes concatenated JSON objects, not a JSON array."""
+    try:
+        remaining = archive.read('META-INF/json/org.scijava.plugin.Plugin').decode('utf-8')
+    except KeyError as error:
+        raise ValueError('Missing generated SciJava macro command index') from error
+    entries, decoder = [], json.JSONDecoder()
+    while remaining.strip():
+        remaining = remaining.lstrip()
+        item, end = decoder.raw_decode(remaining)
+        entries.append(item)
+        remaining = remaining[end:]
+    matches = [item for item in entries if item.get('class') == 'Features.Macros.LegacyMacroStarDist'
+               and item.get('values', {}).get('type') == 'org.scijava.command.Command']
+    if len(matches) != 1:
+        raise ValueError('Expected one generated LegacyMacroStarDist command registration')
+
+
+def macro_overlay(root):
+    """Generate only tracked, allowlisted legacy assets in a separate menu."""
+    spec = importlib.util.spec_from_file_location('gat_macro_overlay', root / 'legacy-macros/build_overlay.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.generated_files(root=root)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('dist'))
@@ -76,8 +103,10 @@ def main():
         raise SystemExit('Build the root plugin and clean-build BOTH macosx-arm64 worker modules first.')
     with zipfile.ZipFile(plugin) as archive:
         names = set(archive.namelist())
-        if not {'Features/Inference/NativeStarDist.class', 'Features/Inference/NativeAlignmentClient.class'}.issubset(names):
+        if not {'Features/Inference/NativeStarDist.class', 'Features/Inference/NativeAlignmentClient.class',
+                'Features/Macros/LegacyMacroStarDist.class', 'Features/Macros/LegacyTemplateMatching.class'}.issubset(names):
             raise ValueError('Missing native adapters')
+        verify_macro_registration(archive)
         if any(n.startswith(('org/tensorflow/', 'org/bytedeco/')) for n in names):
             raise ValueError('Native worker dependencies must not enter the Fiji plugin classpath')
     class_count = verify_compiled_classes(plugin, root / 'target/classes')
@@ -95,11 +124,18 @@ def main():
     dirty = bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=root, text=True).strip())
     if dirty and not args.allow_dirty:
         raise SystemExit('Release packaging requires a clean source checkout. Use --allow-dirty only for labelled local candidates.')
+    macro_files, macro_metadata = macro_overlay(root)
+    if macro_metadata['source_commit'] != source_commit:
+        raise ValueError('Macro overlay source revision differs from plugin package revision')
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / ('GAT-' + version + '-macos-arm64-preview.zip')
     metadata = {
         'version': version, 'source_commit': source_commit, 'source_worktree_modified': dirty,
         'alignment_protocol_version': 2,
+        'legacy_macro_overlay': True,
+        'legacy_macro_manifest_sha256': hashlib.sha256(macro_files['MACROFORK_BUILD_INFO.json']).hexdigest(),
+        'legacy_macro_script_assets': len(macro_metadata['files']),
+        'legacy_macro_settings': 'Repository defaults; existing original installation is not changed',
         'target': 'macos-arm64', 'minimum_macos': '14', 'minimum_java': '11', 'experimental': True,
         'install_root': 'ImageJ data root containing jars and plugins; current Fiji Latest uses outer Fiji/, not inner Fiji.app/',
         'plugin_classes_match_compiled_classes': True, 'plugin_classes_compared': class_count,
@@ -110,6 +146,8 @@ def main():
     }
     with zipfile.ZipFile(destination, 'w', compression=zipfile.ZIP_DEFLATED) as output:
         output.write(plugin, 'plugins/' + plugin.name)
+        for name, data in sorted(macro_files.items()):
+            output.writestr(name, data)
         copy_bundle(inference, output, 'gat-native-inference')
         copy_bundle(alignment, output, 'gat-native-alignment')
         output.write(root / 'docs/apple-silicon.md', 'APPLE_SILICON.md')
