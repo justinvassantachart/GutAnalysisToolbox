@@ -1,49 +1,27 @@
 # Gut Analysis Toolbox
 
-## Apple Silicon TEST preview 6
+## Apple Silicon preview 7: legacy MacroFork
 
-[Download preview 6](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-6)
-for native arm64 Fiji on macOS 14+. See the short
-[package notes](docs/preview-6-setup.md) and
-[bounded parity evidence](docs/preview-6-release-notes.md).
-No developer tools are required to use the package. An unlisted release is not
-published yet.
+[Preview 7 download](https://github.com/justinvassantachart/GutAnalysisToolbox/releases/tag/apple-silicon-preview-7)
+for native arm64 Fiji on macOS 14+. An unlisted release is not published yet.
+Start with the [installation and settings guide](docs/preview-7-setup.md) and
+[compatibility evidence and limits](docs/preview-7-release-notes.md).
 
-Preview 6 restores upstream Java V2 ganglia input scaling: all three float
-channels are multiplied by `1/255` before DeepImageJ. The output-selection
-safeguards remain. Native same-host comparisons match original V2 exactly on
-three public samples, including masks, labels, counts and areas; all 83 fixed
-historical neuron-ROI assignments in the distal sample also match. This is
-bounded behavioral parity, not biological accuracy. See the
-[release notes and runtime limits](docs/preview-6-release-notes.md).
+Researchers using the original macros should select **GAT MacroFork** commands
+ending in **[MacroFork]**. The original macro menus remain available. GATV2 is a
+separate Java workflow. MacroFork preserves legacy scientific processing and
+settings while replacing the incompatible inference/alignment boundary.
 
-Preview 5's display-range/LUT alignment repair, preview 4's CPU/calcium
-safeguards and preview 3's multiplex correction remain.
-**Install the matching plugin and both complete worker folders together:** the
-alignment protocol remains version 2; mixed versions fail explicitly.
+Install the matched plugin and both complete native worker folders together.
+The package is an overlay and needs the original GAT models/dependencies.
+Back up and copy existing macro settings as described in the guide; distributed
+settings are repository defaults. No developer tools are needed.
 
-**Do not use preview 2 multiplex exports for quantitative work.** All earlier
-release bytes and historical evidence remain unchanged. Legacy macros, models,
-QuPath files and sample data remain in the source distribution; this native
-compatibility work covers Java GATV2, not those separate legacy workflows.
-
-Hosted checks cover recorded command/service paths, not every desktop workflow
-or biological dataset. Physical OpenCL/GPU, complete interactive workflows and
-biological acceptance remain open. The
-[workflow matrix](docs/apple-silicon-workflow-matrix.md) preserves these limits,
-including prior small mask/outline differences. Existing Intel installations
-keep their legacy inference backend; this download's native workers are ARM64.
-
-Clone the release tag for its exact source; ongoing development on `main` may
-include changes beyond a published preview:
-
-```sh
-git clone --branch apple-silicon-preview-6 https://github.com/justinvassantachart/GutAnalysisToolbox.git
-```
-
-Use the release's `FORK_BUILD_INFO.json` and SHA-256 files to verify the exact
-commit and bytes. [Development and input limits](docs/fork-development.md).
-No upstream pull request has been opened.
+The finite compatibility tests allow documented tiny numerical differences.
+They do not establish biological ground truth. Review your ROIs and use a copy
+of your data first. Earlier release bytes remain unchanged; do not use Preview 2
+multiplex exports for quantitative work. The release page identifies its exact
+source commit, checks and package hashes. No upstream pull request is open.
 
 [![DOI:10.1101/2024.01.17.576140](http://img.shields.io/badge/DOI-10.1101/2024.01.17.576140-B31B1B.svg)](https://doi.org/10.1242/jcs.261950)
 
