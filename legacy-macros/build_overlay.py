@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate a side-by-side MacroFork script overlay; never change original macros.
 
-Only command targets and installation/menu names may differ. Each input/output
+Only command targets, fail-stop guards and installation/menu routing may differ. Each input/output
 hash and each literal substitution is recorded. Models, preprocessing, CLIJ,
 settings values, segmentation thresholds and processing order are not retuned.
 """
@@ -19,7 +19,16 @@ NAMESPACE = 'GAT MacroFork'
 STAR = b'de.csbdresden.stardist.StarDist2D'
 ADAPTER = b'Features.Macros.LegacyMacroStarDist'
 ALIGN = b'run("Align slices in stack...",'
-ALIGN_ADAPTER = b'call("Features.Macros.LegacyTemplateMatching.run",'
+ALIGN_ADAPTER = b'gat_alignment_status=call("Features.Macros.LegacyTemplateMatching.run",'
+ALIGN_GUARD = b' if(gat_alignment_status!="GAT_ALIGNMENT_OK") exit("MacroFork alignment failed: "+gat_alignment_status);'
+SETTINGS_OPEN = b'run("Results... ", "open="+gat_settings_path);'
+SETTINGS_QUOTED = b'run("Results... ", "open=["+gat_settings_path+"]");'
+SETTINGS_SITES = {
+    "_Analyse Neurons.ijm", "_Analyse Neuron (Multi-channel).ijm",
+    "_Analyse Neuron (Multi-channel - No Hu).ijm",
+    "Tools/_Test_neuron_probability.ijm", "Tools/_Test_neuron_rescaling.ijm",
+    "Tools/_Test_neuron_rescaling_advanced.ijm", "Tools/commands/check_plugin.ijm",
+}
 STAR_SITES = {
     '_Analyse Neurons.ijm': 1,
     '_Analyse Neuron (Multi-channel).ijm': 1,
@@ -74,6 +83,7 @@ def transform(path, original, paths):
     # These audited commands are each a single line. Fail if source shape moves.
     lines = data.splitlines(keepends=True)
     star_count, align_count = 0, 0
+    alignment_changes = {}
     for index, line in enumerate(lines):
         if line.lstrip().startswith((b'//', b'#')):
             continue
@@ -83,7 +93,12 @@ def transform(path, original, paths):
             lines[index] = line.replace(STAR + b']', ADAPTER + b']')
             star_count += line.count(STAR + b']')
         if ALIGN in line:
-            lines[index] = lines[index].replace(ALIGN, ALIGN_ADAPTER)
+            statement = line.strip()
+            if not statement.startswith(ALIGN) or not statement.endswith(b');') or b'gat_alignment_status' in original:
+                raise ValueError('Unaudited alignment command form or status variable collision: ' + str(path))
+            guarded = statement.replace(ALIGN, ALIGN_ADAPTER, 1) + ALIGN_GUARD
+            lines[index] = lines[index].replace(statement, guarded, 1)
+            alignment_changes[statement] = alignment_changes.get(statement, 0) + 1
             align_count += line.count(ALIGN)
     name = path.as_posix()
     if star_count != STAR_SITES.get(name, 0) or align_count != ALIGN_SITES.get(name, 0):
@@ -91,8 +106,15 @@ def transform(path, original, paths):
     data = b''.join(lines)
     if star_count:
         changes.append({'kind': 'stardist-command', 'before': STAR.decode(), 'after': ADAPTER.decode(), 'count': star_count})
-    if align_count:
-        changes.append({'kind': 'alignment-command', 'before': ALIGN.decode(), 'after': ALIGN_ADAPTER.decode(), 'count': align_count})
+    for statement, count in alignment_changes.items():
+        changes.append({'kind': 'alignment-command', 'before': statement.decode(),
+                        'after': (statement.replace(ALIGN, ALIGN_ADAPTER, 1) + ALIGN_GUARD).decode(), 'count': count})
+    # The renamed root/leaf contain spaces; IJ1 options need outer brackets.
+    # IJ1 Macro.getValue counts nested brackets, including the [MacroFork] suffix.
+    expected_settings = 1 if name in SETTINGS_SITES else 0
+    if data.count(SETTINGS_OPEN) != expected_settings:
+        raise ValueError('Settings option path count changed: ' + name)
+    data = replace_count(data, SETTINGS_OPEN, SETTINGS_QUOTED, changes, 'settings-option-path')
     data = replace_count(data, b'"GAT"', ('"' + NAMESPACE + '"').encode(), changes, 'installation-path')
     # Every script leaf is unique, including helper leaves. This avoids ImageJ's
     # global command-name collisions when original and fork menus coexist.
@@ -139,6 +161,8 @@ def generated_files(root=ROOT, settings=None):
         'macro_source': 'Preserved legacy macro blobs, distinct from Java V2 commit 1870d9e',
         'native_stardist_call_sites': sum(STAR_SITES.values()),
         'native_alignment_call_sites': sum(ALIGN_SITES.values()),
+        'alignment_fail_stop_guards': sum(ALIGN_SITES.values()),
+        'settings_option_path_sites': len(SETTINGS_SITES),
         'files': records,
         'validation_status': 'Candidate only. Source preservation does not establish runtime equivalence.',
     }

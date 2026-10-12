@@ -7,8 +7,11 @@ validated release until the runtime/settings matrix has passed.
 ## Architecture boundary
 
 The generator keeps source bytes, line endings and processing order except for
-an audited allowlist of command targets, installation paths and unique menu
-names. It routes eight original StarDist calls to
+an audited allowlist of command targets, installation paths, unique menu
+names, and fail-stop guards. Settings table imports bracket their renamed paths
+because the namespace contains spaces; ImageJ preserves the nested `[MacroFork]`
+brackets. Alignment calls require an explicit success token before continuing,
+preserving the original abort-on-error behavior across the Java `call()` boundary. It routes eight original StarDist calls to
 `Features.Macros.LegacyMacroStarDist`, and three original Template Matching calls
 to `Features.Macros.LegacyTemplateMatching.run`. Every replacement is recorded
 with original and generated SHA-256 hashes in `MACROFORK_BUILD_INFO.json`.
