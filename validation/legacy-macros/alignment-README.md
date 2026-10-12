@@ -105,6 +105,20 @@ The unit tests deliberately fabricate evidence to test rejection of incomplete,
 wrong-setting, wrong-runtime, wrong-pixel, missing-worker and metadata-drift
 reports. Their synthetic reports are never scientific/runtime pass evidence.
 
+## Hosted execution
+
+`.github/workflows/legacy-macro-alignment.yml` runs the same seven-case schedule
+on standard GitHub-hosted runners. The original OpenCV 4.0.1 JNI reference runs
+on Ubuntu x86_64. Native candidates on Ubuntu and macOS 15 arm64 download only
+that same workflow run's reference evidence and apply the strict comparator.
+The real CPU/JDK architecture is recorded and checked. No private image or
+model input is accepted by this workflow.
+
+Raw evidence, process logs, dependency hashes and comparison failures are kept
+as artifacts even when a control fails. In particular, a native call that
+continues after an error when the original aborts is a failing result, not a
+permitted exception. The lane has no tolerance or automatic mismatch approval.
+
 ## Size-limit follow-up
 
 The inherited production alignment protocol currently rejects more than
