@@ -92,4 +92,51 @@ class NativeAlignmentClientTest {
         assertThrows(IllegalArgumentException.class,()->NativeAlignmentClient.translatedCopy(source,new double[][]{{Double.NaN,0},{0,0},{0,0}}));
         assertEquals(100,source.getStack().getProcessor(1).get(3,3));
     }
+    @Test void newMovieAndRawBudgetBoundariesAreAdmittedWithoutAllocation() throws Exception {
+        assertEquals(67_371_008L, NativeAlignmentClient.rawBytesForShape(512, 512, 257, 8, 3));
+        assertEquals(536_870_912L, NativeAlignmentClient.rawBytesForShape(512, 512, 2048, 8, 3));
+        assertEquals(536_870_912L, NativeAlignmentClient.rawBytesForShape(512, 512, 1024, 16, 3));
+        assertThrows(IllegalArgumentException.class, () -> NativeAlignmentClient.rawBytesForShape(512, 512, 2049, 8, 3));
+        assertThrows(IllegalArgumentException.class, () -> NativeAlignmentClient.rawBytesForShape(512, 512, 1025, 16, 3));
+    }
+    @Test void combinedWorkingSetBoundaryIsIndependentOfRawByteLimit() throws Exception {
+        // 192 MiB raw + 512 MiB plane reserve + 64 MiB runtime = 768 MiB.
+        assertEquals(201_326_592L, NativeAlignmentClient.rawBytesForShape(8192, 8192, 3, 8, 3));
+        assertThrows(IllegalArgumentException.class, () -> NativeAlignmentClient.rawBytesForShape(8192, 8192, 4, 8, 3));
+        // 448 MiB raw + 256 MiB plane reserve + 64 MiB runtime = 768 MiB.
+        assertEquals(469_762_048L, NativeAlignmentClient.rawBytesForShape(4096, 8192, 7, 16, 3));
+        assertThrows(IllegalArgumentException.class, () -> NativeAlignmentClient.rawBytesForShape(4096, 8192, 8, 16, 3));
+    }
+    @Test void everyOldFrameBoundaryRetainsBothSupportedDepths() throws Exception {
+        // Old total<=64M pixels, frames>=2: raw<=128MiB and plane reserve<=256MiB.
+        // Therefore the old worst managed estimate<=448MiB, below the new768MiB.
+        for (int frames = 2; frames <= 10000; frames++) {
+            int height = (int) (67_108_864L / (2L * frames));
+            for (int bits : new int[]{8, 16})
+                assertEquals(2L * height * frames * (bits / 8), NativeAlignmentClient.rawBytesForShape(2, height, frames, bits, 1));
+        }
+    }
+    @Test void retainedShapeGuardsRejectExtremeIntegersBeforeProducts() {
+        for (int[] shape : new int[][] {{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, 16, 1},
+                {Integer.MIN_VALUE, 512, 3, 8, 1}, {1, 512, 3, 8, 1}, {512, 512, 10001, 8, 1},
+                {8193, 8192, 2, 8, 1}, {512, 512, 3, 32, 1}, {512, 512, 3, 8, 4}})
+            assertThrows(IllegalArgumentException.class, () -> NativeAlignmentClient.rawBytesForShape(shape[0], shape[1], shape[2], shape[3], shape[4]));
+    }
+    @Test void excessiveBudgetFailsBeforeCreatingOutputFile() {
+        ImagePlus source = image();
+        ImageStack original = source.getStack();
+        ImagePlus virtualShape = new ImagePlus("virtual budget shape", original) {
+            @Override public int getWidth() { return 8192; }
+            @Override public int getHeight() { return 8192; }
+            @Override public int getStackSize() { return 4; }
+            @Override public int getBitDepth() { return 8; }
+        };
+        Path target = temporary.resolve("must-not-be-written.gata");
+        assertThrows(IllegalArgumentException.class, () -> NativeAlignmentClient.writeInput(target, virtualShape, 3));
+        assertFalse(Files.exists(target));
+        assertSame(original, source.getStack());
+        assertEquals(100, source.getStack().getProcessor(1).get(3, 3));
+        assertNotNull(source.getRoi());
+    }
+
 }
