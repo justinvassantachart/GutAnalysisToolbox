@@ -563,7 +563,7 @@ def main():
         model = root / 'models' / '2D_enteric_neuron_subtype_v4.zip'
         macro = work / (name + '.ijm')
         argument = str(directory) + '\n' + str(model) + '\n' + scenario
-        macro.write_text('run("GAT NoHu Imported ROI Probe", ' + json.dumps(argument) + ');\n')
+        macro.write_text('call("NoHuImportedRoiProbe.runMacro", ' + json.dumps(argument) + ');\n')
         execution = execute(launch(root) + ['--run', str(macro)], args.output / (name + '.log'),
                             clean_env(runtime_home(root)), 300, root)
         target = directory / 'report.json'

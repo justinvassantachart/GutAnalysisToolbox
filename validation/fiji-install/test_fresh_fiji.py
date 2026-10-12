@@ -16,6 +16,15 @@ SPEC.loader.exec_module(fresh)
 
 
 class ArchiveSafetyTests(unittest.TestCase):
+    def test_nohu_launcher_passes_explicit_argument_not_command_options(self):
+        here = Path(__file__).resolve().parent
+        runner = (here / 'run_fresh_fiji.py').read_text()
+        probe = (here.parent / 'all-workflows/NoHuImportedRoiProbe.java').read_text()
+        self.assertIn('call("NoHuImportedRoiProbe.runMacro", ', runner)
+        self.assertNotIn('run("GAT NoHu Imported ROI Probe", ', runner)
+        self.assertIn('public static String runMacro(String argument)', probe)
+        self.assertIn('new NoHuImportedRoiProbe().run(argument);', probe)
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
